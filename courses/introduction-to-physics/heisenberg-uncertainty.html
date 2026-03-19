@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Introdução ao Princípio da Incerteza de Heisenberg – Physics Lecture Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-05e66d17ab91752557bef5da392245d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-4e596e3b636cc93bd5f8b4c83acf253a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-05e66d17ab91752557bef5da392245d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R4D0BX334F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R4D0BX334F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Physics Lecture Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://vitenti-physics.github.io/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/introduction-to-physics/index.html">Introduction to Physics (portuguese)</a></li><li class="breadcrumb-item"><a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html">Introduction to Heisenberg Uncertainty Principle</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Undergraduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Introduction to Physics (portuguese)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/physics-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physics and Mathematics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/determinism-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Determinism and Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/intro-stat-mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Statistical Mechanics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Introduction to Heisenberg Uncertainty Principle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/selected-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vector Calculus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/vector-spaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vector Spaces Products and Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Mathematical Physics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/dirac-delta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dirac Delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/green-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Green Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/time-dependent-green-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Dependent Green Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Special Relativity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/galilean-relativity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Galilean Relativity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/spacetime-algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spacetime Algebra</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Graduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Electrodynamics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometry Review for Electrodynamics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lei-de-newton-e-momento" id="toc-lei-de-newton-e-momento" class="nav-link active" data-scroll-target="#lei-de-newton-e-momento">Lei de Newton e momento</a>
+  <ul class="collapse">
+  <li><a href="#sistema-de-primeira-ordem" id="toc-sistema-de-primeira-ordem" class="nav-link" data-scroll-target="#sistema-de-primeira-ordem">Sistema de primeira ordem</a></li>
+  <li><a href="#expansão-temporal-para-delta-t" id="toc-expansão-temporal-para-delta-t" class="nav-link" data-scroll-target="#expansão-temporal-para-delta-t">Expansão temporal para <span class="math inline">\(\delta t\)</span></a></li>
+  <li><a href="#força-conservativa-e-potencial" id="toc-força-conservativa-e-potencial" class="nav-link" data-scroll-target="#força-conservativa-e-potencial">Força conservativa e potencial</a></li>
+  <li><a href="#formulação-hamiltoniana" id="toc-formulação-hamiltoniana" class="nav-link" data-scroll-target="#formulação-hamiltoniana">Formulação Hamiltoniana</a></li>
+  <li><a href="#estrutura-matricial" id="toc-estrutura-matricial" class="nav-link" data-scroll-target="#estrutura-matricial">Estrutura matricial</a></li>
+  <li><a href="#exemplo-oscilador-harmônico" id="toc-exemplo-oscilador-harmônico" class="nav-link" data-scroll-target="#exemplo-oscilador-harmônico">Exemplo: Oscilador harmônico</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios">Exercícios</a></li>
+  </ul></li>
+  <li><a href="#álgebra-e-produto-vetorial" id="toc-álgebra-e-produto-vetorial" class="nav-link" data-scroll-target="#álgebra-e-produto-vetorial">Álgebra e Produto Vetorial</a>
+  <ul class="collapse">
+  <li><a href="#conexão-com-os-parênteses-de-poisson" id="toc-conexão-com-os-parênteses-de-poisson" class="nav-link" data-scroll-target="#conexão-com-os-parênteses-de-poisson">Conexão com os Parênteses de Poisson</a></li>
+  <li><a href="#exercícios-1" id="toc-exercícios-1" class="nav-link" data-scroll-target="#exercícios-1">Exercícios</a></li>
+  </ul></li>
+  <li><a href="#parênteses-de-poisson-e-mecânica-hamiltoniana" id="toc-parênteses-de-poisson-e-mecânica-hamiltoniana" class="nav-link" data-scroll-target="#parênteses-de-poisson-e-mecânica-hamiltoniana">Parênteses de Poisson e Mecânica Hamiltoniana</a>
+  <ul class="collapse">
+  <li><a href="#o-papel-gerador-dos-parênteses-de-poisson" id="toc-o-papel-gerador-dos-parênteses-de-poisson" class="nav-link" data-scroll-target="#o-papel-gerador-dos-parênteses-de-poisson">O papel gerador dos parênteses de Poisson</a></li>
+  <li><a href="#conservação-da-energia" id="toc-conservação-da-energia" class="nav-link" data-scroll-target="#conservação-da-energia">Conservação da energia</a></li>
+  <li><a href="#estrutura-algébrica" id="toc-estrutura-algébrica" class="nav-link" data-scroll-target="#estrutura-algébrica">Estrutura algébrica</a></li>
+  <li><a href="#campo-de-hamilton" id="toc-campo-de-hamilton" class="nav-link" data-scroll-target="#campo-de-hamilton">Campo de Hamilton</a></li>
+  <li><a href="#exercícios-2" id="toc-exercícios-2" class="nav-link" data-scroll-target="#exercícios-2">Exercícios</a></li>
+  </ul></li>
+  <li><a href="#quantização" id="toc-quantização" class="nav-link" data-scroll-target="#quantização">Quantização</a>
+  <ul class="collapse">
+  <li><a href="#representação-de-posição" id="toc-representação-de-posição" class="nav-link" data-scroll-target="#representação-de-posição">Representação de posição</a></li>
+  <li><a href="#operadores-como-geradores-de-transformações" id="toc-operadores-como-geradores-de-transformações" class="nav-link" data-scroll-target="#operadores-como-geradores-de-transformações">Operadores como geradores de transformações</a></li>
+  <li><a href="#exercícios-3" id="toc-exercícios-3" class="nav-link" data-scroll-target="#exercícios-3">Exercícios</a></li>
+  </ul></li>
+  <li><a href="#valor-esperado-e-probabilidade" id="toc-valor-esperado-e-probabilidade" class="nav-link" data-scroll-target="#valor-esperado-e-probabilidade">Valor Esperado e Probabilidade</a>
+  <ul class="collapse">
+  <li><a href="#exemplo-discreto-dado-de-seis-lados" id="toc-exemplo-discreto-dado-de-seis-lados" class="nav-link" data-scroll-target="#exemplo-discreto-dado-de-seis-lados">Exemplo discreto: dado de seis lados</a></li>
+  <li><a href="#exemplo-contínuo-medindo-a-posição" id="toc-exemplo-contínuo-medindo-a-posição" class="nav-link" data-scroll-target="#exemplo-contínuo-medindo-a-posição">Exemplo contínuo: medindo a posição</a></li>
+  <li><a href="#exercícios-4" id="toc-exercícios-4" class="nav-link" data-scroll-target="#exercícios-4">Exercícios</a></li>
+  </ul></li>
+  <li><a href="#variância-e-desvio-padrão" id="toc-variância-e-desvio-padrão" class="nav-link" data-scroll-target="#variância-e-desvio-padrão">Variância e Desvio Padrão</a>
+  <ul class="collapse">
+  <li><a href="#exemplo-distribuição-uniforme-em-ab" id="toc-exemplo-distribuição-uniforme-em-ab" class="nav-link" data-scroll-target="#exemplo-distribuição-uniforme-em-ab">Exemplo: distribuição uniforme em <span class="math inline">\([a,b]\)</span></a></li>
+  <li><a href="#caso-particular-01" id="toc-caso-particular-01" class="nav-link" data-scroll-target="#caso-particular-01">Caso particular: <span class="math inline">\([0,1]\)</span></a></li>
+  <li><a href="#exercícios-5" id="toc-exercícios-5" class="nav-link" data-scroll-target="#exercícios-5">Exercícios</a></li>
+  </ul></li>
+  <li><a href="#desigualdade-de-cauchy-schwarz" id="toc-desigualdade-de-cauchy-schwarz" class="nav-link" data-scroll-target="#desigualdade-de-cauchy-schwarz">Desigualdade de Cauchy-Schwarz</a>
+  <ul class="collapse">
+  <li><a href="#interpretação-geométrica-em-mathbbr2" id="toc-interpretação-geométrica-em-mathbbr2" class="nav-link" data-scroll-target="#interpretação-geométrica-em-mathbbr2">Interpretação geométrica em <span class="math inline">\(\mathbb{R}^2\)</span></a></li>
+  <li><a href="#generalização" id="toc-generalização" class="nav-link" data-scroll-target="#generalização">Generalização</a></li>
+  <li><a href="#exercícios-6" id="toc-exercícios-6" class="nav-link" data-scroll-target="#exercícios-6">Exercícios</a></li>
+  </ul></li>
+  <li><a href="#princípio-da-incerteza" id="toc-princípio-da-incerteza" class="nav-link" data-scroll-target="#princípio-da-incerteza">Princípio da Incerteza</a>
+  <ul class="collapse">
+  <li><a href="#exercícios-7" id="toc-exercícios-7" class="nav-link" data-scroll-target="#exercícios-7">Exercícios</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="heisenberg-uncertainty.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full column-body" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/introduction-to-physics/index.html">Introduction to Physics (portuguese)</a></li><li class="breadcrumb-item"><a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html">Introduction to Heisenberg Uncertainty Principle</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Introdução ao Princípio da Incerteza de Heisenberg</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sandro Vitenti </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+
+</div>
+<section id="lei-de-newton-e-momento" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="lei-de-newton-e-momento">Lei de Newton e momento</h2>
+<p>A mecânica clássica descreve o movimento de uma partícula pela segunda lei de Newton: <span class="math display">\[
+m \ddot{x}(t) = F(x,t),
+\]</span> onde <span class="math inline">\(\ddot{x} = \mathrm{d}^2x/\mathrm{d}t^2\)</span> é a aceleração, <span class="math inline">\(m\)</span> a massa, e <span class="math inline">\(F\)</span> a força resultante.</p>
+<p>Definimos o momento linear como <span class="math display">\[
+p(t) \equiv m \dot{x}(t).
+\]</span> Derivando em relação ao tempo: <span class="math display">\[
+\dot{p}(t) = m \ddot{x}(t) = F(x,t).
+\]</span> Portanto, <span class="math inline">\(m\ddot{x}=F\)</span> é equivalente a <span class="math inline">\(\dot{p}=F\)</span>.</p>
+<section id="sistema-de-primeira-ordem" class="level3">
+<h3 class="anchored" data-anchor-id="sistema-de-primeira-ordem">Sistema de primeira ordem</h3>
+<p>Podemos reescrever a equação de segunda ordem em <span class="math inline">\(x\)</span> como um sistema de primeira ordem para as variáveis <span class="math inline">\(x(t)\)</span> e <span class="math inline">\(p(t)\)</span>: <span class="math display">\[
+\dot{x}(t) = \frac{p(t)}{m}, \qquad \dot{p}(t) = F(x,t).
+\]</span></p>
+</section>
+<section id="expansão-temporal-para-delta-t" class="level3">
+<h3 class="anchored" data-anchor-id="expansão-temporal-para-delta-t">Expansão temporal para <span class="math inline">\(\delta t\)</span></h3>
+<p>Para um pequeno intervalo <span class="math inline">\(\delta t\)</span>, expandindo por Taylor de primeira ordem: <span class="math display">\[
+x(t+\delta t) \approx x(t) + \frac{p(t)}{m} , \delta t,
+\]</span> <span class="math display">\[
+p(t+\delta t) \approx p(t) + F(x,t),\delta t.
+\]</span></p>
+</section>
+<section id="força-conservativa-e-potencial" class="level3">
+<h3 class="anchored" data-anchor-id="força-conservativa-e-potencial">Força conservativa e potencial</h3>
+<p>Se a força for conservativa, existe uma função potencial <span class="math inline">\(V(x)\)</span> tal que <span class="math display">\[
+F(x) = -\frac{\mathrm{d}V}{\mathrm{d}x}.
+\]</span></p>
+</section>
+<section id="formulação-hamiltoniana" class="level3">
+<h3 class="anchored" data-anchor-id="formulação-hamiltoniana">Formulação Hamiltoniana</h3>
+<p>Definimos o Hamiltoniano <span class="math display">\[
+H(x,p) = \frac{p^2}{2m} + V(x).
+\]</span> As equações de movimento são obtidas pelas derivadas parciais: <span class="math display">\[
+\dot{x} = \frac{\partial H}{\partial p} = \frac{p}{m}, \qquad
+\dot{p} = -\frac{\partial H}{\partial x} = -\frac{\mathrm{d}V}{\mathrm{d}x}.
+\]</span> Note que <span class="math inline">\(\tfrac{p^2}{2m}\)</span> depende apenas de <span class="math inline">\(p\)</span>, e <span class="math inline">\(V(x)\)</span> depende apenas de <span class="math inline">\(x\)</span>, o que simplifica os cálculos.</p>
+</section>
+<section id="estrutura-matricial" class="level3">
+<h3 class="anchored" data-anchor-id="estrutura-matricial">Estrutura matricial</h3>
+<p>Podemos condensar o sistema na forma matricial: <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d}t} \begin{pmatrix} x \\ p \end{pmatrix} =
+\begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}
+\begin{pmatrix} \frac{\partial H}{\partial x} \\ \frac{\partial H}{\partial p} \end{pmatrix}.
+\]</span> A matriz <span class="math display">\[
+J = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}
+\]</span> é chamada de matriz simplética e codifica a estrutura da mecânica Hamiltoniana.</p>
+</section>
+<section id="exemplo-oscilador-harmônico" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="exemplo-oscilador-harmônico">Exemplo: Oscilador harmônico</h3>
+<p>Para <span class="math inline">\(V(x) = \tfrac{1}{2}kx^2\)</span>, temos: <span class="math display">\[
+H(x,p) = \frac{p^2}{2m} + \frac{1}{2}kx^2,
+\]</span> <span class="math display">\[
+\dot{x} = \frac{p}{m}, \qquad \dot{p} = -kx.
+\]</span> Combinando: <span class="math inline">\(m\ddot{x} = -kx\)</span>, que é a equação do oscilador harmônico.</p>
+<div id="cell-fig-phase-oscillator" class="cell page-columns page-full" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># parâmetros</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="fl">2.0</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="fl">0.34</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>omega <span class="op">=</span> np.sqrt(k <span class="op">/</span> m)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># tempo</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">/</span> omega, <span class="dv">400</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># condições iniciais</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>p0 <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># soluções analíticas</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x0 <span class="op">*</span> np.cos(omega <span class="op">*</span> t) <span class="op">+</span> (p0 <span class="op">/</span> (m <span class="op">*</span> omega)) <span class="op">*</span> np.sin(omega <span class="op">*</span> t)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> p0 <span class="op">*</span> np.cos(omega <span class="op">*</span> t) <span class="op">-</span> m <span class="op">*</span> omega <span class="op">*</span> x0 <span class="op">*</span> np.sin(omega <span class="op">*</span> t)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># gráfico no espaço de fases</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>plt.plot(x, p, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"$x$"</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"$p$"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Espaço de fases do oscilador harmônico"</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>plt.grid(alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">"equal"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-phase-oscillator" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-phase-oscillator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="heisenberg-uncertainty_files/figure-html/fig-phase-oscillator-output-1.png" width="534" height="524" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-phase-oscillator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Evolução de uma trajetória no espaço de fases <span class="math inline">\((x,p)\)</span> para o oscilador harmônico.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercícios" class="level3">
+<h3 class="anchored" data-anchor-id="exercícios">Exercícios</h3>
+<ol type="1">
+<li>Mostre que a segunda lei de Newton <span class="math inline">\(m \ddot{x} = F(x,t)\)</span> é equivalente à equação <span class="math inline">\(\dot{p} = F(x,t)\)</span> usando a definição de momento linear <span class="math inline">\(p = m \dot{x}\)</span>.</li>
+<li>Reescreva a equação <span class="math inline">\(m \ddot{x} = F(x,t)\)</span> como um sistema de primeira ordem em termos de <span class="math inline">\(x(t)\)</span> e <span class="math inline">\(p(t)\)</span> e explique por que isso pode ser útil para métodos numéricos.</li>
+<li>Considere um pequeno intervalo de tempo <span class="math inline">\(\delta t\)</span>. Derive a expansão de Taylor de primeira ordem para <span class="math inline">\(x(t+\delta t)\)</span> e <span class="math inline">\(p(t+\delta t)\)</span> a partir das equações de primeira ordem.</li>
+<li>Uma força é dita conservativa se existe um potencial <span class="math inline">\(V(x)\)</span> tal que <span class="math inline">\(F(x) = -\mathrm{d}V/\mathrm{d}x\)</span>. Dê dois exemplos de forças conservativas e dois exemplos de forças não conservativas.</li>
+<li>Verifique que para o Hamiltoniano <span class="math inline">\(H(x,p) = \frac{p^2}{2m} + V(x)\)</span>, as equações de Hamilton <span class="math display">\[
+\dot{x} = \frac{\partial H}{\partial p}, \qquad \dot{p} = -\frac{\partial H}{\partial x}
+\]</span> são equivalentes às equações clássicas de movimento.</li>
+<li>Explique qualitativamente como a forma elíptica da trajetória no espaço de fases do oscilador harmônico reflete a conservação de energia.</li>
+</ol>
+</section>
+</section>
+<section id="álgebra-e-produto-vetorial" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="álgebra-e-produto-vetorial">Álgebra e Produto Vetorial</h2>
+<p>Em duas dimensões, a matriz <span class="math display">\[
+J = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}
+\]</span> aparece naturalmente na formulação Hamiltoniana. Ela atua como uma rotação de <span class="math inline">\(90^\circ\)</span>, e pode ser usada para construir um produto bilinear que captura a noção de área orientada: <span class="math display">\[
+\mathbf{v}_1^T J \mathbf{v}_2.
+\]</span></p>
+<p>De forma explícita, se <span class="math inline">\(\mathbf{v}_1 = \begin{pmatrix}x_1 \\ p_1\end{pmatrix}\)</span> e <span class="math inline">\(\mathbf{v}_2 = \begin{pmatrix}x_2 \\ p_2\end{pmatrix}\)</span>, então <span class="math display">\[
+\mathbf{v}_1^T J \mathbf{v}_2 = x_1 p_2 - p_1 x_2.
+\]</span> Note que, ao escrever a equação acima, estamos tratando <span class="math inline">\((x,p)\)</span> como coordenadas de um plano e interpretando esse determinante como uma área orientada. Essa interpretação, porém, exige certo cuidado: <span class="math inline">\(x\)</span> e <span class="math inline">\(p\)</span> não têm as mesmas unidades físicas nem o mesmo significado geométrico. O espaço de fase não é um espaço euclidiano comum, mas sim um espaço com estrutura própria, onde a matriz <span class="math inline">\(J\)</span> define uma forma bilinear antissimétrica (a chamada forma simplética). Assim, falar em “área” aqui é uma analogia geométrica útil para construir intuição, mas ela só se torna rigorosa quando entendemos que o espaço <span class="math inline">\((x,p)\)</span> é dotado dessa estrutura simplética, que substitui o produto interno usual.</p>
+<p>Esse determinante mede a área orientada do paralelogramo formado pelos dois vetores:</p>
+<ul>
+<li>Se o valor é zero, os vetores são linearmente dependentes, pois não formam área.</li>
+<li>Se é positivo ou negativo, ele indica tanto o tamanho da área quanto a orientação relativa entre <span class="math inline">\(\mathbf{v}_1\)</span> e <span class="math inline">\(\mathbf{v}_2\)</span>.</li>
+</ul>
+<p>Assim, <span class="math inline">\(J\)</span> fornece um critério geométrico para independência linear e orientação no espaço de fase. Essa construção é análoga ao produto vetorial em três dimensões, que também mede áreas e orientações.</p>
+<section id="conexão-com-os-parênteses-de-poisson" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="conexão-com-os-parênteses-de-poisson">Conexão com os Parênteses de Poisson</h3>
+<p>A mesma estrutura aparece nas equações da mecânica Hamiltoniana. Dadas duas funções <span class="math inline">\(f(x,p)\)</span> e <span class="math inline">\(g(x,p)\)</span> no espaço de fase, seus parênteses de Poisson são definidos por</p>
+<p><span class="math display">\[
+\{f,g\} =
+\begin{pmatrix}
+\frac{\partial f}{\partial x} &amp; \frac{\partial f}{\partial p}
+\end{pmatrix}
+J
+\begin{pmatrix}
+\frac{\partial g}{\partial x} \\
+\frac{\partial g}{\partial p}
+\end{pmatrix}.
+\]</span></p>
+<p>Ou seja, a mesma operação <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2\)</span> que mede área entre vetores também mede a “independência” entre funções no espaço de fase. Essa estrutura é o coração da mecânica Hamiltoniana, e mais adiante veremos como ela se conecta às relações de comutação na mecânica quântica.</p>
+<div id="cell-fig-area-orientada" class="cell page-columns page-full" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Vetores</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>v1 <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">1</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>v2 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz J</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">1</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>]])</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Área orientada</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>area <span class="op">=</span> v1 <span class="op">@</span> J <span class="op">@</span> v2</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">5</span>))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>ax.quiver(</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    v1[<span class="dv">0</span>],</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    v1[<span class="dv">1</span>],</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    angles<span class="op">=</span><span class="st">"xy"</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    scale_units<span class="op">=</span><span class="st">"xy"</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    scale<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"blue"</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="ch">\v</span><span class="vs">ec{v}_1</span><span class="dv">$</span><span class="vs">"</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>ax.quiver(</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    v2[<span class="dv">0</span>],</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    v2[<span class="dv">1</span>],</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    angles<span class="op">=</span><span class="st">"xy"</span>,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    scale_units<span class="op">=</span><span class="st">"xy"</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    scale<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"red"</span>,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="ch">\v</span><span class="vs">ec{v}_2</span><span class="dv">$</span><span class="vs">"</span>,</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Preenche o paralelogramo</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>parallelogram <span class="op">=</span> np.array([[<span class="dv">0</span>, <span class="dv">0</span>], v1, v1 <span class="op">+</span> v2, v2])</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>ax.fill(parallelogram[:, <span class="dv">0</span>], parallelogram[:, <span class="dv">1</span>], alpha<span class="op">=</span><span class="fl">0.3</span>, color<span class="op">=</span><span class="st">"gray"</span>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">"equal"</span>)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>ax.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="vs">rf"</span><span class="dv">$</span><span class="ch">\v</span><span class="vs">ec</span><span class="ch">{{</span><span class="vs">v</span><span class="ch">}}</span><span class="vs">_1</span><span class="dv">^</span><span class="vs">T J </span><span class="ch">\v</span><span class="vs">ec</span><span class="ch">{{</span><span class="vs">v</span><span class="ch">}}</span><span class="vs">_2 = </span><span class="sc">{</span>area<span class="sc">}</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-area-orientada" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-area-orientada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="heisenberg-uncertainty_files/figure-html/fig-area-orientada-output-1.png" width="430" height="435" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-area-orientada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Área orientada gerada por dois vetores no plano de fase. O sinal de v1^T J v2 indica a orientação.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercícios-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercícios-1">Exercícios</h3>
+<ol type="1">
+<li>Verifique que, para <span class="math inline">\(\mathbf{v}_1 = \begin{pmatrix}x_1 \\ p_1\end{pmatrix}\)</span> e <span class="math inline">\(\mathbf{v}_2 = \begin{pmatrix}x_2 \\ p_2\end{pmatrix}\)</span>, o produto <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2\)</span> é antissimétrico, ou seja, <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2 = - \mathbf{v}_2^T J \mathbf{v}_1\)</span>.</li>
+<li>Mostre que <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2 = 0\)</span> se e somente se os vetores <span class="math inline">\(\mathbf{v}_1\)</span> e <span class="math inline">\(\mathbf{v}_2\)</span> forem linearmente dependentes.</li>
+<li>Para os vetores <span class="math inline">\(\mathbf{v}_1 = \begin{pmatrix}1\\0\end{pmatrix}\)</span> e <span class="math inline">\(\mathbf{v}_2 = \begin{pmatrix}0\\1\end{pmatrix}\)</span>, calcule <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2\)</span> e interprete o resultado geometricamente.</li>
+<li>Considere as funções <span class="math inline">\(f(x,p) = x^2 p\)</span> e <span class="math inline">\(g(x,p) = x p^2\)</span>. Calcule os parênteses de Poisson <span class="math inline">\({f,g}\)</span> explicitamente.</li>
+<li>Demonstre que os parênteses de Poisson satisfazem a antissimetria: <span class="math inline">\({f,g} = -{g,f}\)</span>.</li>
+<li>Explique como a interpretação de “área orientada” do determinante <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2\)</span> se relaciona com a independência de funções no espaço de fase.</li>
+</ol>
+</section>
+</section>
+<section id="parênteses-de-poisson-e-mecânica-hamiltoniana" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="parênteses-de-poisson-e-mecânica-hamiltoniana">Parênteses de Poisson e Mecânica Hamiltoniana</h2>
+<p>A evolução temporal de uma função <span class="math inline">\(f(x,p)\)</span> que depende de posição e momento é obtida pela regra da cadeia: <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d}t} f(x(t),p(t)) = \frac{\partial f}{\partial x}\dot{x} + \frac{\partial f}{\partial p}\dot{p}.
+\]</span> Essas funções são chamadas de observáveis físicos. Ou seja, definimos como observável qualquer quantidade que pode ser medida a partir do estado do sistema.</p>
+<p>Substituindo as equações de Hamilton, essa expressão pode ser reescrita em termos do parêntese de Poisson: <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d}t} f = \{f,H\}, \quad \text{com} \quad
+\{f,H\} = \frac{\partial f}{\partial x}\frac{\partial H}{\partial p} - \frac{\partial f}{\partial p}\frac{\partial H}{\partial x}.
+\]</span></p>
+<section id="o-papel-gerador-dos-parênteses-de-poisson" class="level3">
+<h3 class="anchored" data-anchor-id="o-papel-gerador-dos-parênteses-de-poisson">O papel gerador dos parênteses de Poisson</h3>
+<p>O parêntese de Poisson não é apenas uma notação conveniente: ele descreve como um observável gera transformações em outro.</p>
+<ul>
+<li><p>O Hamiltoniano <span class="math inline">\(H\)</span> gera a evolução temporal: <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d}t} = \{\cdot, H\}.
+\]</span></p></li>
+<li><p>O momento <span class="math inline">\(p\)</span> gera translações em <span class="math inline">\(x\)</span>: <span class="math display">\[
+\{x,p\} = 1 \quad \Rightarrow \quad \delta x = \epsilon \{x,p\} = \epsilon.
+\]</span></p></li>
+<li><p>A posição <span class="math inline">\(x\)</span> gera translações em <span class="math inline">\(p\)</span>: <span class="math display">\[
+\{p,x\} = -1 \quad \Rightarrow \quad \delta p = \epsilon \{p,x\} = -\epsilon.
+\]</span></p></li>
+</ul>
+<p>Assim, podemos pensar nos observáveis como “geradores de transformações” uns sobre os outros. Essa é uma das ideias centrais da mecânica Hamiltoniana e antecipa a estrutura da mecânica quântica, onde os observáveis passam a gerar transformações via comutadores.</p>
+</section>
+<section id="conservação-da-energia" class="level3">
+<h3 class="anchored" data-anchor-id="conservação-da-energia">Conservação da energia</h3>
+<p>Quando o Hamiltoniano não depende explicitamente do tempo, ele mesmo é um integral de movimento. Isso fica claro porque <span class="math display">\[
+\frac{\mathrm{d}H}{\mathrm{d}t} = \{H,H\} = 0.
+\]</span> Portanto, a energia é sempre conservada. Lembrando que isso é verdade pois consideramos <span class="math inline">\(H\)</span> como uma função de <span class="math inline">\(x\)</span> e <span class="math inline">\(p\)</span> e não de <span class="math inline">\(t\)</span>.</p>
+</section>
+<section id="estrutura-algébrica" class="level3">
+<h3 class="anchored" data-anchor-id="estrutura-algébrica">Estrutura algébrica</h3>
+<p>Os parênteses de Poisson satisfazem ainda a identidade de Jacobi, que garante a consistência da álgebra: <span class="math display">\[
+\{ \{A,B\},C \} + \{ \{C,A\},B \} + \{ \{B,C\},A \} = 0.
+\]</span> onde <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> e <span class="math inline">\(C\)</span> são funções de <span class="math inline">\(x\)</span> e <span class="math inline">\(p\)</span>. Essa propriedade assegura que os observáveis formam uma estrutura matemática bem definida (uma álgebra de Lie), algo que será fundamental ao fazer a transição para a mecânica quântica.</p>
+</section>
+<section id="campo-de-hamilton" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="campo-de-hamilton">Campo de Hamilton</h3>
+<p>A ideia central da mecânica Hamiltoniana consiste em estudar o fluxo no espaço de fase gerado pela evolução temporal do Hamiltoniano. A figura abaixo ilustra o fluxo gerado pelo Hamiltoniano do oscilador harmônico. Os vetores indicam a direção da evolução temporal: <span class="math display">\[
+\mathbf{V} = J \begin{pmatrix}\frac{\partial H}{\partial x} \\ \frac{\partial H}{\partial p}\end{pmatrix}
+\]</span></p>
+<div id="cell-fig-hamilton-flow" class="cell page-columns page-full" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Parâmetros</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>m, k <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">1.0</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="dv">30</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="dv">30</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>X, P <span class="op">=</span> np.meshgrid(x, p)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Equações de Hamilton</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>dxdt <span class="op">=</span> P <span class="op">/</span> m</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>dpdt <span class="op">=</span> <span class="op">-</span>k <span class="op">*</span> X</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Energia (curvas de nível)</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> P<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> m) <span class="op">+</span> <span class="fl">0.5</span> <span class="op">*</span> k <span class="op">*</span> X<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">6</span>))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Curvas de nível de energia</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>contours <span class="op">=</span> plt.contour(X, P, H, levels<span class="op">=</span><span class="dv">6</span>, colors<span class="op">=</span><span class="st">"gray"</span>, linewidths<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.clabel(contours, inline<span class="op">=</span><span class="va">True</span>, fontsize<span class="op">=</span><span class="dv">8</span>, fmt<span class="op">=</span><span class="st">"E=</span><span class="sc">%.1f</span><span class="st">"</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Campo vetorial (fluxo de Hamilton)</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>plt.quiver(X, P, dxdt, dpdt, color<span class="op">=</span><span class="st">"blue"</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"x (posição)"</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"p (momento)"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Fluxo Hamiltoniano no Espaço de Fase"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>plt.grid(alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-hamilton-flow" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-hamilton-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="heisenberg-uncertainty_files/figure-html/fig-hamilton-flow-output-1.png" width="587" height="524" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-hamilton-flow-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Fluxo no espaço de fase gerado pelo Hamiltoniano do oscilador harmônico. As curvas representam níveis de energia constante e os vetores indicam a direção da evolução temporal.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Note que as curvas de nível de energia, como mostrado na <a href="#fig-hamilton-flow" class="quarto-xref">Figure&nbsp;3</a>, sinalizam os níveis de energia, enquanto o campo vetorial ilustra o fluxo no espaço de fase. As curvas de nível coincidem com as trajetórias clássicas. Essa visualização reforça a interpretação de que o Hamiltoniano atua como gerador de transformações temporais: ao calcular <span class="math inline">\(\dot{f} = {f,H}\)</span>, vemos que o parêntese de Poisson com <span class="math inline">\(H\)</span> fornece a regra de evolução de qualquer observável no tempo.</p>
+</section>
+<section id="exercícios-2" class="level3">
+<h3 class="anchored" data-anchor-id="exercícios-2">Exercícios</h3>
+<ol type="1">
+<li>Mostre que a regra da cadeia aplicada a uma função <span class="math inline">\(f(x(t),p(t))\)</span> leva a <span class="math inline">\(\dot{f} = \{f,H\}\)</span> usando as equações de Hamilton.</li>
+<li>Verifique explicitamente que <span class="math inline">\(\{x,p\} = 1\)</span> e <span class="math inline">\(\{p,x\} = -1\)</span>, e explique o significado físico dessas relações.</li>
+<li>Considere o Hamiltoniano <span class="math inline">\(H = \frac{p^2}{2m} + \frac{1}{2}kx^2\)</span>. Calcule <span class="math inline">\(\dot{x}\)</span> e <span class="math inline">\(\dot{p}\)</span> usando parênteses de Poisson e confirme que obtém as equações de movimento do oscilador harmônico.</li>
+<li>Mostre que se <span class="math inline">\(H\)</span> não depende explicitamente do tempo, então <span class="math inline">\(\dot{H} = {H,H} = 0\)</span>, garantindo a conservação da energia.</li>
+<li>Para três funções <span class="math inline">\(A=x\)</span>, <span class="math inline">\(B=p\)</span>, <span class="math inline">\(C=H\)</span>, verifique a identidade de Jacobi: <span class="math display">\[
+\{\{A,B\},C\} + \{\{C,A\},B\} + \{\{B,C\},A\} = 0.
+\]</span></li>
+<li>Explique qualitativamente como o fluxo Hamiltoniano no espaço de fase, representado por <span class="math inline">\(\mathbf{V} = J \begin{pmatrix} \partial H/\partial x \\ \partial H/\partial p \end{pmatrix}\)</span>, garante que as curvas de nível de energia sejam percorridas pelas trajetórias clássicas.</li>
+</ol>
+</section>
+</section>
+<section id="quantização" class="level2">
+<h2 class="anchored" data-anchor-id="quantização">Quantização</h2>
+<p>O formalismo da mecânica quântica é construído promovendo as variáveis clássicas a operadores lineares sobre funções de onda. A regra de correspondência fundamental, inspirada pelos parênteses de Poisson, é: <span class="math display">\[
+[x,p] = i\hbar \{x,p\}.
+\]</span></p>
+<p>No caso canônico, isso leva à relação de comutação: <span class="math display">\[
+[\hat{x}, \hat{p}] = i\hbar,
+\]</span></p>
+<p>onde <span class="math inline">\([\hat{A},\hat{B}] \equiv \hat{A}\hat{B} - \hat{B}\hat{A}\)</span>. Essa relação não apenas substitui a noção de variável clássica por operador, mas também codifica a estrutura de incerteza da mecânica quântica.</p>
+<p>Note que, em uma álgebra não comutativa, o produto de dois operadores <span class="math inline">\(\hat{A}\)</span> e <span class="math inline">\(\hat{B}\)</span> pode sempre ser decomposto em uma parte simétrica e uma parte antissimétrica: <span class="math display">\[
+\hat{A}\hat{B} = \frac{\hat{A}\hat{B} + \hat{B}\hat{A}}{2} + \frac{\hat{A}\hat{B} - \hat{B}\hat{A}}{2}.
+\]</span></p>
+<ul>
+<li><p>O primeiro termo, <span class="math inline">\(\hat{A}\hat{B}+\hat{B}\hat{A}\)</span>, é o anti-comutador, definido como <span class="math display">\[
+\{\hat{A},\hat{B}\} \equiv \hat{A}\hat{B} + \hat{B}\hat{A},
+\]</span> e representa a parte simétrica do produto. Para operadores hermitianos, essa parte é real quando calculada em um estado.</p></li>
+<li><p>O segundo termo, <span class="math inline">\(\hat{A}\hat{B}-\hat{B}\hat{A}\)</span>, é o comutador, definido como <span class="math display">\[
+[\hat{A},\hat{B}] \equiv \hat{A}\hat{B} - \hat{B}\hat{A},
+\]</span> e representa a parte antissimétrica do produto. Para operadores hermitianos, essa parte é puramente imaginária quando calculada em um estado.</p></li>
+</ul>
+<p>Essa decomposição é útil para entender a desigualdade de Heisenberg: a parte imaginária (comutador) determina o limite fundamental de incerteza, enquanto a parte real (anti-comutador) pode aumentar o módulo do produto, mas não reduz o limite mínimo.</p>
+<p>Não confunda com a notação do parêntese de Poisson, que é usado na mecânica clássica; o contexto normalmente indica se estamos tratando de comutadores quânticos ou parênteses de Poisson.</p>
+<section id="representação-de-posição" class="level3">
+<h3 class="anchored" data-anchor-id="representação-de-posição">Representação de posição</h3>
+<p>Na representação em que usamos funções de onda <span class="math inline">\(\psi(x)\)</span>, os operadores agem como: <span class="math display">\[
+\hat{x}\psi(x) = x \psi(x), \quad
+\hat{p}\psi(x) = -i\hbar \frac{\partial}{\partial x}\psi(x).
+\]</span></p>
+<p>Aqui, <span class="math inline">\(\hat{x}\)</span> atua multiplicando pela coordenada, enquanto <span class="math inline">\(\hat{p}\)</span> se torna um <strong>operador diferencial</strong>. Essa escolha garante que a relação de comutação seja satisfeita e que a evolução quântica tenha a mesma estrutura de transformação que vimos na mecânica clássica via parênteses de Poisson.</p>
+</section>
+<section id="operadores-como-geradores-de-transformações" class="level3">
+<h3 class="anchored" data-anchor-id="operadores-como-geradores-de-transformações">Operadores como geradores de transformações</h3>
+<p>Um dos conceitos centrais da mecânica quântica, herdado da mecânica Hamiltoniana, é que cada observável pode ser visto como um gerador de transformações.</p>
+<ul>
+<li>Na mecânica clássica, vimos que o Hamiltoniano <span class="math inline">\(H\)</span> gera a evolução temporal através do parêntese de Poisson: <span class="math inline">\(\dot{f} = \{f,H\}\)</span>.</li>
+<li>Em mecânica quântica, essa ideia é promovida para operadores: um operador <span class="math inline">\(\hat{A}\)</span> gera uma transformação unitária sobre estados <span class="math inline">\(|\psi\rangle\)</span> via o operador exponencial <span class="math inline">\(e^{-i \epsilon \hat{A}/\hbar}\)</span>.</li>
+<li>Por exemplo, o momento <span class="math inline">\(\hat{p}\)</span> gera translações em posição, enquanto a posição <span class="math inline">\(\hat{x}\)</span> gera translações em momento, refletindo a mesma estrutura observável <span class="math inline">\(\to\)</span> transformação que vimos no espaço de fase clássico.</li>
+</ul>
+<p>Essa interpretação é crucial, porque mostra que os operadores não são apenas “valores para medir”, mas agentes de transformação dentro do espaço de Hilbert (que é o espaço de funções de onda). Ela estabelece a ponte para o formalismo estatístico e para a evolução temporal, e é uma das ideias centrais para entender por que a mecânica quântica difere da clássica.</p>
+<ul>
+<li>Cada operador representa um observável físico, como posição ou momento.</li>
+<li>O comutador <span class="math inline">\([\hat{x},\hat{p}]\)</span> mostra que não podemos medir <span class="math inline">\(x\)</span> e <span class="math inline">\(p\)</span> simultaneamente com precisão arbitrária.</li>
+<li>A ação de um operador sobre a função de onda determina a distribuição de valores possíveis de um observável.</li>
+</ul>
+<p>Essas definições estabelecem a base da mecânica quântica e preparam o terreno para introduzir <strong>conceitos estatísticos</strong>, como valor esperado, variância e, mais adiante, o princípio da incerteza de Heisenberg.</p>
+</section>
+<section id="exercícios-3" class="level3">
+<h3 class="anchored" data-anchor-id="exercícios-3">Exercícios</h3>
+<ol type="1">
+<li>Mostre que a decomposição de um produto de operadores <span class="math display">\[
+\hat{A}\hat{B} = \frac{\hat{A}\hat{B} + \hat{B}\hat{A}}{2} + \frac{\hat{A}\hat{B} - \hat{B}\hat{A}}{2}
+\]</span> é sempre válida, identificando explicitamente o anti-comutador e o comutador.</li>
+<li>Verifique que, na representação de posição, os operadores <span class="math display">\[
+\hat{x}\psi(x) = x \psi(x), \quad \hat{p}\psi(x) = -i\hbar \frac{\partial}{\partial x} \psi(x)
+\]</span> satisfazem a relação de comutação <span class="math inline">\([\hat{x},\hat{p}] = i\hbar\)</span>.</li>
+</ol>
+</section>
+</section>
+<section id="valor-esperado-e-probabilidade" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="valor-esperado-e-probabilidade">Valor Esperado e Probabilidade</h2>
+<p>Na mecânica quântica, o valor de uma grandeza não é determinístico, mas probabilístico. Para entender isso, recordamos primeiro o caso clássico de variáveis aleatórias.</p>
+<section id="exemplo-discreto-dado-de-seis-lados" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-discreto-dado-de-seis-lados">Exemplo discreto: dado de seis lados</h3>
+<p>O valor esperado de uma variável discreta é uma média ponderada pelas probabilidades: <span class="math display">\[
+\langle m \rangle = \sum_{i=1}^{6} m_i P_i,
+\]</span> onde <span class="math inline">\(m_i\)</span> são os valores possíveis <span class="math inline">\((1,2,\dots,6)\)</span> e <span class="math inline">\(P_i\)</span> é a probabilidade de cada valor. Para um dado justo, <span class="math inline">\(P_i = 1/6\)</span>, então: <span class="math display">\[
+\langle m \rangle = \frac{1+2+3+4+5+6}{6} = 3.5.
+\]</span></p>
+</section>
+<section id="exemplo-contínuo-medindo-a-posição" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="exemplo-contínuo-medindo-a-posição">Exemplo contínuo: medindo a posição</h3>
+<p>Para um sistema contínuo, como a posição de uma partícula confinada em um intervalo <span class="math inline">\([a,b]\)</span>, podemos dividir o intervalo em <span class="math inline">\(N\)</span> “caixas” de comprimento <span class="math inline">\(\Delta x = (b-a)/N\)</span>. A posição média pode ser escrita como soma ponderada: <span class="math display">\[
+\langle x \rangle \approx \sum_{i=1}^{N} x_i P(x_i) \Delta x,
+\]</span> onde <span class="math inline">\(P(x_i)\)</span> é a probabilidade de encontrar a partícula na caixa <span class="math inline">\(i\)</span>. No limite <span class="math inline">\(N \to \infty\)</span> (ou <span class="math inline">\(\Delta x \to 0\)</span>), isso se transforma na integral usual: <span class="math display">\[
+\langle x \rangle = \int_a^b x P(x) \mathrm{d}x.
+\]</span> Para a distribuição uniforme <span class="math inline">\(P(x) = 1/(b-a)\)</span>, temos: <span class="math display">\[
+\langle x \rangle = \frac{1}{b-a} \int_a^b x \mathrm{d}x = \frac{a+b}{2}.
+\]</span></p>
+<p>Esse exemplo mostra claramente a <strong>transição do discreto para o contínuo</strong>, que é exatamente o que ocorre ao medir observáveis em mecânica quântica: valores possíveis discretos ou contínuos, mas sempre ponderados por uma probabilidade derivada da função de onda.</p>
+<div id="cell-fig-valor-esperado" class="cell page-columns page-full" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervalo e distribuição</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> <span class="dv">0</span>, <span class="dv">1</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">5</span>  <span class="co"># número de caixas discretas</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>x_discrete <span class="op">=</span> np.linspace(a <span class="op">+</span> (b<span class="op">-</span>a)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>N), b <span class="op">-</span> (b<span class="op">-</span>a)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>N), N)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>dx <span class="op">=</span> (b<span class="op">-</span>a)<span class="op">/</span>N</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>P_discrete <span class="op">=</span> np.full(N, <span class="dv">1</span><span class="op">/</span>(b<span class="op">-</span>a))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Valores esperados</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>expected_discrete <span class="op">=</span> np.<span class="bu">sum</span>(x_discrete <span class="op">*</span> P_discrete <span class="op">*</span> dx)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>x_cont <span class="op">=</span> np.linspace(a, b, <span class="dv">1000</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>P_cont <span class="op">=</span> np.ones_like(x_cont)<span class="op">/</span>(b<span class="op">-</span>a)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>))</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Barras discretas</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>plt.bar(x_discrete, P_discrete, width<span class="op">=</span>dx, alpha<span class="op">=</span><span class="fl">0.4</span>, color<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Soma discreta'</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Linha contínua</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>plt.plot(x_cont, P_cont, <span class="st">'b-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Densidade contínua'</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Valor esperado</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.axvline(expected_discrete, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="ss">f'Valor esperado ≈ </span><span class="sc">{</span>expected_discrete<span class="sc">:.2f}</span><span class="ss">'</span>)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Probabilidade"</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Valor esperado: discreto vs contínuo"</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.grid(alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-valor-esperado" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-valor-esperado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="heisenberg-uncertainty_files/figure-html/fig-valor-esperado-output-1.png" width="663" height="450" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-valor-esperado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Ilustração do valor esperado: barras representam a soma discreta das probabilidades em caixas, enquanto a linha azul mostra a função de densidade contínua.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Na figura, as barras laranjas representam a soma discreta das probabilidades em caixas de mesmo tamanho, enquanto a linha azul mostra a densidade contínua correspondente. À medida que aumentamos o número de caixas, a soma discreta se aproxima da integral contínua, ilustrando o limite $ x $. O valor esperado, indicado pela linha vermelha tracejada, é a média ponderada pela probabilidade, seja na forma discreta ou contínua. Esse conceito é diretamente aplicável à mecânica quântica, onde a função de onda fornece a densidade de probabilidade e o valor esperado de um observável é obtido como integral ponderada.</p>
+</section>
+<section id="exercícios-4" class="level3">
+<h3 class="anchored" data-anchor-id="exercícios-4">Exercícios</h3>
+<ol type="1">
+<li>Calcule o valor esperado de um dado justo de seis lados e de um dado viciado, onde <span class="math inline">\(P_6 = 1/2\)</span> e os outros cinco lados têm probabilidades iguais.</li>
+<li>Divida o intervalo <span class="math inline">\([0,2]\)</span> em <span class="math inline">\(N=4\)</span> caixas e considere uma distribuição de probabilidade <span class="math inline">\(P(x_i) = x_i/(\sum_j x_j)\)</span>. Calcule o valor esperado <span class="math inline">\(\langle x \rangle\)</span> usando a soma discreta e compare com o limite contínuo.</li>
+<li>Demonstre que, para uma distribuição uniforme em <span class="math inline">\([a,b]\)</span>, o valor esperado é <span class="math inline">\(\langle x \rangle = (a+b)/2\)</span>.</li>
+</ol>
+</section>
+</section>
+<section id="variância-e-desvio-padrão" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="variância-e-desvio-padrão">Variância e Desvio Padrão</h2>
+<p>Além do valor esperado, é importante caracterizar a dispersão dos valores possíveis de uma variável aleatória. Uma medida natural é a variância, definida como <span class="math display">\[
+\text{Var}(x) \equiv \langle (x - \mu)^2 \rangle,
+\]</span> onde <span class="math inline">\(\mu = \langle x \rangle\)</span> é o valor esperado. Essa definição garante que:</p>
+<ol type="1">
+<li>A variância é sempre positiva ou zero.</li>
+<li>Medidas como <span class="math inline">\(\langle |x-\mu| \rangle\)</span> também existem, mas <span class="math inline">\((x-\mu)^2\)</span> tem propriedades matemáticas convenientes, como ser aditiva para variáveis independentes.</li>
+</ol>
+<p>Expandindo o quadrado, obtemos: <span class="math display">\[
+\text{Var}(x) = \langle x^2 - 2\mu x + \mu^2 \rangle = \langle x^2 \rangle - 2\mu \langle x \rangle + \mu^2 = \langle x^2 \rangle - \mu^2.
+\]</span></p>
+<section id="exemplo-distribuição-uniforme-em-ab" class="level3">
+<h3 class="anchored" data-anchor-id="exemplo-distribuição-uniforme-em-ab">Exemplo: distribuição uniforme em <span class="math inline">\([a,b]\)</span></h3>
+<p>Para uma distribuição uniforme, <span class="math inline">\(P(x) = 1/(b-a)\)</span>. O valor esperado é <span class="math display">\[
+\mu = \langle x \rangle = \int_a^b x P(x)\mathrm{d}x = \frac{1}{b-a} \int_a^b x\mathrm{d}= \frac{a+b}{2}.
+\]</span></p>
+<p>O segundo momento é <span class="math display">\[
+\langle x^2 \rangle = \int_a^b x^2 P(x)\mathrm{d}x = \frac{1}{b-a} \int_a^b x^2\mathrm{d}x = \frac{b^3 - a^3}{3(b-a)} = \frac{a^2 + ab + b^2}{3}.
+\]</span> Portanto, a variância é <span class="math display">\[
+\text{Var}(x) = \langle x^2 \rangle - \mu^2 = \frac{a^2 + ab + b^2}{3} - \left(\frac{a+b}{2}\right)^2 = \frac{(b-a)^2}{12}.
+\]</span> O desvio padrão é a raiz quadrada da variância: <span class="math display">\[
+\sigma = \sqrt{\text{Var}(x)} = \frac{b-a}{2\sqrt{3}}.
+\]</span></p>
+</section>
+<section id="caso-particular-01" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="caso-particular-01">Caso particular: <span class="math inline">\([0,1]\)</span></h3>
+<p>Substituindo <span class="math inline">\(a=0\)</span> e <span class="math inline">\(b=1\)</span>: <span class="math display">\[
+\mu = \frac{0+1}{2} = \frac{1}{2}, \quad
+\text{Var}(x) = \frac{(1-0)^2}{12} = \frac{1}{12}, \quad
+\sigma = \frac{1}{2\sqrt{3}} \approx 0.2887.
+\]</span></p>
+<p>Essa forma mostra que a dispersão é invariante sob deslocamentos lineares e que o desvio padrão fornece uma medida intuitiva do “tamanho típico do desvio” em torno da média.</p>
+<div id="cell-fig-variancia-uniforme" class="cell page-columns page-full" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervalo da distribuição uniforme</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>a, b <span class="op">=</span> <span class="dv">0</span>, <span class="dv">1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> (a <span class="op">+</span> b) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> (b <span class="op">-</span> a) <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> np.sqrt(<span class="dv">3</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Função de densidade</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">1.1</span>, <span class="dv">500</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> np.where((x <span class="op">&gt;=</span> a) <span class="op">&amp;</span> (x <span class="op">&lt;=</span> b), <span class="dv">1</span> <span class="op">/</span> (b <span class="op">-</span> a), <span class="dv">0</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x, P, <span class="st">"b-"</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Densidade uniforme"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Média</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.axvline(mu, color<span class="op">=</span><span class="st">"r"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="vs">rf"Média </span><span class="dv">$\m</span><span class="vs">u=</span><span class="sc">{</span>mu<span class="sc">:.2f}</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Região $\pm\sigma$</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.fill_between(</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    x,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    P,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    where<span class="op">=</span>((x <span class="op">&gt;=</span> mu <span class="op">-</span> sigma) <span class="op">&amp;</span> (x <span class="op">&lt;=</span> mu <span class="op">+</span> sigma)),</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"green"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    alpha<span class="op">=</span><span class="fl">0.3</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="vs">rf"</span><span class="dv">$</span><span class="er">\</span><span class="vs">pm</span><span class="dv">\s</span><span class="vs">igma </span><span class="ch">\a</span><span class="vs">pprox</span><span class="dv">$</span><span class="vs"> </span><span class="sc">{</span>sigma<span class="sc">:.2f}</span><span class="vs">"</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Probabilidade"</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Variância e Desvio Padrão da Distribuição Uniforme [0,1]"</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>plt.grid(alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-variancia-uniforme" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-variancia-uniforme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="heisenberg-uncertainty_files/figure-html/fig-variancia-uniforme-output-1.png" width="663" height="450" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-variancia-uniforme-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Distribuição uniforme em [0,1] mostrando média (linha vermelha) e região <span class="math inline">\(\pm\sigma\)</span> (sombras verdes).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>A linha vermelha indica a média da distribuição uniforme, enquanto a região sombreada verde mostra o intervalo <span class="math inline">\(\pm\sigma\)</span> em torno da média. Mesmo que todos os valores tenham a mesma probabilidade, essa região fornece uma medida típica da dispersão dos valores possíveis.</p>
+</section>
+<section id="exercícios-5" class="level3">
+<h3 class="anchored" data-anchor-id="exercícios-5">Exercícios</h3>
+<ol type="1">
+<li>Mostre que, para qualquer distribuição, <span class="math inline">\(\text{Var}(x) = \langle x^2 \rangle - \langle x \rangle^2\)</span>.</li>
+<li>Calcule a variância e o desvio padrão de uma distribuição uniforme no intervalo <span class="math inline">\([2,5]\)</span>.</li>
+<li>Para uma variável discreta com valores <span class="math inline">\(x_i = 1,2,3,4\)</span> e probabilidades <span class="math inline">\(P_i = 1/10, 2/10, 3/10, 4/10\)</span>, calcule o valor esperado, a variância e o desvio padrão.</li>
+<li>Demonstre que a variância é sempre não negativa e explique por que isso é consistente com a definição de dispersão.</li>
+<li>Explique qualitativamente como o desvio padrão fornece uma medida típica do “tamanho do desvio” dos valores em torno da média, usando o exemplo da distribuição uniforme em <span class="math inline">\([0,1]\)</span>.</li>
+</ol>
+</section>
+</section>
+<section id="desigualdade-de-cauchy-schwarz" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="desigualdade-de-cauchy-schwarz">Desigualdade de Cauchy-Schwarz</h2>
+<p>A desigualdade de Cauchy-Schwarz é uma ferramenta fundamental em álgebra linear e mecânica quântica. Ela estabelece que, para quaisquer vetores <span class="math inline">\(\mathbf{u}\)</span> e <span class="math inline">\(\mathbf{v}\)</span> em um espaço vetorial com produto interno, temos: <span class="math display">\[
+|\langle \mathbf{u}, \mathbf{v} \rangle|^2 \leq \langle \mathbf{u}, \mathbf{u} \rangle , \langle \mathbf{v}, \mathbf{v} \rangle,
+\]</span> ou equivalentemente, <span class="math display">\[
+|\langle \mathbf{u}, \mathbf{v} \rangle| \leq |\mathbf{u}| , |\mathbf{v}|.
+\]</span></p>
+<section id="interpretação-geométrica-em-mathbbr2" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="interpretação-geométrica-em-mathbbr2">Interpretação geométrica em <span class="math inline">\(\mathbb{R}^2\)</span></h3>
+<p>Para vetores em <span class="math inline">\(\mathbb{R}^2\)</span>, o produto interno é o produto escalar usual <span class="math inline">\(\mathbf{u} \cdot \mathbf{v} = u_1 v_1 + u_2 v_2\)</span>. A desigualdade garante que o quadrado do produto escalar nunca é maior que o produto dos quadrados das normas: <span class="math display">\[
+(u_1 v_1 + u_2 v_2)^2 \leq (u_1^2 + u_2^2)(v_1^2 + v_2^2).
+\]</span> Geometricamente, isso significa que o cosseno do ângulo entre os vetores sempre está entre -1 e 1: <span class="math display">\[
+\cos \theta = \frac{\mathbf{u}\cdot \mathbf{v}}{|\mathbf{u}||\mathbf{v}|}.
+\]</span></p>
+<div id="cell-fig-cauchy-schwarz" class="cell page-columns page-full" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Vetores u e v</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">1</span>])</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Origem</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>origin <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.quiver(</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>origin, u[<span class="dv">0</span>], u[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"blue"</span>, scale<span class="op">=</span><span class="dv">1</span>, scale_units<span class="op">=</span><span class="st">"xy"</span>, angles<span class="op">=</span><span class="st">"xy"</span>, label<span class="op">=</span><span class="st">"u"</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.quiver(</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>origin,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    v[<span class="dv">0</span>],</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    v[<span class="dv">1</span>],</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"orange"</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    scale<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    scale_units<span class="op">=</span><span class="st">"xy"</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    angles<span class="op">=</span><span class="st">"xy"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"v"</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Ângulo</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.arccos(np.dot(u, v) <span class="op">/</span> (np.linalg.norm(u) <span class="op">*</span> np.linalg.norm(v)))</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="fl">0.3</span>, <span class="fl">0.3</span>, <span class="vs">rf"</span><span class="dv">$</span><span class="ch">\t</span><span class="vs">heta </span><span class="ch">\a</span><span class="vs">pprox </span><span class="sc">{</span>np<span class="sc">.</span>degrees(theta)<span class="sc">:.1f}</span><span class="dv">^</span><span class="er">\</span><span class="vs">circ</span><span class="dv">$</span><span class="vs">"</span>, fontsize<span class="op">=</span><span class="dv">12</span>, color<span class="op">=</span><span class="st">"purple"</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="fl">0.5</span>, <span class="dv">3</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.5</span>, <span class="dv">3</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>plt.gca().set_aspect(<span class="st">"equal"</span>, adjustable<span class="op">=</span><span class="st">"box"</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"y"</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Desigualdade de Cauchy-Schwarz em $R^2$"</span>)</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-cauchy-schwarz" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-cauchy-schwarz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="heisenberg-uncertainty_files/figure-html/fig-cauchy-schwarz-output-1.png" width="533" height="527" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-cauchy-schwarz-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Ilustração geométrica da desigualdade de Cauchy-Schwarz em R^2. O ângulo theta entre u e v está relacionado ao produto interno e às normas dos vetores.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="generalização" class="level3">
+<h3 class="anchored" data-anchor-id="generalização">Generalização</h3>
+<p>A desigualdade de Cauchy-Schwarz vale <strong>em qualquer espaço vetorial com produto interno</strong>, inclusive o espaço de Hilbert da mecânica quântica. Para vetores <span class="math inline">\(|\psi\rangle\)</span> e <span class="math inline">\(|\phi\rangle\)</span>: <span class="math display">\[
+|\langle \psi | \phi \rangle|^2 \leq \langle \psi | \psi \rangle \, \langle \phi | \phi \rangle.
+\]</span> Essa propriedade é fundamental para provar o princípio da incerteza e para várias outras desigualdades envolvendo valores esperados de operadores.</p>
+</section>
+<section id="exercícios-6" class="level3">
+<h3 class="anchored" data-anchor-id="exercícios-6">Exercícios</h3>
+<ol type="1">
+<li>Verifique a desigualdade de Cauchy-Schwarz para os vetores <span class="math inline">\(\mathbf{u} = (3,1)\)</span> e <span class="math inline">\(\mathbf{v} = (1,2)\)</span> em <span class="math inline">\(\mathbb{R}^2\)</span>.</li>
+<li>Para vetores <span class="math inline">\(\mathbf{u}, \mathbf{v} \in \mathbb{R}^3\)</span>, mostre que <span class="math display">\[
+|\mathbf{u}\cdot \mathbf{v}| \leq |\mathbf{u}|\,|\mathbf{v}|
+\]</span> usando a definição do produto interno e das normas.</li>
+<li>Prove que a igualdade em Cauchy-Schwarz ocorre se e somente se <span class="math inline">\(\mathbf{u}\)</span> e <span class="math inline">\(\mathbf{v}\)</span> são linearmente dependentes.</li>
+</ol>
+</section>
+</section>
+<section id="princípio-da-incerteza" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="princípio-da-incerteza">Princípio da Incerteza</h2>
+<p>Na mecânica quântica, os valores de posição (<span class="math inline">\(\hat{x}\)</span>) e momento (<span class="math inline">\(\hat{p}\)</span>) não podem ser determinados simultaneamente com precisão arbitrária. Isso decorre da estrutura dos operadores quânticos e não de limitações experimentais.</p>
+<p>O valor esperado de uma observável <span class="math inline">\(\hat{A}\)</span> em um estado <span class="math inline">\(|\psi\rangle\)</span> é: <span class="math display">\[
+\langle A \rangle = \langle \psi | \hat{A} | \psi \rangle,
+\]</span> e a variância, que mede a dispersão em torno do valor médio, é: <span class="math display">\[
+\sigma_A^2 = \langle (\hat{A} - \langle A \rangle)^2 \rangle = \langle \psi | (\hat{A} - \langle A \rangle)^2 | \psi \rangle.
+\]</span></p>
+<p>Definimos os estados deslocados para posição e momento: <span class="math display">\[
+|f\rangle = (\hat{x} - \langle x \rangle)|\psi\rangle, \quad
+|g\rangle = (\hat{p} - \langle p \rangle)|\psi\rangle,
+\]</span> com <span class="math display">\[
+\sigma_x^2 = \langle f | f \rangle, \quad \sigma_p^2 = \langle g | g \rangle.
+\]</span></p>
+<p>Aplicando a desigualdade de Cauchy–Schwarz: <span class="math display">\[
+\langle f|f \rangle , \langle g|g \rangle \ge |\langle f|g \rangle|^2 \implies \sigma_x^2 \sigma_p^2 \ge |\langle f|g \rangle|^2.
+\]</span></p>
+<p>O produto <span class="math inline">\(\langle f|g \rangle\)</span> pode ser decomposto em comutador e anti-comutador: <span class="math display">\[
+\langle f|g \rangle = \frac{1}{2} \langle \psi | \{\hat{x}-\langle x\rangle, \hat{p}-\langle p\rangle\} | \psi \rangle + \frac{1}{2} \langle \psi | [\hat{x}-\langle x\rangle, \hat{p}-\langle p\rangle] | \psi \rangle,
+\]</span> onde <span class="math inline">\({\cdot,\cdot}\)</span> é o anti-comutador e <span class="math inline">\([\cdot,\cdot]\)</span> é o comutador.</p>
+<ul>
+<li>O anti-comutador é hermitiano e, portanto, produz um número real.</li>
+<li>O comutador é anti-hermitiano e, portanto, produz um número imaginário puro.</li>
+</ul>
+<p>Se considerarmos apenas a contribuição do comutador, que fornece o limite fundamental, temos: <span class="math display">\[
+|\langle f|g \rangle|^2 \ge \left|\frac{1}{2}\langle [\hat{x},\hat{p}] \rangle\right|^2 = \frac{\hbar^2}{4},
+\]</span> o que leva à forma usual da desigualdade de Heisenberg: <span class="math display">\[
+\sigma_x , \sigma_p \ge \frac{\hbar}{2}.
+\]</span></p>
+<p>A interpretação é clara: quanto mais preciso conhecemos a posição ((<span class="math inline">\(\sigma_x\)</span>) pequeno), menos preciso é o momento ((<span class="math inline">\(\sigma_p\)</span>) grande), e vice-versa. O termo do anti-comutador pode aumentar a desigualdade, mas não diminui o limite fundamental estabelecido pelo comutador.</p>
+<div id="cell-fig-comm-anticomm" class="cell page-columns page-full" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Valores ilustrativos</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>anticom_real <span class="op">=</span> <span class="fl">0.3</span>  <span class="co"># Parte real (anti-comutador)</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>comm_imag <span class="op">=</span> <span class="fl">0.5</span>  <span class="co"># Parte imaginária (comutador, |hbar/2|)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotando o vetor ⟨f|g⟩</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.quiver(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    anticom_real,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    comm_imag,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    angles<span class="op">=</span><span class="st">"xy"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    scale_units<span class="op">=</span><span class="st">"xy"</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    scale<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"purple"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"⟨f|g⟩"</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Componentes real e imaginária</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, anticom_real], [<span class="dv">0</span>, <span class="dv">0</span>], <span class="st">"r--"</span>, label<span class="op">=</span><span class="st">"Parte real (anti-comutador)"</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    [anticom_real, anticom_real],</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">0</span>, comm_imag],</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"b--"</span>,</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Parte imaginária (comutador)"</span>,</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.6</span>)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="fl">0.1</span>, <span class="fl">0.6</span>)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Parte real"</span>)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Parte imaginária"</span>)</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Visualização de ⟨f|g⟩ no plano complexo"</span>)</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>plt.gca().set_aspect(<span class="st">"equal"</span>, adjustable<span class="op">=</span><span class="st">"box"</span>)</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-comm-anticomm" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-comm-anticomm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="heisenberg-uncertainty_files/figure-html/fig-comm-anticomm-output-1.png" width="534" height="524" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-comm-anticomm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Representação de ⟨f|g⟩ no plano complexo. A parte real (anti-comutador) e a parte imaginária (comutador) ilustram a origem da desigualdade de Heisenberg.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>O vetor roxo representa (<span class="math inline">\(\langle f|g \rangle\)</span>) como um número complexo.</li>
+<li>A parte real (vermelha tracejada) corresponde ao anti-comutador, que pode variar dependendo do estado, mas não determina o limite fundamental.</li>
+<li>A parte imaginária (azul tracejada) corresponde ao comutador, que define o limite mínimo (<span class="math inline">\(\hbar/2\)</span>) da desigualdade de Heisenberg. Note que essa parte está sempre presente, independentemente do estado.</li>
+</ul>
+<section id="exercícios-7" class="level3">
+<h3 class="anchored" data-anchor-id="exercícios-7">Exercícios</h3>
+<ol type="1">
+<li>Para operadores hermitianos <span class="math inline">\(\hat{A}\)</span> e <span class="math inline">\(\hat{B}\)</span> quaisquer, defina <span class="math display">\[
+|f\rangle = (\hat{A}-\langle A\rangle)|\psi\rangle, \quad |g\rangle = (\hat{B}-\langle B\rangle)|\psi\rangle.
+\]</span> Mostre que a desigualdade de Cauchy-Schwarz leva a <span class="math display">\[
+\sigma_A^2 \sigma_B^2 \ge |\langle f|g \rangle|^2.
+\]</span></li>
+<li>Explique por que o anti-comutador não diminui o limite mínimo da desigualdade de Heisenberg.</li>
+</ol>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

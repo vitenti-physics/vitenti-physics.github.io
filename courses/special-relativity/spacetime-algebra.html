@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Clifford Algebra and Spacetime Geometry – Physics Lecture Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-05e66d17ab91752557bef5da392245d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-4e596e3b636cc93bd5f8b4c83acf253a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-05e66d17ab91752557bef5da392245d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R4D0BX334F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R4D0BX334F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Physics Lecture Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://vitenti-physics.github.io/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/special-relativity/index.html">Special Relativity</a></li><li class="breadcrumb-item"><a href="../../courses/special-relativity/spacetime-algebra.html">Spacetime Algebra</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Undergraduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introduction to Physics (portuguese)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/physics-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physics and Mathematics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/determinism-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Determinism and Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/intro-stat-mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Statistical Mechanics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Heisenberg Uncertainty Principle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/selected-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vector Calculus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/vector-spaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vector Spaces Products and Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Mathematical Physics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/dirac-delta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dirac Delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/green-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Green Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/time-dependent-green-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Dependent Green Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Special Relativity</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/galilean-relativity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Galilean Relativity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/spacetime-algebra.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Spacetime Algebra</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Graduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Electrodynamics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometry Review for Electrodynamics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#clifford-algebra-of-spacetime" id="toc-clifford-algebra-of-spacetime" class="nav-link active" data-scroll-target="#clifford-algebra-of-spacetime">Clifford Algebra of Spacetime</a></li>
+  <li><a href="#bivectors-and-their-algebra" id="toc-bivectors-and-their-algebra" class="nav-link" data-scroll-target="#bivectors-and-their-algebra">Bivectors and Their Algebra</a></li>
+  <li><a href="#trivectors" id="toc-trivectors" class="nav-link" data-scroll-target="#trivectors">Trivectors</a></li>
+  <li><a href="#pseudoscalar" id="toc-pseudoscalar" class="nav-link" data-scroll-target="#pseudoscalar">Pseudoscalar</a></li>
+  <li><a href="#additional-notes" id="toc-additional-notes" class="nav-link" data-scroll-target="#additional-notes">Additional Notes</a></li>
+  <li><a href="#duality-relations" id="toc-duality-relations" class="nav-link" data-scroll-target="#duality-relations">Duality Relations</a>
+  <ul class="collapse">
+  <li><a href="#duality-in-3d" id="toc-duality-in-3d" class="nav-link" data-scroll-target="#duality-in-3d">Duality in 3D</a></li>
+  <li><a href="#contraction-with-the-pseudoscalar" id="toc-contraction-with-the-pseudoscalar" class="nav-link" data-scroll-target="#contraction-with-the-pseudoscalar">Contraction with the Pseudoscalar</a></li>
+  <li><a href="#contraction-with-the-pseudoscalar-1" id="toc-contraction-with-the-pseudoscalar-1" class="nav-link" data-scroll-target="#contraction-with-the-pseudoscalar-1">Contraction with the Pseudoscalar</a></li>
+  <li><a href="#vector-notation-and-tensor-relations" id="toc-vector-notation-and-tensor-relations" class="nav-link" data-scroll-target="#vector-notation-and-tensor-relations">Vector Notation and Tensor Relations</a></li>
+  </ul></li>
+  <li><a href="#algebra-of-bivectors" id="toc-algebra-of-bivectors" class="nav-link" data-scroll-target="#algebra-of-bivectors">Algebra of Bivectors</a></li>
+  <li><a href="#electromagnetism-in-clifford-algebra" id="toc-electromagnetism-in-clifford-algebra" class="nav-link" data-scroll-target="#electromagnetism-in-clifford-algebra">Electromagnetism in Clifford Algebra</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#inversion-and-hermitian-conjugates" id="toc-inversion-and-hermitian-conjugates" class="nav-link" data-scroll-target="#inversion-and-hermitian-conjugates">Inversion and Hermitian Conjugates</a></li>
+  <li><a href="#exponentials-of-bivectors" id="toc-exponentials-of-bivectors" class="nav-link" data-scroll-target="#exponentials-of-bivectors">Exponentials of Bivectors</a>
+  <ul class="collapse">
+  <li><a href="#lorentz-transformations-with-rotors" id="toc-lorentz-transformations-with-rotors" class="nav-link" data-scroll-target="#lorentz-transformations-with-rotors">Lorentz Transformations with Rotors</a></li>
+  <li><a href="#spinors-and-lorentz-rotations" id="toc-spinors-and-lorentz-rotations" class="nav-link" data-scroll-target="#spinors-and-lorentz-rotations">Spinors and Lorentz Rotations</a></li>
+  </ul></li>
+  <li><a href="#reference-frames-and-4-velocity" id="toc-reference-frames-and-4-velocity" class="nav-link" data-scroll-target="#reference-frames-and-4-velocity">Reference Frames and 4-Velocity</a>
+  <ul class="collapse">
+  <li><a href="#trajectories-and-decomposition" id="toc-trajectories-and-decomposition" class="nav-link" data-scroll-target="#trajectories-and-decomposition">Trajectories and Decomposition</a></li>
+  </ul></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#basic-comprehension" id="toc-basic-comprehension" class="nav-link" data-scroll-target="#basic-comprehension">Basic Comprehension</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="spacetime-algebra.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/special-relativity/index.html">Special Relativity</a></li><li class="breadcrumb-item"><a href="../../courses/special-relativity/spacetime-algebra.html">Spacetime Algebra</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Clifford Algebra and Spacetime Geometry</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sandro Vitenti </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+
+</div>
+<p>This document summarizes key aspects of the Clifford algebra <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>, which encodes the geometric structure of Minkowski spacetime. We outline its basis, multivector structure, products, and important identities. The geometric algebra approach provides an algebraic description of spacetime, encompassing Lorentz transformations and reference frames.</p>
+<section id="clifford-algebra-of-spacetime" class="level2">
+<h2 class="anchored" data-anchor-id="clifford-algebra-of-spacetime">Clifford Algebra of Spacetime</h2>
+<p>The algebra <span class="math inline">\(\mathrm{Cl}(1,3)\)</span> is generated by a set of 1-vectors <span class="math inline">\({\mathsf{e}^\mu}\)</span> satisfying the Minkowski metric <span class="math inline">\(\eta\_{\mu\nu} = \mathrm{diag}(-1,1,1,1)\)</span>. Its elements are constructed from wedge products of these generators: <span class="math display">\[
+\mathrm{Cl}(1,3) = \mathrm{span}\left\{1, \mathsf{e}^\mu, \mathsf{e}^\mu \wedge \mathsf{e}^\nu, \mathsf{e}^\mu \wedge \mathsf{e}^\nu \wedge \mathsf{e}^\rho, \mathsf{e}^0 \wedge \mathsf{e}^1 \wedge \mathsf{e}^2 \wedge \mathsf{e}^3\right\}
+\]</span> The algebra has 16 independent elements: one scalar, four vectors, six bivectors, four trivectors, and one pseudoscalar. These are classified by grade: a scalar is grade-0, a vector is grade-1, a bivector is grade-2, a trivector is grade-3, and the pseudoscalar is grade-4. The full algebra includes linear combinations of such elements, known collectively as multivectors.</p>
+<p>Each <span class="math inline">\(k\)</span>-vector represents a specific geometric object: for instance, <span class="math inline">\(\mathsf{e}^\mu\)</span> is a 1-vector (associated with directions), <span class="math inline">\(\mathsf{e}^\mu \wedge \mathsf{e}^\nu\)</span> is a bivector (representing oriented planes), and so on. This graded structure mirrors the decomposition of the algebra and plays a central role in defining its products and geometric interpretation.</p>
+<p>For grade-1 elements <span class="math inline">\(\omega, u \in \mathrm{Cl}(1,3)\)</span>, the symmetric (inner) and antisymmetric (exterior) products are defined as: <span class="math display">\[
+\omega \cdot u = \frac{1}{2}(\omega u + u \omega), \qquad
+\omega \wedge u = \frac{1}{2}(\omega u - u \omega)
+\]</span> These operations extract the grade-0 and grade-2 parts of the Clifford product, respectively. The algebra is defined by the inner products of the basis elements: <span class="math display">\[
+\mathsf{e}^\mu \cdot \mathsf{e}^\nu = \eta^{\mu\nu}
+\]</span> where <span class="math inline">\(\eta_{\mu\nu}\)</span> is the Minkowski metric, used to raise and lower indices, including elements of the algebra and components of (multi)vectors.</p>
+<p>Given vectors written in component form as <span class="math inline">\(\omega = \omega^\mu \mathsf{e}_\mu\)</span> and <span class="math inline">\(u = u^\nu \mathsf{e}_\nu\)</span>, the inner product becomes: <span class="math display">\[
+\omega \cdot u = \omega^\mu u^\nu \eta_{\mu\nu}
+\]</span> while the exterior product is: <span class="math display">\[
+\omega \wedge u = (\omega^\mu u^\nu - \omega^\nu u^\mu) \, \mathsf{e}_\mu \wedge \mathsf{e}_\nu
+\]</span> The exterior product is antisymmetric and defines a bivector, corresponding to an oriented plane segment spanned by <span class="math inline">\(\omega\)</span> and <span class="math inline">\(u\)</span>.</p>
+<p>The Clifford algebra encodes the geometric structure of spacetime, including Lorentz transformations and the behavior of reference frames. By defining the inner product as the symmetric part of the Clifford product, the Minkowski metric emerges directly from the algebraic relations among basis vectors. This allows calculations in special relativity to be carried out through purely algebraic manipulations.</p>
+<p>The basis vectors satisfy: <span class="math display">\[
+(\mathsf{e}^0)^2 = \mathsf{e}^0 \cdot \mathsf{e}^0 = -1, \qquad (\mathsf{e}^i)^2 = \mathsf{e}^i \cdot \mathsf{e}^i = 1 \quad (i = 1, 2, 3)
+\]</span> which reflects the signature of the Minkowski metric <span class="math inline">\(\eta_{\mu\nu} = \mathrm{diag}(-1, 1, 1, 1)\)</span>. For distinct indices, the generators anticommute: <span class="math display">\[
+\mathsf{e}^\mu \mathsf{e}^\nu = -\mathsf{e}^\nu \mathsf{e}^\mu \qquad (\mu \neq \nu)
+\]</span> These relations define the algebraic structure that underlies spacetime geometry in the context of special relativity.</p>
+</section>
+<section id="bivectors-and-their-algebra" class="level2">
+<h2 class="anchored" data-anchor-id="bivectors-and-their-algebra">Bivectors and Their Algebra</h2>
+<p>Bivectors are grade-2 elements constructed as wedge products of vectors. They span a 6-dimensional subspace of <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>, with basis elements of the form <span class="math inline">\(\mathsf{e}^\mu \wedge \mathsf{e}^\nu\)</span> for <span class="math inline">\(\mu &lt; \nu\)</span>. By construction, they are antisymmetric: <span class="math display">\[
+\mathsf{e}^\mu \wedge \mathsf{e}^\nu = -\mathsf{e}^\nu \wedge \mathsf{e}^\mu
+\]</span></p>
+<p>The square of a bivector depends on the causal character of the plane it spans. Bivectors involving the timelike basis vector <span class="math inline">\(\mathsf{e}^0\)</span> (e.g., <span class="math inline">\(\mathsf{e}^0 \wedge \mathsf{e}^1\)</span>) are called timelike and satisfy: <span class="math display">\[
+(\mathsf{e}^0 \wedge \mathsf{e}^1)^2 = 1
+\]</span> In contrast, bivectors composed of spatial vectors only (e.g., <span class="math inline">\(\mathsf{e}^1 \wedge \mathsf{e}^2\)</span>) are spacelike and satisfy: <span class="math display">\[
+(\mathsf{e}^1 \wedge \mathsf{e}^2)^2 = -1
+\]</span></p>
+<p>When manipulating bivectors, it is useful to note that for orthogonal vectors <span class="math inline">\(\mathsf{e}^\mu\)</span> and <span class="math inline">\(\mathsf{e}^\nu\)</span>, the wedge and Clifford products coincide: <span class="math display">\[
+\mathsf{e}^\mu \wedge \mathsf{e}^\nu = \mathsf{e}^\mu \mathsf{e}^\nu \quad (\mu \neq \nu).
+\]</span> For example, <span class="math display">\[
+(\mathsf{e}^0 \wedge \mathsf{e}^1)^2 = (\mathsf{e}^0 \mathsf{e}^1)^2 = \mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^0 \mathsf{e}^1.
+\]</span> Using anticommutation, <span class="math inline">\(\mathsf{e}^1 \mathsf{e}^0 = -\mathsf{e}^0 \mathsf{e}^1\)</span>, we have: <span class="math display">\[
+\mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^0 \mathsf{e}^1 = -\mathsf{e}^0 \mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^1 = - (\mathsf{e}^0)^2 (\mathsf{e}^1)^2.
+\]</span> Since <span class="math inline">\((\mathsf{e}^0)^2 = -1\)</span> and <span class="math inline">\((\mathsf{e}^1)^2 = 1\)</span>, it follows that: <span class="math display">\[
+(\mathsf{e}^0 \wedge \mathsf{e}^1)^2 = 1.
+\]</span> This illustrates the general procedure for computing with multivectors: expand the product, apply anticommutation relations, and use the metric to evaluate contractions. This approach extends naturally to more complex expressions involving elements of arbitrary grade.</p>
+<p>This distinction reflects the signature of the Minkowski metric and divides the six basis bivectors into two classes: three with positive square (timelike) and three with negative square (spacelike). Bivectors play a central role in representing infinitesimal Lorentz transformations, with spacelike bivectors generating spatial rotations and timelike bivectors generating boosts.</p>
+</section>
+<section id="trivectors" class="level2">
+<h2 class="anchored" data-anchor-id="trivectors">Trivectors</h2>
+<p>Trivectors are grade-3 elements formed by wedge products of three distinct vectors. They span a 4-dimensional subspace of <span class="math inline">\(\mathrm{Cl}(1,3)\)</span> and are fully antisymmetric. A basis consists of one purely spatial trivector, <span class="math display">\[
+\mathsf{e}^1 \wedge \mathsf{e}^2 \wedge \mathsf{e}^3,
+\]</span> and three mixed (temporal) trivectors, <span class="math display">\[
+\mathsf{e}^0 \wedge \mathsf{e}^1 \wedge \mathsf{e}^2, \qquad \mathsf{e}^0 \wedge \mathsf{e}^2 \wedge \mathsf{e}^3, \qquad \mathsf{e}^0 \wedge \mathsf{e}^1 \wedge \mathsf{e}^3.
+\]</span></p>
+<p>Their squared norms reflect the causal nature of the planes they span. The purely spatial trivector satisfies: <span class="math display">\[
+(\mathsf{e}^1 \wedge \mathsf{e}^2 \wedge \mathsf{e}^3)^2 = -1,
+\]</span> while temporal trivectors satisfy: <span class="math display">\[
+(\mathsf{e}^0 \wedge \mathsf{e}^1 \wedge \mathsf{e}^2)^2 = 1.
+\]</span></p>
+<p>Trivectors arise naturally in Clifford products involving three vectors, such as <span class="math inline">\(\mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2\)</span>, and require careful attention to sign conventions due to their antisymmetry, e.g., <span class="math display">\[
+\mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 = -\mathsf{e}^1 \mathsf{e}^0 \mathsf{e}^2.
+\]</span></p>
+<p>Although trivectors have fewer direct physical interpretations than bivectors, they are useful in defining duals and in describing oriented volumes in spacetime.</p>
+</section>
+<section id="pseudoscalar" class="level2">
+<h2 class="anchored" data-anchor-id="pseudoscalar">Pseudoscalar</h2>
+<p>The pseudoscalar is the unique grade-4 element of <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>: <span class="math display">\[
+I = \mathsf{e}^0 \wedge \mathsf{e}^1 \wedge \mathsf{e}^2 \wedge \mathsf{e}^3 = \mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 \mathsf{e}^3, \qquad I^2 = 1.
+\]</span> It represents the oriented 4-volume element in spacetime—not to be confused with the usual 3-dimensional spatial volume, and plays a central role in the geometric structure of the algebra.</p>
+<p>The pseudoscalar anticommutes with all 1-vectors: <span class="math display">\[
+I \mathsf{e}^\mu = -\mathsf{e}^\mu I,
+\]</span> and acts as the generator of Hodge duality via multiplication. For example: - <span class="math inline">\(I \mathsf{e}^\mu\)</span> is a trivector, - <span class="math inline">\(I (\mathsf{e}^\mu \wedge \mathsf{e}^\nu)\)</span> yields a bivector, - <span class="math inline">\(I \cdot 1 = I\)</span> maps scalars to pseudoscalars.</p>
+<p>As the oriented volume element, <span class="math inline">\(I\)</span> performs the same operation as the Hodge star map, which is traditionally defined on components via contraction with the Levi-Civita symbol. For instance, <span class="math display">\[
+\mathsf{e}^1 I = \mathsf{e}^1 (\mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 \mathsf{e}^3) = -\mathsf{e}^0 \mathsf{e}^2 \mathsf{e}^3
+\]</span> maps the vector <span class="math inline">\(\mathsf{e}^1\)</span> to its dual trivector. This mirrors the way a cross product maps two vectors to a third in 3D, or more generally, how a <span class="math inline">\(k\)</span>-vector is mapped to an <span class="math inline">\((n{-}k)\)</span>-vector in <span class="math inline">\(n\)</span>-dimensional Hodge duality.</p>
+<p>In <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>, <span class="math inline">\(I\)</span> implements the following dualities: - Scalars <span class="math inline">\(\leftrightarrow\)</span> pseudoscalars, - Vectors <span class="math inline">\(\leftrightarrow\)</span> trivectors, - Bivectors <span class="math inline">\(\to\)</span> bivectors (interchanging timelike and spacelike types).</p>
+<p>This operation will be shown explicitly in later sections and is especially useful in formulating Lorentz-covariant quantities such as the electromagnetic field.</p>
+</section>
+<section id="additional-notes" class="level2">
+<h2 class="anchored" data-anchor-id="additional-notes">Additional Notes</h2>
+<p>The Clifford algebra <span class="math inline">\(\mathrm{Cl}(1,3)\)</span> consists of 16 basis elements: 1 scalar, 4 vectors, 6 bivectors, 4 trivectors, and 1 pseudoscalar. This structure is isomorphic to the <span class="math inline">\(4 \times 4\)</span> matrix algebra used in Dirac’s formulation of quantum mechanics, providing a natural framework for relativistic physics. Scalars are Lorentz-invariant, vectors transform as four-vectors under Lorentz transformations, and bivectors correspond to antisymmetric rank-2 tensors, such as the electromagnetic field tensor <span class="math inline">\(F^{\mu\nu}\)</span>. The pseudoscalar <span class="math inline">\(I = \mathsf{e}^0 \wedge \mathsf{e}^1 \wedge \mathsf{e}^2 \wedge \mathsf{e}^3\)</span> represents the oriented 4-volume element of Minkowski spacetime and remains invariant under proper Lorentz transformations (determinant 1).</p>
+<p>For computations in <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>, the following algebraic rules are essential:</p>
+<ol type="1">
+<li>The squares of basis vectors reflect the Minkowski metric: <span class="math inline">\((\mathsf{e}^0)^2 = -1\)</span>, <span class="math inline">\((\mathsf{e}^i)^2 = 1\)</span> for spatial indices <span class="math inline">\(i = 1, 2, 3\)</span>.</li>
+<li>Basis vectors anticommute for distinct indices: <span class="math inline">\(\mathsf{e}^\mu \mathsf{e}^\nu = -\mathsf{e}^\nu \mathsf{e}^\mu\)</span> when <span class="math inline">\(\mu \neq \nu\)</span>.</li>
+<li>Permutations of generators in multivector products introduce sign changes due to antisymmetry, e.g., <span class="math inline">\(\mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 \mathsf{e}^3 = -\mathsf{e}^1 \mathsf{e}^0 \mathsf{e}^2 \mathsf{e}^3\)</span>.</li>
+</ol>
+<p>These properties enable the algebraic derivation of key results in special relativity, such as Lorentz transformations, invariant intervals, and spacetime rotations, by manipulating multivectors within the <span class="math inline">\(\mathrm{Cl}(1,3)\)</span> framework. This approach unifies geometric and algebraic operations, simplifying calculations in relativistic physics.</p>
+</section>
+<section id="duality-relations" class="level2">
+<h2 class="anchored" data-anchor-id="duality-relations">Duality Relations</h2>
+<p>The pseudoscalar <span class="math display">\[
+I = \mathsf{e}^0 \wedge \mathsf{e}^1 \wedge \mathsf{e}^2 \wedge \mathsf{e}^3 = \mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 \mathsf{e}^3
+\]</span> implements the Hodge duality operation in <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>, mapping <span class="math inline">\(k\)</span>-vectors to <span class="math inline">\((4-k)\)</span>-vectors. In particular, multiplication by <span class="math inline">\(I\)</span> maps bivectors to their dual bivectors. For the basis bivectors, the duality relations are: <span class="math display">\[
+\begin{aligned}
+I (\mathsf{e}^0 \mathsf{e}^1) &amp;= \mathsf{e}^2 \mathsf{e}^3, \\
+I (\mathsf{e}^0 \mathsf{e}^2) &amp;= -\mathsf{e}^1 \mathsf{e}^3, \\
+I (\mathsf{e}^0 \mathsf{e}^3) &amp;= \mathsf{e}^1 \mathsf{e}^2, \\
+I (\mathsf{e}^1 \mathsf{e}^2) &amp;= -\mathsf{e}^0 \mathsf{e}^3, \\
+I (\mathsf{e}^1 \mathsf{e}^3) &amp;= \mathsf{e}^0 \mathsf{e}^2, \\
+I (\mathsf{e}^2 \mathsf{e}^3) &amp;= -\mathsf{e}^0 \mathsf{e}^1.
+\end{aligned}
+\]</span> These follow from anticommutation relations and the property <span class="math inline">\(I \mathsf{e}^\mu = -\mathsf{e}^\mu I\)</span>. For example, <span class="math display">\[
+I (\mathsf{e}^0 \mathsf{e}^1) = (\mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 \mathsf{e}^3)(\mathsf{e}^0 \mathsf{e}^1) = \mathsf{e}^2 \mathsf{e}^3,
+\]</span> where anticommutation and metric contractions are used.</p>
+<section id="duality-in-3d" class="level3">
+<h3 class="anchored" data-anchor-id="duality-in-3d">Duality in 3D</h3>
+<p>Within the 3D spatial subalgebra of <span class="math inline">\(\mathrm{Cl}(1,3)\)</span> generated by <span class="math display">\[
+\sigma^i \equiv \mathsf{e}^0 \mathsf{e}^i, \quad i=1,2,3,
+\]</span> the spatial pseudoscalar <span class="math display">\[
+I_3 = \sigma^1 \sigma^2 \sigma^3 = I
+\]</span> defines a 3D duality operation analogous to the cross product. This subalgebra uses timelike-spatial bivectors <span class="math inline">\(\sigma^i\)</span>, which satisfy <span class="math display">\[
+\sigma^i \sigma^j = -\sigma^j \sigma^i, \quad (\sigma^i)^2 = 1,
+\]</span> and their symmetric product reproduces the standard Euclidean inner product: <span class="math display">\[
+\sigma^i \cdot \sigma^j \equiv \frac{\sigma^i \sigma^j + \sigma^j \sigma^i}{2} = \delta^{ij}.
+\]</span></p>
+<p>The 3D cross product emerges naturally as <span class="math display">\[
+u \times v \equiv -I (u \wedge v),
+\]</span> for vectors <span class="math inline">\(u,v \in \mathrm{span}\{\sigma^1, \sigma^2, \sigma^3\}\)</span>. For example, <span class="math display">\[
+\begin{aligned}
+\sigma^1 \times \sigma^2 &amp;= -I (\sigma^1 \wedge \sigma^2) = \sigma^3, \\
+\sigma^1 \times \sigma^3 &amp;= -I (\sigma^1 \wedge \sigma^3) = -\sigma^2, \\
+\sigma^2 \times \sigma^3 &amp;= -I (\sigma^2 \wedge \sigma^3) = \sigma^1.
+\end{aligned}
+\]</span> Here, the wedge product <span class="math inline">\(\sigma^i \wedge \sigma^j\)</span> is a bivector, and multiplication by <span class="math inline">\(I\)</span> maps it back to a vector, revealing the bivector nature of the cross product.</p>
+<p>This framework provides a natural algebraic interpretation of the magnetic field in electromagnetism as a bivector transforming under spatial rotations consistent with the duality <span class="math inline">\(I_3\)</span>, unifying the cross product with spacetime geometry.</p>
+</section>
+<section id="contraction-with-the-pseudoscalar" class="level3">
+<h3 class="anchored" data-anchor-id="contraction-with-the-pseudoscalar">Contraction with the Pseudoscalar</h3>
+<p>Contraction with the pseudoscalar <span class="math inline">\(I\)</span> in <span class="math inline">\(\mathrm{Cl}(1,3)\)</span> implements the Hodge dual operation algebraically. For a <span class="math inline">\(k\)</span>-vector <span class="math inline">\(A\)</span>, the product <span class="math inline">\(A I\)</span> produces a <span class="math inline">\((4-k)\)</span>-vector, preserving the graded structure of the algebra.</p>
+<p>Specific examples include: - Scalars <span class="math inline">\(c \in \mathbb{R}\)</span> map to pseudoscalars via <span class="math inline">\(c I = c\, \mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 \mathsf{e}^3\)</span>. - Vectors transform into trivectors, e.g., <span class="math display">\[
+  I \mathsf{e}^\mu = (\mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 \mathsf{e}^3) \mathsf{e}^\mu, \quad \text{with} \quad I \mathsf{e}^1 = \mathsf{e}^0 \mathsf{e}^2 \mathsf{e}^3.
+  \]</span> - Bivectors map to bivectors with timelike and spacelike components interchanged, as discussed previously. - Trivectors map to vectors: <span class="math display">\[
+  I (\mathsf{e}^\mu \mathsf{e}^\nu \mathsf{e}^\rho) = \pm \mathsf{e}^\sigma,
+  \]</span> where <span class="math inline">\(\mathsf{e}^\sigma\)</span> is the complementary basis vector completing the 4-vector basis.</p>
+<p>This multiplication by <span class="math inline">\(I\)</span> corresponds to the Hodge star operator on differential forms, but here it is realized entirely through algebraic multiplication, eliminating the need for component-wise contractions with the Levi-Civita tensor.</p>
+<p>For example, the electromagnetic field tensor <span class="math display">\[
+F = \frac{1}{2} F_{\mu\nu} \mathsf{e}^\mu \mathsf{e}^\nu
+\]</span> is mapped to its dual <span class="math display">\[
+\star F = I F,
+\]</span> which exchanges electric and magnetic components. This duality plays a central role in expressing Maxwell’s equations covariantly in spacetime.</p>
+<p>The algebraic simplicity of contraction with <span class="math inline">\(I\)</span> exemplifies the unifying power of <span class="math inline">\(\mathrm{Cl}(1,3)\)</span> in linking geometric and physical structures.</p>
+</section>
+<section id="contraction-with-the-pseudoscalar-1" class="level3">
+<h3 class="anchored" data-anchor-id="contraction-with-the-pseudoscalar-1">Contraction with the Pseudoscalar</h3>
+<p>For a vector <span class="math inline">\(v = v^\mu \mathsf{e}_\mu\)</span>, contraction with the pseudoscalar <span class="math inline">\(I\)</span> produces its dual trivector: <span class="math display">\[
+I v = I (v^\mu \mathsf{e}_\mu) = -\frac{v^\mu}{3!} \epsilon_{\mu\nu\rho\sigma} \, \mathsf{e}^\nu \mathsf{e}^\rho \mathsf{e}^\sigma,
+\]</span> where <span class="math inline">\(\epsilon_{0123} = 1\)</span> is the totally antisymmetric Levi-Civita symbol. This expresses the Hodge dual of <span class="math inline">\(v\)</span> as a trivector in <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>.</p>
+</section>
+<section id="vector-notation-and-tensor-relations" class="level3">
+<h3 class="anchored" data-anchor-id="vector-notation-and-tensor-relations">Vector Notation and Tensor Relations</h3>
+<p>Geometric objects in <span class="math inline">\(\mathrm{Cl}(1,3)\)</span> can be represented with tensor components as follows: - Trivector: <span class="math display">\[
+  T = \frac{1}{3!} T^{\mu\nu\alpha} \mathsf{e}_\mu \wedge \mathsf{e}_\nu \wedge \mathsf{e}_\alpha,
+  \]</span> - Bivector: <span class="math display">\[
+  B = \frac{1}{2!} B^{\mu\nu} \mathsf{e}_\mu \wedge \mathsf{e}_\nu,
+  \]</span> - Pseudoscalar: <span class="math display">\[
+  \alpha I, \quad \alpha \in \mathbb{R}.
+  \]</span></p>
+<p>The geometric product of vectors <span class="math inline">\(v = v^\mu \mathsf{e}_\mu\)</span> and <span class="math inline">\(w = w^\nu \mathsf{e}_\nu\)</span> decomposes into scalar (inner) and bivector (exterior) parts: <span class="math display">\[
+v w = v^\mu w^\nu \left(\mathsf{e}_\mu \cdot \mathsf{e}_\nu + \mathsf{e}_\mu \wedge \mathsf{e}_\nu\right).
+\]</span></p>
+<p>The Faraday tensor <span class="math inline">\(F\)</span>, encoding the electromagnetic field, is naturally a bivector in <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>: <span class="math display">\[
+F = \frac{1}{2} F_{\mu\nu} \mathsf{e}^\mu \wedge \mathsf{e}^\nu.
+\]</span> Its components combine electric fields (associated with bivectors <span class="math inline">\(\mathsf{e}^0 \wedge \mathsf{e}^i\)</span>) and magnetic fields (associated with spatial bivectors <span class="math inline">\(\mathsf{e}^i \wedge \mathsf{e}^j\)</span>), totaling six independent components. Under Lorentz transformations, electric and magnetic parts mix, but <span class="math inline">\(F\)</span> as a bivector remains invariant, unifying electric and magnetic fields within the algebraic framework of spacetime geometry.</p>
+</section>
+</section>
+<section id="algebra-of-bivectors" class="level2">
+<h2 class="anchored" data-anchor-id="algebra-of-bivectors">Algebra of Bivectors</h2>
+<p>If two bivectors <span class="math inline">\(\omega\)</span> and <span class="math inline">\(u\)</span> satisfy <span class="math inline">\(\omega \wedge u = 0\)</span>, they commute under the Clifford product: <span class="math display">\[
+\omega u = u \omega.
+\]</span> Conversely, if they are orthogonal in the sense that their inner product vanishes, <span class="math inline">\(\omega \cdot u = 0\)</span>, they anticommute: <span class="math display">\[
+\omega u = -u \omega.
+\]</span> In this case, their product squares as <span class="math display">\[
+(\omega u)^2 = -\omega^2 u^2,
+\]</span> with the sign depending on the signatures of <span class="math inline">\(\omega^2\)</span> and <span class="math inline">\(u^2\)</span>: - If <span class="math inline">\(\omega^2 &lt; 0\)</span> and <span class="math inline">\(u^2 &gt; 0\)</span>, then <span class="math inline">\(-\omega^2 u^2 &gt; 0\)</span>. - If both <span class="math inline">\(\omega^2 &lt; 0\)</span> and <span class="math inline">\(u^2 &lt; 0\)</span>, then <span class="math inline">\(-\omega^2 u^2 &lt; 0\)</span>.</p>
+<p>The exponential of a bivector generates Lorentz transformations: <span class="math display">\[
+e^{\omega \wedge u} = \cosh\left(\sqrt{-\omega^2 u^2}\right) + \frac{\omega \wedge u}{\sqrt{-\omega^2 u^2}} \sinh\left(\sqrt{-\omega^2 u^2}\right).
+\]</span></p>
+<p>Bivectors generate boosts or rotations depending on their causal character. For instance, the timelike bivector <span class="math inline">\(\mathsf{e}^0 \wedge \mathsf{e}^1\)</span>, with <span class="math inline">\((\mathsf{e}^0 \wedge \mathsf{e}^1)^2 = 1\)</span>, generates boosts: <span class="math display">\[
+\mathsf{e}^{\lambda (\mathsf{e}^0 \wedge \mathsf{e}^1)} = \cosh \lambda + (\mathsf{e}^0 \wedge \mathsf{e}^1) \sinh \lambda.
+\]</span> Applying this boost to the vector <span class="math inline">\(w = \mathsf{e}^0\)</span> gives <span class="math display">\[
+\mathsf{e}^{-\lambda (\mathsf{e}^0 \wedge \mathsf{e}^1)} \mathsf{e}^0 \mathsf{e}^{\lambda (\mathsf{e}^0 \wedge \mathsf{e}^1)} = (\cosh \lambda) \mathsf{e}^0 + (\sinh \lambda) \mathsf{e}^1,
+\]</span> corresponding to a Lorentz boost along <span class="math inline">\(\mathsf{e}^1\)</span> with <span class="math inline">\(\cosh \lambda = \gamma\)</span>, <span class="math inline">\(\sinh \lambda = \gamma \beta\)</span>.</p>
+<p>In contrast, a spacelike bivector such as <span class="math inline">\(\mathsf{e}^1 \wedge \mathsf{e}^2\)</span>, with <span class="math inline">\((\mathsf{e}^1 \wedge \mathsf{e}^2)^2 = -1\)</span>, generates spatial rotations: <span class="math display">\[
+\mathsf{e}^{\lambda (\mathsf{e}^1 \wedge \mathsf{e}^2)} = \cos \lambda + (\mathsf{e}^1 \wedge \mathsf{e}^2) \sin \lambda.
+\]</span></p>
+</section>
+<section id="electromagnetism-in-clifford-algebra" class="level2">
+<h2 class="anchored" data-anchor-id="electromagnetism-in-clifford-algebra">Electromagnetism in Clifford Algebra</h2>
+<p>The electromagnetic field is naturally represented by the Faraday bivector <span class="math display">\[
+F = \frac{1}{2} F_{\mu\nu} \mathsf{e}^\mu \wedge \mathsf{e}^\nu,
+\]</span> which contains six components: three electric (associated with bivectors <span class="math inline">\(\mathsf{e}^0 \wedge \mathsf{e}^i\)</span>) and three magnetic (associated with <span class="math inline">\(\mathsf{e}^i \wedge \mathsf{e}^j\)</span>). Under Lorentz transformations, electric and magnetic parts mix, but the bivector <span class="math inline">\(F\)</span> itself remains invariant. This formalism unifies electric and magnetic fields as frame-dependent projections of the electromagnetic field tensor, simplifying the formulation of electromagnetism and related calculations such as the Lorentz force. Further applications will be developed in the course.</p>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<p>To improve your understanding of <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>, work through these exercises:</p>
+<ol type="1">
+<li><p>Squares of Basis Bivectors<br>
+Compute the square of the following bivectors and classify each as timelike, spacelike, or lightlike:</p>
+<ol type="a">
+<li><span class="math inline">\((\mathsf{e}^0 \wedge \mathsf{e}^1)^2\)</span><br>
+</li>
+<li><span class="math inline">\((\mathsf{e}^1 \wedge \mathsf{e}^2)^2\)</span><br>
+</li>
+<li><span class="math inline">\((\mathsf{e}^2 \wedge \mathsf{e}^3)^2\)</span><br>
+</li>
+<li><span class="math inline">\((\mathsf{e}^0 \wedge \mathsf{e}^2)^2\)</span></li>
+</ol></li>
+<li><p>Duals with the Pseudoscalar<br>
+Calculate the duals of bivectors by multiplying with the pseudoscalar <span class="math inline">\(I\)</span>:</p>
+<ol type="a">
+<li><span class="math inline">\(I (\mathsf{e}^0 \mathsf{e}^1)\)</span><br>
+</li>
+<li><span class="math inline">\(I (\mathsf{e}^1 \mathsf{e}^2)\)</span><br>
+</li>
+<li><span class="math inline">\(I (\mathsf{e}^0 \mathsf{e}^2)\)</span><br>
+</li>
+<li><span class="math inline">\(I (\mathsf{e}^2 \mathsf{e}^3)\)</span><br>
+Verify that these results are consistent with the duality relations in <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>.</li>
+</ol></li>
+<li><p>Squares of Trivectors<br>
+Compute the squares of these trivectors and determine their causal character:</p>
+<ol type="a">
+<li><span class="math inline">\((\mathsf{e}^0 \wedge \mathsf{e}^1 \wedge \mathsf{e}^2)^2\)</span><br>
+</li>
+<li><span class="math inline">\((\mathsf{e}^1 \wedge \mathsf{e}^2 \wedge \mathsf{e}^3)^2\)</span></li>
+</ol></li>
+<li><p>Pseudoscalar Commutation<br>
+Verify the anticommutation relation with the pseudoscalar for each basis vector:<br>
+<span class="math display">\[
+I \mathsf{e}^\mu = - \mathsf{e}^\mu I, \quad \mu=0,1,2,3.
+\]</span><br>
+Identify the grade and type of the multivector <span class="math inline">\(I \mathsf{e}^\mu\)</span>.</p></li>
+<li><p>Exponential of a Bivector<br>
+For <span class="math inline">\(\omega = \mathsf{e}^0\)</span>, <span class="math inline">\(u = \mathsf{e}^1\)</span>:</p>
+<ol type="a">
+<li>Compute the wedge product <span class="math inline">\(\omega \wedge u\)</span>.<br>
+</li>
+<li>Calculate <span class="math inline">\((\omega \wedge u)^2\)</span>.<br>
+</li>
+<li>Write down the exponential <span class="math inline">\(\mathsf{e}^{\omega \wedge u}\)</span> and interpret whether it corresponds to a boost or a rotation.</li>
+</ol></li>
+<li><p>Anticommutators and Commutators<br>
+Calculate and interpret:</p>
+<ol type="a">
+<li>The anticommutator <span class="math inline">\(\mathsf{e}^0 \mathsf{e}^1 + \mathsf{e}^1 \mathsf{e}^0\)</span>.<br>
+</li>
+<li>The commutator <span class="math inline">\(\mathsf{e}^1 \mathsf{e}^2 - \mathsf{e}^2 \mathsf{e}^1\)</span>.<br>
+Relate these to the inner (symmetric) and exterior (antisymmetric) products of vectors.</li>
+</ol></li>
+</ol>
+</section>
+<section id="inversion-and-hermitian-conjugates" class="level2">
+<h2 class="anchored" data-anchor-id="inversion-and-hermitian-conjugates">Inversion and Hermitian Conjugates</h2>
+<p>In <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>, the reversion (also called transpose) is an involutive operation defined on multivectors by: <span class="math display">\[
+(ab)^\mathrm{T} = b^\mathrm{T} a^\mathrm{T},
+\]</span> for any multivectors <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Reversion reverses the order of the product but leaves individual vectors and scalars unchanged: <span class="math display">\[
+(\mathsf{e}^\mu)^\mathrm{T} = \mathsf{e}^\mu, \quad (\alpha)^\mathrm{T} = \alpha, \quad \text{for any } \alpha \in \mathbb{R}.
+\]</span></p>
+<p>For the pseudoscalar <span class="math inline">\(I = \mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 \mathsf{e}^3\)</span>: <span class="math display">\[
+I^\mathrm{T} = (\mathsf{e}^0 \mathsf{e}^1 \mathsf{e}^2 \mathsf{e}^3)^\mathrm{T} = \mathsf{e}^3 \mathsf{e}^2 \mathsf{e}^1 \mathsf{e}^0 = I,
+\]</span> since reversing all four basis vectors introduces an even number of sign changes.</p>
+<p>For a bivector <span class="math inline">\(B = \frac{1}{2} B_{\mu\nu} \mathsf{e}^\mu \wedge \mathsf{e}^\nu\)</span>, the reversion changes the sign: <span class="math display">\[
+B^\mathrm{T} = \frac{1}{2} B_{\mu\nu} (\mathsf{e}^\nu \wedge \mathsf{e}^\mu) = -\frac{1}{2} B_{\mu\nu} \mathsf{e}^\mu \wedge \mathsf{e}^\nu = -B,
+\]</span> reflecting the antisymmetry of bivectors under reversion.</p>
+</section>
+<section id="exponentials-of-bivectors" class="level2">
+<h2 class="anchored" data-anchor-id="exponentials-of-bivectors">Exponentials of Bivectors</h2>
+<p>The exponential of a bivector <span class="math inline">\(B\)</span> is defined through the usual power series: <span class="math display">\[
+e^{\alpha B} = \sum_{n=0}^{\infty} \frac{\alpha^n}{n!} B^n,
+\]</span> with <span class="math inline">\(\alpha \in \mathbb{R}\)</span>. The closed form depends on the square of <span class="math inline">\(B\)</span>, and can be derived by separating the even and odd terms:</p>
+<ul>
+<li><p>For <span class="math inline">\(B^2 = +1\)</span>, (e.g., <span class="math inline">\(B = \mathsf{e}^0 \wedge \mathsf{e}^1\)</span>) the exponential is given by: <span class="math display">\[
+\begin{aligned}
+e^{\alpha B} &amp;= \sum_{n=0}^{\infty} \frac{\alpha^n}{n!} B^n \\
+             &amp;= \sum_{n=0}^{\infty} \left( \frac{\alpha^{2n}}{(2n)!} B^{2n} + \frac{\alpha^{2n+1}}{(2n+1)!} B^{2n+1} \right) \\
+             &amp;= \sum_{n=0}^{\infty} \frac{\alpha^{2n}}{(2n)!} + B \sum_{n=0}^{\infty} \frac{\alpha^{2n+1}}{(2n+1)!} \\
+             &amp;= \cosh(\alpha) + B \sinh(\alpha).
+\end{aligned}
+\]</span></p></li>
+<li><p>For <span class="math inline">\(B^2 = -1\)</span>, (e.g., <span class="math inline">\(B = \mathsf{e}^2 \wedge \mathsf{e}^3\)</span>) the exponential is given by: <span class="math display">\[
+\begin{aligned}
+e^{\alpha B} &amp;= \sum_{n=0}^{\infty} \frac{\alpha^n}{n!} B^n \\
+             &amp;= \sum_{n=0}^{\infty} \left( \frac{\alpha^{2n}}{(2n)!} B^{2n} + \frac{\alpha^{2n+1}}{(2n+1)!} B^{2n+1} \right) \\
+             &amp;= \sum_{n=0}^{\infty} \frac{(-1)^n \alpha^{2n}}{(2n)!} + B \sum_{n=0}^{\infty} \frac{(-1)^n \alpha^{2n+1}}{(2n+1)!} \\
+             &amp;= \cos(\alpha) + B \sin(\alpha).
+\end{aligned}
+\]</span></p></li>
+</ul>
+<section id="lorentz-transformations-with-rotors" class="level3">
+<h3 class="anchored" data-anchor-id="lorentz-transformations-with-rotors">Lorentz Transformations with Rotors</h3>
+<p>Lorentz transformations are implemented using rotors: <span class="math display">\[
+R = e^{\alpha B / 2},
+\]</span> where <span class="math inline">\(B\)</span> is a bivector (e.g., <span class="math inline">\(\mathsf{e}^0 \wedge \mathsf{e}^1\)</span> for boosts or <span class="math inline">\(\mathsf{e}^1 \wedge \mathsf{e}^2\)</span> for rotations), and <span class="math inline">\(\alpha \in \mathbb{R}\)</span> is a transformation parameter. The rotor acts on a vector <span class="math inline">\(u\)</span> via the sandwich product: <span class="math display">\[
+u \mapsto R u R^\mathrm{T}, \quad \text{with} \quad R^\mathrm{T} = e^{-\alpha B / 2}.
+\]</span></p>
+<p>This ensures that the result is a vector, since: <span class="math display">\[
+(R u R^\mathrm{T})^\mathrm{T} = R u R^\mathrm{T}.
+\]</span> In contrast, a simple left multiplication like <span class="math inline">\(R u\)</span> is not a vector: <span class="math display">\[
+(R u)^\mathrm{T} = u R^\mathrm{T} \neq R u.
+\]</span></p>
+<p>The use of both <span class="math inline">\(R\)</span> and <span class="math inline">\(R^\mathrm{T}\)</span> in the transformation law necessitates the factor <span class="math inline">\(\alpha/2\)</span> in the exponent, ensuring the correct group composition law: <span class="math display">\[
+R(\alpha_1) R(\alpha_2) = R(\alpha_1 + \alpha_2).
+\]</span></p>
+</section>
+<section id="spinors-and-lorentz-rotations" class="level3">
+<h3 class="anchored" data-anchor-id="spinors-and-lorentz-rotations">Spinors and Lorentz Rotations</h3>
+<p>Rotors exhibit spinorial behavior. For example, a <span class="math inline">\(2\pi\)</span> rotation gives: <span class="math display">\[
+R(2\pi) = \cos(\pi) + B \sin(\pi) = -1 = -R(0),
+\]</span> indicating that a full <span class="math inline">\(4\pi\)</span> rotation is needed to return to the identity: <span class="math display">\[
+R(4\pi) = 1.
+\]</span></p>
+<p>This is the hallmark of spin-1/2 behavior. Spinors arise naturally in the even subalgebra of <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>, forming the group <span class="math inline">\(\mathrm{Spin}(1,3)\)</span>, which is a double cover of the Lorentz group <span class="math inline">\(\mathrm{SO}(1,3).\)</span> The same rotor <span class="math inline">\(R\)</span> that acts on vectors as: <span class="math display">\[
+u \mapsto R u R^\mathrm{T},
+\]</span> acts on spinors <span class="math inline">\(\psi\)</span> (e.g., four-component complex vectors) as: <span class="math display">\[
+\psi \mapsto R \psi.
+\]</span> Note, however, that this approach would require introducing a matrix representation of the algebra. While this is a common route, it is not strictly necessary. Instead, we can represent the “vector” <span class="math inline">\(\psi\)</span> directly as an element of <span class="math inline">\(\mathrm{Cl}(1,3)\)</span>, more precisely, as an even multivector.</p>
+<p>The pseudoscalar <span class="math inline">\(I = \mathsf{e}_0 \mathsf{e}_1 \mathsf{e}_2 \mathsf{e}_3\)</span> anticommutes with all vectors and satisfies <span class="math inline">\(I^2 = -1\)</span>, playing a role analogous to the complex unit <span class="math inline">\(i\)</span> in the Dirac algebra. In the spinor representation, it appears in constructions involving <span class="math inline">\(\gamma^5\)</span> and chirality.</p>
+</section>
+</section>
+<section id="reference-frames-and-4-velocity" class="level2">
+<h2 class="anchored" data-anchor-id="reference-frames-and-4-velocity">Reference Frames and 4-Velocity</h2>
+<p>An observer’s 4-velocity is <span class="math inline">\(w^\mu = (1, 0, 0, 0)\)</span>, or <span class="math inline">\(w = \mathsf{e}_0\)</span>, with <span class="math inline">\(w^2 = -1\)</span>. A particle’s 4-velocity is: <span class="math display">\[
+u^\mu = \left( \gamma, \gamma \frac{v^1}{c}, \gamma \frac{v^2}{c}, \gamma \frac{v^3}{c} \right), \quad \gamma = (1 - v^2/c^2)^{-1/2},
+\]</span> so <span class="math inline">\(u = u^\mu \mathsf{e}_\mu\)</span>, with: <span class="math display">\[
+u^2 = -\gamma^2 (1 - v^2/c^2) = -1, \quad u \cdot w = -\gamma.
+\]</span></p>
+<section id="trajectories-and-decomposition" class="level3">
+<h3 class="anchored" data-anchor-id="trajectories-and-decomposition">Trajectories and Decomposition</h3>
+<p>A spacetime trajectory is: <span class="math display">\[
+x = x^\mu \mathsf{e}_\mu = x^0 \mathsf{e}_0 + x^i \mathsf{e}_i, \quad x \cdot w = -x^0.
+\]</span> The spatial projection orthogonal to <span class="math inline">\(w = \mathsf{e}_0\)</span>: <span class="math display">\[
+x_\perp = \frac{x + w x w}{2} = x^i \mathsf{e}_i,
+\]</span> since: <span class="math display">\[
+w x w = -x^0 \mathsf{e}_0 + x^i \mathsf{e}_i, \quad x + w x w = 2 x^i \mathsf{e}_i.
+\]</span></p>
+</section>
+</section>
+<section id="exercises-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-1">Exercises</h2>
+<section id="basic-comprehension" class="level3">
+<h3 class="anchored" data-anchor-id="basic-comprehension">Basic Comprehension</h3>
+<ol type="1">
+<li><p>Show that for <span class="math inline">\(u = u^\mu \mathsf{e}_\mu\)</span>, we have <span class="math inline">\(u^2 = -1\)</span> and <span class="math inline">\(u \cdot w = -\gamma\)</span> for <span class="math inline">\(w = \mathsf{e}_0\)</span>.</p></li>
+<li><p>Compute the spatial projection <span class="math inline">\(x_\perp = \frac{x + w x w}{2}\)</span> for <span class="math inline">\(x = x^0 \mathsf{e}_0 + x^1 \mathsf{e}_1\)</span>, and check that <span class="math inline">\(x_\perp \cdot w = 0\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(B = \mathsf{e}^2 \wedge \mathsf{e}^3\)</span>. Compute <span class="math inline">\(B^2\)</span> and verify the closed form of <span class="math inline">\(e^{\theta B}\)</span>.</p></li>
+<li><p>Prove that for any bivector <span class="math inline">\(B\)</span> and scalar <span class="math inline">\(\alpha\)</span>, we have: <span class="math display">\[
+\left(e^{\alpha B}\right)^\mathrm{T} = e^{-\alpha B}.
+\]</span></p></li>
+<li><p>Let <span class="math inline">\(R = e^{\theta B/2}\)</span> for a bivector <span class="math inline">\(B\)</span> with <span class="math inline">\(B^2 = -1\)</span>. Show that <span class="math inline">\(R^\mathrm{T} = R^{-1}\)</span>.</p></li>
+</ol>
+</section>
+<section id="applications" class="level3">
+<h3 class="anchored" data-anchor-id="applications">Applications</h3>
+<ol start="6" type="1">
+<li><p>Show that the action <span class="math inline">\(u \mapsto R u R^\mathrm{T}\)</span> preserves the norm: <span class="math inline">\((R u R^\mathrm{T})^2 = u^2\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(B = \mathsf{e}^0 \wedge \mathsf{e}^1\)</span> and <span class="math inline">\(R = e^{\eta B / 2}\)</span> with rapidity <span class="math inline">\(\eta\)</span>. Compute <span class="math inline">\(R \mathsf{e}^0 R^\mathrm{T}\)</span> and interpret the result as a Lorentz boost along the <span class="math inline">\(x^1\)</span> direction.</p></li>
+<li><p>Verify explicitly that a full <span class="math inline">\(2\pi\)</span> rotation gives <span class="math inline">\(R = -1\)</span> for <span class="math inline">\(B = \mathsf{e}^1 \wedge \mathsf{e}^2\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(x = x^0 \mathsf{e}_0 + x^1 \mathsf{e}_1\)</span> and <span class="math inline">\(w = \mathsf{e}_0\)</span>. Show that the time component of <span class="math inline">\(x\)</span> is recovered by: <span class="math display">\[
+t = -x \cdot w.
+\]</span></p></li>
+<li><p>Let <span class="math inline">\(B = \mathsf{e}^1 \wedge \mathsf{e}^2\)</span>. Compute <span class="math inline">\(R = \cos(\theta/2) + B \sin(\theta/2)\)</span> and then compute <span class="math inline">\(R^2\)</span>. What is the result? Why does this make sense?</p></li>
+<li><p>Show that the pseudoscalar <span class="math inline">\(I = \mathsf{e}_0 \mathsf{e}_1 \mathsf{e}_2 \mathsf{e}_3\)</span> anticommutes with all vectors: <span class="math inline">\(I \mathsf{e}^\mu = -\mathsf{e}^\mu I\)</span>, and deduce that it also anticommutes with all bivectors.</p></li>
+<li><p>Let <span class="math inline">\(x = x^\mu \mathsf{e}_\mu\)</span> and <span class="math inline">\(w = \mathsf{e}_0\)</span>. Show that <span class="math inline">\(x = -t w + x_\perp\)</span>, where <span class="math inline">\(t = -x \cdot w\)</span> and <span class="math inline">\(x_\perp = \frac{x + w x w}{2}\)</span>.</p></li>
+</ol>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

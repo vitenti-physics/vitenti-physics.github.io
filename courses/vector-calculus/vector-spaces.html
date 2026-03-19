@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Vector Spaces Products and Maps – Physics Lecture Notes</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-05e66d17ab91752557bef5da392245d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-4e596e3b636cc93bd5f8b4c83acf253a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-05e66d17ab91752557bef5da392245d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R4D0BX334F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R4D0BX334F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Physics Lecture Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://vitenti-physics.github.io/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/vector-calculus/index.html">Vector Calculus</a></li><li class="breadcrumb-item"><a href="../../courses/vector-calculus/vector-spaces.html">Vector Spaces Products and Maps</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Undergraduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introduction to Physics (portuguese)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/physics-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physics and Mathematics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/determinism-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Determinism and Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/intro-stat-mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Statistical Mechanics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Heisenberg Uncertainty Principle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/selected-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Vector Calculus</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/vector-spaces.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Vector Spaces Products and Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Mathematical Physics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/dirac-delta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dirac Delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/green-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Green Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/time-dependent-green-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Dependent Green Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Special Relativity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/galilean-relativity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Galilean Relativity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/spacetime-algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spacetime Algebra</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Graduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Electrodynamics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometry Review for Electrodynamics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#vector-spaces" id="toc-vector-spaces" class="nav-link active" data-scroll-target="#vector-spaces">Vector Spaces</a></li>
+  <li><a href="#linear-independence" id="toc-linear-independence" class="nav-link" data-scroll-target="#linear-independence">Linear Independence</a></li>
+  <li><a href="#exercise-vector-space" id="toc-exercise-vector-space" class="nav-link" data-scroll-target="#exercise-vector-space">Exercise Vector Space</a></li>
+  <li><a href="#inner-product" id="toc-inner-product" class="nav-link" data-scroll-target="#inner-product">Inner Product</a></li>
+  <li><a href="#kronecker-delta" id="toc-kronecker-delta" class="nav-link" data-scroll-target="#kronecker-delta">Kronecker Delta</a></li>
+  <li><a href="#exercises-inner-product" id="toc-exercises-inner-product" class="nav-link" data-scroll-target="#exercises-inner-product">Exercises Inner Product</a></li>
+  <li><a href="#sec-eprod" id="toc-sec-eprod" class="nav-link" data-scroll-target="#sec-eprod">Exterior Product</a></li>
+  <li><a href="#vector-product" id="toc-vector-product" class="nav-link" data-scroll-target="#vector-product">Vector Product</a></li>
+  <li><a href="#exercises-vector-product" id="toc-exercises-vector-product" class="nav-link" data-scroll-target="#exercises-vector-product">Exercises Vector Product</a></li>
+  <li><a href="#sec-trip" id="toc-sec-trip" class="nav-link" data-scroll-target="#sec-trip">Relation to the Exterior Product</a></li>
+  <li><a href="#exercises-triple-product" id="toc-exercises-triple-product" class="nav-link" data-scroll-target="#exercises-triple-product">Exercises Triple Product</a></li>
+  <li><a href="#sec-euclid" id="toc-sec-euclid" class="nav-link" data-scroll-target="#sec-euclid">Euclidean Space</a>
+  <ul class="collapse">
+  <li><a href="#cartesian-coordinates" id="toc-cartesian-coordinates" class="nav-link" data-scroll-target="#cartesian-coordinates">Cartesian Coordinates</a></li>
+  </ul></li>
+  <li><a href="#sec-vectan" id="toc-sec-vectan" class="nav-link" data-scroll-target="#sec-vectan">Tangent Vectors</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="vector-spaces.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full column-body" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/vector-calculus/index.html">Vector Calculus</a></li><li class="breadcrumb-item"><a href="../../courses/vector-calculus/vector-spaces.html">Vector Spaces Products and Maps</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Vector Spaces Products and Maps</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sandro Vitenti </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="hidden">
+
+</div>
+<section id="vector-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="vector-spaces">Vector Spaces</h2>
+<p>Vector spaces are used in physics to represent a wide variety of quantities. For example, in Newtonian mechanics, we use vector spaces to represent positions in space, velocities, and displacements. It is worth noting that these three physical quantities have distinct natures, which is reflected in the meaning of the operations we can perform with them. For instance, velocity vectors can be added or subtracted when we want to represent velocities in different inertial reference frames. Similarly, position vectors can be added when we change the origin of a coordinate system. However, there is no natural meaning to the sum of a position vector and a velocity vector, even though such a sum is mathematically well-defined. This highlights that when working with vector analysis, we are typically dealing with several different vector spaces. This becomes more evident when working with curvilinear coordinates, as we will see later.</p>
+<p>To make our discussion more rigorous, we begin by defining vector spaces. In our treatment, we will restrict ourselves to real vector spaces, meaning our vector spaces are defined over the field of real numbers <span class="math inline">\(\mathbb{R}\)</span>. In practice, this means we can multiply our vectors by real numbers. However, before defining vector spaces, we introduce some basic mathematical concepts that will be useful throughout this exposition. These concepts may seem overly formal and unnecessary for understanding the subject, but it is important for students to have these definitions available for reference to clarify the meaning of other expressions used in this exposition.</p>
+<div id="def-cartprod" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1 (Cartesian Product)</strong></span> Given two sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, the Cartesian product is simply the set of ordered pairs defined as: <span class="math display">\[A \times B \equiv \{(a, b) \mid a \in A \text{ and } b \in B\}.\]</span></p>
+</div>
+<div id="def-func" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2 (Function Between Sets)</strong></span> Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be two sets. We denote a function <span class="math inline">\(f\)</span> with domain <span class="math inline">\(A\)</span> and codomain <span class="math inline">\(B\)</span> as: <span class="math display">\[f: A \to B.\]</span> We use the notation <span class="math inline">\(f(a) \in B\)</span> to denote the value of the function <span class="math inline">\(f\)</span> when applied to an element <span class="math inline">\(a \in A\)</span>. It is important to note that some functions are denoted differently. For example, the addition of real numbers, <span class="math inline">\(+: \mathbb{R} \times \mathbb{R} \to \mathbb{R}\)</span>, is represented as <span class="math inline">\(a + b \in \mathbb{R}\)</span> for <span class="math inline">\(a, b \in \mathbb{R}\)</span>. In these cases, we often refer to such functions as operators.</p>
+</div>
+<p>In <a href="#def-func" class="quarto-xref">Definition&nbsp;2</a>, we saw that we use different notation for some functions, such as the addition of two real numbers. Furthermore, some functions are denoted even more compactly. For example, the multiplication of two real numbers is typically denoted by the mere juxtaposition of two numbers. That is, when we write <span class="math inline">\(ab\)</span> where <span class="math inline">\(a, b \in \mathbb{R}\)</span>, we are compactly representing the application of the multiplication function to two real numbers.</p>
+<p>Finally, we can define the concept of a real vector space:</p>
+<div id="def-vecspace" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3 (Real Vector Space)</strong></span> A vector space over the real numbers <span class="math inline">\(\mathbb{R}\)</span> is given by a set <span class="math inline">\(\mathbb{V}\)</span> and two operations: scalar multiplication and vector addition. The elements of <span class="math inline">\(\mathbb{V}\)</span> are denoted with an arrow above the symbol, i.e., <span class="math inline">\(\mathbf{v} \in \mathbb{V}\)</span>. The operations are defined as: <span class="math display">\[\cdot: \mathbb{R} \times \mathbb{V} \to \mathbb{V}, \quad +: \mathbb{V} \times \mathbb{V} \to \mathbb{V}.\]</span> The addition operation <span class="math inline">\(+\)</span> satisfies the following properties (where <span class="math inline">\(\mathbf{v}, \mathbf{u}, \mathbf{w} \in \mathbb{V}\)</span>):</p>
+<ol type="1">
+<li><strong>Associativity</strong>: <span class="math inline">\((\mathbf{v} + \mathbf{u}) + \mathbf{w} = \mathbf{v} + (\mathbf{u} + \mathbf{w})\)</span>.</li>
+<li><strong>Commutativity</strong>: <span class="math inline">\(\mathbf{v} + \mathbf{u} = \mathbf{u} + \mathbf{v}\)</span>.</li>
+<li><strong>Existence of the additive identity</strong>: <span class="math inline">\(\mathbf{v} + \mathbf{0} = \mathbf{v}\)</span>.</li>
+<li><strong>Existence of the additive inverse</strong>: <span class="math inline">\(\mathbf{v} + (-\mathbf{v}) = \mathbf{0}\)</span>, where <span class="math inline">\(-\mathbf{v} \in \mathbb{V}\)</span>.</li>
+</ol>
+<p>The scalar multiplication operation satisfies (where <span class="math inline">\(\mathbf{v}, \mathbf{u} \in \mathbb{V}\)</span> and <span class="math inline">\(a, b \in \mathbb{R}\)</span>):</p>
+<ol type="1">
+<li><strong>Compatibility with real multiplication</strong>: <span class="math inline">\(a(b\mathbf{v}) = (ab)\mathbf{v}\)</span>.</li>
+<li><strong>Existence of the multiplicative identity</strong>: <span class="math inline">\(1\mathbf{v} = \mathbf{v}\)</span>.</li>
+<li><strong>Distributivity over vector addition</strong>: <span class="math inline">\(a(\mathbf{v} + \mathbf{u}) = a\mathbf{v} + a\mathbf{u}\)</span>.</li>
+<li><strong>Distributivity over scalar addition</strong>: <span class="math inline">\((a + b)\mathbf{v} = a\mathbf{v} + b\mathbf{v}\)</span>.</li>
+</ol>
+</div>
+<p>An obvious first example of a real vector space is the set of real numbers <span class="math inline">\(\mathbb{R}\)</span> itself, whose elements we call scalars. It is easy to verify that this set satisfies all the properties described above. We can use this fact to construct more complex vector spaces. Consider the Cartesian product of two real spaces, <span class="math inline">\(\mathbb{R}^2 \equiv \mathbb{R} \times \mathbb{R}\)</span>. Now, we can <strong>define</strong> the addition of two elements of <span class="math inline">\(\mathbb{R}^2\)</span> and scalar multiplication by a real number as: <span class="math display">\[\begin{align}
+(a, b) + (c, d) &amp;\equiv (a + c, b + d), \quad a, b, c, d \in \mathbb{R}, \\
+a(b, c) &amp;\equiv (ab, ac), \quad a, b, c \in \mathbb{R}.
+\end{align}\]</span> It is straightforward to verify that all properties of <a href="#def-vecspace" class="quarto-xref">Definition&nbsp;3</a> are automatically satisfied. It is interesting to note exactly what we are doing: by defining addition and scalar multiplication as above, we are using the concepts of addition and multiplication of real numbers to define addition and multiplication in more complex sets, in this case <span class="math inline">\(\mathbb{R}^2\)</span>. In other words, the set of ordered pairs of real numbers forms a vector space once we define the operations above. Naturally, we can make the same definitions for <span class="math inline">\(\mathbb{R}^3 \equiv \mathbb{R} \times \mathbb{R} \times \mathbb{R}\)</span>. Henceforth, we will always use these definitions of addition and scalar multiplication when dealing with spaces <span class="math inline">\(\mathbb{R}^n \equiv \mathbb{R} \times \mathbb{R} \times \dots \times \mathbb{R}\)</span>.</p>
+</section>
+<section id="linear-independence" class="level2">
+<h2 class="anchored" data-anchor-id="linear-independence">Linear Independence</h2>
+<p>To highlight the difference between <span class="math inline">\(\mathbb{R}^2\)</span> and <span class="math inline">\(\mathbb{R}^3\)</span>, we introduce a new definition:</p>
+<p><strong>Definition (Linear Independence):</strong> A set of vectors <span class="math inline">\(\mathbf{v}_i\)</span>, <span class="math inline">\(i \in \{1, 2, \dots, n\}\)</span>, is said to be linearly independent if their linear combination is zero if and only if all coefficients are zero, i.e., <span class="math display">\[\sum_{i=1}^n a^i \mathbf{v}_i = 0 \text{ if and only if } a^i = 0 \text{ for all } i \in \{1, 2, \dots, n\}.\]</span></p>
+<p>In practical terms, a set of vectors is linearly independent if none of the vectors can be written as a linear combination of the others. That is, when they are <strong>not</strong> linearly independent, their combination may be zero even if some coefficients are non-zero (say <span class="math inline">\(a^1 \neq 0\)</span>), so: <span class="math display">\[\begin{equation}
+\mathbf{v}_1 = -\frac{1}{a^1} \sum_{i=2}^n a^i \mathbf{v}_i.
+\end{equation}\]</span></p>
+<p><strong>Definition (Basis):</strong> A set of vectors forms a basis if they are linearly independent and any element of <span class="math inline">\(\mathbb{V}\)</span> can be written as a linear combination of them. The number of vectors in the basis denotes the dimension of <span class="math inline">\(\mathbb{V}\)</span>.</p>
+<p>It is easy to verify that the vectors <span class="math inline">\(\mathbf{e}_1 \equiv (1, 0, 0)\)</span>, <span class="math inline">\(\mathbf{e}_2 \equiv (0, 1, 0)\)</span>, and <span class="math inline">\(\mathbf{e}_3 \equiv (0, 0, 1)\)</span> form a basis for <span class="math inline">\(\mathbb{R}^3\)</span>. Thus, any vector in this space can be written as a linear combination of these vectors, i.e., <span class="math display">\[\begin{equation}
+\mathbf{v} = \sum_{i=1}^n v^i \mathbf{e}_i.
+\end{equation}\]</span></p>
+<p>From a physics perspective, we are interested in using mathematical concepts to represent concrete elements found in nature. Our real-world experience shows that we need three coordinates to specify a point in space. If we calculate the three coordinates of an object relative to an origin and then the coordinates of the origin relative to another reference point, the position of the object relative to the other reference point is given by the simple sum of the coordinates. This example shows that we can map the concept of position in space to elements of <span class="math inline">\(\mathbb{R}^3\)</span>, and moreover, the operations defined in this space have physical meaning. In this sense, it is important to understand what we do when we apply physical modeling: we are seeking mathematical objects that can be mapped to physical quantities and whose operations correspond to elements of the physical world. In the example above, points in <span class="math inline">\(\mathbb{R}^3\)</span> are mapped to coordinate positions in the real world, and the addition of two vectors corresponds to a change in the coordinate origin.</p>
+<p>In this chapter, we will focus on three-dimensional vector spaces, which is the arena where electromagnetism will be developed in this course.</p>
+</section>
+<section id="exercise-vector-space" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-vector-space">Exercise Vector Space</h2>
+<ol type="1">
+<li>Show that <span class="math inline">\(\mathbb{R}^2\)</span> and <span class="math inline">\(\mathbb{R}^3\)</span> are vector spaces of dimension two and three, respectively.</li>
+</ol>
+</section>
+<section id="inner-product" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="inner-product">Inner Product</h2>
+<p>The inner product is defined as a function on a vector space that is used to calculate magnitudes and angles between vectors. The mathematical definition is as follows:</p>
+<div id="def-innerprod" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4 (Inner Product)</strong></span> Given a vector space <span class="math inline">\(\mathbb{V}\)</span>, we define the inner product as the map: <span class="math display">\[\cdot: \mathbb{V} \times \mathbb{V} \to \mathbb{R}.\]</span> It satisfies the following properties (where <span class="math inline">\(\mathbf{v}, \mathbf{u}, \mathbf{w} \in \mathbb{V}\)</span>):</p>
+<ol type="1">
+<li><strong>Symmetry</strong>: <span class="math inline">\(\mathbf{v} \cdot \mathbf{w} = \mathbf{w} \cdot \mathbf{v}\)</span>.</li>
+<li><strong>Linearity on the left</strong>: <span class="math inline">\((\mathbf{v} + \mathbf{u}) \cdot \mathbf{w} = \mathbf{v} \cdot \mathbf{w} + \mathbf{u} \cdot \mathbf{w}\)</span>.</li>
+<li><strong>Positivity</strong>: <span class="math inline">\(\mathbf{v} \cdot \mathbf{v} \geq 0\)</span>, and equality holds if and only if <span class="math inline">\(\mathbf{v} = \mathbf{0}\)</span>.</li>
+</ol>
+<p>It is worth noting that left linearity, combined with symmetry, implies right linearity. In other words, this product is bilinear. Finally, given an inner product, we define the norm or magnitude of a vector as: <span class="math display">\[\begin{equation}
+|\mathbf{v}| \equiv \sqrt{\mathbf{v} \cdot \mathbf{v}},
+\end{equation}\]</span> where the positivity property ensures that the square root is always well-defined.</p>
+</div>
+<p>In general, there are numerous possible choices for inner products. To see this, note that linearity implies that the inner product of any two vectors is: <span class="math display">\[\mathbf{v} \cdot \mathbf{u} = \left( \sum_{i=1}^3 v^i \mathbf{e}_i \right) \cdot \left( \sum_{j=1}^3 u^j \mathbf{e}_j \right) = \sum_{i,j=1}^3 v^i u^j \mathbf{e}_i \cdot \mathbf{e}_j.\]</span> Thus, we can compute the inner product between any two vectors if we know the inner products between the basis elements. To determine this, we need to define the six quantities <span class="math inline">\(\mathbf{e}_i \cdot \mathbf{e}_j\)</span>. Note that, in general, there would be nine combinations of <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, but symmetry provides three equations: <span class="math display">\[\begin{equation}
+\mathbf{e}_2 \cdot \mathbf{e}_1 = \mathbf{e}_1 \cdot \mathbf{e}_2, \quad \mathbf{e}_3 \cdot \mathbf{e}_1 = \mathbf{e}_1 \cdot \mathbf{e}_3, \quad \mathbf{e}_3 \cdot \mathbf{e}_2 = \mathbf{e}_2 \cdot \mathbf{e}_3.
+\end{equation}\]</span> Apart from the positivity condition,<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> we have complete freedom to choose these six quantities.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;This condition imposes constraints on the signs and inequalities between the terms but does not introduce additional equations and thus does not reduce the dimensionality of the problem.</p></div></div></section>
+<section id="kronecker-delta" class="level2">
+<h2 class="anchored" data-anchor-id="kronecker-delta">Kronecker Delta</h2>
+<p>In our treatment, we assume the space is flat, and in this case, the inner product that reproduces the familiar Euclidean geometry is given by <span class="math inline">\(\mathbf{e}_i \cdot \mathbf{e}_j = \delta_{ij}\)</span>, where we introduce the Kronecker delta: <span class="math display">\[\begin{equation}
+\delta_{ij} \equiv \begin{cases}
+1 &amp; \text{if } i = j, \\
+0 &amp; \text{if } i \neq j.
+\end{cases}
+\end{equation}\]</span> In these notes, the inner product will always be the Euclidean inner product defined above.</p>
+<p>To understand the geometric meaning of this product, we start by calculating the magnitude of a vector: <span class="math display">\[\begin{equation}
+|\mathbf{v}| = \sqrt{(v^1)^2 + (v^2)^2 + (v^3)^2},
+\end{equation}\]</span> which is simply the Euclidean norm we are familiar with. We can now implicitly define the angle <span class="math inline">\(\theta\)</span> between two vectors as: <span class="math display">\[\begin{equation}
+\mathbf{v} \cdot \mathbf{u} = |\mathbf{v}| |\mathbf{u}| \cos \theta.
+\end{equation}\]</span> To verify that this definition aligns with the usual Euclidean geometry, consider the inner product between the vector <span class="math inline">\(\mathbf{v} = a^1 \mathbf{e}_1 + a^2 \mathbf{e}_2\)</span> and the vector <span class="math inline">\(\mathbf{u} = \mathbf{e}_1\)</span>, i.e., <span class="math display">\[\begin{equation}
+\mathbf{v} \cdot \mathbf{u} = \left( a^1 \mathbf{e}_1 + a^2 \mathbf{e}_2 \right) \cdot \mathbf{e}_1 = a^1 = |\mathbf{v}| |\mathbf{u}| \frac{a^1}{\sqrt{(a^1)^2 + (a^2)^2}} \implies \cos \theta = \frac{a^1}{\sqrt{(a^1)^2 + (a^2)^2}}.
+\end{equation}\]</span> In this example, the cosine of the angle between the vectors is exactly the adjacent side over the hypotenuse.</p>
+<p>In general, the inner product defined above can be written as: <span id="eq-prodint"><span class="math display">\[
+\mathbf{v} \cdot \mathbf{u} = \left( \sum_{i=1}^3 v^i \mathbf{e}_i \right) \cdot \left( \sum_{j=1}^3 u^j \mathbf{e}_j \right) = \sum_{i,j=1}^3 v^i u^j \mathbf{e}_i \cdot \mathbf{e}_j = \sum_{i,j=1}^3 v^i u^j \delta_{ij} = \sum_{i=1}^3 v^i u^i.
+\tag{1}\]</span></span> Note that in the last equality, we used the fact that <span class="math inline">\(\delta_{ij} = 0\)</span> for <span class="math inline">\(i \neq j\)</span> to eliminate one summation. Finally, we say that two vectors <span class="math inline">\(\mathbf{v}\)</span> and <span class="math inline">\(\mathbf{u}\)</span> are orthogonal if <span class="math inline">\(\mathbf{v} \cdot \mathbf{u} = 0\)</span>.</p>
+<p>Using the norm of a vector, we define the associated unit vector as: <span class="math display">\[\begin{equation}
+\hat{v} \equiv \frac{\mathbf{v}}{|\mathbf{v}|}.
+\end{equation}\]</span></p>
+</section>
+<section id="exercises-inner-product" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-inner-product">Exercises Inner Product</h2>
+<ol type="1">
+<li>Show that left linearity and symmetry imply right linearity.</li>
+<li>Write out the summations in <a href="#eq-prodint" class="quarto-xref">Equation&nbsp;1</a> explicitly and show that the presence of the Kronecker delta can be used to eliminate one summation.</li>
+</ol>
+</section>
+<section id="sec-eprod" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="sec-eprod">Exterior Product</h2>
+<p>The vector analysis developed so far pertains to objects representing points and directions in space. However, other concepts may be necessary to describe physical phenomena, namely planes and volumes. To describe a plane, we need two directions in space, meaning there is only one plane defined by two vectors that are not collinear.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> A volume, on the other hand, requires three vectors that are not coplanar to be defined. The concept needed to define planes and volumes is the tensor product. In this exposition, we provide a simplified discussion to build the reader’s intuition. Loosely speaking, the tensor product of a space <span class="math inline">\(\mathbb{V}\)</span> with itself, <span class="math inline">\(\mathbb{V} \otimes \mathbb{V}\)</span>, is also a vector space (in the sense of <a href="#def-vecspace" class="quarto-xref">Definition&nbsp;3</a>) formed by the basis vectors <span class="math inline">\(\mathbf{e}_i \otimes \mathbf{e}_j\)</span>, <span class="math inline">\(i, j \in \{1, 2, 3\}\)</span>, meaning it is a vector space of dimension nine. However, to describe planes and volumes, we want to exclude cases with collinear vectors. To do so, we restrict ourselves to the antisymmetric subspace of <span class="math inline">\(\mathbb{V} \otimes \mathbb{V}\)</span>, as the antisymmetric product of two collinear vectors is always zero.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Collinear vectors are those that correspond to a simple scalar multiple, i.e., if <span class="math inline">\(\mathbf{v}\)</span> and <span class="math inline">\(\mathbf{u}\)</span> are collinear, there exists a real number <span class="math inline">\(a \neq 0\)</span> such that <span class="math inline">\(\mathbf{v} = a \mathbf{u}\)</span>.</p></div></div><div id="def-exteriorprod" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5 (Exterior Product)</strong></span> The basis of this antisymmetric second-order tensor space is defined as: <span id="eq-exteriorbasis"><span class="math display">\[\mathbf{e}_i \wedge \mathbf{e}_j \in \mathbb{V} \wedge \mathbb{V}, \quad \mathbf{e}_i \wedge \mathbf{e}_j = \left( \mathbf{e}_i \otimes \mathbf{e}_j - \mathbf{e}_j \otimes \mathbf{e}_i \right). \tag{2}\]</span></span></p>
+</div>
+<p>We denote vectors in the space <span class="math inline">\(\mathbb{V} \wedge \mathbb{V}\)</span> as bivectors. In this definition, we use the exterior product, but we will not delve into the mathematical details required for its formal definition. The important properties in our context are: <span id="eq-exteriorprops"><span class="math display">\[\begin{aligned}
+\mathbf{v} \wedge \mathbf{u} &amp;= -\mathbf{u} \wedge \mathbf{v}, \quad (\mathbf{v} + \mathbf{u}) \wedge \mathbf{w} = \mathbf{v} \wedge \mathbf{w} + \mathbf{u} \wedge \mathbf{w}, \quad (a \mathbf{v}) \wedge \mathbf{u} = a (\mathbf{v} \wedge \mathbf{u}), \\
+\left( \mathbf{v} \wedge \mathbf{u} \right) \wedge \mathbf{w} &amp;= \mathbf{v} \wedge \left( \mathbf{u} \wedge \mathbf{w} \right), \quad \mathbf{v}, \mathbf{u}, \mathbf{w} \in \mathbb{V}, \ a \in \mathbb{R}.
+\end{aligned} \tag{3}\]</span></span> It is easy to verify that this space is three-dimensional, meaning there are only three non-zero basis vectors: <span class="math inline">\(\mathbf{e}_1 \wedge \mathbf{e}_2\)</span>, <span class="math inline">\(\mathbf{e}_1 \wedge \mathbf{e}_3\)</span>, and <span class="math inline">\(\mathbf{e}_2 \wedge \mathbf{e}_3\)</span>. Due to this coincidence—that the dimension of the antisymmetric tensor space in three dimensions is also three—J. Willard Gibbs introduced the concept of the vector product in his vector analysis textbook. The idea is to create a linear, bijective map (an isomorphism) between the space <span class="math inline">\(\mathbb{V} \wedge \mathbb{V}\)</span> and the original vector space <span class="math inline">\(\mathbb{V}\)</span>. To do this, note that there is only one vector orthogonal to the plane <span class="math inline">\(\mathbf{e}_1 \wedge \mathbf{e}_2\)</span> (i.e., a vector orthogonal to both vectors used to construct the plane), namely <span class="math inline">\(\mathbf{e}_3\)</span>.</p>
+</section>
+<section id="vector-product" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="vector-product">Vector Product</h2>
+<p>To define our map, we can set <span class="math inline">\(\mathbf{e}_1 \wedge \mathbf{e}_2 \to \mathbf{e}_3\)</span>. However, note that planes can have different signs (e.g., <span class="math inline">\(\mathbf{e}_1 \wedge \mathbf{e}_2 = -\mathbf{e}_2 \wedge \mathbf{e}_1\)</span>). Thus, to determine the map, we need to choose the signs of the planes mapped to vectors. Here, we follow the standard “right-hand rule” convention.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> We choose the sign according to the position of the thumb of the right hand when the first vector of the product is aligned with the palm and the second with the fingertips, i.e., we define the linear map <span class="math inline">\(V: \mathbb{V} \wedge \mathbb{V} \to \mathbb{V}\)</span> as: <span id="eq-vecprod"><span class="math display">\[V(\mathbf{e}_1 \wedge \mathbf{e}_2) = \mathbf{e}_3, \quad V(\mathbf{e}_3 \wedge \mathbf{e}_1) = \mathbf{e}_2, \quad V(\mathbf{e}_2 \wedge \mathbf{e}_3) = \mathbf{e}_1. \tag{4}\]</span></span> Let us now explicitly calculate the exterior product of two vectors and compute its map to the space <span class="math inline">\(\mathbb{V}\)</span>: <span id="eq-wedprod"><span class="math display">\[\begin{aligned}
+\mathbf{v} \wedge \mathbf{u} &amp;= \left( \sum_{i=1}^3 v^i \mathbf{e}_i \right) \wedge \left( \sum_{j=1}^3 u^j \mathbf{e}_j \right), \\
+&amp;= \left( v^1 u^2 - v^2 u^1 \right) \mathbf{e}_1 \wedge \mathbf{e}_2 - \left( v^1 u^3 - v^3 u^1 \right) \mathbf{e}_3 \wedge \mathbf{e}_1 + \left( v^2 u^3 - v^3 u^2 \right) \mathbf{e}_2 \wedge \mathbf{e}_3.
+\end{aligned} \tag{5}\]</span></span> Finally, we define the vector product by applying our isomorphism <span class="math inline">\(V\)</span> to this product: <span id="eq-vprod"><span class="math display">\[\mathbf{v} \times \mathbf{u} \equiv V(\mathbf{v} \wedge \mathbf{u}) = \left( v^2 u^3 - v^3 u^2 \right) \mathbf{e}_1 - \left( v^1 u^3 - v^3 u^1 \right) \mathbf{e}_2 + \left( v^1 u^2 - v^2 u^1 \right) \mathbf{e}_3. \tag{6}\]</span></span> To simplify vector product calculations, we can compute the product of basis vectors and establish a general rule: <span id="eq-levicivita"><span class="math display">\[\mathbf{e}_i \times \mathbf{e}_j = \sum_{k=1}^3 \epsilon_{ijk} \mathbf{e}_k. \tag{7}\]</span></span> The antisymmetry of the vector product shows that the term <span class="math inline">\(\epsilon_{ijk}\)</span>, called the Levi-Civita symbol, must be antisymmetric in its first two indices: <span class="math inline">\(\epsilon_{ijk} = -\epsilon_{jik}\)</span>. Moreover, examining <a href="#eq-vecprod" class="quarto-xref">Equation&nbsp;4</a>, we see that this symbol is also antisymmetric in the last two indices, i.e., <span class="math inline">\(\epsilon_{ijk} = -\epsilon_{ikj}\)</span>, and that <span class="math inline">\(\epsilon_{123} = 1\)</span>. Using the Levi-Civita symbol, we can write <a href="#eq-vprod" class="quarto-xref">Equation&nbsp;6</a> more compactly: <span id="eq-vpe"><span class="math display">\[\mathbf{v} \times \mathbf{u} = \left( \sum_{i=1}^3 v^i \mathbf{e}_i \right) \times \left( \sum_{j=1}^3 u^j \mathbf{e}_j \right) = \sum_{i,j,k=1}^3 \epsilon_{ijk} v^i u^j \mathbf{e}_k. \tag{8}\]</span></span> Not only is this form more compact, but it is also much more convenient for computing more complex products, as we will see later.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Collinear vectors are those that correspond to a simple scalar multiple, i.e., if <span class="math inline">\(\mathbf{v}\)</span> and <span class="math inline">\(\mathbf{u}\)</span> are collinear, there exists a real number <span class="math inline">\(a \neq 0\)</span> such that <span class="math inline">\(\mathbf{v} = a \mathbf{u}\)</span>.</p></div></div><p>For completeness we provide the following definition:</p>
+<div id="def-levicivita" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6 (Levi-Civita Symbol)</strong></span> The Levi-Civita symbol is defined the complete antisymmetric tensor <span class="math inline">\(\epsilon_{ijk}\)</span> such that <span class="math inline">\(\epsilon_{123} = 1\)</span>.</p>
+</div>
+<p>From a geometric perspective, we can understand the meaning of this product by calculating the vector product between the vector <span class="math inline">\(\mathbf{v} = \mathbf{e}_1\)</span> and the vector <span class="math inline">\(\mathbf{u} = a^1 \mathbf{e}_1 + a^2 \mathbf{e}_2\)</span>: <span id="eq-vprodgeom"><span class="math display">\[\mathbf{v} \times \mathbf{u} = a^2 \mathbf{e}_3 = |\mathbf{v}| |\mathbf{u}| \frac{a^2}{\sqrt{(a^1)^2 + (a^2)^2}} \mathbf{e}_3 = |\mathbf{v}| |\mathbf{u}| \sin \theta \mathbf{e}_3. \tag{9}\]</span></span> In other words, the vector product of two vectors results in a vector orthogonal to the plane formed by the two vectors, with a magnitude equal to the area of the parallelogram they form. This makes it clear that the result of a vector product does not have the same physical meaning as an ordinary vector. In our construction, the vector product is actually an antisymmetric tensor product used to represent planes (hence, its magnitude is associated with areas, not lengths). However, in three dimensions, it has the same dimensionality as the original vector space, allowing us to map between these spaces.</p>
+<p>The case of volumes is even simpler. Following the previous logic, we want the composition of three non-coplanar vectors, which corresponds to the antisymmetric tensor product <span class="math inline">\(\mathbb{V} \wedge \mathbb{V} \wedge \mathbb{V}\)</span>, called the space of trivectors. The only basis vector in this space is <span class="math inline">\(\mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3\)</span>; any other combination is either zero or proportional to this vector due to antisymmetry. This shows that this space is one-dimensional. For this reason, we can map this space to <span class="math inline">\(\mathbb{R}\)</span> using the map <span class="math inline">\(\Upsilon: \mathbb{V} \wedge \mathbb{V} \wedge \mathbb{V} \to \mathbb{R}\)</span>, defined by <span class="math inline">\(\Upsilon(\mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3) = 1\)</span>. Like the linear map <span class="math inline">\(V\)</span> used for the vector product, this map also depends on an arbitrary choice of sign. Moreover, the map <span class="math inline">\(\Upsilon\)</span> can be understood as computing the “magnitude” of this trivector, which represents the volume of the parallelepiped formed by the vectors.</p>
+<p>In Gibbs’ vector analysis, instead of using the exterior product, the vector product is directly defined as a map <span class="math inline">\(\times: \mathbb{V} \times \mathbb{V} \to \mathbb{V}\)</span>. However, these vectors do not behave the same as vectors in <span class="math inline">\(\mathbb{V}\)</span> under spatial inversions, i.e., <span class="math inline">\(\mathbf{e}_i \to -\mathbf{e}_i\)</span>. It is easy to see that the vector resulting from a vector product does not change sign in this case. For this reason, such vectors are called pseudovectors. This reveals a disadvantage of Gibbs’ analysis: it avoids introducing tensors and the exterior product but requires distinguishing between different types of vectors, which can lead to confusion in more extensive calculations. Similarly, instead of introducing the space of trivectors, we use the map <span class="math inline">\(\Upsilon\)</span> to map these elements to scalars (i.e., <span class="math inline">\(\mathbb{R}\)</span>). Here, we encounter the same complication as with the vector product: the scalars resulting from <span class="math inline">\(\Upsilon\)</span> do not behave like ordinary elements of <span class="math inline">\(\mathbb{R}\)</span> under spatial inversion, as they change sign and are thus called pseudoscalars.</p>
+</section>
+<section id="exercises-vector-product" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-vector-product">Exercises Vector Product</h2>
+<ol type="1">
+<li>Show that the exterior product of two vectors <span class="math inline">\(\mathbf{v}\)</span> and <span class="math inline">\(a \mathbf{v}\)</span> is zero.</li>
+<li>Explicitly compute <a href="#eq-wedprod" class="quarto-xref">Equation&nbsp;5</a>.</li>
+<li>Explicitly compute <a href="#eq-vpe" class="quarto-xref">Equation&nbsp;8</a>.</li>
+<li>Show that the exterior product of three vectors <span class="math inline">\(\mathbf{v} \wedge \mathbf{u} \wedge \mathbf{w}\)</span> is proportional to <span class="math inline">\(\mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3\)</span>.</li>
+</ol>
+</section>
+<section id="sec-trip" class="level2">
+<h2 class="anchored" data-anchor-id="sec-trip">Relation to the Exterior Product</h2>
+<p>As discussed in the <a href="#def-exteriorprod" class="quarto-xref">Definition&nbsp;5</a>, the exterior product can be used to define mathematical objects that describe planes and volumes. Naturally, <span class="math inline">\(\mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3\)</span> is a first example of a triple product. However, we need to relate this quantity to the tools available, namely the vector product and inner product. Using the definition of the map <span class="math inline">\(V\)</span> given in <a href="#eq-vecprod" class="quarto-xref">Equation&nbsp;4</a>, it is straightforward to see that there is a relation between this map and <span class="math inline">\(\Upsilon\)</span>, i.e., <span id="eq-vu-relations"><span class="math display">\[\begin{aligned}
+\mathbf{e}_1 \cdot V(\mathbf{e}_2 \wedge \mathbf{e}_3) &amp;= \Upsilon(\mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3), \\
+\mathbf{e}_2 \cdot V(\mathbf{e}_3 \wedge \mathbf{e}_1) &amp;= \Upsilon(\mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3), \\
+\mathbf{e}_3 \cdot V(\mathbf{e}_1 \wedge \mathbf{e}_2) &amp;= \Upsilon(\mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3).
+\end{aligned} \tag{10}\]</span></span> In fact, it is not difficult to show that, in general, <span id="eq-VandU"><span class="math display">\[\mathbf{e}_i \cdot V(\mathbf{e}_j \wedge \mathbf{e}_k) = \mathbf{e}_i \cdot (\mathbf{e}_j \times \mathbf{e}_k) = \Upsilon(\mathbf{e}_i \wedge \mathbf{e}_j \wedge \mathbf{e}_k) = \epsilon_{ijk}. \tag{11}\]</span></span> With this result, it is also easy to see that <span id="eq-trieps"><span class="math display">\[\mathbf{e}_i \wedge \mathbf{e}_j \wedge \mathbf{e}_k = \epsilon_{ijk} \mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3. \tag{12}\]</span></span> Using the linearity of the maps <span class="math inline">\(V\)</span> and <span class="math inline">\(\Upsilon\)</span> and the definition of the vector product in <a href="#eq-vprod" class="quarto-xref">Equation&nbsp;6</a>, we have <span id="eq-VandUv"><span class="math display">\[\mathbf{v} \cdot (\mathbf{u} \times \mathbf{w}) = \Upsilon(\mathbf{v} \wedge \mathbf{u} \wedge \mathbf{w}). \tag{13}\]</span></span> This shows that the triple product, where we first compute the vector product of <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{w}\)</span> and then take the inner product of the result with <span class="math inline">\(\mathbf{v}\)</span>, is equivalent to computing the trivector formed by these vectors and then taking its magnitude, resulting in the volume of the parallelepiped they form.</p>
+<p>The second triple product we can consider is the composition of two vector products, i.e., <span class="math display">\[(\mathbf{e}_i \times \mathbf{e}_j) \times \mathbf{e}_k = V\left( V\left( \mathbf{e}_i \wedge \mathbf{e}_j \right) \wedge \mathbf{e}_k \right),\]</span> where we rewrite the vector product in terms of the exterior product on the right-hand side. Using the map in <a href="#eq-vecprod" class="quarto-xref">Equation&nbsp;4</a>, it is straightforward to compute this product for a specific choice of basis elements, for example, <span id="eq-triple-vecprod-examples"><span class="math display">\[\begin{aligned}
+V\left( V\left( \mathbf{e}_1 \wedge \mathbf{e}_2 \right) \wedge \mathbf{e}_1 \right) &amp;= V\left( \mathbf{e}_3 \wedge \mathbf{e}_1 \right) = +\mathbf{e}_2, \\
+V\left( V\left( \mathbf{e}_1 \wedge \mathbf{e}_2 \right) \wedge \mathbf{e}_2 \right) &amp;= V\left( \mathbf{e}_3 \wedge \mathbf{e}_2 \right) = -\mathbf{e}_1, \\
+V\left( V\left( \mathbf{e}_1 \wedge \mathbf{e}_2 \right) \wedge \mathbf{e}_3 \right) &amp;= V\left( \mathbf{e}_3 \wedge \mathbf{e}_3 \right) = \mathbf{0}.
+\end{aligned} \tag{14}\]</span></span> We can also use the result in <a href="#eq-levicivita" class="quarto-xref">Equation&nbsp;7</a> in terms of the Levi-Civita symbol to compute the same product. After a tedious process, we can show that all such products can be represented by <span id="eq-TT"><span class="math display">\[(\mathbf{e}_i \times \mathbf{e}_j) \times \mathbf{e}_k = V\left( V\left( \mathbf{e}_i \wedge \mathbf{e}_j \right) \wedge \mathbf{e}_k \right) = \left( \mathbf{e}_k \cdot \mathbf{e}_i \right) \mathbf{e}_j - \left( \mathbf{e}_k \cdot \mathbf{e}_j \right) \mathbf{e}_i. \tag{15}\]</span></span> Using the linearity of all products involved, it follows naturally that <span id="eq-vprod2"><span class="math display">\[\left( \mathbf{v} \times \mathbf{u} \right) \times \mathbf{w} = V\left( V\left( \mathbf{v} \wedge \mathbf{u} \right) \wedge \mathbf{w} \right) = \left( \mathbf{w} \cdot \mathbf{v} \right) \mathbf{u} - \left( \mathbf{w} \cdot \mathbf{u} \right) \mathbf{v}. \tag{16}\]</span></span> With these rules, we can compute any product involving three or more terms.</p>
+<p>Another useful rule for the upcoming sections comes from applying the inverse of <span class="math inline">\(V\)</span>, defined in <a href="#eq-vecprod" class="quarto-xref">Equation&nbsp;4</a>, i.e., <span id="eq-v-inverse"><span class="math display">\[V^{-1}(\mathbf{e}_3) = \mathbf{e}_1 \wedge \mathbf{e}_2, \quad V^{-1}(\mathbf{e}_2) = \mathbf{e}_3 \wedge \mathbf{e}_1, \quad V^{-1}(\mathbf{e}_1) = \mathbf{e}_2 \wedge \mathbf{e}_3. \tag{17}\]</span></span> It is evident that the exterior product of <span class="math inline">\(V^{-1}(\mathbf{e}_i)\)</span> with <span class="math inline">\(\mathbf{e}_j\)</span> is zero if <span class="math inline">\(i \neq j\)</span>, and it is straightforward to show that it equals <span class="math inline">\(\mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3\)</span> if <span class="math inline">\(i = j\)</span>. Thus, we have <span id="eq-v-inverse-wedge"><span class="math display">\[V^{-1}(\mathbf{e}_i) \wedge \mathbf{e}_j = \mathbf{e}_1 \wedge \mathbf{e}_2 \wedge \mathbf{e}_3 \ \delta_{ij}, \quad \Upsilon\left[ V^{-1}(\mathbf{e}_i) \wedge \mathbf{e}_j \right] = \delta_{ij}. \tag{18}\]</span></span> In terms of vectors, we can easily compute that <span id="eq-UVm1"><span class="math display">\[\Upsilon\left[ V^{-1}(\mathbf{v}) \wedge \mathbf{u} \right] = \mathbf{v} \cdot \mathbf{u}. \tag{19}\]</span></span></p>
+<p>When working in a vector space with both an exterior product and an inner product, it is natural to extend the inner product to compute not only the product between two vectors but also the product between a vector and a bivector or trivector. A possible definition, compatible with the antisymmetry of the exterior product, is <span id="eq-inner-bivector-trivector"><span class="math display">\[\begin{aligned}
+\mathbf{w} \cdot (\mathbf{v} \wedge \mathbf{u}) &amp;= \left( \mathbf{w} \cdot \mathbf{v} \right) \mathbf{u} - \left( \mathbf{w} \cdot \mathbf{u} \right) \mathbf{v}, \\
+\mathbf{w} \cdot (\mathbf{v} \wedge \mathbf{u} \wedge \mathbf{k}) &amp;= \left( \mathbf{w} \cdot \mathbf{v} \right) \mathbf{u} \wedge \mathbf{k} - \left( \mathbf{w} \cdot \mathbf{u} \right) \mathbf{v} \wedge \mathbf{k} + \left( \mathbf{w} \cdot \mathbf{k} \right) \mathbf{v} \wedge \mathbf{u}.
+\end{aligned} \tag{20}\]</span></span> In words, the inner product of a vector with a bivector or trivector is the sum of the inner products of the vector with each constituent vector of the bivector or trivector, with the sign given by <span class="math inline">\((-1)^n\)</span>, where <span class="math inline">\(n\)</span> is the number of vectors to the left of the vector being multiplied. Since any exterior product of more than three vectors in a three-dimensional vector space is zero, we can write <span id="eq-four-wedge-zero"><span class="math display">\[\mathbf{k} \wedge \mathbf{v} \wedge \mathbf{u} \wedge \mathbf{w} = 0. \tag{21}\]</span></span> Taking the inner product of the above expression with the vector <span class="math inline">\(\mathbf{l}\)</span>, we obtain <span id="eq-intdet"><span class="math display">\[\left( \mathbf{l} \cdot \mathbf{k} \right) \mathbf{v} \wedge \mathbf{u} \wedge \mathbf{w} - \left( \mathbf{l} \cdot \mathbf{v} \right) \mathbf{k} \wedge \mathbf{u} \wedge \mathbf{w} + \left( \mathbf{l} \cdot \mathbf{u} \right) \mathbf{k} \wedge \mathbf{v} \wedge \mathbf{w} - \left( \mathbf{l} \cdot \mathbf{w} \right) \mathbf{k} \wedge \mathbf{v} \wedge \mathbf{u} = 0. \tag{22}\]</span></span> The result above can also be obtained directly through a long and tedious process by explicitly writing all vectors in terms of the basis <span class="math inline">\(\mathbf{e}_i\)</span>.</p>
+<p>Note that <a href="#eq-vprod2" class="quarto-xref">Equation&nbsp;16</a> also shows the relation between the map <span class="math inline">\(V\)</span> and the inner product between vectors and bivectors or trivectors, i.e., <span id="eq-v-inner-bivector"><span class="math display">\[V\left( V\left( \mathbf{v} \wedge \mathbf{u} \right) \wedge \mathbf{w} \right) = \mathbf{w} \cdot (\mathbf{v} \wedge \mathbf{u}). \tag{23}\]</span></span> Thus, similar to <a href="#eq-VandU" class="quarto-xref">Equation&nbsp;11</a>, the exterior product has an intimate relation with the map <span class="math inline">\(V\)</span>. This arises because there exists a transformation between vectors, bivectors, and trivectors called the Hodge star map, and both <span class="math inline">\(V\)</span> and <span class="math inline">\(\Upsilon\)</span> are related to the action of this map when applied to bivectors and trivectors, respectively.</p>
+</section>
+<section id="exercises-triple-product" class="level2">
+<h2 class="anchored" data-anchor-id="exercises-triple-product">Exercises Triple Product</h2>
+<ol type="1">
+<li>Show that <a href="#eq-VandU" class="quarto-xref">Equation&nbsp;11</a> and <a href="#eq-TT" class="quarto-xref">Equation&nbsp;15</a> are true.</li>
+<li>Starting from <a href="#eq-VandU" class="quarto-xref">Equation&nbsp;11</a>, prove that <a href="#eq-VandUv" class="quarto-xref">Equation&nbsp;13</a> is valid.</li>
+<li>Using <a href="#eq-TT" class="quarto-xref">Equation&nbsp;15</a>, prove that <a href="#eq-vprod2" class="quarto-xref">Equation&nbsp;16</a> is valid.</li>
+</ol>
+</section>
+<section id="sec-euclid" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="sec-euclid">Euclidean Space</h2>
+<section id="cartesian-coordinates" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="cartesian-coordinates">Cartesian Coordinates</h3>
+<p>With the tools for calculations in <a href="#def-vecspace">vector spaces</a>, we now establish a correspondence between mathematical definitions and the geometric notions of the space we aim to describe. Our definition of <span class="math inline">\(\mathbb{R}^3\)</span> does not specify the meaning of each component of the ordered triple. Assuming the space we inhabit is well-described by Euclidean geometry, we can construct a coordinate system to describe points as follows. First, choose an origin point and three orthogonal directions, <span class="math inline">\(\mathbf{e}_1\)</span>, <span class="math inline">\(\mathbf{e}_2\)</span>, and <span class="math inline">\(\mathbf{e}_3\)</span> (using the right-hand rule to determine <span class="math inline">\(\mathbf{e}_3\)</span>’s direction). For any point <span class="math inline">\(p\)</span>, compute its coordinates by:</p>
+<ol type="1">
+<li>Move along <span class="math inline">\(\mathbf{e}_1\)</span> until aligned with <span class="math inline">\(p\)</span>, measure the distance from the origin, assign a positive sign if moving in the direction of <span class="math inline">\(\mathbf{e}_1\)</span> or negative if opposite, and call this value <span class="math inline">\(x^1\)</span>.</li>
+<li>Move along <span class="math inline">\(\mathbf{e}_2\)</span> until aligned with <span class="math inline">\(p\)</span>, record the distance and sign, obtaining <span class="math inline">\(x^2\)</span>.</li>
+<li>Repeat along <span class="math inline">\(\mathbf{e}_3\)</span> to reach <span class="math inline">\(p\)</span>, computing <span class="math inline">\(x^3\)</span>.</li>
+</ol>
+<div id="def-cartesian" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7 (Cartesian Coordinates)</strong></span> The Cartesian coordinates of a point <span class="math inline">\(p\)</span> are the ordered triple of signed distances traveled in three perpendicular directions from the origin to <span class="math inline">\(p\)</span>. The point is represented by the vector: <span id="eq-position-vector"><span class="math display">\[\mathbf{x} = \sum_{i=1}^3 x^i \mathbf{e}_i \equiv (x^1, x^2, x^3), \quad \text{where} \quad \begin{array}{c}
+\mathbf{e}_1 = (1, 0, 0), \\ \mathbf{e}_2 = (0, 1, 0), \\ \mathbf{e}_3 = (0, 0, 1).
+\end{array} \tag{24}\]</span></span> The equality after the summation uses the representation of vectors as ordered triples in <span class="math inline">\(\mathbb{R}^3\)</span>. We call <span class="math inline">\(\mathbf{x}\)</span> the <strong>position vector</strong>.</p>
+</div>
+<p>Cartesian coordinates are special because operations on position vectors have geometric meaning. For example, the magnitude <span class="math inline">\(|\mathbf{x}|\)</span> represents the distance from the origin to the point at the vector’s tip. The difference between two position vectors, <span class="math inline">\(\mathbf{x} - \mathbf{y}\)</span>, represents the displacement between their points.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The magnitude <span class="math inline">\(|\mathbf{x} - \mathbf{y}|\)</span> is the Euclidean distance between the points. Thus, the inner product, as defined in <a href="#eq-prodint" class="quarto-xref">Equation&nbsp;1</a>, acts as a metric for calculating distances in Euclidean space when applied to position vectors.</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;We implicitly assume displacements are straight lines, equivalent to geodesics in Euclidean space.</p></div></div><p>In contrast, other coordinate systems can label points differently. For example, using spherical coordinates with the same origin and directions, we compute: - The distance <span class="math inline">\(r\)</span> from the origin to <span class="math inline">\(p\)</span>. - The angle <span class="math inline">\(\theta\)</span> between the line from the origin to <span class="math inline">\(p\)</span> and <span class="math inline">\(\mathbf{e}_3\)</span>. - The angle <span class="math inline">\(\varphi\)</span> between the projection of this line onto the <span class="math inline">\(\mathbf{e}_1\)</span>-<span class="math inline">\(\mathbf{e}_2\)</span> plane and <span class="math inline">\(\mathbf{e}_1\)</span>.</p>
+<p>The triple <span class="math inline">\((r, \theta, \varphi)\)</span> is a point in <span class="math inline">\(\mathbb{R}^3\)</span>. While <span class="math inline">\(\mathbb{R}^3\)</span> has a natural vector space structure, allowing addition, subtraction, and magnitude calculations, these operations lack immediate geometric meaning in spherical coordinates. For instance, computing the distance between <span class="math inline">\((r_1, \theta_1, \varphi_1)\)</span> and <span class="math inline">\((r_2, \theta_2, \varphi_2)\)</span> requires parameterizing the straight line between them and evaluating a line integral.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;The line integral, as discussed later, depends on a norm in the tangent vector space, requiring Euclidean geometry to define it.</p></div></div><p>Spherical coordinates highlight how Cartesian coordinates and position vectors simplify geometric calculations. This approach, using Cartesian coordinates as the starting point, will be adopted throughout these notes for geometric information. However, this is a matter of convenience, not necessity; a full differential geometry approach is more complex but possible.</p>
+</section>
+</section>
+<section id="sec-vectan" class="level2">
+<h2 class="anchored" data-anchor-id="sec-vectan">Tangent Vectors</h2>
+<p>Using geometric concepts represented by position vectors, we define the space of tangent vectors. Given a curve described by the position vector <span class="math inline">\(\mathbf{x}(t)\)</span>, the displacement due to a parameter change <span class="math inline">\(t \to t + \delta t\)</span> is: <span id="eq-displacement"><span class="math display">\[\Delta \mathbf{x}(t) \equiv \mathbf{x}(t + \delta t) - \mathbf{x}(t). \tag{25}\]</span></span> As <span class="math inline">\(\delta t \to 0\)</span>, <span class="math inline">\(\Delta \mathbf{x}(t)\)</span> approximates the true displacement along the curve: <span id="eq-tangent-approx"><span class="math display">\[\Delta \mathbf{x}(t) \approx \dot{\mathbf{x}}(t) \delta t, \quad \dot{\mathbf{x}}(t) \equiv \frac{\partial \mathbf{x}(t)}{\partial t}. \tag{26}\]</span></span> We call <span class="math inline">\(\dot{\mathbf{x}}(t)\)</span> the <strong>tangent vector</strong> to the curve <span class="math inline">\(\mathbf{x}(t)\)</span>.</p>
+<div id="def-tangent-space" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8 (Tangent Space)</strong></span> The space of all tangent vectors to curves passing through a point <span class="math inline">\(\mathbf{x}\)</span> is called the <strong>tangent space</strong> at <span class="math inline">\(\mathbf{x}\)</span>, denoted <span class="math inline">\(\mathbb{V}_{\mathbf{x}}\)</span>.</p>
+</div>
+<p>The displacement’s magnitude is: <span id="eq-displacement-magnitude"><span class="math display">\[|\Delta \mathbf{x}(t)| \approx |\dot{\mathbf{x}}| |\delta t|, \quad \text{where} \quad |\dot{\mathbf{x}}| = \sqrt{\dot{\mathbf{x}} \cdot \dot{\mathbf{x}}}. \tag{27}\]</span></span> The inner product, used to measure distances in the position space, is “inherited” by the tangent space <span class="math inline">\(\mathbb{V}_{\mathbf{x}}\)</span>. This allows us to measure infinitesimal displacements from a point by computing the length of tangent vectors. Thus, the inner product defines angles and lengths in both the position space and <span class="math inline">\(\mathbb{V}_{\mathbf{x}}\)</span>.</p>
+<hr>
+<p>Feel free to create issues, ask questions, or suggest improvements in the <a href="https://github.com/vitenti-physics/undergrad">GitHub repository</a>.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
