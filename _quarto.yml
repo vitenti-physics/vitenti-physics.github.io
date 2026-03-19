@@ -6,7 +6,7 @@ website:
   navbar:
     right:
       - icon: github
-        href: https://github.com/vitenti-physics/undergrad
+        href: https://vitenti-physics.github.io/
   cookie-consent:
     type: express
     style: headline
