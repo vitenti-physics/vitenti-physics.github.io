@@ -1,18 +1,29 @@
-# Undergraduate Physics Lecture Notes
+# Physics Lecture Notes
 
-This repository contains comprehensive lecture notes for undergraduate physics courses authored by Sandro Vitenti. The notes include theoretical explanations, derivations, exercises, and links to corresponding recorded lectures.
+This repository contains lecture notes for undergraduate and graduate physics courses. The material includes conceptual discussions, detailed derivations, worked examples, and, where applicable, links to recorded lectures.
 
 ## Structure
 
-- Includes Markdown notes with embedded LaTeX equations
-- Designed for use with [Quarto](https://quarto.org/) for easy rendering and publishing
-- Published online at [Undergrad Pages](https://vitenti-physics.github.io/undergrad/)
+* Organized by course under the `courses/` directory
+* Written in Quarto (`.qmd`) with embedded LaTeX
+* Designed for structured navigation and online publishing
+
+The site is built using [Quarto](https://quarto.org/) and published at:
+https://vitenti-physics.github.io/
+
+## Contributing
+
+Issues and contributions are welcome. You can:
+
+* Report errors or unclear passages
+* Suggest improvements or additional material
+* Submit pull requests with corrections or extensions
 
 ## License
 
-This work is licensed under the  
+This work is licensed under the
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
-## Contact
+## Author
 
 Sandro Vitenti
