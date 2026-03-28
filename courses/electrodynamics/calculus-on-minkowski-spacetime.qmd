@@ -1,0 +1,184 @@
+---
+title: "Calculus on Minkowski Spacetime"
+---
+
+{{< include /_macros.qmd >}}
+
+## Scope
+
+These notes continue the geometry review and introduce the calculus machinery
+used in covariant electrodynamics:
+
+- timelike fields and curve parametrization,
+- observer-dependent spacetime decomposition,
+- exterior derivative on differential forms,
+- geometric meaning of Stokes-type integral relations.
+
+The goal is to connect tensor calculus to the integral and differential forms of
+Maxwell's equations.
+
+## Curves, Fields, and Parametrization
+
+A useful distinction is:
+
+- a **curve** $x^\mu(\lambda)$ with tangent $\dd x^\mu/\dd\lambda$,
+- a **vector field** $V^\mu(x)$ defined at each spacetime point.
+
+A field generates integral curves through
+$$
+\frac{\dd x^\mu}{\dd\lambda} = V^\mu(x(\lambda)).
+$$
+
+For timelike curves parametrized by proper time $\tau$,
+$$
+g_{\mu\nu}\,\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}=-1.
+$$
+This normalization fixes the affine scale of the parameter.
+
+::: {.callout-note}
+Using coordinate time as parameter is often convenient, but proper-time
+parametrization keeps normalization and covariance explicit.
+:::
+
+## Covariant Observer Split
+
+Let $u^\mu$ be a unit timelike observer field:
+$$
+g_{\mu\nu}u^\mu u^\nu=-1.
+$$
+Define the spatial projector
+$$
+h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu,
+$$
+with
+$$
+h_{\mu\nu}u^\nu=0,
+\qquad
+h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
+$$
+
+For another timelike unit vector $v^\mu$, write
+$$
+v^\mu = \bar v^\mu - (u\cdot v)u^\mu,
+\qquad
+\bar v^\mu := h^\mu{}_{\nu}v^\nu.
+$$
+The invariant products are naturally expressed with rapidity $\xi$:
+$$
+-(u\cdot v)=\cosh\xi,
+\qquad
+\sqrt{h_{\mu\nu}v^\mu v^\nu}=\sinh\xi.
+$$
+In standard relative-speed language,
+$$
+\operatorname{tanh}\xi=\frac{v}{c},
+\qquad
+\cosh\xi=\gamma.
+$$
+
+This is the coordinate-free content of Lorentz boosts.
+
+## Electromagnetic Decomposition Relative to an Observer
+
+Given the antisymmetric Faraday tensor $F_{\mu\nu}$, define the observer-measured
+spatial electric field
+$$
+E_\mu := F_{\mu\nu}u^\nu,
+\qquad
+E_\mu u^\mu=0.
+$$
+
+Define the spatial magnetic two-form
+$$
+B_{\alpha\beta} := h_{\alpha}{}^{\mu}h_{\beta}{}^{\nu}F_{\mu\nu}.
+$$
+In $3+1$ dimensions, this has three independent components.
+
+The reconstruction of $F_{\mu\nu}$ from observer data is
+$$
+F_{\alpha\beta}
+= B_{\alpha\beta} + u_\alpha E_\beta - u_\beta E_\alpha.
+$$
+
+This expression makes frame dependence explicit: different observers produce
+different $(E,B)$ splits of the same spacetime tensor $F$.
+
+## Exterior Derivative and Differential Forms
+
+For a scalar $f$, the exterior derivative is the one-form
+$$
+\dd f = (\partial_\mu f)\,\dd x^\mu.
+$$
+
+For a one-form $\omega=\omega_\mu\dd x^\mu$,
+$$
+\dd\omega = (\partial_\nu\omega_\mu)\,\dd x^\nu\wedge\dd x^\mu.
+$$
+
+In general, $\dd$ raises form degree by one and satisfies
+$$
+\dd^2=0,
+$$
+assuming smooth fields so mixed partial derivatives commute.
+
+## Integral Meaning: From Boundaries to Interiors
+
+The one-dimensional identity
+$$
+\int_a^b \dd f = f(b)-f(a)
+$$
+is the prototype of Stokes' theorem.
+
+For higher-degree forms, the geometric relation is
+$$
+\int_{\partial\Omega}\omega = \int_\Omega \dd\omega.
+$$
+
+In familiar vector-calculus language:
+
+- line integral around a closed curve corresponds to the integral of $\dd\omega$
+  over the enclosed surface,
+- flux through a closed surface corresponds to the integral of the exterior
+  derivative of the associated two-form over the volume.
+
+The key point is geometric: the theorem is independent of chosen coordinates;
+parametrizations affect Jacobians and basis vectors in compensating ways.
+
+## Electric and Magnetic Geometric Character
+
+A useful distinction:
+
+- electric field is naturally represented by a spatial one-form (or vector after
+  metric identification),
+- magnetic field is naturally area-like (a spatial two-form).
+
+The usual magnetic pseudovector in three dimensions is a convenient dual
+representation, not the most fundamental geometric object.
+
+## Why This Matters for Maxwell Theory
+
+Covariant electrodynamics becomes conceptually cleaner when written in forms:
+
+- geometric identities from $\dd^2=0$ generate the homogeneous Maxwell sector,
+- dynamics enters through source equations on the inhomogeneous sector,
+- observer-dependent electric/magnetic fields are obtained by projection,
+  not by introducing separate fundamental fields.
+
+This structure clarifies which statements are purely geometric and which depend
+on physical source content.
+
+::: {.callout-exercise}
+### Exercises
+
+1. Let $u^\mu$ be unit timelike and $h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu$. Show
+   explicitly that $h^\mu{}_{\nu}$ is a projector.
+
+2. For $E_\mu=F_{\mu\nu}u^\nu$, prove $E_\mu u^\mu=0$ using antisymmetry of
+   $F_{\mu\nu}$.
+
+3. Starting from $\omega=\omega_\mu\dd x^\mu$, compute $\dd\omega$ and verify
+   that $\dd^2\omega=0$ in flat coordinates.
+
+4. Explain how $\int_{\partial\Omega}\omega=\int_\Omega\dd\omega$ reproduces
+   Green/Stokes/divergence theorems in dimensions 2 and 3.
+:::

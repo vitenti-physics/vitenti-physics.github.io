@@ -10,6 +10,7 @@ These are the lecture notes and problem sets for the Electrodynamics course. The
 ## Course Outline
 
 - [Geometry Review for Electrodynamics](geometry-review.qmd)
+- [Calculus on Minkowski Spacetime](calculus-on-minkowski-spacetime.qmd)
 
 {{< include /_footer.qmd >}}
 

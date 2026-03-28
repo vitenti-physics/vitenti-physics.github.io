@@ -66,6 +66,8 @@ website:
                   href: courses/electrodynamics/index.qmd
                 - text: "Geometry Review for Electrodynamics"
                   href: courses/electrodynamics/geometry-review.qmd
+                - text: "Calculus on Minkowski Spacetime"
+                  href: courses/electrodynamics/calculus-on-minkowski-spacetime.qmd
 format:
   html:
     theme:
