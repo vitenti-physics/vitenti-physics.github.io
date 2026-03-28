@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Geometry Review for Electrodynamics – Physics Lecture Notes</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,19 +37,18 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-be4a2bdc124f408008a15d933e72783c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-a6aba052ae5916fd345cfa5ffdf7ef93.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-be4a2bdc124f408008a15d933e72783c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-29a1aa07a51191aab823739aa3f2c2cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9c19d1b7fd0c79a624409cb58f05bec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-29a1aa07a51191aab823739aa3f2c2cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,7 +105,7 @@ cookieconsent.run({
   
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -518,6 +520,12 @@ window.Quarto = {
  <span class="menu-text">Geometry Review for Electrodynamics</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/calculus-on-minkowski-spacetime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calculus on Minkowski Spacetime</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -532,45 +540,70 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#conventions-and-notation" id="toc-conventions-and-notation" class="nav-link active" data-scroll-target="#conventions-and-notation">Conventions and Notation</a></li>
-  <li><a href="#relativistic-framework" id="toc-relativistic-framework" class="nav-link" data-scroll-target="#relativistic-framework">Relativistic Framework</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#why-geometry-appears-in-field-theory" id="toc-why-geometry-appears-in-field-theory" class="nav-link" data-scroll-target="#why-geometry-appears-in-field-theory">Why Geometry Appears in Field Theory</a></li>
+  <li><a href="#metric-and-the-notion-of-distance" id="toc-metric-and-the-notion-of-distance" class="nav-link" data-scroll-target="#metric-and-the-notion-of-distance">Metric and the Notion of Distance</a>
   <ul class="collapse">
-  <li><a href="#motivation-and-space-time-structure" id="toc-motivation-and-space-time-structure" class="nav-link" data-scroll-target="#motivation-and-space-time-structure">Motivation and Space-Time Structure</a></li>
-  <li><a href="#minkowski-space" id="toc-minkowski-space" class="nav-link" data-scroll-target="#minkowski-space">Minkowski Space</a></li>
-  <li><a href="#euclidean-comparison" id="toc-euclidean-comparison" class="nav-link" data-scroll-target="#euclidean-comparison">Euclidean Comparison</a></li>
-  <li><a href="#minkowski-geometry-and-causality" id="toc-minkowski-geometry-and-causality" class="nav-link" data-scroll-target="#minkowski-geometry-and-causality">Minkowski Geometry and Causality</a></li>
-  <li><a href="#proper-time" id="toc-proper-time" class="nav-link" data-scroll-target="#proper-time">Proper Time</a></li>
-  <li><a href="#lorentz-transformations" id="toc-lorentz-transformations" class="nav-link" data-scroll-target="#lorentz-transformations">Lorentz Transformations</a></li>
-  <li><a href="#four-vectors" id="toc-four-vectors" class="nav-link" data-scroll-target="#four-vectors">Four-Vectors</a></li>
-  <li><a href="#minkowski-inner-product-and-inequalities" id="toc-minkowski-inner-product-and-inequalities" class="nav-link" data-scroll-target="#minkowski-inner-product-and-inequalities">Minkowski Inner Product and Inequalities</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
-  <li><a href="#tensor-and-differential-structure" id="toc-tensor-and-differential-structure" class="nav-link" data-scroll-target="#tensor-and-differential-structure">Tensor and Differential Structure</a>
+  <li><a href="#vectors-and-the-metric" id="toc-vectors-and-the-metric" class="nav-link" data-scroll-target="#vectors-and-the-metric">Vectors and the Metric</a>
   <ul class="collapse">
-  <li><a href="#index-notation" id="toc-index-notation" class="nav-link" data-scroll-target="#index-notation">Index Notation</a></li>
-  <li><a href="#vectors-and-covectors" id="toc-vectors-and-covectors" class="nav-link" data-scroll-target="#vectors-and-covectors">Vectors and Covectors</a></li>
-  <li><a href="#metric-as-isomorphism" id="toc-metric-as-isomorphism" class="nav-link" data-scroll-target="#metric-as-isomorphism">Metric as Isomorphism</a></li>
-  <li><a href="#tensors" id="toc-tensors" class="nav-link" data-scroll-target="#tensors">Tensors</a></li>
-  <li><a href="#differential-operators" id="toc-differential-operators" class="nav-link" data-scroll-target="#differential-operators">Differential Operators</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a></li>
   </ul></li>
-  <li><a href="#differential-forms-and-electrodynamics" id="toc-differential-forms-and-electrodynamics" class="nav-link" data-scroll-target="#differential-forms-and-electrodynamics">Differential Forms and Electrodynamics</a>
+  <li><a href="#points-vectors-and-tangent-spaces" id="toc-points-vectors-and-tangent-spaces" class="nav-link" data-scroll-target="#points-vectors-and-tangent-spaces">Points, Vectors, and Tangent Spaces</a>
   <ul class="collapse">
-  <li><a href="#differential-forms" id="toc-differential-forms" class="nav-link" data-scroll-target="#differential-forms">Differential Forms</a></li>
-  <li><a href="#electromagnetic-2-form" id="toc-electromagnetic-2-form" class="nav-link" data-scroll-target="#electromagnetic-2-form">Electromagnetic 2-Form</a></li>
-  <li><a href="#hodge-dual" id="toc-hodge-dual" class="nav-link" data-scroll-target="#hodge-dual">Hodge Dual</a></li>
-  <li><a href="#integration-and-orientation" id="toc-integration-and-orientation" class="nav-link" data-scroll-target="#integration-and-orientation">Integration and Orientation</a></li>
-  <li><a href="#stokes-theorem" id="toc-stokes-theorem" class="nav-link" data-scroll-target="#stokes-theorem">Stokes’ Theorem</a></li>
-  <li><a href="#covariant-electrodynamics" id="toc-covariant-electrodynamics" class="nav-link" data-scroll-target="#covariant-electrodynamics">Covariant Electrodynamics</a></li>
-  <li><a href="#maxwell-equations" id="toc-maxwell-equations" class="nav-link" data-scroll-target="#maxwell-equations">Maxwell Equations</a></li>
-  <li><a href="#integral-laws" id="toc-integral-laws" class="nav-link" data-scroll-target="#integral-laws">Integral Laws</a></li>
-  <li><a href="#charge-conservation" id="toc-charge-conservation" class="nav-link" data-scroll-target="#charge-conservation">Charge Conservation</a></li>
+  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2">Exercises</a></li>
   </ul></li>
-  <li><a href="#structural-summary" id="toc-structural-summary" class="nav-link" data-scroll-target="#structural-summary">Structural Summary</a>
+  <li><a href="#covectors-and-the-dual-space" id="toc-covectors-and-the-dual-space" class="nav-link" data-scroll-target="#covectors-and-the-dual-space">Covectors and the Dual Space</a>
   <ul class="collapse">
-  <li><a href="#geometric-chain" id="toc-geometric-chain" class="nav-link" data-scroll-target="#geometric-chain">Geometric Chain</a></li>
+  <li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3">Exercises</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <li><a href="#tensor-products" id="toc-tensor-products" class="nav-link" data-scroll-target="#tensor-products">Tensor Products</a>
   <ul class="collapse">
-  <li><a href="#conceptual-and-computational" id="toc-conceptual-and-computational" class="nav-link" data-scroll-target="#conceptual-and-computational">Conceptual and Computational</a></li>
+  <li><a href="#exercises-4" id="toc-exercises-4" class="nav-link" data-scroll-target="#exercises-4">Exercises</a></li>
+  </ul></li>
+  <li><a href="#symmetric-and-antisymmetric-tensors" id="toc-symmetric-and-antisymmetric-tensors" class="nav-link" data-scroll-target="#symmetric-and-antisymmetric-tensors">Symmetric and Antisymmetric Tensors</a>
+  <ul class="collapse">
+  <li><a href="#exercises-5" id="toc-exercises-5" class="nav-link" data-scroll-target="#exercises-5">Exercises</a></li>
+  <li><a href="#geometric-interpretation" id="toc-geometric-interpretation" class="nav-link" data-scroll-target="#geometric-interpretation">Geometric interpretation</a></li>
+  </ul></li>
+  <li><a href="#antisymmetric-products-and-linear-independence" id="toc-antisymmetric-products-and-linear-independence" class="nav-link" data-scroll-target="#antisymmetric-products-and-linear-independence">Antisymmetric Products and Linear Independence</a>
+  <ul class="collapse">
+  <li><a href="#exercises-6" id="toc-exercises-6" class="nav-link" data-scroll-target="#exercises-6">Exercises</a></li>
+  </ul></li>
+  <li><a href="#differential-forms-and-integration" id="toc-differential-forms-and-integration" class="nav-link" data-scroll-target="#differential-forms-and-integration">Differential Forms and Integration</a></li>
+  <li><a href="#the-exterior-derivative" id="toc-the-exterior-derivative" class="nav-link" data-scroll-target="#the-exterior-derivative">The Exterior Derivative</a>
+  <ul class="collapse">
+  <li><a href="#exercises-7" id="toc-exercises-7" class="nav-link" data-scroll-target="#exercises-7">Exercises</a></li>
+  </ul></li>
+  <li><a href="#the-exterior-derivative-and-stokes-theorem" id="toc-the-exterior-derivative-and-stokes-theorem" class="nav-link" data-scroll-target="#the-exterior-derivative-and-stokes-theorem">The Exterior Derivative and Stokes’ Theorem</a>
+  <ul class="collapse">
+  <li><a href="#exercises-8" id="toc-exercises-8" class="nav-link" data-scroll-target="#exercises-8">Exercises</a></li>
+  </ul></li>
+  <li><a href="#tensor-representation-of-the-metric" id="toc-tensor-representation-of-the-metric" class="nav-link" data-scroll-target="#tensor-representation-of-the-metric">Tensor Representation of the Metric</a>
+  <ul class="collapse">
+  <li><a href="#exercises-9" id="toc-exercises-9" class="nav-link" data-scroll-target="#exercises-9">Exercises</a></li>
+  </ul></li>
+  <li><a href="#tensor-products-and-linear-combinations" id="toc-tensor-products-and-linear-combinations" class="nav-link" data-scroll-target="#tensor-products-and-linear-combinations">Tensor Products and Linear Combinations</a>
+  <ul class="collapse">
+  <li><a href="#exercises-10" id="toc-exercises-10" class="nav-link" data-scroll-target="#exercises-10">Exercises</a></li>
+  </ul></li>
+  <li><a href="#metric-as-a-map-v-to-v" id="toc-metric-as-a-map-v-to-v" class="nav-link" data-scroll-target="#metric-as-a-map-v-to-v">Metric as a Map <span class="math inline">\(V \to V^*\)</span></a>
+  <ul class="collapse">
+  <li><a href="#exercises-11" id="toc-exercises-11" class="nav-link" data-scroll-target="#exercises-11">Exercises</a></li>
+  </ul></li>
+  <li><a href="#geometric-meaning-of-index-lowering" id="toc-geometric-meaning-of-index-lowering" class="nav-link" data-scroll-target="#geometric-meaning-of-index-lowering">Geometric Meaning of Index Lowering</a>
+  <ul class="collapse">
+  <li><a href="#exercises-12" id="toc-exercises-12" class="nav-link" data-scroll-target="#exercises-12">Exercises</a></li>
+  </ul></li>
+  <li><a href="#gradients-as-covectors" id="toc-gradients-as-covectors" class="nav-link" data-scroll-target="#gradients-as-covectors">Gradients as Covectors</a>
+  <ul class="collapse">
+  <li><a href="#exercises-13" id="toc-exercises-13" class="nav-link" data-scroll-target="#exercises-13">Exercises</a></li>
+  </ul></li>
+  <li><a href="#coordinate-dependence-of-the-metric" id="toc-coordinate-dependence-of-the-metric" class="nav-link" data-scroll-target="#coordinate-dependence-of-the-metric">Coordinate Dependence of the Metric</a></li>
+  <li><a href="#covariant-observer-decomposition-and-rapidity" id="toc-covariant-observer-decomposition-and-rapidity" class="nav-link" data-scroll-target="#covariant-observer-decomposition-and-rapidity">Covariant Observer Decomposition and Rapidity</a>
+  <ul class="collapse">
+  <li><a href="#exercises-14" id="toc-exercises-14" class="nav-link" data-scroll-target="#exercises-14">Exercises</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="geometry-review.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -604,359 +637,566 @@ window.Quarto = {
 </header>
 
 
-<section id="conventions-and-notation" class="level2">
-<h2 class="anchored" data-anchor-id="conventions-and-notation">Conventions and Notation</h2>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Electromagnetism can be understood, to a large extent, as a geometric theory.<br>
+Most of its structure follows directly from the geometry of spacetime, together with the existence of electric charge as a physical source.</p>
+<p>This observation is important because the same geometric structures appear in many other field theories. Once the underlying geometry is understood, much of the formal structure of these theories becomes natural.</p>
+<p>In this course we will therefore begin by reviewing the geometric framework in which classical field theories are formulated. The goal is to introduce the mathematical language needed to express the equations of electromagnetism in a coordinate–independent way.</p>
+<p>The central idea is that physical laws should not depend on the particular coordinate system used to describe spacetime. Instead, they should be expressed in terms of geometric objects, such as vectors, covectors, and tensors, that are defined independently of coordinates.</p>
+<p>Electromagnetism provides a particularly clear example of this principle. When formulated geometrically, Maxwell’s equations take a very compact form and their structure becomes closely related to properties of spacetime itself.</p>
+<p>For this reason we begin the course with a review of the geometry of spacetime and the basic algebraic structures needed to describe fields.</p>
+</section>
+<section id="why-geometry-appears-in-field-theory" class="level2">
+<h2 class="anchored" data-anchor-id="why-geometry-appears-in-field-theory">Why Geometry Appears in Field Theory</h2>
+<p>A classical field theory describes physical quantities that are defined at every point of spacetime. Examples include the electromagnetic field, temperature in a material, or the velocity field of a fluid.</p>
+<p>Because fields are defined over spacetime, their mathematical description necessarily involves the geometric structure of spacetime itself. The equations that govern these fields must be formulated in a way that is independent of the choice of coordinates used to describe spacetime.</p>
+<p>This requirement leads naturally to the use of geometric objects such as vectors, covectors, and tensors. These objects have well-defined transformation properties under changes of coordinates, which guarantees that physical laws retain the same form for all observers.</p>
+<p>In practice, this means that the fundamental equations of a field theory should be written in terms of quantities that are defined geometrically rather than in terms of the components associated with a particular coordinate system.</p>
+<p>Electromagnetism provides a clear illustration of this idea. When expressed in the usual three–vector notation, Maxwell’s equations appear as four separate equations involving electric and magnetic fields. However, when written using tensorial objects defined on spacetime, these equations combine into a much simpler and more symmetric structure.</p>
+<p>For this reason, before studying the electromagnetic field itself, we first review the geometric framework that allows us to express physical laws in a coordinate–independent way.</p>
+</section>
+<section id="metric-and-the-notion-of-distance" class="level2">
+<h2 class="anchored" data-anchor-id="metric-and-the-notion-of-distance">Metric and the Notion of Distance</h2>
+<p>In physics we constantly perform measurements. For example, we measure the distance between two points in space or the elapsed time between two events. To describe these measurements mathematically we need a rule that tells us how to assign lengths to displacements between nearby points.</p>
+<p>This rule is provided by the <strong>metric</strong>.</p>
+<p>Mathematically, a metric is a bilinear map that assigns a number to a pair of vectors. In particular, given a displacement vector <span class="math inline">\(v\)</span>, the metric defines its squared length through <span class="math display">\[
+g(v,v).
+\]</span></p>
+<p>In Euclidean space this rule reproduces the familiar Pythagorean expression. If a displacement has components <span class="math inline">\((\mathrm{d}x,\mathrm{d}y)\)</span>, the squared length is <span class="math display">\[
+\mathrm{d}s^2 = \mathrm{d}x^2 + \mathrm{d}y^2 .
+\]</span></p>
+<p>In spacetime the situation is different. Experiments in special relativity show that the combination of space and time intervals that remains invariant under changes of inertial reference frames is <span class="math display">\[
+\mathrm{d}s^2 = -c^2 \mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2 .
+\]</span></p>
+<p>This expression defines the <strong>Minkowski metric</strong>.</p>
+<p>A crucial feature is that the time direction appears with a sign opposite to the spatial directions. The pattern of signs in the metric is called its <strong>signature</strong>. In this convention the signature is <span class="math display">\[
+(-,+,+,+).
+\]</span></p>
+<p>This difference in sign is responsible for several distinctive features of relativistic spacetime, including the classification of intervals into timelike, spacelike, and null.</p>
+<p>In coordinates, the Minkowski metric can be represented by the matrix <span class="math display">\[
+\eta_{\mu\nu} =
+\begin{pmatrix}
+-1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1
+\end{pmatrix}.
+\]</span></p>
+<p>Using this metric, the spacetime interval between two infinitesimally separated events can be written compactly as <span class="math display">\[
+\mathrm{d}s^2 = \eta_{\mu\nu} \, \mathrm{d}x^\mu \mathrm{d}x^\nu .
+\]</span></p>
+<p>Unlike the Euclidean distance, this quantity can be positive, negative, or zero. These three possibilities correspond to different types of separations:</p>
 <ul>
-<li>Signature: <span class="math inline">\((-,+,+,+)\)</span> (convention)<br>
-</li>
-<li>Greek indices: <span class="math inline">\(\mu,\nu = 0,1,2,3\)</span><br>
-</li>
-<li>Einstein summation implied<br>
-</li>
-<li>Time coordinate: <span class="math inline">\(x^0 = ct\)</span></li>
+<li><strong>timelike:</strong> <span class="math inline">\(\mathrm{d}s^2 &lt; 0\)</span></li>
+<li><strong>spacelike:</strong> <span class="math inline">\(\mathrm{d}s^2 &gt; 0\)</span></li>
+<li><strong>null (lightlike):</strong> <span class="math inline">\(\mathrm{d}s^2 = 0\)</span></li>
 </ul>
-<p>Metric: <span class="math display">\[
-\eta_{\mu\nu} = \mathrm{diag}(-1,+1,+1,+1)
-\]</span></p>
-<p>The choice of signature is a convention: one may equivalently use <span class="math inline">\((+,-,-,-)\)</span> provided it is applied consistently. Physical predictions are independent of this choice.</p>
-<p>Instead of setting <span class="math inline">\(c=1\)</span>, we define the time coordinate as <span class="math inline">\(x^0 = ct\)</span>, so that all components of <span class="math inline">\(x^\mu\)</span> have dimensions of length. In this formulation, <span class="math display">\[
-\mathrm{d}s^2 = -c^2 \mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2
-\]</span> which is algebraically equivalent to working in units with <span class="math inline">\(c=1\)</span>. The two approaches differ only by a rescaling of the time coordinate.</p>
-</section>
-<section id="relativistic-framework" class="level2">
-<h2 class="anchored" data-anchor-id="relativistic-framework">Relativistic Framework</h2>
-<section id="motivation-and-space-time-structure" class="level3">
-<h3 class="anchored" data-anchor-id="motivation-and-space-time-structure">Motivation and Space-Time Structure</h3>
-<ul>
-<li>Postulates of special relativity<br>
-</li>
-<li>Lorentz invariance<br>
-</li>
-<li>Space-time as a unified geometric object<br>
-</li>
-<li>Worldlines</li>
-</ul>
-<p>The postulates (constancy of <span class="math inline">\(c\)</span> and equivalence of inertial frames) require a unified treatment of space and time. Particle histories are described by worldlines, making causal relations explicit.</p>
-<p>Lorentz transformations: <span class="math display">\[
-x'^{\mu} = \Lambda^{\mu}_{\ \nu} x^{\nu}
-\]</span></p>
-<hr>
-</section>
-<section id="minkowski-space" class="level3">
-<h3 class="anchored" data-anchor-id="minkowski-space">Minkowski Space</h3>
-<ul>
-<li>Vector space <span class="math inline">\(\mathbb{R}^4\)</span> with indefinite metric</li>
-</ul>
-<p>Interval: <span class="math display">\[
-\mathrm{d}s^2 = \eta_{\mu\nu} \mathrm{d}x^{\mu} \mathrm{d}x^{\nu}
-\]</span></p>
-<p>Invariance: <span class="math display">\[
-\mathrm{d}s'^2 = \mathrm{d}s^2
-\]</span></p>
-<p>The invariant interval replaces separate notions of spatial distance and time separation.</p>
-<hr>
-</section>
-<section id="euclidean-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="euclidean-comparison">Euclidean Comparison</h3>
-<ul>
-<li>Positive-definite inner product</li>
-</ul>
-<p><span class="math display">\[
-\|\mathbf{a}\|^2 = \mathbf{a}\cdot \mathbf{a}
-\]</span></p>
-<p>Inequalities: <span class="math display">\[
-|\mathbf{a}\cdot \mathbf{b}| \le \|\mathbf{a}\|\|\mathbf{b}\|, \quad
-\|\mathbf{a}+\mathbf{b}\| \le \|\mathbf{a}\| + \|\mathbf{b}\|
-\]</span></p>
-<p>These properties rely on positive definiteness and do not directly extend to Minkowski space.</p>
-<hr>
-</section>
-<section id="minkowski-geometry-and-causality" class="level3">
-<h3 class="anchored" data-anchor-id="minkowski-geometry-and-causality">Minkowski Geometry and Causality</h3>
-<p>Norm: <span class="math display">\[
-A^{\mu} A_{\mu} = \eta_{\mu\nu} A^{\mu} A^{\nu}
-\]</span></p>
-<p>Classification:</p>
-<ul>
-<li><span class="math inline">\(A^{\mu} A_{\mu} &lt; 0\)</span> — timelike<br>
-</li>
-<li><span class="math inline">\(A^{\mu} A_{\mu} &gt; 0\)</span> — spacelike<br>
-</li>
-<li><span class="math inline">\(A^{\mu} A_{\mu} = 0\)</span> — null</li>
-</ul>
-<p>Light cone: <span class="math display">\[
-ds^2 = 0
-\]</span></p>
-<p>Regions:</p>
-<ul>
-<li>future: <span class="math inline">\(x^0 &gt; 0\)</span>, <span class="math inline">\(ds^2 &lt; 0\)</span><br>
-</li>
-<li>past: <span class="math inline">\(x^0 &lt; 0\)</span>, <span class="math inline">\(ds^2 &lt; 0\)</span><br>
-</li>
-<li>spacelike: <span class="math inline">\(ds^2 &gt; 0\)</span></li>
-</ul>
-<p>Timelike separation allows causal influence; spacelike does not.</p>
-<hr>
-</section>
-<section id="proper-time" class="level3">
-<h3 class="anchored" data-anchor-id="proper-time">Proper Time</h3>
-<p>Definition: <span class="math display">\[
-\mathrm{d}\tau^2 = -\mathrm{d}s^2
-\]</span></p>
-<p>Worldline: <span class="math display">\[
-    au = \int \sqrt{-\eta_{\mu\nu} \mathrm{d}x^{\mu} \mathrm{d}x^{\nu}}
-\]</span></p>
-<p>Proper time is invariant and depends on the trajectory.</p>
-<hr>
-</section>
-<section id="lorentz-transformations" class="level3">
-<h3 class="anchored" data-anchor-id="lorentz-transformations">Lorentz Transformations</h3>
-<p>Definition: <span class="math display">\[
-x'^{\mu} = \Lambda^{\mu}_{\ \nu} x^{\nu}
-\]</span></p>
-<p>Constraint: <span class="math display">\[
-\eta_{\alpha\beta}\Lambda^{\alpha}_{\ \mu}\Lambda^{\beta}_{\ \nu} = \eta_{\mu\nu}
-\]</span></p>
-<p>Boost (along <span class="math inline">\(x\)</span>): <span class="math display">\[
-\begin{aligned}
-t' &amp;= \gamma (t - vx) \\
-x' &amp;= \gamma (x - vt)
-\end{aligned}
-\]</span></p>
-<hr>
-</section>
-<section id="four-vectors" class="level3">
-<h3 class="anchored" data-anchor-id="four-vectors">Four-Vectors</h3>
-<p>Position: <span class="math display">\[
-x^{\mu} = (t,x,y,z)
-\]</span></p>
-<p>Four-velocity: <span class="math display">\[
-u^{\mu} = \frac{dx^{\mu}}{d\tau}, \quad u^{\mu}u_{\mu} = -1
-\]</span></p>
-<p>Momentum: <span class="math display">\[
-p^{\mu} = m u^{\mu}
-\]</span></p>
-<hr>
-</section>
-<section id="minkowski-inner-product-and-inequalities" class="level3">
-<h3 class="anchored" data-anchor-id="minkowski-inner-product-and-inequalities">Minkowski Inner Product and Inequalities</h3>
-<p>Definition: <span class="math display">\[
-A^{\mu} B_{\mu} = \eta_{\mu\nu} A^{\mu} B^{\nu}
-\]</span></p>
-<p>Lorentz invariant.</p>
-<p>For timelike, same time orientation: <span class="math display">\[
-(A^{\mu} B_{\mu})^2 \ge (A^{\mu} A_{\mu})(B^{\nu} B_{\nu})
-\]</span></p>
-<p>Inequalities require causal restrictions.</p>
-<hr>
-</section>
-</section>
-<section id="tensor-and-differential-structure" class="level2">
-<h2 class="anchored" data-anchor-id="tensor-and-differential-structure">Tensor and Differential Structure</h2>
-<section id="index-notation" class="level3">
-<h3 class="anchored" data-anchor-id="index-notation">Index Notation</h3>
-<ul>
-<li>Contravariant: <span class="math inline">\(A^{\mu}\)</span><br>
-</li>
-<li>Covariant: <span class="math inline">\(A_{\mu}\)</span></li>
-</ul>
-<p>Lowering: <span class="math display">\[
-A_{\mu} = \eta_{\mu\nu} A^{\nu}
-\]</span></p>
-<p>Raising: <span class="math display">\[
-A^{\mu} = \eta^{\mu\nu} A_{\nu}
-\]</span></p>
-<hr>
-</section>
-<section id="vectors-and-covectors" class="level3">
-<h3 class="anchored" data-anchor-id="vectors-and-covectors">Vectors and Covectors</h3>
-<ul>
-<li>Tangent space: <span class="math inline">\(V\)</span><br>
-</li>
-<li>Dual space: <span class="math inline">\(V^*\)</span></li>
-</ul>
-<p>Pairing: <span class="math display">\[
-\omega(v)
-\]</span></p>
-<p>Gradient: <span class="math display">\[
-\partial_{\mu}
-\]</span></p>
-<p>Covectors act linearly on vectors; <span class="math inline">\(\partial_\mu\)</span> is naturally covariant.</p>
-<hr>
-</section>
-<section id="metric-as-isomorphism" class="level3">
-<h3 class="anchored" data-anchor-id="metric-as-isomorphism">Metric as Isomorphism</h3>
-<p>Mapping: <span class="math display">\[
-v^{\mu} \leftrightarrow v_{\mu}
-\]</span></p>
-<p>The metric identifies <span class="math inline">\(V\)</span> and <span class="math inline">\(V^*\)</span> and defines contractions.</p>
-<hr>
-</section>
-<section id="tensors" class="level3">
-<h3 class="anchored" data-anchor-id="tensors">Tensors</h3>
-<p>Transformation: <span class="math display">\[
-T'^{\mu}_{\ \nu} = \Lambda^{\mu}_{\ \alpha} \Lambda^{\beta}_{\ \nu} T^{\alpha}_{\ \beta}
-\]</span></p>
-<p>Tensor equations with fully contracted indices are invariant.</p>
-<hr>
-</section>
-<section id="differential-operators" class="level3">
-<h3 class="anchored" data-anchor-id="differential-operators">Differential Operators</h3>
-<p>Four-gradient: <span class="math display">\[
-\partial_{\mu}
-\]</span></p>
-<p>d’Alembertian: <span class="math display">\[
-\Box = \partial_{\mu}\partial^{\mu}
-\]</span></p>
-<p>Lorentz-invariant wave operator.</p>
-<hr>
-</section>
-</section>
-<section id="differential-forms-and-electrodynamics" class="level2">
-<h2 class="anchored" data-anchor-id="differential-forms-and-electrodynamics">Differential Forms and Electrodynamics</h2>
-<section id="differential-forms" class="level3">
-<h3 class="anchored" data-anchor-id="differential-forms">Differential Forms</h3>
-<p>Basis: <span class="math display">\[
-\mathrm{d}x^{\mu}
-\]</span></p>
-<p>1-form: <span class="math display">\[
-\omega = \omega_{\mu} \mathrm{d}x^{\mu}
-\]</span></p>
-<p>Exterior product: <span class="math display">\[
-\mathrm{d}x^{\mu} \wedge \mathrm{d}x^{\nu} = -\mathrm{d}x^{\nu} \wedge \mathrm{d}x^{\mu}
-\]</span></p>
-<hr>
-</section>
-<section id="electromagnetic-2-form" class="level3">
-<h3 class="anchored" data-anchor-id="electromagnetic-2-form">Electromagnetic 2-Form</h3>
-<p><span class="math display">\[
-F = \frac{1}{2} F_{\mu\nu} \mathrm{d}x^{\mu} \wedge \mathrm{d}x^{\nu}
-\]</span></p>
-<p>Encodes electric and magnetic fields covariantly.</p>
-<hr>
-</section>
-<section id="hodge-dual" class="level3">
-<h3 class="anchored" data-anchor-id="hodge-dual">Hodge Dual</h3>
-<p>Mapping: <span class="math display">\[
-\star: \Omega^p \to \Omega^{4-p}
-\]</span></p>
-<p>Property: <span class="math display">\[
-\star\star \omega = (-1)^{p(4-p)+1}\,\omega
-\]</span></p>
-<p>Components: <span class="math display">\[
-(\star F)_{\mu\nu} = \frac{1}{2} \epsilon_{\mu\nu\alpha\beta} F^{\alpha\beta}
-\]</span></p>
-<hr>
-</section>
-<section id="integration-and-orientation" class="level3">
-<h3 class="anchored" data-anchor-id="integration-and-orientation">Integration and Orientation</h3>
-<ul>
-<li>Integration of <span class="math inline">\(p\)</span>-forms<br>
-</li>
-<li>Orientation</li>
-</ul>
-<p>Volume element: <span class="math display">\[
-\mathrm{d}^4x
-\]</span></p>
-<p>Defines invariant integration measures.</p>
-<hr>
-</section>
-<section id="stokes-theorem" class="level3">
-<h3 class="anchored" data-anchor-id="stokes-theorem">Stokes’ Theorem</h3>
-<p><span class="math display">\[
-\int_{\partial M} \omega = \int_M \mathrm{d}\omega
-\]</span></p>
-<p>Unifies classical integral theorems.</p>
-<hr>
-</section>
-<section id="covariant-electrodynamics" class="level3">
-<h3 class="anchored" data-anchor-id="covariant-electrodynamics">Covariant Electrodynamics</h3>
-<p>Potential: <span class="math display">\[
-A = A_{\mu} \mathrm{d}x^{\mu}
-\]</span></p>
-<p>Field: <span class="math display">\[
-F = \mathrm{d}A
-\]</span></p>
-<p>Components: <span class="math display">\[
-F_{\mu\nu} = \partial_{\mu}A_{\nu} - \partial_{\nu}A_{\mu}
-\]</span></p>
-<p>Gauge symmetry: <span class="math display">\[
-A \mapsto A + \mathrm{d}\lambda
-\]</span></p>
-<hr>
-</section>
-<section id="maxwell-equations" class="level3">
-<h3 class="anchored" data-anchor-id="maxwell-equations">Maxwell Equations</h3>
-<p>Homogeneous: <span class="math display">\[
-\mathrm{d}F = 0
-\]</span></p>
-<p>With sources: <span class="math display">\[
-\mathrm{d}\star F = J
-\]</span></p>
-<hr>
-</section>
-<section id="integral-laws" class="level3">
-<h3 class="anchored" data-anchor-id="integral-laws">Integral Laws</h3>
-<p>Gauss: <span class="math display">\[
-\int_{\partial V} \star F = \int_V J
-\]</span></p>
-<p>Faraday: <span class="math display">\[
-\int_{\partial S} F = 0
-\]</span></p>
-<p>Ampère–Maxwell: <span class="math display">\[
-\int_{\partial S} \star F = \int_S J
-\]</span></p>
-<hr>
-</section>
-<section id="charge-conservation" class="level3">
-<h3 class="anchored" data-anchor-id="charge-conservation">Charge Conservation</h3>
-<p><span class="math display">\[
-\partial_{\mu} J^{\mu} = 0
-\]</span></p>
-<p>Follows from: <span class="math display">\[
-\mathrm{d}(\mathrm{d}\star F) = 0 \Rightarrow \mathrm{d}J = 0
-\]</span></p>
-<hr>
-</section>
-</section>
-<section id="structural-summary" class="level2">
-<h2 class="anchored" data-anchor-id="structural-summary">Structural Summary</h2>
-<section id="geometric-chain" class="level3">
-<h3 class="anchored" data-anchor-id="geometric-chain">Geometric Chain</h3>
-<ul>
-<li>Metric <span class="math inline">\(\rightarrow\)</span> inner product<br>
-</li>
-<li>Inner product <span class="math inline">\(\rightarrow\)</span> duality<br>
-</li>
-<li>Duality <span class="math inline">\(\rightarrow\)</span> Hodge star<br>
-</li>
-<li><span class="math inline">\(d\)</span> and <span class="math inline">\(\star\)</span> <span class="math inline">\(\rightarrow\)</span> Maxwell equations<br>
-</li>
-<li>Stokes <span class="math inline">\(\rightarrow\)</span> integral laws</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<section id="conceptual-and-computational" class="level3">
-<h3 class="anchored" data-anchor-id="conceptual-and-computational">Conceptual and Computational</h3>
+<p>The sign of the interval determines the causal relation between events. Timelike separations correspond to events that can influence each other through signals moving slower than light, while null separations correspond to propagation at the speed of light.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The signature of a metric is invariant under coordinate transformations. Different coordinate systems may change the components of the metric, but the number of positive and negative directions remains the same.</p>
+</div>
+</div>
+<p>This statement can be understood more concretely as follows. Any real symmetric bilinear form can be diagonalized by a suitable basis choice. After diagonalization, one can rescale basis vectors to reduce nonzero diagonal entries to <span class="math inline">\(+1\)</span> or <span class="math inline">\(-1\)</span>. The only information that cannot be removed by such changes is the count of positive and negative signs. This is why the signature labels an invariant class of metrics rather than a particular matrix of components.</p>
+<section id="exercises" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
 <ol type="1">
-<li>Classify intervals (timelike, spacelike, null) with explicit examples.<br>
-</li>
-<li>Verify invariance of <span class="math inline">\(ds^2\)</span> under a boost.<br>
-</li>
-<li>Compute <span class="math inline">\(F_{\mu\nu}\)</span> from a given <span class="math inline">\(A_{\mu}\)</span> and identify <span class="math inline">\(\mathbf{E}\)</span> and <span class="math inline">\(\mathbf{B}\)</span>.<br>
-</li>
-<li>Show <span class="math inline">\(dF=0\)</span> in components and relate to Faraday’s law.<br>
-</li>
-<li>Derive Gauss’ law from <span class="math inline">\(d\star F = J\)</span>.<br>
-</li>
-<li>Compute <span class="math inline">\(\star F\)</span> for a plane wave and interpret components.</li>
+<li><p><strong>Metric invariance</strong></p>
+<p>Consider the Lorentz transformation <span class="math display">\[
+\begin{aligned}
+t' &amp;= \gamma\left(t - \frac{v}{c^2}x\right) \\
+x' &amp;= \gamma(x - vt)
+\end{aligned}
+\]</span> with <span class="math inline">\(y'=y\)</span> and <span class="math inline">\(z'=z\)</span>.</p>
+<p>Show explicitly that <span class="math display">\[
+\mathrm{d}s'^2 = -c^2\mathrm{d}t'^2 + \mathrm{d}x'^2 + \mathrm{d}y'^2 + \mathrm{d}z'^2
+\]</span> is equal to <span class="math display">\[
+\mathrm{d}s^2 = -c^2\mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2 .
+\]</span></p></li>
+<li><p><strong>Metric components</strong></p>
+<p>Starting from <span class="math display">\[
+\mathrm{d}s^2 = -c^2\mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2,
+\]</span> rewrite the interval in the form <span class="math display">\[
+\mathrm{d}s^2 = \eta_{\mu\nu}\mathrm{d}x^\mu \mathrm{d}x^\nu
+\]</span> and determine all components of <span class="math inline">\(\eta_{\mu\nu}\)</span>.</p></li>
+<li><p><strong>Timelike normalization</strong></p>
+<p>Let <span class="math inline">\(v^\mu\)</span> be a timelike vector. Show that it can always be rescaled so that <span class="math display">\[
+\eta_{\mu\nu}v^\mu v^\nu = -1.
+\]</span> Explain the physical meaning of this normalization in relativity.</p></li>
 </ol>
-
-
 </section>
+</section>
+<section id="vectors-and-the-metric" class="level2">
+<h2 class="anchored" data-anchor-id="vectors-and-the-metric">Vectors and the Metric</h2>
+<p>To understand the role of the metric more clearly, it is useful to think about displacement vectors.</p>
+<p>Suppose we have two nearby points in space and consider the vector that connects them. This vector represents a displacement in space. In Euclidean geometry we can draw such a vector and measure its length using the metric.</p>
+<p>The Euclidean metric allows us to compute not only the length of a vector, but also the relation between two vectors. Given two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span>, the metric defines the quantity <span class="math display">\[
+g(v,u).
+\]</span></p>
+<p>In Euclidean space this operation corresponds to the familiar <strong>dot product</strong>.</p>
+<p>Geometrically, the dot product measures the projection of one vector along the direction of another. If <span class="math inline">\(u\)</span> is a unit vector, the quantity <span class="math display">\[
+g(v,u)
+\]</span> gives the component of <span class="math inline">\(v\)</span> along the direction <span class="math inline">\(u\)</span>.</p>
+<p>This interpretation is extremely useful. Instead of thinking of the metric only as a way of computing lengths, we can think of it as a rule that allows us to compare vectors and extract geometric information such as angles and projections.</p>
+<p>In relativistic spacetime the same idea applies. The metric still provides a bilinear operation that takes two vectors and produces a number. The difference is that the sign structure of the metric is no longer Euclidean, reflecting the different roles of time and space in Minkowski geometry.</p>
+<section id="exercises-1" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-1">Exercises</h3>
+<ol type="1">
+<li><p><strong>Orthogonality</strong></p>
+<p>Two vectors are said to be orthogonal if <span class="math display">\[
+g(u,v)=0.
+\]</span> Show that orthogonality in Minkowski space does not imply that the vectors are spatially perpendicular in the usual Euclidean sense.</p></li>
+<li><p><strong>Metric as a map</strong></p>
+<p>Show that the metric defines a linear map <span class="math display">\[
+g : V \rightarrow V^*
+\]</span> by associating to every vector <span class="math inline">\(v\)</span> the covector <span class="math display">\[
+g(v,\cdot).
+\]</span> Verify explicitly that this map is linear.</p></li>
+<li><p><strong>Degeneracy</strong></p>
+<p>Show that if a bilinear form <span class="math inline">\(g\)</span> satisfies <span class="math display">\[
+g(v,u)=0
+\]</span> for all <span class="math inline">\(u\)</span>, then <span class="math inline">\(v\)</span> must vanish. Explain why this property is called <strong>non-degeneracy</strong>.</p></li>
+</ol>
+</section>
+</section>
+<section id="points-vectors-and-tangent-spaces" class="level2">
+<h2 class="anchored" data-anchor-id="points-vectors-and-tangent-spaces">Points, Vectors, and Tangent Spaces</h2>
+<p>It is important to distinguish between <strong>points</strong> in spacetime and <strong>vectors</strong>.</p>
+<p>Points represent events. They specify locations in spacetime and are usually described by coordinates such as <span class="math display">\[
+(x^0, x^1, x^2, x^3).
+\]</span></p>
+<p>Vectors, on the other hand, represent <strong>displacements</strong> between nearby points. For example, the vector <span class="math display">\[
+\mathrm{d}x^\mu
+\]</span></p>
+<p>can be interpreted as an infinitesimal displacement from one event to a nearby event.</p>
+<p>This distinction is important because spacetime itself is <strong>not a vector space</strong>. In general, there is no natural way to add two points or multiply a point by a scalar. Operations such as addition and scalar multiplication are defined for vectors, not for points.</p>
+<p>Instead, vectors live in a vector space attached to each point of spacetime. This space is called the <strong>tangent space</strong>.</p>
+<p>At every point <span class="math inline">\(p\)</span> of spacetime we associate a vector space <span class="math inline">\(T_pM\)</span>, the tangent space at <span class="math inline">\(p\)</span>. The elements of this space are the possible infinitesimal displacements starting from that point.</p>
+<p>In this way spacetime can be thought of as a collection of points, each of which carries its own tangent vector space. Geometric objects such as vectors, covectors, and tensors are defined in these tangent spaces.</p>
+<section id="exercises-2" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-2">Exercises</h3>
+<ol type="1">
+<li><p><strong>Tangent vector transformation</strong></p>
+<p>Let a curve be parametrized by <span class="math inline">\(\lambda\)</span>, <span class="math display">\[
+x^\mu(\lambda).
+\]</span> Show that under a change of parameter <span class="math inline">\(\lambda \to \lambda'(\lambda)\)</span> the vector <span class="math display">\[
+v^\mu = \frac{\mathrm{d}x^\mu}{\mathrm{d}\lambda}
+\]</span> transforms as <span class="math display">\[
+v'^\mu = \frac{\mathrm{d}\lambda}{\mathrm{d}\lambda'} v^\mu .
+\]</span></p></li>
+<li><p><strong>Tangent space dimension</strong></p>
+<p>Consider spacetime with coordinates <span class="math inline">\((x^0,x^1,x^2,x^3)\)</span>.</p>
+<p>Show that the vectors <span class="math display">\[
+\partial_\mu = \frac{\partial}{\partial x^\mu}
+\]</span> form a basis of the tangent space at each point.</p></li>
+<li><p><strong>Coordinate change</strong></p>
+<p>Under a coordinate transformation <span class="math inline">\(x^\mu \to x'^\mu(x)\)</span> show that the basis vectors transform according to <span class="math display">\[
+\partial_\mu =
+\frac{\partial x'^\nu}{\partial x^\mu}\partial'_\nu .
+\]</span></p></li>
+</ol>
+</section>
+</section>
+<section id="covectors-and-the-dual-space" class="level2">
+<h2 class="anchored" data-anchor-id="covectors-and-the-dual-space">Covectors and the Dual Space</h2>
+<p>Given a vector space <span class="math inline">\(V\)</span>, we can construct another vector space called the <strong>dual space</strong>, denoted <span class="math inline">\(V^*\)</span>.</p>
+<p>Elements of the dual space are <strong>linear functionals</strong>. That is, a covector <span class="math inline">\(\tilde{w} \in V^*\)</span> is a map <span class="math display">\[
+\tilde{w} : V \rightarrow \mathbb{R}
+\]</span> that assigns a real number to each vector in <span class="math inline">\(V\)</span>, and does so linearly.</p>
+<p>If <span class="math inline">\(v \in V\)</span> is a vector, the action of the covector <span class="math inline">\(\tilde{w}\)</span> on <span class="math inline">\(v\)</span> produces a number <span class="math display">\[
+\tilde{w}(v).
+\]</span> Because these objects satisfy the properties of linearity, the set of all such functionals forms a vector space. This space is the <strong>dual space</strong> <span class="math inline">\(V^*\)</span>.</p>
+<p>A basic result from linear algebra is that the dual space has the same dimension as the original vector space, <span class="math display">\[
+\dim V^* = \dim V.
+\]</span> However, even though the two spaces have the same dimension, there is <strong>no natural map that identifies vectors with covectors</strong>. A vector and a covector belong to different spaces, and without additional structure there is no canonical way to associate one with the other.</p>
+<p>Such a map becomes possible once the vector space is equipped with extra geometric structure. In particular, if a <strong>metric</strong> is defined on the space, it allows us to construct a correspondence between vectors and covectors. Later we will see that the metric provides the operation known as <strong>raising and lowering indices</strong>.</p>
+<p>Finally, it is worth noting that the dual space itself has a dual. The dual of <span class="math inline">\(V^*\)</span> is denoted <span class="math inline">\(V^{**}\)</span>. There exists a natural map from <span class="math inline">\(V\)</span> to <span class="math inline">\(V^{**}\)</span>, which associates to each vector a functional acting on covectors. In finite-dimensional spaces this map is an isomorphism, allowing us to identify <span class="math inline">\(V\)</span> with <span class="math inline">\(V^{**}\)</span>.</p>
+<section id="exercises-3" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-3">Exercises</h3>
+<ol type="1">
+<li><p><strong>Dual basis construction</strong></p>
+<p>Given a basis <span class="math inline">\(\{e_\mu\}\)</span> of <span class="math inline">\(V\)</span>, construct covectors <span class="math inline">\(\{\mathrm{d}x^\mu\}\)</span> such that <span class="math display">\[
+\mathrm{d}x^\mu(e_\nu) = \delta^\mu_\nu .
+\]</span> Prove that <span class="math inline">\(\{\mathrm{d}x^\mu\}\)</span> forms a basis of <span class="math inline">\(V^*\)</span>.</p></li>
+<li><p><strong>Dual transformation law</strong></p>
+<p>Suppose the basis of <span class="math inline">\(V\)</span> transforms as <span class="math display">\[
+e_\mu' = A^\nu{}_\mu e_\nu .
+\]</span> Determine how the dual basis <span class="math inline">\(\mathrm{d}x^\mu\)</span> must transform so that the relation <span class="math display">\[
+\mathrm{d}x^\mu(e_\nu)=\delta^\mu_\nu
+\]</span> remains valid.</p></li>
+<li><p><strong>Dual of the dual</strong></p>
+<p>Construct explicitly the natural map</p>
+<p><span class="math display">\[
+V \rightarrow V^{**}
+\]</span></p>
+<p>and show that it is linear.</p></li>
+</ol>
+</section>
+</section>
+<section id="tensor-products" class="level2">
+<h2 class="anchored" data-anchor-id="tensor-products">Tensor Products</h2>
+<p>Once vectors and covectors have been introduced, we can construct more general objects by combining them. The simplest example is obtained by taking two covectors and forming a <strong>tensor product</strong>.</p>
+<p>If <span class="math inline">\(\mathrm{d}x^\mu\)</span> and <span class="math inline">\(\mathrm{d}x^\nu\)</span> are covectors, their tensor product defines a bilinear functional acting on two vectors, <span class="math display">\[
+(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu)(v,u)
+= \mathrm{d}x^\mu(v)\, \mathrm{d}x^\nu(u).
+\]</span> In other words, the tensor product takes two vectors as input and produces a number. The result is obtained by evaluating each covector on one of the vectors and multiplying the two numbers.</p>
+<p>Objects of this type form the space of rank-two covariant tensors.</p>
+<p>It is important to note that not every tensor can be written as a single tensor product of two covectors. In general, tensors are <strong>linear combinations</strong> of such products. For example, <span class="math display">\[
+T = \alpha\, \mathrm{d}x^0 \otimes \mathrm{d}x^1
+    + \beta\, \mathrm{d}x^3 \otimes \mathrm{d}x^3
+\]</span> is also a valid tensor.</p>
+<p>The tensor products <span class="math inline">\(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu\)</span> therefore form a basis for the space of rank-two covariant tensors, and arbitrary tensors can be expressed as linear combinations of these basis elements.</p>
+<p>This construction generalizes naturally. By taking tensor products of several copies of the vector space and its dual, we can construct tensors of arbitrary rank.</p>
+<section id="exercises-4" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-4">Exercises</h3>
+<ol type="1">
+<li><p><strong>Tensor product components</strong></p>
+<p>Let <span class="math display">\[
+T = \mathrm{d}x^\mu \otimes \mathrm{d}x^\nu .
+\]</span> Show that <span class="math display">\[
+T(v,u)=v^\mu u^\nu .
+\]</span></p></li>
+<li><p><strong>Non-factorizable tensor</strong></p>
+<p>Show that the tensor <span class="math display">\[
+\mathrm{d}x^0\otimes \mathrm{d}x^1 + \mathrm{d}x^1\otimes \mathrm{d}x^0
+\]</span> cannot be written as a single tensor product of two covectors.</p></li>
+<li><p><strong>Dimension counting</strong></p>
+<p>If <span class="math inline">\(\dim V = n\)</span>, show that the space of rank-two covariant tensors has dimension <span class="math inline">\(n^2\)</span>.</p></li>
+</ol>
+</section>
+</section>
+<section id="symmetric-and-antisymmetric-tensors" class="level2">
+<h2 class="anchored" data-anchor-id="symmetric-and-antisymmetric-tensors">Symmetric and Antisymmetric Tensors</h2>
+<p>When tensor products involve multiple copies of the same vector space, it is useful to separate tensors into <strong>symmetric</strong> and <strong>antisymmetric</strong> parts.</p>
+<p>Consider a rank-two tensor constructed from covectors. Given a tensor <span class="math inline">\(T_{\mu\nu}\)</span>, we can define its symmetric and antisymmetric components as <span class="math display">\[
+\begin{align}
+T_{(\mu\nu)} &amp;= \frac12 \left(T_{\mu\nu} + T_{\nu\mu}\right), \\
+T_{[\mu\nu]} &amp;= \frac12 \left(T_{\mu\nu} - T_{\nu\mu}\right).
+\end{align}
+\]</span></p>
+<p>Any tensor can be written as the sum of these two pieces, <span class="math display">\[
+T_{\mu\nu} = T_{(\mu\nu)} + T_{[\mu\nu]} .
+\]</span></p>
+<p>The antisymmetric part is particularly important because it defines the <strong>exterior product</strong> (or wedge product).</p>
+<p>Given two covectors <span class="math inline">\(w\)</span> and <span class="math inline">\(k\)</span>, their exterior product is defined as <span class="math display">\[
+w \wedge k = \frac12 \left(w \otimes k - k \otimes w\right).
+\]</span> This operation produces an antisymmetric tensor.</p>
+<section id="exercises-5" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-5">Exercises</h3>
+<ol type="1">
+<li><p>Show that the symmetric and antisymmetric projections satisfy <span class="math display">\[
+T_{(\mu\nu)}R^{[\mu\nu]} = 0 .
+\]</span></p></li>
+<li><p>Show that the number of independent components of a symmetric tensor in <span class="math inline">\(n\)</span> dimensions is <span class="math display">\[
+\frac{n(n+1)}{2}.
+\]</span></p></li>
+<li><p>Show that the number of independent components of an antisymmetric tensor in <span class="math inline">\(n\)</span> dimensions is <span class="math display">\[
+\frac{n(n-1)}{2}.
+\]</span></p></li>
+</ol>
+</section>
+<section id="geometric-interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="geometric-interpretation">Geometric interpretation</h3>
+<p>The antisymmetric product has a natural geometric meaning. Given two vectors, their wedge product represents an <strong>oriented area element</strong>.</p>
+<p>In particular, if two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span> are linearly dependent, the area they span is zero. Correspondingly, <span class="math display">\[
+v \wedge u = 0.
+\]</span></p>
+<p>On the other hand, if the vectors are linearly independent, their wedge product is nonzero and represents the oriented area generated by them.</p>
+<p>This idea generalizes naturally to higher dimensions. The wedge product of three vectors corresponds to an oriented volume, and so on. In an <span class="math inline">\(n\)</span>-dimensional space the largest nonzero antisymmetric product involves <span class="math inline">\(n\)</span> vectors.</p>
+<p>These antisymmetric objects play an important role in physics, because they allow us to describe geometric quantities such as areas, volumes, and fluxes in a coordinate-independent way.</p>
+</section>
+</section>
+<section id="antisymmetric-products-and-linear-independence" class="level2">
+<h2 class="anchored" data-anchor-id="antisymmetric-products-and-linear-independence">Antisymmetric Products and Linear Independence</h2>
+<p>Antisymmetric products provide a powerful way to describe geometric structures without introducing additional concepts such as a metric.</p>
+<p>To illustrate this, consider two vectors <span class="math inline">\(w\)</span> and <span class="math inline">\(k\)</span>. Suppose we want to determine whether they are linearly independent. Normally this requires solving an equation of the form <span class="math display">\[
+\alpha w + \beta k = 0 .
+\]</span></p>
+<p>If the only solution is <span class="math inline">\(\alpha = \beta = 0\)</span>, the vectors are linearly independent.</p>
+<p>The antisymmetric product offers an alternative way to test this. If the wedge product of the two vectors is nonzero, <span class="math display">\[
+w \wedge k \neq 0,
+\]</span> then the vectors must be linearly independent.</p>
+<p>Geometrically this statement is very natural. Two independent vectors span an area, and the wedge product represents the <strong>oriented area element</strong> generated by them. If the vectors are parallel, the area they span is zero, and the wedge product vanishes.</p>
+<p>This idea extends naturally to higher dimensions. For example, given four vectors in a four-dimensional space we can form <span class="math display">\[
+w_1 \wedge w_2 \wedge w_3 \wedge w_4 .
+\]</span></p>
+<p>If this object is nonzero, the four vectors span a four-dimensional volume and are therefore linearly independent.</p>
+<p>More generally, in an <span class="math inline">\(n\)</span>-dimensional space the largest nonzero antisymmetric product involves <span class="math inline">\(n\)</span> vectors. Any antisymmetric product containing more than <span class="math inline">\(n\)</span> vectors must vanish, because at least two of the vectors must be linearly dependent.</p>
+<p>This property reflects the fact that an <span class="math inline">\(n\)</span>-dimensional space cannot contain geometric objects with dimension larger than <span class="math inline">\(n\)</span>.</p>
+<section id="exercises-6" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-6">Exercises</h3>
+<ol type="1">
+<li><p>Prove that the wedge product is bilinear and antisymmetric.</p></li>
+<li><p>Show that if <span class="math inline">\(v_1,\dots,v_n\)</span> are vectors in an <span class="math inline">\(n\)</span>-dimensional space then <span class="math display">\[
+v_1\wedge\dots\wedge v_n
+\]</span> vanishes if and only if the vectors are linearly dependent.</p></li>
+<li><p>Show that in an <span class="math inline">\(n\)</span>-dimensional space any wedge product containing more than <span class="math inline">\(n\)</span> vectors must vanish.</p></li>
+</ol>
+</section>
+</section>
+<section id="differential-forms-and-integration" class="level2">
+<h2 class="anchored" data-anchor-id="differential-forms-and-integration">Differential Forms and Integration</h2>
+<p>The antisymmetric tensors we introduced have an important application in the definition of integration on geometric objects such as curves and surfaces.</p>
+<p>Consider a surface in space that is parametrized by two parameters, <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. Each point of the surface can then be written as a function of these parameters,</p>
+<p><span class="math display">\[
+x^\mu = x^\mu(\lambda_1,\lambda_2).
+\]</span></p>
+<p>If we vary one parameter while keeping the other fixed, we obtain a vector tangent to the surface. For example,</p>
+<p><span class="math display">\[
+\frac{\partial x^\mu}{\partial \lambda_1}, \qquad
+\frac{\partial x^\mu}{\partial \lambda_2}
+\]</span></p>
+<p>are two tangent vectors that span the surface locally.</p>
+<p>These two vectors define an infinitesimal oriented area element. To measure the size of this area element we use an antisymmetric tensor acting on the pair of tangent vectors.</p>
+<p>Objects of this type are called <strong>differential forms</strong>. A two-form takes two vectors as input and produces a number, and its antisymmetry ensures that it measures an oriented area element.</p>
+<p>Integration can then be understood geometrically as summing the contributions of such infinitesimal elements. For example, if <span class="math inline">\(\omega\)</span> is a two-form and <span class="math inline">\(\Sigma\)</span> is a surface, the integral</p>
+<p><span class="math display">\[
+\int_\Sigma \omega
+\]</span></p>
+<p>is obtained by evaluating the form on the tangent vectors generated by the parametrization and summing the result over the surface.</p>
+<p>This viewpoint makes the definition of integration independent of the choice of coordinates. The parametrization simply provides the tangent vectors, while the differential form encodes the geometric quantity being measured.</p>
+<p>An equivalent way to say this is that integration uses the pullback of the form to the parameter domain. Changing parametrization modifies Jacobian factors and tangent vectors in compensating ways, so the geometric integral over the same oriented domain is unchanged.</p>
+</section>
+<section id="the-exterior-derivative" class="level2">
+<h2 class="anchored" data-anchor-id="the-exterior-derivative">The Exterior Derivative</h2>
+<p>We now introduce an operator that allows us to differentiate geometric objects in a coordinate-independent way. This operator is called the <strong>exterior derivative</strong> and is denoted by <span class="math inline">\(\mathrm{d}\)</span>.</p>
+<p>The simplest case is the action of <span class="math inline">\(\mathrm{d}\)</span> on a scalar function <span class="math inline">\(f\)</span>. The result is a covector, written <span class="math display">\[
+\mathrm{d}f .
+\]</span></p>
+<p>This covector acts on a vector <span class="math inline">\(v\)</span> by producing the directional derivative of <span class="math inline">\(f\)</span> along that vector, <span class="math display">\[
+\mathrm{d}f(v) = v(f).
+\]</span> In other words, <span class="math inline">\(\mathrm{d}f\)</span> measures how the function changes when we move in the direction specified by <span class="math inline">\(v\)</span>.</p>
+<p>In coordinates, if the vector <span class="math inline">\(v\)</span> has components <span class="math inline">\(v^\mu\)</span>, the action of the covector <span class="math inline">\(\mathrm{d}f\)</span> can be written as <span class="math display">\[
+\mathrm{d}f(v) = v^\mu \partial_\mu f .
+\]</span></p>
+<p>This expression shows explicitly that <span class="math inline">\(\mathrm{d}f\)</span> contains the derivatives of the function with respect to the coordinates. In this sense, <span class="math inline">\(\mathrm{d}f\)</span> corresponds to the familiar gradient of a scalar function, but interpreted as a covector.</p>
+<p>The exterior derivative extends naturally to differential forms of higher degree, producing new forms whose antisymmetric structure encodes derivatives in a coordinate-independent way. This construction will allow us to write the equations of electromagnetism in a compact geometric form.</p>
+<section id="exercises-7" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-7">Exercises</h3>
+<ol type="1">
+<li><p>Compute <span class="math inline">\(\mathrm{d}f\)</span> for <span class="math display">\[
+f(x,y,z)=x^2yz.
+\]</span></p></li>
+<li><p>Show that the exterior derivative satisfies the Leibniz rule <span class="math display">\[
+\mathrm{d}(fg)=f\,\mathrm{d}g + g\,\mathrm{d}f .
+\]</span></p></li>
+<li><p>Show that <span class="math display">\[
+\mathrm{d}^2 f = 0
+\]</span> for any smooth scalar function <span class="math inline">\(f\)</span>.</p></li>
+</ol>
+</section>
+</section>
+<section id="the-exterior-derivative-and-stokes-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="the-exterior-derivative-and-stokes-theorem">The Exterior Derivative and Stokes’ Theorem</h2>
+<p>The exterior derivative allows us to connect differentiation with integration in a natural geometric way.</p>
+<p>If <span class="math inline">\(f\)</span> is a scalar function, its exterior derivative <span class="math inline">\(\mathrm{d}f\)</span> is a covector. As we have seen, this covector acts on a vector <span class="math inline">\(v\)</span> by producing the directional derivative of <span class="math inline">\(f\)</span>, <span class="math display">\[
+\mathrm{d}f(v) = v(f).
+\]</span></p>
+<p>Now consider integrating this object along a curve. If the curve is parametrized by a coordinate <span class="math inline">\(x\)</span>, we can write <span class="math display">\[
+\int \mathrm{d}f .
+\]</span> Using the definition of the exterior derivative, this integral becomes</p>
+<p><span class="math display">\[
+\int \frac{\partial f}{\partial x} \mathrm{d}x .
+\]</span></p>
+<p>This is simply the ordinary integral of a derivative. Therefore, <span class="math display">\[
+\int_a^b \mathrm{d}f = f(b) - f(a).
+\]</span></p>
+<p>This result is familiar from basic calculus, but it has a deeper geometric meaning. It shows that the integral of a derivative over a region depends only on the values of the function on the <strong>boundary</strong> of that region.</p>
+<p>This idea generalizes to higher dimensions. When applied to differential forms, the exterior derivative leads to the general statement known as <strong>Stokes’ theorem</strong>: <span class="math display">\[
+\int_{\partial \Omega} \omega
+=
+\int_{\Omega} \mathrm{d}\omega .
+\]</span></p>
+<p>Here <span class="math inline">\(\Omega\)</span> is a region of space and <span class="math inline">\(\partial \Omega\)</span> is its boundary. The form <span class="math inline">\(\omega\)</span> is integrated over the boundary, while its exterior derivative <span class="math inline">\(\mathrm{d}\omega\)</span> is integrated over the interior.</p>
+<p>This theorem provides a unified geometric framework for many familiar results from vector calculus, including the divergence theorem and the classical version of Stokes’ theorem.</p>
+<p>In the context of electromagnetism, these relations play a central role because Maxwell’s equations can be written compactly in terms of differential forms and their exterior derivatives.</p>
+<section id="exercises-8" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-8">Exercises</h3>
+<ol type="1">
+<li>Show that the fundamental theorem of calculus <span class="math display">\[
+\int_a^b \mathrm{d}f = f(b)-f(a)
+\]</span> is the one-dimensional version of Stokes’ theorem.</li>
+</ol>
+</section>
+</section>
+<section id="tensor-representation-of-the-metric" class="level2">
+<h2 class="anchored" data-anchor-id="tensor-representation-of-the-metric">Tensor Representation of the Metric</h2>
+<p>In coordinates, the spacetime interval can be written as</p>
+<p><span class="math display">\[
+\mathrm{d}s^2 = \eta_{\mu\nu} \mathrm{d}x^\mu \mathrm{d}x^\nu .
+\]</span></p>
+<p>Here the objects <span class="math inline">\(\mathrm{d}x^\mu\)</span> are covectors belonging to the dual space <span class="math inline">\(V^*\)</span>. The expression above therefore represents a <strong>rank-two tensor</strong> acting on two vectors.</p>
+<p>More generally, if <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span> are vectors, the metric acts as <span class="math display">\[
+g(v,u) = g_{\mu\nu} v^\mu u^\nu .
+\]</span> This shows that the metric can be interpreted as a <strong>bilinear functional</strong> that takes two vectors as input and produces a scalar.</p>
+<section id="exercises-9" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-9">Exercises</h3>
+<ol type="1">
+<li><p>Show explicitly that the scalar <span class="math display">\[
+g(v,u)=g_{\mu\nu}v^\mu u^\nu
+\]</span> is invariant under a coordinate transformation if the metric components transform as <span class="math display">\[
+g'_{\alpha\beta}
+=
+\frac{\partial x^\mu}{\partial x'^\alpha}
+\frac{\partial x^\nu}{\partial x'^\beta}
+g_{\mu\nu}.
+\]</span></p></li>
+<li><p>Let <span class="math display">\[
+v^\mu = (1,2,0,0), \qquad
+u^\mu = (3,-1,0,0).
+\]</span> Compute <span class="math inline">\(g(v,u)\)</span> using the Minkowski metric and determine whether the vectors are orthogonal.</p></li>
+<li><p>Prove that if a bilinear form <span class="math inline">\(g\)</span> satisfies <span class="math display">\[
+g(v,u)=0
+\]</span> for every vector <span class="math inline">\(u\)</span>, then <span class="math inline">\(v=0\)</span>.</p></li>
+</ol>
+</section>
+</section>
+<section id="tensor-products-and-linear-combinations" class="level2">
+<h2 class="anchored" data-anchor-id="tensor-products-and-linear-combinations">Tensor Products and Linear Combinations</h2>
+<p>Tensor products provide a basis for constructing tensor spaces. For example, covariant rank-two tensors can be written as linear combinations of objects of the form <span class="math display">\[
+\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu .
+\]</span> These basis elements act on two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span> as <span class="math display">\[
+(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu)(v,u)
+=
+\mathrm{d}x^\mu(v)\,\mathrm{d}x^\nu(u).
+\]</span> A general tensor can then be expressed as <span class="math display">\[
+T = T_{\mu\nu}\,\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu .
+\]</span> It is important to note that most tensors <strong>cannot be written as a single tensor product</strong>; instead they are linear combinations of such products.</p>
+<section id="exercises-10" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-10">Exercises</h3>
+<ol type="1">
+<li><p>Show that <span class="math display">\[
+(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu)(v,u)
+=
+v^\mu u^\nu .
+\]</span></p></li>
+<li><p>Demonstrate that the tensor <span class="math display">\[
+\mathrm{d}x^0 \otimes \mathrm{d}x^1 + \mathrm{d}x^1 \otimes \mathrm{d}x^0
+\]</span> cannot be written as a single tensor product of two covectors.</p></li>
+<li><p>If <span class="math inline">\(\dim V=n\)</span>, determine the dimension of the space of rank-two covariant tensors.</p></li>
+</ol>
+</section>
+</section>
+<section id="metric-as-a-map-v-to-v" class="level2">
+<h2 class="anchored" data-anchor-id="metric-as-a-map-v-to-v">Metric as a Map <span class="math inline">\(V \to V^*\)</span></h2>
+<p>The metric can also be interpreted as a linear map <span class="math display">\[
+g : V \rightarrow V^*.
+\]</span></p>
+<p>Given a vector <span class="math inline">\(v\)</span>, the metric produces the covector <span class="math display">\[
+v_\mu = g_{\mu\nu} v^\nu .
+\]</span> This operation is called <strong>lowering an index</strong>.</p>
+<p>Conversely, the inverse metric <span class="math inline">\(g^{\mu\nu}\)</span> allows us to raise an index, <span class="math display">\[
+v^\mu = g^{\mu\nu} v_\nu .
+\]</span> In this way the metric establishes a correspondence between vectors and covectors.</p>
+<section id="exercises-11" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-11">Exercises</h3>
+<ol type="1">
+<li><p>Show that the map <span class="math inline">\(v^\mu \mapsto v_\mu=g_{\mu\nu}v^\nu\)</span> is linear.</p></li>
+<li><p>Compute the covector associated with</p>
+<p><span class="math display">\[
+v^\mu=(2,1,-1,0)
+\]</span></p>
+<p>using the Minkowski metric.</p></li>
+<li><p>Verify that raising the index again with <span class="math inline">\(g^{\mu\nu}\)</span> reproduces the original vector.</p></li>
+</ol>
+</section>
+</section>
+<section id="geometric-meaning-of-index-lowering" class="level2">
+<h2 class="anchored" data-anchor-id="geometric-meaning-of-index-lowering">Geometric Meaning of Index Lowering</h2>
+<p>The covector obtained by lowering the index of a vector <span class="math inline">\(v\)</span> acts on another vector <span class="math inline">\(u\)</span> as <span class="math display">\[
+v_\mu u^\mu = g(v,u).
+\]</span> Thus the covector associated with <span class="math inline">\(v\)</span> represents the functional that measures the projection of vectors along the direction of <span class="math inline">\(v\)</span>.</p>
+<p>In Euclidean space this operation corresponds to the familiar dot product, while in Minkowski spacetime the different sign of the time component leads to the causal structure of relativity.</p>
+<section id="exercises-12" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-12">Exercises</h3>
+<ol type="1">
+<li><p>Show that in Euclidean space the covector <span class="math inline">\(v_i=\delta_{ij}v^j\)</span> represents the functional that returns the projection of a vector along <span class="math inline">\(v\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(u^\mu\)</span> be a timelike vector normalized so that <span class="math inline">\(g(u,u)=-1\)</span>. Show that the scalar</p>
+<p><span class="math display">\[
+-g(u,v)
+\]</span></p>
+<p>represents the component of <span class="math inline">\(v\)</span> along the direction of <span class="math inline">\(u\)</span>.</p></li>
+</ol>
+</section>
+</section>
+<section id="gradients-as-covectors" class="level2">
+<h2 class="anchored" data-anchor-id="gradients-as-covectors">Gradients as Covectors</h2>
+<p>For a scalar function <span class="math inline">\(f(x)\)</span> the exterior derivative <span class="math display">\[
+\mathrm{d}f
+\]</span> is a covector field with components <span class="math display">\[
+(\mathrm{d}f)_\mu = \partial_\mu f .
+\]</span></p>
+<p>Its action on a vector <span class="math inline">\(v\)</span> gives the directional derivative, <span class="math display">\[
+\mathrm{d}f(v) = v^\mu \partial_\mu f .
+\]</span> In Euclidean space the metric allows us to convert this covector into a vector, which leads to the familiar gradient operator.</p>
+<section id="exercises-13" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-13">Exercises</h3>
+<ol type="1">
+<li><p>Let <span class="math display">\[
+f(x,y,z)=x^2+y^2+z^2 .
+\]</span> Compute <span class="math inline">\(\mathrm{d}f\)</span> and evaluate <span class="math inline">\(\mathrm{d}f(v)\)</span> for <span class="math inline">\(v=(1,1,1)\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(\partial_\mu f\)</span> transforms as a covector under coordinate transformations.</p></li>
+<li><p>In Euclidean space verify that raising the index with <span class="math inline">\(\delta^{ij}\)</span> gives the usual gradient vector.</p></li>
+</ol>
+</section>
+</section>
+<section id="coordinate-dependence-of-the-metric" class="level2">
+<h2 class="anchored" data-anchor-id="coordinate-dependence-of-the-metric">Coordinate Dependence of the Metric</h2>
+<p>The components of the metric tensor depend on the coordinate system used to describe spacetime. However, the scalar quantity <span class="math display">\[
+g(v,u)
+\]</span> is invariant.</p>
+<p>Different coordinate systems therefore lead to different matrices representing the metric, even though the underlying geometric structure remains the same.</p>
+<p>This idea leads to the principle of <strong>covariance</strong>, according to which physical laws should be written in a form that remains valid under arbitrary changes of coordinates.</p>
+<p>In flat spacetime, invariance under Lorentz transformations is an important special case of this broader principle. The covariant formulation makes clear which statements are geometric and therefore independent of any chosen frame.</p>
+</section>
+<section id="covariant-observer-decomposition-and-rapidity" class="level2">
+<h2 class="anchored" data-anchor-id="covariant-observer-decomposition-and-rapidity">Covariant Observer Decomposition and Rapidity</h2>
+<p>For relativistic field theory, it is useful to decompose tensors relative to an observer with unit timelike four-velocity <span class="math inline">\(u^\mu\)</span> satisfying <span class="math display">\[
+g_{\mu\nu}u^\mu u^\nu = -1.
+\]</span></p>
+<p>The projector onto the local spatial subspace orthogonal to <span class="math inline">\(u^\mu\)</span> is <span class="math display">\[
+h_{\mu\nu} = g_{\mu\nu} + u_{\mu}u_{\nu},
+\]</span> which satisfies <span class="math display">\[
+h_{\mu\nu}u^\nu = 0,
+\qquad
+h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
+\]</span> Thus <span class="math inline">\(h^\mu{}_{\nu}\)</span> removes the temporal part (relative to <span class="math inline">\(u^\mu\)</span>) and keeps the spatial part.</p>
+<p>Given another timelike unit vector <span class="math inline">\(w^\mu\)</span>, we can decompose it as <span class="math display">\[
+w^\mu = -(u\cdot w)\,u^\mu + h^\mu{}_{\nu}w^\nu.
+\]</span> The scalar <span class="math inline">\(-(u\cdot w)\)</span> and the spatial norm <span class="math inline">\(\sqrt{h_{\mu\nu}w^\mu w^\nu}\)</span> are naturally parametrized by a rapidity <span class="math inline">\(\xi\)</span>: <span class="math display">\[
+-(u\cdot w)=\cosh\xi,
+\qquad
+\sqrt{h_{\mu\nu}w^\mu w^\nu}=\sinh\xi.
+\]</span> In frames where relative speed <span class="math inline">\(v\)</span> is defined, this gives <span class="math display">\[
+\operatorname{tanh}\xi = \frac{v}{c},
+\qquad
+\cosh\xi = \gamma,
+\qquad
+\gamma = \frac{1}{\sqrt{1-v^2/c^2}}.
+\]</span></p>
+<p>This decomposition is central in covariant electromagnetism: electric and magnetic fields are observer-dependent spatial projections of a single spacetime tensor.</p>
+<p>In this language, the magnetic part is fundamentally area-like (bivector-like), not intrinsically a standard vector. The familiar pseudovector description of <span class="math inline">\(\mathbf{B}\)</span> is a special feature of three spatial dimensions, where oriented areas can be identified with directions.</p>
+<section id="exercises-14" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-14">Exercises</h3>
+<ol type="1">
+<li><p>Consider the coordinate transformation <span class="math display">\[
+x = r\cos\theta, \qquad y = r\sin\theta .
+\]</span> Compute the metric components in polar coordinates.</p></li>
+<li><p>Show explicitly that the scalar product of two vectors remains invariant under this transformation.</p></li>
+<li><p>Explain why the matrix representation of the metric changes even though the geometry does not.</p></li>
+</ol>
+</section>
+
+
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->

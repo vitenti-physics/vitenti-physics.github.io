@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Calculus on Minkowski Spacetime – Physics Lecture Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-29a1aa07a51191aab823739aa3f2c2cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9c19d1b7fd0c79a624409cb58f05bec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-29a1aa07a51191aab823739aa3f2c2cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R4D0BX334F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R4D0BX334F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Physics Lecture Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vitenti-physics/vitenti-physics.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/calculus-on-minkowski-spacetime.html">Calculus on Minkowski Spacetime</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Undergraduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introduction to Physics (portuguese)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/physics-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physics and Mathematics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/determinism-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Determinism and Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/intro-stat-mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Statistical Mechanics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Heisenberg Uncertainty Principle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/selected-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vector Calculus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/vector-spaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vector Spaces Products and Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Mathematical Physics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/dirac-delta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dirac Delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/green-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Green Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/time-dependent-green-functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Dependent Green Functions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Special Relativity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/galilean-relativity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Galilean Relativity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/spacetime-algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spacetime Algebra</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Graduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Electrodynamics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometry Review for Electrodynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/calculus-on-minkowski-spacetime.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Calculus on Minkowski Spacetime</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#scope" id="toc-scope" class="nav-link active" data-scroll-target="#scope">Scope</a></li>
+  <li><a href="#why-use-a-covariant-view" id="toc-why-use-a-covariant-view" class="nav-link" data-scroll-target="#why-use-a-covariant-view">Why Use a Covariant View</a></li>
+  <li><a href="#curves-fields-and-their-relation" id="toc-curves-fields-and-their-relation" class="nav-link" data-scroll-target="#curves-fields-and-their-relation">Curves, Fields, and Their Relation</a></li>
+  <li><a href="#proper-time-and-affine-parametrization" id="toc-proper-time-and-affine-parametrization" class="nav-link" data-scroll-target="#proper-time-and-affine-parametrization">Proper Time and Affine Parametrization</a></li>
+  <li><a href="#observer-field-and-spatial-projector" id="toc-observer-field-and-spatial-projector" class="nav-link" data-scroll-target="#observer-field-and-spatial-projector">Observer Field and Spatial Projector</a></li>
+  <li><a href="#rapidity-and-relative-motion" id="toc-rapidity-and-relative-motion" class="nav-link" data-scroll-target="#rapidity-and-relative-motion">Rapidity and Relative Motion</a></li>
+  <li><a href="#electromagnetic-split-relative-to-an-observer" id="toc-electromagnetic-split-relative-to-an-observer" class="nav-link" data-scroll-target="#electromagnetic-split-relative-to-an-observer">Electromagnetic Split Relative to an Observer</a></li>
+  <li><a href="#differential-forms-geometric-degrees" id="toc-differential-forms-geometric-degrees" class="nav-link" data-scroll-target="#differential-forms-geometric-degrees">Differential Forms: Geometric Degrees</a></li>
+  <li><a href="#exterior-derivative" id="toc-exterior-derivative" class="nav-link" data-scroll-target="#exterior-derivative">Exterior Derivative</a></li>
+  <li><a href="#integrals-of-forms-and-parametrization-independence" id="toc-integrals-of-forms-and-parametrization-independence" class="nav-link" data-scroll-target="#integrals-of-forms-and-parametrization-independence">Integrals of Forms and Parametrization Independence</a></li>
+  <li><a href="#stokes-theorem-as-the-unifying-principle" id="toc-stokes-theorem-as-the-unifying-principle" class="nav-link" data-scroll-target="#stokes-theorem-as-the-unifying-principle">Stokes Theorem as the Unifying Principle</a></li>
+  <li><a href="#worked-integration-examples" id="toc-worked-integration-examples" class="nav-link" data-scroll-target="#worked-integration-examples">Worked Integration Examples</a>
+  <ul class="collapse">
+  <li><a href="#example-1-fundamental-theorem-as-1d-stokes" id="toc-example-1-fundamental-theorem-as-1d-stokes" class="nav-link" data-scroll-target="#example-1-fundamental-theorem-as-1d-stokes">Example 1: Fundamental Theorem as 1D Stokes</a></li>
+  <li><a href="#example-2-greens-theorem-from-a-1-form" id="toc-example-2-greens-theorem-from-a-1-form" class="nav-link" data-scroll-target="#example-2-greens-theorem-from-a-1-form">Example 2: Green’s Theorem from a 1-Form</a></li>
+  <li><a href="#example-3-3d-stokes-theorem-circulation-curl" id="toc-example-3-3d-stokes-theorem-circulation-curl" class="nav-link" data-scroll-target="#example-3-3d-stokes-theorem-circulation-curl">Example 3: 3D Stokes Theorem (Circulation-Curl)</a></li>
+  <li><a href="#example-4-divergence-theorem-from-a-2-form" id="toc-example-4-divergence-theorem-from-a-2-form" class="nav-link" data-scroll-target="#example-4-divergence-theorem-from-a-2-form">Example 4: Divergence Theorem from a 2-Form</a></li>
+  <li><a href="#example-5-reparametrization-invariance-curve-integral" id="toc-example-5-reparametrization-invariance-curve-integral" class="nav-link" data-scroll-target="#example-5-reparametrization-invariance-curve-integral">Example 5: Reparametrization Invariance (Curve Integral)</a></li>
+  </ul></li>
+  <li><a href="#divergence-vs-curl-in-form-language" id="toc-divergence-vs-curl-in-form-language" class="nav-link" data-scroll-target="#divergence-vs-curl-in-form-language">Divergence vs Curl in Form Language</a></li>
+  <li><a href="#electric-vs-magnetic-geometric-nature" id="toc-electric-vs-magnetic-geometric-nature" class="nav-link" data-scroll-target="#electric-vs-magnetic-geometric-nature">Electric vs Magnetic Geometric Nature</a></li>
+  <li><a href="#practical-takeaways" id="toc-practical-takeaways" class="nav-link" data-scroll-target="#practical-takeaways">Practical Takeaways</a>
+  <ul class="collapse">
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="calculus-on-minkowski-spacetime.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/calculus-on-minkowski-spacetime.html">Calculus on Minkowski Spacetime</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Calculus on Minkowski Spacetime</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sandro Vitenti </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="scope" class="level2">
+<h2 class="anchored" data-anchor-id="scope">Scope</h2>
+<p>These notes continue the geometry module and follow the third lecture in a more complete way. The focus is to connect:</p>
+<ul>
+<li>curves, fields, and observer kinematics,</li>
+<li>tensor/form language in Minkowski spacetime,</li>
+<li>integral and differential viewpoints,</li>
+<li>the geometric structure behind Maxwell theory.</li>
+</ul>
+<p>The main message is that much of electrodynamics is geometry plus source content.</p>
+</section>
+<section id="why-use-a-covariant-view" class="level2">
+<h2 class="anchored" data-anchor-id="why-use-a-covariant-view">Why Use a Covariant View</h2>
+<p>Coordinate systems are useful, but they can hide structure. A covariant formulation keeps only geometric information that is physically meaningful.</p>
+<p>In practice:</p>
+<ul>
+<li>coordinates are tools, not physics;</li>
+<li>observer choices change component values but not geometric objects;</li>
+<li>projection operators make observer dependence explicit and controlled.</li>
+</ul>
+<p>This is especially important when moving between inertial observers or when comparing electric/magnetic splits.</p>
+</section>
+<section id="curves-fields-and-their-relation" class="level2">
+<h2 class="anchored" data-anchor-id="curves-fields-and-their-relation">Curves, Fields, and Their Relation</h2>
+<p>Keep the distinction clear:</p>
+<ul>
+<li>a <strong>curve</strong> is <span class="math inline">\(x^\mu(\lambda)\)</span>,</li>
+<li>a <strong>tangent</strong> to that curve is <span class="math inline">\(\mathrm{d}x^\mu/\mathrm{d}\lambda\)</span>,</li>
+<li>a <strong>vector field</strong> is <span class="math inline">\(V^\mu(x)\)</span> defined at all spacetime points.</li>
+</ul>
+<p>Integral curves of a field are determined by <span class="math display">\[
+\frac{\mathrm{d}x^\mu}{\mathrm{d}\lambda}=V^\mu(x(\lambda)).
+\]</span></p>
+<p>So a field generates a congruence of curves, while a single curve gives one worldline.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using the same symbols in both contexts is common in physics, but conceptually they are not the same object.</p>
+</div>
+</div>
+</section>
+<section id="proper-time-and-affine-parametrization" class="level2">
+<h2 class="anchored" data-anchor-id="proper-time-and-affine-parametrization">Proper Time and Affine Parametrization</h2>
+<p>For timelike worldlines, proper time <span class="math inline">\(\tau\)</span> satisfies <span class="math display">\[
+g_{\mu\nu}\frac{\mathrm{d}x^\mu}{\mathrm{d}\tau}\frac{\mathrm{d}x^\nu}{\mathrm{d}\tau}=-1.
+\]</span></p>
+<p>If <span class="math inline">\(u^\mu:=\mathrm{d}x^\mu/\mathrm{d}\tau\)</span>, then <span class="math display">\[
+g_{\mu\nu}u^\mu u^\nu=-1.
+\]</span></p>
+<p>This is the normalization associated with affine/proper-time parametrization. For non-affine parameters, this normalization is not constant in general.</p>
+<p>In many calculations one can still parametrize by coordinate time, but proper time keeps covariance and normalization transparent.</p>
+</section>
+<section id="observer-field-and-spatial-projector" class="level2">
+<h2 class="anchored" data-anchor-id="observer-field-and-spatial-projector">Observer Field and Spatial Projector</h2>
+<p>Let <span class="math inline">\(u^\mu\)</span> be a unit timelike observer field. Define <span class="math display">\[
+h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu.
+\]</span></p>
+<p>Then <span class="math display">\[
+h_{\mu\nu}u^\nu=0,
+\qquad
+h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
+\]</span></p>
+<p>So <span class="math inline">\(h^\mu{}_{\nu}\)</span> projects onto the local spatial subspace orthogonal to <span class="math inline">\(u\)</span>.</p>
+<p>For any vector <span class="math inline">\(A^\mu\)</span>, <span class="math display">\[
+A^\mu=-(u\cdot A)u^\mu+\bar A^\mu,
+\qquad
+\bar A^\mu:=h^\mu{}_{\nu}A^\nu,
+\]</span> which separates temporal and spatial parts relative to that observer.</p>
+</section>
+<section id="rapidity-and-relative-motion" class="level2">
+<h2 class="anchored" data-anchor-id="rapidity-and-relative-motion">Rapidity and Relative Motion</h2>
+<p>For timelike unit vectors <span class="math inline">\(u^\mu\)</span> and <span class="math inline">\(v^\mu\)</span>, <span class="math display">\[
+-(u\cdot v)=\cosh\xi,
+\qquad
+\sqrt{h_{\mu\nu}v^\mu v^\nu}=\sinh\xi,
+\]</span> where <span class="math inline">\(\xi\)</span> is rapidity.</p>
+<p>In standard speed language: <span class="math display">\[
+   anh\xi=\frac{v}{c},
+\qquad
+\cosh\xi=\gamma.
+\]</span></p>
+<p>This is the coordinate-free content of Lorentz boosts. The pair <span class="math inline">\(\{\sinh\xi,\cosh\xi\}\)</span> replaces Euclidean trigonometric decomposition by a hyperbolic one adapted to Minkowski signature.</p>
+</section>
+<section id="electromagnetic-split-relative-to-an-observer" class="level2">
+<h2 class="anchored" data-anchor-id="electromagnetic-split-relative-to-an-observer">Electromagnetic Split Relative to an Observer</h2>
+<p>Given Faraday tensor <span class="math inline">\(F_{\mu\nu}=-F_{\nu\mu}\)</span>, define <span class="math display">\[
+E_\mu:=F_{\mu\nu}u^\nu,
+\qquad
+E_\mu u^\mu=0,
+\]</span> and the spatial magnetic 2-form <span class="math display">\[
+B_{\alpha\beta}:=h_\alpha{}^{\mu}h_\beta{}^{\nu}F_{\mu\nu}.
+\]</span></p>
+<p>Then <span class="math display">\[
+F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
+\]</span></p>
+<p>So electric and magnetic fields are observer-dependent projections of one spacetime tensor, not two independent fundamental fields.</p>
+</section>
+<section id="differential-forms-geometric-degrees" class="level2">
+<h2 class="anchored" data-anchor-id="differential-forms-geometric-degrees">Differential Forms: Geometric Degrees</h2>
+<p>Useful interpretation by degree:</p>
+<ul>
+<li>0-form: scalar field,</li>
+<li>1-form: linear functional on vectors,</li>
+<li>2-form: oriented area density,</li>
+<li>3-form: oriented volume density,</li>
+<li>4-form (in spacetime): oriented spacetime-volume density.</li>
+</ul>
+<p>Wedge products encode oriented geometric content. Antisymmetry means repeated directions collapse to zero, which is exactly what should happen for oriented areas/volumes.</p>
+</section>
+<section id="exterior-derivative" class="level2">
+<h2 class="anchored" data-anchor-id="exterior-derivative">Exterior Derivative</h2>
+<p>For a scalar <span class="math inline">\(f\)</span>, <span class="math display">\[
+\mathrm{d}f=(\partial_\mu f)\,\mathrm{d}x^\mu.
+\]</span></p>
+<p>For a 1-form <span class="math inline">\(\omega=\omega_\mu\mathrm{d}x^\mu\)</span>, <span class="math display">\[
+\mathrm{d}\omega=(\partial_\nu\omega_\mu)\,\mathrm{d}x^\nu\wedge\mathrm{d}x^\mu.
+\]</span></p>
+<p>For a 2-form <span class="math inline">\(\beta=\frac12\beta_{\mu\nu}\mathrm{d}x^\mu\wedge\mathrm{d}x^\nu\)</span>, <span class="math display">\[
+\mathrm{d}\beta=\frac12(\partial_\alpha\beta_{\mu\nu})\,\mathrm{d}x^\alpha\wedge\mathrm{d}x^\mu\wedge\mathrm{d}x^\nu.
+\]</span></p>
+<p>Key identity: <span class="math display">\[
+\mathrm{d}^2=0,
+\]</span> for smooth fields (commuting mixed partial derivatives).</p>
+</section>
+<section id="integrals-of-forms-and-parametrization-independence" class="level2">
+<h2 class="anchored" data-anchor-id="integrals-of-forms-and-parametrization-independence">Integrals of Forms and Parametrization Independence</h2>
+<p>A form is integrated on a geometric domain of matching dimension:</p>
+<ul>
+<li>1-form on curves,</li>
+<li>2-form on surfaces,</li>
+<li>3-form on volumes.</li>
+</ul>
+<p>The parametrization supplies tangent vectors and Jacobian factors. Under reparametrization, these compensate exactly, so the geometric integral is unchanged.</p>
+<p>This is why one writes <span class="math inline">\(\int_\Sigma\omega\)</span> for a domain <span class="math inline">\(\Sigma\)</span> itself, rather than tying meaning to one specific coordinate chart.</p>
+</section>
+<section id="stokes-theorem-as-the-unifying-principle" class="level2">
+<h2 class="anchored" data-anchor-id="stokes-theorem-as-the-unifying-principle">Stokes Theorem as the Unifying Principle</h2>
+<p>Prototype in 1D: <span class="math display">\[
+\int_a^b\mathrm{d}f=f(b)-f(a).
+\]</span></p>
+<p>General form: <span class="math display">\[
+\int_{\partial\Omega}\omega=\int_\Omega\mathrm{d}\omega.
+\]</span></p>
+<p>Classical theorems appear as special cases:</p>
+<ul>
+<li>gradient/fundamental theorem (1D),</li>
+<li>Green/Stokes (boundary curve vs enclosed surface),</li>
+<li>divergence theorem (closed surface vs enclosed volume).</li>
+</ul>
+<p>So the many vector-calculus integral identities are one geometric identity written at different form degrees.</p>
+</section>
+<section id="worked-integration-examples" class="level2">
+<h2 class="anchored" data-anchor-id="worked-integration-examples">Worked Integration Examples</h2>
+<p>This section follows the lecture emphasis: concrete integral identities before moving to full Maxwell equations.</p>
+<section id="example-1-fundamental-theorem-as-1d-stokes" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-fundamental-theorem-as-1d-stokes">Example 1: Fundamental Theorem as 1D Stokes</h3>
+<p>Let <span class="math inline">\(f(x)=x^3-2x\)</span>. Then <span class="math display">\[
+\mathrm{d}f = (3x^2-2)\,\mathrm{d}x.
+\]</span> On <span class="math inline">\([0,2]\)</span>, <span class="math display">\[
+\int_0^2 \mathrm{d}f
+=\int_0^2 (3x^2-2)\,\mathrm{d}x
+=\left[x^3-2x\right]_0^2
+=4.
+\]</span> Boundary evaluation gives the same result: <span class="math display">\[
+f(2)-f(0)=4-0=4.
+\]</span></p>
+</section>
+<section id="example-2-greens-theorem-from-a-1-form" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-greens-theorem-from-a-1-form">Example 2: Green’s Theorem from a 1-Form</h3>
+<p>In <span class="math inline">\(\mathbb{R}^2\)</span>, take <span class="math display">\[
+\omega=P\,\mathrm{d}x+Q\,\mathrm{d}y
+\quad\text{with}\quad
+P=-y,\;Q=x.
+\]</span> Then <span class="math display">\[
+\mathrm{d}\omega=(\partial_x Q-\partial_y P)\,\mathrm{d}x\wedge\mathrm{d}y
+=(1-(-1))\,\mathrm{d}x\wedge\mathrm{d}y
+=2\,\mathrm{d}x\wedge\mathrm{d}y.
+\]</span> Let <span class="math inline">\(\Omega\)</span> be the unit disk. Stokes gives <span class="math display">\[
+\oint_{\partial\Omega}\omega=\iint_\Omega\mathrm{d}\omega.
+\]</span> Right side: <span class="math display">\[
+\iint_\Omega 2\,\mathrm{d}A=2\pi.
+\]</span> Left side, with <span class="math inline">\(x=\cos t\)</span>, <span class="math inline">\(y=\sin t\)</span>: <span class="math display">\[
+\omega=-y\,\mathrm{d}x+x\,\mathrm{d}y=\sin^2 t\,\mathrm{d}t+\cos^2 t\,\mathrm{d}t=\mathrm{d}t,
+\]</span> so <span class="math display">\[
+\oint_{\partial\Omega}\omega=\int_0^{2\pi}\mathrm{d}t=2\pi.
+\]</span></p>
+</section>
+<section id="example-3-3d-stokes-theorem-circulation-curl" class="level3">
+<h3 class="anchored" data-anchor-id="example-3-3d-stokes-theorem-circulation-curl">Example 3: 3D Stokes Theorem (Circulation-Curl)</h3>
+<p>Let <span class="math display">\[
+\mathbf{A}=(-y,x,0),
+\]</span> with associated 1-form <span class="math display">\[
+\omega=-y\,\mathrm{d}x+x\,\mathrm{d}y.
+\]</span> Then <span class="math display">\[
+\mathrm{d}\omega=2\,\mathrm{d}x\wedge\mathrm{d}y,
+\]</span> which corresponds to <span class="math inline">\(\nabla\times\mathbf{A}=(0,0,2)\)</span>.</p>
+<p>Choose <span class="math inline">\(\Sigma\)</span> as the unit disk in the <span class="math inline">\(xy\)</span>-plane, oriented upward. Then <span class="math display">\[
+\int_{\partial\Sigma}\omega=\int_\Sigma\mathrm{d}\omega=2\pi.
+\]</span> This is exactly the circulation-curl theorem in form language.</p>
+</section>
+<section id="example-4-divergence-theorem-from-a-2-form" class="level3">
+<h3 class="anchored" data-anchor-id="example-4-divergence-theorem-from-a-2-form">Example 4: Divergence Theorem from a 2-Form</h3>
+<p>Let <span class="math display">\[
+\mathbf{B}=(x,y,z).
+\]</span> Associate the 2-form <span class="math display">\[
+\beta=B_x\,\mathrm{d}y\wedge\mathrm{d}z
++B_y\,\mathrm{d}z\wedge\mathrm{d}x
++B_z\,\mathrm{d}x\wedge\mathrm{d}y.
+\]</span> Then <span class="math display">\[
+\mathrm{d}\beta=(\nabla\cdot\mathbf{B})\,\mathrm{d}x\wedge\mathrm{d}y\wedge\mathrm{d}z.
+\]</span> Since <span class="math inline">\(\nabla\cdot\mathbf{B}=1+1+1=3\)</span>, <span class="math display">\[
+\iiint_V \mathrm{d}\beta = 3\,\text{Vol}(V).
+\]</span> For the unit ball <span class="math inline">\(V\)</span>, <span class="math inline">\(\text{Vol}(V)=\frac{4\pi}{3}\)</span>, so <span class="math display">\[
+\iiint_V \mathrm{d}\beta=4\pi.
+\]</span> Hence, by Stokes in degree 2, <span class="math display">\[
+\iint_{\partial V}\beta=4\pi,
+\]</span> which matches the classical outward flux of <span class="math inline">\(\mathbf{B}\)</span> through the unit sphere.</p>
+</section>
+<section id="example-5-reparametrization-invariance-curve-integral" class="level3">
+<h3 class="anchored" data-anchor-id="example-5-reparametrization-invariance-curve-integral">Example 5: Reparametrization Invariance (Curve Integral)</h3>
+<p>Take the 1-form <span class="math display">\[
+\omega=x\,\mathrm{d}x,
+\]</span> and the curve from <span class="math inline">\(x=0\)</span> to <span class="math inline">\(x=1\)</span>.</p>
+<p>Using parameter <span class="math inline">\(t\in[0,1]\)</span>, <span class="math inline">\(x=t\)</span>: <span class="math display">\[
+\int_\gamma\omega=\int_0^1 t\,\mathrm{d}t=\frac12.
+\]</span></p>
+<p>Using parameter <span class="math inline">\(s\in[0,1]\)</span>, <span class="math inline">\(x=s^3\)</span>: <span class="math display">\[
+\int_\gamma\omega=\int_0^1 s^3\,(3s^2)\,\mathrm{d}s
+=\int_0^1 3s^5\,\mathrm{d}s
+=\frac12.
+\]</span> Same geometric curve, same oriented endpoints, same integral.</p>
+</section>
+</section>
+<section id="divergence-vs-curl-in-form-language" class="level2">
+<h2 class="anchored" data-anchor-id="divergence-vs-curl-in-form-language">Divergence vs Curl in Form Language</h2>
+<p>In 3D Euclidean slices:</p>
+<ul>
+<li>from a 1-form, <span class="math inline">\(\mathrm{d}\)</span> gives a 2-form (curl-type content),</li>
+<li>from a 2-form, <span class="math inline">\(\mathrm{d}\)</span> gives a 3-form (divergence-type content).</li>
+</ul>
+<p>The same operator <span class="math inline">\(\mathrm{d}\)</span> does both jobs, depending on degree. This is a major reason forms simplify electrodynamics.</p>
+</section>
+<section id="electric-vs-magnetic-geometric-nature" class="level2">
+<h2 class="anchored" data-anchor-id="electric-vs-magnetic-geometric-nature">Electric vs Magnetic Geometric Nature</h2>
+<p>Geometrically:</p>
+<ul>
+<li>electric field is naturally a spatial 1-form,</li>
+<li>magnetic field is naturally a spatial 2-form.</li>
+</ul>
+<p>The usual magnetic pseudovector is a 3D dual representation. It is convenient, but it hides that magnetism is fundamentally area-oriented in this formalism.</p>
+</section>
+<section id="practical-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="practical-takeaways">Practical Takeaways</h2>
+<ul>
+<li>Covariance helps separate geometric invariants from coordinate artifacts.</li>
+<li>Observer projection is the right way to discuss frame-dependent fields.</li>
+<li>Exterior derivative plus Stokes gives a unified differential/integral picture.</li>
+<li>The integral theorems are best seen as one geometric statement in different form degrees.</li>
+</ul>
+<section id="exercises" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
+<ol type="1">
+<li><p>Let <span class="math inline">\(u^\mu\)</span> be unit timelike and <span class="math inline">\(h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu\)</span>. Prove <span class="math inline">\(h^\mu{}_{\nu}\)</span> is a projector and <span class="math inline">\(h_{\mu\nu}u^\nu=0\)</span>.</p></li>
+<li><p>For any vector <span class="math inline">\(A^\mu\)</span>, verify <span class="math display">\[
+A^\mu=-(u\cdot A)u^\mu+h^\mu{}_{\nu}A^\nu.
+\]</span></p></li>
+<li><p>For timelike unit vectors <span class="math inline">\(u^\mu,v^\mu\)</span>, derive the rapidity relations from the decomposition of <span class="math inline">\(v^\mu\)</span> into temporal/spatial parts relative to <span class="math inline">\(u^\mu\)</span>.</p></li>
+<li><p>Show from antisymmetry that <span class="math inline">\(E_\mu u^\mu=0\)</span> when <span class="math inline">\(E_\mu=F_{\mu\nu}u^\nu\)</span>.</p></li>
+<li><p>Starting from the projector definition of <span class="math inline">\(B_{\alpha\beta}\)</span>, prove <span class="math display">\[
+F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
+\]</span></p></li>
+<li><p>Compute <span class="math inline">\(\mathrm{d}\omega\)</span> for a generic 1-form and verify explicitly in flat coordinates that <span class="math inline">\(\mathrm{d}^2\omega=0\)</span>.</p></li>
+<li><p>Repeat Example 2 using the square <span class="math inline">\([-1,1]\times[-1,1]\)</span> instead of the unit disk and confirm both sides agree.</p></li>
+<li><p>For <span class="math inline">\(\mathbf{A}=(-y,x,0)\)</span> and a disk of radius <span class="math inline">\(R\)</span>, compute <span class="math inline">\(\int_{\partial\Sigma}\omega\)</span> and <span class="math inline">\(\int_\Sigma\mathrm{d}\omega\)</span> explicitly and show both equal <span class="math inline">\(2\pi R^2\)</span>.</p></li>
+<li><p>For <span class="math inline">\(\mathbf{B}=(x,y,z)\)</span> and a ball of radius <span class="math inline">\(R\)</span>, verify <span class="math display">\[
+\iint_{\partial V}\beta=4\pi R^3.
+\]</span></p></li>
+<li><p>Explain, with one explicit example, how the same identity <span class="math display">\[
+   \int_{\partial\Omega}\omega=\int_\Omega\mathrm{d}\omega
+   \]</span> reproduces a familiar vector-calculus theorem.</p></li>
+<li><p>Discuss why representing <span class="math inline">\(\mathbf{B}\)</span> as a pseudovector is special to 3 spatial dimensions.</p></li>
+</ol>
+</section>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/vitenti-physics\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

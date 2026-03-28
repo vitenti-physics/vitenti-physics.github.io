@@ -1,75 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://vitenti-physics.github.io/courses/special-relativity/galilean-relativity.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
+    <loc>https://vitenti-physics.github.io/index.html</loc>
+    <lastmod>2026-03-28T21:17:54.845Z</lastmod>
   </url>
   <url>
-    <loc>https://vitenti-physics.github.io/courses/special-relativity/index.html</loc>
-    <lastmod>2026-03-19T19:46:55.141Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/courses/mathematical-physics/time-dependent-green-functions.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/courses/mathematical-physics/index.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/courses/vector-calculus/index.html</loc>
-    <lastmod>2026-03-19T19:46:55.141Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/courses/electrodynamics/index.html</loc>
-    <lastmod>2026-03-19T19:46:55.139Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/selected-exercises.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
+    <loc>https://vitenti-physics.github.io/courses/electrodynamics/calculus-on-minkowski-spacetime.html</loc>
+    <lastmod>2026-03-28T21:17:54.843Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/heisenberg-uncertainty.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/index.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/index.html</loc>
-    <lastmod>2026-03-19T19:46:55.141Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/physics-math.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/intro-stat-mechanics.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
   </url>
   <url>
-    <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/determinism-statistics.html</loc>
-    <lastmod>2026-03-19T19:46:55.139Z</lastmod>
+    <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/selected-exercises.html</loc>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
   </url>
   <url>
-    <loc>https://vitenti-physics.github.io/courses/electrodynamics/geometry-review.html</loc>
-    <lastmod>2026-03-19T19:46:55.139Z</lastmod>
+    <loc>https://vitenti-physics.github.io/courses/mathematical-physics/time-dependent-green-functions.html</loc>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
   </url>
   <url>
-    <loc>https://vitenti-physics.github.io/courses/vector-calculus/vector-spaces.html</loc>
-    <lastmod>2026-03-19T19:46:55.141Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/courses/mathematical-physics/green-functions.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vitenti-physics.github.io/courses/mathematical-physics/dirac-delta.html</loc>
-    <lastmod>2026-03-19T19:46:55.140Z</lastmod>
+    <loc>https://vitenti-physics.github.io/courses/mathematical-physics/index.html</loc>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/special-relativity/spacetime-algebra.html</loc>
-    <lastmod>2026-03-19T19:46:55.141Z</lastmod>
+    <lastmod>2026-03-28T21:17:54.845Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/special-relativity/galilean-relativity.html</loc>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/vector-calculus/vector-spaces.html</loc>
+    <lastmod>2026-03-28T21:17:54.845Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/vector-calculus/index.html</loc>
+    <lastmod>2026-03-28T21:17:54.845Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/special-relativity/index.html</loc>
+    <lastmod>2026-03-28T21:17:54.845Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/mathematical-physics/green-functions.html</loc>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/mathematical-physics/dirac-delta.html</loc>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/determinism-statistics.html</loc>
+    <lastmod>2026-03-28T21:17:54.843Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/index.html</loc>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/physics-math.html</loc>
+    <lastmod>2026-03-28T21:17:54.844Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/electrodynamics/geometry-review.html</loc>
+    <lastmod>2026-03-28T21:17:54.843Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/electrodynamics/index.html</loc>
+    <lastmod>2026-03-28T21:17:54.843Z</lastmod>
   </url>
 </urlset>
