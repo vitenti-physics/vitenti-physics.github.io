@@ -6,179 +6,409 @@ title: "Calculus on Minkowski Spacetime"
 
 ## Scope
 
-These notes continue the geometry review and introduce the calculus machinery
-used in covariant electrodynamics:
+These notes continue the geometry module and follow the third lecture in a more
+complete way. The focus is to connect:
 
-- timelike fields and curve parametrization,
-- observer-dependent spacetime decomposition,
-- exterior derivative on differential forms,
-- geometric meaning of Stokes-type integral relations.
+- curves, fields, and observer kinematics,
+- tensor/form language in Minkowski spacetime,
+- integral and differential viewpoints,
+- the geometric structure behind Maxwell theory.
 
-The goal is to connect tensor calculus to the integral and differential forms of
-Maxwell's equations.
+The main message is that much of electrodynamics is geometry plus source
+content.
 
-## Curves, Fields, and Parametrization
+## Why Use a Covariant View
 
-A useful distinction is:
+Coordinate systems are useful, but they can hide structure. A covariant
+formulation keeps only geometric information that is physically meaningful.
 
-- a **curve** $x^\mu(\lambda)$ with tangent $\dd x^\mu/\dd\lambda$,
-- a **vector field** $V^\mu(x)$ defined at each spacetime point.
+In practice:
 
-A field generates integral curves through
+- coordinates are tools, not physics;
+- observer choices change component values but not geometric objects;
+- projection operators make observer dependence explicit and controlled.
+
+This is especially important when moving between inertial observers or when
+comparing electric/magnetic splits.
+
+## Curves, Fields, and Their Relation
+
+Keep the distinction clear:
+
+- a **curve** is $x^\mu(\lambda)$,
+- a **tangent** to that curve is $\dd x^\mu/\dd\lambda$,
+- a **vector field** is $V^\mu(x)$ defined at all spacetime points.
+
+Integral curves of a field are determined by
 $$
-\frac{\dd x^\mu}{\dd\lambda} = V^\mu(x(\lambda)).
+\frac{\dd x^\mu}{\dd\lambda}=V^\mu(x(\lambda)).
 $$
 
-For timelike curves parametrized by proper time $\tau$,
-$$
-g_{\mu\nu}\,\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}=-1.
-$$
-This normalization fixes the affine scale of the parameter.
+So a field generates a congruence of curves, while a single curve gives one
+worldline.
 
 ::: {.callout-note}
-Using coordinate time as parameter is often convenient, but proper-time
-parametrization keeps normalization and covariance explicit.
+Using the same symbols in both contexts is common in physics, but conceptually
+they are not the same object.
 :::
 
-## Covariant Observer Split
+## Proper Time and Affine Parametrization
 
-Let $u^\mu$ be a unit timelike observer field:
+For timelike worldlines, proper time $\tau$ satisfies
+$$
+g_{\mu\nu}\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}=-1.
+$$
+
+If $u^\mu:=\dd x^\mu/\dd\tau$, then
 $$
 g_{\mu\nu}u^\mu u^\nu=-1.
 $$
-Define the spatial projector
+
+This is the normalization associated with affine/proper-time parametrization.
+For non-affine parameters, this normalization is not constant in general.
+
+In many calculations one can still parametrize by coordinate time, but proper
+time keeps covariance and normalization transparent.
+
+## Observer Field and Spatial Projector
+
+Let $u^\mu$ be a unit timelike observer field. Define
 $$
-h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu,
+h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu.
 $$
-with
+
+Then
 $$
 h_{\mu\nu}u^\nu=0,
 \qquad
 h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
 $$
 
-For another timelike unit vector $v^\mu$, write
+So $h^\mu{}_{\nu}$ projects onto the local spatial subspace orthogonal to $u$.
+
+For any vector $A^\mu$,
 $$
-v^\mu = \bar v^\mu - (u\cdot v)u^\mu,
+A^\mu=-(u\cdot A)u^\mu+\bar A^\mu,
 \qquad
-\bar v^\mu := h^\mu{}_{\nu}v^\nu.
+\bar A^\mu:=h^\mu{}_{\nu}A^\nu,
 $$
-The invariant products are naturally expressed with rapidity $\xi$:
+which separates temporal and spatial parts relative to that observer.
+
+## Rapidity and Relative Motion
+
+For timelike unit vectors $u^\mu$ and $v^\mu$,
 $$
 -(u\cdot v)=\cosh\xi,
 \qquad
-\sqrt{h_{\mu\nu}v^\mu v^\nu}=\sinh\xi.
+\sqrt{h_{\mu\nu}v^\mu v^\nu}=\sinh\xi,
 $$
-In standard relative-speed language,
+where $\xi$ is rapidity.
+
+In standard speed language:
 $$
-\operatorname{tanh}\xi=\frac{v}{c},
+   anh\xi=\frac{v}{c},
 \qquad
 \cosh\xi=\gamma.
 $$
 
-This is the coordinate-free content of Lorentz boosts.
+This is the coordinate-free content of Lorentz boosts. The pair
+$\{\sinh\xi,\cosh\xi\}$ replaces Euclidean trigonometric decomposition by a
+hyperbolic one adapted to Minkowski signature.
 
-## Electromagnetic Decomposition Relative to an Observer
+## Electromagnetic Split Relative to an Observer
 
-Given the antisymmetric Faraday tensor $F_{\mu\nu}$, define the observer-measured
-spatial electric field
+Given Faraday tensor $F_{\mu\nu}=-F_{\nu\mu}$, define
 $$
-E_\mu := F_{\mu\nu}u^\nu,
+E_\mu:=F_{\mu\nu}u^\nu,
 \qquad
-E_\mu u^\mu=0.
+E_\mu u^\mu=0,
+$$
+and the spatial magnetic 2-form
+$$
+B_{\alpha\beta}:=h_\alpha{}^{\mu}h_\beta{}^{\nu}F_{\mu\nu}.
 $$
 
-Define the spatial magnetic two-form
+Then
 $$
-B_{\alpha\beta} := h_{\alpha}{}^{\mu}h_{\beta}{}^{\nu}F_{\mu\nu}.
-$$
-In $3+1$ dimensions, this has three independent components.
-
-The reconstruction of $F_{\mu\nu}$ from observer data is
-$$
-F_{\alpha\beta}
-= B_{\alpha\beta} + u_\alpha E_\beta - u_\beta E_\alpha.
+F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
 $$
 
-This expression makes frame dependence explicit: different observers produce
-different $(E,B)$ splits of the same spacetime tensor $F$.
+So electric and magnetic fields are observer-dependent projections of one
+spacetime tensor, not two independent fundamental fields.
 
-## Exterior Derivative and Differential Forms
+## Differential Forms: Geometric Degrees
 
-For a scalar $f$, the exterior derivative is the one-form
+Useful interpretation by degree:
+
+- 0-form: scalar field,
+- 1-form: linear functional on vectors,
+- 2-form: oriented area density,
+- 3-form: oriented volume density,
+- 4-form (in spacetime): oriented spacetime-volume density.
+
+Wedge products encode oriented geometric content. Antisymmetry means repeated
+directions collapse to zero, which is exactly what should happen for oriented
+areas/volumes.
+
+## Exterior Derivative
+
+For a scalar $f$,
 $$
-\dd f = (\partial_\mu f)\,\dd x^\mu.
+\dd f=(\partial_\mu f)\,\dd x^\mu.
 $$
 
-For a one-form $\omega=\omega_\mu\dd x^\mu$,
+For a 1-form $\omega=\omega_\mu\dd x^\mu$,
 $$
-\dd\omega = (\partial_\nu\omega_\mu)\,\dd x^\nu\wedge\dd x^\mu.
+\dd\omega=(\partial_\nu\omega_\mu)\,\dd x^\nu\wedge\dd x^\mu.
 $$
 
-In general, $\dd$ raises form degree by one and satisfies
+For a 2-form $\beta=\frac12\beta_{\mu\nu}\dd x^\mu\wedge\dd x^\nu$,
+$$
+\dd\beta=\frac12(\partial_\alpha\beta_{\mu\nu})\,\dd x^\alpha\wedge\dd x^\mu\wedge\dd x^\nu.
+$$
+
+Key identity:
 $$
 \dd^2=0,
 $$
-assuming smooth fields so mixed partial derivatives commute.
+for smooth fields (commuting mixed partial derivatives).
 
-## Integral Meaning: From Boundaries to Interiors
+## Integrals of Forms and Parametrization Independence
 
-The one-dimensional identity
+A form is integrated on a geometric domain of matching dimension:
+
+- 1-form on curves,
+- 2-form on surfaces,
+- 3-form on volumes.
+
+The parametrization supplies tangent vectors and Jacobian factors. Under
+reparametrization, these compensate exactly, so the geometric integral is
+unchanged.
+
+This is why one writes $\int_\Sigma\omega$ for a domain $\Sigma$ itself,
+rather than tying meaning to one specific coordinate chart.
+
+## Stokes Theorem as the Unifying Principle
+
+Prototype in 1D:
 $$
-\int_a^b \dd f = f(b)-f(a)
-$$
-is the prototype of Stokes' theorem.
-
-For higher-degree forms, the geometric relation is
-$$
-\int_{\partial\Omega}\omega = \int_\Omega \dd\omega.
+\int_a^b\dd f=f(b)-f(a).
 $$
 
-In familiar vector-calculus language:
+General form:
+$$
+\int_{\partial\Omega}\omega=\int_\Omega\dd\omega.
+$$
 
-- line integral around a closed curve corresponds to the integral of $\dd\omega$
-  over the enclosed surface,
-- flux through a closed surface corresponds to the integral of the exterior
-  derivative of the associated two-form over the volume.
+Classical theorems appear as special cases:
 
-The key point is geometric: the theorem is independent of chosen coordinates;
-parametrizations affect Jacobians and basis vectors in compensating ways.
+- gradient/fundamental theorem (1D),
+- Green/Stokes (boundary curve vs enclosed surface),
+- divergence theorem (closed surface vs enclosed volume).
 
-## Electric and Magnetic Geometric Character
+So the many vector-calculus integral identities are one geometric identity
+written at different form degrees.
 
-A useful distinction:
+## Worked Integration Examples
 
-- electric field is naturally represented by a spatial one-form (or vector after
-  metric identification),
-- magnetic field is naturally area-like (a spatial two-form).
+This section follows the lecture emphasis: concrete integral identities before
+moving to full Maxwell equations.
 
-The usual magnetic pseudovector in three dimensions is a convenient dual
-representation, not the most fundamental geometric object.
+### Example 1: Fundamental Theorem as 1D Stokes
 
-## Why This Matters for Maxwell Theory
+Let $f(x)=x^3-2x$. Then
+$$
+\dd f = (3x^2-2)\,\dd x.
+$$
+On $[0,2]$,
+$$
+\int_0^2 \dd f
+=\int_0^2 (3x^2-2)\,\dd x
+=\left[x^3-2x\right]_0^2
+=4.
+$$
+Boundary evaluation gives the same result:
+$$
+f(2)-f(0)=4-0=4.
+$$
 
-Covariant electrodynamics becomes conceptually cleaner when written in forms:
+### Example 2: Green's Theorem from a 1-Form
 
-- geometric identities from $\dd^2=0$ generate the homogeneous Maxwell sector,
-- dynamics enters through source equations on the inhomogeneous sector,
-- observer-dependent electric/magnetic fields are obtained by projection,
-  not by introducing separate fundamental fields.
+In $\mathbb{R}^2$, take
+$$
+\omega=P\,\dd x+Q\,\dd y
+\quad\text{with}\quad
+P=-y,\;Q=x.
+$$
+Then
+$$
+\dd\omega=(\partial_x Q-\partial_y P)\,\dd x\wedge\dd y
+=(1-(-1))\,\dd x\wedge\dd y
+=2\,\dd x\wedge\dd y.
+$$
+Let $\Omega$ be the unit disk. Stokes gives
+$$
+\oint_{\partial\Omega}\omega=\iint_\Omega\dd\omega.
+$$
+Right side:
+$$
+\iint_\Omega 2\,\dd A=2\pi.
+$$
+Left side, with $x=\cos t$, $y=\sin t$:
+$$
+\omega=-y\,\dd x+x\,\dd y=\sin^2 t\,\dd t+\cos^2 t\,\dd t=\dd t,
+$$
+so
+$$
+\oint_{\partial\Omega}\omega=\int_0^{2\pi}\dd t=2\pi.
+$$
 
-This structure clarifies which statements are purely geometric and which depend
-on physical source content.
+### Example 3: 3D Stokes Theorem (Circulation-Curl)
+
+Let
+$$
+\mathbf{A}=(-y,x,0),
+$$
+with associated 1-form
+$$
+\omega=-y\,\dd x+x\,\dd y.
+$$
+Then
+$$
+\dd\omega=2\,\dd x\wedge\dd y,
+$$
+which corresponds to $\nabla\times\mathbf{A}=(0,0,2)$.
+
+Choose $\Sigma$ as the unit disk in the $xy$-plane, oriented upward. Then
+$$
+\int_{\partial\Sigma}\omega=\int_\Sigma\dd\omega=2\pi.
+$$
+This is exactly the circulation-curl theorem in form language.
+
+### Example 4: Divergence Theorem from a 2-Form
+
+Let
+$$
+\mathbf{B}=(x,y,z).
+$$
+Associate the 2-form
+$$
+\beta=B_x\,\dd y\wedge\dd z
++B_y\,\dd z\wedge\dd x
++B_z\,\dd x\wedge\dd y.
+$$
+Then
+$$
+\dd\beta=(\nabla\cdot\mathbf{B})\,\dd x\wedge\dd y\wedge\dd z.
+$$
+Since $\nabla\cdot\mathbf{B}=1+1+1=3$,
+$$
+\iiint_V \dd\beta = 3\,\text{Vol}(V).
+$$
+For the unit ball $V$, $\text{Vol}(V)=\frac{4\pi}{3}$, so
+$$
+\iiint_V \dd\beta=4\pi.
+$$
+Hence, by Stokes in degree 2,
+$$
+\iint_{\partial V}\beta=4\pi,
+$$
+which matches the classical outward flux of $\mathbf{B}$ through the unit
+sphere.
+
+### Example 5: Reparametrization Invariance (Curve Integral)
+
+Take the 1-form
+$$
+\omega=x\,\dd x,
+$$
+and the curve from $x=0$ to $x=1$.
+
+Using parameter $t\in[0,1]$, $x=t$:
+$$
+\int_\gamma\omega=\int_0^1 t\,\dd t=\frac12.
+$$
+
+Using parameter $s\in[0,1]$, $x=s^3$:
+$$
+\int_\gamma\omega=\int_0^1 s^3\,(3s^2)\,\dd s
+=\int_0^1 3s^5\,\dd s
+=\frac12.
+$$
+Same geometric curve, same oriented endpoints, same integral.
+
+## Divergence vs Curl in Form Language
+
+In 3D Euclidean slices:
+
+- from a 1-form, $\dd$ gives a 2-form (curl-type content),
+- from a 2-form, $\dd$ gives a 3-form (divergence-type content).
+
+The same operator $\dd$ does both jobs, depending on degree. This is a major
+reason forms simplify electrodynamics.
+
+## Electric vs Magnetic Geometric Nature
+
+Geometrically:
+
+- electric field is naturally a spatial 1-form,
+- magnetic field is naturally a spatial 2-form.
+
+The usual magnetic pseudovector is a 3D dual representation. It is convenient,
+but it hides that magnetism is fundamentally area-oriented in this formalism.
+
+## Practical Takeaways
+
+- Covariance helps separate geometric invariants from coordinate artifacts.
+- Observer projection is the right way to discuss frame-dependent fields.
+- Exterior derivative plus Stokes gives a unified differential/integral picture.
+- The integral theorems are best seen as one geometric statement in different
+   form degrees.
 
 ::: {.callout-exercise}
 ### Exercises
 
-1. Let $u^\mu$ be unit timelike and $h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu$. Show
-   explicitly that $h^\mu{}_{\nu}$ is a projector.
+1. Let $u^\mu$ be unit timelike and $h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu$.
+   Prove $h^\mu{}_{\nu}$ is a projector and $h_{\mu\nu}u^\nu=0$.
 
-2. For $E_\mu=F_{\mu\nu}u^\nu$, prove $E_\mu u^\mu=0$ using antisymmetry of
-   $F_{\mu\nu}$.
+2. For any vector $A^\mu$, verify
+   $$
+   A^\mu=-(u\cdot A)u^\mu+h^\mu{}_{\nu}A^\nu.
+   $$
 
-3. Starting from $\omega=\omega_\mu\dd x^\mu$, compute $\dd\omega$ and verify
-   that $\dd^2\omega=0$ in flat coordinates.
+3. For timelike unit vectors $u^\mu,v^\mu$, derive the rapidity relations
+   from the decomposition of $v^\mu$ into temporal/spatial parts relative to
+   $u^\mu$.
 
-4. Explain how $\int_{\partial\Omega}\omega=\int_\Omega\dd\omega$ reproduces
-   Green/Stokes/divergence theorems in dimensions 2 and 3.
+4. Show from antisymmetry that $E_\mu u^\mu=0$ when
+   $E_\mu=F_{\mu\nu}u^\nu$.
+
+5. Starting from the projector definition of $B_{\alpha\beta}$, prove
+   $$
+   F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
+   $$
+
+6. Compute $\dd\omega$ for a generic 1-form and verify explicitly in flat
+   coordinates that $\dd^2\omega=0$.
+
+7. Repeat Example 2 using the square $[-1,1]\times[-1,1]$ instead of the unit
+   disk and confirm both sides agree.
+
+8. For $\mathbf{A}=(-y,x,0)$ and a disk of radius $R$, compute
+   $\int_{\partial\Sigma}\omega$ and $\int_\Sigma\dd\omega$ explicitly and show
+   both equal $2\pi R^2$.
+
+9. For $\mathbf{B}=(x,y,z)$ and a ball of radius $R$, verify
+   $$
+   \iint_{\partial V}\beta=4\pi R^3.
+   $$
+
+10. Explain, with one explicit example, how the same identity
+   $$
+   \int_{\partial\Omega}\omega=\int_\Omega\dd\omega
+   $$
+   reproduces a familiar vector-calculus theorem.
+
+11. Discuss why representing $\mathbf{B}$ as a pseudovector is special to 3
+   spatial dimensions.
 :::
