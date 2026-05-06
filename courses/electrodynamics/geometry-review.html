@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,14 +41,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-29a1aa07a51191aab823739aa3f2c2cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-e9c19d1b7fd0c79a624409cb58f05bec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-29a1aa07a51191aab823739aa3f2c2cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-db5249cfe2af07b176222950535bc6fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-62cfa37d84d80c486a8fd826fc0beed7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-db5249cfe2af07b176222950535bc6fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -526,6 +526,12 @@ window.Quarto = {
  <span class="menu-text">Calculus on Minkowski Spacetime</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/maxwell-equations-forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maxwell Equations in Covariant Form</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -565,7 +571,6 @@ window.Quarto = {
   <li><a href="#symmetric-and-antisymmetric-tensors" id="toc-symmetric-and-antisymmetric-tensors" class="nav-link" data-scroll-target="#symmetric-and-antisymmetric-tensors">Symmetric and Antisymmetric Tensors</a>
   <ul class="collapse">
   <li><a href="#exercises-5" id="toc-exercises-5" class="nav-link" data-scroll-target="#exercises-5">Exercises</a></li>
-  <li><a href="#geometric-interpretation" id="toc-geometric-interpretation" class="nav-link" data-scroll-target="#geometric-interpretation">Geometric interpretation</a></li>
   </ul></li>
   <li><a href="#antisymmetric-products-and-linear-independence" id="toc-antisymmetric-products-and-linear-independence" class="nav-link" data-scroll-target="#antisymmetric-products-and-linear-independence">Antisymmetric Products and Linear Independence</a>
   <ul class="collapse">
@@ -580,30 +585,17 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#exercises-8" id="toc-exercises-8" class="nav-link" data-scroll-target="#exercises-8">Exercises</a></li>
   </ul></li>
-  <li><a href="#tensor-representation-of-the-metric" id="toc-tensor-representation-of-the-metric" class="nav-link" data-scroll-target="#tensor-representation-of-the-metric">Tensor Representation of the Metric</a>
+  <li><a href="#gradients-as-covectors" id="toc-gradients-as-covectors" class="nav-link" data-scroll-target="#gradients-as-covectors">Gradients as Covectors</a>
   <ul class="collapse">
   <li><a href="#exercises-9" id="toc-exercises-9" class="nav-link" data-scroll-target="#exercises-9">Exercises</a></li>
   </ul></li>
-  <li><a href="#tensor-products-and-linear-combinations" id="toc-tensor-products-and-linear-combinations" class="nav-link" data-scroll-target="#tensor-products-and-linear-combinations">Tensor Products and Linear Combinations</a>
+  <li><a href="#coordinate-dependence-of-the-metric" id="toc-coordinate-dependence-of-the-metric" class="nav-link" data-scroll-target="#coordinate-dependence-of-the-metric">Coordinate Dependence of the Metric</a>
   <ul class="collapse">
   <li><a href="#exercises-10" id="toc-exercises-10" class="nav-link" data-scroll-target="#exercises-10">Exercises</a></li>
   </ul></li>
-  <li><a href="#metric-as-a-map-v-to-v" id="toc-metric-as-a-map-v-to-v" class="nav-link" data-scroll-target="#metric-as-a-map-v-to-v">Metric as a Map <span class="math inline">\(V \to V^*\)</span></a>
-  <ul class="collapse">
-  <li><a href="#exercises-11" id="toc-exercises-11" class="nav-link" data-scroll-target="#exercises-11">Exercises</a></li>
-  </ul></li>
-  <li><a href="#geometric-meaning-of-index-lowering" id="toc-geometric-meaning-of-index-lowering" class="nav-link" data-scroll-target="#geometric-meaning-of-index-lowering">Geometric Meaning of Index Lowering</a>
-  <ul class="collapse">
-  <li><a href="#exercises-12" id="toc-exercises-12" class="nav-link" data-scroll-target="#exercises-12">Exercises</a></li>
-  </ul></li>
-  <li><a href="#gradients-as-covectors" id="toc-gradients-as-covectors" class="nav-link" data-scroll-target="#gradients-as-covectors">Gradients as Covectors</a>
-  <ul class="collapse">
-  <li><a href="#exercises-13" id="toc-exercises-13" class="nav-link" data-scroll-target="#exercises-13">Exercises</a></li>
-  </ul></li>
-  <li><a href="#coordinate-dependence-of-the-metric" id="toc-coordinate-dependence-of-the-metric" class="nav-link" data-scroll-target="#coordinate-dependence-of-the-metric">Coordinate Dependence of the Metric</a></li>
   <li><a href="#covariant-observer-decomposition-and-rapidity" id="toc-covariant-observer-decomposition-and-rapidity" class="nav-link" data-scroll-target="#covariant-observer-decomposition-and-rapidity">Covariant Observer Decomposition and Rapidity</a>
   <ul class="collapse">
-  <li><a href="#exercises-14" id="toc-exercises-14" class="nav-link" data-scroll-target="#exercises-14">Exercises</a></li>
+  <li><a href="#exercises-11" id="toc-exercises-11" class="nav-link" data-scroll-target="#exercises-11">Exercises</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="geometry-review.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -660,19 +652,11 @@ Most of its structure follows directly from the geometry of spacetime, together 
 <h2 class="anchored" data-anchor-id="metric-and-the-notion-of-distance">Metric and the Notion of Distance</h2>
 <p>In physics we constantly perform measurements. For example, we measure the distance between two points in space or the elapsed time between two events. To describe these measurements mathematically we need a rule that tells us how to assign lengths to displacements between nearby points.</p>
 <p>This rule is provided by the <strong>metric</strong>.</p>
-<p>Mathematically, a metric is a bilinear map that assigns a number to a pair of vectors. In particular, given a displacement vector <span class="math inline">\(v\)</span>, the metric defines its squared length through <span class="math display">\[
-g(v,v).
-\]</span></p>
-<p>In Euclidean space this rule reproduces the familiar Pythagorean expression. If a displacement has components <span class="math inline">\((\mathrm{d}x,\mathrm{d}y)\)</span>, the squared length is <span class="math display">\[
-\mathrm{d}s^2 = \mathrm{d}x^2 + \mathrm{d}y^2 .
-\]</span></p>
-<p>In spacetime the situation is different. Experiments in special relativity show that the combination of space and time intervals that remains invariant under changes of inertial reference frames is <span class="math display">\[
-\mathrm{d}s^2 = -c^2 \mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2 .
-\]</span></p>
+<p>Mathematically, a metric is a bilinear map that assigns a number to a pair of vectors. In particular, given a displacement vector <span class="math inline">\(v\)</span>, the metric defines its squared length through <span class="math display">\[g(v,v).\]</span></p>
+<p>In Euclidean space this rule reproduces the familiar Pythagorean expression. If a displacement has components <span class="math inline">\((\mathrm{d}x,\mathrm{d}y)\)</span>, the squared length is <span class="math display">\[\mathrm{d}s^2 = \mathrm{d}x^2 + \mathrm{d}y^2 .\]</span></p>
+<p>In spacetime the situation is different. Experiments in special relativity show that the combination of space and time intervals that remains invariant under changes of inertial reference frames is <span class="math display">\[\mathrm{d}s^2 = -c^2 \mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2 .\]</span></p>
 <p>This expression defines the <strong>Minkowski metric</strong>.</p>
-<p>A crucial feature is that the time direction appears with a sign opposite to the spatial directions. The pattern of signs in the metric is called its <strong>signature</strong>. In this convention the signature is <span class="math display">\[
-(-,+,+,+).
-\]</span></p>
+<p>A crucial feature is that the time direction appears with a sign opposite to the spatial directions. The pattern of signs in the metric is called its <strong>signature</strong>. In this convention the signature is <span class="math display">\[(-,+,+,+).\]</span></p>
 <p>This difference in sign is responsible for several distinctive features of relativistic spacetime, including the classification of intervals into timelike, spacelike, and null.</p>
 <p>In coordinates, the Minkowski metric can be represented by the matrix <span class="math display">\[
 \eta_{\mu\nu} =
@@ -683,9 +667,7 @@ g(v,v).
 0 &amp; 0 &amp; 0 &amp; 1
 \end{pmatrix}.
 \]</span></p>
-<p>Using this metric, the spacetime interval between two infinitesimally separated events can be written compactly as <span class="math display">\[
-\mathrm{d}s^2 = \eta_{\mu\nu} \, \mathrm{d}x^\mu \mathrm{d}x^\nu .
-\]</span></p>
+<p>Using this metric, the spacetime interval between two infinitesimally separated events can be written compactly as <span class="math display">\[\mathrm{d}s^2 = \eta_{\mu\nu} \, \mathrm{d}x^\mu \mathrm{d}x^\nu .\]</span></p>
 <p>Unlike the Euclidean distance, this quantity can be positive, negative, or zero. These three possibilities correspond to different types of separations:</p>
 <ul>
 <li><strong>timelike:</strong> <span class="math inline">\(\mathrm{d}s^2 &lt; 0\)</span></li>
@@ -711,27 +693,15 @@ Note
 <h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
 <ol type="1">
 <li><p><strong>Metric invariance</strong></p>
-<p>Consider the Lorentz transformation <span class="math display">\[
-\begin{aligned}
+<p>Consider the Lorentz transformation <span class="math display">\[\begin{aligned}
 t' &amp;= \gamma\left(t - \frac{v}{c^2}x\right) \\
 x' &amp;= \gamma(x - vt)
-\end{aligned}
-\]</span> with <span class="math inline">\(y'=y\)</span> and <span class="math inline">\(z'=z\)</span>.</p>
-<p>Show explicitly that <span class="math display">\[
-\mathrm{d}s'^2 = -c^2\mathrm{d}t'^2 + \mathrm{d}x'^2 + \mathrm{d}y'^2 + \mathrm{d}z'^2
-\]</span> is equal to <span class="math display">\[
-\mathrm{d}s^2 = -c^2\mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2 .
-\]</span></p></li>
+\end{aligned}\]</span> with <span class="math inline">\(y'=y\)</span> and <span class="math inline">\(z'=z\)</span>.</p>
+<p>Show explicitly that <span class="math display">\[\mathrm{d}s'^2 = -c^2\mathrm{d}t'^2 + \mathrm{d}x'^2 + \mathrm{d}y'^2 + \mathrm{d}z'^2\]</span> is equal to <span class="math display">\[\mathrm{d}s^2 = -c^2\mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2 .\]</span></p></li>
 <li><p><strong>Metric components</strong></p>
-<p>Starting from <span class="math display">\[
-\mathrm{d}s^2 = -c^2\mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2,
-\]</span> rewrite the interval in the form <span class="math display">\[
-\mathrm{d}s^2 = \eta_{\mu\nu}\mathrm{d}x^\mu \mathrm{d}x^\nu
-\]</span> and determine all components of <span class="math inline">\(\eta_{\mu\nu}\)</span>.</p></li>
+<p>Starting from <span class="math display">\[\mathrm{d}s^2 = -c^2\mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2,\]</span> rewrite the interval in the form <span class="math display">\[\mathrm{d}s^2 = \eta_{\mu\nu}\mathrm{d}x^\mu \mathrm{d}x^\nu\]</span> and determine all components of <span class="math inline">\(\eta_{\mu\nu}\)</span>.</p></li>
 <li><p><strong>Timelike normalization</strong></p>
-<p>Let <span class="math inline">\(v^\mu\)</span> be a timelike vector. Show that it can always be rescaled so that <span class="math display">\[
-\eta_{\mu\nu}v^\mu v^\nu = -1.
-\]</span> Explain the physical meaning of this normalization in relativity.</p></li>
+<p>Let <span class="math inline">\(v^\mu\)</span> be a timelike vector. Show that it can always be rescaled so that <span class="math display">\[\eta_{\mu\nu}v^\mu v^\nu = -1.\]</span> Explain the physical meaning of this normalization in relativity.</p></li>
 </ol>
 </section>
 </section>
@@ -739,187 +709,174 @@ x' &amp;= \gamma(x - vt)
 <h2 class="anchored" data-anchor-id="vectors-and-the-metric">Vectors and the Metric</h2>
 <p>To understand the role of the metric more clearly, it is useful to think about displacement vectors.</p>
 <p>Suppose we have two nearby points in space and consider the vector that connects them. This vector represents a displacement in space. In Euclidean geometry we can draw such a vector and measure its length using the metric.</p>
-<p>The Euclidean metric allows us to compute not only the length of a vector, but also the relation between two vectors. Given two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span>, the metric defines the quantity <span class="math display">\[
-g(v,u).
-\]</span></p>
+<p>The Euclidean metric allows us to compute not only the length of a vector, but also the relation between two vectors. Given two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span>, the metric defines the quantity <span class="math display">\[g(v,u).\]</span></p>
 <p>In Euclidean space this operation corresponds to the familiar <strong>dot product</strong>.</p>
-<p>Geometrically, the dot product measures the projection of one vector along the direction of another. If <span class="math inline">\(u\)</span> is a unit vector, the quantity <span class="math display">\[
-g(v,u)
-\]</span> gives the component of <span class="math inline">\(v\)</span> along the direction <span class="math inline">\(u\)</span>.</p>
+<p>Geometrically, the dot product measures the projection of one vector along the direction of another. If <span class="math inline">\(u\)</span> is a unit vector, the quantity <span class="math display">\[g(v,u)\]</span> gives the component of <span class="math inline">\(v\)</span> along the direction <span class="math inline">\(u\)</span>.</p>
 <p>This interpretation is extremely useful. Instead of thinking of the metric only as a way of computing lengths, we can think of it as a rule that allows us to compare vectors and extract geometric information such as angles and projections.</p>
 <p>In relativistic spacetime the same idea applies. The metric still provides a bilinear operation that takes two vectors and produces a number. The difference is that the sign structure of the metric is no longer Euclidean, reflecting the different roles of time and space in Minkowski geometry.</p>
 <section id="exercises-1" class="level3 callout-exercise">
 <h3 class="anchored" data-anchor-id="exercises-1">Exercises</h3>
 <ol type="1">
 <li><p><strong>Orthogonality</strong></p>
-<p>Two vectors are said to be orthogonal if <span class="math display">\[
-g(u,v)=0.
-\]</span> Show that orthogonality in Minkowski space does not imply that the vectors are spatially perpendicular in the usual Euclidean sense.</p></li>
+<p>Two vectors are said to be orthogonal if <span class="math display">\[g(u,v)=0.\]</span> Show that orthogonality in Minkowski space does not imply that the vectors are spatially perpendicular in the usual Euclidean sense.</p></li>
 <li><p><strong>Metric as a map</strong></p>
-<p>Show that the metric defines a linear map <span class="math display">\[
-g : V \rightarrow V^*
-\]</span> by associating to every vector <span class="math inline">\(v\)</span> the covector <span class="math display">\[
-g(v,\cdot).
-\]</span> Verify explicitly that this map is linear.</p></li>
+<p>Show that the metric defines a linear map <span class="math display">\[g : \mathbb{V} \rightarrow \mathbb{V}^*\]</span> by associating to every vector <span class="math inline">\(v\)</span> the covector <span class="math display">\[g(v,\cdot).\]</span> Verify explicitly that this map is linear.</p></li>
 <li><p><strong>Degeneracy</strong></p>
-<p>Show that if a bilinear form <span class="math inline">\(g\)</span> satisfies <span class="math display">\[
-g(v,u)=0
-\]</span> for all <span class="math inline">\(u\)</span>, then <span class="math inline">\(v\)</span> must vanish. Explain why this property is called <strong>non-degeneracy</strong>.</p></li>
+<p>Show that if a bilinear form <span class="math inline">\(g\)</span> satisfies <span class="math display">\[g(v,u)=0\]</span> for all <span class="math inline">\(u\)</span>, then <span class="math inline">\(v\)</span> must vanish. Explain why this property is called <strong>non-degeneracy</strong>.</p></li>
 </ol>
 </section>
 </section>
 <section id="points-vectors-and-tangent-spaces" class="level2">
 <h2 class="anchored" data-anchor-id="points-vectors-and-tangent-spaces">Points, Vectors, and Tangent Spaces</h2>
-<p>It is important to distinguish between <strong>points</strong> in spacetime and <strong>vectors</strong>.</p>
-<p>Points represent events. They specify locations in spacetime and are usually described by coordinates such as <span class="math display">\[
-(x^0, x^1, x^2, x^3).
-\]</span></p>
-<p>Vectors, on the other hand, represent <strong>displacements</strong> between nearby points. For example, the vector <span class="math display">\[
-\mathrm{d}x^\mu
-\]</span></p>
-<p>can be interpreted as an infinitesimal displacement from one event to a nearby event.</p>
-<p>This distinction is important because spacetime itself is <strong>not a vector space</strong>. In general, there is no natural way to add two points or multiply a point by a scalar. Operations such as addition and scalar multiplication are defined for vectors, not for points.</p>
-<p>Instead, vectors live in a vector space attached to each point of spacetime. This space is called the <strong>tangent space</strong>.</p>
-<p>At every point <span class="math inline">\(p\)</span> of spacetime we associate a vector space <span class="math inline">\(T_pM\)</span>, the tangent space at <span class="math inline">\(p\)</span>. The elements of this space are the possible infinitesimal displacements starting from that point.</p>
-<p>In this way spacetime can be thought of as a collection of points, each of which carries its own tangent vector space. Geometric objects such as vectors, covectors, and tensors are defined in these tangent spaces.</p>
+<p>It is important to distinguish between points in spacetime and vectors.</p>
+<p>We model spacetime as a manifold <span class="math inline">\(M\)</span> equipped with a metric <span class="math inline">\(\eta\)</span>. The elements of <span class="math inline">\(M\)</span> are points (events), which represent locations in spacetime. In a coordinate system, a point <span class="math inline">\(p \in M\)</span> is described by numbers <span class="math display">\[(x^0, x^1, x^2, x^3).\]</span> These coordinates label the point, but they are not the point itself.</p>
+<p>Vectors represent infinitesimal displacements between nearby points. A convenient and intrinsic way to define vectors is through their action on functions. Given the space of smooth functions on the manifold, <span class="math inline">\(C^\infty(M)\)</span> and <span class="math inline">\(f(x^0, x^1, x^2, x^3) \in C^\infty(M)\)</span>, we define the action of a vector <span class="math inline">\(v\)</span> at a point <span class="math inline">\(p\)</span> as the directional derivative of <span class="math inline">\(f\)</span> along <span class="math inline">\(v\)</span> at <span class="math inline">\(p\)</span>: <span class="math display">\[v(f) = \lim_{\epsilon \to 0} \frac{f(p + \epsilon v) - f(p)}{\epsilon}.\]</span> In coordinates, this becomes <span class="math display">\[v(f) = v^\mu \frac{\partial f}{\partial x^\mu}.\]</span> This definition captures the idea of a vector as a directional derivative operator and does not depend on a particular coordinate system.</p>
+<p>Thus, we represent a vector as <span class="math display">\[v = v^\mu \partial_\mu, \qquad \text{with} \quad \partial_\mu \equiv \frac{\partial}{\partial x^\mu}.\]</span> The coordinate functions <span class="math inline">\(x^\mu\)</span> provide a natural basis <span class="math inline">\(\{\partial_\mu\}\)</span> for vectors at each point. It is important to note that the coordinates <span class="math inline">\(x^\mu\)</span> themselves are not vectors.</p>
+<p>Spacetime is not, in general, a vector space: we cannot add points or multiply them by scalars. These operations are defined only for vectors.</p>
+<p>At each point <span class="math inline">\(p \in M\)</span>, we associate a vector space <span class="math inline">\(T_pM\)</span>, called the tangent space at <span class="math inline">\(p\)</span>. The elements of <span class="math inline">\(T_pM\)</span> are the possible infinitesimal displacements starting from <span class="math inline">\(p\)</span>.</p>
+<p>Thus, points live in <span class="math inline">\(M\)</span>, while vectors live in <span class="math inline">\(T_pM\)</span>. Each point has its own tangent space, and there is no canonical identification between tangent spaces at different points.</p>
+<p>In Minkowski spacetime, we can introduce global Cartesian coordinates. In this special case, it is possible to represent a displacement between two points <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> as <span class="math display">\[\Delta x^\mu = x^\mu(q) - x^\mu(p).\]</span> This makes it tempting to think of vectors as differences of points. In this setting, one can approximate the variation of a function as <span class="math display">\[f(q) - f(p) \approx \Delta x^\mu \, \partial_\mu f(p).\]</span></p>
+<p>However, this construction relies on the existence of global Cartesian coordinates and a preferred origin. In a general curved spacetime, such coordinates do not exist, and the notion of a vector as a difference of points is not well defined.</p>
+<p>For this reason, vectors must be defined intrinsically as elements of <span class="math inline">\(T_pM\)</span>, independent of any coordinate system.</p>
+<p>Spacetime can be viewed as a collection of points, each equipped with its own tangent space, <span class="math display">\[p \in M \quad \longrightarrow \quad T_pM.\]</span> Geometric objects such as vectors, covectors, and tensors are defined in these tangent spaces, not directly on <span class="math inline">\(M\)</span> itself.</p>
 <section id="exercises-2" class="level3 callout-exercise">
 <h3 class="anchored" data-anchor-id="exercises-2">Exercises</h3>
 <ol type="1">
 <li><p><strong>Tangent vector transformation</strong></p>
-<p>Let a curve be parametrized by <span class="math inline">\(\lambda\)</span>, <span class="math display">\[
-x^\mu(\lambda).
-\]</span> Show that under a change of parameter <span class="math inline">\(\lambda \to \lambda'(\lambda)\)</span> the vector <span class="math display">\[
-v^\mu = \frac{\mathrm{d}x^\mu}{\mathrm{d}\lambda}
-\]</span> transforms as <span class="math display">\[
-v'^\mu = \frac{\mathrm{d}\lambda}{\mathrm{d}\lambda'} v^\mu .
-\]</span></p></li>
+<p>Let a curve be parametrized by <span class="math inline">\(\lambda\)</span>, <span class="math display">\[x^\mu(\lambda).\]</span> Show that under a change of parameter <span class="math inline">\(\lambda \to \lambda'(\lambda)\)</span> the vector <span class="math display">\[v^\mu = \frac{\mathrm{d}x^\mu}{\mathrm{d}\lambda}\]</span> transforms as <span class="math display">\[v'^\mu = \frac{\mathrm{d}\lambda}{\mathrm{d}\lambda'} v^\mu .\]</span></p></li>
 <li><p><strong>Tangent space dimension</strong></p>
 <p>Consider spacetime with coordinates <span class="math inline">\((x^0,x^1,x^2,x^3)\)</span>.</p>
-<p>Show that the vectors <span class="math display">\[
-\partial_\mu = \frac{\partial}{\partial x^\mu}
-\]</span> form a basis of the tangent space at each point.</p></li>
+<p>Show that the vectors <span class="math display">\[\partial_\mu = \frac{\partial}{\partial x^\mu}\]</span> form a basis of the tangent space at each point.</p></li>
 <li><p><strong>Coordinate change</strong></p>
-<p>Under a coordinate transformation <span class="math inline">\(x^\mu \to x'^\mu(x)\)</span> show that the basis vectors transform according to <span class="math display">\[
-\partial_\mu =
-\frac{\partial x'^\nu}{\partial x^\mu}\partial'_\nu .
-\]</span></p></li>
+<p>Under a coordinate transformation <span class="math inline">\(x^\mu \to x'^\mu(x)\)</span> show that the basis vectors transform according to <span class="math display">\[\partial_\mu =
+\frac{\partial x'^\nu}{\partial x^\mu}\partial'_\nu .\]</span></p></li>
 </ol>
 </section>
 </section>
 <section id="covectors-and-the-dual-space" class="level2">
 <h2 class="anchored" data-anchor-id="covectors-and-the-dual-space">Covectors and the Dual Space</h2>
-<p>Given a vector space <span class="math inline">\(V\)</span>, we can construct another vector space called the <strong>dual space</strong>, denoted <span class="math inline">\(V^*\)</span>.</p>
-<p>Elements of the dual space are <strong>linear functionals</strong>. That is, a covector <span class="math inline">\(\tilde{w} \in V^*\)</span> is a map <span class="math display">\[
-\tilde{w} : V \rightarrow \mathbb{R}
-\]</span> that assigns a real number to each vector in <span class="math inline">\(V\)</span>, and does so linearly.</p>
-<p>If <span class="math inline">\(v \in V\)</span> is a vector, the action of the covector <span class="math inline">\(\tilde{w}\)</span> on <span class="math inline">\(v\)</span> produces a number <span class="math display">\[
-\tilde{w}(v).
-\]</span> Because these objects satisfy the properties of linearity, the set of all such functionals forms a vector space. This space is the <strong>dual space</strong> <span class="math inline">\(V^*\)</span>.</p>
-<p>A basic result from linear algebra is that the dual space has the same dimension as the original vector space, <span class="math display">\[
-\dim V^* = \dim V.
-\]</span> However, even though the two spaces have the same dimension, there is <strong>no natural map that identifies vectors with covectors</strong>. A vector and a covector belong to different spaces, and without additional structure there is no canonical way to associate one with the other.</p>
-<p>Such a map becomes possible once the vector space is equipped with extra geometric structure. In particular, if a <strong>metric</strong> is defined on the space, it allows us to construct a correspondence between vectors and covectors. Later we will see that the metric provides the operation known as <strong>raising and lowering indices</strong>.</p>
-<p>Finally, it is worth noting that the dual space itself has a dual. The dual of <span class="math inline">\(V^*\)</span> is denoted <span class="math inline">\(V^{**}\)</span>. There exists a natural map from <span class="math inline">\(V\)</span> to <span class="math inline">\(V^{**}\)</span>, which associates to each vector a functional acting on covectors. In finite-dimensional spaces this map is an isomorphism, allowing us to identify <span class="math inline">\(V\)</span> with <span class="math inline">\(V^{**}\)</span>.</p>
+<p>Given a vector space <span class="math inline">\(\mathbb{V}\)</span>, we can construct another vector space called the dual space, denoted <span class="math inline">\(\mathbb{V}^*\)</span>.</p>
+<p>Elements of <span class="math inline">\(\mathbb{V}^*\)</span> are linear functionals, that is, maps <span class="math display">\[\tilde{w} : \mathbb{V} \to \mathbb{R}\]</span> such that for all <span class="math inline">\(v_1, v_2 \in \mathbb{V}\)</span> and scalars <span class="math inline">\(a,b\)</span>, <span class="math display">\[\tilde{w}(a v_1 + b v_2) = a\,\tilde{w}(v_1) + b\,\tilde{w}(v_2).\]</span></p>
+<p>If <span class="math inline">\(v \in \mathbb{V}\)</span>, the action of a covector <span class="math inline">\(\tilde{w}\)</span> on <span class="math inline">\(v\)</span> produces a real number, <span class="math display">\[\tilde{w}(v).\]</span> This pairing between covectors and vectors is bilinear and is often denoted by <span class="math display">\[\langle \tilde{w}, v \rangle = \tilde{w}(v).\]</span></p>
+<p>The set of all linear functionals forms a vector space, the dual space <span class="math inline">\(\mathbb{V}^*\)</span>, and it has the same dimension as <span class="math inline">\(\mathbb{V}\)</span>, <span class="math display">\[
+\dim \mathbb{V}^* = \dim \mathbb{V}.
+\]</span> However, <span class="math inline">\(\mathbb{V}\)</span> and <span class="math inline">\(\mathbb{V}^*\)</span> are distinct spaces. Without additional structure there is no canonical way to identify a vector with a covector.</p>
+<p>This distinction becomes concrete once a basis is chosen. Let <span class="math inline">\(\{e_i\}\)</span> be a basis of <span class="math inline">\(\mathbb{V}\)</span>. Then there exists a unique dual basis <span class="math inline">\(\{\tilde{e}^i\}\)</span> of <span class="math inline">\(\mathbb{V}^*\)</span> defined by <span class="math display">\[
+\tilde{e}^i(e_j) = \delta^i_j.
+\]</span> Any vector and covector can then be written as <span class="math display">\[
+v = v^i e_i, \qquad \tilde{w} = w_i \tilde{e}^i,
+\]</span> and their pairing becomes <span class="math display">\[
+\tilde{w}(v) = w_i v^i.
+\]</span></p>
+<p>A map between <span class="math inline">\(\mathbb{V}\)</span> and <span class="math inline">\(\mathbb{V}^*\)</span> arises once a metric <span class="math inline">\(g\)</span> is introduced. The metric is a bilinear map <span class="math display">\[g : \mathbb{V} \times \mathbb{V} \to \mathbb{R},\]</span> which allows us to associate to each vector <span class="math inline">\(v\)</span> a covector <span class="math inline">\(v^\flat \in \mathbb{V}^*\)</span> via <span class="math display">\[
+v^\flat(w) = g(v,w).
+\]</span> In components, this corresponds to lowering an index, <span class="math display">\[
+v_i = g_{ij} v^j,
+\]</span> and the inverse metric provides the reverse operation (raising indices).</p>
+<p>The dual space <span class="math inline">\(\mathbb{V}^*\)</span> itself has a dual, denoted <span class="math inline">\(\mathbb{V}^{**}\)</span>. There is a natural map <span class="math display">\[
+\mathbb{V} \to \mathbb{V}^{**}, \qquad v \mapsto \big( \tilde{w} \mapsto \tilde{w}(v) \big),
+\]</span> which embeds vectors as linear functionals acting on covectors. In finite-dimensional spaces this map is an isomorphism, allowing us to identify <span class="math inline">\(\mathbb{V}\)</span> with <span class="math inline">\(\mathbb{V}^{**}\)</span>.</p>
+<p>In spacetime, at each point <span class="math inline">\(p \in M\)</span>, we define the dual space <span class="math inline">\(T_p^*M\)</span> as the space of covectors at <span class="math inline">\(p\)</span>, that is, linear maps <span class="math display">\[
+T_pM \to \mathbb{R}.
+\]</span> A convenient way to construct covectors is through the exterior derivative. For a smooth function <span class="math inline">\(f\)</span>, we define <span class="math inline">\(\mathrm{d}f\)</span> by its action on a vector <span class="math inline">\(v\)</span>, <span class="math display">\[
+\mathrm{d}f (v) = v(f).
+\]</span> In coordinates, this gives <span class="math display">\[
+\mathrm{d}x^\mu(v) = v^\mu,
+\]</span> so the set <span class="math inline">\(\{\mathrm{d}x^\mu\}\)</span> forms a basis of <span class="math inline">\(T_p^*M\)</span> dual to the basis <span class="math inline">\(\{\partial_\mu\}\)</span> of <span class="math inline">\(T_pM\)</span>.</p>
 <section id="exercises-3" class="level3 callout-exercise">
 <h3 class="anchored" data-anchor-id="exercises-3">Exercises</h3>
 <ol type="1">
-<li><p><strong>Dual basis construction</strong></p>
-<p>Given a basis <span class="math inline">\(\{e_\mu\}\)</span> of <span class="math inline">\(V\)</span>, construct covectors <span class="math inline">\(\{\mathrm{d}x^\mu\}\)</span> such that <span class="math display">\[
-\mathrm{d}x^\mu(e_\nu) = \delta^\mu_\nu .
-\]</span> Prove that <span class="math inline">\(\{\mathrm{d}x^\mu\}\)</span> forms a basis of <span class="math inline">\(V^*\)</span>.</p></li>
-<li><p><strong>Dual transformation law</strong></p>
-<p>Suppose the basis of <span class="math inline">\(V\)</span> transforms as <span class="math display">\[
-e_\mu' = A^\nu{}_\mu e_\nu .
-\]</span> Determine how the dual basis <span class="math inline">\(\mathrm{d}x^\mu\)</span> must transform so that the relation <span class="math display">\[
-\mathrm{d}x^\mu(e_\nu)=\delta^\mu_\nu
-\]</span> remains valid.</p></li>
-<li><p><strong>Dual of the dual</strong></p>
-<p>Construct explicitly the natural map</p>
-<p><span class="math display">\[
-V \rightarrow V^{**}
-\]</span></p>
-<p>and show that it is linear.</p></li>
+<li><p>Show directly from the definition that the pairing <span class="math inline">\(\tilde{w}(v)\)</span> is bilinear in both arguments.</p></li>
+<li><p>Starting from a basis <span class="math inline">\(\{e_i\}\)</span> of <span class="math inline">\(\mathbb{V}\)</span>, construct the dual basis explicitly and show that it is unique.</p></li>
+<li><p>Given a change of basis <span class="math inline">\(e_i' = A^j{}_i e_j\)</span>, determine how the dual basis must transform so that <span class="math inline">\(\tilde{e}^i(e_j)=\delta^i_j\)</span> remains valid.</p></li>
+<li><p>Using the definition <span class="math inline">\(\mathrm{d}f(v) = v(f)\)</span>, show that <span class="math inline">\(\mathrm{d}(fg) = f\,\mathrm{d}g + g\,\mathrm{d}f\)</span>.</p></li>
+<li><p>Show that <span class="math inline">\(\mathrm{d}x^\mu(\partial_\nu) = \delta^\mu_\nu\)</span> and explain why this implies that <span class="math inline">\(\{\mathrm{d}x^\mu\}\)</span> is a basis of <span class="math inline">\(T_p^*M\)</span>.</p></li>
+<li><p>Verify explicitly that the map <span class="math inline">\(\mathbb{V} \to \mathbb{V}^{**}\)</span> defined by <span class="math inline">\(v \mapsto V \in \mathbb{V}^{**}\)</span> such that <span class="math inline">\(V(\tilde{w}) = \tilde{w}(v)\)</span> is an isomorphism in finite dimensions.</p></li>
 </ol>
 </section>
 </section>
 <section id="tensor-products" class="level2">
 <h2 class="anchored" data-anchor-id="tensor-products">Tensor Products</h2>
-<p>Once vectors and covectors have been introduced, we can construct more general objects by combining them. The simplest example is obtained by taking two covectors and forming a <strong>tensor product</strong>.</p>
-<p>If <span class="math inline">\(\mathrm{d}x^\mu\)</span> and <span class="math inline">\(\mathrm{d}x^\nu\)</span> are covectors, their tensor product defines a bilinear functional acting on two vectors, <span class="math display">\[
-(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu)(v,u)
-= \mathrm{d}x^\mu(v)\, \mathrm{d}x^\nu(u).
-\]</span> In other words, the tensor product takes two vectors as input and produces a number. The result is obtained by evaluating each covector on one of the vectors and multiplying the two numbers.</p>
-<p>Objects of this type form the space of rank-two covariant tensors.</p>
-<p>It is important to note that not every tensor can be written as a single tensor product of two covectors. In general, tensors are <strong>linear combinations</strong> of such products. For example, <span class="math display">\[
-T = \alpha\, \mathrm{d}x^0 \otimes \mathrm{d}x^1
-    + \beta\, \mathrm{d}x^3 \otimes \mathrm{d}x^3
-\]</span> is also a valid tensor.</p>
-<p>The tensor products <span class="math inline">\(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu\)</span> therefore form a basis for the space of rank-two covariant tensors, and arbitrary tensors can be expressed as linear combinations of these basis elements.</p>
-<p>This construction generalizes naturally. By taking tensor products of several copies of the vector space and its dual, we can construct tensors of arbitrary rank.</p>
+<p>Once vectors and covectors have been introduced, we can construct more general objects by combining them. The fundamental operation is the tensor product.</p>
+<p>If <span class="math inline">\(\mathrm{d}x^\mu\)</span> and <span class="math inline">\(\mathrm{d}x^\nu\)</span> are covectors, their tensor product defines a bilinear map acting on two vectors: <span class="math display">\[
+(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu)(v,u) = \mathrm{d}x^\mu(v)\, \mathrm{d}x^\nu(u).
+\]</span> That is, each covector acts on one of the input vectors, and the results are multiplied, producing a real number.</p>
+<p>More generally, given vector spaces <span class="math inline">\(\mathbb{V}\)</span> and <span class="math inline">\(\mathbb{W}\)</span>, their tensor product <span class="math inline">\(\mathbb{V} \otimes \mathbb{W}\)</span> is defined so that bilinear maps on <span class="math inline">\(\mathbb{V} \times \mathbb{W}\)</span> correspond to linear maps on <span class="math inline">\(\mathbb{V} \otimes \mathbb{W}\)</span>. In this way, tensor products allow us to encode multilinear operations within a linear framework.</p>
+<p>Elements of <span class="math inline">\(\mathbb{V}^* \otimes \mathbb{V}^*\)</span> are called rank-two covariant tensors. In general, tensors are not single tensor products but linear combinations of them. For example, <span class="math display">\[
+T = \alpha\, \mathrm{d}x^0 \otimes \mathrm{d}x^1 + \beta\, \mathrm{d}x^3 \otimes \mathrm{d}x^3.
+\]</span> The objects <span class="math inline">\(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu\)</span> form a basis for this space, so any rank-two covariant tensor can be written as <span class="math display">\[
+T = T_{\mu\nu}\, \mathrm{d}x^\mu \otimes \mathrm{d}x^\nu.
+\]</span></p>
+<p>This construction extends naturally to tensors of arbitrary type. By combining copies of <span class="math inline">\(\mathbb{V}\)</span> and <span class="math inline">\(\mathbb{V}^*\)</span>, we obtain tensors of type <span class="math inline">\((r,s)\)</span>: <span class="math display">\[
+T \in \underbrace{\mathbb{V} \otimes \cdots \otimes \mathbb{V}}_{r \text{ times}}
+\;\otimes\;
+\underbrace{\mathbb{V}^* \otimes \cdots \otimes \mathbb{V}^*}_{s \text{ times}}.
+\]</span> Such a tensor takes <span class="math inline">\(r\)</span> covectors and <span class="math inline">\(s\)</span> vectors as input and produces a real number in a multilinear way.</p>
+<p>In spacetime, this construction is applied pointwise. At each point <span class="math inline">\(p \in M\)</span>, we form tensors from the spaces <span class="math inline">\(T_pM\)</span> and <span class="math inline">\(T_p^*M\)</span>. A tensor field assigns to each point <span class="math inline">\(p\)</span> a tensor in these spaces, varying smoothly across the manifold.</p>
+<p>A central example is the metric, a rank-two covariant tensor field. In a coordinate basis, it can be written as <span class="math display">\[
+\eta = \eta_{\mu\nu} \, \mathrm{d}x^\mu \otimes \mathrm{d}x^\nu.
+\]</span> As a bilinear map, it acts on two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span> as <span class="math display">\[
+\eta(v,u) = \eta_{\mu\nu} v^\mu u^\nu.
+\]</span> It can also be viewed as a map from vectors to covectors, <span class="math display">\[
+\eta(v) = \eta_{\mu\nu} v^\mu \mathrm{d}x^\nu,
+\]</span> which corresponds to lowering an index.</p>
+<p>Since the metric is non-degenerate, it admits an inverse <span class="math inline">\(\eta^{-1}\)</span> that raises indices and maps covectors to vectors. In coordinates, <span class="math display">\[\eta^{-1} = \eta^{\mu\nu} \, \partial_\mu \otimes \partial_\nu,\]</span> where <span class="math inline">\(\eta^{\mu\nu}\)</span> is the inverse matrix of <span class="math inline">\(\eta_{\mu\nu}\)</span>. Its action on a covector is <span class="math display">\[\eta^{-1}(\mathrm{d}x^\mu) = \eta^{\mu\nu} \partial_\nu.\]</span></p>
 <section id="exercises-4" class="level3 callout-exercise">
 <h3 class="anchored" data-anchor-id="exercises-4">Exercises</h3>
 <ol type="1">
-<li><p><strong>Tensor product components</strong></p>
-<p>Let <span class="math display">\[
-T = \mathrm{d}x^\mu \otimes \mathrm{d}x^\nu .
-\]</span> Show that <span class="math display">\[
-T(v,u)=v^\mu u^\nu .
-\]</span></p></li>
-<li><p><strong>Non-factorizable tensor</strong></p>
-<p>Show that the tensor <span class="math display">\[
-\mathrm{d}x^0\otimes \mathrm{d}x^1 + \mathrm{d}x^1\otimes \mathrm{d}x^0
-\]</span> cannot be written as a single tensor product of two covectors.</p></li>
-<li><p><strong>Dimension counting</strong></p>
-<p>If <span class="math inline">\(\dim V = n\)</span>, show that the space of rank-two covariant tensors has dimension <span class="math inline">\(n^2\)</span>.</p></li>
+<li><p>Show that the tensor product is bilinear, that is, <span class="math display">\[(a w_1 + b w_2) \otimes k = a (w_1 \otimes k) + b (w_2 \otimes k),\]</span> and similarly in the second argument.</p></li>
+<li><p>Verify explicitly that <span class="math display">\[(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu)(v,u) = v^\mu u^\nu.\]</span></p></li>
+<li><p>Show that the tensor <span class="math display">\[\mathrm{d}x^0 \otimes \mathrm{d}x^1 + \mathrm{d}x^1 \otimes \mathrm{d}x^0\]</span> cannot be written as a single tensor product of two covectors.</p></li>
+<li><p>If <span class="math inline">\(\dim \mathbb{V} = n\)</span>, show that the space of rank-two covariant tensors has dimension <span class="math inline">\(n^2\)</span>.</p></li>
+<li><p>Given a vector <span class="math inline">\(v = v^\mu \partial_\mu\)</span>, compute explicitly the components of the covector <span class="math inline">\(\eta(v)\)</span>.</p></li>
+<li><p>Show that applying <span class="math inline">\(\eta^{-1}\)</span> to <span class="math inline">\(\eta(v)\)</span> recovers the original vector <span class="math inline">\(v\)</span>.</p></li>
+<li><p>Show that the components <span class="math inline">\(\eta^{\mu\nu}\)</span> satisfy <span class="math display">\[\eta^{\mu\alpha} \eta_{\alpha\nu} = \delta^\mu{}_\nu.\]</span></p></li>
 </ol>
 </section>
 </section>
 <section id="symmetric-and-antisymmetric-tensors" class="level2">
 <h2 class="anchored" data-anchor-id="symmetric-and-antisymmetric-tensors">Symmetric and Antisymmetric Tensors</h2>
-<p>When tensor products involve multiple copies of the same vector space, it is useful to separate tensors into <strong>symmetric</strong> and <strong>antisymmetric</strong> parts.</p>
-<p>Consider a rank-two tensor constructed from covectors. Given a tensor <span class="math inline">\(T_{\mu\nu}\)</span>, we can define its symmetric and antisymmetric components as <span class="math display">\[
+<p>When tensor products involve multiple copies of the same vector space, it is useful to decompose tensors into symmetric and antisymmetric parts.</p>
+<p>Consider a rank-two covariant tensor <span class="math inline">\(T_{\mu\nu}\)</span>. Its symmetric and antisymmetric components are defined as <span class="math display">\[
 \begin{align}
 T_{(\mu\nu)} &amp;= \frac12 \left(T_{\mu\nu} + T_{\nu\mu}\right), \\
 T_{[\mu\nu]} &amp;= \frac12 \left(T_{\mu\nu} - T_{\nu\mu}\right).
 \end{align}
 \]</span></p>
-<p>Any tensor can be written as the sum of these two pieces, <span class="math display">\[
-T_{\mu\nu} = T_{(\mu\nu)} + T_{[\mu\nu]} .
+<p>Any tensor can be uniquely written as the sum of these two parts, <span class="math display">\[
+T_{\mu\nu} = T_{(\mu\nu)} + T_{[\mu\nu]}.
 \]</span></p>
-<p>The antisymmetric part is particularly important because it defines the <strong>exterior product</strong> (or wedge product).</p>
-<p>Given two covectors <span class="math inline">\(w\)</span> and <span class="math inline">\(k\)</span>, their exterior product is defined as <span class="math display">\[
-w \wedge k = \frac12 \left(w \otimes k - k \otimes w\right).
-\]</span> This operation produces an antisymmetric tensor.</p>
+<p>The antisymmetric part is particularly important because it underlies the definition of the exterior (wedge) product.</p>
+<p>Given two covectors <span class="math inline">\(w\)</span> and <span class="math inline">\(k\)</span>, their wedge product is defined by <span class="math display">\[
+w \wedge k = w \otimes k - k \otimes w,
+\]</span> which is manifestly antisymmetric. Evaluated on basis vectors, it gives <span class="math display">\[
+(w \wedge k)_{\mu\nu} \equiv (w \wedge k)(\partial_\mu, \partial_\nu)
+= w_\mu k_\nu - w_\nu k_\mu = 2\,w_{[\mu} k_{\nu]}.
+\]</span></p>
+<p>On the other hand, when the wedge product is expanded in the basis of 2-forms, we write <span class="math display">\[
+w \wedge k = w_{[\mu} k_{\nu]} \,\mathrm{d}x^\mu \wedge \mathrm{d}x^\nu,
+\]</span> where the antisymmetrization brackets include the factor <span class="math inline">\(1/2\)</span>. The apparent difference by a factor of <span class="math inline">\(2\)</span> reflects the distinction between the components of a tensor in a basis and its evaluation as a bilinear map.</p>
+<p>More generally, the wedge product corresponds to the antisymmetrization of a tensor product and produces tensors that vanish whenever two arguments are equal.</p>
 <section id="exercises-5" class="level3 callout-exercise">
 <h3 class="anchored" data-anchor-id="exercises-5">Exercises</h3>
 <ol type="1">
-<li><p>Show that the symmetric and antisymmetric projections satisfy <span class="math display">\[
-T_{(\mu\nu)}R^{[\mu\nu]} = 0 .
-\]</span></p></li>
-<li><p>Show that the number of independent components of a symmetric tensor in <span class="math inline">\(n\)</span> dimensions is <span class="math display">\[
-\frac{n(n+1)}{2}.
-\]</span></p></li>
-<li><p>Show that the number of independent components of an antisymmetric tensor in <span class="math inline">\(n\)</span> dimensions is <span class="math display">\[
-\frac{n(n-1)}{2}.
-\]</span></p></li>
+<li><p>Show that the symmetric and antisymmetric projections are orthogonal in the sense that <span class="math display">\[T_{(\mu\nu)} R^{[\mu\nu]} = 0.\]</span></p></li>
+<li><p>Show that the number of independent components of a symmetric tensor in <span class="math inline">\(n\)</span> dimensions is <span class="math display">\[\frac{n(n+1)}{2}.\]</span></p></li>
+<li><p>Show that the number of independent components of an antisymmetric tensor in <span class="math inline">\(n\)</span> dimensions is <span class="math display">\[\frac{n(n-1)}{2}.\]</span></p></li>
 </ol>
 </section>
-<section id="geometric-interpretation" class="level3">
-<h3 class="anchored" data-anchor-id="geometric-interpretation">Geometric interpretation</h3>
-<p>The antisymmetric product has a natural geometric meaning. Given two vectors, their wedge product represents an <strong>oriented area element</strong>.</p>
-<p>In particular, if two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span> are linearly dependent, the area they span is zero. Correspondingly, <span class="math display">\[
+<p>The antisymmetric product has a direct geometric interpretation. Given two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span>, the object <span class="math inline">\(v \wedge u\)</span> represents an oriented area element.</p>
+<p>If the vectors are linearly dependent, the parallelogram they span has zero area, and correspondingly <span class="math display">\[
 v \wedge u = 0.
-\]</span></p>
-<p>On the other hand, if the vectors are linearly independent, their wedge product is nonzero and represents the oriented area generated by them.</p>
-<p>This idea generalizes naturally to higher dimensions. The wedge product of three vectors corresponds to an oriented volume, and so on. In an <span class="math inline">\(n\)</span>-dimensional space the largest nonzero antisymmetric product involves <span class="math inline">\(n\)</span> vectors.</p>
-<p>These antisymmetric objects play an important role in physics, because they allow us to describe geometric quantities such as areas, volumes, and fluxes in a coordinate-independent way.</p>
-</section>
+\]</span> If they are linearly independent, <span class="math inline">\(v \wedge u\)</span> is nonzero and encodes both the magnitude and orientation of the area they define.</p>
+<p>This interpretation extends to higher degrees: the wedge product of three vectors represents an oriented volume, and in general, antisymmetric tensors of degree <span class="math inline">\(p\)</span> represent oriented <span class="math inline">\(p\)</span>-dimensional volume elements. In an <span class="math inline">\(n\)</span>-dimensional space, the highest nonvanishing antisymmetric object involves <span class="math inline">\(n\)</span> vectors.</p>
+<p>These antisymmetric structures are central in physics, as they provide a natural and coordinate-independent way to describe areas, volumes, and fluxes.</p>
 </section>
 <section id="antisymmetric-products-and-linear-independence" class="level2">
 <h2 class="anchored" data-anchor-id="antisymmetric-products-and-linear-independence">Antisymmetric Products and Linear Independence</h2>
 <p>Antisymmetric products provide a powerful way to describe geometric structures without introducing additional concepts such as a metric.</p>
 <p>To illustrate this, consider two vectors <span class="math inline">\(w\)</span> and <span class="math inline">\(k\)</span>. Suppose we want to determine whether they are linearly independent. Normally this requires solving an equation of the form <span class="math display">\[
-\alpha w + \beta k = 0 .
+\alpha w + \beta k = 0.
 \]</span></p>
 <p>If the only solution is <span class="math inline">\(\alpha = \beta = 0\)</span>, the vectors are linearly independent.</p>
 <p>The antisymmetric product offers an alternative way to test this. If the wedge product of the two vectors is nonzero, <span class="math display">\[
@@ -927,7 +884,7 @@ w \wedge k \neq 0,
 \]</span> then the vectors must be linearly independent.</p>
 <p>Geometrically this statement is very natural. Two independent vectors span an area, and the wedge product represents the <strong>oriented area element</strong> generated by them. If the vectors are parallel, the area they span is zero, and the wedge product vanishes.</p>
 <p>This idea extends naturally to higher dimensions. For example, given four vectors in a four-dimensional space we can form <span class="math display">\[
-w_1 \wedge w_2 \wedge w_3 \wedge w_4 .
+w_1 \wedge w_2 \wedge w_3 \wedge w_4.
 \]</span></p>
 <p>If this object is nonzero, the four vectors span a four-dimensional volume and are therefore linearly independent.</p>
 <p>More generally, in an <span class="math inline">\(n\)</span>-dimensional space the largest nonzero antisymmetric product involves <span class="math inline">\(n\)</span> vectors. Any antisymmetric product containing more than <span class="math inline">\(n\)</span> vectors must vanish, because at least two of the vectors must be linearly dependent.</p>
@@ -946,37 +903,31 @@ v_1\wedge\dots\wedge v_n
 <section id="differential-forms-and-integration" class="level2">
 <h2 class="anchored" data-anchor-id="differential-forms-and-integration">Differential Forms and Integration</h2>
 <p>The antisymmetric tensors we introduced have an important application in the definition of integration on geometric objects such as curves and surfaces.</p>
-<p>Consider a surface in space that is parametrized by two parameters, <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. Each point of the surface can then be written as a function of these parameters,</p>
-<p><span class="math display">\[
+<p>Consider a surface in space that is parametrized by two parameters, <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. Each point of the surface can then be written as a function of these parameters, <span class="math display">\[
 x^\mu = x^\mu(\lambda_1,\lambda_2).
 \]</span></p>
-<p>If we vary one parameter while keeping the other fixed, we obtain a vector tangent to the surface. For example,</p>
-<p><span class="math display">\[
-\frac{\partial x^\mu}{\partial \lambda_1}, \qquad
-\frac{\partial x^\mu}{\partial \lambda_2}
-\]</span></p>
-<p>are two tangent vectors that span the surface locally.</p>
+<p>If we vary one parameter while keeping the other fixed, we obtain a vector tangent to the surface. For example, <span class="math display">\[
+\frac{\partial x^\mu}{\partial \lambda_1}, \qquad \frac{\partial x^\mu}{\partial \lambda_2}
+\]</span> are two tangent vectors that span the surface locally.</p>
 <p>These two vectors define an infinitesimal oriented area element. To measure the size of this area element we use an antisymmetric tensor acting on the pair of tangent vectors.</p>
-<p>Objects of this type are called <strong>differential forms</strong>. A two-form takes two vectors as input and produces a number, and its antisymmetry ensures that it measures an oriented area element.</p>
-<p>Integration can then be understood geometrically as summing the contributions of such infinitesimal elements. For example, if <span class="math inline">\(\omega\)</span> is a two-form and <span class="math inline">\(\Sigma\)</span> is a surface, the integral</p>
-<p><span class="math display">\[
+<p>Objects of this type are called differential forms. A two-form takes two vectors as input and produces a number, and its antisymmetry ensures that it measures an oriented area element.</p>
+<p>Integration can then be understood geometrically as summing the contributions of such infinitesimal elements. For example, if <span class="math inline">\(\omega\)</span> is a two-form and <span class="math inline">\(\Sigma\)</span> is a surface, the integral <span class="math display">\[
 \int_\Sigma \omega
-\]</span></p>
-<p>is obtained by evaluating the form on the tangent vectors generated by the parametrization and summing the result over the surface.</p>
+\]</span> is obtained by evaluating the form on the tangent vectors generated by the parametrization and summing the result over the surface.</p>
 <p>This viewpoint makes the definition of integration independent of the choice of coordinates. The parametrization simply provides the tangent vectors, while the differential form encodes the geometric quantity being measured.</p>
 <p>An equivalent way to say this is that integration uses the pullback of the form to the parameter domain. Changing parametrization modifies Jacobian factors and tangent vectors in compensating ways, so the geometric integral over the same oriented domain is unchanged.</p>
 </section>
 <section id="the-exterior-derivative" class="level2">
 <h2 class="anchored" data-anchor-id="the-exterior-derivative">The Exterior Derivative</h2>
-<p>We now introduce an operator that allows us to differentiate geometric objects in a coordinate-independent way. This operator is called the <strong>exterior derivative</strong> and is denoted by <span class="math inline">\(\mathrm{d}\)</span>.</p>
+<p>We now introduce an operator that allows us to differentiate geometric objects in a coordinate-independent way. We introduced it above as a way to construct covectors from scalar functions, but it can be extended to act on differential forms of any degree. This operator is called the exterior derivative and is denoted by <span class="math inline">\(\mathrm{d}\)</span>.</p>
 <p>The simplest case is the action of <span class="math inline">\(\mathrm{d}\)</span> on a scalar function <span class="math inline">\(f\)</span>. The result is a covector, written <span class="math display">\[
-\mathrm{d}f .
+\mathrm{d}f.
 \]</span></p>
 <p>This covector acts on a vector <span class="math inline">\(v\)</span> by producing the directional derivative of <span class="math inline">\(f\)</span> along that vector, <span class="math display">\[
 \mathrm{d}f(v) = v(f).
 \]</span> In other words, <span class="math inline">\(\mathrm{d}f\)</span> measures how the function changes when we move in the direction specified by <span class="math inline">\(v\)</span>.</p>
 <p>In coordinates, if the vector <span class="math inline">\(v\)</span> has components <span class="math inline">\(v^\mu\)</span>, the action of the covector <span class="math inline">\(\mathrm{d}f\)</span> can be written as <span class="math display">\[
-\mathrm{d}f(v) = v^\mu \partial_\mu f .
+\mathrm{d}f(v) = v^\mu \partial_\mu f.
 \]</span></p>
 <p>This expression shows explicitly that <span class="math inline">\(\mathrm{d}f\)</span> contains the derivatives of the function with respect to the coordinates. In this sense, <span class="math inline">\(\mathrm{d}f\)</span> corresponds to the familiar gradient of a scalar function, but interpreted as a covector.</p>
 <p>The exterior derivative extends naturally to differential forms of higher degree, producing new forms whose antisymmetric structure encodes derivatives in a coordinate-independent way. This construction will allow us to write the equations of electromagnetism in a compact geometric form.</p>
@@ -987,7 +938,7 @@ x^\mu = x^\mu(\lambda_1,\lambda_2).
 f(x,y,z)=x^2yz.
 \]</span></p></li>
 <li><p>Show that the exterior derivative satisfies the Leibniz rule <span class="math display">\[
-\mathrm{d}(fg)=f\,\mathrm{d}g + g\,\mathrm{d}f .
+\mathrm{d}(fg)=f\,\mathrm{d}g + g\,\mathrm{d}f.
 \]</span></p></li>
 <li><p>Show that <span class="math display">\[
 \mathrm{d}^2 f = 0
@@ -1002,19 +953,15 @@ f(x,y,z)=x^2yz.
 \mathrm{d}f(v) = v(f).
 \]</span></p>
 <p>Now consider integrating this object along a curve. If the curve is parametrized by a coordinate <span class="math inline">\(x\)</span>, we can write <span class="math display">\[
-\int \mathrm{d}f .
+\int \mathrm{d}f.
 \]</span> Using the definition of the exterior derivative, this integral becomes</p>
-<p><span class="math display">\[
-\int \frac{\partial f}{\partial x} \mathrm{d}x .
-\]</span></p>
+<p><span class="math display">\[\int \frac{\partial f}{\partial x} \mathrm{d}x .\]</span></p>
 <p>This is simply the ordinary integral of a derivative. Therefore, <span class="math display">\[
 \int_a^b \mathrm{d}f = f(b) - f(a).
 \]</span></p>
 <p>This result is familiar from basic calculus, but it has a deeper geometric meaning. It shows that the integral of a derivative over a region depends only on the values of the function on the <strong>boundary</strong> of that region.</p>
 <p>This idea generalizes to higher dimensions. When applied to differential forms, the exterior derivative leads to the general statement known as <strong>Stokes’ theorem</strong>: <span class="math display">\[
-\int_{\partial \Omega} \omega
-=
-\int_{\Omega} \mathrm{d}\omega .
+\int_{\partial \Omega} \omega = \int_{\Omega} \mathrm{d}\omega.
 \]</span></p>
 <p>Here <span class="math inline">\(\Omega\)</span> is a region of space and <span class="math inline">\(\partial \Omega\)</span> is its boundary. The form <span class="math inline">\(\omega\)</span> is integrated over the boundary, while its exterior derivative <span class="math inline">\(\mathrm{d}\omega\)</span> is integrated over the interior.</p>
 <p>This theorem provides a unified geometric framework for many familiar results from vector calculus, including the divergence theorem and the classical version of Stokes’ theorem.</p>
@@ -1028,122 +975,22 @@ f(x,y,z)=x^2yz.
 </ol>
 </section>
 </section>
-<section id="tensor-representation-of-the-metric" class="level2">
-<h2 class="anchored" data-anchor-id="tensor-representation-of-the-metric">Tensor Representation of the Metric</h2>
-<p>In coordinates, the spacetime interval can be written as</p>
-<p><span class="math display">\[
-\mathrm{d}s^2 = \eta_{\mu\nu} \mathrm{d}x^\mu \mathrm{d}x^\nu .
+<section id="gradients-as-covectors" class="level2">
+<h2 class="anchored" data-anchor-id="gradients-as-covectors">Gradients as Covectors</h2>
+<p>Given a scalar function <span class="math inline">\(f(x)\)</span>, its exterior derivative <span class="math inline">\(\mathrm{d}f\)</span> defines a covector field with components <span class="math display">\[
+(\mathrm{d}f)_\mu = \partial_\mu f.
 \]</span></p>
-<p>Here the objects <span class="math inline">\(\mathrm{d}x^\mu\)</span> are covectors belonging to the dual space <span class="math inline">\(V^*\)</span>. The expression above therefore represents a <strong>rank-two tensor</strong> acting on two vectors.</p>
-<p>More generally, if <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span> are vectors, the metric acts as <span class="math display">\[
-g(v,u) = g_{\mu\nu} v^\mu u^\nu .
-\]</span> This shows that the metric can be interpreted as a <strong>bilinear functional</strong> that takes two vectors as input and produces a scalar.</p>
+<p>This object acts on a vector <span class="math inline">\(v = v^\mu \partial_\mu\)</span> by <span class="math display">\[
+\mathrm{d}f(v) = v^\mu \partial_\mu f,
+\]</span> which is the directional derivative of <span class="math inline">\(f\)</span> along <span class="math inline">\(v\)</span>. In this sense, <span class="math inline">\(\mathrm{d}f\)</span> encodes how <span class="math inline">\(f\)</span> changes in different directions and is naturally a covector.</p>
+<p>In Euclidean space, or more generally in the presence of a metric <span class="math inline">\(\eta\)</span>, we can associate to this covector a vector by raising the index. This defines the gradient of <span class="math inline">\(f\)</span> as the vector field <span class="math display">\[
+\eta^{-1}(\mathrm{d}f) = \eta^{\mu\nu} \partial_\nu f \, \partial_\mu.
+\]</span></p>
+<p>Thus, the familiar gradient is not a fundamentally new object, but rather the vector obtained from the covector <span class="math inline">\(\mathrm{d}f\)</span> using the metric. Without a metric, <span class="math inline">\(\mathrm{d}f\)</span> is the natural geometric object, while the notion of a gradient as a vector depends on the additional structure provided by <span class="math inline">\(\eta\)</span>.</p>
 <section id="exercises-9" class="level3 callout-exercise">
 <h3 class="anchored" data-anchor-id="exercises-9">Exercises</h3>
 <ol type="1">
-<li><p>Show explicitly that the scalar <span class="math display">\[
-g(v,u)=g_{\mu\nu}v^\mu u^\nu
-\]</span> is invariant under a coordinate transformation if the metric components transform as <span class="math display">\[
-g'_{\alpha\beta}
-=
-\frac{\partial x^\mu}{\partial x'^\alpha}
-\frac{\partial x^\nu}{\partial x'^\beta}
-g_{\mu\nu}.
-\]</span></p></li>
-<li><p>Let <span class="math display">\[
-v^\mu = (1,2,0,0), \qquad
-u^\mu = (3,-1,0,0).
-\]</span> Compute <span class="math inline">\(g(v,u)\)</span> using the Minkowski metric and determine whether the vectors are orthogonal.</p></li>
-<li><p>Prove that if a bilinear form <span class="math inline">\(g\)</span> satisfies <span class="math display">\[
-g(v,u)=0
-\]</span> for every vector <span class="math inline">\(u\)</span>, then <span class="math inline">\(v=0\)</span>.</p></li>
-</ol>
-</section>
-</section>
-<section id="tensor-products-and-linear-combinations" class="level2">
-<h2 class="anchored" data-anchor-id="tensor-products-and-linear-combinations">Tensor Products and Linear Combinations</h2>
-<p>Tensor products provide a basis for constructing tensor spaces. For example, covariant rank-two tensors can be written as linear combinations of objects of the form <span class="math display">\[
-\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu .
-\]</span> These basis elements act on two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(u\)</span> as <span class="math display">\[
-(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu)(v,u)
-=
-\mathrm{d}x^\mu(v)\,\mathrm{d}x^\nu(u).
-\]</span> A general tensor can then be expressed as <span class="math display">\[
-T = T_{\mu\nu}\,\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu .
-\]</span> It is important to note that most tensors <strong>cannot be written as a single tensor product</strong>; instead they are linear combinations of such products.</p>
-<section id="exercises-10" class="level3 callout-exercise">
-<h3 class="anchored" data-anchor-id="exercises-10">Exercises</h3>
-<ol type="1">
-<li><p>Show that <span class="math display">\[
-(\mathrm{d}x^\mu \otimes \mathrm{d}x^\nu)(v,u)
-=
-v^\mu u^\nu .
-\]</span></p></li>
-<li><p>Demonstrate that the tensor <span class="math display">\[
-\mathrm{d}x^0 \otimes \mathrm{d}x^1 + \mathrm{d}x^1 \otimes \mathrm{d}x^0
-\]</span> cannot be written as a single tensor product of two covectors.</p></li>
-<li><p>If <span class="math inline">\(\dim V=n\)</span>, determine the dimension of the space of rank-two covariant tensors.</p></li>
-</ol>
-</section>
-</section>
-<section id="metric-as-a-map-v-to-v" class="level2">
-<h2 class="anchored" data-anchor-id="metric-as-a-map-v-to-v">Metric as a Map <span class="math inline">\(V \to V^*\)</span></h2>
-<p>The metric can also be interpreted as a linear map <span class="math display">\[
-g : V \rightarrow V^*.
-\]</span></p>
-<p>Given a vector <span class="math inline">\(v\)</span>, the metric produces the covector <span class="math display">\[
-v_\mu = g_{\mu\nu} v^\nu .
-\]</span> This operation is called <strong>lowering an index</strong>.</p>
-<p>Conversely, the inverse metric <span class="math inline">\(g^{\mu\nu}\)</span> allows us to raise an index, <span class="math display">\[
-v^\mu = g^{\mu\nu} v_\nu .
-\]</span> In this way the metric establishes a correspondence between vectors and covectors.</p>
-<section id="exercises-11" class="level3 callout-exercise">
-<h3 class="anchored" data-anchor-id="exercises-11">Exercises</h3>
-<ol type="1">
-<li><p>Show that the map <span class="math inline">\(v^\mu \mapsto v_\mu=g_{\mu\nu}v^\nu\)</span> is linear.</p></li>
-<li><p>Compute the covector associated with</p>
-<p><span class="math display">\[
-v^\mu=(2,1,-1,0)
-\]</span></p>
-<p>using the Minkowski metric.</p></li>
-<li><p>Verify that raising the index again with <span class="math inline">\(g^{\mu\nu}\)</span> reproduces the original vector.</p></li>
-</ol>
-</section>
-</section>
-<section id="geometric-meaning-of-index-lowering" class="level2">
-<h2 class="anchored" data-anchor-id="geometric-meaning-of-index-lowering">Geometric Meaning of Index Lowering</h2>
-<p>The covector obtained by lowering the index of a vector <span class="math inline">\(v\)</span> acts on another vector <span class="math inline">\(u\)</span> as <span class="math display">\[
-v_\mu u^\mu = g(v,u).
-\]</span> Thus the covector associated with <span class="math inline">\(v\)</span> represents the functional that measures the projection of vectors along the direction of <span class="math inline">\(v\)</span>.</p>
-<p>In Euclidean space this operation corresponds to the familiar dot product, while in Minkowski spacetime the different sign of the time component leads to the causal structure of relativity.</p>
-<section id="exercises-12" class="level3 callout-exercise">
-<h3 class="anchored" data-anchor-id="exercises-12">Exercises</h3>
-<ol type="1">
-<li><p>Show that in Euclidean space the covector <span class="math inline">\(v_i=\delta_{ij}v^j\)</span> represents the functional that returns the projection of a vector along <span class="math inline">\(v\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(u^\mu\)</span> be a timelike vector normalized so that <span class="math inline">\(g(u,u)=-1\)</span>. Show that the scalar</p>
-<p><span class="math display">\[
--g(u,v)
-\]</span></p>
-<p>represents the component of <span class="math inline">\(v\)</span> along the direction of <span class="math inline">\(u\)</span>.</p></li>
-</ol>
-</section>
-</section>
-<section id="gradients-as-covectors" class="level2">
-<h2 class="anchored" data-anchor-id="gradients-as-covectors">Gradients as Covectors</h2>
-<p>For a scalar function <span class="math inline">\(f(x)\)</span> the exterior derivative <span class="math display">\[
-\mathrm{d}f
-\]</span> is a covector field with components <span class="math display">\[
-(\mathrm{d}f)_\mu = \partial_\mu f .
-\]</span></p>
-<p>Its action on a vector <span class="math inline">\(v\)</span> gives the directional derivative, <span class="math display">\[
-\mathrm{d}f(v) = v^\mu \partial_\mu f .
-\]</span> In Euclidean space the metric allows us to convert this covector into a vector, which leads to the familiar gradient operator.</p>
-<section id="exercises-13" class="level3 callout-exercise">
-<h3 class="anchored" data-anchor-id="exercises-13">Exercises</h3>
-<ol type="1">
-<li><p>Let <span class="math display">\[
-f(x,y,z)=x^2+y^2+z^2 .
-\]</span> Compute <span class="math inline">\(\mathrm{d}f\)</span> and evaluate <span class="math inline">\(\mathrm{d}f(v)\)</span> for <span class="math inline">\(v=(1,1,1)\)</span>.</p></li>
+<li><p>Let <span class="math display">\[f(x,y,z)=x^2+y^2+z^2 .\]</span> Compute <span class="math inline">\(\mathrm{d}f\)</span> and evaluate <span class="math inline">\(\mathrm{d}f(v)\)</span> for <span class="math inline">\(v=(1,1,1)\)</span>.</p></li>
 <li><p>Show that <span class="math inline">\(\partial_\mu f\)</span> transforms as a covector under coordinate transformations.</p></li>
 <li><p>In Euclidean space verify that raising the index with <span class="math inline">\(\delta^{ij}\)</span> gives the usual gradient vector.</p></li>
 </ol>
@@ -1151,33 +998,39 @@ f(x,y,z)=x^2+y^2+z^2 .
 </section>
 <section id="coordinate-dependence-of-the-metric" class="level2">
 <h2 class="anchored" data-anchor-id="coordinate-dependence-of-the-metric">Coordinate Dependence of the Metric</h2>
-<p>The components of the metric tensor depend on the coordinate system used to describe spacetime. However, the scalar quantity <span class="math display">\[
-g(v,u)
-\]</span> is invariant.</p>
+<p>The components of the metric tensor depend on the coordinate system used to describe spacetime. However, the scalar quantity <span class="math display">\[g(v,u)\]</span> is invariant.</p>
 <p>Different coordinate systems therefore lead to different matrices representing the metric, even though the underlying geometric structure remains the same.</p>
 <p>This idea leads to the principle of <strong>covariance</strong>, according to which physical laws should be written in a form that remains valid under arbitrary changes of coordinates.</p>
 <p>In flat spacetime, invariance under Lorentz transformations is an important special case of this broader principle. The covariant formulation makes clear which statements are geometric and therefore independent of any chosen frame.</p>
+<section id="exercises-10" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-10">Exercises</h3>
+<ol type="1">
+<li><p>Consider the coordinate transformation <span class="math display">\[
+x = r\cos\theta, \qquad y = r\sin\theta.
+\]</span> Compute the metric components in polar coordinates.</p></li>
+<li><p>Show explicitly that the scalar product of two vectors remains invariant under this transformation.</p></li>
+<li><p>Explain why the matrix representation of the metric changes even though the geometry does not.</p></li>
+</ol>
+</section>
 </section>
 <section id="covariant-observer-decomposition-and-rapidity" class="level2">
 <h2 class="anchored" data-anchor-id="covariant-observer-decomposition-and-rapidity">Covariant Observer Decomposition and Rapidity</h2>
 <p>For relativistic field theory, it is useful to decompose tensors relative to an observer with unit timelike four-velocity <span class="math inline">\(u^\mu\)</span> satisfying <span class="math display">\[
-g_{\mu\nu}u^\mu u^\nu = -1.
+\eta_{\mu\nu}u^\mu u^\nu = -1.
 \]</span></p>
 <p>The projector onto the local spatial subspace orthogonal to <span class="math inline">\(u^\mu\)</span> is <span class="math display">\[
 h_{\mu\nu} = g_{\mu\nu} + u_{\mu}u_{\nu},
 \]</span> which satisfies <span class="math display">\[
-h_{\mu\nu}u^\nu = 0,
-\qquad
-h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
+h_{\mu\nu}u^\nu = 0, \qquad h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
 \]</span> Thus <span class="math inline">\(h^\mu{}_{\nu}\)</span> removes the temporal part (relative to <span class="math inline">\(u^\mu\)</span>) and keeps the spatial part.</p>
 <p>Given another timelike unit vector <span class="math inline">\(w^\mu\)</span>, we can decompose it as <span class="math display">\[
 w^\mu = -(u\cdot w)\,u^\mu + h^\mu{}_{\nu}w^\nu.
 \]</span> The scalar <span class="math inline">\(-(u\cdot w)\)</span> and the spatial norm <span class="math inline">\(\sqrt{h_{\mu\nu}w^\mu w^\nu}\)</span> are naturally parametrized by a rapidity <span class="math inline">\(\xi\)</span>: <span class="math display">\[
 -(u\cdot w)=\cosh\xi,
 \qquad
-\sqrt{h_{\mu\nu}w^\mu w^\nu}=\sinh\xi.
+\sqrt{h_{\mu\nu}w^\mu w^\nu}=\mid\sinh\xi\mid.
 \]</span> In frames where relative speed <span class="math inline">\(v\)</span> is defined, this gives <span class="math display">\[
-\operatorname{tanh}\xi = \frac{v}{c},
+\tanh\xi = \frac{v}{c},
 \qquad
 \cosh\xi = \gamma,
 \qquad
@@ -1185,14 +1038,29 @@ w^\mu = -(u\cdot w)\,u^\mu + h^\mu{}_{\nu}w^\nu.
 \]</span></p>
 <p>This decomposition is central in covariant electromagnetism: electric and magnetic fields are observer-dependent spatial projections of a single spacetime tensor.</p>
 <p>In this language, the magnetic part is fundamentally area-like (bivector-like), not intrinsically a standard vector. The familiar pseudovector description of <span class="math inline">\(\mathbf{B}\)</span> is a special feature of three spatial dimensions, where oriented areas can be identified with directions.</p>
-<section id="exercises-14" class="level3 callout-exercise">
-<h3 class="anchored" data-anchor-id="exercises-14">Exercises</h3>
+<section id="exercises-11" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-11">Exercises</h3>
 <ol type="1">
-<li><p>Consider the coordinate transformation <span class="math display">\[
-x = r\cos\theta, \qquad y = r\sin\theta .
-\]</span> Compute the metric components in polar coordinates.</p></li>
-<li><p>Show explicitly that the scalar product of two vectors remains invariant under this transformation.</p></li>
-<li><p>Explain why the matrix representation of the metric changes even though the geometry does not.</p></li>
+<li><p>Show explicitly that <span class="math inline">\(h_{\mu\nu}u^\nu = 0\)</span> and that <span class="math inline">\(h^\mu{}_{\nu}\)</span> acts as a projector, i.e., <span class="math display">\[
+h^\mu{}_{\alpha}h^\alpha{}_{\nu} = h^\mu{}_{\nu}.
+\]</span></p></li>
+<li><p>Given a vector <span class="math inline">\(v^\mu\)</span>, define its temporal and spatial parts relative to <span class="math inline">\(u^\mu\)</span> by <span class="math display">\[
+v_\parallel^\mu = -(u \cdot v)\, u^\mu, \qquad v_\perp^\mu = h^\mu{}_{\nu} v^\nu.
+\]</span> Show that <span class="math inline">\(v^\mu = v_\parallel^\mu + v_\perp^\mu\)</span> and that <span class="math inline">\(u_\mu v_\perp^\mu = 0\)</span>.</p></li>
+<li><p>For two unit timelike vectors <span class="math inline">\(u^\mu\)</span> and <span class="math inline">\(w^\mu\)</span>, show that <span class="math inline">\(-(u \cdot w) \ge 1\)</span> and interpret this result physically.</p></li>
+<li><p>Starting from the definition of rapidity, derive the relations <span class="math display">\[
+\cosh^2 \xi - \sinh^2 \xi = 1,
+\]</span> and verify that this identity is consistent with the normalization of <span class="math inline">\(w^\mu\)</span>.</p></li>
+<li><p>In a frame where <span class="math inline">\(u^\mu = (1,0,0,0)\)</span>, write <span class="math inline">\(w^\mu\)</span> explicitly in terms of <span class="math inline">\(\xi\)</span> and show that it corresponds to a boost with velocity <span class="math inline">\(v\)</span> satisfying <span class="math inline">\(\tanh \xi = v/c\)</span>.</p></li>
+<li><p>Show that the spatial vector <span class="math inline">\(h^\mu{}_{\nu} w^\nu\)</span> has norm <span class="math inline">\(\sinh \xi\)</span> using the metric.</p></li>
+<li><p>Verify that the decomposition of <span class="math inline">\(w^\mu\)</span> preserves its normalization, i.e., <span class="math display">\[
+\eta_{\mu\nu} w^\mu w^\nu = -1.
+\]</span></p></li>
+<li><p>Consider a rank-two antisymmetric tensor <span class="math inline">\(F_{\mu\nu}\)</span>. Define its electric and magnetic parts relative to <span class="math inline">\(u^\mu\)</span> by <span class="math display">\[
+E_\mu = F_{\mu\nu} u^\nu, \qquad B^\mu = \frac{1}{2} \epsilon^{\mu\nu\alpha\beta} u_\nu F_{\alpha\beta}.
+\]</span> Show that both <span class="math inline">\(E_\mu\)</span> and <span class="math inline">\(B^\mu\)</span> are orthogonal to <span class="math inline">\(u^\mu\)</span>.</p></li>
+<li><p>Show that if <span class="math inline">\(u^\mu\)</span> is changed (i.e., a different observer is chosen), the decomposition into electric and magnetic parts changes, even though <span class="math inline">\(F_{\mu\nu}\)</span> remains the same.</p></li>
+<li><p>Interpret geometrically why the magnetic field is naturally associated with an antisymmetric tensor rather than a vector.</p></li>
 </ol>
 </section>
 

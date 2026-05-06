@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,14 +41,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-29a1aa07a51191aab823739aa3f2c2cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-e9c19d1b7fd0c79a624409cb58f05bec.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-29a1aa07a51191aab823739aa3f2c2cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-db5249cfe2af07b176222950535bc6fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-62cfa37d84d80c486a8fd826fc0beed7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-db5249cfe2af07b176222950535bc6fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -526,6 +526,12 @@ window.Quarto = {
  <span class="menu-text">Calculus on Minkowski Spacetime</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/maxwell-equations-forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maxwell Equations in Covariant Form</span></a>
+  </div>
+</li>
       </ul>
   </li>
       </ul>
@@ -544,13 +550,16 @@ window.Quarto = {
   <li><a href="#why-use-a-covariant-view" id="toc-why-use-a-covariant-view" class="nav-link" data-scroll-target="#why-use-a-covariant-view">Why Use a Covariant View</a></li>
   <li><a href="#curves-fields-and-their-relation" id="toc-curves-fields-and-their-relation" class="nav-link" data-scroll-target="#curves-fields-and-their-relation">Curves, Fields, and Their Relation</a></li>
   <li><a href="#proper-time-and-affine-parametrization" id="toc-proper-time-and-affine-parametrization" class="nav-link" data-scroll-target="#proper-time-and-affine-parametrization">Proper Time and Affine Parametrization</a></li>
-  <li><a href="#observer-field-and-spatial-projector" id="toc-observer-field-and-spatial-projector" class="nav-link" data-scroll-target="#observer-field-and-spatial-projector">Observer Field and Spatial Projector</a></li>
-  <li><a href="#rapidity-and-relative-motion" id="toc-rapidity-and-relative-motion" class="nav-link" data-scroll-target="#rapidity-and-relative-motion">Rapidity and Relative Motion</a></li>
   <li><a href="#electromagnetic-split-relative-to-an-observer" id="toc-electromagnetic-split-relative-to-an-observer" class="nav-link" data-scroll-target="#electromagnetic-split-relative-to-an-observer">Electromagnetic Split Relative to an Observer</a></li>
   <li><a href="#differential-forms-geometric-degrees" id="toc-differential-forms-geometric-degrees" class="nav-link" data-scroll-target="#differential-forms-geometric-degrees">Differential Forms: Geometric Degrees</a></li>
   <li><a href="#exterior-derivative" id="toc-exterior-derivative" class="nav-link" data-scroll-target="#exterior-derivative">Exterior Derivative</a></li>
   <li><a href="#integrals-of-forms-and-parametrization-independence" id="toc-integrals-of-forms-and-parametrization-independence" class="nav-link" data-scroll-target="#integrals-of-forms-and-parametrization-independence">Integrals of Forms and Parametrization Independence</a></li>
-  <li><a href="#stokes-theorem-as-the-unifying-principle" id="toc-stokes-theorem-as-the-unifying-principle" class="nav-link" data-scroll-target="#stokes-theorem-as-the-unifying-principle">Stokes Theorem as the Unifying Principle</a></li>
+  <li><a href="#stokes-theorem-as-the-unifying-principle" id="toc-stokes-theorem-as-the-unifying-principle" class="nav-link" data-scroll-target="#stokes-theorem-as-the-unifying-principle">Stokes Theorem as the Unifying Principle</a>
+  <ul class="collapse">
+  <li><a href="#relation-with-standard-integration" id="toc-relation-with-standard-integration" class="nav-link" data-scroll-target="#relation-with-standard-integration">Relation with standard integration</a></li>
+  <li><a href="#higher-dimensional-case" id="toc-higher-dimensional-case" class="nav-link" data-scroll-target="#higher-dimensional-case">Higher-dimensional case</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation">Interpretation</a></li>
+  </ul></li>
   <li><a href="#worked-integration-examples" id="toc-worked-integration-examples" class="nav-link" data-scroll-target="#worked-integration-examples">Worked Integration Examples</a>
   <ul class="collapse">
   <li><a href="#example-1-fundamental-theorem-as-1d-stokes" id="toc-example-1-fundamental-theorem-as-1d-stokes" class="nav-link" data-scroll-target="#example-1-fundamental-theorem-as-1d-stokes">Example 1: Fundamental Theorem as 1D Stokes</a></li>
@@ -564,6 +573,26 @@ window.Quarto = {
   <li><a href="#practical-takeaways" id="toc-practical-takeaways" class="nav-link" data-scroll-target="#practical-takeaways">Practical Takeaways</a>
   <ul class="collapse">
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  </ul></li>
+  <li><a href="#volume-forms-in-minkowski-spacetime" id="toc-volume-forms-in-minkowski-spacetime" class="nav-link" data-scroll-target="#volume-forms-in-minkowski-spacetime">Volume Forms in Minkowski Spacetime</a>
+  <ul class="collapse">
+  <li><a href="#exercises-volume-forms-and-orientation" id="toc-exercises-volume-forms-and-orientation" class="nav-link" data-scroll-target="#exercises-volume-forms-and-orientation">Exercises (Volume Forms and Orientation)</a></li>
+  </ul></li>
+  <li><a href="#the-hodge-star-operator-geometric-definition" id="toc-the-hodge-star-operator-geometric-definition" class="nav-link" data-scroll-target="#the-hodge-star-operator-geometric-definition">The Hodge Star Operator (Geometric Definition)</a>
+  <ul class="collapse">
+  <li><a href="#exercises-hodge-star-in-4d" id="toc-exercises-hodge-star-in-4d" class="nav-link" data-scroll-target="#exercises-hodge-star-in-4d">Exercises (Hodge Star in 4D)</a></li>
+  <li><a href="#explicit-action-in-mathbbr3" id="toc-explicit-action-in-mathbbr3" class="nav-link" data-scroll-target="#explicit-action-in-mathbbr3">Explicit action in <span class="math inline">\(\mathbb{R}^3\)</span></a></li>
+  <li><a href="#exercises-hodge-star-in-3d" id="toc-exercises-hodge-star-in-3d" class="nav-link" data-scroll-target="#exercises-hodge-star-in-3d">Exercises (Hodge Star in 3D)</a></li>
+  <li><a href="#interpretation-1" id="toc-interpretation-1" class="nav-link" data-scroll-target="#interpretation-1">Interpretation</a></li>
+  </ul></li>
+  <li><a href="#differential-vector-operators" id="toc-differential-vector-operators" class="nav-link" data-scroll-target="#differential-vector-operators">Differential Vector Operators</a>
+  <ul class="collapse">
+  <li><a href="#exercises-differential-operators" id="toc-exercises-differential-operators" class="nav-link" data-scroll-target="#exercises-differential-operators">Exercises (Differential Operators)</a></li>
+  <li><a href="#cross-product-and-curl-from-projection-and-hodge-star" id="toc-cross-product-and-curl-from-projection-and-hodge-star" class="nav-link" data-scroll-target="#cross-product-and-curl-from-projection-and-hodge-star">Cross Product and Curl from Projection and Hodge Star</a></li>
+  <li><a href="#curl-of-a-bivector-field" id="toc-curl-of-a-bivector-field" class="nav-link" data-scroll-target="#curl-of-a-bivector-field">Curl of a Bivector Field</a></li>
+  <li><a href="#exercises-curl-of-bivectors" id="toc-exercises-curl-of-bivectors" class="nav-link" data-scroll-target="#exercises-curl-of-bivectors">Exercises (Curl of Bivectors)</a></li>
+  <li><a href="#codifferential-operator" id="toc-codifferential-operator" class="nav-link" data-scroll-target="#codifferential-operator">Codifferential Operator</a></li>
+  <li><a href="#exercises-codifferential" id="toc-exercises-codifferential" class="nav-link" data-scroll-target="#exercises-codifferential">Exercises (Codifferential)</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="calculus-on-minkowski-spacetime.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -648,53 +677,22 @@ Note
 <section id="proper-time-and-affine-parametrization" class="level2">
 <h2 class="anchored" data-anchor-id="proper-time-and-affine-parametrization">Proper Time and Affine Parametrization</h2>
 <p>For timelike worldlines, proper time <span class="math inline">\(\tau\)</span> satisfies <span class="math display">\[
-g_{\mu\nu}\frac{\mathrm{d}x^\mu}{\mathrm{d}\tau}\frac{\mathrm{d}x^\nu}{\mathrm{d}\tau}=-1.
+\eta_{\mu\nu}\frac{\mathrm{d}x^\mu}{\mathrm{d}\tau}\frac{\mathrm{d}x^\nu}{\mathrm{d}\tau}=-1.
 \]</span></p>
-<p>If <span class="math inline">\(u^\mu:=\mathrm{d}x^\mu/\mathrm{d}\tau\)</span>, then <span class="math display">\[
-g_{\mu\nu}u^\mu u^\nu=-1.
+<p>If <span class="math inline">\(u^\mu\equiv\mathrm{d}x^\mu/\mathrm{d}\tau\)</span>, then <span class="math display">\[
+\eta_{\mu\nu}u^\mu u^\nu=-1.
 \]</span></p>
 <p>This is the normalization associated with affine/proper-time parametrization. For non-affine parameters, this normalization is not constant in general.</p>
 <p>In many calculations one can still parametrize by coordinate time, but proper time keeps covariance and normalization transparent.</p>
 </section>
-<section id="observer-field-and-spatial-projector" class="level2">
-<h2 class="anchored" data-anchor-id="observer-field-and-spatial-projector">Observer Field and Spatial Projector</h2>
-<p>Let <span class="math inline">\(u^\mu\)</span> be a unit timelike observer field. Define <span class="math display">\[
-h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu.
-\]</span></p>
-<p>Then <span class="math display">\[
-h_{\mu\nu}u^\nu=0,
-\qquad
-h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
-\]</span></p>
-<p>So <span class="math inline">\(h^\mu{}_{\nu}\)</span> projects onto the local spatial subspace orthogonal to <span class="math inline">\(u\)</span>.</p>
-<p>For any vector <span class="math inline">\(A^\mu\)</span>, <span class="math display">\[
-A^\mu=-(u\cdot A)u^\mu+\bar A^\mu,
-\qquad
-\bar A^\mu:=h^\mu{}_{\nu}A^\nu,
-\]</span> which separates temporal and spatial parts relative to that observer.</p>
-</section>
-<section id="rapidity-and-relative-motion" class="level2">
-<h2 class="anchored" data-anchor-id="rapidity-and-relative-motion">Rapidity and Relative Motion</h2>
-<p>For timelike unit vectors <span class="math inline">\(u^\mu\)</span> and <span class="math inline">\(v^\mu\)</span>, <span class="math display">\[
--(u\cdot v)=\cosh\xi,
-\qquad
-\sqrt{h_{\mu\nu}v^\mu v^\nu}=\sinh\xi,
-\]</span> where <span class="math inline">\(\xi\)</span> is rapidity.</p>
-<p>In standard speed language: <span class="math display">\[
-   anh\xi=\frac{v}{c},
-\qquad
-\cosh\xi=\gamma.
-\]</span></p>
-<p>This is the coordinate-free content of Lorentz boosts. The pair <span class="math inline">\(\{\sinh\xi,\cosh\xi\}\)</span> replaces Euclidean trigonometric decomposition by a hyperbolic one adapted to Minkowski signature.</p>
-</section>
 <section id="electromagnetic-split-relative-to-an-observer" class="level2">
 <h2 class="anchored" data-anchor-id="electromagnetic-split-relative-to-an-observer">Electromagnetic Split Relative to an Observer</h2>
 <p>Given Faraday tensor <span class="math inline">\(F_{\mu\nu}=-F_{\nu\mu}\)</span>, define <span class="math display">\[
-E_\mu:=F_{\mu\nu}u^\nu,
+E_\mu \equiv F_{\mu\nu}u^\nu,
 \qquad
 E_\mu u^\mu=0,
 \]</span> and the spatial magnetic 2-form <span class="math display">\[
-B_{\alpha\beta}:=h_\alpha{}^{\mu}h_\beta{}^{\nu}F_{\mu\nu}.
+B_{\alpha\beta} \equiv h_\alpha{}^{\mu}h_\beta{}^{\nu}F_{\mu\nu}.
 \]</span></p>
 <p>Then <span class="math display">\[
 F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
@@ -742,22 +740,108 @@ F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
 <section id="stokes-theorem-as-the-unifying-principle" class="level2">
 <h2 class="anchored" data-anchor-id="stokes-theorem-as-the-unifying-principle">Stokes Theorem as the Unifying Principle</h2>
 <p>Prototype in 1D: <span class="math display">\[
-\int_a^b\mathrm{d}f=f(b)-f(a).
+\int_a^b \mathrm{d}f = f(b) - f(a).
 \]</span></p>
 <p>General form: <span class="math display">\[
-\int_{\partial\Omega}\omega=\int_\Omega\mathrm{d}\omega.
+\int_{\partial\Omega} \omega = \int_\Omega \mathrm{d}\omega.
 \]</span></p>
 <p>Classical theorems appear as special cases:</p>
 <ul>
-<li>gradient/fundamental theorem (1D),</li>
-<li>Green/Stokes (boundary curve vs enclosed surface),</li>
-<li>divergence theorem (closed surface vs enclosed volume).</li>
+<li>gradient / fundamental theorem (1D),</li>
+<li>Green / Stokes (curve vs surface),</li>
+<li>divergence theorem (surface vs volume).</li>
 </ul>
-<p>So the many vector-calculus integral identities are one geometric identity written at different form degrees.</p>
+<p>Thus, vector-calculus identities are different realizations of a single geometric statement.</p>
+<hr>
+<section id="relation-with-standard-integration" class="level3">
+<h3 class="anchored" data-anchor-id="relation-with-standard-integration">Relation with standard integration</h3>
+<p>To make contact with usual Riemann (or Lebesgue) integration, we must understand how differential forms are integrated over domains.</p>
+<p>Start with the 1D case. Let <span class="math inline">\(I = [a,b] \subset \mathbb{R}\)</span> and consider the 1-form: <span class="math display">\[
+\mathrm{d}f = \frac{\mathrm{d}f}{\mathrm{d}x} \mathrm{d}x.
+\]</span></p>
+<p>The integral over <span class="math inline">\(I\)</span> is defined via a parametrization of the interval. Introduce a parameter <span class="math inline">\(\lambda \in [\lambda_0, \lambda_1]\)</span> and a smooth map: <span class="math display">\[
+x = x(\lambda),
+\]</span> such that: <span class="math display">\[
+x(\lambda_0) = a, \quad x(\lambda_1) = b.
+\]</span></p>
+<p>Pulling back the form to the parameter space can be understood as follows. A 1-form acts on tangent vectors, so along the parametrized curve <span class="math inline">\(x(\lambda)\)</span> we evaluate <span class="math inline">\(\mathrm{d}f\)</span> on the tangent vector: <span class="math display">\[
+\frac{\mathrm{d}x}{\mathrm{d}\lambda} \frac{\partial}{\partial x}.
+\]</span></p>
+<p>Thus, <span class="math display">\[
+\mathrm{d}f\!\left(\frac{\mathrm{d}x}{\mathrm{d}\lambda} \frac{\partial}{\partial x}\right)
+=
+\frac{\mathrm{d}f}{\mathrm{d}x}(x(\lambda)) \frac{\mathrm{d}x}{\mathrm{d}\lambda}.
+\]</span></p>
+<p>Including the measure <span class="math inline">\(\mathrm{d}\lambda\)</span>, the pullback becomes: <span class="math display">\[
+\mathrm{d}f \;\mapsto\;
+\frac{\mathrm{d}f}{\mathrm{d}x}(x(\lambda)) \frac{\mathrm{d}x}{\mathrm{d}\lambda} \mathrm{d}\lambda.
+\]</span></p>
+<p>Thus, the integral becomes: <span class="math display">\[
+\int_I \mathrm{d}f
+=
+\int_{\lambda_0}^{\lambda_1}
+\frac{\mathrm{d}f}{\mathrm{d}x}(x(\lambda)) \frac{\mathrm{d}x}{\mathrm{d}\lambda} \mathrm{d}\lambda.
+\]</span></p>
+<p>This is exactly the standard change-of-variables formula.</p>
+<p>With the natural choice <span class="math inline">\(x(\lambda) = \lambda\)</span>, we recover: <span class="math display">\[
+\int_a^b \frac{\mathrm{d}f}{\mathrm{d}x} \mathrm{d}x,
+\]</span> and therefore: <span class="math display">\[
+\int_a^b \mathrm{d}f = f(b) - f(a).
+\]</span></p>
+</section>
+<section id="higher-dimensional-case" class="level3">
+<h3 class="anchored" data-anchor-id="higher-dimensional-case">Higher-dimensional case</h3>
+<p>The same mechanism applies in higher dimensions, but now we must describe how a domain is parametrized and how forms act on tangent vectors.</p>
+<p>Let <span class="math inline">\(\Omega\)</span> be a <span class="math inline">\(k\)</span>-dimensional domain. Assume we have a one-to-one parametrization: <span class="math display">\[
+x = x(\lambda^1, \dots, \lambda^k),
+\]</span> with <span class="math inline">\((\lambda^1, \dots, \lambda^k)\)</span> ranging over some region in <span class="math inline">\(\mathbb{R}^k\)</span>, such that varying the parameters covers <span class="math inline">\(\Omega\)</span>.</p>
+<p>If we vary one parameter at a time, we obtain <span class="math inline">\(k\)</span> tangent vectors to the domain: <span class="math display">\[
+\frac{\partial x}{\partial \lambda^1}, \quad \dots, \quad \frac{\partial x}{\partial \lambda^k}.
+\]</span></p>
+<p>These vectors span the tangent space of <span class="math inline">\(\Omega\)</span> at each point.</p>
+<p>Now consider a <span class="math inline">\(k\)</span>-form: <span class="math display">\[
+\omega = f(x)\, \mathrm{d}x^{i_1} \wedge \cdots \wedge \mathrm{d}x^{i_k}.
+\]</span></p>
+<p>To pull back <span class="math inline">\(\omega\)</span>, we evaluate it on these tangent vectors: <span class="math display">\[
+\omega\!\left(
+\frac{\partial x}{\partial \lambda^1}, \dots, \frac{\partial x}{\partial \lambda^k}
+\right).
+\]</span></p>
+<p>Each 1-form <span class="math inline">\(\mathrm{d}x^{i}\)</span> acts on a tangent vector as: <span class="math display">\[
+\mathrm{d}x^{i}\!\left(\frac{\partial x}{\partial \lambda^b}\right)
+=
+\frac{\partial x^{i}}{\partial \lambda^b}.
+\]</span></p>
+<p>Therefore, the wedge product produces: <span class="math display">\[
+\omega \;\mapsto\;
+f(x(\lambda))
+\det\!\left(\frac{\partial x^{i_a}}{\partial \lambda^b}\right)
+\mathrm{d}\lambda^1 \cdots \mathrm{d}\lambda^k.
+\]</span> The determinant arises from the antisymmetry of the wedge product: it encodes how the <span class="math inline">\(k\)</span> tangent vectors combine into an oriented volume element. We will make this connection with the determinant more explicit below.</p>
+<p>Finally, the integral becomes: <span class="math display">\[
+\int_\Omega \omega
+=
+\int
+f(x(\lambda))
+\det\!\left(\frac{\partial x}{\partial \lambda}\right)
+\mathrm{d}^k \lambda,
+\]</span> which is precisely the usual Jacobian formula for multiple integrals.</p>
+<hr>
+</section>
+<section id="interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation">Interpretation</h3>
+<ul>
+<li>Differential forms encode both the integrand and the oriented measure.</li>
+<li>The pullback produces the Jacobian automatically.</li>
+<li>No additional structure is needed: change of variables is built into the definition.</li>
+</ul>
+<p>Thus, Stokes theorem is not a new type of integration, but a geometric reformulation of standard integration in a coordinate-free language.</p>
+</section>
 </section>
 <section id="worked-integration-examples" class="level2">
 <h2 class="anchored" data-anchor-id="worked-integration-examples">Worked Integration Examples</h2>
 <p>This section follows the lecture emphasis: concrete integral identities before moving to full Maxwell equations.</p>
+<hr>
 <section id="example-1-fundamental-theorem-as-1d-stokes" class="level3">
 <h3 class="anchored" data-anchor-id="example-1-fundamental-theorem-as-1d-stokes">Example 1: Fundamental Theorem as 1D Stokes</h3>
 <p>Let <span class="math inline">\(f(x)=x^3-2x\)</span>. Then <span class="math display">\[
@@ -770,6 +854,7 @@ F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
 \]</span> Boundary evaluation gives the same result: <span class="math display">\[
 f(2)-f(0)=4-0=4.
 \]</span></p>
+<hr>
 </section>
 <section id="example-2-greens-theorem-from-a-1-form" class="level3">
 <h3 class="anchored" data-anchor-id="example-2-greens-theorem-from-a-1-form">Example 2: Green’s Theorem from a 1-Form</h3>
@@ -790,6 +875,7 @@ P=-y,\;Q=x.
 \]</span> so <span class="math display">\[
 \oint_{\partial\Omega}\omega=\int_0^{2\pi}\mathrm{d}t=2\pi.
 \]</span></p>
+<hr>
 </section>
 <section id="example-3-3d-stokes-theorem-circulation-curl" class="level3">
 <h3 class="anchored" data-anchor-id="example-3-3d-stokes-theorem-circulation-curl">Example 3: 3D Stokes Theorem (Circulation-Curl)</h3>
@@ -803,6 +889,7 @@ P=-y,\;Q=x.
 <p>Choose <span class="math inline">\(\Sigma\)</span> as the unit disk in the <span class="math inline">\(xy\)</span>-plane, oriented upward. Then <span class="math display">\[
 \int_{\partial\Sigma}\omega=\int_\Sigma\mathrm{d}\omega=2\pi.
 \]</span> This is exactly the circulation-curl theorem in form language.</p>
+<hr>
 </section>
 <section id="example-4-divergence-theorem-from-a-2-form" class="level3">
 <h3 class="anchored" data-anchor-id="example-4-divergence-theorem-from-a-2-form">Example 4: Divergence Theorem from a 2-Form</h3>
@@ -813,14 +900,15 @@ P=-y,\;Q=x.
 +B_y\,\mathrm{d}z\wedge\mathrm{d}x
 +B_z\,\mathrm{d}x\wedge\mathrm{d}y.
 \]</span> Then <span class="math display">\[
-\mathrm{d}\beta=(\nabla\cdot\mathbf{B})\,\mathrm{d}x\wedge\mathrm{d}y\wedge\mathrm{d}z.
-\]</span> Since <span class="math inline">\(\nabla\cdot\mathbf{B}=1+1+1=3\)</span>, <span class="math display">\[
+\mathrm{d}\beta=(\nabla\cdot\mathbf{B})\,\mathrm{d}x\wedge\mathrm{d}y\wedge\mathrm{d}z,
+\]</span> where we are using <span class="math inline">\(\nabla\)</span> to represent the usual three-dimensional vector differential operator. Since <span class="math inline">\(\nabla\cdot\mathbf{B}=1+1+1=3\)</span>, <span class="math display">\[
 \iiint_V \mathrm{d}\beta = 3\,\text{Vol}(V).
 \]</span> For the unit ball <span class="math inline">\(V\)</span>, <span class="math inline">\(\text{Vol}(V)=\frac{4\pi}{3}\)</span>, so <span class="math display">\[
 \iiint_V \mathrm{d}\beta=4\pi.
 \]</span> Hence, by Stokes in degree 2, <span class="math display">\[
 \iint_{\partial V}\beta=4\pi,
 \]</span> which matches the classical outward flux of <span class="math inline">\(\mathbf{B}\)</span> through the unit sphere.</p>
+<hr>
 </section>
 <section id="example-5-reparametrization-invariance-curve-integral" class="level3">
 <h3 class="anchored" data-anchor-id="example-5-reparametrization-invariance-curve-integral">Example 5: Reparametrization Invariance (Curve Integral)</h3>
@@ -848,12 +936,12 @@ P=-y,\;Q=x.
 </section>
 <section id="electric-vs-magnetic-geometric-nature" class="level2">
 <h2 class="anchored" data-anchor-id="electric-vs-magnetic-geometric-nature">Electric vs Magnetic Geometric Nature</h2>
-<p>Geometrically:</p>
+<p>Geometrically, in 3D:</p>
 <ul>
 <li>electric field is naturally a spatial 1-form,</li>
 <li>magnetic field is naturally a spatial 2-form.</li>
 </ul>
-<p>The usual magnetic pseudovector is a 3D dual representation. It is convenient, but it hides that magnetism is fundamentally area-oriented in this formalism.</p>
+<p>The usual magnetic pseudovector is a 3D dual representation. It is convenient, but it hides that magnetism is fundamentally area-oriented.</p>
 </section>
 <section id="practical-takeaways" class="level2">
 <h2 class="anchored" data-anchor-id="practical-takeaways">Practical Takeaways</h2>
@@ -863,28 +951,334 @@ P=-y,\;Q=x.
 <li>Exterior derivative plus Stokes gives a unified differential/integral picture.</li>
 <li>The integral theorems are best seen as one geometric statement in different form degrees.</li>
 </ul>
+<hr>
 <section id="exercises" class="level3 callout-exercise">
 <h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
 <ol type="1">
-<li><p>Let <span class="math inline">\(u^\mu\)</span> be unit timelike and <span class="math inline">\(h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu\)</span>. Prove <span class="math inline">\(h^\mu{}_{\nu}\)</span> is a projector and <span class="math inline">\(h_{\mu\nu}u^\nu=0\)</span>.</p></li>
-<li><p>For any vector <span class="math inline">\(A^\mu\)</span>, verify <span class="math display">\[
-A^\mu=-(u\cdot A)u^\mu+h^\mu{}_{\nu}A^\nu.
-\]</span></p></li>
-<li><p>For timelike unit vectors <span class="math inline">\(u^\mu,v^\mu\)</span>, derive the rapidity relations from the decomposition of <span class="math inline">\(v^\mu\)</span> into temporal/spatial parts relative to <span class="math inline">\(u^\mu\)</span>.</p></li>
-<li><p>Show from antisymmetry that <span class="math inline">\(E_\mu u^\mu=0\)</span> when <span class="math inline">\(E_\mu=F_{\mu\nu}u^\nu\)</span>.</p></li>
-<li><p>Starting from the projector definition of <span class="math inline">\(B_{\alpha\beta}\)</span>, prove <span class="math display">\[
+<li>For timelike unit vectors <span class="math inline">\(u^\mu,v^\mu\)</span>, derive the rapidity relations from the decomposition of <span class="math inline">\(v^\mu\)</span> into temporal/spatial parts relative to <span class="math inline">\(u^\mu\)</span>.</li>
+<li>Show from antisymmetry that <span class="math inline">\(E_\mu u^\mu=0\)</span> when <span class="math inline">\(E_\mu=F_{\mu\nu}u^\nu\)</span>.</li>
+<li>Starting from the projector definition of <span class="math inline">\(B_{\alpha\beta}\)</span>, prove <span class="math display">\[
 F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
-\]</span></p></li>
-<li><p>Compute <span class="math inline">\(\mathrm{d}\omega\)</span> for a generic 1-form and verify explicitly in flat coordinates that <span class="math inline">\(\mathrm{d}^2\omega=0\)</span>.</p></li>
-<li><p>Repeat Example 2 using the square <span class="math inline">\([-1,1]\times[-1,1]\)</span> instead of the unit disk and confirm both sides agree.</p></li>
-<li><p>For <span class="math inline">\(\mathbf{A}=(-y,x,0)\)</span> and a disk of radius <span class="math inline">\(R\)</span>, compute <span class="math inline">\(\int_{\partial\Sigma}\omega\)</span> and <span class="math inline">\(\int_\Sigma\mathrm{d}\omega\)</span> explicitly and show both equal <span class="math inline">\(2\pi R^2\)</span>.</p></li>
-<li><p>For <span class="math inline">\(\mathbf{B}=(x,y,z)\)</span> and a ball of radius <span class="math inline">\(R\)</span>, verify <span class="math display">\[
+\]</span></li>
+<li>Compute <span class="math inline">\(\mathrm{d}\omega\)</span> for a generic 1-form and verify explicitly in flat coordinates that <span class="math inline">\(\mathrm{d}^2\omega=0\)</span>.</li>
+<li>Repeat Example 2 using the square <span class="math inline">\([-1,1]\times[-1,1]\)</span> instead of the unit disk and confirm both sides agree.</li>
+<li>For <span class="math inline">\(\mathbf{A}=(-y,x,0)\)</span> and a disk of radius <span class="math inline">\(R\)</span>, compute <span class="math inline">\(\int_{\partial\Sigma}\omega\)</span> and <span class="math inline">\(\int_\Sigma\mathrm{d}\omega\)</span> explicitly and show both equal <span class="math inline">\(2\pi R^2\)</span>.</li>
+<li>For <span class="math inline">\(\mathbf{B}=(x,y,z)\)</span> and a ball of radius <span class="math inline">\(R\)</span>, verify <span class="math display">\[
 \iint_{\partial V}\beta=4\pi R^3.
-\]</span></p></li>
-<li><p>Explain, with one explicit example, how the same identity <span class="math display">\[
-   \int_{\partial\Omega}\omega=\int_\Omega\mathrm{d}\omega
-   \]</span> reproduces a familiar vector-calculus theorem.</p></li>
-<li><p>Discuss why representing <span class="math inline">\(\mathbf{B}\)</span> as a pseudovector is special to 3 spatial dimensions.</p></li>
+\]</span></li>
+<li>Explain, with one explicit example, how the same identity <span class="math display">\[
+\int_{\partial\Omega}\omega=\int_\Omega\mathrm{d}\omega
+\]</span> reproduces a familiar vector-calculus theorem.</li>
+<li>Discuss why representing <span class="math inline">\(\mathbf{B}\)</span> as a pseudovector is special to 3 spatial dimensions.</li>
+</ol>
+</section>
+</section>
+<section id="volume-forms-in-minkowski-spacetime" class="level2">
+<h2 class="anchored" data-anchor-id="volume-forms-in-minkowski-spacetime">Volume Forms in Minkowski Spacetime</h2>
+<p>In Minkowski spacetime with Cartesian coordinates, the metric components <span class="math inline">\(\eta_{\mu\nu}\)</span> are constant. As a result, the covariant derivative reduces to the partial derivative, and the volume form can be characterized by the condition that its components are constant. First note that a volume form is a 4-form and can be written as <span class="math display">\[
+\mathbb{e}^4 = \frac{1}{4!} \mathbb{e}_{\mu\nu\alpha\beta} \,\mathrm{d}x^\mu \wedge \mathrm{d}x^\nu \wedge \mathrm{d}x^\alpha \wedge \mathrm{d}x^\beta = \mathbb{e}_{0123} \mathrm{d}x^0 \wedge \mathrm{d}x^1 \wedge \mathrm{d}x^2 \wedge \mathrm{d}x^3,
+\]</span> therefore we must have <span class="math display">\[
+\partial_\lambda \,\mathbb{e}^4_{\mu\nu\rho\sigma} = 0.
+\]</span></p>
+<p>To fix the normalization, we require that in an oriented Cartesian basis, <span class="math display">\[
+\mathbb{e}^4(\partial_0,\partial_1,\partial_2,\partial_3) = \mathbb{e}^4_{0123} = +1.
+\]</span> This determines the spacetime volume form uniquely: <span class="math display">\[
+\mathbb{e}^4 = \mathrm{d}x^0 \wedge \mathrm{d}x^1 \wedge \mathrm{d}x^2 \wedge \mathrm{d}x^3.
+\]</span> Equivalently, this normalization corresponds to assigning unit volume to the coordinate hypercube <span class="math inline">\([0,1]^4\)</span> (in the chosen units), so that its volume is one in those units (e.g., one meter to the fourth power).</p>
+<p>More generally, this can be written in terms of the Levi-Civita symbol as <span class="math display">\[
+\mathbb{e}^4_{\mu\nu\rho\sigma} = \epsilon_{\mu\nu\rho\sigma}.
+\]</span></p>
+<hr>
+<p>Given a unit timelike vector <span class="math inline">\(u^\mu\)</span>, satisfying <span class="math display">\[
+\eta_{\mu\nu} u^\mu u^\nu = -1,
+\]</span> we can define a spatial volume form associated with the observer <span class="math inline">\(u^\mu\)</span> by contracting the spacetime volume form: <span class="math display">\[
+\mathbb{e}^3(u) = i_u \mathbb{e}^4 = \mathbb{e}^4(u).
+\]</span></p>
+<p>In components, this gives <span class="math display">\[
+\mathbb{e}^3(u)_{\alpha\beta\gamma} = u^\mu \,\epsilon_{\mu\alpha\beta\gamma}.
+\]</span></p>
+<p>This object is a 3-form that is orthogonal to <span class="math inline">\(u^\mu\)</span> in the sense that <span class="math display">\[
+i_u \mathbb{e}^3(u) = 0.
+\]</span></p>
+<p>In the special case where <span class="math inline">\(u^\mu = (1,0,0,0)\)</span>, we obtain <span class="math display">\[
+\mathbb{e}^3(u) = \mathrm{d}x^1 \wedge \mathrm{d}x^2 \wedge \mathrm{d}x^3,
+\]</span> which is the standard spatial volume form.</p>
+<p>Thus, <span class="math inline">\(\mathbb{e}^3(u)\)</span> represents the oriented volume element in the local rest frame of the observer <span class="math inline">\(u^\mu\)</span>. It provides the natural geometric object used to define spatial Hodge duals and to interpret quantities such as magnetic fields as area-like (bivector) objects.</p>
+<hr>
+<section id="exercises-volume-forms-and-orientation" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-volume-forms-and-orientation">Exercises (Volume Forms and Orientation)</h3>
+<ol type="1">
+<li>Starting from <span class="math display">\[
+\mathbb{e}^4 = \frac{1}{4!} \mathbb{e}_{\mu\nu\rho\sigma} \mathrm{d}x^\mu \wedge \mathrm{d}x^\nu \wedge \mathrm{d}x^\rho \wedge \mathrm{d}x^\sigma,
+\]</span> show that antisymmetry implies only one independent component.</li>
+<li>Verify explicitly that <span class="math display">\[
+\mathbb{e}^4(\partial_0,\partial_1,\partial_2,\partial_3)=1
+\]</span> for <span class="math inline">\(\mathbb{e}^4 = \mathrm{d}x^0 \wedge \mathrm{d}x^1 \wedge \mathrm{d}x^2 \wedge \mathrm{d}x^3\)</span>.</li>
+<li>Show that exchanging two arguments of <span class="math inline">\(\mathbb{e}^4\)</span> flips the sign.</li>
+<li>Compute <span class="math inline">\(\epsilon_{0213}\)</span> and determine its sign.</li>
+<li>Verify that <span class="math inline">\(i_u \mathbb{e}^4\)</span> is a 3-form.</li>
+<li>Show explicitly that <span class="math inline">\(i_u i_u \mathbb{e}^4 = 0\)</span>.</li>
+<li>Compute <span class="math inline">\(\mathbb{e}^3(u)\)</span> for a boosted observer <span class="math inline">\(u^\mu=(\gamma,\gamma v,0,0)\)</span>.</li>
+<li>Show that <span class="math inline">\(\mathbb{e}^3(u)\)</span> annihilates <span class="math inline">\(u\)</span>.</li>
+</ol>
+</section>
+<hr>
+</section>
+<section id="the-hodge-star-operator-geometric-definition" class="level2">
+<h2 class="anchored" data-anchor-id="the-hodge-star-operator-geometric-definition">The Hodge Star Operator (Geometric Definition)</h2>
+<p>The spacetime volume form <span class="math inline">\(\mathbb{e}^4 \in \Lambda^4 T_p^*M\)</span> provides a natural way to relate objects of complementary degree. In particular, it allows us to map vectors to 3-forms by contraction. Given a vector <span class="math inline">\(v \in T_pM\)</span>, we define <span class="math display">\[
+i_v \mathbb{e}^4 = \frac{1}{3!} v^\mu \,\epsilon_{\mu\alpha\beta\gamma} \,\mathrm{d}x^\alpha \wedge \mathrm{d}x^\beta \wedge \mathrm{d}x^\gamma,
+\]</span> which is a 3-form with components <span class="math inline">\(v^\mu \epsilon_{\mu\alpha\beta\gamma}\)</span>. This associates to each direction the oriented volume element orthogonal to it.</p>
+<p>Using the metric, we can raise indices of <span class="math inline">\(\mathbb{e}^4\)</span> and define the corresponding contravariant object <span class="math display">\[
+\mathbb{e}_4 = \frac{1}{4!} \epsilon^{\mu\nu\rho\sigma} \,\partial_\mu \wedge \partial_\nu \wedge \partial_\rho \wedge \partial_\sigma,
+\]</span> which belongs to <span class="math inline">\(\Lambda^4 T_pM\)</span>. This object acts on covectors and allows us to map 1-forms to 3-vectors: <span class="math display">\[
+\mathbb{e}_4(\tilde{w}) = \frac{1}{3!} w_\mu \,\epsilon^{\mu\nu\rho\sigma} \,\partial_\nu \wedge \partial_\rho \wedge \partial_\sigma.
+\]</span></p>
+<p>More generally, the volume form defines natural maps <span class="math display">\[
+\Lambda^p T_p^*M \to \Lambda^{4-p} T_pM,
+\qquad
+\Lambda^p T_pM \to \Lambda^{4-p} T_p^*M,
+\]</span> by contraction. These maps exchange the degree of an object with its complementary degree.</p>
+<p>Since the metric provides an identification between vectors and covectors, we can combine these constructions to obtain a map acting entirely within forms: <span class="math display">\[
+\star: \Lambda^p T_p^*M \to \Lambda^{4-p} T_p^*M.
+\]</span> This is the Hodge star operator. It is determined by the metric and the orientation, and encodes the duality between forms of complementary degree.</p>
+<p>In practice, for a 1-form <span class="math inline">\(\tilde{w} = w_\mu \mathrm{d}x^\mu\)</span>, we obtain <span class="math display">\[
+\star \tilde{w}
+= \frac{1}{3!} w_\mu \,\epsilon^{\mu\nu\rho\sigma} \,\eta_{\nu\alpha}\eta_{\rho\beta}\eta_{\sigma\gamma}
+\,\mathrm{d}x^\alpha \wedge \mathrm{d}x^\beta \wedge \mathrm{d}x^\gamma
+= \frac{1}{3!} w^\nu \,\epsilon_{\nu\alpha\beta\gamma}
+\,\mathrm{d}x^\alpha \wedge \mathrm{d}x^\beta \wedge \mathrm{d}x^\gamma,
+\]</span> where <span class="math inline">\(w^\nu = \eta^{\nu\mu} w_\mu\)</span>. This shows explicitly how the metric is used to convert between covariant and contravariant components in the construction of <span class="math inline">\(\star\)</span>.</p>
+<p>In an oriented orthonormal basis, <span class="math inline">\(\star \alpha\)</span> can be understood as the form obtained by completing the directions of <span class="math inline">\(\alpha\)</span> to a full oriented basis. This makes the action of <span class="math inline">\(\star\)</span> explicit in coordinates.</p>
+<hr>
+<section id="exercises-hodge-star-in-4d" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-hodge-star-in-4d">Exercises (Hodge Star in 4D)</h3>
+<ol type="1">
+<li>Show that for a 1-form <span class="math inline">\(\tilde{w}\)</span>, <span class="math display">\[
+(\star \tilde{w})_{\alpha\beta\gamma} = w_\nu \eta^{\nu\mu} \epsilon_{\mu\alpha\beta\gamma}.
+\]</span></li>
+<li>Derive the expression for <span class="math inline">\(\star(\mathrm{d}x^\mu)\)</span> explicitly.</li>
+<li>Show that <span class="math inline">\(\star^2 = -1\)</span> on 1-forms in Minkowski signature <span class="math inline">\((-,+,+,+)\)</span>.</li>
+<li>Verify that <span class="math inline">\(\star 1 = \mathbb{e}^4\)</span> and <span class="math inline">\(\star \mathbb{e}^4 = 1\)</span>.</li>
+<li>Compute <span class="math inline">\(\star(\mathrm{d}x^0 \wedge \mathrm{d}x^1)\)</span>.</li>
+<li>Verify explicitly the raising/lowering steps in <span class="math display">\[
+\star \tilde{w} = \frac{1}{3!} w^\nu \epsilon_{\nu\alpha\beta\gamma} \mathrm{d}x^\alpha \wedge \mathrm{d}x^\beta \wedge \mathrm{d}x^\gamma.
+\]</span></li>
+<li>Show that contraction with <span class="math inline">\(\mathbb{e}^4\)</span> maps vectors to 3-forms.</li>
+<li>Show that contraction with <span class="math inline">\(\mathbb{e}_4\)</span> maps 1-forms to 3-vectors.</li>
+<li>Explain why <span class="math inline">\(\star\)</span> depends on both metric and orientation.</li>
+</ol>
+</section>
+<hr>
+<section id="explicit-action-in-mathbbr3" class="level3">
+<h3 class="anchored" data-anchor-id="explicit-action-in-mathbbr3">Explicit action in <span class="math inline">\(\mathbb{R}^3\)</span></h3>
+<p>In 3D Euclidean space with coordinates <span class="math inline">\((x,y,z)\)</span>, the volume form is <span class="math display">\[
+\mathbb{e}^3 = \mathrm{d}x \wedge \mathrm{d}y \wedge \mathrm{d}z.
+\]</span> The same construction used in four dimensions applies here. The Hodge star is determined by the requirement that it maps a form to the complementary directions needed to produce the volume form with the correct orientation.</p>
+<p>For 1-forms: <span class="math display">\[
+\star \mathrm{d}x = \mathrm{d}y \wedge \mathrm{d}z,
+\quad
+\star \mathrm{d}y = \mathrm{d}z \wedge \mathrm{d}x,
+\quad
+\star \mathrm{d}z = \mathrm{d}x \wedge \mathrm{d}y,
+\]</span></p>
+<p>For 2-forms: <span class="math display">\[
+\star (\mathrm{d}x \wedge \mathrm{d}y) = \mathrm{d}z,
+\quad
+\star (\mathrm{d}y \wedge \mathrm{d}z) = \mathrm{d}x,
+\quad
+\star (\mathrm{d}z \wedge \mathrm{d}x) = \mathrm{d}y.
+\]</span></p>
+<p>For scalars and volume forms: <span class="math display">\[
+\star 1 = \mathrm{d}x \wedge \mathrm{d}y \wedge \mathrm{d}z,
+\qquad
+\star (\mathrm{d}x \wedge \mathrm{d}y \wedge \mathrm{d}z) = 1.
+\]</span></p>
+<p>These relations follow directly from the defining property that <span class="math inline">\(\alpha \wedge \star \beta\)</span> reproduces the volume form when <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> span complementary directions.</p>
+<p>It is useful to relate this three-dimensional construction to the four-dimensional one. Given a unit timelike vector <span class="math inline">\(u^\mu\)</span>, a spatial vector <span class="math inline">\(v^\mu\)</span> (orthogonal to <span class="math inline">\(u^\mu\)</span>) can be represented as a bivector <span class="math inline">\(u \wedge v\)</span>. Applying the four-dimensional Hodge star, we obtain <span class="math display">\[
+\star (u \wedge v)
+= \eta^{-1}(i_v i_u \mathbb{e}^4)
+= \frac{1}{2} u_\mu v_\nu \,\epsilon^{\mu\nu\alpha\beta}
+\,\partial_\alpha \wedge \partial_\beta,
+\]</span> which is a purely spatial bivector. This construction is coordinate-independent and projects out any component along <span class="math inline">\(u^\mu\)</span>.</p>
+<p>In the frame where <span class="math inline">\(u^\mu = (1,0,0,0)\)</span>, this reduces to <span class="math display">\[
+\star (u \wedge v)
+= \frac{1}{2} v_i \,\epsilon^{0ijk}
+\,\partial_j \wedge \partial_k,
+\]</span> which reproduces the usual identification between spatial vectors and antisymmetric tensors in three dimensions. Thus, using <span class="math inline">\(\mathbb{e}^4(u)\)</span>, we can define a Hodge dual acting on forms orthogonal to <span class="math inline">\(u\)</span>: <span class="math display">\[
+\star_u: \Lambda^p_{\perp u} \to \Lambda^{3-p}_{\perp u}.
+\]</span></p>
+<hr>
+</section>
+<section id="exercises-hodge-star-in-3d" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-hodge-star-in-3d">Exercises (Hodge Star in 3D)</h3>
+<ol type="1">
+<li>Verify <span class="math inline">\(\star \mathrm{d}x = \mathrm{d}y \wedge \mathrm{d}z\)</span> using <span class="math inline">\(\epsilon_{ijk}\)</span>.</li>
+<li>Compute <span class="math inline">\(\star(\mathrm{d}y \wedge \mathrm{d}z)\)</span> explicitly.</li>
+<li>Show that <span class="math inline">\(\star^2 = +1\)</span> on 1-forms in 3D Euclidean space.</li>
+<li>Show that <span class="math inline">\(\star^2 = +1\)</span> on all forms in 3D Euclidean space.</li>
+<li>Verify that <span class="math display">\[
+\star 1 = \mathrm{d}x \wedge \mathrm{d}y \wedge \mathrm{d}z.
+\]</span></li>
+<li>Compute <span class="math inline">\(\star(\mathrm{d}x + \mathrm{d}y)\)</span>.</li>
+<li>Show that <span class="math display">\[
+\epsilon^{ijk}\epsilon_{ilm} = \delta^j_l \delta^k_m - \delta^j_m \delta^k_l.
+\]</span></li>
+<li>Show explicitly how <span class="math inline">\(\star(u \wedge v)\)</span> produces a spatial bivector.</li>
+<li>For <span class="math inline">\(u=(1,0,0,0)\)</span> compute <span class="math inline">\(\star(u\wedge v)\)</span>.</li>
+</ol>
+</section>
+<hr>
+<section id="interpretation-1" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-1">Interpretation</h3>
+<ul>
+<li>The 4D Hodge star is intrinsic to spacetime.</li>
+<li>The 3D Hodge star arises only after choosing an observer.</li>
+<li>This explains why operations like the cross product and the magnetic field depend on a choice of frame.</li>
+</ul>
+<p>The Hodge star:</p>
+<ul>
+<li>uses the metric to identify orthogonal directions,</li>
+<li>uses orientation to fix signs,</li>
+<li>converts objects of dimension <span class="math inline">\(p\)</span> into complementary objects of dimension <span class="math inline">\(n-p\)</span>.</li>
+</ul>
+<p>In 3D:</p>
+<ul>
+<li>1-forms <span class="math inline">\(\leftrightarrow\)</span> 2-forms (vectors <span class="math inline">\(\leftrightarrow\)</span> pseudovectors),</li>
+<li>0-forms <span class="math inline">\(\leftrightarrow\)</span> 3-forms (scalars <span class="math inline">\(\leftrightarrow\)</span> volume densities).</li>
+</ul>
+<p>This is the mechanism behind:</p>
+<ul>
+<li>cross product,</li>
+<li>curl,</li>
+<li>divergence,</li>
+</ul>
+<p>which arise from combining <span class="math inline">\(\mathrm{d}\)</span> and <span class="math inline">\(\star\)</span>.</p>
+<hr>
+</section>
+</section>
+<section id="differential-vector-operators" class="level2">
+<h2 class="anchored" data-anchor-id="differential-vector-operators">Differential Vector Operators</h2>
+<p>To introduce vector differential operators, we first relabel the basis covectors and vectors. We define <span class="math display">\[
+\gamma^\mu = \mathrm{d}x^\mu, \qquad \gamma_\mu = \partial_\mu,
+\]</span> so that <span class="math inline">\(\{\gamma^\mu\}\)</span> and <span class="math inline">\(\{\gamma_\mu\}\)</span> remain dual bases. This allows us to write the differential operator in compact form as <span class="math display">\[
+\partial \equiv \gamma^\mu \partial_\mu,
+\]</span> where <span class="math inline">\(\partial_\mu\)</span> is the covariant derivative (which reduces to the usual partial derivative in Cartesian coordinates), and <span class="math inline">\(\gamma^\mu\)</span> is treated as a constant basis 1-form.</p>
+<p>With this notation, the antisymmetric (rotational) derivative of a vector field <span class="math inline">\(v = v^\mu \gamma_\mu\)</span> is <span class="math display">\[
+\partial \wedge v
+= \frac{1}{2}(\partial_\mu v_\nu - \partial_\nu v_\mu)\,\gamma^\mu \wedge \gamma^\nu,
+\]</span> while the divergence is <span class="math display">\[
+\partial \cdot v = \partial_\mu v^\nu \eta_{\mu\nu}.
+\]</span></p>
+<hr>
+<section id="exercises-differential-operators" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-differential-operators">Exercises (Differential Operators)</h3>
+<ol type="1">
+<li>Show that <span class="math display">\[
+\partial = \gamma^\mu \partial_\mu
+\]</span> reproduces <span class="math inline">\(\mathrm{d}\)</span> when acting on scalars.</li>
+<li>Compute <span class="math inline">\(\partial \wedge v\)</span> explicitly for <span class="math inline">\(v^\mu=(ct,x,y,z)\)</span>.</li>
+<li>Show that <span class="math display">\[
+\partial \cdot v = \partial_\mu v^\mu.
+\]</span></li>
+<li>Verify antisymmetry: <span class="math display">\[
+\partial \wedge v = - \partial_\mu v \wedge \gamma^\mu.
+\]</span></li>
+<li>Show that <span class="math inline">\(\partial \wedge \partial = 0\)</span>. (Assume that fields are smooth enough for derivatives to commute.)</li>
+<li>Compute <span class="math inline">\(\partial \cdot (x^\mu \gamma_\mu)\)</span>.</li>
+<li>Show that <span class="math inline">\(\partial\)</span> acts linearly.</li>
+<li>Interpret <span class="math inline">\(\partial \wedge v\)</span> geometrically.</li>
+<li>Show that divergence is metric contraction of derivative.</li>
+</ol>
+</section>
+<hr>
+<section id="cross-product-and-curl-from-projection-and-hodge-star" class="level3">
+<h3 class="anchored" data-anchor-id="cross-product-and-curl-from-projection-and-hodge-star">Cross Product and Curl from Projection and Hodge Star</h3>
+<p>To recover the familiar three-dimensional operators, we introduce a reference unit timelike vector <span class="math inline">\(u\)</span> and project onto the spatial subspace orthogonal to it. For two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(w\)</span>, the antisymmetric product projected along <span class="math inline">\(u\)</span> is <span class="math display">\[
+u \wedge (v \wedge w) = u^\mu v^\nu w^\rho \,\gamma_\mu \wedge \gamma_\nu \wedge \gamma_\rho,
+\]</span> which represents a spatial oriented volume element. Applying the Hodge dual associated with <span class="math inline">\(u\)</span>, we obtain a spatial vector: <span class="math display">\[
+\star_u(v \wedge w) = u^\mu v^\nu w^\rho \,\epsilon_{\mu\nu\rho\sigma}\,\gamma^\sigma.
+\]</span></p>
+<p>In the frame where <span class="math inline">\(u = (1,0,0,0)\)</span>, this reduces to <span class="math display">\[
+\star_u(v \wedge w) = v^i w^j \epsilon_{0ijk}\,\gamma^k,
+\]</span> and using <span class="math inline">\(\epsilon_{0ijk} = \epsilon_{ijk}\)</span>, this reproduces the usual cross product. Thus, the cross product is a special case of the wedge product combined with the Hodge dual.</p>
+<p>Similarly, the curl can be written as <span class="math display">\[
+\partial \times v \equiv \star_u\big(\partial \wedge v\big) = u^\mu \epsilon_{\mu\nu\rho\sigma}\,\partial^\nu v^\rho \,\gamma^\sigma,
+\]</span> which again reduces, for <span class="math inline">\(u = (1,0,0,0)\)</span>, to <span class="math display">\[
+\partial \times v
+= \partial^i v^j \epsilon_{0ijk}\,\gamma^k
+= (\partial^1 v^2 - \partial^2 v^1)\gamma^3
+- (\partial^1 v^3 - \partial^3 v^1)\gamma^2
++ (\partial^2 v^3 - \partial^3 v^2)\gamma^1.
+\]</span> In this way, the standard three-dimensional vector operators arise from covariant four-dimensional constructions by projection along a chosen observer <span class="math inline">\(u\)</span>.</p>
+<hr>
+</section>
+<section id="curl-of-a-bivector-field" class="level3">
+<h3 class="anchored" data-anchor-id="curl-of-a-bivector-field">Curl of a Bivector Field</h3>
+<p>Given a bivector field <span class="math display">\[
+B = \frac{1}{2} B^{\mu\nu} \gamma_\mu \wedge \gamma_\nu,
+\]</span> we define its curl by <span class="math display">\[
+\partial \times B \equiv \star_u\big(\partial \wedge B\big)
+= u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
+\]</span> This extends the notion of curl to bivector fields, which naturally appear in the covariant description of electromagnetism.</p>
+<p>Applying the spatial Hodge dual once more produces a scalar: <span class="math display">\[
+\star_u(\partial \wedge B)
+= u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
+\]</span></p>
+<p>In the frame where <span class="math inline">\(u = (1,0,0,0)\)</span>, this becomes <span class="math display">\[
+\star_u(\partial \wedge B)
+= \partial^i B^{jk} \epsilon_{0ijk}.
+\]</span></p>
+<p>Introducing the spatial dual vector <span class="math display">\[
+B^i = \frac{1}{2}\,\epsilon^{ijk} B_{jk} \;=\; (\star_u B)^i,
+\]</span> we obtain <span class="math display">\[
+\star_u(\partial \wedge B) = \partial_i B^i.
+\]</span></p>
+<p>Thus, <span class="math display">\[
+\star_u(\partial \wedge B) = \partial \cdot (\star_u B).
+\]</span> That is, the curl of a bivector field is equivalent to the divergence of its Hodge dual vector field. This illustrates how the use of the Hodge star can hide the underlying geometric nature of the fields and operations. In three dimensions this identification is natural, but it arises from combining the wedge product with the Hodge dual and is not fundamental in four-dimensional spacetime.</p>
+<hr>
+</section>
+<section id="exercises-curl-of-bivectors" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-curl-of-bivectors">Exercises (Curl of Bivectors)</h3>
+<ol type="1">
+<li>Show explicitly that <span class="math inline">\(\partial \wedge B\)</span> is a 3-vector.</li>
+<li>Verify that <span class="math inline">\(\star_u(\partial \wedge B)\)</span> is a scalar.</li>
+<li>Derive <span class="math display">\[
+\star_u(\partial \wedge B) = \partial_i B^i,
+\]</span> using that <span class="math inline">\(B^i = \frac{1}{2}\epsilon^{ijk}B_{jk}\)</span>.</li>
+<li>Verify the identity <span class="math display">\[
+\star_u(\partial \wedge B) = \partial \cdot (\star_u B).
+\]</span></li>
+<li>Compute <span class="math inline">\(\partial \wedge B\)</span> for constant <span class="math inline">\(B^{\mu\nu}\)</span>.</li>
+<li>Show that curl vanishes for constant bivector fields.</li>
+</ol>
+</section>
+<hr>
+<section id="codifferential-operator" class="level3">
+<h3 class="anchored" data-anchor-id="codifferential-operator">Codifferential Operator</h3>
+<p>The combination <span class="math inline">\(\delta = \star \mathrm{d}\star\)</span> is called the codifferential. It satisfies: <span class="math display">\[
+\delta: \Lambda^p T^*M \to \Lambda^{p-1} T^*M.
+\]</span></p>
+<p>In coordinates, for a 1-form <span class="math inline">\(\omega = \omega_i \mathrm{d}x^i\)</span>: <span class="math display">\[
+\delta\omega = \partial_\mu \omega_\nu \eta^{\mu\nu},
+\]</span> which is precisely the divergence.</p>
+<p>Key property: <span class="math inline">\(\delta^2 = 0\)</span>, analogous to <span class="math inline">\(\mathrm{d}^2 = 0\)</span>.</p>
+<hr>
+</section>
+<section id="exercises-codifferential" class="level3 callout-exercise">
+<h3 class="anchored" data-anchor-id="exercises-codifferential">Exercises (Codifferential)</h3>
+<ol type="1">
+<li>Show that <span class="math display">\[
+\delta = \star \mathrm{d}\star
+\]</span> maps <span class="math inline">\(p\)</span>-forms to <span class="math inline">\((p-1)\)</span>-forms.</li>
+<li>Verify <span class="math inline">\(\delta^2 = 0\)</span>.</li>
+<li>Compute <span class="math inline">\(\delta\)</span> acting on a 1-form explicitly.</li>
+<li>Show that <span class="math inline">\(\delta \omega = \partial_\mu \omega^\mu\)</span>.</li>
+<li>Compute <span class="math inline">\(\delta(\mathrm{d}f)\)</span>.</li>
+<li>Show that <span class="math inline">\(\delta\)</span> is adjoint of <span class="math inline">\(\mathrm{d}\)</span>.</li>
+<li>Verify <span class="math inline">\(\delta(\mathrm{d}x^\mu)=0\)</span>.</li>
+<li>Compute <span class="math inline">\(\delta\)</span> on a 2-form.</li>
 </ol>
 </section>
 
