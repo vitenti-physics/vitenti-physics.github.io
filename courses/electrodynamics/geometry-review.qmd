@@ -6,102 +6,92 @@ title: "Geometry Review for Electrodynamics"
 
 ## Introduction
 
-Electromagnetism can be understood, to a large extent, as a geometric theory.  
-Most of its structure follows directly from the geometry of spacetime, together
-with the existence of electric charge as a physical source.
+Electromagnetism can be understood, to a large extent, as a geometric theory.\
+Most of its structure follows directly from the geometry of spacetime, together with the
+existence of electric charge as a physical source.
 
-This observation is important because the same geometric structures appear in
-many other field theories. Once the underlying geometry is understood, much of
-the formal structure of these theories becomes natural.
+This observation is important because the same geometric structures appear in many other
+field theories. Once the underlying geometry is understood, much of the formal structure
+of these theories becomes natural.
 
-In this course we will therefore begin by reviewing the geometric framework in
-which classical field theories are formulated. The goal is to introduce the
-mathematical language needed to express the equations of electromagnetism in a
-coordinate–independent way.
+In this course we will therefore begin by reviewing the geometric framework in which
+classical field theories are formulated. The goal is to introduce the mathematical
+language needed to express the equations of electromagnetism in a coordinate–independent
+way.
 
-The central idea is that physical laws should not depend on the particular
-coordinate system used to describe spacetime. Instead, they should be expressed
-in terms of geometric objects, such as vectors, covectors, and tensors, that are
-defined independently of coordinates.
+The central idea is that physical laws should not depend on the particular coordinate
+system used to describe spacetime. Instead, they should be expressed in terms of
+geometric objects, such as vectors, covectors, and tensors, that are defined
+independently of coordinates.
 
 Electromagnetism provides a particularly clear example of this principle. When
-formulated geometrically, Maxwell's equations take a very compact form and
-their structure becomes closely related to properties of spacetime itself.
+formulated geometrically, Maxwell's equations take a very compact form and their
+structure becomes closely related to properties of spacetime itself.
 
-For this reason we begin the course with a review of the geometry of spacetime
-and the basic algebraic structures needed to describe fields.
+For this reason we begin the course with a review of the geometry of spacetime and the
+basic algebraic structures needed to describe fields.
 
 ## Why Geometry Appears in Field Theory
 
-A classical field theory describes physical quantities that are defined at every
-point of spacetime. Examples include the electromagnetic field, temperature in
-a material, or the velocity field of a fluid.
+A classical field theory describes physical quantities that are defined at every point
+of spacetime. Examples include the electromagnetic field, temperature in a material, or
+the velocity field of a fluid.
 
-Because fields are defined over spacetime, their mathematical description
-necessarily involves the geometric structure of spacetime itself. The equations
-that govern these fields must be formulated in a way that is independent of the
-choice of coordinates used to describe spacetime.
+Because fields are defined over spacetime, their mathematical description necessarily
+involves the geometric structure of spacetime itself. The equations that govern these
+fields must be formulated in a way that is independent of the choice of coordinates used
+to describe spacetime.
 
-This requirement leads naturally to the use of geometric objects such as
-vectors, covectors, and tensors. These objects have well-defined transformation
-properties under changes of coordinates, which guarantees that physical laws
-retain the same form for all observers.
+This requirement leads naturally to the use of geometric objects such as vectors,
+covectors, and tensors. These objects have well-defined transformation properties under
+changes of coordinates, which guarantees that physical laws retain the same form for all
+observers.
 
-In practice, this means that the fundamental equations of a field theory should
-be written in terms of quantities that are defined geometrically rather than in
-terms of the components associated with a particular coordinate system.
+In practice, this means that the fundamental equations of a field theory should be
+written in terms of quantities that are defined geometrically rather than in terms of
+the components associated with a particular coordinate system.
 
-Electromagnetism provides a clear illustration of this idea. When expressed in
-the usual three–vector notation, Maxwell's equations appear as four separate
-equations involving electric and magnetic fields. However, when written using
-tensorial objects defined on spacetime, these equations combine into a much
-simpler and more symmetric structure.
+Electromagnetism provides a clear illustration of this idea. When expressed in the usual
+three–vector notation, Maxwell's equations appear as four separate equations involving
+electric and magnetic fields. However, when written using tensorial objects defined on
+spacetime, these equations combine into a much simpler and more symmetric structure.
 
-For this reason, before studying the electromagnetic field itself, we first
-review the geometric framework that allows us to express physical laws in a
-coordinate–independent way.
+For this reason, before studying the electromagnetic field itself, we first review the
+geometric framework that allows us to express physical laws in a coordinate–independent
+way.
 
 ## Metric and the Notion of Distance
 
-In physics we constantly perform measurements. For example, we measure the
-distance between two points in space or the elapsed time between two events.
-To describe these measurements mathematically we need a rule that tells us how
-to assign lengths to displacements between nearby points.
+In physics we constantly perform measurements. For example, we measure the distance
+between two points in space or the elapsed time between two events. To describe these
+measurements mathematically we need a rule that tells us how to assign lengths to
+displacements between nearby points.
 
 This rule is provided by the **metric**.
 
-Mathematically, a metric is a bilinear map that assigns a number to a pair of
-vectors. In particular, given a displacement vector $v$, the metric defines
-its squared length through
-$$
-g(v,v).
-$$
+Mathematically, a metric is a bilinear map that assigns a number to a pair of vectors.
+In particular, given a displacement vector $v$, the metric defines its squared length
+through
+$$g(v,v).$$
 
-In Euclidean space this rule reproduces the familiar Pythagorean expression.
-If a displacement has components $(\dd x,\dd y)$, the squared length is
-$$
-\dd s^2 = \dd x^2 + \dd y^2 .
-$$
+In Euclidean space this rule reproduces the familiar Pythagorean expression. If a
+displacement has components $(\dd x,\dd y)$, the squared length is
+$$\dd s^2 = \dd x^2 + \dd y^2 .$$
 
-In spacetime the situation is different. Experiments in special relativity show
-that the combination of space and time intervals that remains invariant under
-changes of inertial reference frames is
-$$
-\dd s^2 = -c^2 \dd t^2 + \dd x^2 + \dd y^2 + \dd z^2 .
-$$
+In spacetime the situation is different. Experiments in special relativity show that the
+combination of space and time intervals that remains invariant under changes of inertial
+reference frames is
+$$\dd s^2 = -c^2 \dd t^2 + \dd x^2 + \dd y^2 + \dd z^2 .$$
 
 This expression defines the **Minkowski metric**.
 
-A crucial feature is that the time direction appears with a sign opposite to
-the spatial directions. The pattern of signs in the metric is called its
-**signature**. In this convention the signature is
-$$
-(-,+,+,+).
-$$
+A crucial feature is that the time direction appears with a sign opposite to the spatial
+directions. The pattern of signs in the metric is called its **signature**. In this
+convention the signature is
+$$(-,+,+,+).$$
 
-This difference in sign is responsible for several distinctive features of
-relativistic spacetime, including the classification of intervals into
-timelike, spacelike, and null.
+This difference in sign is responsible for several distinctive features of relativistic
+spacetime, including the classification of intervals into timelike, spacelike, and null.
 
 In coordinates, the Minkowski metric can be represented by the matrix
 $$
@@ -114,80 +104,65 @@ $$
 \end{pmatrix}.
 $$
 
-Using this metric, the spacetime interval between two infinitesimally separated
-events can be written compactly as
-$$
-\dd s^2 = \eta_{\mu\nu} \, \dd x^\mu \dd x^\nu .
-$$
+Using this metric, the spacetime interval between two infinitesimally separated events
+can be written compactly as
+$$\dd s^2 = \eta_{\mu\nu} \, \dd x^\mu \dd x^\nu .$$
 
-Unlike the Euclidean distance, this quantity can be positive, negative, or
-zero. These three possibilities correspond to different types of separations:
+Unlike the Euclidean distance, this quantity can be positive, negative, or zero. These
+three possibilities correspond to different types of separations:
 
 - **timelike:** $\dd s^2 < 0$
 - **spacelike:** $\dd s^2 > 0$
 - **null (lightlike):** $\dd s^2 = 0$
 
-The sign of the interval determines the causal relation between events.
-Timelike separations correspond to events that can influence each other through
-signals moving slower than light, while null separations correspond to
-propagation at the speed of light.
+The sign of the interval determines the causal relation between events. Timelike
+separations correspond to events that can influence each other through signals moving
+slower than light, while null separations correspond to propagation at the speed of
+light.
 
-::: {.callout-note}
-The signature of a metric is invariant under coordinate transformations.
-Different coordinate systems may change the components of the metric, but the
-number of positive and negative directions remains the same.
+::: callout-note
+The signature of a metric is invariant under coordinate transformations. Different
+coordinate systems may change the components of the metric, but the number of positive
+and negative directions remains the same.
 :::
 
-This statement can be understood more concretely as follows. Any real symmetric
-bilinear form can be diagonalized by a suitable basis choice. After
-diagonalization, one can rescale basis vectors to reduce nonzero diagonal
-entries to $+1$ or $-1$. The only information that cannot be removed by such
-changes is the count of positive and negative signs. This is why the signature
-labels an invariant class of metrics rather than a particular matrix of
-components.
+This statement can be understood more concretely as follows. Any real symmetric bilinear
+form can be diagonalized by a suitable basis choice. After diagonalization, one can
+rescale basis vectors to reduce nonzero diagonal entries to $+1$ or $-1$. The only
+information that cannot be removed by such changes is the count of positive and negative
+signs. This is why the signature labels an invariant class of metrics rather than a
+particular matrix of components.
 
-::: {.callout-exercise}
+::: callout-exercise
 ### Exercises
 
-1. **Metric invariance**
+1.  **Metric invariance**
 
-   Consider the Lorentz transformation
-   $$
-   \begin{aligned}
-   t' &= \gamma\left(t - \frac{v}{c^2}x\right) \\
-   x' &= \gamma(x - vt)
-   \end{aligned}
-   $$
-   with $y'=y$ and $z'=z$.
+    Consider the Lorentz transformation
+    $$\begin{aligned}
+    t' &= \gamma\left(t - \frac{v}{c^2}x\right) \\
+    x' &= \gamma(x - vt)
+    \end{aligned}$$
+    with $y'=y$ and $z'=z$.
 
-   Show explicitly that
-   $$
-   \dd s'^2 = -c^2\dd t'^2 + \dd x'^2 + \dd y'^2 + \dd z'^2
-   $$
-   is equal to
-   $$
-   \dd s^2 = -c^2\dd t^2 + \dd x^2 + \dd y^2 + \dd z^2 .
-   $$
+    Show explicitly that
+    $$\dd s'^2 = -c^2\dd t'^2 + \dd x'^2 + \dd y'^2 + \dd z'^2$$
+    is equal to
+    $$\dd s^2 = -c^2\dd t^2 + \dd x^2 + \dd y^2 + \dd z^2 .$$
 
-2. **Metric components**
+2.  **Metric components**
 
-   Starting from
-   $$
-   \dd s^2 = -c^2\dd t^2 + \dd x^2 + \dd y^2 + \dd z^2,
-   $$
-   rewrite the interval in the form
-   $$
-   \dd s^2 = \eta_{\mu\nu}\dd x^\mu \dd x^\nu
-   $$
-   and determine all components of $\eta_{\mu\nu}$.
+    Starting from
+    $$\dd s^2 = -c^2\dd t^2 + \dd x^2 + \dd y^2 + \dd z^2,$$
+    rewrite the interval in the form
+    $$\dd s^2 = \eta_{\mu\nu}\dd x^\mu \dd x^\nu$$
+    and determine all components of $\eta_{\mu\nu}$.
 
-3. **Timelike normalization**
+3.  **Timelike normalization**
 
-   Let $v^\mu$ be a timelike vector. Show that it can always be rescaled so that
-   $$
-   \eta_{\mu\nu}v^\mu v^\nu = -1.
-   $$
-   Explain the physical meaning of this normalization in relativity.
+    Let $v^\mu$ be a timelike vector. Show that it can always be rescaled so that
+    $$\eta_{\mu\nu}v^\mu v^\nu = -1.$$
+    Explain the physical meaning of this normalization in relativity.
 :::
 
 ## Vectors and the Metric
@@ -195,291 +170,344 @@ components.
 To understand the role of the metric more clearly, it is useful to think about
 displacement vectors.
 
-Suppose we have two nearby points in space and consider the vector that
-connects them. This vector represents a displacement in space. In Euclidean
-geometry we can draw such a vector and measure its length using the metric.
+Suppose we have two nearby points in space and consider the vector that connects them.
+This vector represents a displacement in space. In Euclidean geometry we can draw such a
+vector and measure its length using the metric.
 
-The Euclidean metric allows us to compute not only the length of a vector, but
-also the relation between two vectors. Given two vectors $v$ and $u$, the
-metric defines the quantity
-$$
-g(v,u).
-$$
+The Euclidean metric allows us to compute not only the length of a vector, but also the
+relation between two vectors. Given two vectors $v$ and $u$, the metric defines the
+quantity
+$$g(v,u).$$
 
 In Euclidean space this operation corresponds to the familiar **dot product**.
 
-Geometrically, the dot product measures the projection of one vector along the
-direction of another. If $u$ is a unit vector, the quantity
-$$
-g(v,u)
-$$
+Geometrically, the dot product measures the projection of one vector along the direction
+of another. If $u$ is a unit vector, the quantity
+$$g(v,u)$$
 gives the component of $v$ along the direction $u$.
 
-This interpretation is extremely useful. Instead of thinking of the metric only
-as a way of computing lengths, we can think of it as a rule that allows us to
-compare vectors and extract geometric information such as angles and
-projections.
+This interpretation is extremely useful. Instead of thinking of the metric only as a way
+of computing lengths, we can think of it as a rule that allows us to compare vectors and
+extract geometric information such as angles and projections.
 
-In relativistic spacetime the same idea applies. The metric still provides a
-bilinear operation that takes two vectors and produces a number. The difference
-is that the sign structure of the metric is no longer Euclidean, reflecting the
-different roles of time and space in Minkowski geometry.
+In relativistic spacetime the same idea applies. The metric still provides a bilinear
+operation that takes two vectors and produces a number. The difference is that the sign
+structure of the metric is no longer Euclidean, reflecting the different roles of time
+and space in Minkowski geometry.
 
-::: {.callout-exercise}
+::: callout-exercise
 ### Exercises
 
-1. **Orthogonality**
+1.  **Orthogonality**
 
-   Two vectors are said to be orthogonal if
-   $$
-   g(u,v)=0.
-   $$
-   Show that orthogonality in Minkowski space does not imply that the vectors
-   are spatially perpendicular in the usual Euclidean sense.
+    Two vectors are said to be orthogonal if
+    $$g(u,v)=0.$$
+    Show that orthogonality in Minkowski space does not imply that the vectors are
+    spatially perpendicular in the usual Euclidean sense.
 
-2. **Metric as a map**
+2.  **Metric as a map**
 
-   Show that the metric defines a linear map
-   $$
-   g : V \rightarrow V^*
-   $$
-   by associating to every vector $v$ the covector
-   $$
-   g(v,\cdot).
-   $$
-   Verify explicitly that this map is linear.
+    Show that the metric defines a linear map
+    $$g : \mathbb{V} \rightarrow \mathbb{V}^*$$
+    by associating to every vector $v$ the covector
+    $$g(v,\cdot).$$
+    Verify explicitly that this map is linear.
 
-3. **Degeneracy**
+3.  **Degeneracy**
 
-   Show that if a bilinear form $g$ satisfies
-   $$
-   g(v,u)=0
-   $$
-   for all $u$, then $v$ must vanish. Explain why this property is called
-   **non-degeneracy**.
+    Show that if a bilinear form $g$ satisfies
+    $$g(v,u)=0$$
+    for all $u$, then $v$ must vanish. Explain why this property is called
+    **non-degeneracy**.
 :::
 
 ## Points, Vectors, and Tangent Spaces
 
-It is important to distinguish between **points** in spacetime and **vectors**.
+It is important to distinguish between points in spacetime and vectors.
 
-Points represent events. They specify locations in spacetime and are usually
-described by coordinates such as
-$$
-(x^0, x^1, x^2, x^3).
-$$
+We model spacetime as a manifold $M$ equipped with a metric $\eta$. The elements of $M$
+are points (events), which represent locations in spacetime. In a coordinate system, a
+point $p \in M$ is described by numbers
+$$(x^0, x^1, x^2, x^3).$$
+These coordinates label the point, but they are not the point itself.
 
-Vectors, on the other hand, represent **displacements** between nearby points.
-For example, the vector
-$$
-\dd x^\mu
-$$
+Vectors represent infinitesimal displacements between nearby points. A convenient and
+intrinsic way to define vectors is through their action on functions. Given the space of
+smooth functions on the manifold, $C^\infty(M)$ and
+$f(x^0, x^1, x^2, x^3) \in C^\infty(M)$, we define the action of a vector $v$ at a point
+$p$ as the directional derivative of $f$ along $v$ at $p$:
+$$v(f) = \lim_{\epsilon \to 0} \frac{f(p + \epsilon v) - f(p)}{\epsilon}.$$
+In coordinates, this becomes
+$$v(f) = v^\mu \frac{\partial f}{\partial x^\mu}.$$
+This definition captures the idea of a vector as a directional derivative operator and
+does not depend on a particular coordinate system.
 
-can be interpreted as an infinitesimal displacement from one event to a nearby
-event.
+Thus, we represent a vector as
+$$v = v^\mu \partial_\mu, \qquad \text{with} \quad \partial_\mu \equiv \frac{\partial}{\partial x^\mu}.$$
+The coordinate functions $x^\mu$ provide a natural basis $\{\partial_\mu\}$ for vectors
+at each point. It is important to note that the coordinates $x^\mu$ themselves are not
+vectors.
 
-This distinction is important because spacetime itself is **not a vector
-space**. In general, there is no natural way to add two points or multiply a
-point by a scalar. Operations such as addition and scalar multiplication are
-defined for vectors, not for points.
+Spacetime is not, in general, a vector space: we cannot add points or multiply them by
+scalars. These operations are defined only for vectors.
 
-Instead, vectors live in a vector space attached to each point of spacetime.
-This space is called the **tangent space**.
+At each point $p \in M$, we associate a vector space $T_pM$, called the tangent space at
+$p$. The elements of $T_pM$ are the possible infinitesimal displacements starting from
+$p$.
 
-At every point $p$ of spacetime we associate a vector space $T_pM$, the
-tangent space at $p$. The elements of this space are the possible
-infinitesimal displacements starting from that point.
+Thus, points live in $M$, while vectors live in $T_pM$. Each point has its own tangent
+space, and there is no canonical identification between tangent spaces at different
+points.
 
-In this way spacetime can be thought of as a collection of points, each of
-which carries its own tangent vector space. Geometric objects such as vectors,
-covectors, and tensors are defined in these tangent spaces.
+In Minkowski spacetime, we can introduce global Cartesian coordinates. In this special
+case, it is possible to represent a displacement between two points $p$ and $q$ as
+$$\Delta x^\mu = x^\mu(q) - x^\mu(p).$$
+This makes it tempting to think of vectors as differences of points. In this setting,
+one can approximate the variation of a function as
+$$f(q) - f(p) \approx \Delta x^\mu \, \partial_\mu f(p).$$
 
-::: {.callout-exercise}
+However, this construction relies on the existence of global Cartesian coordinates and a
+preferred origin. In a general curved spacetime, such coordinates do not exist, and the
+notion of a vector as a difference of points is not well defined.
+
+For this reason, vectors must be defined intrinsically as elements of $T_pM$,
+independent of any coordinate system.
+
+Spacetime can be viewed as a collection of points, each equipped with its own tangent
+space,
+$$p \in M \quad \longrightarrow \quad T_pM.$$
+Geometric objects such as vectors, covectors, and tensors are defined in these tangent
+spaces, not directly on $M$ itself.
+
+::: callout-exercise
 ### Exercises
 
-1. **Tangent vector transformation**
+1.  **Tangent vector transformation**
 
-   Let a curve be parametrized by $\lambda$,
-   $$
-   x^\mu(\lambda).
-   $$
-   Show that under a change of parameter $\lambda \to \lambda'(\lambda)$ the
-   vector
-   $$
-   v^\mu = \frac{\dd x^\mu}{\dd \lambda}
-   $$
-   transforms as
-   $$
-   v'^\mu = \frac{\dd \lambda}{\dd \lambda'} v^\mu .
-   $$
+    Let a curve be parametrized by $\lambda$,
+    $$x^\mu(\lambda).$$
+    Show that under a change of parameter $\lambda \to \lambda'(\lambda)$ the vector
+    $$v^\mu = \frac{\dd x^\mu}{\dd \lambda}$$
+    transforms as
+    $$v'^\mu = \frac{\dd \lambda}{\dd \lambda'} v^\mu .$$
 
-2. **Tangent space dimension**
+2.  **Tangent space dimension**
 
-   Consider spacetime with coordinates $(x^0,x^1,x^2,x^3)$.
+    Consider spacetime with coordinates $(x^0,x^1,x^2,x^3)$.
 
-   Show that the vectors
-   $$
-   \partial_\mu = \frac{\partial}{\partial x^\mu}
-   $$
-   form a basis of the tangent space at each point.
+    Show that the vectors
+    $$\partial_\mu = \frac{\partial}{\partial x^\mu}$$
+    form a basis of the tangent space at each point.
 
-3. **Coordinate change**
+3.  **Coordinate change**
 
-   Under a coordinate transformation $x^\mu \to x'^\mu(x)$ show that the basis
-   vectors transform according to
-   $$
-   \partial_\mu =
-   \frac{\partial x'^\nu}{\partial x^\mu}\partial'_\nu .
-   $$
+    Under a coordinate transformation $x^\mu \to x'^\mu(x)$ show that the basis vectors
+    transform according to
+    $$\partial_\mu =
+    \frac{\partial x'^\nu}{\partial x^\mu}\partial'_\nu .$$
 :::
 
 ## Covectors and the Dual Space
 
-Given a vector space $V$, we can construct another vector space called the
-**dual space**, denoted $V^*$.
+Given a vector space $\mathbb{V}$, we can construct another vector space called the dual
+space, denoted $\mathbb{V}^*$.
 
-Elements of the dual space are **linear functionals**. That is, a covector
-$\tilde{w} \in V^*$ is a map
-$$
-\tilde{w} : V \rightarrow \mathbb{R}
-$$
-that assigns a real number to each vector in $V$, and does so linearly.
+Elements of $\mathbb{V}^*$ are linear functionals, that is, maps
+$$\tilde{w} : \mathbb{V} \to \mathbb{R}$$
+such that for all $v_1, v_2 \in \mathbb{V}$ and scalars $a,b$,
+$$\tilde{w}(a v_1 + b v_2) = a\,\tilde{w}(v_1) + b\,\tilde{w}(v_2).$$
 
-If $v \in V$ is a vector, the action of the covector $\tilde{w}$ on $v$
-produces a number
-$$
-\tilde{w}(v).
-$$
-Because these objects satisfy the properties of linearity, the set of all such
-functionals forms a vector space. This space is the **dual space** $V^*$.
+If $v \in \mathbb{V}$, the action of a covector $\tilde{w}$ on $v$ produces a real
+number,
+$$\tilde{w}(v).$$
+This pairing between covectors and vectors is bilinear and is often denoted by
+$$\langle \tilde{w}, v \rangle = \tilde{w}(v).$$
 
-A basic result from linear algebra is that the dual space has the same
-dimension as the original vector space,
+The set of all linear functionals forms a vector space, the dual space $\mathbb{V}^*$,
+and it has the same dimension as $\mathbb{V}$,
 $$
-\dim V^* = \dim V.
+\dim \mathbb{V}^* = \dim \mathbb{V}.
 $$
-However, even though the two spaces have the same dimension, there is **no
-natural map that identifies vectors with covectors**. A vector and a covector
-belong to different spaces, and without additional structure there is no
-canonical way to associate one with the other.
+However, $\mathbb{V}$ and $\mathbb{V}^*$ are distinct spaces. Without additional
+structure there is no canonical way to identify a vector with a covector.
 
-Such a map becomes possible once the vector space is equipped with extra
-geometric structure. In particular, if a **metric** is defined on the space,
-it allows us to construct a correspondence between vectors and covectors.
-Later we will see that the metric provides the operation known as **raising
-and lowering indices**.
+This distinction becomes concrete once a basis is chosen. Let $\{e_i\}$ be a basis of
+$\mathbb{V}$. Then there exists a unique dual basis $\{\tilde{e}^i\}$ of $\mathbb{V}^*$
+defined by
+$$
+\tilde{e}^i(e_j) = \delta^i_j.
+$$
+Any vector and covector can then be written as
+$$
+v = v^i e_i, \qquad \tilde{w} = w_i \tilde{e}^i,
+$$
+and their pairing becomes
+$$
+\tilde{w}(v) = w_i v^i.
+$$
 
-Finally, it is worth noting that the dual space itself has a dual. The dual of
-$V^*$ is denoted $V^{**}$. There exists a natural map from $V$ to
-$V^{**}$, which associates to each vector a functional acting on covectors.
-In finite-dimensional spaces this map is an isomorphism, allowing us to
-identify $V$ with $V^{**}$.
+A map between $\mathbb{V}$ and $\mathbb{V}^*$ arises once a metric $g$ is introduced.
+The metric is a bilinear map
+$$g : \mathbb{V} \times \mathbb{V} \to \mathbb{R},$$
+which allows us to associate to each vector $v$ a covector $v^\flat \in \mathbb{V}^*$
+via
+$$
+v^\flat(w) = g(v,w).
+$$
+In components, this corresponds to lowering an index,
+$$
+v_i = g_{ij} v^j,
+$$
+and the inverse metric provides the reverse operation (raising indices).
 
-::: {.callout-exercise}
+The dual space $\mathbb{V}^*$ itself has a dual, denoted $\mathbb{V}^{**}$. There is a
+natural map
+$$
+\mathbb{V} \to \mathbb{V}^{**}, \qquad v \mapsto \big( \tilde{w} \mapsto \tilde{w}(v) \big),
+$$
+which embeds vectors as linear functionals acting on covectors. In finite-dimensional
+spaces this map is an isomorphism, allowing us to identify $\mathbb{V}$ with
+$\mathbb{V}^{**}$.
+
+In spacetime, at each point $p \in M$, we define the dual space $T_p^*M$ as the space of
+covectors at $p$, that is, linear maps
+$$
+T_pM \to \mathbb{R}.
+$$
+A convenient way to construct covectors is through the exterior derivative. For a smooth
+function $f$, we define $\dd f$ by its action on a vector $v$,
+$$
+\dd f (v) = v(f).
+$$
+In coordinates, this gives
+$$
+\dd x^\mu(v) = v^\mu,
+$$
+so the set $\{\dd x^\mu\}$ forms a basis of $T_p^*M$ dual to the basis
+$\{\partial_\mu\}$ of $T_pM$.
+
+::: callout-exercise
 ### Exercises
 
-1. **Dual basis construction**
+1.  Show directly from the definition that the pairing $\tilde{w}(v)$ is bilinear in
+    both arguments.
 
-   Given a basis $\{e_\mu\}$ of $V$, construct covectors $\{\dd x^\mu\}$ such
-   that
-   $$
-   \dd x^\mu(e_\nu) = \delta^\mu_\nu .
-   $$
-   Prove that $\{\dd x^\mu\}$ forms a basis of $V^*$.
+2.  Starting from a basis $\{e_i\}$ of $\mathbb{V}$, construct the dual basis explicitly
+    and show that it is unique.
 
-2. **Dual transformation law**
+3.  Given a change of basis $e_i' = A^j{}_i e_j$, determine how the dual basis must
+    transform so that $\tilde{e}^i(e_j)=\delta^i_j$ remains valid.
 
-   Suppose the basis of $V$ transforms as
-   $$
-   e_\mu' = A^\nu{}_\mu e_\nu .
-   $$
-   Determine how the dual basis $\dd x^\mu$ must transform so that the relation
-   $$
-   \dd x^\mu(e_\nu)=\delta^\mu_\nu
-   $$
-   remains valid.
+4.  Using the definition $\dd f(v) = v(f)$, show that $\dd (fg) = f\,\dd g + g\,\dd f$.
 
-3. **Dual of the dual**
+5.  Show that $\dd x^\mu(\partial_\nu) = \delta^\mu_\nu$ and explain why this implies
+    that $\{\dd x^\mu\}$ is a basis of $T_p^*M$.
 
-   Construct explicitly the natural map
-
-   $$
-   V \rightarrow V^{**}
-   $$
-
-   and show that it is linear.
+6.  Verify explicitly that the map $\mathbb{V} \to \mathbb{V}^{**}$ defined by
+    $v \mapsto V \in \mathbb{V}^{**}$ such that $V(\tilde{w}) = \tilde{w}(v)$ is an
+    isomorphism in finite dimensions.
 :::
 
 ## Tensor Products
 
-Once vectors and covectors have been introduced, we can construct more general
-objects by combining them. The simplest example is obtained by taking two
-covectors and forming a **tensor product**.
+Once vectors and covectors have been introduced, we can construct more general objects
+by combining them. The fundamental operation is the tensor product.
 
-If $\dd x^\mu$ and $\dd x^\nu$ are covectors, their tensor product defines a
-bilinear functional acting on two vectors,
+If $\dd x^\mu$ and $\dd x^\nu$ are covectors, their tensor product defines a bilinear
+map acting on two vectors:
 $$
-(\dd x^\mu \otimes \dd x^\nu)(v,u)
-= \dd x^\mu(v)\, \dd x^\nu(u).
+(\dd x^\mu \otimes \dd x^\nu)(v,u) = \dd x^\mu(v)\, \dd x^\nu(u).
 $$
-In other words, the tensor product takes two vectors as input and produces a
-number. The result is obtained by evaluating each covector on one of the
-vectors and multiplying the two numbers.
+That is, each covector acts on one of the input vectors, and the results are multiplied,
+producing a real number.
 
-Objects of this type form the space of rank-two covariant tensors.
+More generally, given vector spaces $\mathbb{V}$ and $\mathbb{W}$, their tensor product
+$\mathbb{V} \otimes \mathbb{W}$ is defined so that bilinear maps on
+$\mathbb{V} \times \mathbb{W}$ correspond to linear maps on
+$\mathbb{V} \otimes \mathbb{W}$. In this way, tensor products allow us to encode
+multilinear operations within a linear framework.
 
-It is important to note that not every tensor can be written as a single tensor
-product of two covectors. In general, tensors are **linear combinations** of
-such products. For example,
+Elements of $\mathbb{V}^* \otimes \mathbb{V}^*$ are called rank-two covariant tensors.
+In general, tensors are not single tensor products but linear combinations of them. For
+example,
 $$
-T = \alpha\, \dd x^0 \otimes \dd x^1
-    + \beta\, \dd x^3 \otimes \dd x^3
+T = \alpha\, \dd x^0 \otimes \dd x^1 + \beta\, \dd x^3 \otimes \dd x^3.
 $$
-is also a valid tensor.
+The objects $\dd x^\mu \otimes \dd x^\nu$ form a basis for this space, so any rank-two
+covariant tensor can be written as
+$$
+T = T_{\mu\nu}\, \dd x^\mu \otimes \dd x^\nu.
+$$
 
-The tensor products $\dd x^\mu \otimes \dd x^\nu$ therefore form a basis for the
-space of rank-two covariant tensors, and arbitrary tensors can be expressed as
-linear combinations of these basis elements.
+This construction extends naturally to tensors of arbitrary type. By combining copies of
+$\mathbb{V}$ and $\mathbb{V}^*$, we obtain tensors of type $(r,s)$:
+$$
+T \in \underbrace{\mathbb{V} \otimes \cdots \otimes \mathbb{V}}_{r \text{ times}}
+\;\otimes\;
+\underbrace{\mathbb{V}^* \otimes \cdots \otimes \mathbb{V}^*}_{s \text{ times}}.
+$$
+Such a tensor takes $r$ covectors and $s$ vectors as input and produces a real number in
+a multilinear way.
 
-This construction generalizes naturally. By taking tensor products of several
-copies of the vector space and its dual, we can construct tensors of arbitrary
-rank.
+In spacetime, this construction is applied pointwise. At each point $p \in M$, we form
+tensors from the spaces $T_pM$ and $T_p^*M$. A tensor field assigns to each point $p$ a
+tensor in these spaces, varying smoothly across the manifold.
 
-::: {.callout-exercise}
+A central example is the metric, a rank-two covariant tensor field. In a coordinate
+basis, it can be written as
+$$
+\eta = \eta_{\mu\nu} \, \dd x^\mu \otimes \dd x^\nu.
+$$
+As a bilinear map, it acts on two vectors $v$ and $u$ as
+$$
+\eta(v,u) = \eta_{\mu\nu} v^\mu u^\nu.
+$$
+It can also be viewed as a map from vectors to covectors,
+$$
+\eta(v) = \eta_{\mu\nu} v^\mu \dd x^\nu,
+$$
+which corresponds to lowering an index.
+
+Since the metric is non-degenerate, it admits an inverse $\eta^{-1}$ that raises indices
+and maps covectors to vectors. In coordinates,
+$$\eta^{-1} = \eta^{\mu\nu} \, \partial_\mu \otimes \partial_\nu,$$
+where $\eta^{\mu\nu}$ is the inverse matrix of $\eta_{\mu\nu}$. Its action on a covector
+is
+$$\eta^{-1}(\dd x^\mu) = \eta^{\mu\nu} \partial_\nu.$$
+
+::: callout-exercise
 ### Exercises
 
-1. **Tensor product components**
+1.  Show that the tensor product is bilinear, that is,
+    $$(a w_1 + b w_2) \otimes k = a (w_1 \otimes k) + b (w_2 \otimes k),$$
+    and similarly in the second argument.
 
-   Let
-   $$
-   T = \dd x^\mu \otimes \dd x^\nu .
-   $$
-   Show that
-   $$
-   T(v,u)=v^\mu u^\nu .
-   $$
+2.  Verify explicitly that
+    $$(\dd x^\mu \otimes \dd x^\nu)(v,u) = v^\mu u^\nu.$$
 
-2. **Non-factorizable tensor**
+3.  Show that the tensor
+    $$\dd x^0 \otimes \dd x^1 + \dd x^1 \otimes \dd x^0$$
+    cannot be written as a single tensor product of two covectors.
 
-   Show that the tensor
-   $$
-   \dd x^0\otimes \dd x^1 + \dd x^1\otimes \dd x^0
-   $$
-   cannot be written as a single tensor product of two covectors.
+4.  If $\dim \mathbb{V} = n$, show that the space of rank-two covariant tensors has
+    dimension $n^2$.
 
-3. **Dimension counting**
+5.  Given a vector $v = v^\mu \partial_\mu$, compute explicitly the components of the
+    covector $\eta(v)$.
 
-   If $\dim V = n$, show that the space of rank-two covariant tensors has
-   dimension $n^2$.
+6.  Show that applying $\eta^{-1}$ to $\eta(v)$ recovers the original vector $v$.
+
+7.  Show that the components $\eta^{\mu\nu}$ satisfy
+    $$\eta^{\mu\alpha} \eta_{\alpha\nu} = \delta^\mu{}_\nu.$$
 :::
 
 ## Symmetric and Antisymmetric Tensors
 
-When tensor products involve multiple copies of the same vector space, it is
-useful to separate tensors into **symmetric** and **antisymmetric** parts.
+When tensor products involve multiple copies of the same vector space, it is useful to
+decompose tensors into symmetric and antisymmetric parts.
 
-Consider a rank-two tensor constructed from covectors. Given a tensor
-$T_{\mu\nu}$, we can define its symmetric and antisymmetric components as
+Consider a rank-two covariant tensor $T_{\mu\nu}$. Its symmetric and antisymmetric
+components are defined as
 $$
 \begin{align}
 T_{(\mu\nu)} &= \frac12 \left(T_{\mu\nu} + T_{\nu\mu}\right), \\
@@ -487,513 +515,355 @@ T_{[\mu\nu]} &= \frac12 \left(T_{\mu\nu} - T_{\nu\mu}\right).
 \end{align}
 $$
 
-Any tensor can be written as the sum of these two pieces,
+Any tensor can be uniquely written as the sum of these two parts,
 $$
-T_{\mu\nu} = T_{(\mu\nu)} + T_{[\mu\nu]} .
+T_{\mu\nu} = T_{(\mu\nu)} + T_{[\mu\nu]}.
 $$
 
-The antisymmetric part is particularly important because it defines the
-**exterior product** (or wedge product).
+The antisymmetric part is particularly important because it underlies the definition of
+the exterior (wedge) product.
 
-Given two covectors $w$ and $k$, their exterior product is defined as
+Given two covectors $w$ and $k$, their wedge product is defined by
 $$
-w \wedge k = \frac12 \left(w \otimes k - k \otimes w\right).
+w \wedge k = w \otimes k - k \otimes w,
 $$
-This operation produces an antisymmetric tensor.
+which is manifestly antisymmetric. Evaluated on basis vectors, it gives
+$$
+(w \wedge k)_{\mu\nu} \equiv (w \wedge k)(\partial_\mu, \partial_\nu)
+= w_\mu k_\nu - w_\nu k_\mu = 2\,w_{[\mu} k_{\nu]}.
+$$
 
-::: {.callout-exercise}
+On the other hand, when the wedge product is expanded in the basis of 2-forms, we write
+$$
+w \wedge k = w_{[\mu} k_{\nu]} \,\dd x^\mu \wedge \dd x^\nu,
+$$
+where the antisymmetrization brackets include the factor $1/2$. The apparent difference
+by a factor of $2$ reflects the distinction between the components of a tensor in a
+basis and its evaluation as a bilinear map.
+
+More generally, the wedge product corresponds to the antisymmetrization of a tensor
+product and produces tensors that vanish whenever two arguments are equal.
+
+::: callout-exercise
 ### Exercises
 
-1. Show that the symmetric and antisymmetric projections satisfy
-   $$
-   T_{(\mu\nu)}R^{[\mu\nu]} = 0 .
-   $$
+1.  Show that the symmetric and antisymmetric projections are orthogonal in the sense
+    that
+    $$T_{(\mu\nu)} R^{[\mu\nu]} = 0.$$
 
-2. Show that the number of independent components of a symmetric tensor in
-   $n$ dimensions is
-   $$
-   \frac{n(n+1)}{2}.
-   $$
+2.  Show that the number of independent components of a symmetric tensor in $n$
+    dimensions is
+    $$\frac{n(n+1)}{2}.$$
 
-3. Show that the number of independent components of an antisymmetric tensor
-   in $n$ dimensions is
-   $$
-   \frac{n(n-1)}{2}.
-   $$
+3.  Show that the number of independent components of an antisymmetric tensor in $n$
+    dimensions is
+    $$\frac{n(n-1)}{2}.$$
 :::
 
-### Geometric interpretation
+The antisymmetric product has a direct geometric interpretation. Given two vectors $v$
+and $u$, the object $v \wedge u$ represents an oriented area element.
 
-The antisymmetric product has a natural geometric meaning. Given two vectors,
-their wedge product represents an **oriented area element**.
-
-In particular, if two vectors $v$ and $u$ are linearly dependent, the area
-they span is zero. Correspondingly,
+If the vectors are linearly dependent, the parallelogram they span has zero area, and
+correspondingly
 $$
 v \wedge u = 0.
 $$
+If they are linearly independent, $v \wedge u$ is nonzero and encodes both the magnitude
+and orientation of the area they define.
 
-On the other hand, if the vectors are linearly independent, their wedge product
-is nonzero and represents the oriented area generated by them.
+This interpretation extends to higher degrees: the wedge product of three vectors
+represents an oriented volume, and in general, antisymmetric tensors of degree $p$
+represent oriented $p$-dimensional volume elements. In an $n$-dimensional space, the
+highest nonvanishing antisymmetric object involves $n$ vectors.
 
-This idea generalizes naturally to higher dimensions. The wedge product of
-three vectors corresponds to an oriented volume, and so on. In an
-$n$-dimensional space the largest nonzero antisymmetric product involves
-$n$ vectors.
-
-These antisymmetric objects play an important role in physics, because they
-allow us to describe geometric quantities such as areas, volumes, and fluxes
-in a coordinate-independent way.
+These antisymmetric structures are central in physics, as they provide a natural and
+coordinate-independent way to describe areas, volumes, and fluxes.
 
 ## Antisymmetric Products and Linear Independence
 
-Antisymmetric products provide a powerful way to describe geometric structures
-without introducing additional concepts such as a metric.
+Antisymmetric products provide a powerful way to describe geometric structures without
+introducing additional concepts such as a metric.
 
-To illustrate this, consider two vectors $w$ and $k$. Suppose we want to
-determine whether they are linearly independent. Normally this requires solving
-an equation of the form
+To illustrate this, consider two vectors $w$ and $k$. Suppose we want to determine
+whether they are linearly independent. Normally this requires solving an equation of the
+form
 $$
-\alpha w + \beta k = 0 .
+\alpha w + \beta k = 0.
 $$
 
-If the only solution is $\alpha = \beta = 0$, the vectors are linearly
-independent.
+If the only solution is $\alpha = \beta = 0$, the vectors are linearly independent.
 
-The antisymmetric product offers an alternative way to test this. If the wedge
-product of the two vectors is nonzero,
+The antisymmetric product offers an alternative way to test this. If the wedge product
+of the two vectors is nonzero,
 $$
 w \wedge k \neq 0,
 $$
 then the vectors must be linearly independent.
 
-Geometrically this statement is very natural. Two independent vectors span an
-area, and the wedge product represents the **oriented area element** generated
-by them. If the vectors are parallel, the area they span is zero, and the wedge
-product vanishes.
+Geometrically this statement is very natural. Two independent vectors span an area, and
+the wedge product represents the **oriented area element** generated by them. If the
+vectors are parallel, the area they span is zero, and the wedge product vanishes.
 
-This idea extends naturally to higher dimensions. For example, given four
-vectors in a four-dimensional space we can form
+This idea extends naturally to higher dimensions. For example, given four vectors in a
+four-dimensional space we can form
 $$
-w_1 \wedge w_2 \wedge w_3 \wedge w_4 .
+w_1 \wedge w_2 \wedge w_3 \wedge w_4.
 $$
 
-If this object is nonzero, the four vectors span a four-dimensional volume and
-are therefore linearly independent.
+If this object is nonzero, the four vectors span a four-dimensional volume and are
+therefore linearly independent.
 
-More generally, in an $n$-dimensional space the largest nonzero antisymmetric
-product involves $n$ vectors. Any antisymmetric product containing more than
-$n$ vectors must vanish, because at least two of the vectors must be linearly
-dependent.
+More generally, in an $n$-dimensional space the largest nonzero antisymmetric product
+involves $n$ vectors. Any antisymmetric product containing more than $n$ vectors must
+vanish, because at least two of the vectors must be linearly dependent.
 
-This property reflects the fact that an $n$-dimensional space cannot contain
-geometric objects with dimension larger than $n$.
+This property reflects the fact that an $n$-dimensional space cannot contain geometric
+objects with dimension larger than $n$.
 
-::: {.callout-exercise}
+::: callout-exercise
 ### Exercises
 
-1. Prove that the wedge product is bilinear and antisymmetric.
+1.  Prove that the wedge product is bilinear and antisymmetric.
 
-2. Show that if $v_1,\dots,v_n$ are vectors in an $n$-dimensional space then
-   $$
-   v_1\wedge\dots\wedge v_n
-   $$
-   vanishes if and only if the vectors are linearly dependent.
+2.  Show that if $v_1,\dots,v_n$ are vectors in an $n$-dimensional space then
+    $$
+    v_1\wedge\dots\wedge v_n
+    $$
+    vanishes if and only if the vectors are linearly dependent.
 
-3. Show that in an $n$-dimensional space any wedge product containing more
-   than $n$ vectors must vanish.
+3.  Show that in an $n$-dimensional space any wedge product containing more than $n$
+    vectors must vanish.
 :::
 
 ## Differential Forms and Integration
 
-The antisymmetric tensors we introduced have an important application in the
-definition of integration on geometric objects such as curves and surfaces.
+The antisymmetric tensors we introduced have an important application in the definition
+of integration on geometric objects such as curves and surfaces.
 
-Consider a surface in space that is parametrized by two parameters,
-$\lambda_1$ and $\lambda_2$. Each point of the surface can then be written
-as a function of these parameters,
-
+Consider a surface in space that is parametrized by two parameters, $\lambda_1$ and
+$\lambda_2$. Each point of the surface can then be written as a function of these
+parameters,
 $$
 x^\mu = x^\mu(\lambda_1,\lambda_2).
 $$
 
-If we vary one parameter while keeping the other fixed, we obtain a vector
-tangent to the surface. For example,
-
+If we vary one parameter while keeping the other fixed, we obtain a vector tangent to
+the surface. For example,
 $$
-\frac{\partial x^\mu}{\partial \lambda_1}, \qquad
-\frac{\partial x^\mu}{\partial \lambda_2}
+\frac{\partial x^\mu}{\partial \lambda_1}, \qquad \frac{\partial x^\mu}{\partial \lambda_2}
 $$
-
 are two tangent vectors that span the surface locally.
 
-These two vectors define an infinitesimal oriented area element. To measure the
-size of this area element we use an antisymmetric tensor acting on the pair of
-tangent vectors.
+These two vectors define an infinitesimal oriented area element. To measure the size of
+this area element we use an antisymmetric tensor acting on the pair of tangent vectors.
 
-Objects of this type are called **differential forms**. A two-form takes two
-vectors as input and produces a number, and its antisymmetry ensures that it
-measures an oriented area element.
+Objects of this type are called differential forms. A two-form takes two vectors as
+input and produces a number, and its antisymmetry ensures that it measures an oriented
+area element.
 
-Integration can then be understood geometrically as summing the contributions
-of such infinitesimal elements. For example, if $\omega$ is a two-form and
-$\Sigma$ is a surface, the integral
-
+Integration can then be understood geometrically as summing the contributions of such
+infinitesimal elements. For example, if $\omega$ is a two-form and $\Sigma$ is a
+surface, the integral
 $$
 \int_\Sigma \omega
 $$
-
 is obtained by evaluating the form on the tangent vectors generated by the
 parametrization and summing the result over the surface.
 
-This viewpoint makes the definition of integration independent of the choice
-of coordinates. The parametrization simply provides the tangent vectors, while
-the differential form encodes the geometric quantity being measured.
+This viewpoint makes the definition of integration independent of the choice of
+coordinates. The parametrization simply provides the tangent vectors, while the
+differential form encodes the geometric quantity being measured.
 
-An equivalent way to say this is that integration uses the pullback of the form
-to the parameter domain. Changing parametrization modifies Jacobian factors and
-tangent vectors in compensating ways, so the geometric integral over the same
-oriented domain is unchanged.
+An equivalent way to say this is that integration uses the pullback of the form to the
+parameter domain. Changing parametrization modifies Jacobian factors and tangent vectors
+in compensating ways, so the geometric integral over the same oriented domain is
+unchanged.
 
 ## The Exterior Derivative
 
-We now introduce an operator that allows us to differentiate geometric objects
-in a coordinate-independent way. This operator is called the **exterior
-derivative** and is denoted by $\dd$.
+We now introduce an operator that allows us to differentiate geometric objects in a
+coordinate-independent way. We introduced it above as a way to construct covectors from
+scalar functions, but it can be extended to act on differential forms of any degree.
+This operator is called the exterior derivative and is denoted by $\dd$.
 
-The simplest case is the action of $\dd$ on a scalar function $f$. The result
-is a covector, written
+The simplest case is the action of $\dd$ on a scalar function $f$. The result is a
+covector, written
 $$
-\dd f .
+\dd f.
 $$
 
-This covector acts on a vector $v$ by producing the directional derivative of
-$f$ along that vector,
+This covector acts on a vector $v$ by producing the directional derivative of $f$ along
+that vector,
 $$
 \dd f(v) = v(f).
 $$
-In other words, $\dd f$ measures how the function changes when we move in the
-direction specified by $v$.
+In other words, $\dd f$ measures how the function changes when we move in the direction
+specified by $v$.
 
-In coordinates, if the vector $v$ has components $v^\mu$, the action of the
-covector $\dd f$ can be written as
+In coordinates, if the vector $v$ has components $v^\mu$, the action of the covector
+$\dd f$ can be written as
 $$
-\dd f(v) = v^\mu \partial_\mu f .
+\dd f(v) = v^\mu \partial_\mu f.
 $$
 
-This expression shows explicitly that $\dd f$ contains the derivatives of the
-function with respect to the coordinates. In this sense, $\dd f$ corresponds to
-the familiar gradient of a scalar function, but interpreted as a covector.
+This expression shows explicitly that $\dd f$ contains the derivatives of the function
+with respect to the coordinates. In this sense, $\dd f$ corresponds to the familiar
+gradient of a scalar function, but interpreted as a covector.
 
-The exterior derivative extends naturally to differential forms of higher
-degree, producing new forms whose antisymmetric structure encodes derivatives
-in a coordinate-independent way. This construction will allow us to write the
-equations of electromagnetism in a compact geometric form.
+The exterior derivative extends naturally to differential forms of higher degree,
+producing new forms whose antisymmetric structure encodes derivatives in a
+coordinate-independent way. This construction will allow us to write the equations of
+electromagnetism in a compact geometric form.
 
-::: {.callout-exercise}
+::: callout-exercise
 ### Exercises
 
-1. Compute $\dd f$ for
-   $$
-   f(x,y,z)=x^2yz.
-   $$
+1.  Compute $\dd f$ for
+    $$
+    f(x,y,z)=x^2yz.
+    $$
 
-2. Show that the exterior derivative satisfies the Leibniz rule
-   $$
-   \dd(fg)=f\,\dd g + g\,\dd f .
-   $$
+2.  Show that the exterior derivative satisfies the Leibniz rule
+    $$
+    \dd(fg)=f\,\dd g + g\,\dd f.
+    $$
 
-3. Show that
-   $$
-   \dd^2 f = 0
-   $$
-   for any smooth scalar function $f$.
+3.  Show that
+    $$
+    \dd^2 f = 0
+    $$
+    for any smooth scalar function $f$.
 :::
 
 ## The Exterior Derivative and Stokes' Theorem
 
-The exterior derivative allows us to connect differentiation with integration
-in a natural geometric way.
+The exterior derivative allows us to connect differentiation with integration in a
+natural geometric way.
 
-If $f$ is a scalar function, its exterior derivative $\dd f$ is a
-covector. As we have seen, this covector acts on a vector $v$ by producing
-the directional derivative of $f$,
+If $f$ is a scalar function, its exterior derivative $\dd f$ is a covector. As we have
+seen, this covector acts on a vector $v$ by producing the directional derivative of $f$,
 $$
 \dd f(v) = v(f).
 $$
 
-Now consider integrating this object along a curve. If the curve is
-parametrized by a coordinate $x$, we can write
+Now consider integrating this object along a curve. If the curve is parametrized by a
+coordinate $x$, we can write
 $$
-\int \dd f .
+\int \dd f.
 $$
 Using the definition of the exterior derivative, this integral becomes
 
-$$
-\int \frac{\partial f}{\partial x} \dd x .
-$$
+$$\int \frac{\partial f}{\partial x} \dd x .$$
 
 This is simply the ordinary integral of a derivative. Therefore,
 $$
 \int_a^b \dd f = f(b) - f(a).
 $$
 
-This result is familiar from basic calculus, but it has a deeper geometric
-meaning. It shows that the integral of a derivative over a region depends only
-on the values of the function on the **boundary** of that region.
+This result is familiar from basic calculus, but it has a deeper geometric meaning. It
+shows that the integral of a derivative over a region depends only on the values of the
+function on the **boundary** of that region.
 
-This idea generalizes to higher dimensions. When applied to differential forms,
-the exterior derivative leads to the general statement known as **Stokes'
-theorem**:
+This idea generalizes to higher dimensions. When applied to differential forms, the
+exterior derivative leads to the general statement known as **Stokes' theorem**:
 $$
-\int_{\partial \Omega} \omega
-=
-\int_{\Omega} \dd \omega .
+\int_{\partial \Omega} \omega = \int_{\Omega} \dd \omega.
 $$
 
-Here $\Omega$ is a region of space and $\partial \Omega$ is its boundary.
-The form $\omega$ is integrated over the boundary, while its exterior
-derivative $\dd \omega$ is integrated over the interior.
+Here $\Omega$ is a region of space and $\partial \Omega$ is its boundary. The form
+$\omega$ is integrated over the boundary, while its exterior derivative $\dd \omega$ is
+integrated over the interior.
 
-This theorem provides a unified geometric framework for many familiar results
-from vector calculus, including the divergence theorem and the classical
-version of Stokes' theorem.
+This theorem provides a unified geometric framework for many familiar results from
+vector calculus, including the divergence theorem and the classical version of Stokes'
+theorem.
 
-In the context of electromagnetism, these relations play a central role
-because Maxwell's equations can be written compactly in terms of differential
-forms and their exterior derivatives.
+In the context of electromagnetism, these relations play a central role because
+Maxwell's equations can be written compactly in terms of differential forms and their
+exterior derivatives.
 
-::: {.callout-exercise}
+::: callout-exercise
 ### Exercises
 
-1. Show that the fundamental theorem of calculus
-   $$
-   \int_a^b \dd f = f(b)-f(a)
-   $$
-   is the one-dimensional version of Stokes' theorem.
-
-:::
-
-## Tensor Representation of the Metric
-
-In coordinates, the spacetime interval can be written as
-
-$$
-\dd s^2 = \eta_{\mu\nu} \dd x^\mu \dd x^\nu .
-$$
-
-Here the objects $\dd x^\mu$ are covectors belonging to the dual space
-$V^*$. The expression above therefore represents a **rank-two tensor** acting
-on two vectors.
-
-More generally, if $v$ and $u$ are vectors, the metric acts as
-$$
-g(v,u) = g_{\mu\nu} v^\mu u^\nu .
-$$
-This shows that the metric can be interpreted as a **bilinear functional**
-that takes two vectors as input and produces a scalar.
-
-::: {.callout-exercise}
-### Exercises
-
-1. Show explicitly that the scalar
-   $$
-   g(v,u)=g_{\mu\nu}v^\mu u^\nu
-   $$
-   is invariant under a coordinate transformation if the metric components
-   transform as
-   $$
-   g'_{\alpha\beta}
-   =
-   \frac{\partial x^\mu}{\partial x'^\alpha}
-   \frac{\partial x^\nu}{\partial x'^\beta}
-   g_{\mu\nu}.
-   $$
-
-2. Let
-   $$
-   v^\mu = (1,2,0,0), \qquad
-   u^\mu = (3,-1,0,0).
-   $$
-   Compute $g(v,u)$ using the Minkowski metric and determine whether the
-   vectors are orthogonal.
-
-3. Prove that if a bilinear form $g$ satisfies
-   $$
-   g(v,u)=0
-   $$
-   for every vector $u$, then $v=0$.
-:::
-
-## Tensor Products and Linear Combinations
-
-Tensor products provide a basis for constructing tensor spaces. For example,
-covariant rank-two tensors can be written as linear combinations of objects of
-the form
-$$
-\dd x^\mu \otimes \dd x^\nu .
-$$
-These basis elements act on two vectors $v$ and $u$ as
-$$
-(\dd x^\mu \otimes \dd x^\nu)(v,u)
-=
-\dd x^\mu(v)\,\dd x^\nu(u).
-$$
-A general tensor can then be expressed as
-$$
-T = T_{\mu\nu}\,\dd x^\mu \otimes \dd x^\nu .
-$$
-It is important to note that most tensors **cannot be written as a single
-tensor product**; instead they are linear combinations of such products.
-
-::: {.callout-exercise}
-### Exercises
-
-1. Show that
-   $$
-   (\dd x^\mu \otimes \dd x^\nu)(v,u)
-   =
-   v^\mu u^\nu .
-   $$
-
-2. Demonstrate that the tensor
-   $$
-   \dd x^0 \otimes \dd x^1 + \dd x^1 \otimes \dd x^0
-   $$
-   cannot be written as a single tensor product of two covectors.
-
-3. If $\dim V=n$, determine the dimension of the space of rank-two covariant
-   tensors.
-:::
-
-## Metric as a Map $V \to V^*$
-
-The metric can also be interpreted as a linear map
-$$
-g : V \rightarrow V^*.
-$$
-
-Given a vector $v$, the metric produces the covector
-$$
-v_\mu = g_{\mu\nu} v^\nu .
-$$
-This operation is called **lowering an index**.
-
-Conversely, the inverse metric $g^{\mu\nu}$ allows us to raise an index,
-$$
-v^\mu = g^{\mu\nu} v_\nu .
-$$
-In this way the metric establishes a correspondence between vectors and
-covectors.
-
-::: {.callout-exercise}
-### Exercises
-
-1. Show that the map $v^\mu \mapsto v_\mu=g_{\mu\nu}v^\nu$ is linear.
-
-2. Compute the covector associated with
-
-   $$
-   v^\mu=(2,1,-1,0)
-   $$
-
-   using the Minkowski metric.
-
-3. Verify that raising the index again with $g^{\mu\nu}$ reproduces the
-   original vector.
-:::
-
-## Geometric Meaning of Index Lowering
-
-The covector obtained by lowering the index of a vector $v$ acts on another
-vector $u$ as
-$$
-v_\mu u^\mu = g(v,u).
-$$
-Thus the covector associated with $v$ represents the functional that measures
-the projection of vectors along the direction of $v$.
-
-In Euclidean space this operation corresponds to the familiar dot product,
-while in Minkowski spacetime the different sign of the time component leads
-to the causal structure of relativity.
-
-::: {.callout-exercise}
-### Exercises
-
-1. Show that in Euclidean space the covector $v_i=\delta_{ij}v^j$ represents
-   the functional that returns the projection of a vector along $v$.
-
-2. Let $u^\mu$ be a timelike vector normalized so that $g(u,u)=-1$.
-   Show that the scalar
-
-   $$
-   -g(u,v)
-   $$
-
-   represents the component of $v$ along the direction of $u$.
+1.  Show that the fundamental theorem of calculus
+    $$
+    \int_a^b \dd f = f(b)-f(a)
+    $$
+    is the one-dimensional version of Stokes' theorem.
 :::
 
 ## Gradients as Covectors
 
-For a scalar function $f(x)$ the exterior derivative
+Given a scalar function $f(x)$, its exterior derivative $\dd f$ defines a covector field with components
 $$
-\dd f
-$$
-is a covector field with components
-$$
-(\dd f)_\mu = \partial_\mu f .
+(\dd f)_\mu = \partial_\mu f.
 $$
 
-Its action on a vector $v$ gives the directional derivative,
+This object acts on a vector $v = v^\mu \partial_\mu$ by
 $$
-\dd f(v) = v^\mu \partial_\mu f .
+\dd f(v) = v^\mu \partial_\mu f,
 $$
-In Euclidean space the metric allows us to convert this covector into a
-vector, which leads to the familiar gradient operator.
+which is the directional derivative of $f$ along $v$. In this sense, $\dd f$ encodes how $f$ changes in different directions and is naturally a covector.
 
-::: {.callout-exercise}
+In Euclidean space, or more generally in the presence of a metric $\eta$, we can associate to this covector a vector by raising the index. This defines the gradient of $f$ as the vector field
+$$
+\eta^{-1}(\dd f) = \eta^{\mu\nu} \partial_\nu f \, \partial_\mu.
+$$
+
+Thus, the familiar gradient is not a fundamentally new object, but rather the vector obtained from the covector $\dd f$ using the metric. Without a metric, $\dd f$ is the natural geometric object, while the notion of a gradient as a vector depends on the additional structure provided by $\eta$.
+
+::: callout-exercise
 ### Exercises
 
-1. Let
-   $$
-   f(x,y,z)=x^2+y^2+z^2 .
-   $$
-   Compute $\dd f$ and evaluate $\dd f(v)$ for $v=(1,1,1)$.
+1.  Let
+    $$f(x,y,z)=x^2+y^2+z^2 .$$
+    Compute $\dd f$ and evaluate $\dd f(v)$ for $v=(1,1,1)$.
 
-2. Show that $\partial_\mu f$ transforms as a covector under coordinate
-   transformations.
+2.  Show that $\partial_\mu f$ transforms as a covector under coordinate
+    transformations.
 
-3. In Euclidean space verify that raising the index with $\delta^{ij}$ gives
-   the usual gradient vector.
+3.  In Euclidean space verify that raising the index with $\delta^{ij}$ gives the usual
+    gradient vector.
 :::
 
 ## Coordinate Dependence of the Metric
 
-The components of the metric tensor depend on the coordinate system used to
-describe spacetime. However, the scalar quantity
-$$
-g(v,u)
-$$
-is invariant.
+The components of the metric tensor depend on the coordinate system used to describe
+spacetime. However, the scalar quantity $$g(v,u)$$ is invariant.
 
-Different coordinate systems therefore lead to different matrices
-representing the metric, even though the underlying geometric structure
-remains the same.
+Different coordinate systems therefore lead to different matrices representing the
+metric, even though the underlying geometric structure remains the same.
 
-This idea leads to the principle of **covariance**, according to which
-physical laws should be written in a form that remains valid under arbitrary
-changes of coordinates.
+This idea leads to the principle of **covariance**, according to which physical laws
+should be written in a form that remains valid under arbitrary changes of coordinates.
 
-In flat spacetime, invariance under Lorentz transformations is an important
-special case of this broader principle. The covariant formulation makes clear
-which statements are geometric and therefore independent of any chosen frame.
+In flat spacetime, invariance under Lorentz transformations is an important special case
+of this broader principle. The covariant formulation makes clear which statements are
+geometric and therefore independent of any chosen frame.
+
+
+::: callout-exercise
+### Exercises
+
+1.  Consider the coordinate transformation
+    $$
+    x = r\cos\theta, \qquad y = r\sin\theta.
+    $$
+    Compute the metric components in polar coordinates.
+
+2.  Show explicitly that the scalar product of two vectors remains invariant under this
+    transformation.
+
+3.  Explain why the matrix representation of the metric changes even though the geometry
+    does not.
+:::
 
 ## Covariant Observer Decomposition and Rapidity
 
-For relativistic field theory, it is useful to decompose tensors relative to an
-observer with unit timelike four-velocity $u^\mu$ satisfying
+For relativistic field theory, it is useful to decompose tensors relative to an observer
+with unit timelike four-velocity $u^\mu$ satisfying
 $$
-g_{\mu\nu}u^\mu u^\nu = -1.
+\eta_{\mu\nu}u^\mu u^\nu = -1.
 $$
 
 The projector onto the local spatial subspace orthogonal to $u^\mu$ is
@@ -1002,56 +872,77 @@ h_{\mu\nu} = g_{\mu\nu} + u_{\mu}u_{\nu},
 $$
 which satisfies
 $$
-h_{\mu\nu}u^\nu = 0,
-\qquad
-h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
+h_{\mu\nu}u^\nu = 0, \qquad h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
 $$
-Thus $h^\mu{}_{\nu}$ removes the temporal part (relative to $u^\mu$) and keeps
-the spatial part.
+Thus $h^\mu{}_{\nu}$ removes the temporal part (relative to $u^\mu$) and keeps the
+spatial part.
 
 Given another timelike unit vector $w^\mu$, we can decompose it as
 $$
 w^\mu = -(u\cdot w)\,u^\mu + h^\mu{}_{\nu}w^\nu.
 $$
-The scalar $-(u\cdot w)$ and the spatial norm
-$\sqrt{h_{\mu\nu}w^\mu w^\nu}$ are naturally parametrized by a rapidity
-$\xi$:
+The scalar $-(u\cdot w)$ and the spatial norm $\sqrt{h_{\mu\nu}w^\mu w^\nu}$ are
+naturally parametrized by a rapidity $\xi$:
 $$
 -(u\cdot w)=\cosh\xi,
 \qquad
-\sqrt{h_{\mu\nu}w^\mu w^\nu}=\sinh\xi.
+\sqrt{h_{\mu\nu}w^\mu w^\nu}=\mid\sinh\xi\mid.
 $$
 In frames where relative speed $v$ is defined, this gives
 $$
-\operatorname{tanh}\xi = \frac{v}{c},
+\tanh\xi = \frac{v}{c},
 \qquad
 \cosh\xi = \gamma,
 \qquad
 \gamma = \frac{1}{\sqrt{1-v^2/c^2}}.
 $$
 
-This decomposition is central in covariant electromagnetism: electric and
-magnetic fields are observer-dependent spatial projections of a single
-spacetime tensor.
+This decomposition is central in covariant electromagnetism: electric and magnetic
+fields are observer-dependent spatial projections of a single spacetime tensor.
 
-In this language, the magnetic part is fundamentally area-like (bivector-like),
-not intrinsically a standard vector. The familiar pseudovector description of
-$\mathbf{B}$ is a special feature of three spatial dimensions, where oriented
-areas can be identified with directions.
+In this language, the magnetic part is fundamentally area-like (bivector-like), not
+intrinsically a standard vector. The familiar pseudovector description of $\mathbf{B}$
+is a special feature of three spatial dimensions, where oriented areas can be identified
+with directions.
 
 ::: {.callout-exercise}
 ### Exercises
 
-1. Consider the coordinate transformation
+1. Show explicitly that $h_{\mu\nu}u^\nu = 0$ and that $h^\mu{}_{\nu}$ acts as a projector, i.e.,
    $$
-   x = r\cos\theta, \qquad y = r\sin\theta .
+   h^\mu{}_{\alpha}h^\alpha{}_{\nu} = h^\mu{}_{\nu}.
    $$
-   Compute the metric components in polar coordinates.
 
-2. Show explicitly that the scalar product of two vectors remains invariant
-   under this transformation.
+2. Given a vector $v^\mu$, define its temporal and spatial parts relative to $u^\mu$ by
+   $$
+   v_\parallel^\mu = -(u \cdot v)\, u^\mu, \qquad v_\perp^\mu = h^\mu{}_{\nu} v^\nu.
+   $$
+   Show that $v^\mu = v_\parallel^\mu + v_\perp^\mu$ and that $u_\mu v_\perp^\mu = 0$.
 
-3. Explain why the matrix representation of the metric changes even though
-   the geometry does not.
+3. For two unit timelike vectors $u^\mu$ and $w^\mu$, show that $-(u \cdot w) \ge 1$ and interpret this result physically.
+
+4. Starting from the definition of rapidity, derive the relations
+   $$
+   \cosh^2 \xi - \sinh^2 \xi = 1,
+   $$
+   and verify that this identity is consistent with the normalization of $w^\mu$.
+
+5. In a frame where $u^\mu = (1,0,0,0)$, write $w^\mu$ explicitly in terms of $\xi$ and show that it corresponds to a boost with velocity $v$ satisfying $\tanh \xi = v/c$.
+
+6. Show that the spatial vector $h^\mu{}_{\nu} w^\nu$ has norm $\sinh \xi$ using the metric.
+
+7. Verify that the decomposition of $w^\mu$ preserves its normalization, i.e.,
+   $$
+   \eta_{\mu\nu} w^\mu w^\nu = -1.
+   $$
+
+8. Consider a rank-two antisymmetric tensor $F_{\mu\nu}$. Define its electric and magnetic parts relative to $u^\mu$ by
+   $$
+   E_\mu = F_{\mu\nu} u^\nu, \qquad B^\mu = \frac{1}{2} \epsilon^{\mu\nu\alpha\beta} u_\nu F_{\alpha\beta}.
+   $$
+   Show that both $E_\mu$ and $B^\mu$ are orthogonal to $u^\mu$.
+
+9. Show that if $u^\mu$ is changed (i.e., a different observer is chosen), the decomposition into electric and magnetic parts changes, even though $F_{\mu\nu}$ remains the same.
+
+10. Interpret geometrically why the magnetic field is naturally associated with an antisymmetric tensor rather than a vector.
 :::
-

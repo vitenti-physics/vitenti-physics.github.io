@@ -1,0 +1,294 @@
+---
+title: "Maxwell Equations in Covariant Form"
+---
+
+{{< include /_macros.qmd >}}
+
+## Scope
+
+These notes build on the calculus tools developed previously and show how
+Maxwell equations naturally unify into a single geometric statement on
+spacetime.
+
+The key steps are:
+
+- recognizing that $\vec{E}$ and $\vec{B}$ are observer-dependent projections,
+- combining them into the Faraday tensor $F_{\mu\nu}$,
+- writing homogeneous and non-homogeneous Maxwell equations covariantly,
+- understanding the geometric role of differential forms in this framework.
+
+## From 3D Vector Calculus to Covariant Electromagnetism
+
+### Motivation
+
+Classical electromagnetism is usually formulated with a preferred time slicing,
+where fields are split into spatial vectors $\vec{E}$ and $\vec{B}$. This
+formulation is not covariant: under Lorentz transformations, time mixes with
+space, and electric and magnetic fields mix with each other.
+
+This suggests that $\vec{E}$ and $\vec{B}$ are not fundamental objects.
+Instead, they should arise as components of a single spacetime object.
+
+Our goal is to rewrite Maxwell equations in a form that:
+
+- does not depend on a preferred frame,
+- is manifestly Lorentz covariant,
+- has a clear geometric meaning.
+
+### Homogeneous vs Non-Homogeneous Equations
+
+Maxwell equations naturally split into two groups:
+
+**Non-homogeneous** (contain sources):
+$$
+\nabla \cdot \vec{E} = \frac{\rho}{\varepsilon_0}, 
+\qquad
+\nabla \times \vec{B} - \frac{1}{c^2}\partial_t \vec{E} = \mu_0\vec{J},
+$$
+where $\rho$ is the charge density, $\vec{J}$ is the current density, and $\varepsilon_0$, $\mu_0$ are the vacuum permittivity and permeability.
+Finally, $c = 1/\sqrt{\varepsilon_0 \mu_0}$ is the speed of light.
+
+**Homogeneous** (purely geometric):
+$$
+\nabla \cdot \vec{B} = 0, 
+\qquad
+\nabla \times \vec{E} + \partial_t \vec{B} = 0.
+$$
+
+The homogeneous equations do not depend on sources. This suggests they encode a
+purely geometric structure.
+
+### Hidden Metric in Vector Calculus
+
+Operators like gradient, divergence, and curl implicitly use the metric. For
+instance, the gradient is not just $\partial_i$, but effectively:
+$$
+(\nabla f)^i = g^{ij} \partial_j f.
+$$
+
+This becomes important when changing coordinates or working covariantly. The
+form language makes these dependencies explicit.
+
+### From Vectors to Forms
+
+To make the geometry explicit, we reinterpret fields as differential forms:
+
+- Electric field $\vec{E}$ becomes a 1-form:
+$$
+E = E_i \,\dd x^i,
+$$
+- Magnetic field $\vec{B}$ becomes a 2-form:
+$$
+B = \frac{1}{2} B_{ij} \,\dd x^i \wedge \dd x^j.
+$$
+
+The magnetic field is naturally a 2-form because it is associated with flux
+through surfaces, which are 2-dimensional.
+
+## Unification into a Single Spacetime Equation
+
+### The Key Observation
+
+The homogeneous equations:
+
+- Faraday law: $\nabla \times \vec{E} + \partial_t \vec{B} = 0$,
+- No magnetic monopoles: $\nabla \cdot \vec{B} = 0$,
+
+are actually different components of a single spacetime equation.
+
+### Spacetime Coordinates
+
+Introduce spacetime coordinates with signature $(-,+,+,+)$:
+$$
+x^0 = ct,
+\qquad
+x^i \quad (i=1,2,3) \text{ spatial}.
+$$
+
+### The Electromagnetic Field Tensor
+
+Define the **Faraday tensor** $F_{\mu\nu}$ as a 2-form on spacetime with
+components:
+$$
+F_{0i} = E_i, 
+\qquad 
+F_{ij} = B_{ij},
+$$
+and antisymmetry $F_{\mu\nu} = -F_{\nu\mu}$.
+
+In matrix form (with $c=1$):
+$$
+F_{\mu\nu} = 
+\begin{pmatrix}
+0 & -E_x & -E_y & -E_z \\
+E_x & 0 & -B_z & B_y \\
+E_y & B_z & 0 & -B_x \\
+E_z & -B_y & B_x & 0
+\end{pmatrix}.
+$$
+
+### The Homogeneous Maxwell Equation
+
+The homogeneous Maxwell equations become:
+$$
+\dd F = 0.
+$$
+
+This is a single equation on spacetime, encoding all four components:
+
+- the 3 spatial components of Faraday's law,
+- the 1 component of $\nabla \cdot \vec{B} = 0$.
+
+### Verification in Components
+
+The equation $\dd F = 0$ expands to:
+$$
+\partial_\alpha F_{\mu\nu} + \partial_\mu F_{\nu\alpha} + \partial_\nu F_{\alpha\mu} = 0.
+$$
+
+For $(\alpha,\mu,\nu) = (0,i,j)$:
+$$
+\partial_0 F_{ij} + \partial_i F_{j0} + \partial_j F_{0i} = 0,
+$$
+which gives:
+$$
+\partial_t B_{ij} - \partial_i E_j + \partial_j E_i = 0,
+$$
+exactly Faraday's law.
+
+For $(\alpha,\mu,\nu) = (i,j,k)$ (cyclic):
+$$
+\partial_i B_{jk} + \partial_j B_{ki} + \partial_k B_{ij} = 0,
+$$
+which is equivalent to $\nabla \cdot \vec{B} = 0$.
+
+## Geometric Interpretation
+
+### Form Degree and Dimension
+
+- $F$ is a 2-form on spacetime (6 independent components),
+- $\dd F$ is a 3-form on spacetime (4 independent components in 4D).
+
+In 4 dimensions, a 3-form has exactly
+$$
+\binom{4}{3} = 4
+$$
+independent components. These correspond to:
+
+- the 3 components of Faraday's law,
+- the 1 component of $\nabla \cdot \vec{B} = 0$.
+
+Thus, covariance naturally combines them into a single geometric statement.
+
+### Closure Condition
+
+The identity $\dd^2 = 0$ guarantees consistency. If $F$ is itself exact,
+$F = \dd A$, then:
+$$
+\dd F = \dd^2 A = 0
+$$
+automatically. This motivates the introduction of the electromagnetic potential
+$A_\mu$.
+
+## The Non-Homogeneous Equations
+
+### Source Term
+
+The non-homogeneous equations involve the current 4-vector:
+$$
+J^\mu = (\rho, J^x, J^y, J^z).
+$$
+
+They are written covariantly as:
+$$
+\partial_\mu F^{\mu\nu} = J^\nu,
+$$
+or equivalently, using the Hodge dual:
+$$
+\dd \star F = \star J.
+$$
+
+### Component Check
+
+For $\nu = 0$:
+$$
+\partial_i F^{i0} = J^0 = \rho,
+$$
+which gives Gauss's law $\nabla \cdot \vec{E} = \rho$.
+
+For $\nu = k$ (spatial):
+$$
+\partial_0 F^{0k} + \partial_i F^{ik} = J^k,
+$$
+which expands to:
+$$
+\partial_t E^k + (\nabla \times \vec{B})^k = J^k,
+$$
+the Ampère-Maxwell law.
+
+## Final Structure
+
+Electromagnetism in covariant form:
+
+::: {.callout-important}
+### Maxwell Equations
+
+**Field strength:**
+$$
+F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.
+$$
+
+**Homogeneous equations:**
+$$
+\dd F = 0.
+$$
+
+**Non-homogeneous equations:**
+$$
+\partial_\mu F^{\mu\nu} = J^\nu.
+$$
+:::
+
+## Conceptual Summary
+
+- The split into $\vec{E}$ and $\vec{B}$ is frame-dependent,
+- Vector calculus hides the underlying spacetime geometry,
+- Differential forms make the covariant structure explicit,
+- Maxwell equations reduce to simple geometric statements on spacetime.
+
+This formulation prepares the ground for:
+
+- understanding gauge freedom ($A_\mu \to A_\mu + \partial_\mu \chi$),
+- generalizing to curved spacetime (general relativity),
+- interpreting electromagnetism as a $U(1)$ gauge theory.
+
+::: {.callout-exercise}
+### Exercises
+
+1. Verify that the matrix representation of $F_{\mu\nu}$ given above is
+   antisymmetric and correctly encodes $\vec{E}$ and $\vec{B}$.
+
+2. Show explicitly that $\dd F = 0$ gives the component
+   $\partial_t B_{12} - \partial_1 E_2 + \partial_2 E_1 = 0$, and identify this
+   with one component of Faraday's law.
+
+3. Prove that if $F = \dd A$, then $\dd F = 0$ automatically.
+
+4. Verify that $\partial_\mu F^{\mu 0} = \rho$ reproduces Gauss's law when
+   $F^{i0} = -E^i$.
+
+5. Show that the gauge transformation $A_\mu \to A_\mu + \partial_\mu \chi$
+   leaves $F_{\mu\nu}$ unchanged.
+
+6. Write the action for free electromagnetism:
+   $$
+   S = -\frac{1}{4} \int F_{\mu\nu} F^{\mu\nu} \,\dd^4 x,
+   $$
+   and derive the vacuum Maxwell equations by varying $A_\mu$.
+
+7. In 2+1 dimensions, how many independent components does $F_{\mu\nu}$ have?
+   How many for $\dd F$?
+
+8. Discuss why the Hodge dual maps a 2-form to another 2-form in 4D, and
+   explain its role in the source equations.
+:::

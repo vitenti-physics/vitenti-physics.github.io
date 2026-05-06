@@ -56,12 +56,12 @@ they are not the same object.
 
 For timelike worldlines, proper time $\tau$ satisfies
 $$
-g_{\mu\nu}\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}=-1.
+\eta_{\mu\nu}\frac{\dd x^\mu}{\dd\tau}\frac{\dd x^\nu}{\dd\tau}=-1.
 $$
 
-If $u^\mu:=\dd x^\mu/\dd\tau$, then
+If $u^\mu\equiv\dd x^\mu/\dd\tau$, then
 $$
-g_{\mu\nu}u^\mu u^\nu=-1.
+\eta_{\mu\nu}u^\mu u^\nu=-1.
 $$
 
 This is the normalization associated with affine/proper-time parametrization.
@@ -70,62 +70,17 @@ For non-affine parameters, this normalization is not constant in general.
 In many calculations one can still parametrize by coordinate time, but proper
 time keeps covariance and normalization transparent.
 
-## Observer Field and Spatial Projector
-
-Let $u^\mu$ be a unit timelike observer field. Define
-$$
-h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu.
-$$
-
-Then
-$$
-h_{\mu\nu}u^\nu=0,
-\qquad
-h^\mu{}_{\alpha}h^\alpha{}_{\nu}=h^\mu{}_{\nu}.
-$$
-
-So $h^\mu{}_{\nu}$ projects onto the local spatial subspace orthogonal to $u$.
-
-For any vector $A^\mu$,
-$$
-A^\mu=-(u\cdot A)u^\mu+\bar A^\mu,
-\qquad
-\bar A^\mu:=h^\mu{}_{\nu}A^\nu,
-$$
-which separates temporal and spatial parts relative to that observer.
-
-## Rapidity and Relative Motion
-
-For timelike unit vectors $u^\mu$ and $v^\mu$,
-$$
--(u\cdot v)=\cosh\xi,
-\qquad
-\sqrt{h_{\mu\nu}v^\mu v^\nu}=\sinh\xi,
-$$
-where $\xi$ is rapidity.
-
-In standard speed language:
-$$
-   anh\xi=\frac{v}{c},
-\qquad
-\cosh\xi=\gamma.
-$$
-
-This is the coordinate-free content of Lorentz boosts. The pair
-$\{\sinh\xi,\cosh\xi\}$ replaces Euclidean trigonometric decomposition by a
-hyperbolic one adapted to Minkowski signature.
-
 ## Electromagnetic Split Relative to an Observer
 
 Given Faraday tensor $F_{\mu\nu}=-F_{\nu\mu}$, define
 $$
-E_\mu:=F_{\mu\nu}u^\nu,
+E_\mu \equiv F_{\mu\nu}u^\nu,
 \qquad
 E_\mu u^\mu=0,
 $$
 and the spatial magnetic 2-form
 $$
-B_{\alpha\beta}:=h_\alpha{}^{\mu}h_\beta{}^{\nu}F_{\mu\nu}.
+B_{\alpha\beta} \equiv h_\alpha{}^{\mu}h_\beta{}^{\nu}F_{\mu\nu}.
 $$
 
 Then
@@ -192,27 +147,151 @@ rather than tying meaning to one specific coordinate chart.
 
 Prototype in 1D:
 $$
-\int_a^b\dd f=f(b)-f(a).
+\int_a^b \dd f = f(b) - f(a).
 $$
 
 General form:
 $$
-\int_{\partial\Omega}\omega=\int_\Omega\dd\omega.
+\int_{\partial\Omega} \omega = \int_\Omega \dd \omega.
 $$
 
 Classical theorems appear as special cases:
 
-- gradient/fundamental theorem (1D),
-- Green/Stokes (boundary curve vs enclosed surface),
-- divergence theorem (closed surface vs enclosed volume).
+- gradient / fundamental theorem (1D),
+- Green / Stokes (curve vs surface),
+- divergence theorem (surface vs volume).
 
-So the many vector-calculus integral identities are one geometric identity
-written at different form degrees.
+Thus, vector-calculus identities are different realizations of a single geometric statement.
+
+---
+
+### Relation with standard integration
+
+To make contact with usual Riemann (or Lebesgue) integration, we must understand how differential forms are integrated over domains.
+
+Start with the 1D case. Let $I = [a,b] \subset \mathbb{R}$ and consider the 1-form:
+$$
+\dd f = \frac{\dd f}{\dd x} \dd x.
+$$
+
+The integral over $I$ is defined via a parametrization of the interval. Introduce a parameter $\lambda \in [\lambda_0, \lambda_1]$ and a smooth map:
+$$
+x = x(\lambda),
+$$
+such that:
+$$
+x(\lambda_0) = a, \quad x(\lambda_1) = b.
+$$
+
+Pulling back the form to the parameter space can be understood as follows. A 1-form acts on tangent vectors, so along the parametrized curve $x(\lambda)$ we evaluate $\dd f$ on the tangent vector:
+$$
+\frac{\dd x}{\dd \lambda} \frac{\partial}{\partial x}.
+$$
+
+Thus,
+$$
+\dd f\!\left(\frac{\dd x}{\dd \lambda} \frac{\partial}{\partial x}\right)
+=
+\frac{\dd f}{\dd x}(x(\lambda)) \frac{\dd x}{\dd \lambda}.
+$$
+
+Including the measure $\dd \lambda$, the pullback becomes:
+$$
+\dd f \;\mapsto\;
+\frac{\dd f}{\dd x}(x(\lambda)) \frac{\dd x}{\dd \lambda} \dd \lambda.
+$$
+
+Thus, the integral becomes:
+$$
+\int_I \dd f
+=
+\int_{\lambda_0}^{\lambda_1}
+\frac{\dd f}{\dd x}(x(\lambda)) \frac{\dd x}{\dd \lambda} \dd \lambda.
+$$
+
+This is exactly the standard change-of-variables formula.
+
+With the natural choice $x(\lambda) = \lambda$, we recover:
+$$
+\int_a^b \frac{\dd f}{\dd x} \dd x,
+$$
+and therefore:
+$$
+\int_a^b \dd f = f(b) - f(a).
+$$
+
+### Higher-dimensional case
+
+The same mechanism applies in higher dimensions, but now we must describe how a domain is parametrized and how forms act on tangent vectors.
+
+Let $\Omega$ be a $k$-dimensional domain. Assume we have a one-to-one parametrization:
+$$
+x = x(\lambda^1, \dots, \lambda^k),
+$$
+with $(\lambda^1, \dots, \lambda^k)$ ranging over some region in $\mathbb{R}^k$, such that varying the parameters covers $\Omega$.
+
+If we vary one parameter at a time, we obtain $k$ tangent vectors to the domain:
+$$
+\frac{\partial x}{\partial \lambda^1}, \quad \dots, \quad \frac{\partial x}{\partial \lambda^k}.
+$$
+
+These vectors span the tangent space of $\Omega$ at each point.
+
+Now consider a $k$-form:
+$$
+\omega = f(x)\, \dd x^{i_1} \wedge \cdots \wedge \dd x^{i_k}.
+$$
+
+To pull back $\omega$, we evaluate it on these tangent vectors:
+$$
+\omega\!\left(
+\frac{\partial x}{\partial \lambda^1}, \dots, \frac{\partial x}{\partial \lambda^k}
+\right).
+$$
+
+Each 1-form $\dd x^{i}$ acts on a tangent vector as:
+$$
+\dd x^{i}\!\left(\frac{\partial x}{\partial \lambda^b}\right)
+=
+\frac{\partial x^{i}}{\partial \lambda^b}.
+$$
+
+Therefore, the wedge product produces:
+$$
+\omega \;\mapsto\;
+f(x(\lambda))
+\det\!\left(\frac{\partial x^{i_a}}{\partial \lambda^b}\right)
+\dd \lambda^1 \cdots \dd \lambda^k.
+$$
+The determinant arises from the antisymmetry of the wedge product: it encodes how the $k$ tangent vectors combine into an oriented volume element. We will make this connection with the determinant more explicit below.
+
+Finally, the integral becomes:
+$$
+\int_\Omega \omega
+=
+\int
+f(x(\lambda))
+\det\!\left(\frac{\partial x}{\partial \lambda}\right)
+\dd^k \lambda,
+$$
+which is precisely the usual Jacobian formula for multiple integrals.
+
+---
+
+### Interpretation
+
+- Differential forms encode both the integrand and the oriented measure.
+- The pullback produces the Jacobian automatically.
+- No additional structure is needed: change of variables is built into the definition.
+
+Thus, Stokes theorem is not a new type of integration, but a geometric reformulation of standard integration in a coordinate-free language.
 
 ## Worked Integration Examples
 
 This section follows the lecture emphasis: concrete integral identities before
 moving to full Maxwell equations.
+
+---
 
 ### Example 1: Fundamental Theorem as 1D Stokes
 
@@ -231,6 +310,8 @@ Boundary evaluation gives the same result:
 $$
 f(2)-f(0)=4-0=4.
 $$
+
+---
 
 ### Example 2: Green's Theorem from a 1-Form
 
@@ -263,6 +344,8 @@ $$
 \oint_{\partial\Omega}\omega=\int_0^{2\pi}\dd t=2\pi.
 $$
 
+---
+
 ### Example 3: 3D Stokes Theorem (Circulation-Curl)
 
 Let
@@ -285,6 +368,8 @@ $$
 $$
 This is exactly the circulation-curl theorem in form language.
 
+---
+
 ### Example 4: Divergence Theorem from a 2-Form
 
 Let
@@ -299,8 +384,9 @@ $$
 $$
 Then
 $$
-\dd\beta=(\nabla\cdot\mathbf{B})\,\dd x\wedge\dd y\wedge\dd z.
+\dd\beta=(\nabla\cdot\mathbf{B})\,\dd x\wedge\dd y\wedge\dd z,
 $$
+where we are using $\nabla$ to represent the usual three-dimensional vector differential operator.
 Since $\nabla\cdot\mathbf{B}=1+1+1=3$,
 $$
 \iiint_V \dd\beta = 3\,\text{Vol}(V).
@@ -315,6 +401,8 @@ $$
 $$
 which matches the classical outward flux of $\mathbf{B}$ through the unit
 sphere.
+
+---
 
 ### Example 5: Reparametrization Invariance (Curve Integral)
 
@@ -349,13 +437,13 @@ reason forms simplify electrodynamics.
 
 ## Electric vs Magnetic Geometric Nature
 
-Geometrically:
+Geometrically, in 3D:
 
 - electric field is naturally a spatial 1-form,
 - magnetic field is naturally a spatial 2-form.
 
 The usual magnetic pseudovector is a 3D dual representation. It is convenient,
-but it hides that magnetism is fundamentally area-oriented in this formalism.
+but it hides that magnetism is fundamentally area-oriented.
 
 ## Practical Takeaways
 
@@ -365,50 +453,488 @@ but it hides that magnetism is fundamentally area-oriented in this formalism.
 - The integral theorems are best seen as one geometric statement in different
    form degrees.
 
+---
+
 ::: {.callout-exercise}
 ### Exercises
 
-1. Let $u^\mu$ be unit timelike and $h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu$.
-   Prove $h^\mu{}_{\nu}$ is a projector and $h_{\mu\nu}u^\nu=0$.
-
-2. For any vector $A^\mu$, verify
-   $$
-   A^\mu=-(u\cdot A)u^\mu+h^\mu{}_{\nu}A^\nu.
-   $$
-
-3. For timelike unit vectors $u^\mu,v^\mu$, derive the rapidity relations
+1. For timelike unit vectors $u^\mu,v^\mu$, derive the rapidity relations
    from the decomposition of $v^\mu$ into temporal/spatial parts relative to
    $u^\mu$.
-
-4. Show from antisymmetry that $E_\mu u^\mu=0$ when
+2. Show from antisymmetry that $E_\mu u^\mu=0$ when
    $E_\mu=F_{\mu\nu}u^\nu$.
-
-5. Starting from the projector definition of $B_{\alpha\beta}$, prove
+3. Starting from the projector definition of $B_{\alpha\beta}$, prove
    $$
    F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
    $$
-
-6. Compute $\dd\omega$ for a generic 1-form and verify explicitly in flat
+4. Compute $\dd\omega$ for a generic 1-form and verify explicitly in flat
    coordinates that $\dd^2\omega=0$.
-
-7. Repeat Example 2 using the square $[-1,1]\times[-1,1]$ instead of the unit
+5. Repeat Example 2 using the square $[-1,1]\times[-1,1]$ instead of the unit
    disk and confirm both sides agree.
-
-8. For $\mathbf{A}=(-y,x,0)$ and a disk of radius $R$, compute
+6. For $\mathbf{A}=(-y,x,0)$ and a disk of radius $R$, compute
    $\int_{\partial\Sigma}\omega$ and $\int_\Sigma\dd\omega$ explicitly and show
    both equal $2\pi R^2$.
-
-9. For $\mathbf{B}=(x,y,z)$ and a ball of radius $R$, verify
+7. For $\mathbf{B}=(x,y,z)$ and a ball of radius $R$, verify
    $$
    \iint_{\partial V}\beta=4\pi R^3.
    $$
-
-10. Explain, with one explicit example, how the same identity
+8. Explain, with one explicit example, how the same identity
    $$
    \int_{\partial\Omega}\omega=\int_\Omega\dd\omega
    $$
    reproduces a familiar vector-calculus theorem.
-
-11. Discuss why representing $\mathbf{B}$ as a pseudovector is special to 3
+9. Discuss why representing $\mathbf{B}$ as a pseudovector is special to 3
    spatial dimensions.
+:::
+
+## Volume Forms in Minkowski Spacetime
+
+In Minkowski spacetime with Cartesian coordinates, the metric components
+$\eta_{\mu\nu}$ are constant. As a result, the covariant derivative reduces to
+the partial derivative, and the volume form can be characterized by the condition
+that its components are constant. First note that a volume form is a 4-form
+and can be written as
+$$
+\mathbb{e}^4 = \frac{1}{4!} \mathbb{e}_{\mu\nu\alpha\beta} \,\dd x^\mu \wedge \dd x^\nu \wedge \dd x^\alpha \wedge \dd x^\beta = \mathbb{e}_{0123} \dd x^0 \wedge \dd x^1 \wedge \dd x^2 \wedge \dd x^3,
+$$
+therefore we must have
+$$
+\partial_\lambda \,\mathbb{e}^4_{\mu\nu\rho\sigma} = 0.
+$$
+
+To fix the normalization, we require that in an oriented Cartesian basis,
+$$
+\mathbb{e}^4(\partial_0,\partial_1,\partial_2,\partial_3) = \mathbb{e}^4_{0123} = +1.
+$$
+This determines the spacetime volume form uniquely:
+$$
+\mathbb{e}^4 = \dd x^0 \wedge \dd x^1 \wedge \dd x^2 \wedge \dd x^3.
+$$
+Equivalently, this normalization corresponds to assigning unit volume to the coordinate 
+hypercube $[0,1]^4$ (in the chosen units), so that its volume is one in those units 
+(e.g., one meter to the fourth power).
+
+More generally, this can be written in terms of the Levi-Civita symbol as
+$$
+\mathbb{e}^4_{\mu\nu\rho\sigma} = \epsilon_{\mu\nu\rho\sigma}.
+$$
+
+---
+
+Given a unit timelike vector $u^\mu$, satisfying
+$$
+\eta_{\mu\nu} u^\mu u^\nu = -1,
+$$
+we can define a spatial volume form associated with the observer $u^\mu$ by
+contracting the spacetime volume form:
+$$
+\mathbb{e}^3(u) = i_u \mathbb{e}^4 = \mathbb{e}^4(u).
+$$
+
+In components, this gives
+$$
+\mathbb{e}^3(u)_{\alpha\beta\gamma} = u^\mu \,\epsilon_{\mu\alpha\beta\gamma}.
+$$
+
+This object is a 3-form that is orthogonal to $u^\mu$ in the sense that
+$$
+i_u \mathbb{e}^3(u) = 0.
+$$
+
+In the special case where $u^\mu = (1,0,0,0)$, we obtain
+$$
+\mathbb{e}^3(u) = \dd x^1 \wedge \dd x^2 \wedge \dd x^3,
+$$
+which is the standard spatial volume form.
+
+Thus, $\mathbb{e}^3(u)$ represents the oriented volume element in the local
+rest frame of the observer $u^\mu$. It provides the natural geometric object
+used to define spatial Hodge duals and to interpret quantities such as magnetic
+fields as area-like (bivector) objects.
+
+---
+
+::: {.callout-exercise}
+### Exercises (Volume Forms and Orientation)
+
+1. Starting from
+   $$
+   \mathbb{e}^4 = \frac{1}{4!} \mathbb{e}_{\mu\nu\rho\sigma} \dd x^\mu \wedge \dd x^\nu \wedge \dd x^\rho \wedge \dd x^\sigma,
+   $$
+   show that antisymmetry implies only one independent component.
+2. Verify explicitly that
+   $$
+   \mathbb{e}^4(\partial_0,\partial_1,\partial_2,\partial_3)=1
+   $$
+   for $\mathbb{e}^4 = \dd x^0 \wedge \dd x^1 \wedge \dd x^2 \wedge \dd x^3$.
+3. Show that exchanging two arguments of $\mathbb{e}^4$ flips the sign.
+4. Compute $\epsilon_{0213}$ and determine its sign.
+5. Verify that $i_u \mathbb{e}^4$ is a 3-form.
+6. Show explicitly that $i_u i_u \mathbb{e}^4 = 0$.
+7. Compute $\mathbb{e}^3(u)$ for a boosted observer $u^\mu=(\gamma,\gamma v,0,0)$.
+8. Show that $\mathbb{e}^3(u)$ annihilates $u$.
+:::
+
+---
+
+## The Hodge Star Operator (Geometric Definition)
+
+The spacetime volume form $\mathbb{e}^4 \in \Lambda^4 T_p^*M$ provides a natural way to relate objects of complementary degree. In particular, it allows us to map vectors to 3-forms by contraction. Given a vector $v \in T_pM$, we define
+$$
+i_v \mathbb{e}^4 = \frac{1}{3!} v^\mu \,\epsilon_{\mu\alpha\beta\gamma} \,\dd x^\alpha \wedge \dd x^\beta \wedge \dd x^\gamma,
+$$
+which is a 3-form with components $v^\mu \epsilon_{\mu\alpha\beta\gamma}$. This associates to each direction the oriented volume element orthogonal to it.
+
+Using the metric, we can raise indices of $\mathbb{e}^4$ and define the corresponding contravariant object
+$$
+\mathbb{e}_4 = \frac{1}{4!} \epsilon^{\mu\nu\rho\sigma} \,\partial_\mu \wedge \partial_\nu \wedge \partial_\rho \wedge \partial_\sigma,
+$$
+which belongs to $\Lambda^4 T_pM$. This object acts on covectors and allows us to map 1-forms to 3-vectors:
+$$
+\mathbb{e}_4(\tilde{w}) = \frac{1}{3!} w_\mu \,\epsilon^{\mu\nu\rho\sigma} \,\partial_\nu \wedge \partial_\rho \wedge \partial_\sigma.
+$$
+
+More generally, the volume form defines natural maps
+$$
+\Lambda^p T_p^*M \to \Lambda^{4-p} T_pM,
+\qquad
+\Lambda^p T_pM \to \Lambda^{4-p} T_p^*M,
+$$
+by contraction. These maps exchange the degree of an object with its complementary degree.
+
+Since the metric provides an identification between vectors and covectors, we can combine these constructions to obtain a map acting entirely within forms:
+$$
+\star: \Lambda^p T_p^*M \to \Lambda^{4-p} T_p^*M.
+$$
+This is the Hodge star operator. It is determined by the metric and the orientation, and encodes the duality between forms of complementary degree.
+
+In practice, for a 1-form $\tilde{w} = w_\mu \dd x^\mu$, we obtain
+$$
+\star \tilde{w}
+= \frac{1}{3!} w_\mu \,\epsilon^{\mu\nu\rho\sigma} \,\eta_{\nu\alpha}\eta_{\rho\beta}\eta_{\sigma\gamma}
+\,\dd x^\alpha \wedge \dd x^\beta \wedge \dd x^\gamma
+= \frac{1}{3!} w^\nu \,\epsilon_{\nu\alpha\beta\gamma}
+\,\dd x^\alpha \wedge \dd x^\beta \wedge \dd x^\gamma,
+$$
+where $w^\nu = \eta^{\nu\mu} w_\mu$. This shows explicitly how the metric is used to convert between covariant and contravariant components in the construction of $\star$.
+
+In an oriented orthonormal basis, $\star \alpha$ can be understood as the form obtained by completing the directions of $\alpha$ to a full oriented basis. This makes the action of $\star$ explicit in coordinates.
+
+---
+
+::: {.callout-exercise}
+### Exercises (Hodge Star in 4D)
+
+1. Show that for a 1-form $\tilde{w}$,
+   $$
+   (\star \tilde{w})_{\alpha\beta\gamma} = w_\nu \eta^{\nu\mu} \epsilon_{\mu\alpha\beta\gamma}.
+   $$
+2. Derive the expression for $\star(\dd x^\mu)$ explicitly.
+3. Show that $\star^2 = -1$ on 1-forms in Minkowski signature $(-,+,+,+)$.
+4. Verify that $\star 1 = \mathbb{e}^4$ and $\star \mathbb{e}^4 = 1$.
+5. Compute $\star(\dd x^0 \wedge \dd x^1)$.
+6. Verify explicitly the raising/lowering steps in
+   $$
+   \star \tilde{w} = \frac{1}{3!} w^\nu \epsilon_{\nu\alpha\beta\gamma} \dd x^\alpha \wedge \dd x^\beta \wedge \dd x^\gamma.
+   $$
+7. Show that contraction with $\mathbb{e}^4$ maps vectors to 3-forms.
+8. Show that contraction with $\mathbb{e}_4$ maps 1-forms to 3-vectors.
+9. Explain why $\star$ depends on both metric and orientation.
+:::
+
+---
+
+### Explicit action in $\mathbb{R}^3$
+
+In 3D Euclidean space with coordinates $(x,y,z)$, the volume form is
+$$
+\mathbb{e}^3 = \dd x \wedge \dd y \wedge \dd z.
+$$
+The same construction used in four dimensions applies here. The Hodge star is
+determined by the requirement that it maps a form to the complementary directions
+needed to produce the volume form with the correct orientation.
+
+For 1-forms:
+$$
+\star \dd x = \dd y \wedge \dd z,
+\quad
+\star \dd y = \dd z \wedge \dd x,
+\quad
+\star \dd z = \dd x \wedge \dd y,
+$$
+
+For 2-forms:
+$$
+\star (\dd x \wedge \dd y) = \dd z,
+\quad
+\star (\dd y \wedge \dd z) = \dd x,
+\quad
+\star (\dd z \wedge \dd x) = \dd y.
+$$
+
+For scalars and volume forms:
+$$
+\star 1 = \dd x \wedge \dd y \wedge \dd z,
+\qquad
+\star (\dd x \wedge \dd y \wedge \dd z) = 1.
+$$
+
+These relations follow directly from the defining property that $\alpha \wedge \star \beta$
+reproduces the volume form when $\alpha$ and $\beta$ span complementary directions.
+
+It is useful to relate this three-dimensional construction to the four-dimensional one.
+Given a unit timelike vector $u^\mu$, a spatial vector $v^\mu$ (orthogonal to $u^\mu$)
+can be represented as a bivector $u \wedge v$. Applying the four-dimensional Hodge star,
+we obtain
+$$
+\star (u \wedge v)
+= \eta^{-1}(i_v i_u \mathbb{e}^4)
+= \frac{1}{2} u_\mu v_\nu \,\epsilon^{\mu\nu\alpha\beta}
+\,\partial_\alpha \wedge \partial_\beta,
+$$
+which is a purely spatial bivector. This construction is coordinate-independent and
+projects out any component along $u^\mu$.
+
+In the frame where $u^\mu = (1,0,0,0)$, this reduces to
+$$
+\star (u \wedge v)
+= \frac{1}{2} v_i \,\epsilon^{0ijk}
+\,\partial_j \wedge \partial_k,
+$$
+which reproduces the usual identification between spatial vectors and antisymmetric
+tensors in three dimensions. Thus, using $\mathbb{e}^4(u)$, we can define a Hodge dual 
+acting on forms orthogonal to $u$:
+$$
+\star_u: \Lambda^p_{\perp u} \to \Lambda^{3-p}_{\perp u}.
+$$
+
+---
+
+::: {.callout-exercise}
+### Exercises (Hodge Star in 3D)
+
+1. Verify $\star \dd x = \dd y \wedge \dd z$ using $\epsilon_{ijk}$.
+2. Compute $\star(\dd y \wedge \dd z)$ explicitly.
+3. Show that $\star^2 = +1$ on 1-forms in 3D Euclidean space.
+4. Show that $\star^2 = +1$ on all forms in 3D Euclidean space.
+5. Verify that
+   $$
+   \star 1 = \dd x \wedge \dd y \wedge \dd z.
+   $$
+6. Compute $\star(\dd x + \dd y)$.
+7. Show that
+   $$
+   \epsilon^{ijk}\epsilon_{ilm} = \delta^j_l \delta^k_m - \delta^j_m \delta^k_l.
+   $$
+8. Show explicitly how $\star(u \wedge v)$ produces a spatial bivector.
+9. For $u=(1,0,0,0)$ compute $\star(u\wedge v)$.
+:::
+
+---
+
+### Interpretation
+
+- The 4D Hodge star is intrinsic to spacetime.
+- The 3D Hodge star arises only after choosing an observer.
+- This explains why operations like the cross product and the magnetic field depend on a choice of frame.
+
+The Hodge star:
+
+- uses the metric to identify orthogonal directions,
+- uses orientation to fix signs,
+- converts objects of dimension $p$ into complementary objects of dimension $n-p$.
+
+In 3D:
+
+- 1-forms $\leftrightarrow$ 2-forms (vectors $\leftrightarrow$ pseudovectors),
+- 0-forms $\leftrightarrow$ 3-forms (scalars $\leftrightarrow$ volume densities).
+
+This is the mechanism behind:
+
+- cross product,
+- curl,
+- divergence,
+
+which arise from combining $\dd$ and $\star$.
+
+---
+
+## Differential Vector Operators
+
+To introduce vector differential operators, we first relabel the basis covectors and vectors. We define
+$$
+\gamma^\mu = \dd x^\mu, \qquad \gamma_\mu = \partial_\mu,
+$$
+so that $\{\gamma^\mu\}$ and $\{\gamma_\mu\}$ remain dual bases. This allows us to write the differential operator in compact form as
+$$
+\partial \equiv \gamma^\mu \partial_\mu,
+$$
+where $\partial_\mu$ is the covariant derivative (which reduces to the usual partial derivative in Cartesian coordinates), and $\gamma^\mu$ is treated as a constant basis 1-form.
+
+With this notation, the antisymmetric (rotational) derivative of a vector field $v = v^\mu \gamma_\mu$ is
+$$
+\partial \wedge v
+= \frac{1}{2}(\partial_\mu v_\nu - \partial_\nu v_\mu)\,\gamma^\mu \wedge \gamma^\nu,
+$$
+while the divergence is
+$$
+\partial \cdot v = \partial_\mu v^\nu \eta_{\mu\nu}.
+$$
+
+---
+
+::: {.callout-exercise}
+### Exercises (Differential Operators)
+
+1. Show that
+   $$
+   \partial = \gamma^\mu \partial_\mu
+   $$
+   reproduces $\dd$ when acting on scalars.
+2. Compute $\partial \wedge v$ explicitly for $v^\mu=(ct,x,y,z)$.
+3. Show that
+   $$
+   \partial \cdot v = \partial_\mu v^\mu.
+   $$
+4. Verify antisymmetry:
+   $$
+   \partial \wedge v = - \partial_\mu v \wedge \gamma^\mu.
+   $$
+5. Show that $\partial \wedge \partial = 0$. (Assume that fields are smooth enough for derivatives to commute.)
+6. Compute $\partial \cdot (x^\mu \gamma_\mu)$.
+7. Show that $\partial$ acts linearly.
+8. Interpret $\partial \wedge v$ geometrically.
+9. Show that divergence is metric contraction of derivative.
+:::
+
+---
+
+### Cross Product and Curl from Projection and Hodge Star
+
+To recover the familiar three-dimensional operators, we introduce a reference unit timelike vector $u$ and project onto the spatial subspace orthogonal to it. For two vectors $v$ and $w$, the antisymmetric product projected along $u$ is
+$$
+u \wedge (v \wedge w) = u^\mu v^\nu w^\rho \,\gamma_\mu \wedge \gamma_\nu \wedge \gamma_\rho,
+$$
+which represents a spatial oriented volume element. Applying the Hodge dual associated with $u$, we obtain a spatial vector:
+$$
+\star_u(v \wedge w) = u^\mu v^\nu w^\rho \,\epsilon_{\mu\nu\rho\sigma}\,\gamma^\sigma.
+$$
+
+In the frame where $u = (1,0,0,0)$, this reduces to
+$$
+\star_u(v \wedge w) = v^i w^j \epsilon_{0ijk}\,\gamma^k,
+$$
+and using $\epsilon_{0ijk} = \epsilon_{ijk}$, this reproduces the usual cross product. Thus, the cross product is a special case of the wedge product combined with the Hodge dual.
+
+Similarly, the curl can be written as
+$$
+\partial \times v \equiv \star_u\big(\partial \wedge v\big) = u^\mu \epsilon_{\mu\nu\rho\sigma}\,\partial^\nu v^\rho \,\gamma^\sigma,
+$$
+which again reduces, for $u = (1,0,0,0)$, to
+$$
+\partial \times v
+= \partial^i v^j \epsilon_{0ijk}\,\gamma^k
+= (\partial^1 v^2 - \partial^2 v^1)\gamma^3
+- (\partial^1 v^3 - \partial^3 v^1)\gamma^2
++ (\partial^2 v^3 - \partial^3 v^2)\gamma^1.
+$$
+In this way, the standard three-dimensional vector operators arise from covariant four-dimensional constructions by projection along a chosen observer $u$.
+
+---
+
+### Curl of a Bivector Field
+
+Given a bivector field
+$$
+B = \frac{1}{2} B^{\mu\nu} \gamma_\mu \wedge \gamma_\nu,
+$$
+we define its curl by
+$$
+\partial \times B \equiv \star_u\big(\partial \wedge B\big)
+= u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
+$$
+This extends the notion of curl to bivector fields, which naturally appear in the covariant description of electromagnetism.
+
+Applying the spatial Hodge dual once more produces a scalar:
+$$
+\star_u(\partial \wedge B)
+= u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
+$$
+
+In the frame where $u = (1,0,0,0)$, this becomes
+$$
+\star_u(\partial \wedge B)
+= \partial^i B^{jk} \epsilon_{0ijk}.
+$$
+
+Introducing the spatial dual vector
+$$
+B^i = \frac{1}{2}\,\epsilon^{ijk} B_{jk} \;=\; (\star_u B)^i,
+$$
+we obtain
+$$
+\star_u(\partial \wedge B) = \partial_i B^i.
+$$
+
+Thus,
+$$
+\star_u(\partial \wedge B) = \partial \cdot (\star_u B).
+$$
+That is, the curl of a bivector field is equivalent to the divergence of its Hodge dual vector field. This illustrates how the use of the Hodge star can hide the underlying geometric nature of the fields and operations. In three dimensions this identification is natural, but it arises from combining the wedge product with the Hodge dual and is not fundamental in four-dimensional spacetime.
+
+---
+
+::: {.callout-exercise}
+### Exercises (Curl of Bivectors)
+
+1. Show explicitly that $\partial \wedge B$ is a 3-vector.
+2. Verify that $\star_u(\partial \wedge B)$ is a scalar.
+3. Derive
+   $$
+   \star_u(\partial \wedge B) = \partial_i B^i,
+   $$
+   using that $B^i = \frac{1}{2}\epsilon^{ijk}B_{jk}$.
+4. Verify the identity
+   $$
+   \star_u(\partial \wedge B) = \partial \cdot (\star_u B).
+   $$
+5. Compute $\partial \wedge B$ for constant $B^{\mu\nu}$.
+6. Show that curl vanishes for constant bivector fields.
+:::
+
+---
+
+### Codifferential Operator
+
+The combination $\delta = \star \dd \star$ is called the codifferential. It
+satisfies:
+$$
+\delta: \Lambda^p T^*M \to \Lambda^{p-1} T^*M.
+$$
+
+In coordinates, for a 1-form $\omega = \omega_i \dd x^i$:
+$$
+\delta\omega = \partial_\mu \omega_\nu \eta^{\mu\nu},
+$$
+which is precisely the divergence.
+
+Key property: $\delta^2 = 0$, analogous to $\dd^2 = 0$.
+
+---
+
+::: {.callout-exercise}
+### Exercises (Codifferential)
+
+1. Show that
+   $$
+   \delta = \star \dd \star
+   $$
+   maps $p$-forms to $(p-1)$-forms.
+2. Verify $\delta^2 = 0$.
+3. Compute $\delta$ acting on a 1-form explicitly.
+4. Show that $\delta \omega = \partial_\mu \omega^\mu$.
+5. Compute $\delta(\dd f)$.
+6. Show that $\delta$ is adjoint of $\dd$.
+7. Verify $\delta(\dd x^\mu)=0$.
+8. Compute $\delta$ on a 2-form.
 :::

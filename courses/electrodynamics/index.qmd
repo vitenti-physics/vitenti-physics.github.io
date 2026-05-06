@@ -11,6 +11,7 @@ These are the lecture notes and problem sets for the Electrodynamics course. The
 
 - [Geometry Review for Electrodynamics](geometry-review.qmd)
 - [Calculus on Minkowski Spacetime](calculus-on-minkowski-spacetime.qmd)
+- [Maxwell Equations in Covariant Form](maxwell-equations-forms.qmd)
 
 {{< include /_footer.qmd >}}
 
