@@ -303,35 +303,170 @@ $$
 
 These describe pressure and momentum transport.
 
-## Conservation Law
+## Poynting's Theorem
 
-Using Maxwell's equations,
+We now derive the local statement of energy conservation for the electromagnetic
+field directly from Maxwell's equations. In Heaviside–Lorentz units with $c=1$, the
+equations containing the sources are
+
+$$
+\nabla\cdot\mathbf E=\rho,
+\qquad
+\nabla\times\mathbf B-\partial_t\mathbf E=\mathbf J,
+$$
+
+and the homogeneous equations are
+
+$$
+\nabla\cdot\mathbf B=0,
+\qquad
+\nabla\times\mathbf E+\partial_t\mathbf B=0.
+$$
+
+The rate at which the field does work on the charges, per unit volume, is
+$\mathbf J\cdot\mathbf E$. Using Ampère's law to eliminate $\mathbf J$,
+
+$$
+\mathbf J\cdot\mathbf E
+=\mathbf E\cdot(\nabla\times\mathbf B)-\mathbf E\cdot\partial_t\mathbf E.
+$$
+
+The vector identity
+
+$$
+\nabla\cdot(\mathbf E\times\mathbf B)
+=\mathbf B\cdot(\nabla\times\mathbf E)-\mathbf E\cdot(\nabla\times\mathbf B),
+$$
+
+combined with Faraday's law $\nabla\times\mathbf E=-\partial_t\mathbf B$, gives
+
+$$
+\mathbf E\cdot(\nabla\times\mathbf B)
+=-\mathbf B\cdot\partial_t\mathbf B-\nabla\cdot(\mathbf E\times\mathbf B).
+$$
+
+Substituting and collecting the time derivatives,
+
+$$
+\mathbf J\cdot\mathbf E
+=-\partial_t\!\left[\tfrac12\left(E^2+B^2\right)\right]
+-\nabla\cdot(\mathbf E\times\mathbf B).
+$$
+
+Introducing the field energy density and the Poynting vector,
+
+$$
+u=\tfrac12\left(E^2+B^2\right),
+\qquad
+\mathbf S=\mathbf E\times\mathbf B,
+$$
+
+this rearranges into **Poynting's theorem**:
+
+$$
+\partial_t u+\nabla\cdot\mathbf S=-\mathbf J\cdot\mathbf E.
+$$
+
+### Integral Form and Interpretation
+
+Integrating over a fixed volume $V$ and applying the divergence theorem,
+
+$$
+\frac{d}{dt}\int_V u\,dV
++\oint_{\partial V}\mathbf S\cdot d\mathbf A
+=-\int_V \mathbf J\cdot\mathbf E\,dV.
+$$
+
+Each term has a direct physical meaning:
+
+- the first term is the rate of change of the electromagnetic energy stored in $V$;
+- the surface term is the energy flux leaving $V$ through its boundary, carried by the
+  field;
+- the term $\int_V \mathbf J\cdot\mathbf E\,dV$ is the rate of work done by the field on
+  the charges, i.e. the energy transferred from field to matter.
+
+The theorem states that the field energy in $V$ can change only by flowing across the
+boundary or by being delivered to the charges. This identifies $\mathbf S$ as the
+energy flux density of the electromagnetic field.
+
+## Covariant Form of Poynting's Theorem
+
+Poynting's theorem and the analogous statement of momentum conservation are unified in
+a single covariant equation. Starting from Maxwell's equations in covariant form,
 
 $$
 \partial_\mu F^{\mu\nu}=J^\nu,
 $$
 
-one obtains
+and using the Bianchi identity $\partial_{[\lambda}F_{\mu\nu]}=0$ to dispose of the
+purely field-dependent terms, the divergence of the energy-momentum tensor is
 
 $$
-\partial_\mu T^{\mu\nu}
-=
--F^{\nu\lambda}J_\lambda.
+\partial_\mu T^{\mu\nu}=-F^{\nu\lambda}J_\lambda.
 $$
 
-In vacuum,
+The right-hand side is (minus) the **Lorentz four-force density**
 
 $$
-J^\mu=0,
+f^\nu=F^{\nu\lambda}J_\lambda,
 $$
 
-and therefore
+the rate at which four-momentum is transferred from the field to the charges. The
+single equation $\partial_\mu T^{\mu\nu}=-f^\nu$ therefore contains both energy and
+momentum balance, recovered by fixing the free index $\nu$.
+
+### Energy Component ($\nu=0$)
+
+With $T^{00}=u$ and $T^{i0}=S^i$, the left-hand side is
 
 $$
-\partial_\mu T^{\mu\nu}=0.
+\partial_\mu T^{\mu 0}=\partial_t u+\nabla\cdot\mathbf S,
 $$
 
-This is local conservation of electromagnetic energy and momentum.
+while the force density gives $f^0=F^{0\lambda}J_\lambda=\mathbf E\cdot\mathbf J$. Hence
+
+$$
+\partial_t u+\nabla\cdot\mathbf S=-\mathbf J\cdot\mathbf E,
+$$
+
+which is exactly Poynting's theorem. The time component of
+$\partial_\mu T^{\mu\nu}=-f^\nu$ is the statement of energy conservation.
+
+### Momentum Components ($\nu=i$)
+
+With $T^{0i}=S^i$ playing the role of the momentum density, the spatial components read
+
+$$
+\partial_t S^i+\partial_j T^{ji}=-f^i,
+\qquad
+f^i=\left(\rho\mathbf E+\mathbf J\times\mathbf B\right)^i,
+$$
+
+where the source is the ordinary Lorentz force density acting on the charges.
+Introducing the Maxwell stress tensor
+$\sigma^{ij}=-T^{ij}=E^iE^j+B^iB^j-\tfrac12\delta^{ij}(E^2+B^2)$, this becomes
+
+$$
+\partial_t S^i=\partial_j\sigma^{ij}-\left(\rho\mathbf E+\mathbf J\times\mathbf B\right)^i,
+$$
+
+the conservation of momentum: the field momentum density $\mathbf S$ changes through the
+momentum flux carried by the stresses $\sigma^{ij}$ and through the momentum delivered
+to matter by the Lorentz force.
+
+### Vacuum
+
+In the absence of sources,
+
+$$
+J^\mu=0
+\qquad\Longrightarrow\qquad
+\partial_\mu T^{\mu\nu}=0,
+$$
+
+so electromagnetic energy and momentum are separately conserved. This is the situation
+relevant far from a radiating source, where the field propagates freely and
+$T^{\mu\nu}$ describes energy and momentum streaming outward to infinity.
 
 ## Liénard–Wiechert Fields
 
