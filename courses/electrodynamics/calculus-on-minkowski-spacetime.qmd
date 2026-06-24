@@ -528,26 +528,26 @@ $$
 we can define a spatial volume form associated with the observer $u^\mu$ by
 contracting the spacetime volume form:
 $$
-\mathbb{e}^3(u) = i_u \mathbb{e}^4 = \mathbb{e}^4(u).
+\mathbb{e}^3_u = i_u \mathbb{e}^4 = \mathbb{e}^4(u).
 $$
 
 In components, this gives
 $$
-\mathbb{e}^3(u)_{\alpha\beta\gamma} = u^\mu \,\epsilon_{\mu\alpha\beta\gamma}.
+\mathbb{e}^3_{u\alpha\beta\gamma} = u^\mu \,\epsilon_{\mu\alpha\beta\gamma}.
 $$
 
 This object is a 3-form that is orthogonal to $u^\mu$ in the sense that
 $$
-i_u \mathbb{e}^3(u) = 0.
+i_u \mathbb{e}^3_u = 0.
 $$
 
 In the special case where $u^\mu = (1,0,0,0)$, we obtain
 $$
-\mathbb{e}^3(u) = \dd x^1 \wedge \dd x^2 \wedge \dd x^3,
+\mathbb{e}^3_u = \dd x^1 \wedge \dd x^2 \wedge \dd x^3,
 $$
 which is the standard spatial volume form.
 
-Thus, $\mathbb{e}^3(u)$ represents the oriented volume element in the local
+Thus, $\mathbb{e}^3_u$ represents the oriented volume element in the local
 rest frame of the observer $u^\mu$. It provides the natural geometric object
 used to define spatial Hodge duals and to interpret quantities such as magnetic
 fields as area-like (bivector) objects.
@@ -606,7 +606,20 @@ Since the metric provides an identification between vectors and covectors, we ca
 $$
 \star: \Lambda^p T_p^*M \to \Lambda^{4-p} T_p^*M.
 $$
-This is the Hodge star operator. It is determined by the metric and the orientation, and encodes the duality between forms of complementary degree.
+This is the Hodge star operator. It is determined by the metric and the orientation, and encodes the duality between forms of complementary degree. More precisely, given a $p$-form $\alpha \in \Lambda^p T_p^*M$, we define
+$$
+\star \alpha = i_{\alpha^\sharp}\,\mathbb{e}^4,
+$$
+where $\alpha^\sharp$ is the $p$-vector obtained by raising the indices of $\alpha$ with the inverse metric $\eta^{-1}$. In components, this can be expressed (for a 1-form) as
+$$
+\star \alpha = \frac{1}{3!} \alpha_\mu \,\epsilon^{\mu\nu\rho\sigma} \,\eta_{\nu\kappa}\eta_{\rho\lambda}\eta_{\sigma\tau}
+\,\dd x^\kappa \wedge \dd x^\lambda \wedge \dd x^\tau.
+$$
+For a 2-form $\beta \in \Lambda^2 T_p^*M$, the dual is again a 2-form,
+$$
+\star \beta = \frac{1}{2!\,2!} \beta_{\mu\nu} \,\epsilon^{\mu\nu\rho\sigma} \,\eta_{\rho\kappa}\eta_{\sigma\lambda}
+\,\dd x^\kappa \wedge \dd x^\lambda.
+$$
 
 In practice, for a 1-form $\tilde{w} = w_\mu \dd x^\mu$, we obtain
 $$
@@ -706,6 +719,10 @@ tensors in three dimensions. Thus, using $\mathbb{e}^4(u)$, we can define a Hodg
 acting on forms orthogonal to $u$:
 $$
 \star_u: \Lambda^p_{\perp u} \to \Lambda^{3-p}_{\perp u}.
+$$
+More explicitly, for a $p$-form $\tilde{w}$, we have
+$$
+\star_u \tilde{w} \equiv \eta(\mathbb{e}_4(u, \tilde{w})).
 $$
 
 ---
@@ -813,34 +830,52 @@ $$
 
 To recover the familiar three-dimensional operators, we introduce a reference unit timelike vector $u$ and project onto the spatial subspace orthogonal to it. For two vectors $v$ and $w$, the antisymmetric product projected along $u$ is
 $$
-u \wedge (v \wedge w) = u^\mu v^\nu w^\rho \,\gamma_\mu \wedge \gamma_\nu \wedge \gamma_\rho,
+u \wedge v \wedge w
+=
+u^\mu v^\nu w^\rho \,\gamma_\mu \wedge \gamma_\nu \wedge \gamma_\rho,
 $$
 which represents a spatial oriented volume element. Applying the Hodge dual associated with $u$, we obtain a spatial vector:
 $$
-\star_u(v \wedge w) = u^\mu v^\nu w^\rho \,\epsilon_{\mu\nu\rho\sigma}\,\gamma^\sigma.
+\star_u(v \wedge w)
+=
+u^\mu v^\nu w^\rho \,\epsilon_{\mu\nu\rho\sigma}\,\gamma^\sigma.
 $$
 
 In the frame where $u = (1,0,0,0)$, this reduces to
 $$
-\star_u(v \wedge w) = v^i w^j \epsilon_{0ijk}\,\gamma^k,
+\star_u(v \wedge w)
+=
+v^i w^j \epsilon_{0ijk}\,\gamma^k,
 $$
-and using $\epsilon_{0ijk} = \epsilon_{ijk}$, this reproduces the usual cross product. Thus, the cross product is a special case of the wedge product combined with the Hodge dual.
+and using $\epsilon_{0ijk} = \epsilon_{ijk}$, we recover the usual cross product. Thus, the cross product is a special case of the wedge product combined with the Hodge dual. More precisely,
+$$
+v \times w
+\equiv
+\star_u(v \wedge w).
+$$
 
 Similarly, the curl can be written as
 $$
-\partial \times v \equiv \star_u\big(\partial \wedge v\big) = u^\mu \epsilon_{\mu\nu\rho\sigma}\,\partial^\nu v^\rho \,\gamma^\sigma,
+\partial \times v
+\equiv
+\star_u(\partial \wedge v)
+=
+u^\mu \epsilon_{\mu\nu\rho\sigma}\,\partial^\nu v^\rho \,\gamma^\sigma,
 $$
 which again reduces, for $u = (1,0,0,0)$, to
 $$
 \partial \times v
-= \partial^i v^j \epsilon_{0ijk}\,\gamma^k
-= (\partial^1 v^2 - \partial^2 v^1)\gamma^3
-- (\partial^1 v^3 - \partial^3 v^1)\gamma^2
-+ (\partial^2 v^3 - \partial^3 v^2)\gamma^1.
+=
+\partial^i v^j \epsilon_{0ijk}\,\gamma^k
+=
+(\partial^2 v^3 - \partial^3 v^2)\gamma^1
+-
+(\partial^1 v^3 - \partial^3 v^1)\gamma^2
++
+(\partial^1 v^2 - \partial^2 v^1)\gamma^3.
 $$
-In this way, the standard three-dimensional vector operators arise from covariant four-dimensional constructions by projection along a chosen observer $u$.
 
----
+In this way, the standard three-dimensional vector operators arise from covariant four-dimensional constructions by projection along a chosen observer $u$.
 
 ### Curl of a Bivector Field
 
@@ -850,37 +885,37 @@ B = \frac{1}{2} B^{\mu\nu} \gamma_\mu \wedge \gamma_\nu,
 $$
 we define its curl by
 $$
-\partial \times B \equiv \star_u\big(\partial \wedge B\big)
-= u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
+\star_u\left(\partial \wedge B\right)
+= \frac{1}{2}u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
 $$
 This extends the notion of curl to bivector fields, which naturally appear in the covariant description of electromagnetism.
 
-Applying the spatial Hodge dual once more produces a scalar:
+Since $\partial \wedge B$ is a spatial 3-form, the spatial Hodge dual produces a scalar:
 $$
-\star_u(\partial \wedge B)
-= u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
+\star_u\left(\partial \wedge B\right)
+= \frac{1}{2}u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
 $$
 
 In the frame where $u = (1,0,0,0)$, this becomes
 $$
-\star_u(\partial \wedge B)
-= \partial^i B^{jk} \epsilon_{0ijk}.
+\star_u\left(\partial \wedge B\right)
+= \frac{1}{2}\partial^i B^{jk} \epsilon_{0ijk}.
 $$
 
 Introducing the spatial dual vector
 $$
-B^i = \frac{1}{2}\,\epsilon^{ijk} B_{jk} \;=\; (\star_u B)^i,
+B^i = \frac{1}{2}\epsilon^{ijk} B_{jk} \;=\; (\star_u B)^i,
 $$
 we obtain
 $$
-\star_u(\partial \wedge B) = \partial_i B^i.
+\star_u\left(\partial \wedge B\right) = \partial_i B^i.
 $$
 
 Thus,
 $$
-\star_u(\partial \wedge B) = \partial \cdot (\star_u B).
+\star_u\left(\partial \wedge B\right) = \partial \cdot (\star_u B).
 $$
-That is, the curl of a bivector field is equivalent to the divergence of its Hodge dual vector field. This illustrates how the use of the Hodge star can hide the underlying geometric nature of the fields and operations. In three dimensions this identification is natural, but it arises from combining the wedge product with the Hodge dual and is not fundamental in four-dimensional spacetime.
+That is, the curl of a bivector field is equivalent to the divergence of its Hodge dual vector field. This illustrates how the use of the Hodge star can hide the underlying geometric nature of the fields and operations. In three dimensions this identification is natural, but it arises from combining the wedge product with the Hodge dual and is not fundamental in four-dimensional spacetime. This is also a good example of how the Hodge star exchanges the exterior product and the divergence.
 
 ---
 
@@ -891,12 +926,12 @@ That is, the curl of a bivector field is equivalent to the divergence of its Hod
 2. Verify that $\star_u(\partial \wedge B)$ is a scalar.
 3. Derive
    $$
-   \star_u(\partial \wedge B) = \partial_i B^i,
+   \star_u\left(\partial \wedge B\right) = \partial_i B^i,
    $$
    using that $B^i = \frac{1}{2}\epsilon^{ijk}B_{jk}$.
 4. Verify the identity
    $$
-   \star_u(\partial \wedge B) = \partial \cdot (\star_u B).
+   \star_u\left(\partial \wedge B\right) = \partial \cdot (\star_u B).
    $$
 5. Compute $\partial \wedge B$ for constant $B^{\mu\nu}$.
 6. Show that curl vanishes for constant bivector fields.
@@ -938,3 +973,30 @@ Key property: $\delta^2 = 0$, analogous to $\dd^2 = 0$.
 7. Verify $\delta(\dd x^\mu)=0$.
 8. Compute $\delta$ on a 2-form.
 :::
+
+## Exterior Product as a Projection Operator
+
+Another use of the exterior product is to define projection operators. For a vector $v$ and a time-like vector $u$, one can compute exterior products like $v \wedge u$ to obtain a bivector. In the frame where $u = (1,0,0,0)$, this bivector has components only in the spatial directions. Thus, the operation of wedging with $u$ effectively projects out the temporal component of $v$ and produces a spatial bivector. This is a powerful way to extract the spatial part of a vector field relative to a chosen observer.
+
+To better see that we can compute $v \wedge u$ and then apply this to $u$, i.e.,
+$$
+v \wedge u (u) = v \cdot u \, u - u \cdot u \, v = v + (v \cdot u) u = (\delta_\mu{}^\nu + u_\mu u^\nu) v^\mu\gamma_\nu = v^\mu h_\mu{}^\nu \gamma_\nu,
+$$
+which is exactly the spatial projection we defined in geometry-review.qmd. It is also easy to show that
+$$
+v = v \wedge u (u) - (v \cdot u) u,
+$$
+that is, $v$ can be written as the sum of its spatial projection and its temporal part. Therefore, the exterior product with $u$ encodes the spatial projection operation in a geometric way. This is another example of how the wedge product can be used to define geometric operations without reference to coordinates.
+
+Note that the same is true also for a 2-vector $F$. We know that $F \wedge u$ is a 3-vector that contains only components orthogonal to $u$. Applying this to $u$ again gives
+$$
+F \wedge u (u) = F(u) \wedge u + u \cdot u \, F = -F + F(u) \wedge u = - F^{\alpha\beta} h_\alpha{}^\mu h_\beta{}^\nu \gamma_\mu \wedge \gamma_\nu,
+$$
+which is exactly minus the spatial projection of the bivector $F$ onto the subspace
+orthogonal to $u$. Thus, just as for vectors, wedging with $u$ and contracting with
+$u$ again extracts the part of $F$ that lives in the observer's rest space; the extra
+overall sign relative to the vector case simply reflects that the projector now acts
+on two indices instead of one. This is precisely the operation that isolates the
+purely spatial (magnetic) part of the electromagnetic bivector relative to the
+observer $u$, while the components with one leg along $u$ encode the electric part.
+

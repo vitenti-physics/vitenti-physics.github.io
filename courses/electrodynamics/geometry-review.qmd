@@ -356,7 +356,7 @@ v^\flat(w) = g(v,w).
 $$
 In components, this corresponds to lowering an index,
 $$
-v_i = g_{ij} v^j,
+v_i = \eta_{ij} v^j,
 $$
 and the inverse metric provides the reverse operation (raising indices).
 
@@ -868,7 +868,7 @@ $$
 
 The projector onto the local spatial subspace orthogonal to $u^\mu$ is
 $$
-h_{\mu\nu} = g_{\mu\nu} + u_{\mu}u_{\nu},
+h_{\mu\nu} = \eta_{\mu\nu} + u_{\mu}u_{\nu},
 $$
 which satisfies
 $$

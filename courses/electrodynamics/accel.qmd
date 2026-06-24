@@ -1,0 +1,454 @@
+---
+title: "Accelerated Coordinates and Radiation from Moving Charges"
+---
+
+{{< include /_macros.qmd >}}
+
+## Scope
+
+These notes conclude the discussion of accelerated observers in flat spacetime
+and begin the study of radiation from moving charges.
+
+The goals are:
+
+- understand why Rindler coordinates are special;
+- distinguish accelerated congruences from Born-rigid congruences;
+- construct accelerated coordinates with identical proper acceleration;
+- introduce the electromagnetic energy-momentum tensor;
+- identify the radiative part of the Liénard–Wiechert field;
+- derive the physical meaning of energy and momentum transport by the field.
+
+## Rindler Coordinates Revisited
+
+Consider Minkowski spacetime with coordinates $(T,X,Y,Z)$ and metric
+
+$$
+ds^2=-dT^2+dX^2+dY^2+dZ^2.
+$$
+
+Define
+
+$$
+T=\rho\sinh(a\eta),
+\qquad
+X=\rho\cosh(a\eta).
+$$
+
+Substituting,
+
+$$
+ds^2=-(a\rho)^2d\eta^2+d\rho^2+dY^2+dZ^2.
+$$
+
+Worldlines $\rho=\mathrm{const}$ satisfy
+
+$$
+X^2-T^2=\rho^2.
+$$
+
+These are hyperbolae.
+
+Using proper time,
+
+$$
+d\tau=a\rho\,d\eta,
+$$
+
+the four-velocity is
+
+$$
+u^\mu=\left(\cosh\frac{\tau}{\rho},
+           \sinh\frac{\tau}{\rho}\right),
+$$
+
+and the four-acceleration is
+
+$$
+a^\mu=\frac{1}{\rho}
+\left(\sinh\frac{\tau}{\rho},
+      \cosh\frac{\tau}{\rho}\right).
+$$
+
+Hence
+
+$$
+a^\mu a_\mu=\frac{1}{\rho^2}.
+$$
+
+The proper acceleration is
+
+$$
+\alpha=\frac{1}{\rho}.
+$$
+
+::: {.callout-note}
+Different Rindler observers have different proper accelerations.
+The observer closest to the horizon accelerates the most.
+:::
+
+## Born Rigidity
+
+For a congruence with four-velocity $u^\mu$, define
+
+$$
+h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu.
+$$
+
+The spatial deformation tensor is
+
+$$
+\Theta_{\mu\nu}
+=
+h_\mu{}^\alpha h_\nu{}^\beta
+\nabla_{(\alpha}u_{\beta)}.
+$$
+
+Born rigidity requires
+
+$$
+\Theta_{\mu\nu}=0.
+$$
+
+This means that neighboring observers maintain constant proper separation in
+their instantaneous rest frame.
+
+Rindler observers satisfy this condition.
+
+## Why Equal Acceleration is Incompatible with Born Rigidity
+
+Suppose every observer had the same proper acceleration,
+
+$$
+a^\mu a_\mu=a_0^2.
+$$
+
+Imagine two neighboring observers separated by a fixed proper distance.
+
+After a short interval, the rear observer must have acquired a slightly larger
+velocity than the front observer if the separation is to remain fixed in the
+instantaneous rest frame.
+
+Therefore the proper acceleration must vary along the congruence.
+
+The result is that translational Born-rigid acceleration necessarily requires
+an acceleration gradient.
+
+Rindler coordinates realize exactly this behavior.
+
+## Accelerated Coordinates with Equal Proper Acceleration
+
+Start from the uniformly accelerated trajectory
+
+$$
+T_0(\tau)=\frac{1}{a}\sinh(a\tau),
+\qquad
+X_0(\tau)=\frac{1}{a}\cosh(a\tau).
+$$
+
+Translate the trajectory by a constant spatial label $\xi$:
+
+$$
+T(\tau,\xi)=\frac{1}{a}\sinh(a\tau),
+$$
+
+$$
+X(\tau,\xi)=\xi+\frac{1}{a}\cosh(a\tau).
+$$
+
+Every worldline has
+
+$$
+a^\mu a_\mu=a^2.
+$$
+
+The different observers therefore possess identical proper acceleration.
+
+Computing
+
+$$
+dT=\cosh(a\tau)d\tau,
+$$
+
+$$
+dX=d\xi+\sinh(a\tau)d\tau,
+$$
+
+gives
+
+$$
+ds^2
+=
+-d\tau^2
++2\sinh(a\tau)d\tau d\xi
++d\xi^2.
+$$
+
+The metric has
+
+$$
+g_{0i}\neq0.
+$$
+
+The congruence is accelerated but not of the Rindler type.
+
+### Comparison with Rindler
+
+| Property | Rindler | Equal-Acceleration Family |
+|-----------|----------|----------|
+| Proper acceleration | varies as $1/\rho$ | constant |
+| Born rigid | yes | no |
+| Horizon | yes | no |
+| $g_{0i}$ | 0 | nonzero |
+| Stationary | yes | no |
+
+## Transition to Electrodynamics
+
+Accelerated observers reveal nontrivial geometric effects.
+
+Accelerated charges reveal something more dramatic:
+
+they radiate.
+
+The key question is how to identify energy and momentum carried by the
+electromagnetic field.
+
+## Electromagnetic Energy-Momentum Tensor
+
+The electromagnetic field tensor is
+
+$$
+F_{\mu\nu}
+=
+\partial_\mu A_\nu
+-
+\partial_\nu A_\mu.
+$$
+
+The energy-momentum tensor is
+
+$$
+T^{\mu\nu}
+=
+F^{\mu\alpha}F^\nu{}_\alpha
+-
+\frac14
+\eta^{\mu\nu}
+F^{\alpha\beta}F_{\alpha\beta}.
+$$
+
+This object contains:
+
+- energy density;
+- momentum density;
+- stresses;
+- energy flux.
+
+All local conservation laws are encoded in a single tensor equation.
+
+## Physical Interpretation of the Components
+
+### Energy Density
+
+For an inertial observer,
+
+$$
+T^{00}
+=
+\frac12(E^2+B^2).
+$$
+
+This is the electromagnetic energy density.
+
+### Momentum Density
+
+The spatial momentum density is
+
+$$
+T^{i0}
+=
+(\mathbf E\times\mathbf B)^i.
+$$
+
+Energy flux and momentum density coincide because electromagnetic radiation
+travels at the speed of light.
+
+### Poynting Vector
+
+The energy flux is
+
+$$
+S^i=T^{0i}.
+$$
+
+Therefore
+
+$$
+\mathbf S=\mathbf E\times\mathbf B.
+$$
+
+### Maxwell Stress Tensor
+
+The spatial components are
+
+$$
+T^{ij}
+=
+-
+E^iE^j
+-
+B^iB^j
++
+\frac12(E^2+B^2)\delta^{ij}.
+$$
+
+These describe pressure and momentum transport.
+
+## Conservation Law
+
+Using Maxwell's equations,
+
+$$
+\partial_\mu F^{\mu\nu}=J^\nu,
+$$
+
+one obtains
+
+$$
+\partial_\mu T^{\mu\nu}
+=
+-F^{\nu\lambda}J_\lambda.
+$$
+
+In vacuum,
+
+$$
+J^\mu=0,
+$$
+
+and therefore
+
+$$
+\partial_\mu T^{\mu\nu}=0.
+$$
+
+This is local conservation of electromagnetic energy and momentum.
+
+## Liénard–Wiechert Fields
+
+For a moving charge,
+
+$$
+R^\mu=x^\mu-z^\mu(\tau_r),
+$$
+
+where $\tau_r$ is the retarded proper time.
+
+The field naturally separates into
+
+$$
+F_{\mu\nu}
+=
+F^{\mathrm{vel}}_{\mu\nu}
++
+F^{\mathrm{acc}}_{\mu\nu}.
+$$
+
+The scaling with distance is
+
+$$
+F^{\mathrm{vel}}\sim \frac1{R^2},
+$$
+
+$$
+F^{\mathrm{acc}}\sim \frac1R.
+$$
+
+The radiative contribution is therefore the acceleration field.
+
+## Radiation Zone
+
+Far from the source,
+
+$$
+\mathbf B=\hat{\mathbf n}\times\mathbf E,
+$$
+
+and
+
+$$
+|\mathbf E|=|\mathbf B|.
+$$
+
+Then
+
+$$
+u=T^{00}=E^2,
+$$
+
+and
+
+$$
+\mathbf S=E^2\hat{\mathbf n}.
+$$
+
+Energy flows radially outward.
+
+## Covariant Radiation Tensor
+
+The radiation contribution to the energy-momentum tensor has the form
+
+$$
+T^{\mu\nu}_{\rm rad}
+\propto
+\frac{
+a^2(R\cdot u)^2
+-(R\cdot a)^2
+}
+{(R\cdot u)^6}
+R^\mu R^\nu.
+$$
+
+Important observations:
+
+- proportional to $R^\mu R^\nu$;
+- null;
+- directed along outgoing light rays;
+- survives at arbitrarily large distances.
+
+This is the field responsible for energy loss by the source.
+
+## Relativistic Larmor Formula
+
+Integrating the radiative flux over a large sphere yields
+
+$$
+P
+=
+\frac{q^2}{6\pi}
+a^\mu a_\mu.
+$$
+
+In the instantaneous rest frame,
+
+$$
+P
+=
+\frac{q^2}{6\pi}
+a^2.
+$$
+
+This is the relativistic form of Larmor's formula.
+
+## Summary
+
+The Rindler congruence is a special Born-rigid accelerated frame whose proper
+acceleration varies spatially.
+
+Uniform proper acceleration for all observers can be achieved, but only at the
+cost of losing Born rigidity.
+
+For electrodynamics, the energy-momentum tensor provides the covariant
+description of energy density, momentum density, stresses, and fluxes.
+
+The radiative part of the Liénard–Wiechert field scales as $1/R$ and produces a
+finite energy flux at infinity, leading to the Larmor radiation formula.
