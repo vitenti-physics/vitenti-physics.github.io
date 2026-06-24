@@ -224,16 +224,20 @@ F_{\mu\nu}
 \partial_\nu A_\mu.
 $$
 
-The energy-momentum tensor is
+We work in SI units with $c=1$, so that $\epsilon_0\mu_0=1$ and $\epsilon_0=1/\mu_0$;
+the source equation then reads $\partial_\mu F^{\mu\nu}=-\mu_0 J^\nu$. The
+energy-momentum tensor is
 
 $$
 T^{\mu\nu}
 =
+\frac{1}{\mu_0}\left(
 F^{\mu\alpha}F^\nu{}_\alpha
 -
 \frac14
 \eta^{\mu\nu}
-F^{\alpha\beta}F_{\alpha\beta}.
+F^{\alpha\beta}F_{\alpha\beta}
+\right).
 $$
 
 This object contains:
@@ -254,7 +258,7 @@ For an inertial observer,
 $$
 T^{00}
 =
-\frac12(E^2+B^2).
+\frac{1}{2\mu_0}(E^2+B^2).
 $$
 
 This is the electromagnetic energy density.
@@ -266,7 +270,7 @@ The spatial momentum density is
 $$
 T^{i0}
 =
-(\mathbf E\times\mathbf B)^i.
+\frac{1}{\mu_0}(\mathbf E\times\mathbf B)^i.
 $$
 
 Energy flux and momentum density coincide because electromagnetic radiation
@@ -283,7 +287,7 @@ $$
 Therefore
 
 $$
-\mathbf S=\mathbf E\times\mathbf B.
+\mathbf S=\frac{1}{\mu_0}\mathbf E\times\mathbf B.
 $$
 
 ### Maxwell Stress Tensor
@@ -293,12 +297,14 @@ The spatial components are
 $$
 T^{ij}
 =
+\frac{1}{\mu_0}\left(
 -
 E^iE^j
 -
 B^iB^j
 +
-\frac12(E^2+B^2)\delta^{ij}.
+\frac12(E^2+B^2)\delta^{ij}
+\right).
 $$
 
 These describe pressure and momentum transport.
@@ -306,13 +312,13 @@ These describe pressure and momentum transport.
 ## Poynting's Theorem
 
 We now derive the local statement of energy conservation for the electromagnetic
-field directly from Maxwell's equations. In Heaviside–Lorentz units with $c=1$, the
-equations containing the sources are
+field directly from Maxwell's equations. In the SI conventions fixed above ($c=1$,
+$\epsilon_0=1/\mu_0$), the equations containing the sources are
 
 $$
-\nabla\cdot\mathbf E=\rho,
+\nabla\cdot\mathbf E=\mu_0\rho,
 \qquad
-\nabla\times\mathbf B-\partial_t\mathbf E=\mathbf J,
+\nabla\times\mathbf B-\partial_t\mathbf E=\mu_0\mathbf J,
 $$
 
 and the homogeneous equations are
@@ -328,7 +334,7 @@ $\mathbf J\cdot\mathbf E$. Using Ampère's law to eliminate $\mathbf J$,
 
 $$
 \mathbf J\cdot\mathbf E
-=\mathbf E\cdot(\nabla\times\mathbf B)-\mathbf E\cdot\partial_t\mathbf E.
+=\frac{1}{\mu_0}\left[\mathbf E\cdot(\nabla\times\mathbf B)-\mathbf E\cdot\partial_t\mathbf E\right].
 $$
 
 The vector identity
@@ -349,16 +355,16 @@ Substituting and collecting the time derivatives,
 
 $$
 \mathbf J\cdot\mathbf E
-=-\partial_t\!\left[\tfrac12\left(E^2+B^2\right)\right]
--\nabla\cdot(\mathbf E\times\mathbf B).
+=-\partial_t\!\left[\frac{1}{2\mu_0}\left(E^2+B^2\right)\right]
+-\nabla\cdot\!\left(\frac{1}{\mu_0}\mathbf E\times\mathbf B\right).
 $$
 
 Introducing the field energy density and the Poynting vector,
 
 $$
-u=\tfrac12\left(E^2+B^2\right),
+u=\frac{1}{2\mu_0}\left(E^2+B^2\right),
 \qquad
-\mathbf S=\mathbf E\times\mathbf B,
+\mathbf S=\frac{1}{\mu_0}\mathbf E\times\mathbf B,
 $$
 
 this rearranges into **Poynting's theorem**:
@@ -395,7 +401,7 @@ Poynting's theorem and the analogous statement of momentum conservation are unif
 a single covariant equation. Starting from Maxwell's equations in covariant form,
 
 $$
-\partial_\mu F^{\mu\nu}=J^\nu,
+\partial_\mu F^{\mu\nu}=-\mu_0 J^\nu,
 $$
 
 and using the Bianchi identity $\partial_{[\lambda}F_{\mu\nu]}=0$ to dispose of the
@@ -444,7 +450,7 @@ $$
 
 where the source is the ordinary Lorentz force density acting on the charges.
 Introducing the Maxwell stress tensor
-$\sigma^{ij}=-T^{ij}=E^iE^j+B^iB^j-\tfrac12\delta^{ij}(E^2+B^2)$, this becomes
+$\sigma^{ij}=-T^{ij}=\frac{1}{\mu_0}\left[E^iE^j+B^iB^j-\tfrac12\delta^{ij}(E^2+B^2)\right]$, this becomes
 
 $$
 \partial_t S^i=\partial_j\sigma^{ij}-\left(\rho\mathbf E+\mathbf J\times\mathbf B\right)^i,
@@ -517,13 +523,13 @@ $$
 Then
 
 $$
-u=T^{00}=E^2,
+u=T^{00}=\frac{E^2}{\mu_0},
 $$
 
 and
 
 $$
-\mathbf S=E^2\hat{\mathbf n}.
+\mathbf S=\frac{E^2}{\mu_0}\hat{\mathbf n}.
 $$
 
 Energy flows radially outward.
@@ -559,7 +565,7 @@ Integrating the radiative flux over a large sphere yields
 $$
 P
 =
-\frac{q^2}{6\pi}
+\frac{\mu_0 q^2}{6\pi}
 a^\mu a_\mu.
 $$
 
@@ -568,7 +574,7 @@ In the instantaneous rest frame,
 $$
 P
 =
-\frac{q^2}{6\pi}
+\frac{\mu_0 q^2}{6\pi}
 a^2.
 $$
 

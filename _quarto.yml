@@ -70,6 +70,8 @@ website:
                   href: courses/electrodynamics/calculus-on-minkowski-spacetime.qmd
                 - text: "Maxwell Equations in Covariant Form"
                   href: courses/electrodynamics/maxwell-equations-forms.qmd
+                - text: "Electromagnetic Energy and Momentum"
+                  href: courses/electrodynamics/accel.qmd
 format:
   html:
     theme:
