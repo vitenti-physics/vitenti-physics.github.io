@@ -333,7 +333,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Accelerated Coordinates and Radiation from Moving Charges</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/accel.html">Electromagnetic Energy and Momentum</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -501,13 +501,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
  <span class="menu-text">Electrodynamics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../courses/electrodynamics/index.html" class="sidebar-item-text sidebar-link">
@@ -530,6 +530,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../courses/electrodynamics/maxwell-equations-forms.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Maxwell Equations in Covariant Form</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/accel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Electromagnetic Energy and Momentum</span></a>
   </div>
 </li>
       </ul>
@@ -585,7 +591,7 @@ window.Quarto = {
 <main class="content column-body" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/accel.html">Electromagnetic Energy and Momentum</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Accelerated Coordinates and Radiation from Moving Charges</h1>
 </div>
@@ -810,15 +816,17 @@ F_{\mu\nu}
 -
 \partial_\nu A_\mu.
 \]</span></p>
-<p>The energy-momentum tensor is</p>
+<p>We work in SI units with <span class="math inline">\(c=1\)</span>, so that <span class="math inline">\(\epsilon_0\mu_0=1\)</span> and <span class="math inline">\(\epsilon_0=1/\mu_0\)</span>; the source equation then reads <span class="math inline">\(\partial_\mu F^{\mu\nu}=-\mu_0 J^\nu\)</span>. The energy-momentum tensor is</p>
 <p><span class="math display">\[
 T^{\mu\nu}
 =
+\frac{1}{\mu_0}\left(
 F^{\mu\alpha}F^\nu{}_\alpha
 -
 \frac14
 \eta^{\mu\nu}
-F^{\alpha\beta}F_{\alpha\beta}.
+F^{\alpha\beta}F_{\alpha\beta}
+\right).
 \]</span></p>
 <p>This object contains:</p>
 <ul>
@@ -837,7 +845,7 @@ F^{\alpha\beta}F_{\alpha\beta}.
 <p><span class="math display">\[
 T^{00}
 =
-\frac12(E^2+B^2).
+\frac{1}{2\mu_0}(E^2+B^2).
 \]</span></p>
 <p>This is the electromagnetic energy density.</p>
 </section>
@@ -847,7 +855,7 @@ T^{00}
 <p><span class="math display">\[
 T^{i0}
 =
-(\mathbf E\times\mathbf B)^i.
+\frac{1}{\mu_0}(\mathbf E\times\mathbf B)^i.
 \]</span></p>
 <p>Energy flux and momentum density coincide because electromagnetic radiation travels at the speed of light.</p>
 </section>
@@ -859,7 +867,7 @@ S^i=T^{0i}.
 \]</span></p>
 <p>Therefore</p>
 <p><span class="math display">\[
-\mathbf S=\mathbf E\times\mathbf B.
+\mathbf S=\frac{1}{\mu_0}\mathbf E\times\mathbf B.
 \]</span></p>
 </section>
 <section id="maxwell-stress-tensor" class="level3">
@@ -868,23 +876,25 @@ S^i=T^{0i}.
 <p><span class="math display">\[
 T^{ij}
 =
+\frac{1}{\mu_0}\left(
 -
 E^iE^j
 -
 B^iB^j
 +
-\frac12(E^2+B^2)\delta^{ij}.
+\frac12(E^2+B^2)\delta^{ij}
+\right).
 \]</span></p>
 <p>These describe pressure and momentum transport.</p>
 </section>
 </section>
 <section id="poyntings-theorem" class="level2">
 <h2 class="anchored" data-anchor-id="poyntings-theorem">Poynting’s Theorem</h2>
-<p>We now derive the local statement of energy conservation for the electromagnetic field directly from Maxwell’s equations. In Heaviside–Lorentz units with <span class="math inline">\(c=1\)</span>, the equations containing the sources are</p>
+<p>We now derive the local statement of energy conservation for the electromagnetic field directly from Maxwell’s equations. In the SI conventions fixed above (<span class="math inline">\(c=1\)</span>, <span class="math inline">\(\epsilon_0=1/\mu_0\)</span>), the equations containing the sources are</p>
 <p><span class="math display">\[
-\nabla\cdot\mathbf E=\rho,
+\nabla\cdot\mathbf E=\mu_0\rho,
 \qquad
-\nabla\times\mathbf B-\partial_t\mathbf E=\mathbf J,
+\nabla\times\mathbf B-\partial_t\mathbf E=\mu_0\mathbf J,
 \]</span></p>
 <p>and the homogeneous equations are</p>
 <p><span class="math display">\[
@@ -895,7 +905,7 @@ B^iB^j
 <p>The rate at which the field does work on the charges, per unit volume, is <span class="math inline">\(\mathbf J\cdot\mathbf E\)</span>. Using Ampère’s law to eliminate <span class="math inline">\(\mathbf J\)</span>,</p>
 <p><span class="math display">\[
 \mathbf J\cdot\mathbf E
-=\mathbf E\cdot(\nabla\times\mathbf B)-\mathbf E\cdot\partial_t\mathbf E.
+=\frac{1}{\mu_0}\left[\mathbf E\cdot(\nabla\times\mathbf B)-\mathbf E\cdot\partial_t\mathbf E\right].
 \]</span></p>
 <p>The vector identity</p>
 <p><span class="math display">\[
@@ -910,14 +920,14 @@ B^iB^j
 <p>Substituting and collecting the time derivatives,</p>
 <p><span class="math display">\[
 \mathbf J\cdot\mathbf E
-=-\partial_t\!\left[\tfrac12\left(E^2+B^2\right)\right]
--\nabla\cdot(\mathbf E\times\mathbf B).
+=-\partial_t\!\left[\frac{1}{2\mu_0}\left(E^2+B^2\right)\right]
+-\nabla\cdot\!\left(\frac{1}{\mu_0}\mathbf E\times\mathbf B\right).
 \]</span></p>
 <p>Introducing the field energy density and the Poynting vector,</p>
 <p><span class="math display">\[
-u=\tfrac12\left(E^2+B^2\right),
+u=\frac{1}{2\mu_0}\left(E^2+B^2\right),
 \qquad
-\mathbf S=\mathbf E\times\mathbf B,
+\mathbf S=\frac{1}{\mu_0}\mathbf E\times\mathbf B,
 \]</span></p>
 <p>this rearranges into <strong>Poynting’s theorem</strong>:</p>
 <p><span class="math display">\[
@@ -944,7 +954,7 @@ u=\tfrac12\left(E^2+B^2\right),
 <h2 class="anchored" data-anchor-id="covariant-form-of-poyntings-theorem">Covariant Form of Poynting’s Theorem</h2>
 <p>Poynting’s theorem and the analogous statement of momentum conservation are unified in a single covariant equation. Starting from Maxwell’s equations in covariant form,</p>
 <p><span class="math display">\[
-\partial_\mu F^{\mu\nu}=J^\nu,
+\partial_\mu F^{\mu\nu}=-\mu_0 J^\nu,
 \]</span></p>
 <p>and using the Bianchi identity <span class="math inline">\(\partial_{[\lambda}F_{\mu\nu]}=0\)</span> to dispose of the purely field-dependent terms, the divergence of the energy-momentum tensor is</p>
 <p><span class="math display">\[
@@ -975,7 +985,7 @@ f^\nu=F^{\nu\lambda}J_\lambda,
 \qquad
 f^i=\left(\rho\mathbf E+\mathbf J\times\mathbf B\right)^i,
 \]</span></p>
-<p>where the source is the ordinary Lorentz force density acting on the charges. Introducing the Maxwell stress tensor <span class="math inline">\(\sigma^{ij}=-T^{ij}=E^iE^j+B^iB^j-\tfrac12\delta^{ij}(E^2+B^2)\)</span>, this becomes</p>
+<p>where the source is the ordinary Lorentz force density acting on the charges. Introducing the Maxwell stress tensor <span class="math inline">\(\sigma^{ij}=-T^{ij}=\frac{1}{\mu_0}\left[E^iE^j+B^iB^j-\tfrac12\delta^{ij}(E^2+B^2)\right]\)</span>, this becomes</p>
 <p><span class="math display">\[
 \partial_t S^i=\partial_j\sigma^{ij}-\left(\rho\mathbf E+\mathbf J\times\mathbf B\right)^i,
 \]</span></p>
@@ -1028,11 +1038,11 @@ F^{\mathrm{acc}}\sim \frac1R.
 \]</span></p>
 <p>Then</p>
 <p><span class="math display">\[
-u=T^{00}=E^2,
+u=T^{00}=\frac{E^2}{\mu_0},
 \]</span></p>
 <p>and</p>
 <p><span class="math display">\[
-\mathbf S=E^2\hat{\mathbf n}.
+\mathbf S=\frac{E^2}{\mu_0}\hat{\mathbf n}.
 \]</span></p>
 <p>Energy flows radially outward.</p>
 </section>
@@ -1064,14 +1074,14 @@ R^\mu R^\nu.
 <p><span class="math display">\[
 P
 =
-\frac{q^2}{6\pi}
+\frac{\mu_0 q^2}{6\pi}
 a^\mu a_\mu.
 \]</span></p>
 <p>In the instantaneous rest frame,</p>
 <p><span class="math display">\[
 P
 =
-\frac{q^2}{6\pi}
+\frac{\mu_0 q^2}{6\pi}
 a^2.
 \]</span></p>
 <p>This is the relativistic form of Larmor’s formula.</p>
