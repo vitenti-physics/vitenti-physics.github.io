@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,14 +41,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-db5249cfe2af07b176222950535bc6fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-62cfa37d84d80c486a8fd826fc0beed7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-db5249cfe2af07b176222950535bc6fe.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-4a0124d671bd5b18cd0e9001f0b304c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-cfd078692f0a6f79ce33d48dd08f487d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-4a0124d671bd5b18cd0e9001f0b304c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -594,6 +594,7 @@ window.Quarto = {
   <li><a href="#codifferential-operator" id="toc-codifferential-operator" class="nav-link" data-scroll-target="#codifferential-operator">Codifferential Operator</a></li>
   <li><a href="#exercises-codifferential" id="toc-exercises-codifferential" class="nav-link" data-scroll-target="#exercises-codifferential">Exercises (Codifferential)</a></li>
   </ul></li>
+  <li><a href="#exterior-product-as-a-projection-operator" id="toc-exterior-product-as-a-projection-operator" class="nav-link" data-scroll-target="#exterior-product-as-a-projection-operator">Exterior Product as a Projection Operator</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="calculus-on-minkowski-spacetime.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -992,18 +993,18 @@ F_{\alpha\beta}=B_{\alpha\beta}+u_\alpha E_\beta-u_\beta E_\alpha.
 <p>Given a unit timelike vector <span class="math inline">\(u^\mu\)</span>, satisfying <span class="math display">\[
 \eta_{\mu\nu} u^\mu u^\nu = -1,
 \]</span> we can define a spatial volume form associated with the observer <span class="math inline">\(u^\mu\)</span> by contracting the spacetime volume form: <span class="math display">\[
-\mathbb{e}^3(u) = i_u \mathbb{e}^4 = \mathbb{e}^4(u).
+\mathbb{e}^3_u = i_u \mathbb{e}^4 = \mathbb{e}^4(u).
 \]</span></p>
 <p>In components, this gives <span class="math display">\[
-\mathbb{e}^3(u)_{\alpha\beta\gamma} = u^\mu \,\epsilon_{\mu\alpha\beta\gamma}.
+\mathbb{e}^3_{u\alpha\beta\gamma} = u^\mu \,\epsilon_{\mu\alpha\beta\gamma}.
 \]</span></p>
 <p>This object is a 3-form that is orthogonal to <span class="math inline">\(u^\mu\)</span> in the sense that <span class="math display">\[
-i_u \mathbb{e}^3(u) = 0.
+i_u \mathbb{e}^3_u = 0.
 \]</span></p>
 <p>In the special case where <span class="math inline">\(u^\mu = (1,0,0,0)\)</span>, we obtain <span class="math display">\[
-\mathbb{e}^3(u) = \mathrm{d}x^1 \wedge \mathrm{d}x^2 \wedge \mathrm{d}x^3,
+\mathbb{e}^3_u = \mathrm{d}x^1 \wedge \mathrm{d}x^2 \wedge \mathrm{d}x^3,
 \]</span> which is the standard spatial volume form.</p>
-<p>Thus, <span class="math inline">\(\mathbb{e}^3(u)\)</span> represents the oriented volume element in the local rest frame of the observer <span class="math inline">\(u^\mu\)</span>. It provides the natural geometric object used to define spatial Hodge duals and to interpret quantities such as magnetic fields as area-like (bivector) objects.</p>
+<p>Thus, <span class="math inline">\(\mathbb{e}^3_u\)</span> represents the oriented volume element in the local rest frame of the observer <span class="math inline">\(u^\mu\)</span>. It provides the natural geometric object used to define spatial Hodge duals and to interpret quantities such as magnetic fields as area-like (bivector) objects.</p>
 <hr>
 <section id="exercises-volume-forms-and-orientation" class="level3 callout-exercise">
 <h3 class="anchored" data-anchor-id="exercises-volume-forms-and-orientation">Exercises (Volume Forms and Orientation)</h3>
@@ -1041,7 +1042,15 @@ i_v \mathbb{e}^4 = \frac{1}{3!} v^\mu \,\epsilon_{\mu\alpha\beta\gamma} \,\mathr
 \]</span> by contraction. These maps exchange the degree of an object with its complementary degree.</p>
 <p>Since the metric provides an identification between vectors and covectors, we can combine these constructions to obtain a map acting entirely within forms: <span class="math display">\[
 \star: \Lambda^p T_p^*M \to \Lambda^{4-p} T_p^*M.
-\]</span> This is the Hodge star operator. It is determined by the metric and the orientation, and encodes the duality between forms of complementary degree.</p>
+\]</span> This is the Hodge star operator. It is determined by the metric and the orientation, and encodes the duality between forms of complementary degree. More precisely, given a <span class="math inline">\(p\)</span>-form <span class="math inline">\(\alpha \in \Lambda^p T_p^*M\)</span>, we define <span class="math display">\[
+\star \alpha = i_{\alpha^\sharp}\,\mathbb{e}^4,
+\]</span> where <span class="math inline">\(\alpha^\sharp\)</span> is the <span class="math inline">\(p\)</span>-vector obtained by raising the indices of <span class="math inline">\(\alpha\)</span> with the inverse metric <span class="math inline">\(\eta^{-1}\)</span>. In components, this can be expressed (for a 1-form) as <span class="math display">\[
+\star \alpha = \frac{1}{3!} \alpha_\mu \,\epsilon^{\mu\nu\rho\sigma} \,\eta_{\nu\kappa}\eta_{\rho\lambda}\eta_{\sigma\tau}
+\,\mathrm{d}x^\kappa \wedge \mathrm{d}x^\lambda \wedge \mathrm{d}x^\tau.
+\]</span> For a 2-form <span class="math inline">\(\beta \in \Lambda^2 T_p^*M\)</span>, the dual is again a 2-form, <span class="math display">\[
+\star \beta = \frac{1}{2!\,2!} \beta_{\mu\nu} \,\epsilon^{\mu\nu\rho\sigma} \,\eta_{\rho\kappa}\eta_{\sigma\lambda}
+\,\mathrm{d}x^\kappa \wedge \mathrm{d}x^\lambda.
+\]</span></p>
 <p>In practice, for a 1-form <span class="math inline">\(\tilde{w} = w_\mu \mathrm{d}x^\mu\)</span>, we obtain <span class="math display">\[
 \star \tilde{w}
 = \frac{1}{3!} w_\mu \,\epsilon^{\mu\nu\rho\sigma} \,\eta_{\nu\alpha}\eta_{\rho\beta}\eta_{\sigma\gamma}
@@ -1107,6 +1116,8 @@ i_v \mathbb{e}^4 = \frac{1}{3!} v^\mu \,\epsilon_{\mu\alpha\beta\gamma} \,\mathr
 \,\partial_j \wedge \partial_k,
 \]</span> which reproduces the usual identification between spatial vectors and antisymmetric tensors in three dimensions. Thus, using <span class="math inline">\(\mathbb{e}^4(u)\)</span>, we can define a Hodge dual acting on forms orthogonal to <span class="math inline">\(u\)</span>: <span class="math display">\[
 \star_u: \Lambda^p_{\perp u} \to \Lambda^{3-p}_{\perp u}.
+\]</span> More explicitly, for a <span class="math inline">\(p\)</span>-form <span class="math inline">\(\tilde{w}\)</span>, we have <span class="math display">\[
+\star_u \tilde{w} \equiv \eta(\mathbb{e}_4(u, \tilde{w})).
 \]</span></p>
 <hr>
 </section>
@@ -1195,48 +1206,66 @@ i_v \mathbb{e}^4 = \frac{1}{3!} v^\mu \,\epsilon_{\mu\alpha\beta\gamma} \,\mathr
 <section id="cross-product-and-curl-from-projection-and-hodge-star" class="level3">
 <h3 class="anchored" data-anchor-id="cross-product-and-curl-from-projection-and-hodge-star">Cross Product and Curl from Projection and Hodge Star</h3>
 <p>To recover the familiar three-dimensional operators, we introduce a reference unit timelike vector <span class="math inline">\(u\)</span> and project onto the spatial subspace orthogonal to it. For two vectors <span class="math inline">\(v\)</span> and <span class="math inline">\(w\)</span>, the antisymmetric product projected along <span class="math inline">\(u\)</span> is <span class="math display">\[
-u \wedge (v \wedge w) = u^\mu v^\nu w^\rho \,\gamma_\mu \wedge \gamma_\nu \wedge \gamma_\rho,
+u \wedge v \wedge w
+=
+u^\mu v^\nu w^\rho \,\gamma_\mu \wedge \gamma_\nu \wedge \gamma_\rho,
 \]</span> which represents a spatial oriented volume element. Applying the Hodge dual associated with <span class="math inline">\(u\)</span>, we obtain a spatial vector: <span class="math display">\[
-\star_u(v \wedge w) = u^\mu v^\nu w^\rho \,\epsilon_{\mu\nu\rho\sigma}\,\gamma^\sigma.
+\star_u(v \wedge w)
+=
+u^\mu v^\nu w^\rho \,\epsilon_{\mu\nu\rho\sigma}\,\gamma^\sigma.
 \]</span></p>
 <p>In the frame where <span class="math inline">\(u = (1,0,0,0)\)</span>, this reduces to <span class="math display">\[
-\star_u(v \wedge w) = v^i w^j \epsilon_{0ijk}\,\gamma^k,
-\]</span> and using <span class="math inline">\(\epsilon_{0ijk} = \epsilon_{ijk}\)</span>, this reproduces the usual cross product. Thus, the cross product is a special case of the wedge product combined with the Hodge dual.</p>
+\star_u(v \wedge w)
+=
+v^i w^j \epsilon_{0ijk}\,\gamma^k,
+\]</span> and using <span class="math inline">\(\epsilon_{0ijk} = \epsilon_{ijk}\)</span>, we recover the usual cross product. Thus, the cross product is a special case of the wedge product combined with the Hodge dual. More precisely, <span class="math display">\[
+v \times w
+\equiv
+\star_u(v \wedge w).
+\]</span></p>
 <p>Similarly, the curl can be written as <span class="math display">\[
-\partial \times v \equiv \star_u\big(\partial \wedge v\big) = u^\mu \epsilon_{\mu\nu\rho\sigma}\,\partial^\nu v^\rho \,\gamma^\sigma,
+\partial \times v
+\equiv
+\star_u(\partial \wedge v)
+=
+u^\mu \epsilon_{\mu\nu\rho\sigma}\,\partial^\nu v^\rho \,\gamma^\sigma,
 \]</span> which again reduces, for <span class="math inline">\(u = (1,0,0,0)\)</span>, to <span class="math display">\[
 \partial \times v
-= \partial^i v^j \epsilon_{0ijk}\,\gamma^k
-= (\partial^1 v^2 - \partial^2 v^1)\gamma^3
-- (\partial^1 v^3 - \partial^3 v^1)\gamma^2
-+ (\partial^2 v^3 - \partial^3 v^2)\gamma^1.
-\]</span> In this way, the standard three-dimensional vector operators arise from covariant four-dimensional constructions by projection along a chosen observer <span class="math inline">\(u\)</span>.</p>
-<hr>
+=
+\partial^i v^j \epsilon_{0ijk}\,\gamma^k
+=
+(\partial^2 v^3 - \partial^3 v^2)\gamma^1
+-
+(\partial^1 v^3 - \partial^3 v^1)\gamma^2
++
+(\partial^1 v^2 - \partial^2 v^1)\gamma^3.
+\]</span></p>
+<p>In this way, the standard three-dimensional vector operators arise from covariant four-dimensional constructions by projection along a chosen observer <span class="math inline">\(u\)</span>.</p>
 </section>
 <section id="curl-of-a-bivector-field" class="level3">
 <h3 class="anchored" data-anchor-id="curl-of-a-bivector-field">Curl of a Bivector Field</h3>
 <p>Given a bivector field <span class="math display">\[
 B = \frac{1}{2} B^{\mu\nu} \gamma_\mu \wedge \gamma_\nu,
 \]</span> we define its curl by <span class="math display">\[
-\partial \times B \equiv \star_u\big(\partial \wedge B\big)
-= u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
+\star_u\left(\partial \wedge B\right)
+= \frac{1}{2}u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
 \]</span> This extends the notion of curl to bivector fields, which naturally appear in the covariant description of electromagnetism.</p>
-<p>Applying the spatial Hodge dual once more produces a scalar: <span class="math display">\[
-\star_u(\partial \wedge B)
-= u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
+<p>Since <span class="math inline">\(\partial \wedge B\)</span> is a spatial 3-form, the spatial Hodge dual produces a scalar: <span class="math display">\[
+\star_u\left(\partial \wedge B\right)
+= \frac{1}{2}u^\mu \,\epsilon_{\mu\nu\rho\sigma}\,\partial^\nu B^{\rho\sigma}.
 \]</span></p>
 <p>In the frame where <span class="math inline">\(u = (1,0,0,0)\)</span>, this becomes <span class="math display">\[
-\star_u(\partial \wedge B)
-= \partial^i B^{jk} \epsilon_{0ijk}.
+\star_u\left(\partial \wedge B\right)
+= \frac{1}{2}\partial^i B^{jk} \epsilon_{0ijk}.
 \]</span></p>
 <p>Introducing the spatial dual vector <span class="math display">\[
-B^i = \frac{1}{2}\,\epsilon^{ijk} B_{jk} \;=\; (\star_u B)^i,
+B^i = \frac{1}{2}\epsilon^{ijk} B_{jk} \;=\; (\star_u B)^i,
 \]</span> we obtain <span class="math display">\[
-\star_u(\partial \wedge B) = \partial_i B^i.
+\star_u\left(\partial \wedge B\right) = \partial_i B^i.
 \]</span></p>
 <p>Thus, <span class="math display">\[
-\star_u(\partial \wedge B) = \partial \cdot (\star_u B).
-\]</span> That is, the curl of a bivector field is equivalent to the divergence of its Hodge dual vector field. This illustrates how the use of the Hodge star can hide the underlying geometric nature of the fields and operations. In three dimensions this identification is natural, but it arises from combining the wedge product with the Hodge dual and is not fundamental in four-dimensional spacetime.</p>
+\star_u\left(\partial \wedge B\right) = \partial \cdot (\star_u B).
+\]</span> That is, the curl of a bivector field is equivalent to the divergence of its Hodge dual vector field. This illustrates how the use of the Hodge star can hide the underlying geometric nature of the fields and operations. In three dimensions this identification is natural, but it arises from combining the wedge product with the Hodge dual and is not fundamental in four-dimensional spacetime. This is also a good example of how the Hodge star exchanges the exterior product and the divergence.</p>
 <hr>
 </section>
 <section id="exercises-curl-of-bivectors" class="level3 callout-exercise">
@@ -1245,10 +1274,10 @@ B^i = \frac{1}{2}\,\epsilon^{ijk} B_{jk} \;=\; (\star_u B)^i,
 <li>Show explicitly that <span class="math inline">\(\partial \wedge B\)</span> is a 3-vector.</li>
 <li>Verify that <span class="math inline">\(\star_u(\partial \wedge B)\)</span> is a scalar.</li>
 <li>Derive <span class="math display">\[
-\star_u(\partial \wedge B) = \partial_i B^i,
+\star_u\left(\partial \wedge B\right) = \partial_i B^i,
 \]</span> using that <span class="math inline">\(B^i = \frac{1}{2}\epsilon^{ijk}B_{jk}\)</span>.</li>
 <li>Verify the identity <span class="math display">\[
-\star_u(\partial \wedge B) = \partial \cdot (\star_u B).
+\star_u\left(\partial \wedge B\right) = \partial \cdot (\star_u B).
 \]</span></li>
 <li>Compute <span class="math inline">\(\partial \wedge B\)</span> for constant <span class="math inline">\(B^{\mu\nu}\)</span>.</li>
 <li>Show that curl vanishes for constant bivector fields.</li>
@@ -1281,6 +1310,18 @@ B^i = \frac{1}{2}\,\epsilon^{ijk} B_{jk} \;=\; (\star_u B)^i,
 <li>Compute <span class="math inline">\(\delta\)</span> on a 2-form.</li>
 </ol>
 </section>
+</section>
+<section id="exterior-product-as-a-projection-operator" class="level2">
+<h2 class="anchored" data-anchor-id="exterior-product-as-a-projection-operator">Exterior Product as a Projection Operator</h2>
+<p>Another use of the exterior product is to define projection operators. For a vector <span class="math inline">\(v\)</span> and a time-like vector <span class="math inline">\(u\)</span>, one can compute exterior products like <span class="math inline">\(v \wedge u\)</span> to obtain a bivector. In the frame where <span class="math inline">\(u = (1,0,0,0)\)</span>, this bivector has components only in the spatial directions. Thus, the operation of wedging with <span class="math inline">\(u\)</span> effectively projects out the temporal component of <span class="math inline">\(v\)</span> and produces a spatial bivector. This is a powerful way to extract the spatial part of a vector field relative to a chosen observer.</p>
+<p>To better see that we can compute <span class="math inline">\(v \wedge u\)</span> and then apply this to <span class="math inline">\(u\)</span>, i.e., <span class="math display">\[
+v \wedge u (u) = v \cdot u \, u - u \cdot u \, v = v + (v \cdot u) u = (\delta_\mu{}^\nu + u_\mu u^\nu) v^\mu\gamma_\nu = v^\mu h_\mu{}^\nu \gamma_\nu,
+\]</span> which is exactly the spatial projection we defined in geometry-review.qmd. It is also easy to show that <span class="math display">\[
+v = v \wedge u (u) - (v \cdot u) u,
+\]</span> that is, <span class="math inline">\(v\)</span> can be written as the sum of its spatial projection and its temporal part. Therefore, the exterior product with <span class="math inline">\(u\)</span> encodes the spatial projection operation in a geometric way. This is another example of how the wedge product can be used to define geometric operations without reference to coordinates.</p>
+<p>Note that the same is true also for a 2-vector <span class="math inline">\(F\)</span>. We know that <span class="math inline">\(F \wedge u\)</span> is a 3-vector that contains only components orthogonal to <span class="math inline">\(u\)</span>. Applying this to <span class="math inline">\(u\)</span> again gives <span class="math display">\[
+F \wedge u (u) = F(u) \wedge u + u \cdot u \, F = -F + F(u) \wedge u = - F^{\alpha\beta} h_\alpha{}^\mu h_\beta{}^\nu \gamma_\mu \wedge \gamma_\nu,
+\]</span> which is exactly minus the spatial projection of the bivector <span class="math inline">\(F\)</span> onto the subspace orthogonal to <span class="math inline">\(u\)</span>. Thus, just as for vectors, wedging with <span class="math inline">\(u\)</span> and contracting with <span class="math inline">\(u\)</span> again extracts the part of <span class="math inline">\(F\)</span> that lives in the observer’s rest space; the extra overall sign relative to the vector case simply reflects that the projector now acts on two indices instead of one. This is precisely the operation that isolates the purely spatial (magnetic) part of the electromagnetic bivector relative to the observer <span class="math inline">\(u\)</span>, while the components with one leg along <span class="math inline">\(u\)</span> encode the electric part.</p>
 
 
 </section>
