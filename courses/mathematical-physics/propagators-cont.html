@@ -538,7 +538,7 @@ window.Quarto = {
 <h1 data-number="2"><span class="header-section-number">2</span> Formulação Simplética</h1>
 <section id="estrutura-da-equação" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="estrutura-da-equação"><span class="header-section-number">2.1</span> Estrutura da Equação</h2>
-<p>Consideramos uma equação de segunda ordem na forma: <span class="math display">\[ y'' + p_1(x) y' + p_0(x) y = 0 \]</span> que pode ser reescrita no espaço de fase como: <span class="math display">\[ \begin{pmatrix} y' \\ q' \end{pmatrix} = \begin{pmatrix} 0 &amp; 1/m \\ -m\Omega^2 &amp; 0 \end{pmatrix} \begin{pmatrix} y \\ q \end{pmatrix} \]</span> onde <span class="math inline">\(q = m y'\)</span> é o momento canônico.</p>
+<p>Consideramos uma equação de segunda ordem na forma: <span class="math display">\[ y'' + p_1(x) y' + p_0(x) y = 0 \]</span> que pode ser reescrita no espaço de fase como: <span class="math display">\[ \begin{pmatrix} y' \\ q' \end{pmatrix} = \begin{pmatrix} 0 &amp; 1/m \\ -m\omega^2 &amp; 0 \end{pmatrix} \begin{pmatrix} y \\ q \end{pmatrix} \]</span> onde <span class="math inline">\(q = m y'\)</span> é o momento canônico.</p>
 <p>Definimos o vetor de estado: <span class="math display">\[ V = \begin{pmatrix} y \\ q \end{pmatrix} \]</span></p>
 </section>
 <section id="matriz-simplética" class="level2" data-number="2.2">
@@ -552,7 +552,7 @@ window.Quarto = {
 </section>
 <section id="hamiltonianos-e-propriedades" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="hamiltonianos-e-propriedades"><span class="header-section-number">2.3</span> Hamiltonianos e Propriedades</h2>
-<p>O Hamiltoniano associado é: <span class="math display">\[ H = \begin{pmatrix} m\nu^2 &amp; 0 \\ 0 &amp; 1/m \end{pmatrix} \]</span> A equação de movimento pode ser escrita como: <span class="math display">\[ V' = \Omega H V \]</span></p>
+<p>O Hamiltoniano associado é: <span class="math display">\[ H = \begin{pmatrix} m\omega^2 &amp; 0 \\ 0 &amp; 1/m \end{pmatrix} \]</span> A equação de movimento pode ser escrita como: <span class="math display">\[ V' = \Omega H V \]</span></p>
 </section>
 </section>
 <section id="soluções-linearmente-independentes" class="level1" data-number="3">
@@ -596,11 +596,11 @@ window.Quarto = {
 <h1 data-number="5"><span class="header-section-number">5</span> Propagação no Tempo</h1>
 <section id="função-de-green-solução-futura" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="função-de-green-solução-futura"><span class="header-section-number">5.1</span> Função de Green (Solução Futura)</h2>
-<p>Consideramos uma solução com interação instantânea em <span class="math inline">\(x_0\)</span>: <span class="math display">\[ U(x) = \Theta(x - x_0) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] \]</span> onde <span class="math inline">\(V\)</span> é a solução complexa. Esta solução satisfaz: <span class="math display">\[ U' - \Omega H U = \delta(x - x_0) U_0 \]</span></p>
+<p>Consideramos uma solução com interação instantânea em <span class="math inline">\(x_0\)</span>: <span class="math display">\[ U(x) = \Theta(x - x_0) [\alpha V(x) + \alpha^* V^*(x)] \]</span> onde <span class="math inline">\(V\)</span> é a solução complexa. Esta solução satisfaz: <span class="math display">\[ U' - \Omega H U = \delta(x - x_0) U_0 \]</span></p>
 </section>
 <section id="solução-passada-avançada" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="solução-passada-avançada"><span class="header-section-number">5.2</span> Solução Passada (Avançada)</h2>
-<p>A solução que propaga informações do futuro para o passado é: <span class="math display">\[ U(x) = \Theta(x_0 - x) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] \]</span> satisfazendo: <span class="math display">\[ U' - \Omega H U = -\delta(x - x_0) U_0 \]</span></p>
+<p>A solução que propaga informações do futuro para o passado é: <span class="math display">\[ U(x) = \Theta(x_0 - x) [\alpha V(x) + \alpha^* V^*(x)] \]</span> satisfazendo: <span class="math display">\[ U' - \Omega H U = -\delta(x - x_0) U_0 \]</span></p>
 <div class="note">
 <p>A diferença de sinal entre as soluções futura e passada é fundamental para a construção de propagadores em teoria quântica de campos.</p>
 </div>
@@ -610,7 +610,7 @@ window.Quarto = {
 <h1 data-number="6"><span class="header-section-number">6</span> Simetria de Reversão Temporal</h1>
 <section id="transformação-das-componentes" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="transformação-das-componentes"><span class="header-section-number">6.1</span> Transformação das Componentes</h2>
-<p>Sob reversão temporal <span class="math inline">\(x \to -x\)</span>, o vetor <span class="math inline">\(V\)</span> se transforma como: <span class="math display">\[ V_R(x_R) = T V(x) \]</span> com: <span class="math display">\[ T = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \]</span></p>
+<p>Sob reversão temporal <span class="math inline">\(x \to -x\)</span>, o vetor <span class="math inline">\(V\)</span> se transforma como: <span class="math display">\[ V_R(x_R) = T V(x), \quad x_R = -x \]</span> com: <span class="math display">\[ T = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \]</span></p>
 </section>
 <section id="comportamento-da-equação" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="comportamento-da-equação"><span class="header-section-number">6.2</span> Comportamento da Equação</h2>
@@ -624,7 +624,7 @@ window.Quarto = {
 <h1 data-number="7"><span class="header-section-number">7</span> Visualização Computacional</h1>
 <section id="propagador-do-oscilador-harmônico" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="propagador-do-oscilador-harmônico"><span class="header-section-number">7.1</span> Propagador do Oscilador Harmônico</h2>
-<div id="00aa55c7" class="cell" data-execution_count="1">
+<div id="29444f6c" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -672,7 +672,7 @@ window.Quarto = {
 </section>
 <section id="propagadores-futuro-e-passado" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="propagadores-futuro-e-passado"><span class="header-section-number">7.2</span> Propagadores Futuro e Passado</h2>
-<div id="0115383d" class="cell" data-execution_count="2">
+<div id="b8a81501" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulação de um pulso instantâneo (função de Green)</span></span>
@@ -796,7 +796,7 @@ window.Quarto = {
 </li>
 <li>Calcule os coeficientes <span class="math inline">\(\alpha_1\)</span> e <span class="math inline">\(\alpha_2\)</span> para uma condição inicial genérica.</li>
 </ol></li>
-<li><strong>Complexificação</strong>
+<li><strong>Complexificação (Essencial)</strong>
 <ol type="a">
 <li>Verifique que <span class="math inline">\(V = V_1 + iV_2\)</span> satisfaz a mesma equação diferencial.<br>
 </li>
@@ -808,7 +808,7 @@ window.Quarto = {
 </li>
 <li>Interprete fisicamente este resultado.</li>
 </ol></li>
-<li><strong>Propagador Futuro</strong>
+<li><strong>Propagador Futuro (Essencial)</strong>
 <ol type="a">
 <li>Mostre que a solução <span class="math inline">\(U(x) = \Theta(x-x_0)[\alpha V(x) + \alpha^* V^*(x)]\)</span> satisfaz a equação com fonte <span class="math inline">\(U' - \Omega H U = \delta(x-x_0)U_0\)</span>.<br>
 </li>

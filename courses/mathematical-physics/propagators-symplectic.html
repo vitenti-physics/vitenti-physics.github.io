@@ -485,10 +485,10 @@ window.Quarto = {
   <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">9</span> Exercícios</a>
   <ul class="collapse">
   <li><a href="#exercício-1-soluções-da-equação-de-helmholtz" id="toc-exercício-1-soluções-da-equação-de-helmholtz" class="nav-link" data-scroll-target="#exercício-1-soluções-da-equação-de-helmholtz"><span class="header-section-number">9.1</span> Exercício 1: Soluções da Equação de Helmholtz</a></li>
-  <li><a href="#exercício-2-wronskiano" id="toc-exercício-2-wronskiano" class="nav-link" data-scroll-target="#exercício-2-wronskiano"><span class="header-section-number">9.2</span> Exercício 2: Wronskiano</a></li>
+  <li><a href="#exercício-2-wronskiano-essencial" id="toc-exercício-2-wronskiano-essencial" class="nav-link" data-scroll-target="#exercício-2-wronskiano-essencial"><span class="header-section-number">9.2</span> Exercício 2: Wronskiano <strong>(Essencial)</strong></a></li>
   <li><a href="#exercício-3-função-de-green" id="toc-exercício-3-função-de-green" class="nav-link" data-scroll-target="#exercício-3-função-de-green"><span class="header-section-number">9.3</span> Exercício 3: Função de Green</a></li>
   <li><a href="#exercício-4-espaço-de-fase" id="toc-exercício-4-espaço-de-fase" class="nav-link" data-scroll-target="#exercício-4-espaço-de-fase"><span class="header-section-number">9.4</span> Exercício 4: Espaço de Fase</a></li>
-  <li><a href="#exercício-5-estrutura-simplética" id="toc-exercício-5-estrutura-simplética" class="nav-link" data-scroll-target="#exercício-5-estrutura-simplética"><span class="header-section-number">9.5</span> Exercício 5: Estrutura Simplética</a></li>
+  <li><a href="#exercício-5-estrutura-simplética-essencial" id="toc-exercício-5-estrutura-simplética-essencial" class="nav-link" data-scroll-target="#exercício-5-estrutura-simplética-essencial"><span class="header-section-number">9.5</span> Exercício 5: Estrutura Simplética <strong>(Essencial)</strong></a></li>
   <li><a href="#exercício-6-propagação-no-espaço-de-fase" id="toc-exercício-6-propagação-no-espaço-de-fase" class="nav-link" data-scroll-target="#exercício-6-propagação-no-espaço-de-fase"><span class="header-section-number">9.6</span> Exercício 6: Propagação no Espaço de Fase</a></li>
   <li><a href="#exercício-7-separação-de-variáveis" id="toc-exercício-7-separação-de-variáveis" class="nav-link" data-scroll-target="#exercício-7-separação-de-variáveis"><span class="header-section-number">9.7</span> Exercício 7: Separação de Variáveis</a></li>
   <li><a href="#exercício-8-métrica-de-minkowski" id="toc-exercício-8-métrica-de-minkowski" class="nav-link" data-scroll-target="#exercício-8-métrica-de-minkowski"><span class="header-section-number">9.8</span> Exercício 8: Métrica de Minkowski</a></li>
@@ -761,7 +761,7 @@ Important
 <h2 data-number="5.3" class="anchored" data-anchor-id="o-papel-da-unidade-imaginária"><span class="header-section-number">5.3</span> O Papel da Unidade Imaginária</h2>
 <p>A analogia entre a matriz <span class="math inline">\(\Omega\)</span> e a unidade imaginária <span class="math inline">\(i\)</span> é profunda. A matriz <span class="math inline">\(\Omega\)</span> atua como um gerador de rotações no espaço de fase: <span class="math display">\[
 e^{\theta\Omega} = \begin{pmatrix} \cos\theta &amp; \sin\theta \\ -\sin\theta &amp; \cos\theta \end{pmatrix}
-\]</span> Na mecânica quântica, a unidade imaginária <span class="math inline">\(i\)</span> aparece como gerador de rotações no espaço de fase (ou espaço de Hilbert), o que está diretamente relacionado à equação de Schrödinger.</p>
+\]</span> Na mecânica quântica, a unidade imaginária <span class="math inline">\(i\)</span> aparece de forma análoga como gerador de rotações, mas agora no espaço de Hilbert, o que está diretamente relacionado à equação de Schrödinger.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -812,7 +812,7 @@ Note
 <h1 data-number="7"><span class="header-section-number">7</span> Visualizações com Python</h1>
 <section id="propagação-no-espaço-de-fase" class="level2 page-columns page-full" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="propagação-no-espaço-de-fase"><span class="header-section-number">7.1</span> Propagação no Espaço de Fase</h2>
-<div id="4f5d3cd2" class="cell page-columns page-full" data-execution_count="1">
+<div id="4bfed54b" class="cell page-columns page-full" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -877,7 +877,7 @@ Note
 </section>
 <section id="a-matriz-simplética-como-gerador-de-rotações" class="level2 page-columns page-full" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="a-matriz-simplética-como-gerador-de-rotações"><span class="header-section-number">7.2</span> A Matriz Simplética como Gerador de Rotações</h2>
-<div id="9a4a6338" class="cell page-columns page-full" data-execution_count="2">
+<div id="a769a6e8" class="cell page-columns page-full" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1033,8 +1033,8 @@ Note
 <li><p>Qual das representações é mais adequada para condições de contorno do tipo <span class="math inline">\(\psi(0) = 0\)</span> e <span class="math inline">\(\psi(L) = 0\)</span>?</p></li>
 </ol>
 </section>
-<section id="exercício-2-wronskiano" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="exercício-2-wronskiano"><span class="header-section-number">9.2</span> Exercício 2: Wronskiano</h2>
+<section id="exercício-2-wronskiano-essencial" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="exercício-2-wronskiano-essencial"><span class="header-section-number">9.2</span> Exercício 2: Wronskiano <strong>(Essencial)</strong></h2>
 <p>Para a equação <span class="math inline">\(y'' + 2y' + 5y = 0\)</span>:</p>
 <ol type="a">
 <li><p>Encontre as duas soluções linearmente independentes.</p></li>
@@ -1046,7 +1046,7 @@ Note
 <h2 data-number="9.3" class="anchored" data-anchor-id="exercício-3-função-de-green"><span class="header-section-number">9.3</span> Exercício 3: Função de Green</h2>
 <p>Para a equação de Helmholtz em 1D:</p>
 <p><span class="math display">\[
-(\frac{d^2}{dx^2} + k^2)G(x, x') = -\delta(x - x')
+\left(\frac{d^2}{dx^2} + k^2\right)G(x, x') = -\delta(x - x')
 \]</span></p>
 <ol type="a">
 <li><p>Mostre que <span class="math inline">\(G(x, x') = \frac{i}{2k}e^{ik|x-x'|}\)</span> é uma solução.</p></li>
@@ -1063,8 +1063,8 @@ Note
 <li><p>Calcule a matriz <span class="math inline">\(\Omega\)</span> e verifique que <span class="math inline">\(\Omega^2 = -I\)</span>.</p></li>
 </ol>
 </section>
-<section id="exercício-5-estrutura-simplética" class="level2" data-number="9.5">
-<h2 data-number="9.5" class="anchored" data-anchor-id="exercício-5-estrutura-simplética"><span class="header-section-number">9.5</span> Exercício 5: Estrutura Simplética</h2>
+<section id="exercício-5-estrutura-simplética-essencial" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="exercício-5-estrutura-simplética-essencial"><span class="header-section-number">9.5</span> Exercício 5: Estrutura Simplética <strong>(Essencial)</strong></h2>
 <p>Para o sistema <span class="math inline">\(y'' + P(x)y' + Q(x)y = 0\)</span>:</p>
 <ol type="a">
 <li><p>Defina <span class="math inline">\(p = m(x)y'\)</span> e mostre que <span class="math inline">\(m(x)\)</span> satisfaz <span class="math inline">\(m'(x) = P(x)m(x)\)</span>.</p></li>

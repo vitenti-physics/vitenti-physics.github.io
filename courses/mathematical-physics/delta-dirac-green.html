@@ -461,6 +461,21 @@ window.Quarto = {
   <li><a href="#interpretação-física" id="toc-interpretação-física" class="nav-link" data-scroll-target="#interpretação-física"><span class="header-section-number">8</span> Interpretação Física</a></li>
   <li><a href="#o-truque-do-cálculo-da-integral-gaussiana" id="toc-o-truque-do-cálculo-da-integral-gaussiana" class="nav-link" data-scroll-target="#o-truque-do-cálculo-da-integral-gaussiana"><span class="header-section-number">9</span> O Truque do Cálculo da Integral Gaussiana</a></li>
   <li><a href="#visualização-sequência-delta-gaussiana" id="toc-visualização-sequência-delta-gaussiana" class="nav-link" data-scroll-target="#visualização-sequência-delta-gaussiana"><span class="header-section-number">10</span> Visualização: Sequência Delta Gaussiana</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">11</span> Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1-função-degrau-de-heaviside" id="toc-exercício-1-função-degrau-de-heaviside" class="nav-link" data-scroll-target="#exercício-1-função-degrau-de-heaviside"><span class="header-section-number">11.1</span> Exercício 1: Função Degrau de Heaviside</a></li>
+  <li><a href="#exercício-2-propriedade-de-filtragem-da-delta" id="toc-exercício-2-propriedade-de-filtragem-da-delta" class="nav-link" data-scroll-target="#exercício-2-propriedade-de-filtragem-da-delta"><span class="header-section-number">11.2</span> Exercício 2: Propriedade de Filtragem da Delta</a></li>
+  <li><a href="#exercício-3-delta-como-derivada-da-theta-essencial" id="toc-exercício-3-delta-como-derivada-da-theta-essencial" class="nav-link" data-scroll-target="#exercício-3-delta-como-derivada-da-theta-essencial"><span class="header-section-number">11.3</span> Exercício 3: Delta como Derivada da Theta <strong>(Essencial)</strong></a></li>
+  <li><a href="#exercício-4-construindo-a-theta-a-partir-do-módulo" id="toc-exercício-4-construindo-a-theta-a-partir-do-módulo" class="nav-link" data-scroll-target="#exercício-4-construindo-a-theta-a-partir-do-módulo"><span class="header-section-number">11.4</span> Exercício 4: Construindo a Theta a Partir do Módulo</a></li>
+  <li><a href="#exercício-5-aproximação-gaussiana-para-a-delta" id="toc-exercício-5-aproximação-gaussiana-para-a-delta" class="nav-link" data-scroll-target="#exercício-5-aproximação-gaussiana-para-a-delta"><span class="header-section-number">11.5</span> Exercício 5: Aproximação Gaussiana para a Delta</a></li>
+  <li><a href="#exercício-6-demonstração-da-propriedade-de-filtragem-via-taylor" id="toc-exercício-6-demonstração-da-propriedade-de-filtragem-via-taylor" class="nav-link" data-scroll-target="#exercício-6-demonstração-da-propriedade-de-filtragem-via-taylor"><span class="header-section-number">11.6</span> Exercício 6: Demonstração da Propriedade de Filtragem via Taylor</a></li>
+  <li><a href="#exercício-7-função-de-green-em-1d-essencial" id="toc-exercício-7-função-de-green-em-1d-essencial" class="nav-link" data-scroll-target="#exercício-7-função-de-green-em-1d-essencial"><span class="header-section-number">11.7</span> Exercício 7: Função de Green em 1D <strong>(Essencial)</strong></a></li>
+  <li><a href="#exercício-8-dependência-com-a-dimensão" id="toc-exercício-8-dependência-com-a-dimensão" class="nav-link" data-scroll-target="#exercício-8-dependência-com-a-dimensão"><span class="header-section-number">11.8</span> Exercício 8: Dependência com a Dimensão</a></li>
+  <li><a href="#exercício-9-interpretação-física" id="toc-exercício-9-interpretação-física" class="nav-link" data-scroll-target="#exercício-9-interpretação-física"><span class="header-section-number">11.9</span> Exercício 9: Interpretação Física</a></li>
+  <li><a href="#exercício-10-o-truque-da-integral-gaussiana" id="toc-exercício-10-o-truque-da-integral-gaussiana" class="nav-link" data-scroll-target="#exercício-10-o-truque-da-integral-gaussiana"><span class="header-section-number">11.10</span> Exercício 10: O Truque da Integral Gaussiana</a></li>
+  <li><a href="#exercício-11-outras-sequências-delta" id="toc-exercício-11-outras-sequências-delta" class="nav-link" data-scroll-target="#exercício-11-outras-sequências-delta"><span class="header-section-number">11.11</span> Exercício 11: Outras Sequências Delta</a></li>
+  <li><a href="#exercício-12-implementação-numérica" id="toc-exercício-12-implementação-numérica" class="nav-link" data-scroll-target="#exercício-12-implementação-numérica"><span class="header-section-number">11.12</span> Exercício 12: Implementação Numérica</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="delta-dirac-green.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -613,7 +628,7 @@ f(x) = f(0) + f'(0)x + \frac{f''(0)}{2}x^2 + \cdots
 <tr class="even">
 <td>2D</td>
 <td><span class="math inline">\(\frac{1}{2\pi} \log|x - x_0|\)</span></td>
-<td>Cresce logarithmicamente</td>
+<td>Cresce logaritmicamente</td>
 </tr>
 <tr class="odd">
 <td>3D</td>
@@ -648,7 +663,7 @@ f(x) = f(0) + f'(0)x + \frac{f''(0)}{2}x^2 + \cdots
 </section>
 <section id="visualização-sequência-delta-gaussiana" class="level1 page-columns page-full" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> Visualização: Sequência Delta Gaussiana</h1>
-<div id="1b92715f" class="cell page-columns page-full" data-execution_count="1">
+<div id="631b3313" class="cell page-columns page-full" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -678,8 +693,96 @@ f(x) = f(0) + f'(0)x + \frac{f''(0)}{2}x^2 + \cdots
 </div>
 </div>
 </div>
+<hr>
+</section>
+<section id="exercícios" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Exercícios</h1>
+<section id="exercício-1-função-degrau-de-heaviside" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="exercício-1-função-degrau-de-heaviside"><span class="header-section-number">11.1</span> Exercício 1: Função Degrau de Heaviside</h2>
+<p><strong>a)</strong> Esboce o gráfico de <span class="math inline">\(\theta(x)\)</span> e identifique o tipo de descontinuidade em <span class="math inline">\(x=0\)</span>.</p>
+<p><strong>b)</strong> Calcule <span class="math inline">\(\theta(x) + \theta(-x)\)</span> para <span class="math inline">\(x \neq 0\)</span>. O que acontece em <span class="math inline">\(x=0\)</span>?</p>
+<p><strong>c)</strong> Mostre que <span class="math inline">\(\theta(x - x_0)\)</span> representa um deslocamento da descontinuidade para <span class="math inline">\(x = x_0\)</span>.</p>
+<p><strong>d)</strong> Por que a convenção do valor de <span class="math inline">\(\theta(0)\)</span> (0, 1/2 ou indefinido) raramente afeta cálculos físicos?</p>
+</section>
+<section id="exercício-2-propriedade-de-filtragem-da-delta" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="exercício-2-propriedade-de-filtragem-da-delta"><span class="header-section-number">11.2</span> Exercício 2: Propriedade de Filtragem da Delta</h2>
+<p><strong>a)</strong> Use a definição de filtragem para calcular <span class="math inline">\(\int_{-\infty}^{\infty} \delta(x-3) \, x^2 \, dx\)</span>.</p>
+<p><strong>b)</strong> Mostre que <span class="math inline">\(\delta(x)\)</span> não é uma função no sentido usual (dica: considere seu valor em <span class="math inline">\(x=0\)</span> e sua integral).</p>
+<p><strong>c)</strong> Calcule <span class="math inline">\(\int_{-\infty}^{\infty} \delta(2x) \, dx\)</span> e generalize para <span class="math inline">\(\delta(ax)\)</span>.</p>
+<p><strong>d)</strong> Interprete fisicamente <span class="math inline">\(\delta(x-x_0)\)</span> como densidade de uma partícula pontual.</p>
+</section>
+<section id="exercício-3-delta-como-derivada-da-theta-essencial" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="exercício-3-delta-como-derivada-da-theta-essencial"><span class="header-section-number">11.3</span> Exercício 3: Delta como Derivada da Theta <strong>(Essencial)</strong></h2>
+<p><strong>a)</strong> Refaça a derivação de <span class="math inline">\(\boxed{\frac{d}{dx}\theta(x-x_0) = \delta(x-x_0)}\)</span> partindo do Teorema Fundamental do Cálculo, explicitando cada passo.</p>
+<p><strong>b)</strong> Use este resultado para calcular <span class="math inline">\(\frac{d}{dx}\big[x\,\theta(x)\big]\)</span>.</p>
+<p><strong>c)</strong> Calcule <span class="math inline">\(\frac{d^2}{dx^2}\big[x\,\theta(x)\big]\)</span> e interprete o resultado.</p>
+<p><strong>d)</strong> Generalize para <span class="math inline">\(\frac{d}{dx}\big[f(x)\,\theta(x-x_0)\big]\)</span>, com <span class="math inline">\(f\)</span> suave.</p>
+</section>
+<section id="exercício-4-construindo-a-theta-a-partir-do-módulo" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="exercício-4-construindo-a-theta-a-partir-do-módulo"><span class="header-section-number">11.4</span> Exercício 4: Construindo a Theta a Partir do Módulo</h2>
+<p><strong>a)</strong> Verifique que <span class="math inline">\(g(x) = |x| = \sqrt{x^2}\)</span> é contínua mas não diferenciável em <span class="math inline">\(x=0\)</span>.</p>
+<p><strong>b)</strong> Mostre explicitamente que <span class="math inline">\(g'(x) = \text{sgn}(x)\)</span> para <span class="math inline">\(x \neq 0\)</span>.</p>
+<p><strong>c)</strong> A partir de <span class="math inline">\(\theta(x) = \dfrac{g'(x)+1}{2}\)</span>, recupere a definição original de <span class="math inline">\(\theta\)</span> por casos.</p>
+<p><strong>d)</strong> Proponha uma construção análoga de <span class="math inline">\(\theta(x)\)</span> a partir da função <span class="math inline">\(\arctan\)</span> ou <span class="math inline">\(\tanh\)</span>, tomando um limite apropriado.</p>
+</section>
+<section id="exercício-5-aproximação-gaussiana-para-a-delta" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="exercício-5-aproximação-gaussiana-para-a-delta"><span class="header-section-number">11.5</span> Exercício 5: Aproximação Gaussiana para a Delta</h2>
+<p><strong>a)</strong> Verifique que <span class="math inline">\(G_\sigma(x)\)</span> é normalizada para qualquer <span class="math inline">\(\sigma &gt; 0\)</span>.</p>
+<p><strong>b)</strong> Mostre que <span class="math inline">\(G_\sigma(0) = \dfrac{1}{\sqrt{2\pi}\,\sigma}\)</span> diverge quando <span class="math inline">\(\sigma \to 0\)</span>.</p>
+<p><strong>c)</strong> Calcule a largura à meia altura (FWHM) de <span class="math inline">\(G_\sigma(x)\)</span> e mostre que ela vai a zero com <span class="math inline">\(\sigma\)</span>.</p>
+<p><strong>d)</strong> Explique por que <span class="math inline">\(G_\sigma(x)\)</span>, apesar de divergir pontualmente, converge para <span class="math inline">\(\delta(x)\)</span> no sentido de distribuições.</p>
+</section>
+<section id="exercício-6-demonstração-da-propriedade-de-filtragem-via-taylor" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="exercício-6-demonstração-da-propriedade-de-filtragem-via-taylor"><span class="header-section-number">11.6</span> Exercício 6: Demonstração da Propriedade de Filtragem via Taylor</h2>
+<p><strong>a)</strong> Repita a demonstração das notas para uma função par <span class="math inline">\(f(x) = \cos(x)\)</span> até ordem <span class="math inline">\(x^2\)</span> e verifique o resultado <span class="math inline">\(\lim_{\sigma\to0}\int G_\sigma(x) f(x)\,dx = f(0)\)</span>.</p>
+<p><strong>b)</strong> Explique por que apenas o termo constante <span class="math inline">\(f(0)\)</span> sobrevive no limite <span class="math inline">\(\sigma \to 0\)</span>.</p>
+<p><strong>c)</strong> Mostre que os termos pares de ordem <span class="math inline">\(x^{2k}\)</span> contribuem com potências <span class="math inline">\(\sigma^{2k} \to 0\)</span>.</p>
+<p><strong>d)</strong> O que aconteceria se <span class="math inline">\(f\)</span> não fosse suave em <span class="math inline">\(x=0\)</span> (por exemplo, <span class="math inline">\(f(x) = |x|\)</span>)?</p>
+</section>
+<section id="exercício-7-função-de-green-em-1d-essencial" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="exercício-7-função-de-green-em-1d-essencial"><span class="header-section-number">11.7</span> Exercício 7: Função de Green em 1D <strong>(Essencial)</strong></h2>
+<p><strong>a)</strong> Verifique por substituição direta que <span class="math inline">\(G(x,x_0) = \frac{1}{2}|x-x_0|\)</span> satisfaz <span class="math inline">\(\frac{d^2}{dx^2}G = \delta(x-x_0)\)</span>.</p>
+<p><strong>b)</strong> Mostre que <span class="math inline">\(G(x,x_0)\)</span> não é única: some uma função linear <span class="math inline">\(a + bx\)</span> e verifique que a equação ainda é satisfeita.</p>
+<p><strong>c)</strong> Que condições de contorno fixam a constante de integração na prática?</p>
+<p><strong>d)</strong> Interprete <span class="math inline">\(G(x,x_0)\)</span> como o deslocamento de uma corda infinita sob uma força pontual em <span class="math inline">\(x_0\)</span>.</p>
+</section>
+<section id="exercício-8-dependência-com-a-dimensão" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="exercício-8-dependência-com-a-dimensão"><span class="header-section-number">11.8</span> Exercício 8: Dependência com a Dimensão</h2>
+<p><strong>a)</strong> Verifique, por aplicação direta do laplaciano radial, que <span class="math inline">\(G \propto \log|x-x_0|\)</span> resolve a equação de Green em 2D.</p>
+<p><strong>b)</strong> Verifique que <span class="math inline">\(G \propto 1/|x-x_0|\)</span> resolve a equação de Green em 3D.</p>
+<p><strong>c)</strong> Compare o comportamento assintótico (crescimento ou decaimento) nas três dimensões da tabela e explique a tendência.</p>
+<p><strong>d)</strong> O que você espera que aconteça com a função de Green em 4D? Justifique sem fazer a conta completa.</p>
+</section>
+<section id="exercício-9-interpretação-física" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="exercício-9-interpretação-física"><span class="header-section-number">11.9</span> Exercício 9: Interpretação Física</h2>
+<p><strong>a)</strong> Dê outro exemplo físico (além da aceleração instantânea) de uma grandeza idealizada como limite de um processo suave.</p>
+<p><strong>b)</strong> Compare a analogia delta/processo-suave com a analogia número-irracional/sequência-racional discutida nas notas. Em que pontos a analogia é forte? Em que pontos ela é frágil?</p>
+<p><strong>c)</strong> Por que dizemos que a delta de Dirac “não é uma função” no sentido clássico?</p>
+<p><strong>d)</strong> Em que sentido a delta é, ainda assim, um objeto matemático rigoroso?</p>
+</section>
+<section id="exercício-10-o-truque-da-integral-gaussiana" class="level2" data-number="11.10">
+<h2 data-number="11.10" class="anchored" data-anchor-id="exercício-10-o-truque-da-integral-gaussiana"><span class="header-section-number">11.10</span> Exercício 10: O Truque da Integral Gaussiana</h2>
+<p><strong>a)</strong> Refaça a mudança para coordenadas polares na integral dupla e explique por que ela elimina a dificuldade de integrar <span class="math inline">\(e^{-x^2}\)</span> diretamente.</p>
+<p><strong>b)</strong> Calcule explicitamente <span class="math inline">\(\int_0^\infty e^{-r^2/2\sigma^2}\, r\,dr\)</span> e confirme o resultado <span class="math inline">\(2\pi\sigma^2\)</span> do produto das integrais.</p>
+<p><strong>c)</strong> Use o resultado para verificar a normalização de <span class="math inline">\(G_\sigma(x)\)</span> explicitamente.</p>
+<p><strong>d)</strong> Generalize o truque das coordenadas polares para calcular <span class="math inline">\(\int_{-\infty}^{\infty} e^{-x^2/2\sigma^2}\,x^2\,dx\)</span>.</p>
+</section>
+<section id="exercício-11-outras-sequências-delta" class="level2" data-number="11.11">
+<h2 data-number="11.11" class="anchored" data-anchor-id="exercício-11-outras-sequências-delta"><span class="header-section-number">11.11</span> Exercício 11: Outras Sequências Delta</h2>
+<p><strong>a)</strong> Mostre que a função retangular <span class="math inline">\(R_\epsilon(x) = \frac{1}{\epsilon}\)</span> para <span class="math inline">\(|x|&lt;\epsilon/2\)</span> e <span class="math inline">\(0\)</span> caso contrário também converge para <span class="math inline">\(\delta(x)\)</span> quando <span class="math inline">\(\epsilon \to 0\)</span>.</p>
+<p><strong>b)</strong> Verifique a propriedade de filtragem para <span class="math inline">\(R_\epsilon(x)\)</span> diretamente, sem expansão de Taylor.</p>
+<p><strong>c)</strong> Mostre que a Lorentziana <span class="math inline">\(L_\epsilon(x) = \dfrac{1}{\pi}\dfrac{\epsilon}{x^2+\epsilon^2}\)</span> também é uma sequência delta válida.</p>
+<p><strong>d)</strong> Compare a velocidade de convergência (na cauda, longe de <span class="math inline">\(x=0\)</span>) entre <span class="math inline">\(G_\sigma\)</span>, <span class="math inline">\(R_\epsilon\)</span> e <span class="math inline">\(L_\epsilon\)</span>.</p>
+</section>
+<section id="exercício-12-implementação-numérica" class="level2" data-number="11.12">
+<h2 data-number="11.12" class="anchored" data-anchor-id="exercício-12-implementação-numérica"><span class="header-section-number">11.12</span> Exercício 12: Implementação Numérica</h2>
+<p><strong>a)</strong> Modifique o código Python das notas para sobrepor a função degrau <span class="math inline">\(\theta(x)\)</span> ao gráfico da integral acumulada de <span class="math inline">\(G_\sigma(x)\)</span>.</p>
+<p><strong>b)</strong> Verifique numericamente que <span class="math inline">\(\int_{-\infty}^{\infty} G_\sigma(x)\,dx \approx 1\)</span> para os valores de <span class="math inline">\(\sigma\)</span> usados no código.</p>
+<p><strong>c)</strong> Adicione ao gráfico a aproximação retangular <span class="math inline">\(R_\epsilon(x)\)</span> do Exercício 11 e compare visualmente a convergência para a delta.</p>
+<p><strong>d)</strong> Estime numericamente, para um <span class="math inline">\(f(x)\)</span> de sua escolha, o erro <span class="math inline">\(\left|\int G_\sigma(x) f(x)\,dx - f(0)\right|\)</span> em função de <span class="math inline">\(\sigma\)</span>, e verifique como ele decresce.</p>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->

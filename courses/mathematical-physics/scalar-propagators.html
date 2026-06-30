@@ -471,7 +471,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#linhas-de-mundo" id="toc-linhas-de-mundo" class="nav-link" data-scroll-target="#linhas-de-mundo"><span class="header-section-number">5.1</span> Linhas de Mundo</a></li>
   <li><a href="#potencial-de-uma-carga-em-movimento" id="toc-potencial-de-uma-carga-em-movimento" class="nav-link" data-scroll-target="#potencial-de-uma-carga-em-movimento"><span class="header-section-number">5.2</span> Potencial de uma Carga em Movimento</a></li>
-  <li><a href="#o-princípio-da-ação-a-distância-retardada" id="toc-o-princípio-da-ação-a-distância-retardada" class="nav-link" data-scroll-target="#o-princípio-da-ação-a-distância-retardada"><span class="header-section-number">5.3</span> O Princípio da Ação a Distância (Retardada)</a></li>
+  <li><a href="#o-princípio-do-tempo-retardado" id="toc-o-princípio-do-tempo-retardado" class="nav-link" data-scroll-target="#o-princípio-do-tempo-retardado"><span class="header-section-number">5.3</span> O Princípio do Tempo Retardado</a></li>
   </ul></li>
   <li><a href="#conexão-com-a-eletrostática" id="toc-conexão-com-a-eletrostática" class="nav-link" data-scroll-target="#conexão-com-a-eletrostática"><span class="header-section-number">6</span> Conexão com a Eletrostática</a>
   <ul class="collapse">
@@ -483,12 +483,12 @@ window.Quarto = {
   <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">9</span> Exercícios</a>
   <ul class="collapse">
   <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link" data-scroll-target="#exercício-1"><span class="header-section-number">9.1</span> Exercício 1</a></li>
-  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2"><span class="header-section-number">9.2</span> Exercício 2</a></li>
+  <li><a href="#exercício-2-essencial" id="toc-exercício-2-essencial" class="nav-link" data-scroll-target="#exercício-2-essencial"><span class="header-section-number">9.2</span> Exercício 2 <strong>(Essencial)</strong></a></li>
   <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3"><span class="header-section-number">9.3</span> Exercício 3</a></li>
   <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4"><span class="header-section-number">9.4</span> Exercício 4</a></li>
   <li><a href="#exercício-5" id="toc-exercício-5" class="nav-link" data-scroll-target="#exercício-5"><span class="header-section-number">9.5</span> Exercício 5</a></li>
   <li><a href="#exercício-6" id="toc-exercício-6" class="nav-link" data-scroll-target="#exercício-6"><span class="header-section-number">9.6</span> Exercício 6</a></li>
-  <li><a href="#exercício-7" id="toc-exercício-7" class="nav-link" data-scroll-target="#exercício-7"><span class="header-section-number">9.7</span> Exercício 7</a></li>
+  <li><a href="#exercício-7-essencial" id="toc-exercício-7-essencial" class="nav-link" data-scroll-target="#exercício-7-essencial"><span class="header-section-number">9.7</span> Exercício 7 <strong>(Essencial)</strong></a></li>
   <li><a href="#exercício-8" id="toc-exercício-8" class="nav-link" data-scroll-target="#exercício-8"><span class="header-section-number">9.8</span> Exercício 8</a></li>
   <li><a href="#exercício-9" id="toc-exercício-9" class="nav-link" data-scroll-target="#exercício-9"><span class="header-section-number">9.9</span> Exercício 9</a></li>
   <li><a href="#exercício-10" id="toc-exercício-10" class="nav-link" data-scroll-target="#exercício-10"><span class="header-section-number">9.10</span> Exercício 10</a></li>
@@ -626,7 +626,7 @@ c(t - t_0) = |\mathbf{x} - \mathbf{x}_0|
 <h2 data-number="4.2" class="anchored" data-anchor-id="o-cone-de-luz-futuro"><span class="header-section-number">4.2</span> O Cone de Luz Futuro</h2>
 <p>Geometricamente, no espaço-tempo de Minkowski, o propagador é suportado no <strong>cone de luz futuro</strong> do evento <span class="math inline">\(x_0\)</span>. O cone de luz é definido por: <span class="math display">\[
 \Delta s^2 = c^2(t - t_0)^2 - |\mathbf{x} - \mathbf{x}_0|^2 = 0
-\]</span> com <span class="math inline">\(\Delta t &gt; 0\)</span>.</p>
+\]</span> com <span class="math inline">\(t &gt; t_0\)</span>.</p>
 <p>Fora do cone de luz (regiões espacialmente separadas), o propagador é identicamente nulo. Isso garante a <strong>causalidade</strong>: um distúrbio em <span class="math inline">\(x_0\)</span> só pode afetar pontos que estão em seu cone de luz futuro.</p>
 <div class="warning">
 <p>A equação de onda admite soluções com propagação na velocidade da luz, que é a velocidade máxima de propagação de informação na teoria da relatividade restrita. A existência de um propagador com suporte no cone de luz é uma manifestação da causalidade na teoria de campos.</p>
@@ -651,8 +651,8 @@ J^\mu(x) = q \int_{-\infty}^{\infty} d\tau \, \frac{dy^\mu}{d\tau} \, \delta^4(x
 \phi(x) = - \frac{q}{4\pi} \int_{-\infty}^{\infty} d\tau \, \frac{\delta\left( \Delta x^0(\tau) - |\Delta \mathbf{x}(\tau)| \right)}{|\mathbf{x} - \mathbf{y}(\tau)|}
 \]</span> onde <span class="math inline">\(\Delta x^0(\tau) = x^0 - y^0(\tau)\)</span> e <span class="math inline">\(\Delta \mathbf{x}(\tau) = \mathbf{x} - \mathbf{y}(\tau)\)</span>.</p>
 </section>
-<section id="o-princípio-da-ação-a-distância-retardada" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="o-princípio-da-ação-a-distância-retardada"><span class="header-section-number">5.3</span> O Princípio da Ação a Distância (Retardada)</h2>
+<section id="o-princípio-do-tempo-retardado" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="o-princípio-do-tempo-retardado"><span class="header-section-number">5.3</span> O Princípio do Tempo Retardado</h2>
 <p>A integral é não nula apenas quando existe um tempo próprio <span class="math inline">\(\tau\)</span> tal que: <span class="math display">\[
 x^0 - y^0(\tau) = |\mathbf{x} - \mathbf{y}(\tau)|
 \]</span> isto é, quando o ponto de observação <span class="math inline">\(x\)</span> está sobre o cone de luz futuro de um ponto da linha de mundo. Isso define o <strong>tempo retardado</strong> <span class="math inline">\(\tau_r\)</span>, que é a solução da equação: <span class="math display">\[
@@ -943,36 +943,36 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img93a21aaa215d4bcc9274169c3cd34f40" class="figure-img">
+  <img id="_anim_img14b46436fe02420fb20abe66a8531f93" class="figure-img">
   <div class="anim-controls">
-    <input id="_anim_slider93a21aaa215d4bcc9274169c3cd34f40" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="anim93a21aaa215d4bcc9274169c3cd34f40.set_frame(parseInt(this.value));">
+    <input id="_anim_slider14b46436fe02420fb20abe66a8531f93" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="anim14b46436fe02420fb20abe66a8531f93.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim93a21aaa215d4bcc9274169c3cd34f40.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim14b46436fe02420fb20abe66a8531f93.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim93a21aaa215d4bcc9274169c3cd34f40.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim14b46436fe02420fb20abe66a8531f93.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim93a21aaa215d4bcc9274169c3cd34f40.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim14b46436fe02420fb20abe66a8531f93.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim93a21aaa215d4bcc9274169c3cd34f40.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim14b46436fe02420fb20abe66a8531f93.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim93a21aaa215d4bcc9274169c3cd34f40.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim14b46436fe02420fb20abe66a8531f93.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim93a21aaa215d4bcc9274169c3cd34f40.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim14b46436fe02420fb20abe66a8531f93.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim93a21aaa215d4bcc9274169c3cd34f40.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim14b46436fe02420fb20abe66a8531f93.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim93a21aaa215d4bcc9274169c3cd34f40.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim14b46436fe02420fb20abe66a8531f93.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim93a21aaa215d4bcc9274169c3cd34f40.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim14b46436fe02420fb20abe66a8531f93.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select93a21aaa215d4bcc9274169c3cd34f40" class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_93a21aaa215d4bcc9274169c3cd34f40">
-      <label for="_anim_radio1_93a21aaa215d4bcc9274169c3cd34f40">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_93a21aaa215d4bcc9274169c3cd34f40" checked="">
-      <label for="_anim_radio2_93a21aaa215d4bcc9274169c3cd34f40">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_93a21aaa215d4bcc9274169c3cd34f40">
-      <label for="_anim_radio3_93a21aaa215d4bcc9274169c3cd34f40">Reflect</label>
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select14b46436fe02420fb20abe66a8531f93" class="anim-state">
+      <input type="radio" name="state" value="once" id="_anim_radio1_14b46436fe02420fb20abe66a8531f93">
+      <label for="_anim_radio1_14b46436fe02420fb20abe66a8531f93">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_14b46436fe02420fb20abe66a8531f93" checked="">
+      <label for="_anim_radio2_14b46436fe02420fb20abe66a8531f93">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_14b46436fe02420fb20abe66a8531f93">
+      <label for="_anim_radio3_14b46436fe02420fb20abe66a8531f93">Reflect</label>
     </form>
   </div>
 </div>
@@ -982,9 +982,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img93a21aaa215d4bcc9274169c3cd34f40";
-    var slider_id = "_anim_slider93a21aaa215d4bcc9274169c3cd34f40";
-    var loop_select_id = "_anim_loop_select93a21aaa215d4bcc9274169c3cd34f40";
+    var img_id = "_anim_img14b46436fe02420fb20abe66a8531f93";
+    var slider_id = "_anim_slider14b46436fe02420fb20abe66a8531f93";
+    var loop_select_id = "_anim_loop_select14b46436fe02420fb20abe66a8531f93";
     var frames = new Array(60);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwAAAAJACAYAAAA6rgFWAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -20531,7 +20531,7 @@ jlT8f72ZAAAAAElFTkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim93a21aaa215d4bcc9274169c3cd34f40 = new Animation(frames, img_id, slider_id, 50.0,
+        anim14b46436fe02420fb20abe66a8531f93 = new Animation(frames, img_id, slider_id, 50.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -20613,8 +20613,8 @@ Figure&nbsp;1
 <li><p>Determine a solução geral para <span class="math inline">\(f_{\mathbf{k}}(t)\)</span>.</p></li>
 </ol>
 </section>
-<section id="exercício-2" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="exercício-2"><span class="header-section-number">9.2</span> Exercício 2</h2>
+<section id="exercício-2-essencial" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="exercício-2-essencial"><span class="header-section-number">9.2</span> Exercício 2 <strong>(Essencial)</strong></h2>
 <p>Considere o propagador causal encontrado na aula:</p>
 <p><span class="math display">\[
 \phi_J(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right)
@@ -20655,8 +20655,8 @@ Figure&nbsp;1
 <li><p>Mostre que o potencial produzido tem componentes que dependem do tempo retardado.</p></li>
 </ol>
 </section>
-<section id="exercício-7" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="exercício-7"><span class="header-section-number">9.7</span> Exercício 7</h2>
+<section id="exercício-7-essencial" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="exercício-7-essencial"><span class="header-section-number">9.7</span> Exercício 7 <strong>(Essencial)</strong></h2>
 <p>Explique por que o potencial de Coulomb parece implicar ação instantânea, mesmo sendo obtido a partir de um propagador causal.</p>
 </section>
 <section id="exercício-8" class="level2" data-number="9.8">

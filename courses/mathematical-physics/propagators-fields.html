@@ -540,8 +540,8 @@ window.Quarto = {
   <li><a href="#exercício-2-ondas-planas" id="toc-exercício-2-ondas-planas" class="nav-link" data-scroll-target="#exercício-2-ondas-planas"><span class="header-section-number">8.2</span> Exercício 2: Ondas Planas</a></li>
   <li><a href="#exercício-3-soluções-da-equação-de-onda" id="toc-exercício-3-soluções-da-equação-de-onda" class="nav-link" data-scroll-target="#exercício-3-soluções-da-equação-de-onda"><span class="header-section-number">8.3</span> Exercício 3: Soluções da Equação de Onda</a></li>
   <li><a href="#exercício-4-produto-interno-simplético" id="toc-exercício-4-produto-interno-simplético" class="nav-link" data-scroll-target="#exercício-4-produto-interno-simplético"><span class="header-section-number">8.4</span> Exercício 4: Produto Interno Simplético</a></li>
-  <li><a href="#exercício-5-decomposição-do-campo" id="toc-exercício-5-decomposição-do-campo" class="nav-link" data-scroll-target="#exercício-5-decomposição-do-campo"><span class="header-section-number">8.5</span> Exercício 5: Decomposição do Campo</a></li>
-  <li><a href="#exercício-6-propagador-avançado" id="toc-exercício-6-propagador-avançado" class="nav-link" data-scroll-target="#exercício-6-propagador-avançado"><span class="header-section-number">8.6</span> Exercício 6: Propagador Avançado</a></li>
+  <li><a href="#exercício-5-decomposição-do-campo-essencial" id="toc-exercício-5-decomposição-do-campo-essencial" class="nav-link" data-scroll-target="#exercício-5-decomposição-do-campo-essencial"><span class="header-section-number">8.5</span> Exercício 5: Decomposição do Campo <strong>(Essencial)</strong></a></li>
+  <li><a href="#exercício-6-propagador-retardado-essencial" id="toc-exercício-6-propagador-retardado-essencial" class="nav-link" data-scroll-target="#exercício-6-propagador-retardado-essencial"><span class="header-section-number">8.6</span> Exercício 6: Propagador Retardado <strong>(Essencial)</strong></a></li>
   <li><a href="#exercício-7-condições-de-contorno" id="toc-exercício-7-condições-de-contorno" class="nav-link" data-scroll-target="#exercício-7-condições-de-contorno"><span class="header-section-number">8.7</span> Exercício 7: Condições de Contorno</a></li>
   <li><a href="#exercício-8-massa-e-modos-de-fourier" id="toc-exercício-8-massa-e-modos-de-fourier" class="nav-link" data-scroll-target="#exercício-8-massa-e-modos-de-fourier"><span class="header-section-number">8.8</span> Exercício 8: Massa e Modos de Fourier</a></li>
   <li><a href="#exercício-9-simulações-numéricas" id="toc-exercício-9-simulações-numéricas" class="nav-link" data-scroll-target="#exercício-9-simulações-numéricas"><span class="header-section-number">8.9</span> Exercício 9: Simulações Numéricas</a></li>
@@ -642,7 +642,7 @@ Important
 </section>
 <section id="função-de-green-para-partículas" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="função-de-green-para-partículas"><span class="header-section-number">2.3</span> Função de Green para Partículas</h2>
-<p>A função de Green avançada é construída como: <span class="math display">\[U(x) = \int_{-\infty}^{x} [V_1^T(\xi) S(\xi) V_2(x) - V_2^T(\xi) S(\xi) V_1(x)] d\xi\]</span> Esta construção garante que:</p>
+<p>A função de Green retardada é construída como: <span class="math display">\[U(x) = \int_{-\infty}^{x} [V_1^T(\xi) S(\xi) V_2(x) - V_2^T(\xi) S(\xi) V_1(x)] d\xi\]</span> Esta construção garante que:</p>
 <ol type="1">
 <li><span class="math inline">\(U\)</span> satisfaz a equação não-homogênea</li>
 <li><span class="math inline">\(U(-\infty) = 0\)</span> (condição de contorno no passado)</li>
@@ -875,8 +875,8 @@ Important
 <section id="condições-de-contorno" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="condições-de-contorno"><span class="header-section-number">5.2.2</span> Condições de Contorno</h3>
 <ul>
-<li><strong>Propagador avançado</strong>: vanish para <span class="math inline">\(x_0 &lt; x_0'\)</span> (causalidade)</li>
-<li><strong>Propagador retardado</strong>: vanish para <span class="math inline">\(x_0 &gt; x_0'\)</span> (causalidade temporal)</li>
+<li><strong>Propagador retardado</strong>: se anula para <span class="math inline">\(x_0 &lt; x_0'\)</span> (causalidade)</li>
+<li><strong>Propagador avançado</strong>: se anula para <span class="math inline">\(x_0 &gt; x_0'\)</span> (causalidade temporal)</li>
 </ul>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -888,7 +888,7 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A escolha entre propagador avançado e retardado corresponde a diferentes condições de contorno. O propagador avançado é adequado para problemas de espalhamento com condições iniciais no passado.</p>
+<p>A escolha entre propagador avançado e retardado corresponde a diferentes condições de contorno. O propagador retardado é adequado para problemas de espalhamento com condições iniciais no passado.</p>
 </div>
 </div>
 </section>
@@ -4950,16 +4950,16 @@ Figure&nbsp;3: Função de Green (propagador) em 1D
 <p><strong>c)</strong> Verifique que <span class="math inline">\((Q_{\mathbf{k}}, Q_{\mathbf{k}'}^*)_\Omega = 0\)</span>.</p>
 <p><strong>d)</strong> Interprete o significado físico destes resultados.</p>
 </section>
-<section id="exercício-5-decomposição-do-campo" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="exercício-5-decomposição-do-campo"><span class="header-section-number">8.5</span> Exercício 5: Decomposição do Campo</h2>
+<section id="exercício-5-decomposição-do-campo-essencial" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="exercício-5-decomposição-do-campo-essencial"><span class="header-section-number">8.5</span> Exercício 5: Decomposição do Campo <strong>(Essencial)</strong></h2>
 <p><strong>a)</strong> Mostre que qualquer campo pode ser decomposto como: <span class="math display">\[Q(x_0,\mathbf{x}) = \int [a_{\mathbf{k}} Q_{\mathbf{k}} + a_{\mathbf{k}}^* Q_{\mathbf{k}}^*] d^3k\]</span></p>
 <p><strong>b)</strong> Encontre a expressão para <span class="math inline">\(a_{\mathbf{k}}\)</span> em termos do campo e de sua derivada temporal.</p>
 <p><strong>c)</strong> Determine as relações de comutação para os operadores <span class="math inline">\(a_{\mathbf{k}}\)</span> e <span class="math inline">\(a_{\mathbf{k}}^\dagger\)</span>.</p>
 <p><strong>d)</strong> Interpretar <span class="math inline">\(a_{\mathbf{k}}\)</span> e <span class="math inline">\(a_{\mathbf{k}}^\dagger\)</span> como operadores de criação e aniquilação.</p>
 </section>
-<section id="exercício-6-propagador-avançado" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="exercício-6-propagador-avançado"><span class="header-section-number">8.6</span> Exercício 6: Propagador Avançado</h2>
-<p><strong>a)</strong> Construa o propagador avançado para a equação de onda usando o formalismo simplético.</p>
+<section id="exercício-6-propagador-retardado-essencial" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="exercício-6-propagador-retardado-essencial"><span class="header-section-number">8.6</span> Exercício 6: Propagador Retardado <strong>(Essencial)</strong></h2>
+<p><strong>a)</strong> Construa o propagador retardado para a equação de onda usando o formalismo simplético.</p>
 <p><strong>b)</strong> Verifique que o propagador satisfaz a equação <span class="math inline">\((\partial_{x_0}^2 - \nabla^2)G(x,x') = \delta^{(4)}(x-x')\)</span>.</p>
 <p><strong>c)</strong> Mostre que <span class="math inline">\(G(x,x') = 0\)</span> para <span class="math inline">\(x_0 &lt; x_0'\)</span> (condição de causalidade).</p>
 <p><strong>d)</strong> Calcule o propagador em 1+1 dimensões explicitamente.</p>
@@ -4967,7 +4967,7 @@ Figure&nbsp;3: Função de Green (propagador) em 1D
 <section id="exercício-7-condições-de-contorno" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="exercício-7-condições-de-contorno"><span class="header-section-number">8.7</span> Exercício 7: Condições de Contorno</h2>
 <p><strong>a)</strong> Discuta a diferença entre propagador avançado e propagador retardado.</p>
-<p><strong>b)</strong> Por que o propagador avançado é adequado para problemas de espalhamento?</p>
+<p><strong>b)</strong> Por que o propagador retardado é adequado para problemas de espalhamento?</p>
 <p><strong>c)</strong> Como as condições de contorno no infinito afetam a escolha do propagador?</p>
 <p><strong>d)</strong> Mostre que o propagador avançado e retardado estão relacionados por <span class="math inline">\(G_{\text{ret}} = G_{\text{adv}}^*\)</span>.</p>
 </section>
