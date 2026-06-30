@@ -51,7 +51,7 @@ e é uma constante do movimento (conservado).
 ## Hamiltonianos e Propriedades
 
 O Hamiltoniano associado é:
-$$ H = \begin{pmatrix} m\Omega^2 & 0 \\ 0 & 1/m \end{pmatrix} $$
+$$ H = \begin{pmatrix} m\nu^2 & 0 \\ 0 & 1/m \end{pmatrix} $$
 A equação de movimento pode ser escrita como:
 $$ V' = \Omega H V $$
 
