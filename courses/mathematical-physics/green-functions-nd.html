@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Notas de Aula">
+<meta name="dcterms.date" content="2026-06-29">
+
+<title>Funções de Green em 2D e ND – Physics Lecture Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-52e1b0ebd27845199031e1d0677c17b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R4D0BX334F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R4D0BX334F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Physics Lecture Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vitenti-physics/vitenti-physics.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/mathematical-physics/index.html">Mathematical Physics</a></li><li class="breadcrumb-item"><a href="../../courses/mathematical-physics/green-functions-nd.html">Green Functions</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Undergraduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introduction to Physics (portuguese)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/physics-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physics and Mathematics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/determinism-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Determinism and Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/intro-stat-mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Statistical Mechanics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Heisenberg Uncertainty Principle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/selected-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vector Calculus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/vector-spaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vector Spaces Products and Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mathematical Physics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/delta-dirac-green.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dirac Delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/green-functions-nd.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Green Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-symplectic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators and Symplectic Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-cont.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators: Complete Solutions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-fields.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators in Field Theory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/scalar-field.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalar Fields</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/scalar-propagators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalar Fields: Propagators and Vacuum</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Special Relativity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/galilean-relativity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Galilean Relativity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/spacetime-algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spacetime Algebra</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Graduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Electrodynamics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometry Review for Electrodynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/calculus-on-minkowski-spacetime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calculus on Minkowski Spacetime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/maxwell-equations-forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maxwell Equations in Covariant Form</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/accel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Electromagnetic Energy and Momentum</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> Introdução</a></li>
+  <li><a href="#conceitos-fundamentais" id="toc-conceitos-fundamentais" class="nav-link" data-scroll-target="#conceitos-fundamentais"><span class="header-section-number">2</span> Conceitos Fundamentais</a>
+  <ul class="collapse">
+  <li><a href="#generalização-do-operador-laplaciano" id="toc-generalização-do-operador-laplaciano" class="nav-link" data-scroll-target="#generalização-do-operador-laplaciano"><span class="header-section-number">2.1</span> Generalização do Operador Laplaciano</a></li>
+  <li><a href="#função-de-mundo-de-synge" id="toc-função-de-mundo-de-synge" class="nav-link" data-scroll-target="#função-de-mundo-de-synge"><span class="header-section-number">2.2</span> Função de Mundo de Synge</a></li>
+  </ul></li>
+  <li><a href="#soluções-por-lei-de-potência" id="toc-soluções-por-lei-de-potência" class="nav-link" data-scroll-target="#soluções-por-lei-de-potência"><span class="header-section-number">3</span> Soluções por Lei de Potência</a>
+  <ul class="collapse">
+  <li><a href="#ansatz-geral" id="toc-ansatz-geral" class="nav-link" data-scroll-target="#ansatz-geral"><span class="header-section-number">3.1</span> Ansatz Geral</a>
+  <ul class="collapse">
+  <li><a href="#gradiente-e-laplaciano" id="toc-gradiente-e-laplaciano" class="nav-link" data-scroll-target="#gradiente-e-laplaciano"><span class="header-section-number">3.1.1</span> Gradiente e Laplaciano</a></li>
+  <li><a href="#determinação-do-expoente" id="toc-determinação-do-expoente" class="nav-link" data-scroll-target="#determinação-do-expoente"><span class="header-section-number">3.1.2</span> Determinação do Expoente</a></li>
+  </ul></li>
+  <li><a href="#casos-específicos" id="toc-casos-específicos" class="nav-link" data-scroll-target="#casos-específicos"><span class="header-section-number">3.2</span> Casos Específicos</a>
+  <ul class="collapse">
+  <li><a href="#caso-1d-n1" id="toc-caso-1d-n1" class="nav-link" data-scroll-target="#caso-1d-n1"><span class="header-section-number">3.2.1</span> Caso 1D (<span class="math inline">\(N=1\)</span>)</a></li>
+  <li><a href="#caso-2d-n2" id="toc-caso-2d-n2" class="nav-link" data-scroll-target="#caso-2d-n2"><span class="header-section-number">3.2.2</span> Caso 2D (<span class="math inline">\(N=2\)</span>)</a></li>
+  <li><a href="#caso-3d-n3" id="toc-caso-3d-n3" class="nav-link" data-scroll-target="#caso-3d-n3"><span class="header-section-number">3.2.3</span> Caso 3D (<span class="math inline">\(N=3\)</span>)</a></li>
+  <li><a href="#caso-nd-nneq2" id="toc-caso-nd-nneq2" class="nav-link" data-scroll-target="#caso-nd-nneq2"><span class="header-section-number">3.2.4</span> Caso ND (<span class="math inline">\(N\neq2\)</span>)</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#o-caso-especial-bidimensional" id="toc-o-caso-especial-bidimensional" class="nav-link" data-scroll-target="#o-caso-especial-bidimensional"><span class="header-section-number">4</span> O Caso Especial Bidimensional</a>
+  <ul class="collapse">
+  <li><a href="#falha-da-lei-de-potência" id="toc-falha-da-lei-de-potência" class="nav-link" data-scroll-target="#falha-da-lei-de-potência"><span class="header-section-number">4.1</span> Falha da Lei de Potência</a></li>
+  <li><a href="#solução-logarítmica" id="toc-solução-logarítmica" class="nav-link" data-scroll-target="#solução-logarítmica"><span class="header-section-number">4.2</span> Solução Logarítmica</a>
+  <ul class="collapse">
+  <li><a href="#cálculo-do-laplaciano" id="toc-cálculo-do-laplaciano" class="nav-link" data-scroll-target="#cálculo-do-laplaciano"><span class="header-section-number">4.2.1</span> Cálculo do Laplaciano</a></li>
+  </ul></li>
+  <li><a href="#interpretação-física" id="toc-interpretação-física" class="nav-link" data-scroll-target="#interpretação-física"><span class="header-section-number">4.3</span> Interpretação Física</a></li>
+  </ul></li>
+  <li><a href="#regularização-e-propriedade-de-filtragem" id="toc-regularização-e-propriedade-de-filtragem" class="nav-link" data-scroll-target="#regularização-e-propriedade-de-filtragem"><span class="header-section-number">5</span> Regularização e Propriedade de Filtragem</a>
+  <ul class="collapse">
+  <li><a href="#o-problema-da-origem" id="toc-o-problema-da-origem" class="nav-link" data-scroll-target="#o-problema-da-origem"><span class="header-section-number">5.1</span> O Problema da Origem</a></li>
+  <li><a href="#regularização-com-parâmetro-varepsilon" id="toc-regularização-com-parâmetro-varepsilon" class="nav-link" data-scroll-target="#regularização-com-parâmetro-varepsilon"><span class="header-section-number">5.2</span> Regularização com Parâmetro <span class="math inline">\(\varepsilon\)</span></a>
+  <ul class="collapse">
+  <li><a href="#laplaciano-regularizado" id="toc-laplaciano-regularizado" class="nav-link" data-scroll-target="#laplaciano-regularizado"><span class="header-section-number">5.2.1</span> Laplaciano Regularizado</a></li>
+  </ul></li>
+  <li><a href="#integral-normalizada" id="toc-integral-normalizada" class="nav-link" data-scroll-target="#integral-normalizada"><span class="header-section-number">5.3</span> Integral Normalizada</a>
+  <ul class="collapse">
+  <li><a href="#cálculo-para-3d" id="toc-cálculo-para-3d" class="nav-link" data-scroll-target="#cálculo-para-3d"><span class="header-section-number">5.3.1</span> Cálculo para 3D</a></li>
+  <li><a href="#normalização" id="toc-normalização" class="nav-link" data-scroll-target="#normalização"><span class="header-section-number">5.3.2</span> Normalização</a></li>
+  </ul></li>
+  <li><a href="#prova-da-propriedade-de-filtragem" id="toc-prova-da-propriedade-de-filtragem" class="nav-link" data-scroll-target="#prova-da-propriedade-de-filtragem"><span class="header-section-number">5.4</span> Prova da Propriedade de Filtragem</a>
+  <ul class="collapse">
+  <li><a href="#expansão-de-taylor" id="toc-expansão-de-taylor" class="nav-link" data-scroll-target="#expansão-de-taylor"><span class="header-section-number">5.4.1</span> Expansão de Taylor</a></li>
+  <li><a href="#análise-dos-termos" id="toc-análise-dos-termos" class="nav-link" data-scroll-target="#análise-dos-termos"><span class="header-section-number">5.4.2</span> Análise dos Termos</a></li>
+  <li><a href="#normalização-final" id="toc-normalização-final" class="nav-link" data-scroll-target="#normalização-final"><span class="header-section-number">5.4.3</span> Normalização Final</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#interpretações-físicas" id="toc-interpretações-físicas" class="nav-link" data-scroll-target="#interpretações-físicas"><span class="header-section-number">6</span> Interpretações Físicas</a>
+  <ul class="collapse">
+  <li><a href="#dimensão-do-espaço-e-lei-de-coulomb" id="toc-dimensão-do-espaço-e-lei-de-coulomb" class="nav-link" data-scroll-target="#dimensão-do-espaço-e-lei-de-coulomb"><span class="header-section-number">6.1</span> Dimensão do Espaço e Lei de Coulomb</a>
+  <ul class="collapse">
+  <li><a href="#consequências-físicas" id="toc-consequências-físicas" class="nav-link" data-scroll-target="#consequências-físicas"><span class="header-section-number">6.1.1</span> Consequências Físicas</a></li>
+  </ul></li>
+  <li><a href="#topologia-do-universo" id="toc-topologia-do-universo" class="nav-link" data-scroll-target="#topologia-do-universo"><span class="header-section-number">6.2</span> Topologia do Universo</a></li>
+  <li><a href="#teoria-das-cordas" id="toc-teoria-das-cordas" class="nav-link" data-scroll-target="#teoria-das-cordas"><span class="header-section-number">6.3</span> Teoria das Cordas</a></li>
+  </ul></li>
+  <li><a href="#visualizações-computacionais" id="toc-visualizações-computacionais" class="nav-link" data-scroll-target="#visualizações-computacionais"><span class="header-section-number">7</span> Visualizações Computacionais</a></li>
+  <li><a href="#tabela-resumo-funções-de-green-em-nd" id="toc-tabela-resumo-funções-de-green-em-nd" class="nav-link" data-scroll-target="#tabela-resumo-funções-de-green-em-nd"><span class="header-section-number">8</span> Tabela Resumo: Funções de Green em ND</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">9</span> Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#exercício-1-função-de-synge" id="toc-exercício-1-função-de-synge" class="nav-link" data-scroll-target="#exercício-1-função-de-synge"><span class="header-section-number">9.1</span> Exercício 1: Função de Synge</a></li>
+  <li><a href="#exercício-2-lei-de-potência" id="toc-exercício-2-lei-de-potência" class="nav-link" data-scroll-target="#exercício-2-lei-de-potência"><span class="header-section-number">9.2</span> Exercício 2: Lei de Potência</a></li>
+  <li><a href="#exercício-3-solução-2d" id="toc-exercício-3-solução-2d" class="nav-link" data-scroll-target="#exercício-3-solução-2d"><span class="header-section-number">9.3</span> Exercício 3: Solução 2D</a></li>
+  <li><a href="#exercício-4-regularização-3d" id="toc-exercício-4-regularização-3d" class="nav-link" data-scroll-target="#exercício-4-regularização-3d"><span class="header-section-number">9.4</span> Exercício 4: Regularização 3D</a></li>
+  <li><a href="#exercício-5-propriedade-de-filtragem" id="toc-exercício-5-propriedade-de-filtragem" class="nav-link" data-scroll-target="#exercício-5-propriedade-de-filtragem"><span class="header-section-number">9.5</span> Exercício 5: Propriedade de Filtragem</a></li>
+  <li><a href="#exercício-6-generalização-nd" id="toc-exercício-6-generalização-nd" class="nav-link" data-scroll-target="#exercício-6-generalização-nd"><span class="header-section-number">9.6</span> Exercício 6: Generalização ND</a></li>
+  <li><a href="#exercício-7-interpretação-física" id="toc-exercício-7-interpretação-física" class="nav-link" data-scroll-target="#exercício-7-interpretação-física"><span class="header-section-number">9.7</span> Exercício 7: Interpretação Física</a></li>
+  <li><a href="#exercício-8-topologia-do-universo" id="toc-exercício-8-topologia-do-universo" class="nav-link" data-scroll-target="#exercício-8-topologia-do-universo"><span class="header-section-number">9.8</span> Exercício 8: Topologia do Universo</a></li>
+  <li><a href="#exercício-9-regularização-dimensional" id="toc-exercício-9-regularização-dimensional" class="nav-link" data-scroll-target="#exercício-9-regularização-dimensional"><span class="header-section-number">9.9</span> Exercício 9: Regularização Dimensional</a></li>
+  <li><a href="#exercício-10-implementação-numérica" id="toc-exercício-10-implementação-numérica" class="nav-link" data-scroll-target="#exercício-10-implementação-numérica"><span class="header-section-number">9.10</span> Exercício 10: Implementação Numérica</a></li>
+  <li><a href="#exercício-11-conexão-com-eletromagnetismo" id="toc-exercício-11-conexão-com-eletromagnetismo" class="nav-link" data-scroll-target="#exercício-11-conexão-com-eletromagnetismo"><span class="header-section-number">9.11</span> Exercício 11: Conexão com Eletromagnetismo</a></li>
+  <li><a href="#exercício-12-caso-1d-detalhado" id="toc-exercício-12-caso-1d-detalhado" class="nav-link" data-scroll-target="#exercício-12-caso-1d-detalhado"><span class="header-section-number">9.12</span> Exercício 12: Caso 1D Detalhado</a></li>
+  <li><a href="#exercício-13-método-de-frobenius" id="toc-exercício-13-método-de-frobenius" class="nav-link" data-scroll-target="#exercício-13-método-de-frobenius"><span class="header-section-number">9.13</span> Exercício 13: Método de Frobenius</a></li>
+  <li><a href="#exercício-14-espaços-curvos" id="toc-exercício-14-espaços-curvos" class="nav-link" data-scroll-target="#exercício-14-espaços-curvos"><span class="header-section-number">9.14</span> Exercício 14: Espaços Curvos</a></li>
+  <li><a href="#exercício-15-aplicações-práticas" id="toc-exercício-15-aplicações-práticas" class="nav-link" data-scroll-target="#exercício-15-aplicações-práticas"><span class="header-section-number">9.15</span> Exercício 15: Aplicações Práticas</a></li>
+  </ul></li>
+  <li><a href="#conclusão" id="toc-conclusão" class="nav-link" data-scroll-target="#conclusão"><span class="header-section-number">10</span> Conclusão</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="green-functions-nd.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/mathematical-physics/index.html">Mathematical Physics</a></li><li class="breadcrumb-item"><a href="../../courses/mathematical-physics/green-functions-nd.html">Green Functions</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Funções de Green em 2D e ND</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sandro Vitenti </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 29, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introdução" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introdução</h1>
+<p>Nesta aula, damos continuidade ao estudo das funções de Green, agora generalizando o operador laplaciano para múltiplas dimensões e explorando como a geometria do espaço determina a forma das soluções. Vamos construir funções de Green de forma global, sem decomposição em funções de base, seguindo a abordagem operacional iniciada nas aulas anteriores.</p>
+<p>Os principais objetivos são:</p>
+<ol type="1">
+<li><strong>Generalizar</strong> a função de Green para o laplaciano em <span class="math inline">\(N\)</span> dimensões</li>
+<li><strong>Compreender</strong> o papel da função de mundo de Synge</li>
+<li><strong>Resolver</strong> o caso especial bidimensional (solução logarítmica)</li>
+<li><strong>Regularizar</strong> as divergências na origem</li>
+<li><strong>Provar</strong> a propriedade de filtragem da delta de Dirac</li>
+<li><strong>Interpretar</strong> fisicamente os resultados (lei de Coulomb, dimensões do espaço)</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A abordagem adotada é puramente geométrica, utilizando apenas a métrica do espaço para construir as funções de Green. Isso permite uma generalização natural para espaços curvos e dimensões arbitrárias.</p>
+</div>
+</div>
+</section>
+<section id="conceitos-fundamentais" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Conceitos Fundamentais</h1>
+<section id="generalização-do-operador-laplaciano" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="generalização-do-operador-laplaciano"><span class="header-section-number">2.1</span> Generalização do Operador Laplaciano</h2>
+<p>Vamos estender o operador de derivada segunda escalar para múltiplas dimensões. Em <span class="math inline">\(N\)</span> dimensões, o laplaciano é dado por:</p>
+<p><span class="math display">\[
+\nabla^2_N = \sum_{i=1}^N \frac{\partial^2}{\partial x_i^2}
+\]</span></p>
+<p>O objetivo é encontrar a função de Green <span class="math inline">\(G_N\)</span> que satisfaz:</p>
+<p><span class="math display">\[
+\nabla^2_N G_N(\mathbf{x} - \mathbf{x}_0) = \delta^N(\mathbf{x} - \mathbf{x}_0)
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A diferença crucial entre as dimensões está no comportamento das soluções. Em 2D temos um caso especial, enquanto em outras dimensões as soluções seguem leis de potência. Esta diferença está diretamente relacionada à forma como a informação se propaga no espaço.</p>
+</div>
+</div>
+</section>
+<section id="função-de-mundo-de-synge" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="função-de-mundo-de-synge"><span class="header-section-number">2.2</span> Função de Mundo de Synge</h2>
+<p>A função de mundo de Synge é definida como:</p>
+<p><span class="math display">\[
+\sigma(\mathbf{x}, \mathbf{x}_0) = \frac{|\mathbf{x} - \mathbf{x}_0|^2}{2}
+\]</span></p>
+<p>Esta função é importante porque:</p>
+<ol type="1">
+<li><strong>É um escalar</strong> construído apenas a partir da geometria</li>
+<li><strong>É independente da origem</strong> do sistema de coordenadas</li>
+<li><strong>Generaliza</strong> para espaços curvos (relatividade geral)</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Propriedades fundamentais do gradiente:</strong> <span class="math display">\[
+\nabla \sigma = \mathbf{x} - \mathbf{x}_0
+\]</span> <span class="math display">\[
+\nabla^2 \sigma = N
+\]</span></p>
+<p>Estas propriedades são a base para todos os cálculos subsequentes.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="soluções-por-lei-de-potência" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Soluções por Lei de Potência</h1>
+<section id="ansatz-geral" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="ansatz-geral"><span class="header-section-number">3.1</span> Ansatz Geral</h2>
+<p>Vamos buscar soluções da forma:</p>
+<p><span class="math display">\[
+G = \sigma^\lambda
+\]</span></p>
+<p>onde <span class="math inline">\(\lambda\)</span> é um expoente a ser determinado.</p>
+<section id="gradiente-e-laplaciano" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="gradiente-e-laplaciano"><span class="header-section-number">3.1.1</span> Gradiente e Laplaciano</h3>
+<p><strong>Gradiente:</strong> <span class="math display">\[
+\nabla G = \lambda \sigma^{\lambda-1} (\mathbf{x} - \mathbf{x}_0)
+\]</span></p>
+<p><strong>Laplaciano:</strong> <span class="math display">\[
+\nabla^2 G = \lambda(2\lambda - 2 + N) \sigma^{\lambda-1}
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este resultado é obtido aplicando o divergente ao gradiente e usando as propriedades de <span class="math inline">\(\sigma\)</span>. Observe que a dimensão <span class="math inline">\(N\)</span> aparece naturalmente no termo <span class="math inline">\(2\lambda - 2 + N\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="determinação-do-expoente" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="determinação-do-expoente"><span class="header-section-number">3.1.2</span> Determinação do Expoente</h3>
+<p>Para que <span class="math inline">\(\nabla^2 G = 0\)</span> (exceto na origem), precisamos:</p>
+<p><span class="math display">\[
+\lambda(2\lambda - 2 + N) = 0
+\]</span></p>
+<p>As soluções são:</p>
+<ol type="1">
+<li><span class="math inline">\(\lambda = 0\)</span> (solução trivial, constante)</li>
+<li><span class="math inline">\(\lambda = 1 - \frac{N}{2}\)</span></li>
+</ol>
+<p>Portanto, a solução não-trivial é:</p>
+<p><span class="math display">\[
+G_N \propto \sigma^{1-N/2} = |\mathbf{x} - \mathbf{x}_0|^{2-N}
+\]</span></p>
+</section>
+</section>
+<section id="casos-específicos" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="casos-específicos"><span class="header-section-number">3.2</span> Casos Específicos</h2>
+<section id="caso-1d-n1" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="caso-1d-n1"><span class="header-section-number">3.2.1</span> Caso 1D (<span class="math inline">\(N=1\)</span>)</h3>
+<p><span class="math display">\[
+\lambda = 1 - \frac{1}{2} = \frac{1}{2}
+\]</span></p>
+<p><span class="math display">\[
+G_1 \propto \sigma^{1/2} = |x - x_0|
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Este resultado recupera a função módulo obtida na aula anterior. A derivada segunda da função módulo nos dá a delta de Dirac em uma dimensão.</p>
+</div>
+</div>
+</section>
+<section id="caso-2d-n2" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="caso-2d-n2"><span class="header-section-number">3.2.2</span> Caso 2D (<span class="math inline">\(N=2\)</span>)</h3>
+<p><span class="math display">\[
+\lambda = 1 - 1 = 0
+\]</span></p>
+<p>A solução por lei de potência falha! Precisamos de uma abordagem especial.</p>
+</section>
+<section id="caso-3d-n3" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="caso-3d-n3"><span class="header-section-number">3.2.3</span> Caso 3D (<span class="math inline">\(N=3\)</span>)</h3>
+<p><span class="math display">\[
+\lambda = 1 - \frac{3}{2} = -\frac{1}{2}
+\]</span></p>
+<p><span class="math display">\[
+G_3 \propto \sigma^{-1/2} = \frac{1}{|\mathbf{x} - \mathbf{x}_0|}
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Interpretação física:</strong> Em 3D, a função de Green é o potencial Coulombiano! Isto mostra que a lei de Coulomb está diretamente relacionada à dimensão do espaço. O fator <span class="math inline">\(4\pi\)</span> que aparece na normalização está associado à área da casca esférica.</p>
+</div>
+</div>
+</section>
+<section id="caso-nd-nneq2" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="caso-nd-nneq2"><span class="header-section-number">3.2.4</span> Caso ND (<span class="math inline">\(N\neq2\)</span>)</h3>
+<p>Generalizando:</p>
+<p><span class="math display">\[
+G_N(\mathbf{x} - \mathbf{x}_0) =
+\begin{cases}
+|\mathbf{x} - \mathbf{x}_0|^{2-N} &amp; N \neq 2 \\
+-\ln|\mathbf{x} - \mathbf{x}_0| &amp; N = 2
+\end{cases}
+\]</span></p>
+</section>
+</section>
+</section>
+<section id="o-caso-especial-bidimensional" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> O Caso Especial Bidimensional</h1>
+<section id="falha-da-lei-de-potência" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="falha-da-lei-de-potência"><span class="header-section-number">4.1</span> Falha da Lei de Potência</h2>
+<p>Em 2D, <span class="math inline">\(\lambda = 0\)</span> dá <span class="math inline">\(G = \text{constante}\)</span>, que não é uma solução útil. Precisamos de um novo ansatz.</p>
+</section>
+<section id="solução-logarítmica" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="solução-logarítmica"><span class="header-section-number">4.2</span> Solução Logarítmica</h2>
+<p>Inspirados no método de Frobenius (raízes repetidas), testamos:</p>
+<p><span class="math display">\[
+G = \ln \sigma
+\]</span></p>
+<section id="cálculo-do-laplaciano" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="cálculo-do-laplaciano"><span class="header-section-number">4.2.1</span> Cálculo do Laplaciano</h3>
+<p><strong>Gradiente:</strong> <span class="math display">\[
+\nabla (\ln \sigma) = \frac{1}{\sigma}(\mathbf{x} - \mathbf{x}_0)
+\]</span></p>
+<p><strong>Laplaciano:</strong> <span class="math display">\[
+\nabla^2 (\ln \sigma) = \frac{2}{\sigma} - \frac{|\mathbf{x} - \mathbf{x}_0|^2}{\sigma^2} = \frac{2}{\sigma} - \frac{2\sigma}{\sigma^2} = 0
+\]</span></p>
+<div class="callout-success">
+<p>A solução logarítmica funciona! Em 2D, <span class="math inline">\(G_2 = -\frac{1}{2\pi}\ln|\mathbf{r} - \mathbf{r}_0|\)</span> é a função de Green do laplaciano. O fator <span class="math inline">\(-1/(2\pi)\)</span> garante a normalização correta.</p>
+</div>
+</section>
+</section>
+<section id="interpretação-física" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="interpretação-física"><span class="header-section-number">4.3</span> Interpretação Física</h2>
+<p>O logaritmo em 2D reflete o fato de que a “área” de uma casca circular é <span class="math inline">\(2\pi r\)</span>, enquanto em 3D é <span class="math inline">\(4\pi r^2\)</span>. A informação que “emana” de uma fonte pontual se espalha de forma diferente em cada dimensão.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A regularização dimensional conecta os casos 2D e ND. Podemos obter a solução logarítmica como o limite <span class="math inline">\(N \to 2\)</span> da solução geral: <span class="math display">\[
+\lim_{N \to 2} \frac{r^{2-N} - 1}{N-2} = -\ln r
+\]</span></p>
+</div>
+</div>
+</section>
+</section>
+<section id="regularização-e-propriedade-de-filtragem" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Regularização e Propriedade de Filtragem</h1>
+<section id="o-problema-da-origem" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="o-problema-da-origem"><span class="header-section-number">5.1</span> O Problema da Origem</h2>
+<p>As soluções encontradas divergem na origem (<span class="math inline">\(\mathbf{x} = \mathbf{x}_0\)</span>). Precisamos de um procedimento de regularização.</p>
+</section>
+<section id="regularização-com-parâmetro-varepsilon" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="regularização-com-parâmetro-varepsilon"><span class="header-section-number">5.2</span> Regularização com Parâmetro <span class="math inline">\(\varepsilon\)</span></h2>
+<p>Introduzimos um parâmetro <span class="math inline">\(\varepsilon &gt; 0\)</span> para controlar a divergência:</p>
+<p><span class="math display">\[
+G_\varepsilon(\mathbf{x}, \mathbf{x}_0) = (\sigma + \varepsilon)^\lambda
+\]</span></p>
+<p>Para o caso 3D (<span class="math inline">\(\lambda = -1/2\)</span>):</p>
+<p><span class="math display">\[
+G_\varepsilon = \frac{1}{\sqrt{\sigma + \varepsilon}}
+\]</span></p>
+<section id="laplaciano-regularizado" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="laplaciano-regularizado"><span class="header-section-number">5.2.1</span> Laplaciano Regularizado</h3>
+<p>Calculando cuidadosamente:</p>
+<p><span class="math display">\[
+\nabla^2 G_\varepsilon = -3\varepsilon (\sigma + \varepsilon)^{-5/2}
+\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para <span class="math inline">\(\varepsilon &gt; 0\)</span>, esta expressão é finita em todos os pontos. No limite <span class="math inline">\(\varepsilon \to 0\)</span>, recuperamos a função de Green singular. O parâmetro <span class="math inline">\(\varepsilon\)</span> atua como um “regulador” que introduz uma distância mínima.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="integral-normalizada" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="integral-normalizada"><span class="header-section-number">5.3</span> Integral Normalizada</h2>
+<section id="cálculo-para-3d" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="cálculo-para-3d"><span class="header-section-number">5.3.1</span> Cálculo para 3D</h3>
+<p>Queremos calcular:</p>
+<p><span class="math display">\[
+\lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, d^3x = -4\pi
+\]</span></p>
+<section id="passo-a-passo-da-demonstração" class="level4" data-number="5.3.1.1">
+<h4 data-number="5.3.1.1" class="anchored" data-anchor-id="passo-a-passo-da-demonstração"><span class="header-section-number">5.3.1.1</span> Passo a Passo da Demonstração</h4>
+<ol type="1">
+<li><strong>Coordenadas esféricas</strong> centradas em <span class="math inline">\(\mathbf{x}_0\)</span>:</li>
+</ol>
+<p><span class="math display">\[
+I_\varepsilon = -3\varepsilon \int_0^{2\pi} \int_0^\pi \int_0^\infty \frac{r^2 \sin\theta}{(r^2/2 + \varepsilon)^{5/2}} \, dr \, d\theta \, d\phi
+\]</span></p>
+<ol start="2" type="1">
+<li><strong>Integração angular</strong>:</li>
+</ol>
+<p><span class="math display">\[
+I_\varepsilon = -4\pi \cdot 3\varepsilon \int_0^\infty \frac{r^2}{(r^2/2 + \varepsilon)^{5/2}} \, dr
+\]</span></p>
+<ol start="3" type="1">
+<li><strong>Integração por partes</strong> (para simplificar):</li>
+</ol>
+<p><span class="math display">\[
+I_\varepsilon = -4\pi \cdot 3\varepsilon \left[ \frac{r}{(r^2/2 + \varepsilon)^{3/2}} \right]_0^\infty - \int_0^\infty \frac{1}{(r^2/2 + \varepsilon)^{3/2}} \, dr
+\]</span></p>
+<ol start="4" type="1">
+<li><strong>Substituição</strong> <span class="math inline">\(r = \sqrt{2\varepsilon}\tan\theta\)</span>:</li>
+</ol>
+<p><span class="math display">\[
+\int_0^\infty \frac{dr}{(r^2/2 + \varepsilon)^{3/2}} = \frac{1}{\varepsilon}\int_0^{\pi/2} \cos\theta \, d\theta = \frac{1}{\varepsilon}
+\]</span></p>
+<ol start="5" type="1">
+<li><strong>Resultado final</strong>:</li>
+</ol>
+<p><span class="math display">\[
+I_\varepsilon = -4\pi \cdot 3\varepsilon \cdot \frac{1}{\varepsilon} \cdot (-1) = -4\pi
+\]</span></p>
+</section>
+</section>
+<section id="normalização" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="normalização"><span class="header-section-number">5.3.2</span> Normalização</h3>
+<p>Definimos:</p>
+<p><span class="math display">\[
+G_3(\mathbf{r} - \mathbf{r}_0) = -\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}
+\]</span></p>
+<p>Então:</p>
+<p><span class="math display">\[
+\nabla^2 G_3 = \delta^3(\mathbf{r} - \mathbf{r}_0)
+\]</span></p>
+</section>
+</section>
+<section id="prova-da-propriedade-de-filtragem" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="prova-da-propriedade-de-filtragem"><span class="header-section-number">5.4</span> Prova da Propriedade de Filtragem</h2>
+<p>Para mostrar que o laplaciano regularizado se comporta como uma delta de Dirac, precisamos provar:</p>
+<p><span class="math display">\[
+\lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
+\]</span></p>
+<section id="expansão-de-taylor" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="expansão-de-taylor"><span class="header-section-number">5.4.1</span> Expansão de Taylor</h3>
+<p>Expandimos <span class="math inline">\(f\)</span> em torno de <span class="math inline">\(\mathbf{x}_0\)</span>:</p>
+<p><span class="math display">\[
+f(\mathbf{x}) = f(\mathbf{x}_0) + \nabla f(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0) + \frac{1}{2}(\mathbf{x} - \mathbf{x}_0)^T \nabla^2 f(\mathbf{x}_0)(\mathbf{x} - \mathbf{x}_0) + \cdots
+\]</span></p>
+</section>
+<section id="análise-dos-termos" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="análise-dos-termos"><span class="header-section-number">5.4.2</span> Análise dos Termos</h3>
+<ol type="1">
+<li><strong>Termo constante</strong> <span class="math inline">\(f(\mathbf{x}_0)\)</span>:
+<ul>
+<li>Contribuição: <span class="math inline">\(-4\pi f(\mathbf{x}_0)\)</span> (já calculado)</li>
+</ul></li>
+<li><strong>Termo linear</strong> <span class="math inline">\(\nabla f(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0)\)</span>:
+<ul>
+<li>A integral angular de <span class="math inline">\(\cos\theta\)</span> é zero</li>
+<li>Contribuição: <span class="math inline">\(0\)</span></li>
+</ul></li>
+<li><strong>Termo quadrático</strong>:
+<ul>
+<li>Contribui com <span class="math inline">\(\mathcal{O}(\varepsilon^{1/2}) \to 0\)</span></li>
+</ul></li>
+<li><strong>Termos de ordem superior</strong>:
+<ul>
+<li>Contribuem com <span class="math inline">\(\mathcal{O}(\varepsilon^{k/2}) \to 0\)</span> para <span class="math inline">\(k \geq 1\)</span></li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O termo constante sobrevive ao limite <span class="math inline">\(\varepsilon \to 0\)</span>, produzindo a normalização correta. Todos os outros termos se anulam. Este é o cerne da propriedade de filtragem da delta de Dirac.</p>
+</div>
+</div>
+<p>Portanto:</p>
+<p><span class="math display">\[
+\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = -4\pi f(\mathbf{x}_0)
+\]</span></p>
+</section>
+<section id="normalização-final" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="normalização-final"><span class="header-section-number">5.4.3</span> Normalização Final</h3>
+<p>Dividindo por <span class="math inline">\(-4\pi\)</span>:</p>
+<p><span class="math display">\[
+\lim_{\varepsilon \to 0} \int \nabla^2 \left(-\frac{1}{4\pi\sqrt{\sigma+\varepsilon}}\right) f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
+\]</span></p>
+<p>Ou seja:</p>
+<p><span class="math display">\[
+\nabla^2 \left(-\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}\right) = \delta^3(\mathbf{r} - \mathbf{r}_0)
+\]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>É importante notar que o laplaciano da função de Green singular não é bem definido na origem. A regularização é essencial para dar sentido matemático à equação <span class="math inline">\(\nabla^2(1/r) = -4\pi\delta^3(\mathbf{r})\)</span>.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="interpretações-físicas" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Interpretações Físicas</h1>
+<section id="dimensão-do-espaço-e-lei-de-coulomb" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="dimensão-do-espaço-e-lei-de-coulomb"><span class="header-section-number">6.1</span> Dimensão do Espaço e Lei de Coulomb</h2>
+<p>A função de Green em <span class="math inline">\(N\)</span> dimensões:</p>
+<p><span class="math display">\[
+G_N =
+\begin{cases}
+|\mathbf{r} - \mathbf{r}_0|^{2-N} &amp; N \neq 2 \\
+-\ln|\mathbf{r} - \mathbf{r}_0| &amp; N = 2
+\end{cases}
+\]</span></p>
+<section id="consequências-físicas" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="consequências-físicas"><span class="header-section-number">6.1.1</span> Consequências Físicas</h3>
+<ol type="1">
+<li><strong>Em 3D</strong>: <span class="math inline">\(G \propto 1/r\)</span> → Lei de Coulomb (força <span class="math inline">\(\propto 1/r^2\)</span>)</li>
+<li><strong>Em 2D</strong>: <span class="math inline">\(G \propto -\ln r\)</span> → Força <span class="math inline">\(\propto 1/r\)</span></li>
+<li><strong>Em 4D</strong>: <span class="math inline">\(G \propto 1/r^2\)</span> → Força <span class="math inline">\(\propto 1/r^3\)</span></li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se a dimensão do espaço fosse diferente de 3, a força entre cargas pontuais seguiria uma lei diferente da lei de Coulomb! Isto mostra que a lei do inverso do quadrado é uma consequência direta da geometria tridimensional do espaço.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="topologia-do-universo" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="topologia-do-universo"><span class="header-section-number">6.2</span> Topologia do Universo</h2>
+<p>Medidas precisas da lei de Coulomb podem revelar a dimensão e topologia do espaço:</p>
+<ul>
+<li><strong>Dimensão exata</strong>: Se a força variasse como <span class="math inline">\(1/r^{2+\epsilon}\)</span>, indicaria dimensões fracionárias ou dimensões extras</li>
+<li><strong>Topologia não-trivial</strong>: Em universos com topologia de toro, poderíamos observar múltiplas imagens de uma mesma fonte</li>
+</ul>
+</section>
+<section id="teoria-das-cordas" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="teoria-das-cordas"><span class="header-section-number">6.3</span> Teoria das Cordas</h2>
+<p>Em teoria de cordas, dimensões extras podem ser “compactificadas” (enroladas em escalas muito pequenas). Nesse caso:</p>
+<ol type="1">
+<li>Em distâncias grandes (&gt; escala de compactificação): 3D efetivo</li>
+<li>Em distâncias pequenas (&lt; escala de compactificação): <span class="math inline">\(N\)</span>D efetivo</li>
+</ol>
+<p>A lei de Coulomb seria modificada em distâncias muito pequenas, fornecendo um teste experimental para dimensões extras.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A regularização dimensional utilizada em física de partículas é análoga à técnica de Frobenius para raízes repetidas. Em ambos os casos, tratamos dimensões não-inteiras como um artifício matemático para obter resultados finitos.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="visualizações-computacionais" class="level1 page-columns page-full" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Visualizações Computacionais</h1>
+<div id="cell-fig-greens-functions" class="cell page-columns page-full" data-fig-height="8" data-fig-width="10" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> gamma</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Definição das funções de Green</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> G_1D(x, x0<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Função de Green em 1D"""</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> np.<span class="bu">abs</span>(x <span class="op">-</span> x0)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> G_2D(r, x0<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Função de Green em 2D (logarítmica)"""</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> np.<span class="bu">abs</span>(r <span class="op">-</span> x0)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adiciona um pequeno epsilon para evitar divergência</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>np.log(r <span class="op">+</span> <span class="fl">1e-10</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> G_3D(r, x0<span class="op">=</span><span class="dv">0</span>):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Função de Green em 3D"""</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> np.<span class="bu">abs</span>(r <span class="op">-</span> x0)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1.0</span> <span class="op">/</span> (r <span class="op">+</span> <span class="fl">1e-10</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar figura</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">5</span>, <span class="dv">1000</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1D</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].plot(x, G_1D(x), <span class="st">"b-"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_xlabel(<span class="st">"r"</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_ylabel(<span class="st">"G(r)"</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].set_title(<span class="st">"1D: G(r) = |r|"</span>)</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>].grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 2D</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].plot(x, G_2D(x), <span class="st">"r-"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_xlabel(<span class="st">"r"</span>)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_ylabel(<span class="st">"G(r)"</span>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].set_title(<span class="st">"2D: G(r) = -ln(r)"</span>)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">1</span>].grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 3D</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].plot(x, G_3D(x), <span class="st">"g-"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_xlabel(<span class="st">"r"</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_ylabel(<span class="st">"G(r)"</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].set_title(<span class="st">"3D: G(r) = 1/r"</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">2</span>].grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-greens-functions" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-greens-functions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="green-functions-nd_files/figure-html/fig-greens-functions-output-1.png" width="1142" height="374" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-greens-functions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Funções de Green em diferentes dimensões
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-regularization" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> G_3D_regularizada(r, epsilon<span class="op">=</span><span class="fl">0.1</span>):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Função de Green 3D regularizada"""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    r_safe <span class="op">=</span> r <span class="op">+</span> <span class="fl">1e-10</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1.0</span> <span class="op">/</span> np.sqrt(r_safe<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> epsilon)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Valores de epsilon para testar</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>epsilons <span class="op">=</span> [<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">1.0</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">1000</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eps <span class="kw">in</span> epsilons:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    G_reg <span class="op">=</span> G_3D_regularizada(r, eps)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    plt.plot(r, G_reg, label<span class="op">=</span><span class="ss">f"ε = </span><span class="sc">{</span>eps<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Função sem regularização (singular em r=0)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>r_safe <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">5</span>, <span class="dv">1000</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>G_sing <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> np.sqrt(r_safe<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plt.plot(r_safe, G_sing, <span class="st">"k--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Singular (1/r)"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"r"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"G_ε(r)"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Regularização da Função de Green 3D"</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">"log"</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="fl">0.1</span>, <span class="dv">100</span>)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-regularization" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-regularization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="green-functions-nd_files/figure-html/fig-regularization-output-1.png" width="679" height="525" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-regularization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Regularização da função de Green em 3D
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-fig-laplaciano-regularizado" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> laplaciano_G_regulado(r, epsilon<span class="op">=</span><span class="fl">0.1</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Laplaciano da função de Green regularizada em 3D"""</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">3</span> <span class="op">*</span> epsilon <span class="op">/</span> (r<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> epsilon) <span class="op">**</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1000</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>epsilons <span class="op">=</span> [<span class="fl">0.001</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">1.0</span>]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eps <span class="kw">in</span> epsilons:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> laplaciano_G_regulado(r, eps)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    plt.plot(r, L, label<span class="op">=</span><span class="ss">f"ε = </span><span class="sc">{</span>eps<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"r"</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"∇²G_ε(r)"</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Laplaciano da Função de Green Regularizada"</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">1000</span>, <span class="dv">50</span>)</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display page-columns page-full">
+<div id="fig-laplaciano-regularizado" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-laplaciano-regularizado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="green-functions-nd_files/figure-html/fig-laplaciano-regularizado-output-1.png" width="703" height="525" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-margin quarto-float-caption quarto-float-fig margin-caption" id="fig-laplaciano-regularizado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Laplaciano da função de Green regularizada
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tabela-resumo-funções-de-green-em-nd" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Tabela Resumo: Funções de Green em ND</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 25%">
+<col style="width: 22%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimensão</th>
+<th><span class="math inline">\(\lambda\)</span></th>
+<th><span class="math inline">\(G(\mathbf{r})\)</span></th>
+<th><span class="math inline">\(-\nabla^2 G\)</span></th>
+<th>Interpretação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1D</td>
+<td><span class="math inline">\(1/2\)</span></td>
+<td><span class="math inline">\(|r|\)</span></td>
+<td><span class="math inline">\(2\delta(r)\)</span></td>
+<td>Módulo da distância</td>
+</tr>
+<tr class="even">
+<td>2D</td>
+<td><span class="math inline">\(0\)</span> (especial)</td>
+<td><span class="math inline">\(-\ln r\)</span></td>
+<td><span class="math inline">\(2\pi\delta^2(\mathbf{r})\)</span></td>
+<td>Logarítmica</td>
+</tr>
+<tr class="odd">
+<td>3D</td>
+<td><span class="math inline">\(-1/2\)</span></td>
+<td><span class="math inline">\(1/r\)</span></td>
+<td><span class="math inline">\(4\pi\delta^3(\mathbf{r})\)</span></td>
+<td>Coulomb</td>
+</tr>
+<tr class="even">
+<td>4D</td>
+<td><span class="math inline">\(-1\)</span></td>
+<td><span class="math inline">\(1/r^2\)</span></td>
+<td><span class="math inline">\(?\)</span></td>
+<td>Potencial de Yang-Mills</td>
+</tr>
+<tr class="odd">
+<td>ND</td>
+<td><span class="math inline">\(1-N/2\)</span></td>
+<td><span class="math inline">\(r^{2-N}\)</span></td>
+<td><span class="math inline">\(?\)</span></td>
+<td>Generalização</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A normalização da delta de Dirac em <span class="math inline">\(N\)</span> dimensões é <span class="math inline">\(\delta^N(\mathbf{r})\)</span>, com <span class="math inline">\(\int \delta^N(\mathbf{r}) d^N r = 1\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="exercícios" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Exercícios</h1>
+<section id="exercício-1-função-de-synge" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="exercício-1-função-de-synge"><span class="header-section-number">9.1</span> Exercício 1: Função de Synge</h2>
+<p><strong>a)</strong> Mostre que <span class="math inline">\(\sigma = |\mathbf{x} - \mathbf{x}_0|^2/2\)</span> satisfaz: <span class="math display">\[
+\nabla \sigma = \mathbf{x} - \mathbf{x}_0
+\]</span> <span class="math display">\[
+\nabla^2 \sigma = N
+\]</span></p>
+<p><strong>b)</strong> Calcule <span class="math inline">\(\nabla_\mu \sigma \nabla^\mu \sigma\)</span> em notação tensorial.</p>
+<p><strong>c)</strong> Mostre que <span class="math inline">\(\sigma\)</span> é independente da origem do sistema de coordenadas.</p>
+<p><strong>d)</strong> Qual é a importância da função de Synge em relatividade geral?</p>
+</section>
+<section id="exercício-2-lei-de-potência" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="exercício-2-lei-de-potência"><span class="header-section-number">9.2</span> Exercício 2: Lei de Potência</h2>
+<p><strong>a)</strong> Verifique que <span class="math inline">\(G = \sigma^\lambda\)</span> é solução da equação <span class="math inline">\(\nabla^2 G = 0\)</span> para <span class="math inline">\(\lambda = 1 - N/2\)</span>.</p>
+<p><strong>b)</strong> Mostre que para <span class="math inline">\(N=3\)</span> esta solução recupera o potencial Coulombiano.</p>
+<p><strong>c)</strong> O que acontece para <span class="math inline">\(N=2\)</span>? Explique por que a lei de potência falha neste caso.</p>
+<p><strong>d)</strong> Para <span class="math inline">\(N=4\)</span>, qual é a forma da função de Green? Qual seria a lei de força correspondente?</p>
+</section>
+<section id="exercício-3-solução-2d" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="exercício-3-solução-2d"><span class="header-section-number">9.3</span> Exercício 3: Solução 2D</h2>
+<p><strong>a)</strong> Mostre que <span class="math inline">\(G = \ln \sigma\)</span> satisfaz <span class="math inline">\(\nabla^2 G = 0\)</span> em 2D.</p>
+<p><strong>b)</strong> Calcule <span class="math inline">\(\nabla^2 G\)</span> em <span class="math inline">\(N\)</span> dimensões para <span class="math inline">\(G = \ln \sigma\)</span> e verifique que só funciona para <span class="math inline">\(N=2\)</span>.</p>
+<p><strong>c)</strong> Qual é a função de Green normalizada em 2D? Justifique o fator de normalização.</p>
+<p><strong>d)</strong> Como a solução 2D se relaciona com o limite <span class="math inline">\(N \to 2\)</span> da solução geral?</p>
+</section>
+<section id="exercício-4-regularização-3d" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="exercício-4-regularização-3d"><span class="header-section-number">9.4</span> Exercício 4: Regularização 3D</h2>
+<p><strong>a)</strong> Para <span class="math inline">\(G_\varepsilon = (\sigma + \varepsilon)^{-1/2}\)</span>, calcule <span class="math inline">\(\nabla^2 G_\varepsilon\)</span> explicitamente.</p>
+<p><strong>b)</strong> Mostre que <span class="math inline">\(\lim_{\varepsilon \to 0} \nabla^2 G_\varepsilon = 0\)</span> para <span class="math inline">\(r \neq 0\)</span>.</p>
+<p><strong>c)</strong> Mostre que <span class="math inline">\(\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, d^3x = -4\pi\)</span>.</p>
+<p><strong>d)</strong> Interprete fisicamente o papel do parâmetro <span class="math inline">\(\varepsilon\)</span> na regularização.</p>
+</section>
+<section id="exercício-5-propriedade-de-filtragem" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="exercício-5-propriedade-de-filtragem"><span class="header-section-number">9.5</span> Exercício 5: Propriedade de Filtragem</h2>
+<p><strong>a)</strong> Use a expansão de Taylor para mostrar que: <span class="math display">\[
+\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = -4\pi f(\mathbf{x}_0)
+\]</span></p>
+<p><strong>b)</strong> Mostre que o termo linear em <span class="math inline">\((\mathbf{x} - \mathbf{x}_0)\)</span> contribui com zero.</p>
+<p><strong>c)</strong> Mostre que os termos de ordem superior contribuem com <span class="math inline">\(\mathcal{O}(\varepsilon^{k/2}) \to 0\)</span>.</p>
+<p><strong>d)</strong> O que este resultado prova sobre a natureza do laplaciano da função de Green?</p>
+</section>
+<section id="exercício-6-generalização-nd" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="exercício-6-generalização-nd"><span class="header-section-number">9.6</span> Exercício 6: Generalização ND</h2>
+<p><strong>a)</strong> Mostre que <span class="math inline">\(G_N = \sigma^{1-N/2}\)</span> satisfaz <span class="math inline">\(\nabla^2 G_N = 0\)</span> para <span class="math inline">\(N \neq 2\)</span>.</p>
+<p><strong>b)</strong> Calcule a constante de normalização para <span class="math inline">\(N &gt; 2\)</span> em termos da função Gamma.</p>
+<p><strong>c)</strong> Mostre que a normalização é <span class="math inline">\(\propto (N-2)\)</span>.</p>
+<p><strong>d)</strong> O que acontece com a normalização no limite <span class="math inline">\(N \to 2\)</span>?</p>
+</section>
+<section id="exercício-7-interpretação-física" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="exercício-7-interpretação-física"><span class="header-section-number">9.7</span> Exercício 7: Interpretação Física</h2>
+<p><strong>a)</strong> Explique por que a lei de Coulomb seria diferente em um universo com 4 dimensões espaciais.</p>
+<p><strong>b)</strong> Em teoria de cordas, como dimensões extras poderiam ser detectadas?</p>
+<p><strong>c)</strong> O que a precisão da lei de Coulomb nos diz sobre a geometria do espaço?</p>
+<p><strong>d)</strong> Como a regularização dimensional se relaciona com a detecção de dimensões extras?</p>
+</section>
+<section id="exercício-8-topologia-do-universo" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="exercício-8-topologia-do-universo"><span class="header-section-number">9.8</span> Exercício 8: Topologia do Universo</h2>
+<p><strong>a)</strong> O que são “círculos no céu” e como se relacionam com a topologia do universo?</p>
+<p><strong>b)</strong> Por que a topologia do universo é difícil de determinar experimentalmente?</p>
+<p><strong>c)</strong> Qual é a relação entre topologia e funções de Green?</p>
+<p><strong>d)</strong> Como a função de Green mudaria em um universo com topologia de toro?</p>
+</section>
+<section id="exercício-9-regularização-dimensional" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="exercício-9-regularização-dimensional"><span class="header-section-number">9.9</span> Exercício 9: Regularização Dimensional</h2>
+<p><strong>a)</strong> Explique o que é regularização dimensional em física de partículas.</p>
+<p><strong>b)</strong> Como ela se relaciona com o método de Frobenius usado na aula?</p>
+<p><strong>c)</strong> Por que a regularização dimensional funciona mesmo com dimensões não-inteiras?</p>
+<p><strong>d)</strong> Dê um exemplo de como a regularização dimensional é usada para calcular integrais divergentes.</p>
+</section>
+<section id="exercício-10-implementação-numérica" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="exercício-10-implementação-numérica"><span class="header-section-number">9.10</span> Exercício 10: Implementação Numérica</h2>
+<p><strong>a)</strong> Escreva um código Python que calcule numericamente o laplaciano da função de Green regularizada.</p>
+<p><strong>b)</strong> Verifique que a integral se aproxima de <span class="math inline">\(-4\pi\)</span> para <span class="math inline">\(\varepsilon \to 0\)</span>.</p>
+<p><strong>c)</strong> Plote o laplaciano para diferentes valores de <span class="math inline">\(\varepsilon\)</span> e discuta o comportamento.</p>
+<p><strong>d)</strong> Como a escolha do método de integração numérica afeta a precisão do resultado?</p>
+</section>
+<section id="exercício-11-conexão-com-eletromagnetismo" class="level2" data-number="9.11">
+<h2 data-number="9.11" class="anchored" data-anchor-id="exercício-11-conexão-com-eletromagnetismo"><span class="header-section-number">9.11</span> Exercício 11: Conexão com Eletromagnetismo</h2>
+<p><strong>a)</strong> Como a função de Green 3D se relaciona com o potencial eletrostático?</p>
+<p><strong>b)</strong> Derive a lei de Coulomb a partir da função de Green.</p>
+<p><strong>c)</strong> Qual seria a lei de força em 2D? Em 4D?</p>
+<p><strong>d)</strong> Como a lei de Gauss se generaliza para dimensões arbitrárias?</p>
+</section>
+<section id="exercício-12-caso-1d-detalhado" class="level2" data-number="9.12">
+<h2 data-number="9.12" class="anchored" data-anchor-id="exercício-12-caso-1d-detalhado"><span class="header-section-number">9.12</span> Exercício 12: Caso 1D Detalhado</h2>
+<p><strong>a)</strong> Mostre que em 1D, <span class="math inline">\(G(x) = |x|/2\)</span> satisfaz <span class="math inline">\(G''(x) = \delta(x)\)</span>.</p>
+<p><strong>b)</strong> Qual é a interpretação física da função de Green em 1D?</p>
+<p><strong>c)</strong> Como a solução 1D se relaciona com o caso geral <span class="math inline">\(N=1\)</span>?</p>
+<p><strong>d)</strong> Por que em 1D o potencial não decai com a distância?</p>
+</section>
+<section id="exercício-13-método-de-frobenius" class="level2" data-number="9.13">
+<h2 data-number="9.13" class="anchored" data-anchor-id="exercício-13-método-de-frobenius"><span class="header-section-number">9.13</span> Exercício 13: Método de Frobenius</h2>
+<p><strong>a)</strong> Explique o método de Frobenius para equações diferenciais com raízes repetidas.</p>
+<p><strong>b)</strong> Como este método se aplica ao caso 2D da função de Green?</p>
+<p><strong>c)</strong> Mostre que a solução logarítmica surge naturalmente do método de Frobenius.</p>
+<p><strong>d)</strong> Compare com a regularização dimensional para obter o mesmo resultado.</p>
+</section>
+<section id="exercício-14-espaços-curvos" class="level2" data-number="9.14">
+<h2 data-number="9.14" class="anchored" data-anchor-id="exercício-14-espaços-curvos"><span class="header-section-number">9.14</span> Exercício 14: Espaços Curvos</h2>
+<p><strong>a)</strong> Como a função de Synge se generaliza para espaços curvos?</p>
+<p><strong>b)</strong> Qual é a equação que a função de Green satisfaz em um espaço curvo?</p>
+<p><strong>c)</strong> Como a curvatura afeta a função de Green?</p>
+<p><strong>d)</strong> Por que a função de Synge é importante em relatividade geral?</p>
+</section>
+<section id="exercício-15-aplicações-práticas" class="level2" data-number="9.15">
+<h2 data-number="9.15" class="anchored" data-anchor-id="exercício-15-aplicações-práticas"><span class="header-section-number">9.15</span> Exercício 15: Aplicações Práticas</h2>
+<p><strong>a)</strong> Em que áreas da física as funções de Green em diferentes dimensões são utilizadas?</p>
+<p><strong>b)</strong> Como a função de Green 2D aparece em sistemas de vórtices?</p>
+<p><strong>c)</strong> Qual é a relação entre funções de Green e equações de difusão?</p>
+<p><strong>d)</strong> Como a regularização de funções de Green é usada em teoria quântica de campos?</p>
+</section>
+</section>
+<section id="conclusão" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Conclusão</h1>
+<p>Nesta aula, generalizamos a construção de funções de Green para o laplaciano em <span class="math inline">\(N\)</span> dimensões, destacando o papel especial da dimensão 2. Vimos que:</p>
+<ol type="1">
+<li>A <strong>função de Synge</strong> <span class="math inline">\(\sigma\)</span> fornece a base geométrica para todas as construções</li>
+<li>A <strong>lei de potência</strong> <span class="math inline">\(G = \sigma^\lambda\)</span> funciona para <span class="math inline">\(N \neq 2\)</span></li>
+<li>O <strong>caso 2D</strong> requer uma solução logarítmica especial</li>
+<li>A <strong>regularização</strong> é essencial para lidar com divergências na origem</li>
+<li>A <strong>propriedade de filtragem</strong> prova que o laplaciano da função de Green se comporta como uma delta de Dirac</li>
+<li>A <strong>interpretação física</strong> conecta a dimensão do espaço à lei de Coulomb</li>
+</ol>
+<p>Estes resultados mostram como a geometria do espaço determina as leis físicas fundamentais, e como ferramentas matemáticas como a regularização dimensional nos permitem explorar dimensões além das usuais.</p>
+<p>A próxima aula abordará funções de Green dependentes do tempo, introduzindo conceitos de causalidade e propagação de ondas.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/vitenti-physics\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

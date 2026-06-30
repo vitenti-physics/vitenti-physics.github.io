@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Propagadores Dependentes do Tempo e Estrutura Simplética – Physics Lecture Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-52e1b0ebd27845199031e1d0677c17b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R4D0BX334F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R4D0BX334F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Physics Lecture Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vitenti-physics/vitenti-physics.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/mathematical-physics/index.html">Mathematical Physics</a></li><li class="breadcrumb-item"><a href="../../courses/mathematical-physics/propagators-cont.html">Propagators: Complete Solutions</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Undergraduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introduction to Physics (portuguese)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/physics-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physics and Mathematics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/determinism-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Determinism and Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/intro-stat-mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Statistical Mechanics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Heisenberg Uncertainty Principle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/selected-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vector Calculus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/vector-spaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vector Spaces Products and Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Mathematical Physics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/delta-dirac-green.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dirac Delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/green-functions-nd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Green Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-symplectic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators and Symplectic Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-cont.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Propagators: Complete Solutions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-fields.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators in Field Theory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/scalar-field.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalar Fields</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/scalar-propagators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalar Fields: Propagators and Vacuum</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Special Relativity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/galilean-relativity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Galilean Relativity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/spacetime-algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spacetime Algebra</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Graduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Electrodynamics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometry Review for Electrodynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/calculus-on-minkowski-spacetime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calculus on Minkowski Spacetime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/maxwell-equations-forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maxwell Equations in Covariant Form</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/accel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Electromagnetic Energy and Momentum</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introdução" id="toc-introdução" class="nav-link active" data-scroll-target="#introdução"><span class="header-section-number">1</span> Introdução</a>
+  <ul class="collapse">
+  <li><a href="#objetivos-da-aula" id="toc-objetivos-da-aula" class="nav-link" data-scroll-target="#objetivos-da-aula"><span class="header-section-number">1.1</span> Objetivos da Aula</a></li>
+  </ul></li>
+  <li><a href="#formulação-simplética" id="toc-formulação-simplética" class="nav-link" data-scroll-target="#formulação-simplética"><span class="header-section-number">2</span> Formulação Simplética</a>
+  <ul class="collapse">
+  <li><a href="#estrutura-da-equação" id="toc-estrutura-da-equação" class="nav-link" data-scroll-target="#estrutura-da-equação"><span class="header-section-number">2.1</span> Estrutura da Equação</a></li>
+  <li><a href="#matriz-simplética" id="toc-matriz-simplética" class="nav-link" data-scroll-target="#matriz-simplética"><span class="header-section-number">2.2</span> Matriz Simplética</a></li>
+  <li><a href="#hamiltonianos-e-propriedades" id="toc-hamiltonianos-e-propriedades" class="nav-link" data-scroll-target="#hamiltonianos-e-propriedades"><span class="header-section-number">2.3</span> Hamiltonianos e Propriedades</a></li>
+  </ul></li>
+  <li><a href="#soluções-linearmente-independentes" id="toc-soluções-linearmente-independentes" class="nav-link" data-scroll-target="#soluções-linearmente-independentes"><span class="header-section-number">3</span> Soluções Linearmente Independentes</a>
+  <ul class="collapse">
+  <li><a href="#base-no-espaço-de-soluções" id="toc-base-no-espaço-de-soluções" class="nav-link" data-scroll-target="#base-no-espaço-de-soluções"><span class="header-section-number">3.1</span> Base no Espaço de Soluções</a></li>
+  <li><a href="#solução-geral" id="toc-solução-geral" class="nav-link" data-scroll-target="#solução-geral"><span class="header-section-number">3.2</span> Solução Geral</a></li>
+  </ul></li>
+  <li><a href="#complexificação-do-espaço-de-soluções" id="toc-complexificação-do-espaço-de-soluções" class="nav-link" data-scroll-target="#complexificação-do-espaço-de-soluções"><span class="header-section-number">4</span> Complexificação do Espaço de Soluções</a>
+  <ul class="collapse">
+  <li><a href="#construção-da-solução-complexa" id="toc-construção-da-solução-complexa" class="nav-link" data-scroll-target="#construção-da-solução-complexa"><span class="header-section-number">4.1</span> Construção da Solução Complexa</a></li>
+  <li><a href="#produto-simplético-hermitiano" id="toc-produto-simplético-hermitiano" class="nav-link" data-scroll-target="#produto-simplético-hermitiano"><span class="header-section-number">4.2</span> Produto Simplético Hermitiano</a></li>
+  <li><a href="#subespaços-de-norma-positiva-e-negativa" id="toc-subespaços-de-norma-positiva-e-negativa" class="nav-link" data-scroll-target="#subespaços-de-norma-positiva-e-negativa"><span class="header-section-number">4.3</span> Subespaços de Norma Positiva e Negativa</a></li>
+  </ul></li>
+  <li><a href="#propagação-no-tempo" id="toc-propagação-no-tempo" class="nav-link" data-scroll-target="#propagação-no-tempo"><span class="header-section-number">5</span> Propagação no Tempo</a>
+  <ul class="collapse">
+  <li><a href="#função-de-green-solução-futura" id="toc-função-de-green-solução-futura" class="nav-link" data-scroll-target="#função-de-green-solução-futura"><span class="header-section-number">5.1</span> Função de Green (Solução Futura)</a></li>
+  <li><a href="#solução-passada-avançada" id="toc-solução-passada-avançada" class="nav-link" data-scroll-target="#solução-passada-avançada"><span class="header-section-number">5.2</span> Solução Passada (Avançada)</a></li>
+  </ul></li>
+  <li><a href="#simetria-de-reversão-temporal" id="toc-simetria-de-reversão-temporal" class="nav-link" data-scroll-target="#simetria-de-reversão-temporal"><span class="header-section-number">6</span> Simetria de Reversão Temporal</a>
+  <ul class="collapse">
+  <li><a href="#transformação-das-componentes" id="toc-transformação-das-componentes" class="nav-link" data-scroll-target="#transformação-das-componentes"><span class="header-section-number">6.1</span> Transformação das Componentes</a></li>
+  <li><a href="#comportamento-da-equação" id="toc-comportamento-da-equação" class="nav-link" data-scroll-target="#comportamento-da-equação"><span class="header-section-number">6.2</span> Comportamento da Equação</a></li>
+  </ul></li>
+  <li><a href="#visualização-computacional" id="toc-visualização-computacional" class="nav-link" data-scroll-target="#visualização-computacional"><span class="header-section-number">7</span> Visualização Computacional</a>
+  <ul class="collapse">
+  <li><a href="#propagador-do-oscilador-harmônico" id="toc-propagador-do-oscilador-harmônico" class="nav-link" data-scroll-target="#propagador-do-oscilador-harmônico"><span class="header-section-number">7.1</span> Propagador do Oscilador Harmônico</a></li>
+  <li><a href="#propagadores-futuro-e-passado" id="toc-propagadores-futuro-e-passado" class="nav-link" data-scroll-target="#propagadores-futuro-e-passado"><span class="header-section-number">7.2</span> Propagadores Futuro e Passado</a></li>
+  </ul></li>
+  <li><a href="#resumo-dos-conceitos" id="toc-resumo-dos-conceitos" class="nav-link" data-scroll-target="#resumo-dos-conceitos"><span class="header-section-number">8</span> Resumo dos Conceitos</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">9</span> Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#conceitos-fundamentais" id="toc-conceitos-fundamentais" class="nav-link" data-scroll-target="#conceitos-fundamentais"><span class="header-section-number">9.1</span> Conceitos Fundamentais</a></li>
+  <li><a href="#propagadores-e-condições-de-contorno" id="toc-propagadores-e-condições-de-contorno" class="nav-link" data-scroll-target="#propagadores-e-condições-de-contorno"><span class="header-section-number">9.2</span> Propagadores e Condições de Contorno</a></li>
+  <li><a href="#propriedades-de-transformação" id="toc-propriedades-de-transformação" class="nav-link" data-scroll-target="#propriedades-de-transformação"><span class="header-section-number">9.3</span> Propriedades de Transformação</a></li>
+  <li><a href="#aplicações-e-generalizações" id="toc-aplicações-e-generalizações" class="nav-link" data-scroll-target="#aplicações-e-generalizações"><span class="header-section-number">9.4</span> Aplicações e Generalizações</a></li>
+  </ul></li>
+  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">10</span> Referências</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="propagators-cont.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Undergraduate</li><li class="breadcrumb-item"><a href="../../courses/mathematical-physics/index.html">Mathematical Physics</a></li><li class="breadcrumb-item"><a href="../../courses/mathematical-physics/propagators-cont.html">Propagators: Complete Solutions</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Propagadores Dependentes do Tempo e Estrutura Simplética</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sandro Vitenti </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introdução" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introdução</h1>
+<p>Nesta aula, exploramos os propagadores dependentes do tempo e a estrutura simplética subjacente às equações diferenciais de segunda ordem. O objetivo é desenvolver uma formulação que unifique o tratamento de soluções linearmente independentes e que prepare o terreno para a quantização de campos.</p>
+<section id="objetivos-da-aula" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="objetivos-da-aula"><span class="header-section-number">1.1</span> Objetivos da Aula</h2>
+<ul>
+<li>Revisitar a formulação simplética para equações de segunda ordem</li>
+<li>Construir soluções complexificadas e entender sua relação com a propagação temporal</li>
+<li>Analisar as propriedades de transformação sob reversão temporal</li>
+<li>Compreender a conexão com a física de partículas e o conceito de antipartículas</li>
+</ul>
+</section>
+</section>
+<section id="formulação-simplética" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Formulação Simplética</h1>
+<section id="estrutura-da-equação" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="estrutura-da-equação"><span class="header-section-number">2.1</span> Estrutura da Equação</h2>
+<p>Consideramos uma equação de segunda ordem na forma:</p>
+<p><span class="math display">\[ y'' + p_1(x) y' + p_0(x) y = 0 \]</span></p>
+<p>que pode ser reescrita no espaço de fase como:</p>
+<p><span class="math display">\[ \begin{pmatrix} y' \\ q' \end{pmatrix} = \begin{pmatrix} 0 &amp; 1/m \\ -m\Omega^2 &amp; 0 \end{pmatrix} \begin{pmatrix} y \\ q \end{pmatrix} \]</span></p>
+<p>onde <span class="math inline">\(q = m y'\)</span> é o momento canônico.</p>
+<p>Definimos o vetor de estado:</p>
+<p><span class="math display">\[ V = \begin{pmatrix} y \\ q \end{pmatrix} \]</span></p>
+</section>
+<section id="matriz-simplética" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="matriz-simplética"><span class="header-section-number">2.2</span> Matriz Simplética</h2>
+<p>A estrutura simplética é codificada pela matriz:</p>
+<p><span class="math display">\[ \Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix} \]</span></p>
+<p>Esta matriz é antissimétrica (<span class="math inline">\(\Omega^T = -\Omega\)</span>) e desempenha um papel fundamental na definição do Wronskiano conservado.</p>
+<div class="note">
+<p>O Wronskiano de duas soluções <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span> é dado por:</p>
+<p><span class="math display">\[ W(V_1, V_2) = V_1^T \Omega V_2 \]</span></p>
+<p>e é uma constante do movimento (conservado).</p>
+</div>
+</section>
+<section id="hamiltonianos-e-propriedades" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="hamiltonianos-e-propriedades"><span class="header-section-number">2.3</span> Hamiltonianos e Propriedades</h2>
+<p>O Hamiltoniano associado é:</p>
+<p><span class="math display">\[ H = \begin{pmatrix} m\Omega^2 &amp; 0 \\ 0 &amp; 1/m \end{pmatrix} \]</span></p>
+<p>A equação de movimento pode ser escrita como:</p>
+<p><span class="math display">\[ V' = \Omega H V \]</span></p>
+</section>
+</section>
+<section id="soluções-linearmente-independentes" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Soluções Linearmente Independentes</h1>
+<section id="base-no-espaço-de-soluções" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="base-no-espaço-de-soluções"><span class="header-section-number">3.1</span> Base no Espaço de Soluções</h2>
+<p>Para duas soluções linearmente independentes <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span>, temos:</p>
+<p><span class="math display">\[ V_1^T \Omega V_2 = \text{constante} \]</span></p>
+<p>Podemos normalizar convenientemente:</p>
+<p><span class="math display">\[ V_1^T \Omega V_2 = \frac{1}{2} \]</span></p>
+</section>
+<section id="solução-geral" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="solução-geral"><span class="header-section-number">3.2</span> Solução Geral</h2>
+<p>Qualquer solução <span class="math inline">\(U\)</span> pode ser escrita como combinação linear:</p>
+<p><span class="math display">\[ U = \alpha_1 V_1 + \alpha_2 V_2 \]</span></p>
+<p>Os coeficientes <span class="math inline">\(\alpha_i\)</span> são constantes e podem ser obtidos via:</p>
+<p><span class="math display">\[ \alpha_1 = 2 (V_1^T \Omega U), \quad \alpha_2 = -2 (V_2^T \Omega U) \]</span></p>
+</section>
+</section>
+<section id="complexificação-do-espaço-de-soluções" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Complexificação do Espaço de Soluções</h1>
+<section id="construção-da-solução-complexa" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="construção-da-solução-complexa"><span class="header-section-number">4.1</span> Construção da Solução Complexa</h2>
+<p>Definimos a solução complexificada:</p>
+<p><span class="math display">\[ V = V_1 + i V_2 \]</span></p>
+<p>Esta solução satisfaz a mesma equação diferencial no espaço complexo:</p>
+<p><span class="math display">\[ V' = \Omega H V \]</span></p>
+</section>
+<section id="produto-simplético-hermitiano" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="produto-simplético-hermitiano"><span class="header-section-number">4.2</span> Produto Simplético Hermitiano</h2>
+<p>Introduzimos o produto:</p>
+<p><span class="math display">\[ \langle V, U \rangle = -i V^\dagger \Omega U \]</span></p>
+<p>onde <span class="math inline">\(V^\dagger = (V^*)^T\)</span> é o conjugado Hermitiano.</p>
+<div class="important">
+<p>Para soluções com normalização <span class="math inline">\(V_1^T\Omega V_2 = 1/2\)</span>, temos:</p>
+<p><span class="math display">\[ \langle V, V \rangle = 1 \]</span></p>
+</div>
+</section>
+<section id="subespaços-de-norma-positiva-e-negativa" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="subespaços-de-norma-positiva-e-negativa"><span class="header-section-number">4.3</span> Subespaços de Norma Positiva e Negativa</h2>
+<p>O espaço complexificado <span class="math inline">\(C^2\)</span> se decompõe em dois subespaços:</p>
+<ul>
+<li><strong>Norma positiva</strong>: <span class="math inline">\(\langle V, V \rangle = 1\)</span></li>
+<li><strong>Norma negativa</strong>: <span class="math inline">\(\langle V, V \rangle = -1\)</span></li>
+</ul>
+<div class="warning">
+<p>Esta estrutura é análoga à que aparece na mecânica quântica relativística, onde soluções de energia positiva e negativa correspondem a partículas e antipartículas.</p>
+</div>
+</section>
+</section>
+<section id="propagação-no-tempo" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Propagação no Tempo</h1>
+<section id="função-de-green-solução-futura" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="função-de-green-solução-futura"><span class="header-section-number">5.1</span> Função de Green (Solução Futura)</h2>
+<p>Consideramos uma solução com interação instantânea em <span class="math inline">\(x_0\)</span>:</p>
+<p><span class="math display">\[ U(x) = \Theta(x - x_0) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] \]</span></p>
+<p>onde <span class="math inline">\(V\)</span> é a solução complexa. Esta solução satisfaz:</p>
+<p><span class="math display">\[ U' - \Omega H U = \delta(x - x_0) U_0 \]</span></p>
+</section>
+<section id="solução-passada-avançada" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="solução-passada-avançada"><span class="header-section-number">5.2</span> Solução Passada (Avançada)</h2>
+<p>A solução que propaga informações do futuro para o passado é:</p>
+<p><span class="math display">\[ U(x) = \Theta(x_0 - x) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] \]</span></p>
+<p>satisfazendo:</p>
+<p><span class="math display">\[ U' - \Omega H U = -\delta(x - x_0) U_0 \]</span></p>
+<div class="note">
+<p>A diferença de sinal entre as soluções futura e passada é fundamental para a construção de propagadores em teoria quântica de campos.</p>
+</div>
+</section>
+</section>
+<section id="simetria-de-reversão-temporal" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Simetria de Reversão Temporal</h1>
+<section id="transformação-das-componentes" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="transformação-das-componentes"><span class="header-section-number">6.1</span> Transformação das Componentes</h2>
+<p>Sob reversão temporal <span class="math inline">\(x \to -x\)</span>, o vetor <span class="math inline">\(V\)</span> se transforma como:</p>
+<p><span class="math display">\[ V_R(x_R) = T V(x) \]</span></p>
+<p>com:</p>
+<p><span class="math display">\[ T = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \]</span></p>
+</section>
+<section id="comportamento-da-equação" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="comportamento-da-equação"><span class="header-section-number">6.2</span> Comportamento da Equação</h2>
+<p>A equação de movimento é invariante sob reversão temporal se:</p>
+<p><span class="math display">\[ T H(x) T = H(-x) \]</span></p>
+<div class="important">
+<p>A invariância por reversão temporal leva à relação entre soluções futuras e passadas, fundamental para a construção de operadores de criação e aniquilação.</p>
+</div>
+</section>
+</section>
+<section id="visualização-computacional" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Visualização Computacional</h1>
+<section id="propagador-do-oscilador-harmônico" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="propagador-do-oscilador-harmônico"><span class="header-section-number">7.1</span> Propagador do Oscilador Harmônico</h2>
+<div id="9116b4e4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> solve_ivp</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo o oscilador harmônico</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> harmonic_oscillator(t, y, omega<span class="op">=</span><span class="fl">1.0</span>):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [y[<span class="dv">1</span>], <span class="op">-</span>(omega<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> y[<span class="dv">0</span>]]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuração do problema</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>omega <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>t_span <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>t_eval <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Solução para diferentes condições iniciais</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>conditions <span class="op">=</span> [</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">1.0</span>, <span class="fl">0.0</span>, <span class="st">"Posição inicial"</span>),</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="st">"Velocidade inicial"</span>),</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="st">"Condição mista"</span>),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> y0, v0, label <span class="kw">in</span> conditions:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    sol <span class="op">=</span> solve_ivp(harmonic_oscillator, t_span, [y0, v0], t_eval<span class="op">=</span>t_eval, args<span class="op">=</span>(omega,))</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    plt.plot(sol.t, sol.y[<span class="dv">0</span>], label<span class="op">=</span>label)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Tempo (t)"</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Posição (y)"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Oscilador Harmônico - Diferentes Condições Iniciais"</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="propagators-cont_files/figure-html/cell-2-output-1.png" class="figure-img" width="833" height="525"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="propagadores-futuro-e-passado" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="propagadores-futuro-e-passado"><span class="header-section-number">7.2</span> Propagadores Futuro e Passado</h2>
+<div id="49b05c7f" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulação de um pulso instantâneo (função de Green)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> green_function_solution(t, t0<span class="op">=</span><span class="fl">3.0</span>, amplitude<span class="op">=</span><span class="fl">1.0</span>, omega<span class="op">=</span><span class="fl">1.0</span>):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Solução futura (causal) com pulso em t0"""</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.zeros_like(t)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, ti <span class="kw">in</span> <span class="bu">enumerate</span>(t):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ti <span class="op">&gt;=</span> t0:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            y[i] <span class="op">=</span> amplitude <span class="op">*</span> np.sin(omega <span class="op">*</span> (ti <span class="op">-</span> t0)) <span class="op">/</span> omega</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> green_function_advanced(t, t0<span class="op">=</span><span class="fl">3.0</span>, amplitude<span class="op">=</span><span class="fl">1.0</span>, omega<span class="op">=</span><span class="fl">1.0</span>):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Solução passada (avançada) com pulso em t0"""</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.zeros_like(t)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, ti <span class="kw">in</span> <span class="bu">enumerate</span>(t):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ti <span class="op">&lt;=</span> t0:</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            y[i] <span class="op">=</span> amplitude <span class="op">*</span> np.sin(omega <span class="op">*</span> (t0 <span class="op">-</span> ti)) <span class="op">/</span> omega</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">1000</span>)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> <span class="fl">3.0</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    t, green_function_solution(t, t0), label<span class="op">=</span><span class="st">"Propagador Futuro (Causal)"</span>, linewidth<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    t,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    green_function_advanced(t, t0),</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Propagador Passado (Avançado)"</span>,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    linewidth<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span>t0, color<span class="op">=</span><span class="st">"red"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, label<span class="op">=</span><span class="ss">f"Pulso em t=</span><span class="sc">{</span>t0<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Tempo (t)"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Resposta"</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Propagadores do Oscilador Harmônico"</span>)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="propagators-cont_files/figure-html/cell-3-output-1.png" class="figure-img" width="813" height="525"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="resumo-dos-conceitos" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Resumo dos Conceitos</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 31%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Conceito</th>
+<th>Descrição</th>
+<th>Aplicação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Matriz Simplética (<span class="math inline">\(\Omega\)</span>)</td>
+<td>Codifica a estrutura simplética do espaço de fase</td>
+<td>Wronskiano conservado</td>
+</tr>
+<tr class="even">
+<td>Solução Complexa (<span class="math inline">\(V\)</span>)</td>
+<td>Combinação <span class="math inline">\(V_1 + iV_2\)</span></td>
+<td>Unifica duas soluções independentes</td>
+</tr>
+<tr class="odd">
+<td>Produto Hermitiano</td>
+<td><span class="math inline">\(\langle V,U \rangle = -iV^\dagger\Omega U\)</span></td>
+<td>Define norma e ortogonalidade</td>
+</tr>
+<tr class="even">
+<td>Norma Positiva/Negativa</td>
+<td><span class="math inline">\(\langle V,V\rangle = \pm 1\)</span></td>
+<td>Partículas/Antipartículas</td>
+</tr>
+<tr class="odd">
+<td>Prop. Futuro (Causal)</td>
+<td><span class="math inline">\(\Theta(x-x_0)\)</span></td>
+<td>Propagação para frente no tempo</td>
+</tr>
+<tr class="even">
+<td>Prop. Passado (Avançado)</td>
+<td><span class="math inline">\(\Theta(x_0-x)\)</span></td>
+<td>Propagação para trás no tempo</td>
+</tr>
+<tr class="odd">
+<td>Reversão Temporal</td>
+<td><span class="math inline">\(T = \text{diag}(1,-1)\)</span></td>
+<td>Simetria fundamental</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exercícios" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Exercícios</h1>
+<section id="conceitos-fundamentais" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="conceitos-fundamentais"><span class="header-section-number">9.1</span> Conceitos Fundamentais</h2>
+<ol type="1">
+<li><strong>Wronskiano e Independência Linear</strong>
+<ol type="a">
+<li>Mostre que o Wronskiano <span class="math inline">\(W(V_1,V_2) = V_1^T\Omega V_2\)</span> é constante para soluções da equação <span class="math inline">\(V' = \Omega H V\)</span>.<br>
+</li>
+<li>Verifique que <span class="math inline">\(W(V_1,V_1) = 0\)</span> usando a propriedade de antissimetria de <span class="math inline">\(\Omega\)</span>.</li>
+</ol></li>
+<li><strong>Normalização de Soluções</strong>
+<ol type="a">
+<li>Dada a normalização <span class="math inline">\(V_1^T\Omega V_2 = 1/2\)</span>, expresse a solução geral <span class="math inline">\(U\)</span> em termos de <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span>.<br>
+</li>
+<li>Calcule os coeficientes <span class="math inline">\(\alpha_1\)</span> e <span class="math inline">\(\alpha_2\)</span> para uma condição inicial genérica.</li>
+</ol></li>
+<li><strong>Complexificação</strong>
+<ol type="a">
+<li>Verifique que <span class="math inline">\(V = V_1 + iV_2\)</span> satisfaz a mesma equação diferencial.<br>
+</li>
+<li>Calcule <span class="math inline">\(\langle V, V \rangle = -iV^\dagger\Omega V\)</span> e mostre que é igual a 1.</li>
+</ol></li>
+<li><strong>Norma Negativa</strong>
+<ol type="a">
+<li>Considere <span class="math inline">\(\tilde{V} = iV\)</span>. Calcule <span class="math inline">\(\langle \tilde{V}, \tilde{V} \rangle\)</span>.<br>
+</li>
+<li>Interprete fisicamente este resultado.</li>
+</ol></li>
+<li><strong>Propagador Futuro</strong>
+<ol type="a">
+<li>Mostre que a solução <span class="math inline">\(U(x) = \Theta(x-x_0)[\alpha V(x) + \alpha^* V^*(x)]\)</span> satisfaz a equação com fonte <span class="math inline">\(U' - \Omega H U = \delta(x-x_0)U_0\)</span>.<br>
+</li>
+<li>Determine a constante <span class="math inline">\(U_0\)</span> em termos de <span class="math inline">\(\alpha\)</span>.</li>
+</ol></li>
+</ol>
+</section>
+<section id="propagadores-e-condições-de-contorno" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="propagadores-e-condições-de-contorno"><span class="header-section-number">9.2</span> Propagadores e Condições de Contorno</h2>
+<ol start="6" type="1">
+<li><strong>Propagador Passado</strong>
+<ol type="a">
+<li>Construa a solução com condições no futuro <span class="math inline">\(U(x) = \Theta(x_0-x)[\alpha V(x) + \alpha^* V^*(x)]\)</span>.<br>
+</li>
+<li>Mostre que ela satisfaz <span class="math inline">\(U' - \Omega H U = -\delta(x-x_0)U_0\)</span>.</li>
+</ol></li>
+<li><strong>Condições de Contorno Espaciais</strong>
+<ol type="a">
+<li>Para o problema de uma corda presa em <span class="math inline">\(x=0\)</span> e <span class="math inline">\(x=L\)</span>, determine como combinar os propagadores futuro e passado.<br>
+</li>
+<li>Explique por que a solução envolve ambas as direções de propagação.</li>
+</ol></li>
+</ol>
+</section>
+<section id="propriedades-de-transformação" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="propriedades-de-transformação"><span class="header-section-number">9.3</span> Propriedades de Transformação</h2>
+<ol start="8" type="1">
+<li><strong>Reversão Temporal</strong>
+<ol type="a">
+<li>Verifique que <span class="math inline">\(T = \text{diag}(1,-1)\)</span> transforma <span class="math inline">\(V = (y,q)^T\)</span> em <span class="math inline">\(V_R = (y,-q)^T\)</span>.<br>
+</li>
+<li>Mostre que <span class="math inline">\(T\Omega T = -\Omega\)</span> e <span class="math inline">\(THT = H\)</span> para o oscilador harmônico.</li>
+</ol></li>
+<li><strong>Transformação de Rotações</strong>
+<ol type="a">
+<li>Considere uma rotação no espaço de fase <span class="math inline">\(R\)</span>. Mostre que <span class="math inline">\(R^T\Omega R = \Omega\)</span>.<br>
+</li>
+<li>Compare com a transformação temporal <span class="math inline">\(T\)</span> e discuta a diferença.</li>
+</ol></li>
+</ol>
+</section>
+<section id="aplicações-e-generalizações" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="aplicações-e-generalizações"><span class="header-section-number">9.4</span> Aplicações e Generalizações</h2>
+<ol start="10" type="1">
+<li><strong>Oscilador Harmônico com Forçamento</strong>
+<ol type="a">
+<li>Resolva a equação <span class="math inline">\(y'' + \omega^2 y = f(x)\)</span> usando os propagadores construídos.<br>
+</li>
+<li>Escreva a solução geral e identifique os termos futuro e passado.</li>
+</ol></li>
+<li><strong>Sistemas com <span class="math inline">\(\Omega\)</span> Dependente do Tempo</strong>
+<ol type="a">
+<li>Generalize a construção para <span class="math inline">\(V' = \Omega(x) H(x) V\)</span> com <span class="math inline">\(\Omega(x)\)</span> variável.<br>
+</li>
+<li>Discuta como a conservação do Wronskiano é afetada.</li>
+</ol></li>
+<li><strong>Conexão com Mecânica Quântica</strong>
+<ol type="a">
+<li>Identifique o análogo do comutador <span class="math inline">\([x,p]\)</span> no formalismo simplético.<br>
+</li>
+<li>Mostre como a estrutura de norma positiva/negativa leva à quantização.</li>
+</ol></li>
+</ol>
+</section>
+</section>
+<section id="referências" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Referências</h1>
+<ul>
+<li>Notas de aula sobre a delta de Dirac (material anterior)</li>
+<li>Mecânica Clássica Avançada - Capítulos sobre estrutura simplética</li>
+<li>Teoria Quântica de Campos - Propriedades de propagadores</li>
+</ul>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/vitenti-physics\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
