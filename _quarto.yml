@@ -45,11 +45,19 @@ website:
                 - text: "Overview"
                   href: courses/mathematical-physics/index.qmd
                 - text: "Dirac Delta"
-                  href: courses/mathematical-physics/dirac-delta.qmd
+                  href: courses/mathematical-physics/delta-dirac-green.qmd
                 - text: "Green Functions"
-                  href: courses/mathematical-physics/green-functions.qmd
-                - text: "Time Dependent Green Functions"
-                  href: courses/mathematical-physics/time-dependent-green-functions.qmd
+                  href: courses/mathematical-physics/green-functions-nd.qmd
+                - text: "Propagators and Symplectic Structures"
+                  href: courses/mathematical-physics/propagators-symplectic.qmd
+                - text: "Propagators: Complete Solutions"
+                  href: courses/mathematical-physics/propagators-cont.qmd
+                - text: "Propagators in Field Theory"
+                  href: courses/mathematical-physics/propagators-fields.qmd
+                - text: "Scalar Fields"
+                  href: courses/mathematical-physics/scalar-field.qmd
+                - text: "Scalar Fields: Propagators and Vacuum"
+                  href: courses/mathematical-physics/scalar-propagators.qmd
             - section: "Special Relativity"
               contents:
                 - text: "Overview"

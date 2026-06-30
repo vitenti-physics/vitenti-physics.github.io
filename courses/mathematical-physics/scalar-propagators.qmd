@@ -1,0 +1,474 @@
+---
+title: "Propagador Escalar e Causalidade"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  pdf:
+    toc: true
+    number-sections: true
+  docx:
+    toc: true
+    number-sections: true
+---
+
+# Introdução
+
+Nesta aula, finalizamos a construção do **propagador escalar** no espaço-tempo, obtendo sua forma explícita e discutindo suas implicações físicas. O objetivo principal é entender como um distúrbio localizado se propaga no campo e como isso se relaciona com a **causalidade** e com o potencial eletrostático.
+
+Os tópicos abordados são:
+
+1. Revisão da construção do propagador a partir da decomposição de Fourier.
+2. Cálculo explícito do propagador no espaço-tempo.
+3. Interpretação causal: propagação na velocidade da luz.
+4. Generalização para fontes estendidas (linhas de mundo).
+5. Conexão com o potencial eletrostático e a questão da ação instantânea.
+
+# Revisão: Construção do Propagador
+
+## Definição do Propagador
+
+O propagador escalar, que denotamos por $\phi_J(x)$, é a solução da equação de onda com uma fonte pontual:
+
+$$
+\Box \phi_J(x) = \delta^4(x - x_0) \quad \text{com} \quad \phi_J(x) \to 0 \text{ quando } t \to -\infty
+$$
+
+onde $\Box = \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2$ é o operador d'Alembertiano (ou operador de onda).
+
+Na notação relativística, com $x^0 = ct$, o operador é $\Box = \partial_\mu \partial^\mu$.
+
+## Decomposição de Fourier
+
+O propagador é construído como uma superposição de modos de Fourier, que são soluções da equação de onda homogênea. Para cada modo com vetor de onda $\mathbf{k}$, a solução geral é uma combinação linear de ondas planas:
+
+$$
+\phi_{\mathbf{k}}(t) = N_k \left( e^{-ik t} + \mathcal{M}_k e^{+ik t} \right)
+$$
+
+onde $k = |\mathbf{k}|$ e $N_k$ é uma constante de normalização.
+
+::: {.note}
+A escolha das condições de contorno (causalidade) seleciona apenas um dos modos. A condição $\phi_J(x) \to 0$ quando $t \to -\infty$ implica que $\mathcal{M}_k = 0$, ou seja, apenas o modo de frequência positiva (viajando para o futuro) contribui.
+:::
+
+A normalização dos modos de Fourier é fixada pela condição de completeza:
+
+$$
+\int \frac{d^3k}{(2\pi)^3} \phi_{\mathbf{k}}(t) \phi_{\mathbf{k}'}^*(t) = \delta^3(\mathbf{k} - \mathbf{k}')
+$$
+
+que leva a:
+
+$$
+N_k = \frac{1}{\sqrt{2k}}
+$$
+
+## O Propagador como Transformada de Fourier
+
+Com as soluções modais, o propagador pode ser escrito como:
+
+$$
+\phi_J(x) = \int \frac{d^3k}{(2\pi)^3} \int_{-\infty}^{x^0} dx'^0 \left[ \phi_{\mathbf{k}}(x^0) \phi_{\mathbf{k}}^*(x'^0) - \phi_{\mathbf{k}}^*(x^0) \phi_{\mathbf{k}}(x'^0) \right] J(x')
+$$
+
+onde $J(x') = - \delta^4(x' - x_0)$ para uma fonte pontual.
+
+Esta expressão é a base para o cálculo do propagador no espaço-tempo.
+
+# Cálculo Explícito do Propagador
+
+## Substituição dos Modos de Fourier
+
+Substituindo as expressões para $\phi_{\mathbf{k}}(t)$ e $\phi_{\mathbf{k}}^*(t)$, e usando a fonte pontual $J(x') = - \delta^4(x' - x_0)$, obtemos a integral:
+
+$$
+\phi_J(x) = i \Theta(x^0 - x_0^0) \int \frac{d^3k}{(2\pi)^3} \frac{1}{2k} \left[ e^{ik(x^0 - x_0^0) + i \mathbf{k}\cdot(\mathbf{x} - \mathbf{x}_0)} - e^{-ik(x^0 - x_0^0) - i \mathbf{k}\cdot(\mathbf{x} - \mathbf{x}_0)} \right]
+$$
+
+onde $\Theta$ é a função degrau de Heaviside.
+
+## Integração Angular
+
+Vamos agora realizar a integração angular. Escrevendo $d^3k = k^2 \, dk \, d\Omega$ e escolhendo o sistema de coordenadas com o eixo $z$ ao longo do vetor $\Delta \mathbf{x} = \mathbf{x} - \mathbf{x}_0$, temos $\mathbf{k} \cdot \Delta \mathbf{x} = k |\Delta \mathbf{x}| \cos\theta$.
+
+A integral angular é:
+
+$$
+\int_0^{2\pi} d\phi \int_0^\pi \sin\theta \, d\theta \, e^{\pm i k |\Delta \mathbf{x}| \cos\theta} = 4\pi \frac{\sin(k|\Delta \mathbf{x}|)}{k|\Delta \mathbf{x}|}
+$$
+
+::: {.tip}
+Este é um resultado fundamental: a integral angular transforma a onda plana em uma onda esférica, expressa pelo fator $\sin(k|\Delta \mathbf{x}|)/(k|\Delta \mathbf{x}|)$.
+:::
+
+## Integral Radial e a Delta de Dirac
+
+Substituindo o resultado da integração angular, ficamos com:
+
+$$
+\phi_J(x) = \frac{i \Theta(\Delta x^0)}{2\pi^2 |\Delta \mathbf{x}|} \int_0^\infty dk \, e^{ik\Delta x^0} \sin(k|\Delta \mathbf{x}|)
+$$
+
+onde definimos $\Delta x^0 = x^0 - x_0^0$ e $|\Delta \mathbf{x}| = |\mathbf{x} - \mathbf{x}_0|$.
+
+Agora, escrevemos o seno como combinação de exponenciais:
+
+$$
+\sin(k|\Delta \mathbf{x}|) = \frac{e^{ik|\Delta \mathbf{x}|} - e^{-ik|\Delta \mathbf{x}|}}{2i}
+$$
+
+e estendemos a integral para todo o eixo real, notando que o integrando é uma função par:
+
+$$
+\int_0^\infty dk \, e^{ik(\Delta x^0 \pm |\Delta \mathbf{x}|)} = \frac{1}{2} \int_{-\infty}^{\infty} dk \, e^{ik(\Delta x^0 \pm |\Delta \mathbf{x}|)}
+$$
+
+Usando a definição da delta de Dirac:
+
+$$
+\int_{-\infty}^{\infty} dk \, e^{ik a} = 2\pi \delta(a)
+$$
+
+obtemos:
+
+$$
+\phi_J(x) = \frac{\Theta(\Delta x^0)}{4\pi |\Delta \mathbf{x}|} \left[ \delta(\Delta x^0 + |\Delta \mathbf{x}|) - \delta(\Delta x^0 - |\Delta \mathbf{x}|) \right]
+$$
+
+## Resultado Final: Propagador Causal
+
+Como $\Theta(\Delta x^0)$ seleciona apenas $\Delta x^0 > 0$, o primeiro termo com $\delta(\Delta x^0 + |\Delta \mathbf{x}|)$ nunca contribui (pois o argumento é positivo). Portanto, o propagador causal é:
+
+$$
+\boxed{ \phi_J(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( \Delta x^0 - |\Delta \mathbf{x}| \right) }
+$$
+
+com $\Delta x^0 = x^0 - x_0^0 = c(t - t_0)$ e $|\Delta \mathbf{x}| = |\mathbf{x} - \mathbf{x}_0|$.
+
+::: {.important}
+Este é o resultado central da aula. O propagador é uma **distribuição** que é não nula apenas sobre o **cone de luz futuro** do evento fonte.
+:::
+
+# Interpretação Física: Causalidade
+
+## Propagação na Velocidade da Luz
+
+O propagador encontrado é:
+
+$$
+\phi_J(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right)
+$$
+
+A delta de Dirac impõe a condição:
+
+$$
+c(t - t_0) = |\mathbf{x} - \mathbf{x}_0|
+$$
+
+que é exatamente a condição para que um sinal se propague do ponto $\mathbf{x}_0$ no tempo $t_0$ até o ponto $\mathbf{x}$ no tempo $t$ com a velocidade da luz $c$.
+
+::: {.note}
+Para tempos futuros ($t > t_0$), o propagador é não nulo apenas sobre a **casca esférica** de raio $c(t - t_0)$ centrada em $\mathbf{x}_0$. Esta casca se expande com a velocidade da luz.
+:::
+
+## O Cone de Luz Futuro
+
+Geometricamente, no espaço-tempo de Minkowski, o propagador é suportado no **cone de luz futuro** do evento $x_0$. O cone de luz é definido por:
+
+$$
+\Delta s^2 = c^2(t - t_0)^2 - |\mathbf{x} - \mathbf{x}_0|^2 = 0
+$$
+
+com $\Delta t > 0$.
+
+Fora do cone de luz (regiões espacialmente separadas), o propagador é identicamente nulo. Isso garante a **causalidade**: um distúrbio em $x_0$ só pode afetar pontos que estão em seu cone de luz futuro.
+
+::: {.warning}
+A equação de onda admite soluções com propagação na velocidade da luz, que é a velocidade máxima de propagação de informação na teoria da relatividade restrita. A existência de um propagador com suporte no cone de luz é uma manifestação da causalidade na teoria de campos.
+:::
+
+# Generalização para Fontes Estendidas
+
+## Linhas de Mundo
+
+Uma partícula pontual descreve uma **linha de mundo** no espaço-tempo, parametrizada pelo tempo próprio $\tau$:
+
+$$
+y^\mu(\tau) = (c t(\tau), \mathbf{y}(\tau))
+$$
+
+A quadricorrente associada a uma partícula carregada é:
+
+$$
+J^\mu(x) = q \int_{-\infty}^{\infty} d\tau \, \frac{dy^\mu}{d\tau} \, \delta^4(x - y(\tau))
+$$
+
+## Potencial de uma Carga em Movimento
+
+O campo produzido por uma partícula em movimento é obtido integrando o propagador sobre a linha de mundo:
+
+$$
+\phi(x) = \int d^4x_0 \, \phi_J(x - x_0) J(x_0)
+$$
+
+Substituindo a corrente:
+
+$$
+\phi(x) = - \frac{q}{4\pi} \int_{-\infty}^{\infty} d\tau \, \frac{\delta\left( \Delta x^0(\tau) - |\Delta \mathbf{x}(\tau)| \right)}{|\mathbf{x} - \mathbf{y}(\tau)|}
+$$
+
+onde $\Delta x^0(\tau) = x^0 - y^0(\tau)$ e $\Delta \mathbf{x}(\tau) = \mathbf{x} - \mathbf{y}(\tau)$.
+
+## O Princípio da Ação a Distância (Retardada)
+
+A integral é não nula apenas quando existe um tempo próprio $\tau$ tal que:
+
+$$
+x^0 - y^0(\tau) = |\mathbf{x} - \mathbf{y}(\tau)|
+$$
+
+isto é, quando o ponto de observação $x$ está sobre o cone de luz futuro de um ponto da linha de mundo. Isso define o **tempo retardado** $\tau_r$, que é a solução da equação:
+
+$$
+t - t_r = \frac{|\mathbf{x} - \mathbf{y}(t_r)|}{c}
+$$
+
+O potencial em $x$ é, portanto, causado pela posição da partícula em um tempo anterior $t_r$, não pela posição simultânea.
+
+::: {.important}
+Este é o princípio fundamental da eletrodinâmica clássica: o campo eletromagnético se propaga com a velocidade da luz. Uma carga em movimento não produz um campo instantâneo, mas um campo retardado.
+:::
+
+# Conexão com a Eletrostática
+
+## O Limite Estático
+
+No caso em que a partícula está em repouso, sua linha de mundo é:
+
+$$
+y^\mu(\tau) = (c\tau, \mathbf{y}_0)
+$$
+
+onde $\mathbf{y}_0$ é a posição constante da partícula.
+
+A condição $\Delta x^0(\tau) = |\Delta \mathbf{x}(\tau)|$ torna-se:
+
+$$
+x^0 - c\tau = |\mathbf{x} - \mathbf{y}_0|
+$$
+
+que pode ser resolvida para $\tau$:
+
+$$
+c\tau = x^0 - |\mathbf{x} - \mathbf{y}_0|
+$$
+
+O potencial é então:
+
+$$
+\phi(\mathbf{x}) = - \frac{q}{4\pi} \frac{1}{|\mathbf{x} - \mathbf{y}_0|}
+$$
+
+que é exatamente o potencial eletrostático de Coulomb.
+
+## A Ilusão da Ação Instantânea
+
+No caso estático, a posição da partícula não varia com o tempo. Portanto, a posição retardada é a mesma que a posição simultânea. Isso cria a **ilusão** de que a força é instantânea.
+
+::: {.tip}
+A aparente ação instantânea na eletrostática é uma consequência do fato de que a fonte está em repouso. Se a partícula se move, o campo não é mais dado pelo potencial de Coulomb, e a dependência temporal do campo reflete a propagação com velocidade finita.
+:::
+
+Este fenômeno é análogo ao que acontece com uma onda em um meio: quando a fonte está em repouso, o campo parece estático, mas na verdade é sustentado por uma onda que se propaga continuamente da fonte para o observador.
+
+# Visualização do Propagador
+
+O código abaixo gera uma visualização da propagação de uma perturbação a partir de uma fonte pontual. A animação mostra o campo como uma função da posição para diferentes tempos.
+
+```{python}
+#| label: fig-propagator
+#| fig-cap: "Propagação de uma perturbação a partir de uma fonte pontual. A casca esférica se expande com a velocidade da luz."
+#| fig-width: 8
+#| fig-height: 6
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+# Parâmetros
+c = 1.0  # velocidade da luz
+t0 = 0.0  # tempo da fonte
+x0 = 0.0  # posição da fonte
+
+# Grid espacial
+x = np.linspace(-5, 5, 500)
+
+
+# Função campo para um dado tempo
+def campo(t, x, t0=0, x0=0, c=1):
+    """Propagador causal
+
+    Campo não nulo apenas sobre a casca esférica
+    Para visualização, usamos uma gaussiana estreita para representar a delta.
+    """
+    sigma = 0.05
+    r = np.abs(x - x0)
+    arg = c * (t - t0) - r
+    return np.exp(-(arg**2) / (2 * sigma**2)) / (4 * np.pi * r + 1e-10)
+
+
+# Criação da figura
+fig, ax = plt.subplots(figsize=(8, 6))
+ax.set_xlim(-5, 5)
+ax.set_ylim(0, 0.5)
+ax.set_xlabel("Posição x")
+ax.set_ylabel("Campo φ(x)")
+ax.set_title("Propagação da Perturbação")
+ax.grid(True, alpha=0.3)
+
+# Linha para o campo
+(line,) = ax.plot([], [], "b-", linewidth=2)
+
+
+# Função de inicialização
+def init():
+    line.set_data([], [])
+    return (line,)
+
+
+# Função de animação
+def animate(frame):
+    t = frame * 0.1  # tempo
+    y = campo(t, x)
+    line.set_data(x, y)
+    ax.set_title(f"Propagação da Perturbação (t = {t:.1f})")
+    return (line,)
+
+
+# Criação da animação
+anim = FuncAnimation(fig, animate, init_func=init, frames=60, interval=50, blit=True)
+
+# Para exibir no notebook
+HTML(anim.to_jshtml())
+```
+
+# Resumo dos Conceitos-Chave
+
+| Conceito | Descrição |
+|----------|-----------|
+| Propagador Escalar | Solução da equação de onda com uma fonte pontual delta. |
+| Decomposição de Fourier | O propagador é uma superposição de modos de Fourier com frequência positiva. |
+| Condição de Causalidade | O propagador é não nulo apenas no cone de luz futuro. |
+| Propagação na Velocidade da Luz | A perturbação se propaga com a velocidade da luz, $c$. |
+| Tempo Retardado | O campo em um ponto é causado pela fonte em um tempo anterior. |
+| Eletrostática | No limite estático, o propagador dá o potencial de Coulomb. |
+
+# Exercícios
+
+## Exercício 1
+
+Mostre que a solução da equação de onda homogênea $\Box \phi = 0$ pode ser escrita como uma superposição de ondas planas da forma $\phi_{\mathbf{k}}(t, \mathbf{x}) = f_{\mathbf{k}}(t) e^{i\mathbf{k}\cdot\mathbf{x}}$.
+
+a) Escreva a equação diferencial para $f_{\mathbf{k}}(t)$.
+
+b) Determine a solução geral para $f_{\mathbf{k}}(t)$.
+
+## Exercício 2
+
+Considere o propagador causal encontrado na aula:
+
+$$
+\phi_J(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right)
+$$
+
+a) Mostre que $\phi_J(x)$ satisfaz a equação $\Box \phi_J = \delta^4(x - x_0)$.
+
+b) Qual é o suporte de $\phi_J(x)$ no espaço-tempo?
+
+## Exercício 3
+
+Uma partícula pontual se move com velocidade constante $\mathbf{v}$. A linha de mundo é $y^\mu(\tau) = (\gamma c\tau, \gamma \mathbf{v}\tau)$.
+
+a) Calcule o potencial $\phi(x)$ produzido pela partícula.
+
+b) Mostre que, no limite $v \ll c$, o potencial se reduz ao potencial de Coulomb.
+
+## Exercício 4
+
+Considere duas partículas carregadas, uma em $\mathbf{x}_1 = 0$ (em repouso) e outra em $\mathbf{x}_2 = \mathbf{a}$ (em repouso).
+
+a) Calcule a força elétrica sobre a partícula 2 usando o potencial retardado.
+
+b) A força é instantânea? Justifique sua resposta.
+
+## Exercício 5
+
+Demonstre que a integral angular utilizada no cálculo do propagador é:
+
+$$
+\int_0^{2\pi} d\phi \int_0^\pi \sin\theta \, d\theta \, e^{i k r \cos\theta} = 4\pi \frac{\sin(k r)}{k r}
+$$
+
+## Exercício 6
+
+Uma partícula carregada oscila harmonicamente: $\mathbf{y}(t) = A \cos(\omega t) \hat{\mathbf{z}}$.
+
+a) Escreva a quadricorrente da partícula.
+
+b) Mostre que o potencial produzido tem componentes que dependem do tempo retardado.
+
+## Exercício 7
+
+Explique por que o potencial de Coulomb parece implicar ação instantânea, mesmo sendo obtido a partir de um propagador causal.
+
+## Exercício 8
+
+Considere o propagador avançado, definido por:
+
+$$
+\phi_J^{\text{adv}}(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) + |\mathbf{x} - \mathbf{x}_0| \right)
+$$
+
+a) Qual é o suporte deste propagador?
+
+b) Por que ele não é usado como solução causal?
+
+## Exercício 9
+
+Mostre que o propagador causal pode ser escrito como:
+
+$$
+\phi_J(x) = - \frac{1}{4\pi} \int_{-\infty}^{\infty} d\tau \, \frac{\delta\left( \Delta x^0(\tau) - |\Delta \mathbf{x}(\tau)| \right)}{|\mathbf{x} - \mathbf{y}(\tau)|}
+$$
+
+para uma linha de mundo $y^\mu(\tau)$.
+
+## Exercício 10
+
+a) Explique o que é o tempo retardado.
+
+b) Qual é a equação que define o tempo retardado para uma partícula em movimento?
+
+c) Como o tempo retardado se relaciona com a causalidade?
+
+## Exercício 11
+
+Considere uma fonte estendida com densidade de corrente $J(x)$.
+
+a) Escreva a solução geral para o campo $\phi(x)$ usando o propagador.
+
+b) Qual é a interpretação física da integral?
+
+## Exercício 12
+
+Demonstre que, para uma partícula em repouso, a condição do cone de luz:
+
+$$
+c(t - t_0) = |\mathbf{x} - \mathbf{x}_0|
+$$
+
+é resolvida por $c t_0 = c t - |\mathbf{x} - \mathbf{x}_0|$, e que isso leva ao potencial de Coulomb.

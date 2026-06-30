@@ -1,0 +1,602 @@
+---
+title: "Aula 04 - Funções de Green em Teoria de Campos"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  pdf: default
+  docx: default
+---
+
+# Introdução
+
+## Objetivos da Aula
+
+Nesta aula, daremos continuidade ao estudo das funções de Green, agora estendendo o formalismo para teorias de campos. Os principais objetivos são:
+
+- Estender o formalismo de soluções de equações diferenciais para o contexto de campos
+- Compreender como construir bases completas no espaço de funções
+- Introduzir o conceito de produto interno para campos
+- Construir o formalismo simplético para a equação de onda
+- Generalizar a função de Green para o espaço-tempo
+
+## Contextualização
+
+Na aula anterior, trabalhamos com o formalismo para equações diferenciais ordinárias, onde o espaço de soluções era bidimensional (posição e momento). Agora, ao lidar com campos, temos que considerar um espaço de funções de dimensão infinita, o que torna a construção mais sofisticada.
+
+::: {.callout-note}
+A transição de partículas para campos envolve mudar de um espaço de fase de dimensão finita ($\mathbb{R}^2$) para um espaço de funções de dimensão infinita. Isso requer novas ferramentas matemáticas e conceitos mais abstratos.
+:::
+
+# Revisão do Formalismo de Partículas
+
+## Estrutura Simplética para Partículas
+
+Para uma partícula, definimos o vetor no espaço de fase:
+
+$$V = \begin{pmatrix} y \\ q \end{pmatrix}$$
+
+onde $y$ é a posição e $q$ é o momento (ou derivada temporal).
+
+### Matriz Simplética
+
+A estrutura simplética é dada pela matriz:
+
+$$\Omega = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$$
+
+### Produto Interno Simplético
+
+O produto interno simplético entre dois vetores $V_1$ e $V_2$ é:
+
+$$(V_1, V_2)_\Omega = V_1^T \Omega V_2 = y_1 q_2 - y_2 q_1$$
+
+Este produto interno é conservado quando ambos os vetores são soluções da equação de movimento.
+
+## Decomposição de Vetores Arbitrários
+
+Mesmo que $S$ não seja uma solução da equação homogênea, podemos decompô-lo na base de soluções:
+
+$$S(x) = (V_1 \cdot S) V_2 - (V_2 \cdot S) V_1$$
+
+onde $V_1$ e $V_2$ são soluções da equação homogênea.
+
+::: {.callout-important}
+Para que esta decomposição seja válida no mesmo instante de tempo, precisamos que $V_1$ e $V_2$ sejam avaliados no mesmo tempo. A conservação do Wronskiano garante que a independência linear se mantém ao longo do tempo.
+:::
+
+## Função de Green para Partículas
+
+A função de Green avançada é construída como:
+
+$$U(x) = \int_{-\infty}^{x} [V_1^T(\xi) S(\xi) V_2(x) - V_2^T(\xi) S(\xi) V_1(x)] d\xi$$
+
+Esta construção garante que:
+
+1. $U$ satisfaz a equação não-homogênea
+2. $U(-\infty) = 0$ (condição de contorno no passado)
+
+::: {.callout-tip}
+A escolha do limite inferior como $-\infty$ corresponde à condição de que a solução é zero no passado distante. Poderíamos escolher qualquer instante inicial $x_0$, mas a escolha $-\infty$ é conveniente para problemas de espalhamento.
+:::
+
+# Extensão para Teoria de Campos
+
+## O Espaço de Funções
+
+Na teoria de campos, a função de campo é:
+
+$$\phi: \mathbb{R}^4 \to \mathbb{R}$$
+
+que associa a cada ponto do espaço-tempo um valor (escalar).
+
+### Condições Iniciais
+
+Diferente do caso de partículas, agora precisamos especificar:
+
+1. O valor do campo em cada ponto do espaço: $\phi(0, \mathbf{x}) = f_0(\mathbf{x})$
+2. A derivada temporal do campo: $\dot{\phi}(0, \mathbf{x}) = g_0(\mathbf{x})$
+
+$$\phi_0: \mathbb{R}^3 \to \mathbb{R}, \quad \dot{\phi}_0: \mathbb{R}^3 \to \mathbb{R}$$
+
+::: {.callout-note}
+A especificação de duas funções como condições iniciais é análoga a especificar posição e momento, mas agora em cada ponto do espaço.
+:::
+
+## Produto Interno para Campos
+
+### Definição Geral
+
+Definimos o produto interno para funções de campo como:
+
+$$\langle f, g \rangle = \int_{\mathbb{R}^3} f^*(\mathbf{x}) g(\mathbf{x}) W(\mathbf{x}) d^3x$$
+
+onde $W(\mathbf{x})$ é uma função de peso.
+
+### Escolha do Peso
+
+Para a geometria euclidiana e o operador laplaciano, a escolha natural é $W(\mathbf{x}) = 1$:
+
+$$\langle f, g \rangle = \int_{\mathbb{R}^3} f^*(\mathbf{x}) g(\mathbf{x}) d^3x$$
+
+::: {.callout-important}
+A escolha do peso está relacionada ao operador que queremos que seja auto-adjunto. Para o laplaciano na geometria euclidiana, o peso é constante.
+:::
+
+### Auto-adjuntividade do Laplaciano
+
+O operador laplaciano é auto-adjunto no produto interno definido acima:
+
+$$\langle f, \nabla^2 g \rangle = \langle \nabla^2 f, g \rangle$$
+
+desde que as funções decaiam suficientemente rápido no infinito (condições de contorno adequadas).
+
+## Formalismo Simplético para Campos
+
+### Vetor de Estado no Espaço de Fase
+
+Para campos, definimos o vetor no espaço de fase como:
+
+$$Q = \begin{pmatrix} \phi \\ \pi \end{pmatrix}$$
+
+onde $\pi = \dot{\phi}$ é o momento conjugado (ou derivada temporal).
+
+### Produto Interno Simplético
+
+O produto interno simplético para campos é:
+
+$$(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} Q_1^\dagger \Omega Q_2 d^3x$$
+
+onde:
+
+$$\Omega = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$$
+
+Expandindo:
+
+$$(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x$$
+
+::: {.callout-warning}
+O fator $-i$ na definição do produto interno é crucial para garantir que o produto seja positivo definido quando trabalhamos com funções complexas.
+:::
+
+## Equação de Onda no Formalismo Simplético
+
+### Equação de Onda
+
+A equação de onda é:
+
+$$\frac{\partial^2 \phi}{\partial x_0^2} = \nabla^2 \phi$$
+
+onde $x_0 = ct$ é a coordenada temporal em unidades de comprimento.
+
+### Decomposição em Primeira Ordem
+
+Definindo $\pi = \partial_{x_0} \phi$, podemos escrever o sistema como:
+
+$$\dot{\phi} = \pi$$
+$$\dot{\pi} = \nabla^2 \phi$$
+
+No formalismo matricial:
+
+$$\begin{pmatrix} \dot{\phi} \\ \dot{\pi} \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ -\nabla^2 & 0 \end{pmatrix} \begin{pmatrix} \phi \\ \pi \end{pmatrix}$$
+
+### Matriz Hamiltoniana
+
+A matriz que gera a evolução temporal é:
+
+$$H = \begin{pmatrix} 0 & 1 \\ -\nabla^2 & 0 \end{pmatrix}$$
+
+Esta matriz satisfaz $H = \Omega \mathcal{H}$, onde $\mathcal{H}$ é um operador Hermitiano.
+
+## Conservação do Wronskiano de Campos
+
+O Wronskiano de campos é definido como:
+
+$$W(\phi_1, \pi_1; \phi_2, \pi_2) = \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x$$
+
+Sua derivada temporal é:
+
+$$\frac{dW}{dx_0} = \int_{\mathbb{R}^3} [\pi_1 \pi_2 + \phi_1 \nabla^2 \phi_2 - \pi_2 \pi_1 - \phi_2 \nabla^2 \phi_1] d^3x$$
+
+$$\frac{dW}{dx_0} = \int_{\mathbb{R}^3} [\phi_1 \nabla^2 \phi_2 - \phi_2 \nabla^2 \phi_1] d^3x$$
+
+Usando a auto-adjuntividade do laplaciano:
+
+$$\int_{\mathbb{R}^3} \phi_1 \nabla^2 \phi_2 d^3x = \int_{\mathbb{R}^3} (\nabla^2 \phi_1) \phi_2 d^3x$$
+
+Portanto:
+
+$$\frac{dW}{dx_0} = 0$$
+
+Ou seja, o Wronskiano é conservado.
+
+::: {.callout-tip}
+A conservação do Wronskiano garante que uma base linearmente independente no instante inicial permanecerá linearmente independente para todo tempo. Isso é essencial para a construção de soluções gerais.
+:::
+
+# Construção de Bases para Campos
+
+## Base de Ondas Planas
+
+### Definição
+
+As ondas planas formam uma base completa para o espaço de funções em $\mathbb{R}^3$:
+
+$$\psi_{\mathbf{k}}(\mathbf{x}) = \frac{e^{i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}}$$
+
+### Relação de Ortogonalidade
+
+$$\int_{\mathbb{R}^3} \psi_{\mathbf{k}}^*(\mathbf{x}) \psi_{\mathbf{k}'}(\mathbf{x}) d^3x = \delta^{(3)}(\mathbf{k} - \mathbf{k}')$$
+
+### Completeza
+
+$$\int_{\mathbb{R}^3} \psi_{\mathbf{k}}(\mathbf{x}) \psi_{\mathbf{k}}^*(\mathbf{x}') d^3k = \delta^{(3)}(\mathbf{x} - \mathbf{x}')$$
+
+## Decomposição de Fourier
+
+### Transformada de Fourier
+
+Qualquer função (suave) pode ser decomposta como:
+
+$$f(\mathbf{x}) = \int_{\mathbb{R}^3} \tilde{f}(\mathbf{k}) \frac{e^{i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}} d^3k$$
+
+onde:
+
+$$\tilde{f}(\mathbf{k}) = \int_{\mathbb{R}^3} f(\mathbf{x}) \frac{e^{-i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}} d^3x$$
+
+### Propriedades da Base de Ondas Planas
+
+1. **Diagonaliza o laplaciano**:
+   $$\nabla^2 e^{i\mathbf{k}\cdot\mathbf{x}} = -k^2 e^{i\mathbf{k}\cdot\mathbf{x}}$$
+
+2. **Comportamento sob translações**:
+   $$f(\mathbf{x} + \mathbf{a}) \to \tilde{f}(\mathbf{k}) e^{i\mathbf{k}\cdot\mathbf{a}}$$
+
+3. **Comportamento sob rotações**:
+   $$f(R\mathbf{x}) \to \tilde{f}(R^{-1}\mathbf{k})$$
+
+## Soluções Modais
+
+### Separação de Variáveis
+
+Procuramos soluções da forma:
+
+$$\phi(x_0, \mathbf{x}) = T(x_0) \psi_{\mathbf{k}}(\mathbf{x})$$
+
+Substituindo na equação de onda:
+
+$$\ddot{T}(x_0) \psi_{\mathbf{k}}(\mathbf{x}) = T(x_0) \nabla^2 \psi_{\mathbf{k}}(\mathbf{x})$$
+
+$$\frac{\ddot{T}(x_0)}{T(x_0)} = \frac{\nabla^2 \psi_{\mathbf{k}}(\mathbf{x})}{\psi_{\mathbf{k}}(\mathbf{x})} = -k^2$$
+
+### Soluções Temporais
+
+Para cada $\mathbf{k}$, obtemos a equação do oscilador harmônico:
+
+$$\ddot{T}(x_0) + k^2 T(x_0) = 0$$
+
+As soluções são:
+
+$$T(x_0) = A e^{-i\omega_k x_0} + B e^{i\omega_k x_0}$$
+
+onde $\omega_k = |\mathbf{k}|$ (no sistema de unidades onde $c=1$).
+
+### Soluções de Onda Plana
+
+Portanto, as soluções modais são:
+
+$$\phi_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{i(\mathbf{k}\cdot\mathbf{x} - \omega_k x_0)}$$
+
+$$\phi_{\mathbf{k}}^*(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{-i(\mathbf{k}\cdot\mathbf{x} - \omega_k x_0)}$$
+
+## Formalismo Simplético para Ondas Planas
+
+### Base Simplética
+
+Definimos a base de ondas planas no espaço de fase:
+
+$$Q_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{\sqrt{2}} \begin{pmatrix} \phi_{\mathbf{k}} \\ -i\omega_k \phi_{\mathbf{k}} \end{pmatrix}$$
+
+### Produto Interno dos Modos
+
+Calculamos o produto interno simplético entre dois modos:
+
+$$(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega = -i \int_{\mathbb{R}^3} Q_{\mathbf{k}}^\dagger \Omega Q_{\mathbf{k}'} d^3x$$
+
+$$= \delta^{(3)}(\mathbf{k} - \mathbf{k}')$$
+
+::: {.callout-important}
+A normalização $\frac{1}{\sqrt{2}}$ foi escolhida para que o produto interno dos modos seja exatamente uma delta de Dirac.
+:::
+
+### Decomposição do Campo
+
+Qualquer campo pode ser decomposto como:
+
+$$Q(x_0, \mathbf{x}) = \int_{\mathbb{R}^3} [a_{\mathbf{k}} Q_{\mathbf{k}}(x_0, \mathbf{x}) + a_{\mathbf{k}}^* Q_{\mathbf{k}}^*(x_0, \mathbf{x})] d^3k$$
+
+Os coeficientes são obtidos por:
+
+$$a_{\mathbf{k}} = (Q_{\mathbf{k}}, Q)_\Omega$$
+
+# Função de Green para Campos
+
+## Construção do Propagador
+
+### Generalização do Caso de Partículas
+
+Para campos, a função de Green (propagador) é construída de forma análoga:
+
+$$G(x_0, \mathbf{x}; x_0', \mathbf{x}') = -i \Theta(x_0 - x_0') \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega_k} [e^{-i\omega_k(x_0 - x_0')} e^{i\mathbf{k}\cdot(\mathbf{x} - \mathbf{x}')} - e^{i\omega_k(x_0 - x_0')} e^{-i\mathbf{k}\cdot(\mathbf{x} - \mathbf{x}')}]$$
+
+### Simplificação
+
+Esta expressão pode ser simplificada para:
+
+$$G(x, x') = \Theta(x_0 - x_0') \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^3} \frac{1}{\omega_k} \sin[\omega_k(x_0 - x_0')] e^{i\mathbf{k}\cdot(\mathbf{x} - \mathbf{x}')}$$
+
+## Propriedades do Propagador
+
+### Equação Diferencial
+
+O propagador satisfaz:
+
+$$(\partial_{x_0}^2 - \nabla^2) G(x, x') = \delta^{(4)}(x - x')$$
+
+### Condições de Contorno
+
+- **Propagador avançado**: vanish para $x_0 < x_0'$ (causalidade)
+- **Propagador retardado**: vanish para $x_0 > x_0'$ (causalidade temporal)
+
+::: {.callout-warning}
+A escolha entre propagador avançado e retardado corresponde a diferentes condições de contorno. O propagador avançado é adequado para problemas de espalhamento com condições iniciais no passado.
+:::
+
+# Simulações Numéricas
+
+## Visualização de Ondas Planas
+
+```{python}
+#| label: fig-ondas-planas
+#| fig-cap: "Visualização de ondas planas em 1D"
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+# Parâmetros
+k = 2.0  # número de onda
+omega = k  # frequência (c=1)
+
+# Domínio espacial
+x = np.linspace(-10, 10, 1000)
+t = np.linspace(0, 2 * np.pi / omega, 100)
+
+
+# Função de onda
+def onda_plana(x, t, k, omega):
+    return np.cos(k * x - omega * t)
+
+
+# Criar figura
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.set_xlim(-10, 10)
+ax.set_ylim(-1.5, 1.5)
+ax.set_xlabel(r"$x$")
+ax.set_ylabel(r"$\phi(x,t)$")
+ax.set_title(f"Onda Plana: k = {k}, ω = {omega}")
+ax.grid(True, alpha=0.3)
+
+# Linha da onda
+(line,) = ax.plot([], [], "b-", lw=2)
+
+
+# Função de animação
+def animate(i):
+    y = onda_plana(x, t[i], k, omega)
+    line.set_data(x, y)
+    return (line,)
+
+
+# Criar animação
+anim = FuncAnimation(fig, animate, frames=len(t), interval=50, blit=True)
+plt.close()
+HTML(anim.to_html5_video())
+```
+
+## Superposição de Ondas
+
+```{python}
+#| label: fig-superposicao
+#| fig-cap: "Superposição de ondas planas (pacote de ondas)"
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parâmetros
+k0 = 2.0  # número de onda central
+sigma = 0.5  # largura do pacote
+x = np.linspace(-15, 15, 1000)
+
+
+# Pacote de ondas (transformada de Fourier de uma gaussiana)
+def pacote_ondas(x, t, k0, sigma):
+    k = np.linspace(-5, 5, 500)
+    dk = k[1] - k[0]
+    # Envelope gaussiano no espaço k
+    envelope = np.exp(-((k - k0) ** 2) / (2 * sigma**2))
+    # Fase temporal
+    omega = np.abs(k)  # c=1
+    fase = np.exp(1j * (k * x - omega * t))
+    # Integral (superposição)
+    psi = np.sum(envelope * fase * dk)
+    return np.real(psi) / np.sqrt(2 * np.pi)
+
+
+# Tempos para visualização
+tempos = [0, 2, 4, 6]
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+axes = axes.flatten()
+
+for i, t in enumerate(tempos):
+    y = [pacote_ondas(xi, t, k0, sigma) for xi in x]
+    axes[i].plot(x, y, "b-", lw=2)
+    axes[i].set_xlim(-15, 15)
+    axes[i].set_ylim(-0.5, 0.5)
+    axes[i].set_xlabel(r"$x$")
+    axes[i].set_ylabel(r"$\phi(x,t)$")
+    axes[i].set_title(f"t = {t}")
+    axes[i].grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Visualização do Propagador
+
+```{python}
+#| label: fig-propagador
+#| fig-cap: "Função de Green (propagador) em 1D"
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parâmetros
+x = np.linspace(-20, 20, 1000)
+t = 2.0  # tempo fixo
+epsilon = 0.1  # regularização
+
+
+# Propagador em 1D (regularizado)
+def propagador_1d(x, t, epsilon=0.1):
+    # Versão regularizada do propagador
+    return np.sin(t * np.sqrt(x**2 + epsilon**2)) / np.sqrt(x**2 + epsilon**2)
+
+
+y = propagador_1d(x, t, epsilon)
+
+fig, ax = plt.subplots(figsize=(10, 6))
+ax.plot(x, y, "r-", lw=2)
+ax.set_xlabel(r"$x - x'$")
+ax.set_ylabel(r"$G(x, t; 0, 0)$")
+ax.set_title(f"Propagador em 1D (t = {t})")
+ax.grid(True, alpha=0.3)
+ax.axhline(y=0, color="black", linestyle="-", alpha=0.3)
+ax.axvline(x=0, color="black", linestyle="-", alpha=0.3)
+plt.show()
+```
+
+# Resumo dos Conceitos
+
+| Conceito | Partículas | Campos |
+|----------|------------|--------|
+| **Espaço de fase** | $\mathbb{R}^2$ (posição, momento) | Espaço de funções (dimensão infinita) |
+| **Vetor de estado** | $V = (y, q)^T$ | $Q = (\phi, \pi)^T$ |
+| **Matriz simplética** | $\Omega = \begin{pmatrix}0 & 1 \\ -1 & 0\end{pmatrix}$ | $\Omega = \begin{pmatrix}0 & 1 \\ -1 & 0\end{pmatrix}$ |
+| **Produto interno** | $V_1^T \Omega V_2$ | $-i\int Q_1^\dagger \Omega Q_2 d^3x$ |
+| **Hamiltoniana** | $H = \begin{pmatrix}0 & 1 \\ -\omega^2 & 0\end{pmatrix}$ | $H = \begin{pmatrix}0 & 1 \\ -\nabla^2 & 0\end{pmatrix}$ |
+| **Base** | 2 vetores $V_1, V_2$ | Infinitos modos $Q_{\mathbf{k}}$ |
+| **Condições iniciais** | $y(0), q(0)$ | $\phi(0,\mathbf{x}), \pi(0,\mathbf{x})$ |
+| **Função de Green** | $G(x,x')$ | $G(x_0,\mathbf{x}; x_0',\mathbf{x}')$ |
+
+# Exercícios
+
+## Exercício 1: Formalismo Simplético para Campos
+
+**a)** Mostre que o produto interno simplético para campos é conservado.
+
+**b)** Verifique que a matriz $\Omega$ satisfaz $\Omega^2 = -I$ e $\Omega^T = -\Omega$.
+
+**c)** Mostre que o operador $H$ da equação de onda pode ser escrito como $H = \Omega \mathcal{H}$, onde $\mathcal{H}$ é um operador Hermitiano.
+
+**d)** Determine a forma explícita de $\mathcal{H}$ para o campo escalar.
+
+## Exercício 2: Ondas Planas
+
+**a)** Verifique que as ondas planas formam uma base ortonormal no produto interno $\langle f,g \rangle = \int f^* g \, d^3x$.
+
+**b)** Mostre que a transformada de Fourier é uma transformação unitária.
+
+**c)** Calcule a transformada de Fourier da função gaussiana $f(\mathbf{x}) = e^{-a|\mathbf{x}|^2}$.
+
+**d)** Mostre que a transformada de Fourier diagonaliza o operador laplaciano.
+
+## Exercício 3: Soluções da Equação de Onda
+
+**a)** Resolva a equação de onda $\partial_{x_0}^2 \phi = \nabla^2 \phi$ usando o método de separação de variáveis.
+
+**b)** Encontre todas as soluções modais da forma $\phi(x_0,\mathbf{x}) = T(x_0)\psi(\mathbf{x})$.
+
+**c)** Mostre que para cada $\mathbf{k}$ obtemos um oscilador harmônico.
+
+**d)** Escreva a solução geral da equação de onda como uma integral sobre $\mathbf{k}$.
+
+## Exercício 4: Produto Interno Simplético
+
+**a)** Calcule $(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega$ para os modos de onda plana.
+
+**b)** Mostre que $(Q_{\mathbf{k}}^*, Q_{\mathbf{k}'})_\Omega = -\delta^{(3)}(\mathbf{k} - \mathbf{k}')$.
+
+**c)** Verifique que $(Q_{\mathbf{k}}, Q_{\mathbf{k}'}^*)_\Omega = 0$.
+
+**d)** Interprete o significado físico destes resultados.
+
+## Exercício 5: Decomposição do Campo
+
+**a)** Mostre que qualquer campo pode ser decomposto como:
+$$Q(x_0,\mathbf{x}) = \int [a_{\mathbf{k}} Q_{\mathbf{k}} + a_{\mathbf{k}}^* Q_{\mathbf{k}}^*] d^3k$$
+
+**b)** Encontre a expressão para $a_{\mathbf{k}}$ em termos do campo e de sua derivada temporal.
+
+**c)** Determine as relações de comutação para os operadores $a_{\mathbf{k}}$ e $a_{\mathbf{k}}^\dagger$.
+
+**d)** Interpretar $a_{\mathbf{k}}$ e $a_{\mathbf{k}}^\dagger$ como operadores de criação e aniquilação.
+
+## Exercício 6: Propagador Avançado
+
+**a)** Construa o propagador avançado para a equação de onda usando o formalismo simplético.
+
+**b)** Verifique que o propagador satisfaz a equação $(\partial_{x_0}^2 - \nabla^2)G(x,x') = \delta^{(4)}(x-x')$.
+
+**c)** Mostre que $G(x,x') = 0$ para $x_0 < x_0'$ (condição de causalidade).
+
+**d)** Calcule o propagador em 1+1 dimensões explicitamente.
+
+## Exercício 7: Condições de Contorno
+
+**a)** Discuta a diferença entre propagador avançado e propagador retardado.
+
+**b)** Por que o propagador avançado é adequado para problemas de espalhamento?
+
+**c)** Como as condições de contorno no infinito afetam a escolha do propagador?
+
+**d)** Mostre que o propagador avançado e retardado estão relacionados por $G_{\text{ret}} = G_{\text{adv}}^*$.
+
+## Exercício 8: Massa e Modos de Fourier
+
+**a)** Estenda o formalismo para a equação de Klein-Gordon: $(\partial_{x_0}^2 - \nabla^2 + m^2)\phi = 0$.
+
+**b)** Mostre que as soluções modais têm frequência $\omega_k = \sqrt{k^2 + m^2}$.
+
+**c)** Como a massa modifica a relação de dispersão?
+
+**d)** Discuta o limite $m \to 0$ e compare com o caso sem massa.
+
+## Exercício 9: Simulações Numéricas
+
+**a)** Implemente uma simulação numérica para a equação de onda em 1D usando diferenças finitas.
+
+**b)** Visualize a evolução temporal de um pacote de ondas.
+
+**c)** Compare a evolução de uma solução com e sem massa.
+
+**d)** Implemente o propagador numericamente e verifique suas propriedades.
+
+## Exercício 10: Generalizações
+
+**a)** Como o formalismo se estende para campos vetoriais (como o eletromagnetismo)?
+
+**b)** Discuta as dificuldades de estender o formalismo para espaços curvos.
+
+**c)** O que muda se o campo for complexo em vez de real?
+
+**d)** Discuta a relação entre este formalismo e a quantização canônica.

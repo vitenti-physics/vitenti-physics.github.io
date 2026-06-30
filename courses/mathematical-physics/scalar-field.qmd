@@ -1,0 +1,351 @@
+---
+title: "Campos Escalares Relativísticos: Bases, Vácuo e Propagadores"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+  docx:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+---
+
+# Introdução
+
+**Objetivos da Aula:**
+- Construir uma base completa no espaço de fase para campos escalares relativísticos
+- Explorar a normalização e as liberdades de gauge na escolha da base
+- Conectar a escolha da base com a definição do vácuo e a simetria de inversão temporal
+- Desenvolver a solução com fonte (propagador) para o campo escalar
+
+**Contexto:**
+Estendemos o problema do oscilador harmônico para o caso de infinitos graus de liberdade, representando um campo escalar relativístico. A estrutura simplética do espaço de fase agora inclui uma integral sobre todos os modos de Fourier.
+
+# Base no Espaço de Fase
+
+## Definição da Base
+
+Para cada vetor de onda $\mathbf{k}$, definimos pares de funções temporais:
+
+$$f_{\mathbf{k}}(x_0), \quad q_{\mathbf{k}}(x_0)$$
+
+onde $x_0 = ct$ é a coordenada temporal. A base completa no espaço de fase é composta por:
+
+$$\Psi_{\mathbf{k}} = \begin{pmatrix} f_{\mathbf{k}} \\ q_{\mathbf{k}} \end{pmatrix}$$
+
+com a dependência espacial dada por $e^{i\mathbf{k}\cdot\mathbf{x}}$.
+
+> **Observação:** Estamos usando a notação $x_0$ para a coordenada temporal, seguindo a convenção relativística onde as coordenadas espaço-tempo são $(x_0, x_1, x_2, x_3)$.
+
+## Produto Simplético
+
+O produto entre dois elementos da base é definido por:
+
+$$(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}'}^* q_{\mathbf{k}} - q_{\mathbf{k}'}^* f_{\mathbf{k}}\right] d^3x$$
+
+Substituindo as dependências espaciais:
+
+$$(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right]\delta^{(3)}(\mathbf{k} - \mathbf{k}')$$
+
+A base é ortogonal com normalização delta de Dirac.
+
+## Normalização da Base
+
+Para que a base seja ortonormal no sentido da delta de Dirac:
+
+$$-i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right] = 1$$
+
+Equivalentemente:
+
+$$2\,\text{Im}(f_{\mathbf{k}}^* q_{\mathbf{k}}) = 1$$
+
+> **Definição (Vácuo):** A escolha das funções de base que satisfazem a condição de normalização define o vácuo da teoria. Diferentes escolhas correspondem a diferentes definições de vácuo.
+
+# Liberdades na Escolha da Base
+
+## Graus de Liberdade
+
+Para cada $\mathbf{k}$, temos $f_{\mathbf{k}}, q_{\mathbf{k}} \in \mathbb{C}$ (4 graus de liberdade reais). As restrições são:
+
+1. **Equação de normalização:** 1 equação real $\Rightarrow$ 3 graus de liberdade
+2. **Liberdade de gauge (fase):** $f_{\mathbf{k}} \to e^{i\theta_{\mathbf{k}}} f_{\mathbf{k}}$, $q_{\mathbf{k}} \to e^{i\theta_{\mathbf{k}}} q_{\mathbf{k}}$
+
+A liberdade de fase reduz mais um grau de liberdade, resultando em **2 graus de liberdade** efetivos.
+
+> **Observação:** A liberdade de fase corresponde à ambiguidade na definição das soluções complexas: podemos escolher $V = V_1 + iV_2$ ou $V = V_2 + iV_1$, ou qualquer combinação linear equivalente.
+
+## Solução Geral do Oscilador Harmônico
+
+A equação de movimento no espaço de Fourier é:
+
+$$\ddot{f}_{\mathbf{k}} = -\omega_{\mathbf{k}}^2 f_{\mathbf{k}}, \quad \omega_{\mathbf{k}} = |\mathbf{k}|$$
+
+A solução geral é:
+
+$$f_{\mathbf{k}} = N_{\mathbf{k}} e^{-i\omega_{\mathbf{k}} x_0} + M_{\mathbf{k}} e^{+i\omega_{\mathbf{k}} x_0}$$
+
+onde $N_{\mathbf{k}}, M_{\mathbf{k}} \in \mathbb{C}$.
+
+> **Observação:** O primeiro termo representa frequências positivas (propagação para frente no tempo), e o segundo, frequências negativas (propagação para trás no tempo).
+
+## Condição de Normalização em Termos de N e M
+
+Da condição de normalização:
+
+$$2\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = 1$$
+
+ou, equivalentemente:
+
+$$\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = \frac{1}{2}$$
+
+> **Observação:** Esta é uma relação hiperbólica que define vetores tipo tempo no espaço de Minkowski.
+
+## Escolha do Vácuo
+
+A escolha mais simples é $M_{\mathbf{k}} = 0$, resultando:
+
+$$N_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}$$
+
+Isso define as funções de base:
+
+$$f_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}$$
+
+$$q_{\mathbf{k}} = -i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}$$
+
+> **Nota:** Esta escolha elimina as soluções de frequência negativa, definindo o vácuo de Minkowski. A normalização inclui o fator $(2\pi)^{-3/2}$ para garantir a ortogonalidade correta.
+
+## Complexo Conjugado e Inversão Temporal
+
+O complexo conjugado das funções de base:
+
+$$f_{\mathbf{k}}^* = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}$$
+
+$$q_{\mathbf{k}}^* = +i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}$$
+
+**Propriedade Fundamental:**
+Tomar o complexo conjugado é equivalente a uma inversão temporal: $x_0 \to -x_0$.
+
+> **Consequência:** A presença da simetria de inversão temporal implica a existência de partículas e antipartículas na teoria quântica de campos. Esta é uma consequência geométrica da métrica de Minkowski.
+
+# Decomposição de Campos
+
+## Decomposição em Modos
+
+Qualquer campo escalar real $\phi(x)$ pode ser decomposto como:
+
+$$\phi(x) = \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^{3/2}} \left[\alpha_{\mathbf{k}} f_{\mathbf{k}}(x) + \alpha_{\mathbf{k}}^* f_{\mathbf{k}}^*(x)\right]$$
+
+ou, de forma equivalente:
+
+$$\phi(x) = \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^{3/2}} \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \left[a_{\mathbf{k}} e^{-ik\cdot x} + a_{\mathbf{k}}^\dagger e^{+ik\cdot x}\right]$$
+
+onde $k\cdot x = \omega_{\mathbf{k}} x_0 - \mathbf{k}\cdot\mathbf{x}$.
+
+## Coeficientes de Decomposição
+
+Os coeficientes são obtidos pelo produto simplético:
+
+$$\alpha_{\mathbf{k}} = -i(f_{\mathbf{k}}^*, \phi) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}}^* q_\phi - q_{\mathbf{k}}^* f_\phi\right] d^3x$$
+
+Esta relação é fundamental para a quantização do campo.
+
+# Solução com Fonte (Propagador)
+
+## Problema com Fonte
+
+Queremos resolver a equação:
+
+$$(\Box + m^2)\phi(x) = J(x)$$
+
+onde $J(x)$ é uma fonte externa.
+
+> **Nota:** Estamos usando o operador d'Alembertiano: $\Box = \partial_0^2 - \nabla^2$.
+
+## Construção do Propagador
+
+Construímos a solução como:
+
+$$\phi_J(x) = \int_{-\infty}^{x_0} dx_0' \int_{\mathbb{R}^3} d^3k \left[\alpha_{\mathbf{k}}^J(x_0') f_{\mathbf{k}}(x_0) - \alpha_{\mathbf{k}}^{J*}(x_0') f_{\mathbf{k}}^*(x_0)\right]$$
+
+onde:
+
+$$\alpha_{\mathbf{k}}^J(x_0') = -i(f_{\mathbf{k}}^*, J)|_{x_0'}$$
+
+> **Observação:** O limite superior $x_0$ na integral temporal garante que o propagador seja causal (propagador retardado).
+
+## Propriedade da Solução
+
+Derivando $\phi_J$ em relação a $x_0$, obtemos:
+
+$$\dot{\phi}_J = J + (\Box + m^2)\phi_J$$
+
+Portanto, $\phi_J$ satisfaz a equação com fonte.
+
+> **Interpretação:** A fonte $J$ atua como um termo de "forçamento" contínuo, gerando novos modos do campo. Esta é a versão contínua do problema do oscilador harmônico forçado.
+
+## Estrutura do Propagador
+
+O propagador retardado tem a forma:
+
+$$G_R(x - x') = \theta(x_0 - x_0') \int \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega_{\mathbf{k}}} \left[e^{-ik\cdot(x-x')} - e^{+ik\cdot(x-x')}\right]$$
+
+> **Observação:** Este é o propagador de Feynman para o campo escalar, que será fundamental para o cálculo de amplitudes de espalhamento.
+
+## Propriedade de Causalidade
+
+O propagador retardado é não nulo apenas quando:
+
+$$(x_0 - x_0') = |\mathbf{x} - \mathbf{x}'|$$
+
+ou seja, quando os eventos estão conectados por um sinal que se propaga na velocidade da luz.
+
+> **Definição (Cone de Luz):** A região do espaço-tempo onde $\Delta x_0 = |\Delta \mathbf{x}|$ é o cone de luz. O propagador é não nulo apenas sobre o cone de luz.
+
+## Relação com Eletromagnetismo
+
+No caso do campo escalar, a função de Green do operador de d'Alembert é:
+
+$$G_R(x - x') = \frac{\delta(x_0 - x_0' - |\mathbf{x} - \mathbf{x}'|)}{4\pi|\mathbf{x} - \mathbf{x}'|}$$
+
+> **Interpretação:** Esta é a função de Green do eletromagnetismo, que descreve a propagação de sinais no vácuo. A aparente propagação superluminal do potencial de Coulomb é um artefato do regime estático.
+
+# Resumo e Principais Resultados
+
+| Conceito | Fórmula | Interpretação Física |
+|----------|---------|---------------------|
+| Base no espaço de fase | $\Psi_{\mathbf{k}} = \begin{pmatrix} f_{\mathbf{k}} \\ q_{\mathbf{k}} \end{pmatrix} e^{i\mathbf{k}\cdot\mathbf{x}}$ | Modos de Fourier do campo |
+| Ortogonalidade | $(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i[f^*q - q^*f]\delta^{(3)}(\mathbf{k}-\mathbf{k}')$ | Bases ortogonais no espaço de fase |
+| Normalização | $-i[f^*q - q^*f] = 1$ | Normalização delta de Dirac |
+| Escolha do vácuo | $M_{\mathbf{k}} = 0$, $N_{\mathbf{k}} = 1/\sqrt{2\omega_{\mathbf{k}}}$ | Vácuo de Minkowski |
+| Decomposição do campo | $\phi(x) = \int \frac{d^3k}{(2\pi)^{3/2}} \frac{1}{\sqrt{2\omega}} [a_{\mathbf{k}}e^{-ik\cdot x} + a_{\mathbf{k}}^\dagger e^{ik\cdot x}]$ | Partículas e antipartículas |
+| Propagador retardado | $G_R(x-x') = \theta(x_0-x_0') \int \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega} [e^{-ik\cdot\Delta x} - e^{+ik\cdot\Delta x}]$ | Causalidade e cone de luz |
+
+# Exercícios
+
+## Exercício 1: Normalização da Base
+Considere a condição de normalização da base no espaço de fase.
+
+a) Mostre que a condição $(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = \delta^{(3)}(\mathbf{k} - \mathbf{k}')$ implica que $-i[f^*_{\mathbf{k}} q_{\mathbf{k}} - q^*_{\mathbf{k}} f_{\mathbf{k}}] = 1$.
+
+b) Verifique que a escolha $f_{\mathbf{k}} = 1/\sqrt{2\omega_{\mathbf{k}}} e^{-i\omega_{\mathbf{k}} x_0}$ e $q_{\mathbf{k}} = -i\sqrt{\omega_{\mathbf{k}}/2} e^{-i\omega_{\mathbf{k}} x_0}$ satisfaz esta condição.
+
+c) Qual é o valor da expressão se escolhermos $M_{\mathbf{k}} \neq 0$?
+
+## Exercício 2: Liberdade de Gauge
+A transformação $f_{\mathbf{k}} \to e^{i\theta_{\mathbf{k}}} f_{\mathbf{k}}$, $q_{\mathbf{k}} \to e^{i\theta_{\mathbf{k}}} q_{\mathbf{k}}$ é uma liberdade de gauge.
+
+a) Mostre que esta transformação deixa invariante o produto simplético.
+
+b) Quantos graus de liberdade reais restam após impor a condição de normalização e a liberdade de gauge?
+
+c) Qual é a interpretação física desta liberdade de gauge?
+
+## Exercício 3: Solução Geral do Oscilador
+A solução geral do oscilador harmônico é $f_{\mathbf{k}} = N_{\mathbf{k}} e^{-i\omega_{\mathbf{k}} x_0} + M_{\mathbf{k}} e^{+i\omega_{\mathbf{k}} x_0}$.
+
+a) Escreva a expressão para $q_{\mathbf{k}}$ em termos de $N_{\mathbf{k}}$ e $M_{\mathbf{k}}$.
+
+b) Substitua na condição de normalização e mostre que $\omega_{\mathbf{k}}(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2) = 1/2$.
+
+c) Por que $N_{\mathbf{k}}$ não pode ser zero?
+
+## Exercício 4: Escolha do Vácuo
+A escolha mais simples é $M_{\mathbf{k}} = 0$.
+
+a) Qual é o valor de $N_{\mathbf{k}}$ nesta escolha?
+
+b) Escreva explicitamente as funções $f_{\mathbf{k}}$ e $q_{\mathbf{k}}$ para esta escolha.
+
+c) Qual é a interpretação física de ter $M_{\mathbf{k}} = 0$?
+
+d) Que tipo de vácuo esta escolha define?
+
+## Exercício 5: Complexo Conjugado e Inversão Temporal
+Considere o complexo conjugado das funções de base.
+
+a) Escreva $f_{\mathbf{k}}^*$ e $q_{\mathbf{k}}^*$ explicitamente.
+
+b) Mostre que $(f_{\mathbf{k}}^*, q_{\mathbf{k}}^*) = -(f_{\mathbf{k}}, q_{\mathbf{k}})$ em termos do produto simplético.
+
+c) Relacione o complexo conjugado com a inversão temporal $x_0 \to -x_0$.
+
+d) Qual é a importância desta relação para a teoria quântica de campos?
+
+## Exercício 6: Decomposição de um Campo
+Um campo escalar real $\phi(x)$ pode ser decomposto em modos de Fourier.
+
+a) Escreva a decomposição de $\phi(x)$ em termos de $a_{\mathbf{k}}$ e $a_{\mathbf{k}}^\dagger$.
+
+b) Qual é a relação entre os coeficientes $\alpha_{\mathbf{k}}$ da decomposição e $a_{\mathbf{k}}$?
+
+c) Mostre que $\phi(x)$ é real se $a_{\mathbf{k}}^\dagger = a_{\mathbf{k}}^*$.
+
+d) Qual é o significado físico de $a_{\mathbf{k}}$ e $a_{\mathbf{k}}^\dagger$?
+
+## Exercício 7: Coeficientes de Decomposição
+Os coeficientes de decomposição são obtidos pelo produto simplético.
+
+a) Defina $\alpha_{\mathbf{k}}$ em termos do produto simplético entre $f_{\mathbf{k}}^*$ e $\phi$.
+
+b) Escreva a expressão integral para $\alpha_{\mathbf{k}}$.
+
+c) Mostre que $\alpha_{\mathbf{k}}$ é constante para soluções da equação de movimento livre.
+
+d) O que acontece com $\alpha_{\mathbf{k}}$ quando há uma fonte $J$?
+
+## Exercício 8: Solução com Fonte
+Considere a equação $(\Box + m^2)\phi(x) = J(x)$.
+
+a) Escreva a solução $\phi_J(x)$ em termos da integral temporal.
+
+b) Defina $\alpha_{\mathbf{k}}^J(x_0')$ e mostre que $\dot{\phi}_J = J + (\Box + m^2)\phi_J$.
+
+c) Qual é a condição de contorno que torna a solução causal?
+
+## Exercício 9: Propagador Retardado
+O propagador retardado é definido por $\phi_J(x) = \int d^4x' G_R(x-x') J(x')$.
+
+a) Escreva a expressão para $G_R(x-x')$ usando a decomposição em modos.
+
+b) Mostre que $G_R(x-x') = \theta(x_0-x_0') \int \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega} [e^{-ik\cdot\Delta x} - e^{+ik\cdot\Delta x}]$.
+
+c) Por que a função degrau $\theta(x_0-x_0')$ aparece no propagador?
+
+## Exercício 10: Causalidade
+O propagador retardado é não nulo apenas sobre o cone de luz.
+
+a) Mostre que a integral em $\mathbf{k}$ pode ser escrita como $\frac{\delta(x_0-x_0' - |\mathbf{x}-\mathbf{x}'|)}{4\pi|\mathbf{x}-\mathbf{x}'|}$.
+
+b) Interprete fisicamente esta expressão.
+
+c) Por que o propagador é zero fora do cone de luz?
+
+d) Como isso se relaciona com a causalidade na teoria?
+
+## Exercício 11: Partículas e Antipartículas
+A simetria de inversão temporal implica a existência de partículas e antipartículas.
+
+a) Como a inversão temporal atua sobre os modos de Fourier?
+
+b) Qual é a relação entre uma partícula com momento $\mathbf{k}$ e uma antipartícula?
+
+c) Por que o fóton é sua própria antipartícula?
+
+d) O que acontece no caso de partículas carregadas?
+
+## Exercício 12: Relação com Eletromagnetismo
+O propagador do campo escalar é análogo ao do eletromagnetismo.
+
+a) Qual é a função de Green do operador de d'Alembert?
+
+b) Por que o potencial de Coulomb parece se propagar instantaneamente?
+
+c) Como a análise do propagador resolve esta aparente contradição?
+
+d) Qual é a relação entre o propagador e o cone de luz?
