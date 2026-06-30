@@ -677,7 +677,7 @@ Tip
 <li><span class="math inline">\(\lambda = 1 - \frac{N}{2}\)</span></li>
 </ol>
 <p>Portanto, a solução não-trivial é: <span class="math display">\[
-G_N \propto \sigma^{1-N/2} = |\mathbf{x} - \mathbf{x}_0|^{2-N}
+G_N \propto \sigma^{1-N/2} \propto |\mathbf{x} - \mathbf{x}_0|^{2-N}
 \]</span></p>
 </section>
 </section>
@@ -688,7 +688,7 @@ G_N \propto \sigma^{1-N/2} = |\mathbf{x} - \mathbf{x}_0|^{2-N}
 <p><span class="math display">\[
 \lambda = 1 - \frac{1}{2} = \frac{1}{2}
 \]</span> <span class="math display">\[
-G_1 \propto \sigma^{1/2} = |x - x_0|
+G_1 \propto \sigma^{1/2} \propto |x - x_0|
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -715,7 +715,7 @@ Note
 <p><span class="math display">\[
 \lambda = 1 - \frac{3}{2} = -\frac{1}{2}
 \]</span> <span class="math display">\[
-G_3 \propto \sigma^{-1/2} = \frac{1}{|\mathbf{x} - \mathbf{x}_0|}
+G_3 \propto \sigma^{-1/2} \propto \frac{1}{|\mathbf{x} - \mathbf{x}_0|}
 \]</span></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -799,10 +799,23 @@ G_\varepsilon(\mathbf{x}, \mathbf{x}_0) = (\sigma + \varepsilon)^\lambda
 \]</span> Para o caso 3D (<span class="math inline">\(\lambda = -1/2\)</span>): <span class="math display">\[
 G_\varepsilon = \frac{1}{\sqrt{\sigma + \varepsilon}}
 \]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Como <span class="math inline">\(\sigma = r^2/2\)</span>, este regulador tende a <span class="math inline">\(\sigma^{-1/2} = \sqrt{2}/r\)</span> quando <span class="math inline">\(\varepsilon \to 0\)</span>, e não a <span class="math inline">\(1/r\)</span>. O fator <span class="math inline">\(\sqrt{2}\)</span> extra vai aparecer explicitamente no resultado da integral abaixo, e será cancelado na normalização final.</p>
+</div>
+</div>
 <section id="laplaciano-regularizado" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="laplaciano-regularizado"><span class="header-section-number">5.2.1</span> Laplaciano Regularizado</h3>
 <p>Calculando cuidadosamente: <span class="math display">\[
-\nabla^2 G_\varepsilon = -3\varepsilon (\sigma + \varepsilon)^{-5/2}
+\nabla^2 G_\varepsilon = -\frac{3}{2}\varepsilon (\sigma + \varepsilon)^{-5/2}
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -824,33 +837,33 @@ Note
 <section id="cálculo-para-3d" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="cálculo-para-3d"><span class="header-section-number">5.3.1</span> Cálculo para 3D</h3>
 <p>Queremos calcular: <span class="math display">\[
-\lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, d^3x = -4\pi
+\lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, d^3x = -4\sqrt{2}\,\pi
 \]</span></p>
 <section id="passo-a-passo-da-demonstração" class="level4" data-number="5.3.1.1">
 <h4 data-number="5.3.1.1" class="anchored" data-anchor-id="passo-a-passo-da-demonstração"><span class="header-section-number">5.3.1.1</span> Passo a Passo da Demonstração</h4>
 <ol type="1">
 <li><strong>Coordenadas esféricas</strong> centradas em <span class="math inline">\(\mathbf{x}_0\)</span>: <span class="math display">\[
-I_\varepsilon = -3\varepsilon \int_0^{2\pi} \int_0^\pi \int_0^\infty \frac{r^2 \sin\theta}{(r^2/2 + \varepsilon)^{5/2}} \, dr \, d\theta \, d\phi
+I_\varepsilon = -\frac{3}{2}\varepsilon \int_0^{2\pi} \int_0^\pi \int_0^\infty \frac{r^2 \sin\theta}{(r^2/2 + \varepsilon)^{5/2}} \, dr \, d\theta \, d\phi
 \]</span></li>
 <li><strong>Integração angular</strong>: <span class="math display">\[
-I_\varepsilon = -4\pi \cdot 3\varepsilon \int_0^\infty \frac{r^2}{(r^2/2 + \varepsilon)^{5/2}} \, dr
+I_\varepsilon = -4\pi \cdot \frac{3}{2}\varepsilon \int_0^\infty \frac{r^2}{(r^2/2 + \varepsilon)^{5/2}} \, dr
 \]</span></li>
-<li><strong>Integração por partes</strong> (para simplificar): <span class="math display">\[
-I_\varepsilon = -4\pi \cdot 3\varepsilon \left[ \frac{r}{(r^2/2 + \varepsilon)^{3/2}} \right]_0^\infty - \int_0^\infty \frac{1}{(r^2/2 + \varepsilon)^{3/2}} \, dr
+<li><strong>Integração por partes</strong> (o termo de fronteira se anula em <span class="math inline">\(r=0\)</span> e <span class="math inline">\(r\to\infty\)</span>): <span class="math display">\[
+\int_0^\infty \frac{r^2}{(r^2/2 + \varepsilon)^{5/2}} \, dr = \frac{2}{3}\int_0^\infty \frac{dr}{(r^2/2 + \varepsilon)^{3/2}}
 \]</span></li>
 <li><strong>Substituição</strong> <span class="math inline">\(r = \sqrt{2\varepsilon}\tan\theta\)</span>: <span class="math display">\[
-\int_0^\infty \frac{dr}{(r^2/2 + \varepsilon)^{3/2}} = \frac{1}{\varepsilon}\int_0^{\pi/2} \cos\theta \, d\theta = \frac{1}{\varepsilon}
+\int_0^\infty \frac{dr}{(r^2/2 + \varepsilon)^{3/2}} = \frac{\sqrt{2}}{\varepsilon}\int_0^{\pi/2} \cos\theta \, d\theta = \frac{\sqrt{2}}{\varepsilon}
 \]</span></li>
 <li><strong>Resultado final</strong>: <span class="math display">\[
-I_\varepsilon = -4\pi \cdot 3\varepsilon \cdot \frac{1}{\varepsilon} \cdot (-1) = -4\pi
+I_\varepsilon = -4\pi \cdot \frac{3}{2}\varepsilon \cdot \frac{2}{3} \cdot \frac{\sqrt{2}}{\varepsilon} = -4\sqrt{2}\,\pi
 \]</span></li>
 </ol>
 </section>
 </section>
 <section id="normalização" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="normalização"><span class="header-section-number">5.3.2</span> Normalização</h3>
-<p>Definimos: <span class="math display">\[
-G_3(\mathbf{r} - \mathbf{r}_0) = -\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}
+<p>Como <span class="math inline">\(G_\varepsilon \to \sigma^{-1/2} = \sqrt{2}/r\)</span> quando <span class="math inline">\(\varepsilon \to 0\)</span>, o fator <span class="math inline">\(\sqrt{2}\)</span> herdado do resultado acima se cancela exatamente ao dividirmos por <span class="math inline">\(-4\sqrt{2}\,\pi\)</span>: <span class="math display">\[
+G_3(\mathbf{r} - \mathbf{r}_0) = \frac{\sigma^{-1/2}}{-4\sqrt{2}\,\pi} = -\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}
 \]</span> Então: <span class="math display">\[
 \nabla^2 G_3 = \delta^3(\mathbf{r} - \mathbf{r}_0)
 \]</span></p>
@@ -872,7 +885,7 @@ f(\mathbf{x}) = f(\mathbf{x}_0) + \nabla f(\mathbf{x}_0) \cdot (\mathbf{x} - \ma
 <ol type="1">
 <li><strong>Termo constante</strong> <span class="math inline">\(f(\mathbf{x}_0)\)</span>:
 <ul>
-<li>Contribuição: <span class="math inline">\(-4\pi f(\mathbf{x}_0)\)</span> (já calculado)</li>
+<li>Contribuição: <span class="math inline">\(-4\sqrt{2}\,\pi f(\mathbf{x}_0)\)</span> (já calculado)</li>
 </ul></li>
 <li><strong>Termo linear</strong> <span class="math inline">\(\nabla f(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0)\)</span>:
 <ul>
@@ -902,13 +915,13 @@ Important
 </div>
 </div>
 <p>Portanto: <span class="math display">\[
-\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = -4\pi f(\mathbf{x}_0)
+\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = -4\sqrt{2}\,\pi f(\mathbf{x}_0)
 \]</span></p>
 </section>
 <section id="normalização-final" class="level3" data-number="5.4.3">
 <h3 data-number="5.4.3" class="anchored" data-anchor-id="normalização-final"><span class="header-section-number">5.4.3</span> Normalização Final</h3>
-<p>Dividindo por <span class="math inline">\(-4\pi\)</span>: <span class="math display">\[
-\lim_{\varepsilon \to 0} \int \nabla^2 \left(-\frac{1}{4\pi\sqrt{\sigma+\varepsilon}}\right) f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
+<p>Dividindo por <span class="math inline">\(-4\sqrt{2}\,\pi\)</span>: <span class="math display">\[
+\lim_{\varepsilon \to 0} \int \nabla^2 \left(-\frac{1}{4\sqrt{2}\,\pi\sqrt{\sigma+\varepsilon}}\right) f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
 \]</span> Ou seja: <span class="math display">\[
 \nabla^2 \left(-\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}\right) = \delta^3(\mathbf{r} - \mathbf{r}_0)
 \]</span></p>
@@ -1037,7 +1050,7 @@ Figure&nbsp;1: Funções de Green em diferentes dimensões
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> G_3D_regularizada(r, epsilon<span class="op">=</span><span class="fl">0.1</span>):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Função de Green 3D regularizada"""</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Função de Green 3D regularizada (não normalizada, G_ε = (σ+ε)^{-1/2})"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    r_safe <span class="op">=</span> r <span class="op">+</span> <span class="fl">1e-10</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1.0</span> <span class="op">/</span> np.sqrt(r_safe<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> epsilon)</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
@@ -1051,10 +1064,10 @@ Figure&nbsp;1: Funções de Green em diferentes dimensões
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    G_reg <span class="op">=</span> G_3D_regularizada(r, eps)</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    plt.plot(r, G_reg, label<span class="op">=</span><span class="ss">f"ε = </span><span class="sc">{</span>eps<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Função sem regularização (singular em r=0)</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Função sem regularização (singular em r=0); tende a sqrt(2)/r, não 1/r</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>r_safe <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">5</span>, <span class="dv">1000</span>)</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>G_sing <span class="op">=</span> <span class="fl">1.0</span> <span class="op">/</span> np.sqrt(r_safe<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span>)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plt.plot(r_safe, G_sing, <span class="st">"k--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Singular (1/r)"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plt.plot(r_safe, G_sing, <span class="st">"k--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Singular (√2/r)"</span>)</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"r"</span>)</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"G_ε(r)"</span>)</span>
@@ -1084,7 +1097,7 @@ Figure&nbsp;2: Regularização da função de Green em 3D
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> laplaciano_G_regulado(r, epsilon<span class="op">=</span><span class="fl">0.1</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Laplaciano da função de Green regularizada em 3D"""</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">3</span> <span class="op">*</span> epsilon <span class="op">/</span> (r<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> epsilon) <span class="op">**</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>(<span class="dv">3</span> <span class="op">/</span> <span class="dv">2</span>) <span class="op">*</span> epsilon <span class="op">/</span> (r<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> epsilon) <span class="op">**</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">2</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1000</span>)</span>
@@ -1220,7 +1233,7 @@ Note
 <h2 data-number="9.4" class="anchored" data-anchor-id="exercício-4-regularização-3d-essencial"><span class="header-section-number">9.4</span> Exercício 4: Regularização 3D <strong>(Essencial)</strong></h2>
 <p><strong>a)</strong> Para <span class="math inline">\(G_\varepsilon = (\sigma + \varepsilon)^{-1/2}\)</span>, calcule <span class="math inline">\(\nabla^2 G_\varepsilon\)</span> explicitamente.</p>
 <p><strong>b)</strong> Mostre que <span class="math inline">\(\lim_{\varepsilon \to 0} \nabla^2 G_\varepsilon = 0\)</span> para <span class="math inline">\(r \neq 0\)</span>.</p>
-<p><strong>c)</strong> Mostre que <span class="math inline">\(\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, d^3x = -4\pi\)</span>.</p>
+<p><strong>c)</strong> Mostre que <span class="math inline">\(\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, d^3x = -4\sqrt{2}\,\pi\)</span>, e explique por que o fator <span class="math inline">\(\sqrt{2}\)</span> aparece.</p>
 <p><strong>d)</strong> Interprete fisicamente o papel do parâmetro <span class="math inline">\(\varepsilon\)</span> na regularização.</p>
 </section>
 <section id="exercício-5-propriedade-de-filtragem" class="level2" data-number="9.5">
