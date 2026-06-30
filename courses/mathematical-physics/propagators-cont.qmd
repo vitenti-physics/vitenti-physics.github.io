@@ -28,7 +28,7 @@ Nesta aula, exploramos os propagadores dependentes do tempo e a estrutura simpl�
 Consideramos uma equação de segunda ordem na forma:
 $$ y'' + p_1(x) y' + p_0(x) y = 0 $$
 que pode ser reescrita no espaço de fase como:
-$$ \begin{pmatrix} y' \\ q' \end{pmatrix} = \begin{pmatrix} 0 & 1/m \\ -m\Omega^2 & 0 \end{pmatrix} \begin{pmatrix} y \\ q \end{pmatrix} $$
+$$ \begin{pmatrix} y' \\ q' \end{pmatrix} = \begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix} \begin{pmatrix} y \\ q \end{pmatrix} $$
 onde $q = m y'$ é o momento canônico.
 
 Definimos o vetor de estado:
@@ -51,7 +51,7 @@ e é uma constante do movimento (conservado).
 ## Hamiltonianos e Propriedades
 
 O Hamiltoniano associado é:
-$$ H = \begin{pmatrix} m\nu^2 & 0 \\ 0 & 1/m \end{pmatrix} $$
+$$ H = \begin{pmatrix} m\omega^2 & 0 \\ 0 & 1/m \end{pmatrix} $$
 A equação de movimento pode ser escrita como:
 $$ V' = \Omega H V $$
 
@@ -108,14 +108,14 @@ Esta estrutura é análoga à que aparece na mecânica quântica relativística,
 ## Função de Green (Solução Futura)
 
 Consideramos uma solução com interação instantânea em $x_0$:
-$$ U(x) = \Theta(x - x_0) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] $$
+$$ U(x) = \Theta(x - x_0) [\alpha V(x) + \alpha^* V^*(x)] $$
 onde $V$ é a solução complexa. Esta solução satisfaz:
 $$ U' - \Omega H U = \delta(x - x_0) U_0 $$
 
 ## Solução Passada (Avançada)
 
 A solução que propaga informações do futuro para o passado é:
-$$ U(x) = \Theta(x_0 - x) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] $$
+$$ U(x) = \Theta(x_0 - x) [\alpha V(x) + \alpha^* V^*(x)] $$
 satisfazendo:
 $$ U' - \Omega H U = -\delta(x - x_0) U_0 $$
 
@@ -128,7 +128,7 @@ A diferença de sinal entre as soluções futura e passada é fundamental para a
 ## Transformação das Componentes
 
 Sob reversão temporal $x \to -x$, o vetor $V$ se transforma como:
-$$ V_R(x_R) = T V(x) $$
+$$ V_R(x_R) = T V(x), \quad x_R = -x $$
 com:
 $$ T = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} $$
 
@@ -252,7 +252,7 @@ plt.show()
    (a) Dada a normalização $V_1^T\Omega V_2 = 1/2$, expresse a solução geral $U$ em termos de $V_1$ e $V_2$.  
    (b) Calcule os coeficientes $\alpha_1$ e $\alpha_2$ para uma condição inicial genérica.
 
-3. **Complexificação**  
+3. **Complexificação (Essencial)**  
    (a) Verifique que $V = V_1 + iV_2$ satisfaz a mesma equação diferencial.  
    (b) Calcule $\langle V, V \rangle = -iV^\dagger\Omega V$ e mostre que é igual a 1.
 
@@ -260,7 +260,7 @@ plt.show()
    (a) Considere $\tilde{V} = iV$. Calcule $\langle \tilde{V}, \tilde{V} \rangle$.  
    (b) Interprete fisicamente este resultado.
 
-5. **Propagador Futuro**  
+5. **Propagador Futuro (Essencial)**  
    (a) Mostre que a solução $U(x) = \Theta(x-x_0)[\alpha V(x) + \alpha^* V^*(x)]$ satisfaz a equação com fonte $U' - \Omega H U = \delta(x-x_0)U_0$.  
    (b) Determine a constante $U_0$ em termos de $\alpha$.
 

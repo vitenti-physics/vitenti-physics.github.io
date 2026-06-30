@@ -195,7 +195,7 @@ A analogia entre a matriz $\Omega$ e a unidade imaginária $i$ é profunda. A ma
 $$
 e^{\theta\Omega} = \begin{pmatrix} \cos\theta & \sin\theta \\ -\sin\theta & \cos\theta \end{pmatrix}
 $$
-Na mecânica quântica, a unidade imaginária $i$ aparece como gerador de rotações no espaço de fase (ou espaço de Hilbert), o que está diretamente relacionado à equação de Schrödinger.
+Na mecânica quântica, a unidade imaginária $i$ aparece de forma análoga como gerador de rotações, mas agora no espaço de Hilbert, o que está diretamente relacionado à equação de Schrödinger.
 
 ::: callout-tip
 A escolha de representar soluções complexas ($\psi = \psi_1 + i\psi_2$) em mecânica quântica é equivalente a escolher uma base no espaço de fase. A liberdade de fase $\psi \to e^{i\theta}\psi$ corresponde a rotações no espaço de fase, preservando o Wronskiano (a "norma" do estado).
@@ -394,7 +394,7 @@ b) Encontre a relação entre as constantes $(A, B)$ e $(\alpha, \beta)$.
 
 c) Qual das representações é mais adequada para condições de contorno do tipo $\psi(0) = 0$ e $\psi(L) = 0$?
 
-## Exercício 2: Wronskiano
+## Exercício 2: Wronskiano **(Essencial)**
 
 Para a equação $y'' + 2y' + 5y = 0$:
 
@@ -428,7 +428,7 @@ b) Mostre que a Hamiltoniana $H = \frac{p^2}{2m} + \frac{1}{2}m\omega^2 y^2$ é 
 
 c) Calcule a matriz $\Omega$ e verifique que $\Omega^2 = -I$.
 
-## Exercício 5: Estrutura Simplética
+## Exercício 5: Estrutura Simplética **(Essencial)**
 
 Para o sistema $y'' + P(x)y' + Q(x)y = 0$:
 

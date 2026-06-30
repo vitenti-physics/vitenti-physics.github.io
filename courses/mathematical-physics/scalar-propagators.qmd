@@ -150,7 +150,7 @@ Geometricamente, no espaço-tempo de Minkowski, o propagador é suportado no **c
 $$
 \Delta s^2 = c^2(t - t_0)^2 - |\mathbf{x} - \mathbf{x}_0|^2 = 0
 $$
-com $\Delta t > 0$.
+com $t > t_0$.
 
 Fora do cone de luz (regiões espacialmente separadas), o propagador é identicamente nulo. Isso garante a **causalidade**: um distúrbio em $x_0$ só pode afetar pontos que estão em seu cone de luz futuro.
 
@@ -183,7 +183,7 @@ $$
 $$
 onde $\Delta x^0(\tau) = x^0 - y^0(\tau)$ e $\Delta \mathbf{x}(\tau) = \mathbf{x} - \mathbf{y}(\tau)$.
 
-## O Princípio da Ação a Distância (Retardada)
+## O Princípio do Tempo Retardado
 
 A integral é não nula apenas quando existe um tempo próprio $\tau$ tal que:
 $$
@@ -326,7 +326,7 @@ a) Escreva a equação diferencial para $f_{\mathbf{k}}(t)$.
 
 b) Determine a solução geral para $f_{\mathbf{k}}(t)$.
 
-## Exercício 2
+## Exercício 2 **(Essencial)**
 
 Considere o propagador causal encontrado na aula:
 
@@ -370,7 +370,7 @@ a) Escreva a quadricorrente da partícula.
 
 b) Mostre que o potencial produzido tem componentes que dependem do tempo retardado.
 
-## Exercício 7
+## Exercício 7 **(Essencial)**
 
 Explique por que o potencial de Coulomb parece implicar ação instantânea, mesmo sendo obtido a partir de um propagador causal.
 

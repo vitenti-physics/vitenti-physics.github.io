@@ -67,7 +67,7 @@ Para cada $\mathbf{k}$, temos $f_{\mathbf{k}}, q_{\mathbf{k}} \in \mathbb{C}$ (4
 
 A liberdade de fase reduz mais um grau de liberdade, resultando em **2 graus de liberdade** efetivos.
 
-> **Observação:** A liberdade de fase corresponde à ambiguidade na definição das soluções complexas: podemos escolher $V = V_1 + iV_2$ ou $V = V_2 + iV_1$, ou qualquer combinação linear equivalente.
+> **Observação:** A liberdade de fase corresponde à ambiguidade na definição das soluções complexas: dadas duas soluções reais independentes $V_1$ e $V_2$ (como na construção da aula anterior), podemos escolher $V_1 + iV_2$ ou $V_2 + iV_1$, ou qualquer combinação linear equivalente.
 
 ## Solução Geral do Oscilador Harmônico
 
@@ -146,8 +146,8 @@ $$\alpha_{\mathbf{k}}^J(x_0') = -i(f_{\mathbf{k}}^*, J)|_{x_0'}$$
 
 ## Propriedade da Solução
 
-Derivando $\phi_J$ em relação a $x_0$, obtemos:
-$$\dot{\phi}_J = J + (\Box + m^2)\phi_J$$
+Derivando $\phi_J$ em relação a $x_0$ e usando a regra de Leibniz no limite superior $x_0$, obtemos:
+$$(\Box + m^2)\phi_J = J$$
 Portanto, $\phi_J$ satisfaz a equação com fonte.
 
 > **Interpretação:** A fonte $J$ atua como um termo de "forçamento" contínuo, gerando novos modos do campo. Esta é a versão contínua do problema do oscilador harmônico forçado.
@@ -157,7 +157,7 @@ Portanto, $\phi_J$ satisfaz a equação com fonte.
 O propagador retardado tem a forma:
 $$G_R(x - x') = \theta(x_0 - x_0') \int \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega_{\mathbf{k}}} \left[e^{-ik\cdot(x-x')} - e^{+ik\cdot(x-x')}\right]$$
 
-> **Observação:** Este é o propagador de Feynman para o campo escalar, que será fundamental para o cálculo de amplitudes de espalhamento.
+> **Observação:** Este é o propagador retardado para o campo escalar, que será fundamental para o cálculo de amplitudes de espalhamento.
 
 ## Propriedade de Causalidade
 
@@ -214,7 +214,7 @@ b) Substitua na condição de normalização e mostre que $\omega_{\mathbf{k}}(|
 
 c) Por que $N_{\mathbf{k}}$ não pode ser zero?
 
-## Exercício 4: Escolha do Vácuo
+## Exercício 4: Escolha do Vácuo **(Essencial)**
 A escolha mais simples é $M_{\mathbf{k}} = 0$.
 
 a) Qual é o valor de $N_{\mathbf{k}}$ nesta escolha?
@@ -267,7 +267,7 @@ b) Defina $\alpha_{\mathbf{k}}^J(x_0')$ e mostre que $\dot{\phi}_J = J + (\Box +
 
 c) Qual é a condição de contorno que torna a solução causal?
 
-## Exercício 9: Propagador Retardado
+## Exercício 9: Propagador Retardado **(Essencial)**
 O propagador retardado é definido por $\phi_J(x) = \int d^4x' G_R(x-x') J(x')$.
 
 a) Escreva a expressão para $G_R(x-x')$ usando a decomposição em modos.

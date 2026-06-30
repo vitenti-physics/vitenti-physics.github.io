@@ -61,7 +61,7 @@ Para que esta decomposição seja válida no mesmo instante de tempo, precisamos
 
 ## Função de Green para Partículas
 
-A função de Green avançada é construída como:
+A função de Green retardada é construída como:
 $$U(x) = \int_{-\infty}^{x} [V_1^T(\xi) S(\xi) V_2(x) - V_2^T(\xi) S(\xi) V_1(x)] d\xi$$
 Esta construção garante que:
 
@@ -286,11 +286,11 @@ $$(\partial_{x_0}^2 - \nabla^2) G(x, x') = \delta^{(4)}(x - x')$$
 
 ### Condições de Contorno
 
-- **Propagador avançado**: vanish para $x_0 < x_0'$ (causalidade)
-- **Propagador retardado**: vanish para $x_0 > x_0'$ (causalidade temporal)
+- **Propagador retardado**: se anula para $x_0 < x_0'$ (causalidade)
+- **Propagador avançado**: se anula para $x_0 > x_0'$ (causalidade temporal)
 
 ::: {.callout-warning}
-A escolha entre propagador avançado e retardado corresponde a diferentes condições de contorno. O propagador avançado é adequado para problemas de espalhamento com condições iniciais no passado.
+A escolha entre propagador avançado e retardado corresponde a diferentes condições de contorno. O propagador retardado é adequado para problemas de espalhamento com condições iniciais no passado.
 :::
 
 # Simulações Numéricas
@@ -486,7 +486,7 @@ plt.show()
 
 **d)** Interprete o significado físico destes resultados.
 
-## Exercício 5: Decomposição do Campo
+## Exercício 5: Decomposição do Campo **(Essencial)**
 
 **a)** Mostre que qualquer campo pode ser decomposto como:
 $$Q(x_0,\mathbf{x}) = \int [a_{\mathbf{k}} Q_{\mathbf{k}} + a_{\mathbf{k}}^* Q_{\mathbf{k}}^*] d^3k$$
@@ -497,9 +497,9 @@ $$Q(x_0,\mathbf{x}) = \int [a_{\mathbf{k}} Q_{\mathbf{k}} + a_{\mathbf{k}}^* Q_{
 
 **d)** Interpretar $a_{\mathbf{k}}$ e $a_{\mathbf{k}}^\dagger$ como operadores de criação e aniquilação.
 
-## Exercício 6: Propagador Avançado
+## Exercício 6: Propagador Retardado **(Essencial)**
 
-**a)** Construa o propagador avançado para a equação de onda usando o formalismo simplético.
+**a)** Construa o propagador retardado para a equação de onda usando o formalismo simplético.
 
 **b)** Verifique que o propagador satisfaz a equação $(\partial_{x_0}^2 - \nabla^2)G(x,x') = \delta^{(4)}(x-x')$.
 
@@ -511,7 +511,7 @@ $$Q(x_0,\mathbf{x}) = \int [a_{\mathbf{k}} Q_{\mathbf{k}} + a_{\mathbf{k}}^* Q_{
 
 **a)** Discuta a diferença entre propagador avançado e propagador retardado.
 
-**b)** Por que o propagador avançado é adequado para problemas de espalhamento?
+**b)** Por que o propagador retardado é adequado para problemas de espalhamento?
 
 **c)** Como as condições de contorno no infinito afetam a escolha do propagador?
 

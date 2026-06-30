@@ -505,7 +505,7 @@ $$
 
 **d)** Qual é a importância da função de Synge em relatividade geral?
 
-## Exercício 2: Lei de Potência
+## Exercício 2: Lei de Potência **(Essencial)**
 
 **a)** Verifique que $G = \sigma^\lambda$ é solução da equação $\nabla^2 G = 0$ para $\lambda = 1 - N/2$.
 
@@ -525,7 +525,7 @@ $$
 
 **d)** Como a solução 2D se relaciona com o limite $N \to 2$ da solução geral?
 
-## Exercício 4: Regularização 3D
+## Exercício 4: Regularização 3D **(Essencial)**
 
 **a)** Para $G_\varepsilon = (\sigma + \varepsilon)^{-1/2}$, calcule $\nabla^2 G_\varepsilon$ explicitamente.
 
