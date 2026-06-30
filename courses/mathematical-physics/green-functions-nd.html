@@ -593,12 +593,9 @@ Note
 <h1 data-number="2"><span class="header-section-number">2</span> Conceitos Fundamentais</h1>
 <section id="generalização-do-operador-laplaciano" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="generalização-do-operador-laplaciano"><span class="header-section-number">2.1</span> Generalização do Operador Laplaciano</h2>
-<p>Vamos estender o operador de derivada segunda escalar para múltiplas dimensões. Em <span class="math inline">\(N\)</span> dimensões, o laplaciano é dado por:</p>
-<p><span class="math display">\[
+<p>Vamos estender o operador de derivada segunda escalar para múltiplas dimensões. Em <span class="math inline">\(N\)</span> dimensões, o laplaciano é dado por: <span class="math display">\[
 \nabla^2_N = \sum_{i=1}^N \frac{\partial^2}{\partial x_i^2}
-\]</span></p>
-<p>O objetivo é encontrar a função de Green <span class="math inline">\(G_N\)</span> que satisfaz:</p>
-<p><span class="math display">\[
+\]</span> O objetivo é encontrar a função de Green <span class="math inline">\(G_N\)</span> que satisfaz: <span class="math display">\[
 \nabla^2_N G_N(\mathbf{x} - \mathbf{x}_0) = \delta^N(\mathbf{x} - \mathbf{x}_0)
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -617,8 +614,7 @@ Note
 </section>
 <section id="função-de-mundo-de-synge" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="função-de-mundo-de-synge"><span class="header-section-number">2.2</span> Função de Mundo de Synge</h2>
-<p>A função de mundo de Synge é definida como:</p>
-<p><span class="math display">\[
+<p>A função de mundo de Synge é definida como: <span class="math display">\[
 \sigma(\mathbf{x}, \mathbf{x}_0) = \frac{|\mathbf{x} - \mathbf{x}_0|^2}{2}
 \]</span></p>
 <p>Esta função é importante porque:</p>
@@ -651,17 +647,14 @@ Important
 <h1 data-number="3"><span class="header-section-number">3</span> Soluções por Lei de Potência</h1>
 <section id="ansatz-geral" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="ansatz-geral"><span class="header-section-number">3.1</span> Ansatz Geral</h2>
-<p>Vamos buscar soluções da forma:</p>
-<p><span class="math display">\[
+<p>Vamos buscar soluções da forma: <span class="math display">\[
 G = \sigma^\lambda
-\]</span></p>
-<p>onde <span class="math inline">\(\lambda\)</span> é um expoente a ser determinado.</p>
+\]</span> onde <span class="math inline">\(\lambda\)</span> é um expoente a ser determinado.</p>
 <section id="gradiente-e-laplaciano" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="gradiente-e-laplaciano"><span class="header-section-number">3.1.1</span> Gradiente e Laplaciano</h3>
 <p><strong>Gradiente:</strong> <span class="math display">\[
 \nabla G = \lambda \sigma^{\lambda-1} (\mathbf{x} - \mathbf{x}_0)
-\]</span></p>
-<p><strong>Laplaciano:</strong> <span class="math display">\[
+\]</span> <strong>Laplaciano:</strong> <span class="math display">\[
 \nabla^2 G = \lambda(2\lambda - 2 + N) \sigma^{\lambda-1}
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -680,8 +673,7 @@ Tip
 </section>
 <section id="determinação-do-expoente" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="determinação-do-expoente"><span class="header-section-number">3.1.2</span> Determinação do Expoente</h3>
-<p>Para que <span class="math inline">\(\nabla^2 G = 0\)</span> (exceto na origem), precisamos:</p>
-<p><span class="math display">\[
+<p>Para que <span class="math inline">\(\nabla^2 G = 0\)</span> (exceto na origem), precisamos: <span class="math display">\[
 \lambda(2\lambda - 2 + N) = 0
 \]</span></p>
 <p>As soluções são:</p>
@@ -689,8 +681,7 @@ Tip
 <li><span class="math inline">\(\lambda = 0\)</span> (solução trivial, constante)</li>
 <li><span class="math inline">\(\lambda = 1 - \frac{N}{2}\)</span></li>
 </ol>
-<p>Portanto, a solução não-trivial é:</p>
-<p><span class="math display">\[
+<p>Portanto, a solução não-trivial é: <span class="math display">\[
 G_N \propto \sigma^{1-N/2} = |\mathbf{x} - \mathbf{x}_0|^{2-N}
 \]</span></p>
 </section>
@@ -701,8 +692,7 @@ G_N \propto \sigma^{1-N/2} = |\mathbf{x} - \mathbf{x}_0|^{2-N}
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="caso-1d-n1"><span class="header-section-number">3.2.1</span> Caso 1D (<span class="math inline">\(N=1\)</span>)</h3>
 <p><span class="math display">\[
 \lambda = 1 - \frac{1}{2} = \frac{1}{2}
-\]</span></p>
-<p><span class="math display">\[
+\]</span> <span class="math display">\[
 G_1 \propto \sigma^{1/2} = |x - x_0|
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -723,15 +713,13 @@ Note
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="caso-2d-n2"><span class="header-section-number">3.2.2</span> Caso 2D (<span class="math inline">\(N=2\)</span>)</h3>
 <p><span class="math display">\[
 \lambda = 1 - 1 = 0
-\]</span></p>
-<p>A solução por lei de potência falha! Precisamos de uma abordagem especial.</p>
+\]</span> A solução por lei de potência falha! Precisamos de uma abordagem especial.</p>
 </section>
 <section id="caso-3d-n3" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="caso-3d-n3"><span class="header-section-number">3.2.3</span> Caso 3D (<span class="math inline">\(N=3\)</span>)</h3>
 <p><span class="math display">\[
 \lambda = 1 - \frac{3}{2} = -\frac{1}{2}
-\]</span></p>
-<p><span class="math display">\[
+\]</span> <span class="math display">\[
 G_3 \propto \sigma^{-1/2} = \frac{1}{|\mathbf{x} - \mathbf{x}_0|}
 \]</span></p>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -750,8 +738,7 @@ Important
 </section>
 <section id="caso-nd-nneq2" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="caso-nd-nneq2"><span class="header-section-number">3.2.4</span> Caso ND (<span class="math inline">\(N\neq2\)</span>)</h3>
-<p>Generalizando:</p>
-<p><span class="math display">\[
+<p>Generalizando: <span class="math display">\[
 G_N(\mathbf{x} - \mathbf{x}_0) =
 \begin{cases}
 |\mathbf{x} - \mathbf{x}_0|^{2-N} &amp; N \neq 2 \\
@@ -769,16 +756,14 @@ G_N(\mathbf{x} - \mathbf{x}_0) =
 </section>
 <section id="solução-logarítmica" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="solução-logarítmica"><span class="header-section-number">4.2</span> Solução Logarítmica</h2>
-<p>Inspirados no método de Frobenius (raízes repetidas), testamos:</p>
-<p><span class="math display">\[
+<p>Inspirados no método de Frobenius (raízes repetidas), testamos: <span class="math display">\[
 G = \ln \sigma
 \]</span></p>
 <section id="cálculo-do-laplaciano" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="cálculo-do-laplaciano"><span class="header-section-number">4.2.1</span> Cálculo do Laplaciano</h3>
 <p><strong>Gradiente:</strong> <span class="math display">\[
 \nabla (\ln \sigma) = \frac{1}{\sigma}(\mathbf{x} - \mathbf{x}_0)
-\]</span></p>
-<p><strong>Laplaciano:</strong> <span class="math display">\[
+\]</span> <strong>Laplaciano:</strong> <span class="math display">\[
 \nabla^2 (\ln \sigma) = \frac{2}{\sigma} - \frac{|\mathbf{x} - \mathbf{x}_0|^2}{\sigma^2} = \frac{2}{\sigma} - \frac{2\sigma}{\sigma^2} = 0
 \]</span></p>
 <div class="callout-success">
@@ -814,18 +799,14 @@ Note
 </section>
 <section id="regularização-com-parâmetro-varepsilon" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="regularização-com-parâmetro-varepsilon"><span class="header-section-number">5.2</span> Regularização com Parâmetro <span class="math inline">\(\varepsilon\)</span></h2>
-<p>Introduzimos um parâmetro <span class="math inline">\(\varepsilon &gt; 0\)</span> para controlar a divergência:</p>
-<p><span class="math display">\[
+<p>Introduzimos um parâmetro <span class="math inline">\(\varepsilon &gt; 0\)</span> para controlar a divergência: <span class="math display">\[
 G_\varepsilon(\mathbf{x}, \mathbf{x}_0) = (\sigma + \varepsilon)^\lambda
-\]</span></p>
-<p>Para o caso 3D (<span class="math inline">\(\lambda = -1/2\)</span>):</p>
-<p><span class="math display">\[
+\]</span> Para o caso 3D (<span class="math inline">\(\lambda = -1/2\)</span>): <span class="math display">\[
 G_\varepsilon = \frac{1}{\sqrt{\sigma + \varepsilon}}
 \]</span></p>
 <section id="laplaciano-regularizado" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="laplaciano-regularizado"><span class="header-section-number">5.2.1</span> Laplaciano Regularizado</h3>
-<p>Calculando cuidadosamente:</p>
-<p><span class="math display">\[
+<p>Calculando cuidadosamente: <span class="math display">\[
 \nabla^2 G_\varepsilon = -3\varepsilon (\sigma + \varepsilon)^{-5/2}
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -847,66 +828,47 @@ Note
 <h2 data-number="5.3" class="anchored" data-anchor-id="integral-normalizada"><span class="header-section-number">5.3</span> Integral Normalizada</h2>
 <section id="cálculo-para-3d" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="cálculo-para-3d"><span class="header-section-number">5.3.1</span> Cálculo para 3D</h3>
-<p>Queremos calcular:</p>
-<p><span class="math display">\[
+<p>Queremos calcular: <span class="math display">\[
 \lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, d^3x = -4\pi
 \]</span></p>
 <section id="passo-a-passo-da-demonstração" class="level4" data-number="5.3.1.1">
 <h4 data-number="5.3.1.1" class="anchored" data-anchor-id="passo-a-passo-da-demonstração"><span class="header-section-number">5.3.1.1</span> Passo a Passo da Demonstração</h4>
 <ol type="1">
-<li><strong>Coordenadas esféricas</strong> centradas em <span class="math inline">\(\mathbf{x}_0\)</span>:</li>
-</ol>
-<p><span class="math display">\[
+<li><strong>Coordenadas esféricas</strong> centradas em <span class="math inline">\(\mathbf{x}_0\)</span>: <span class="math display">\[
 I_\varepsilon = -3\varepsilon \int_0^{2\pi} \int_0^\pi \int_0^\infty \frac{r^2 \sin\theta}{(r^2/2 + \varepsilon)^{5/2}} \, dr \, d\theta \, d\phi
-\]</span></p>
-<ol start="2" type="1">
-<li><strong>Integração angular</strong>:</li>
-</ol>
-<p><span class="math display">\[
+\]</span></li>
+<li><strong>Integração angular</strong>: <span class="math display">\[
 I_\varepsilon = -4\pi \cdot 3\varepsilon \int_0^\infty \frac{r^2}{(r^2/2 + \varepsilon)^{5/2}} \, dr
-\]</span></p>
-<ol start="3" type="1">
-<li><strong>Integração por partes</strong> (para simplificar):</li>
-</ol>
-<p><span class="math display">\[
+\]</span></li>
+<li><strong>Integração por partes</strong> (para simplificar): <span class="math display">\[
 I_\varepsilon = -4\pi \cdot 3\varepsilon \left[ \frac{r}{(r^2/2 + \varepsilon)^{3/2}} \right]_0^\infty - \int_0^\infty \frac{1}{(r^2/2 + \varepsilon)^{3/2}} \, dr
-\]</span></p>
-<ol start="4" type="1">
-<li><strong>Substituição</strong> <span class="math inline">\(r = \sqrt{2\varepsilon}\tan\theta\)</span>:</li>
-</ol>
-<p><span class="math display">\[
+\]</span></li>
+<li><strong>Substituição</strong> <span class="math inline">\(r = \sqrt{2\varepsilon}\tan\theta\)</span>: <span class="math display">\[
 \int_0^\infty \frac{dr}{(r^2/2 + \varepsilon)^{3/2}} = \frac{1}{\varepsilon}\int_0^{\pi/2} \cos\theta \, d\theta = \frac{1}{\varepsilon}
-\]</span></p>
-<ol start="5" type="1">
-<li><strong>Resultado final</strong>:</li>
-</ol>
-<p><span class="math display">\[
+\]</span></li>
+<li><strong>Resultado final</strong>: <span class="math display">\[
 I_\varepsilon = -4\pi \cdot 3\varepsilon \cdot \frac{1}{\varepsilon} \cdot (-1) = -4\pi
-\]</span></p>
+\]</span></li>
+</ol>
 </section>
 </section>
 <section id="normalização" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="normalização"><span class="header-section-number">5.3.2</span> Normalização</h3>
-<p>Definimos:</p>
-<p><span class="math display">\[
+<p>Definimos: <span class="math display">\[
 G_3(\mathbf{r} - \mathbf{r}_0) = -\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}
-\]</span></p>
-<p>Então:</p>
-<p><span class="math display">\[
+\]</span> Então: <span class="math display">\[
 \nabla^2 G_3 = \delta^3(\mathbf{r} - \mathbf{r}_0)
 \]</span></p>
 </section>
 </section>
 <section id="prova-da-propriedade-de-filtragem" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="prova-da-propriedade-de-filtragem"><span class="header-section-number">5.4</span> Prova da Propriedade de Filtragem</h2>
-<p>Para mostrar que o laplaciano regularizado se comporta como uma delta de Dirac, precisamos provar:</p>
-<p><span class="math display">\[
+<p>Para mostrar que o laplaciano regularizado se comporta como uma delta de Dirac, precisamos provar: <span class="math display">\[
 \lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
 \]</span></p>
 <section id="expansão-de-taylor" class="level3" data-number="5.4.1">
 <h3 data-number="5.4.1" class="anchored" data-anchor-id="expansão-de-taylor"><span class="header-section-number">5.4.1</span> Expansão de Taylor</h3>
-<p>Expandimos <span class="math inline">\(f\)</span> em torno de <span class="math inline">\(\mathbf{x}_0\)</span>:</p>
-<p><span class="math display">\[
+<p>Expandimos <span class="math inline">\(f\)</span> em torno de <span class="math inline">\(\mathbf{x}_0\)</span>: <span class="math display">\[
 f(\mathbf{x}) = f(\mathbf{x}_0) + \nabla f(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0) + \frac{1}{2}(\mathbf{x} - \mathbf{x}_0)^T \nabla^2 f(\mathbf{x}_0)(\mathbf{x} - \mathbf{x}_0) + \cdots
 \]</span></p>
 </section>
@@ -944,19 +906,15 @@ Important
 <p>O termo constante sobrevive ao limite <span class="math inline">\(\varepsilon \to 0\)</span>, produzindo a normalização correta. Todos os outros termos se anulam. Este é o cerne da propriedade de filtragem da delta de Dirac.</p>
 </div>
 </div>
-<p>Portanto:</p>
-<p><span class="math display">\[
+<p>Portanto: <span class="math display">\[
 \lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = -4\pi f(\mathbf{x}_0)
 \]</span></p>
 </section>
 <section id="normalização-final" class="level3" data-number="5.4.3">
 <h3 data-number="5.4.3" class="anchored" data-anchor-id="normalização-final"><span class="header-section-number">5.4.3</span> Normalização Final</h3>
-<p>Dividindo por <span class="math inline">\(-4\pi\)</span>:</p>
-<p><span class="math display">\[
+<p>Dividindo por <span class="math inline">\(-4\pi\)</span>: <span class="math display">\[
 \lim_{\varepsilon \to 0} \int \nabla^2 \left(-\frac{1}{4\pi\sqrt{\sigma+\varepsilon}}\right) f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
-\]</span></p>
-<p>Ou seja:</p>
-<p><span class="math display">\[
+\]</span> Ou seja: <span class="math display">\[
 \nabla^2 \left(-\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}\right) = \delta^3(\mathbf{r} - \mathbf{r}_0)
 \]</span></p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -979,8 +937,7 @@ Warning
 <h1 data-number="6"><span class="header-section-number">6</span> Interpretações Físicas</h1>
 <section id="dimensão-do-espaço-e-lei-de-coulomb" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="dimensão-do-espaço-e-lei-de-coulomb"><span class="header-section-number">6.1</span> Dimensão do Espaço e Lei de Coulomb</h2>
-<p>A função de Green em <span class="math inline">\(N\)</span> dimensões:</p>
-<p><span class="math display">\[
+<p>A função de Green em <span class="math inline">\(N\)</span> dimensões: <span class="math display">\[
 G_N =
 \begin{cases}
 |\mathbf{r} - \mathbf{r}_0|^{2-N} &amp; N \neq 2 \\
@@ -1043,6 +1000,8 @@ Note
 <section id="visualizações-computacionais" class="level1 page-columns page-full" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Visualizações Computacionais</h1>
 <div id="cell-fig-greens-functions" class="cell page-columns page-full" data-fig-height="8" data-fig-width="10" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> gamma</span>
@@ -1095,6 +1054,7 @@ Note
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display page-columns page-full">
 <div id="fig-greens-functions" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
@@ -1109,6 +1069,8 @@ Figure&nbsp;1: Funções de Green em diferentes dimensões
 </div>
 </div>
 <div id="cell-fig-regularization" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> G_3D_regularizada(r, epsilon<span class="op">=</span><span class="fl">0.1</span>):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Função de Green 3D regularizada"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    r_safe <span class="op">=</span> r <span class="op">+</span> <span class="fl">1e-10</span></span>
@@ -1138,6 +1100,7 @@ Figure&nbsp;1: Funções de Green em diferentes dimensões
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">5</span>)</span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="fl">0.1</span>, <span class="dv">100</span>)</span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display page-columns page-full">
 <div id="fig-regularization" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
@@ -1152,6 +1115,8 @@ Figure&nbsp;2: Regularização da função de Green em 3D
 </div>
 </div>
 <div id="cell-fig-laplaciano-regularizado" class="cell page-columns page-full" data-fig-height="6" data-fig-width="8" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> laplaciano_G_regulado(r, epsilon<span class="op">=</span><span class="fl">0.1</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Laplaciano da função de Green regularizada em 3D"""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">3</span> <span class="op">*</span> epsilon <span class="op">/</span> (r<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> epsilon) <span class="op">**</span> (<span class="dv">5</span> <span class="op">/</span> <span class="dv">2</span>)</span>
@@ -1173,6 +1138,7 @@ Figure&nbsp;2: Regularização da função de Green em 3D
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">2</span>)</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="op">-</span><span class="dv">1000</span>, <span class="dv">50</span>)</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display page-columns page-full">
 <div id="fig-laplaciano-regularizado" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">

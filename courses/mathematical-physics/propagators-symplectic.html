@@ -557,16 +557,11 @@ Note
 <h1 data-number="2"><span class="header-section-number">2</span> Soluções da Equação de Helmholtz</h1>
 <section id="a-equação-de-helmholtz-e-a-separação-de-variáveis" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="a-equação-de-helmholtz-e-a-separação-de-variáveis"><span class="header-section-number">2.1</span> A Equação de Helmholtz e a Separação de Variáveis</h2>
-<p>A equação de Helmholtz aparece naturalmente quando aplicamos o método de separação de variáveis à equação de onda:</p>
-<p><span class="math display">\[
+<p>A equação de Helmholtz aparece naturalmente quando aplicamos o método de separação de variáveis à equação de onda: <span class="math display">\[
 \frac{1}{c^2}\frac{\partial^2 \phi}{\partial t^2} - \nabla^2 \phi = 0
-\]</span></p>
-<p>Com a separação <span class="math inline">\(\phi(t, \mathbf{x}) = h(t)\psi(\mathbf{x})\)</span>, obtemos:</p>
-<p><span class="math display">\[
+\]</span> Com a separação <span class="math inline">\(\phi(t, \mathbf{x}) = h(t)\psi(\mathbf{x})\)</span>, obtemos: <span class="math display">\[
 \frac{1}{h}\frac{d^2 h}{dt^2} = -k^2 c^2
-\]</span></p>
-<p>e</p>
-<p><span class="math display">\[
+\]</span> e <span class="math display">\[
 \nabla^2 \psi = -k^2 \psi
 \]</span></p>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -587,15 +582,15 @@ Important
 <h2 data-number="2.2" class="anchored" data-anchor-id="a-escolha-das-soluções"><span class="header-section-number">2.2</span> A Escolha das Soluções</h2>
 <p>Para a equação de Helmholtz, as soluções podem ser escritas de várias formas equivalentes:</p>
 <ol type="1">
-<li><p><strong>Forma trigonométrica</strong> (para <span class="math inline">\(k^2 &gt; 0\)</span>): <span class="math display">\[
+<li><strong>Forma trigonométrica</strong> (para <span class="math inline">\(k^2 &gt; 0\)</span>): <span class="math display">\[
 \psi(x) = A\sin(kx) + B\cos(kx)
-\]</span></p></li>
-<li><p><strong>Forma exponencial complexa</strong>: <span class="math display">\[
+\]</span></li>
+<li><strong>Forma exponencial complexa</strong>: <span class="math display">\[
 \psi(x) = \alpha e^{ikx} + \alpha^* e^{-ikx}
-\]</span></p></li>
-<li><p><strong>Forma geral</strong> (para <span class="math inline">\(\beta\)</span> arbitrário): <span class="math display">\[
+\]</span></li>
+<li><strong>Forma geral</strong> (para <span class="math inline">\(\beta\)</span> arbitrário): <span class="math display">\[
 \psi''(x) = \beta\psi(x)
-\]</span></p></li>
+\]</span></li>
 </ol>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -613,12 +608,9 @@ Tip
 </section>
 <section id="o-caso-do-laplaciano-tridimensional" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="o-caso-do-laplaciano-tridimensional"><span class="header-section-number">2.3</span> O Caso do Laplaciano Tridimensional</h2>
-<p>Quando resolvemos problemas com simetria esférica, o Laplaciano em coordenadas esféricas nos leva a:</p>
-<p><span class="math display">\[
+<p>Quando resolvemos problemas com simetria esférica, o Laplaciano em coordenadas esféricas nos leva a: <span class="math display">\[
 \nabla^2 \psi = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial \psi}{\partial r}\right) + \frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta}\left(\sin\theta\frac{\partial \psi}{\partial \theta}\right) + \frac{1}{r^2\sin^2\theta}\frac{\partial^2 \psi}{\partial \phi^2}
-\]</span></p>
-<p>Para soluções radiais <span class="math inline">\(\psi(r)\)</span>, temos:</p>
-<p><span class="math display">\[
+\]</span> Para soluções radiais <span class="math inline">\(\psi(r)\)</span>, temos: <span class="math display">\[
 \frac{d^2\psi}{dr^2} + \frac{2}{r}\frac{d\psi}{dr} = -k^2\psi
 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -640,12 +632,9 @@ Note
 <h1 data-number="3"><span class="header-section-number">3</span> O Propagador de Helmholtz</h1>
 <section id="a-função-de-green" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="a-função-de-green"><span class="header-section-number">3.1</span> A Função de Green</h2>
-<p>Para resolver a equação de Helmholtz com uma fonte pontual, consideramos:</p>
-<p><span class="math display">\[
+<p>Para resolver a equação de Helmholtz com uma fonte pontual, consideramos: <span class="math display">\[
 (\nabla^2 + k^2)G(\mathbf{x}, \mathbf{x}') = -\delta^3(\mathbf{x} - \mathbf{x}')
-\]</span></p>
-<p>A solução fundamental (função de Green) é:</p>
-<p><span class="math display">\[
+\]</span> A solução fundamental (função de Green) é: <span class="math display">\[
 G(\mathbf{x}, \mathbf{x}') = -\frac{e^{ik|\mathbf{x} - \mathbf{x}'|}}{4\pi|\mathbf{x} - \mathbf{x}'|}
 \]</span></p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -664,11 +653,9 @@ Warning
 </section>
 <section id="construção-da-solução-geral" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="construção-da-solução-geral"><span class="header-section-number">3.2</span> Construção da Solução Geral</h2>
-<p>Para encontrar a solução geral da equação de Helmholtz com uma fonte, usamos o método de separação de variáveis e a função de Green. O resultado é:</p>
-<p><span class="math display">\[
+<p>Para encontrar a solução geral da equação de Helmholtz com uma fonte, usamos o método de separação de variáveis e a função de Green. O resultado é: <span class="math display">\[
 \psi(\mathbf{x}) = -\frac{1}{4\pi}\int d^3x' \, G(\mathbf{x}, \mathbf{x}')f(\mathbf{x}')
-\]</span></p>
-<p>onde <span class="math inline">\(f(\mathbf{x}')\)</span> é a função fonte.</p>
+\]</span> onde <span class="math inline">\(f(\mathbf{x}')\)</span> é a função fonte.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -709,23 +696,15 @@ Important
 </section>
 <section id="o-wronskiano-e-a-independência-linear" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="o-wronskiano-e-a-independência-linear"><span class="header-section-number">4.2</span> O Wronskiano e a Independência Linear</h2>
-<p>Para uma equação diferencial de segunda ordem:</p>
-<p><span class="math display">\[
+<p>Para uma equação diferencial de segunda ordem: <span class="math display">\[
 y'' + P(x)y' + Q(x)y = 0
-\]</span></p>
-<p>O Wronskiano de duas soluções <span class="math inline">\(y_1\)</span> e <span class="math inline">\(y_2\)</span> é definido como:</p>
-<p><span class="math display">\[
+\]</span> O Wronskiano de duas soluções <span class="math inline">\(y_1\)</span> e <span class="math inline">\(y_2\)</span> é definido como: <span class="math display">\[
 W(y_1, y_2) = y_1 y_2' - y_2 y_1'
-\]</span></p>
-<p>E satisfaz a equação:</p>
-<p><span class="math display">\[
+\]</span> E satisfaz a equação: <span class="math display">\[
 W' = -P(x)W
-\]</span></p>
-<p>Portanto:</p>
-<p><span class="math display">\[
+\]</span> Portanto: <span class="math display">\[
 W(x) = W_0 \exp\left(-\int P(x)dx\right)
-\]</span></p>
-<p>onde <span class="math inline">\(W_0\)</span> é uma constante.</p>
+\]</span> onde <span class="math inline">\(W_0\)</span> é uma constante.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -745,35 +724,25 @@ Note
 <h1 data-number="5"><span class="header-section-number">5</span> A Estrutura Simplética</h1>
 <section id="o-espaço-de-fase" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="o-espaço-de-fase"><span class="header-section-number">5.1</span> O Espaço de Fase</h2>
-<p>O espaço de fase é construído a partir das variáveis canônicas <span class="math inline">\((y, p)\)</span>, onde <span class="math inline">\(p\)</span> é o momento conjugado:</p>
-<p><span class="math display">\[
+<p>O espaço de fase é construído a partir das variáveis canônicas <span class="math inline">\((y, p)\)</span>, onde <span class="math inline">\(p\)</span> é o momento conjugado: <span class="math display">\[
 p = m(x)y'
-\]</span></p>
-<p>com <span class="math inline">\(m(x)\)</span> sendo a “massa” efetiva do sistema.</p>
-<p>As equações de Hamilton para este sistema são:</p>
-<p><span class="math display">\[
+\]</span> com <span class="math inline">\(m(x)\)</span> sendo a “massa” efetiva do sistema.</p>
+<p>As equações de Hamilton para este sistema são: <span class="math display">\[
 y' = \frac{\partial H}{\partial p}
-\]</span></p>
-<p><span class="math display">\[
+\]</span> <span class="math display">\[
 p' = -\frac{\partial H}{\partial y}
-\]</span></p>
-<p>onde a Hamiltoniana é:</p>
-<p><span class="math display">\[
+\]</span> onde a Hamiltoniana é: <span class="math display">\[
 H(y, p) = \frac{p^2}{2m} + \frac{1}{2}m\omega^2 y^2
 \]</span></p>
 </section>
 <section id="a-matriz-simplética" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="a-matriz-simplética"><span class="header-section-number">5.2</span> A Matriz Simplética</h2>
-<p>O espaço de fase tem uma estrutura simplética natural, representada pela matriz:</p>
-<p><span class="math display">\[
+<p>O espaço de fase tem uma estrutura simplética natural, representada pela matriz: <span class="math display">\[
 \Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}
-\]</span></p>
-<p>Esta matriz satisfaz <span class="math inline">\(\Omega^2 = -I\)</span> e é análoga à unidade imaginária <span class="math inline">\(i\)</span>.</p>
-<p>O Wronskiano pode ser escrito como:</p>
-<p><span class="math display">\[
+\]</span> Esta matriz satisfaz <span class="math inline">\(\Omega^2 = -I\)</span> e é análoga à unidade imaginária <span class="math inline">\(i\)</span>.</p>
+<p>O Wronskiano pode ser escrito como: <span class="math display">\[
 W = \mathbf{v}_1^T \Omega \mathbf{v}_2
-\]</span></p>
-<p>onde <span class="math inline">\(\mathbf{v}_i = (y_i, p_i)^T\)</span> são vetores no espaço de fase.</p>
+\]</span> onde <span class="math inline">\(\mathbf{v}_i = (y_i, p_i)^T\)</span> são vetores no espaço de fase.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -790,11 +759,9 @@ Important
 </section>
 <section id="o-papel-da-unidade-imaginária" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="o-papel-da-unidade-imaginária"><span class="header-section-number">5.3</span> O Papel da Unidade Imaginária</h2>
-<p>A analogia entre a matriz <span class="math inline">\(\Omega\)</span> e a unidade imaginária <span class="math inline">\(i\)</span> é profunda. A matriz <span class="math inline">\(\Omega\)</span> atua como um gerador de rotações no espaço de fase:</p>
-<p><span class="math display">\[
+<p>A analogia entre a matriz <span class="math inline">\(\Omega\)</span> e a unidade imaginária <span class="math inline">\(i\)</span> é profunda. A matriz <span class="math inline">\(\Omega\)</span> atua como um gerador de rotações no espaço de fase: <span class="math display">\[
 e^{\theta\Omega} = \begin{pmatrix} \cos\theta &amp; \sin\theta \\ -\sin\theta &amp; \cos\theta \end{pmatrix}
-\]</span></p>
-<p>Na mecânica quântica, a unidade imaginária <span class="math inline">\(i\)</span> aparece como gerador de rotações no espaço de fase (ou espaço de Hilbert), o que está diretamente relacionado à equação de Schrödinger.</p>
+\]</span> Na mecânica quântica, a unidade imaginária <span class="math inline">\(i\)</span> aparece como gerador de rotações no espaço de fase (ou espaço de Hilbert), o que está diretamente relacionado à equação de Schrödinger.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -814,11 +781,9 @@ Tip
 <h1 data-number="6"><span class="header-section-number">6</span> Conexões com a Mecânica Quântica</h1>
 <section id="a-equação-de-schrödinger" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="a-equação-de-schrödinger"><span class="header-section-number">6.1</span> A Equação de Schrödinger</h2>
-<p>A equação de Schrödinger dependente do tempo:</p>
-<p><span class="math display">\[
+<p>A equação de Schrödinger dependente do tempo: <span class="math display">\[
 i\hbar\frac{\partial\psi}{\partial t} = -\frac{\hbar^2}{2m}\nabla^2\psi + V\psi
-\]</span></p>
-<p>pode ser vista como uma generalização da estrutura simplética que acabamos de construir. O termo <span class="math inline">\(i\hbar\)</span> garante que a equação preserve a probabilidade (ou seja, a “norma” no espaço de Hilbert), assim como a matriz <span class="math inline">\(\Omega\)</span> preserva o Wronskiano.</p>
+\]</span> pode ser vista como uma generalização da estrutura simplética que acabamos de construir. O termo <span class="math inline">\(i\hbar\)</span> garante que a equação preserve a probabilidade (ou seja, a “norma” no espaço de Hilbert), assim como a matriz <span class="math inline">\(\Omega\)</span> preserva o Wronskiano.</p>
 </section>
 <section id="propagadores-causal-e-avançado" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="propagadores-causal-e-avançado"><span class="header-section-number">6.2</span> Propagadores Causal e Avançado</h2>
@@ -847,7 +812,9 @@ Note
 <h1 data-number="7"><span class="header-section-number">7</span> Visualizações com Python</h1>
 <section id="propagação-no-espaço-de-fase" class="level2 page-columns page-full" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="propagação-no-espaço-de-fase"><span class="header-section-number">7.1</span> Propagação no Espaço de Fase</h2>
-<div id="33092d49" class="cell page-columns page-full" data-execution_count="1">
+<div id="4df99623" class="cell page-columns page-full" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.patches <span class="im">import</span> Ellipse</span>
@@ -897,6 +864,7 @@ Note
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">"equal"</span>)</span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display page-columns page-full">
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
@@ -909,7 +877,9 @@ Note
 </section>
 <section id="a-matriz-simplética-como-gerador-de-rotações" class="level2 page-columns page-full" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="a-matriz-simplética-como-gerador-de-rotações"><span class="header-section-number">7.2</span> A Matriz Simplética como Gerador de Rotações</h2>
-<div id="f3661144" class="cell page-columns page-full" data-execution_count="2">
+<div id="c83280f2" class="cell page-columns page-full" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -984,6 +954,7 @@ Note
 <span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">"equal"</span>)</span>
 <span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display page-columns page-full">
 <div class="quarto-figure quarto-figure-center page-columns page-full">
 <figure class="figure page-columns page-full">
@@ -1053,8 +1024,7 @@ Note
 <h1 data-number="9"><span class="header-section-number">9</span> Exercícios</h1>
 <section id="exercício-1-soluções-da-equação-de-helmholtz" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="exercício-1-soluções-da-equação-de-helmholtz"><span class="header-section-number">9.1</span> Exercício 1: Soluções da Equação de Helmholtz</h2>
-<p>Considere a equação de Helmholtz unidimensional:</p>
-<p><span class="math display">\[
+<p>Considere a equação de Helmholtz unidimensional: <span class="math display">\[
 \psi''(x) + k^2\psi(x) = 0
 \]</span></p>
 <ol type="a">

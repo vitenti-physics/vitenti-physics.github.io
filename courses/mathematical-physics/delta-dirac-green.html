@@ -502,43 +502,37 @@ window.Quarto = {
 </section>
 <section id="a-função-degrau-de-heaviside" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> A Função Degrau de Heaviside</h1>
-<p>A função degrau (ou função de Heaviside) é definida como:</p>
-<p><span class="math display">\[
+<p>A função degrau (ou função de Heaviside) é definida como: <span class="math display">\[
 \theta(x) =
 \begin{cases}
 1, &amp; x &gt; 0 \\
 0, &amp; x \leq 0
 \end{cases}
 \]</span></p>
-<p><strong>Características:</strong> - É uma função com uma <strong>descontinuidade</strong> em <span class="math inline">\(x=0\)</span>. - Representa uma transição abrupta de 0 para 1.</p>
+<p><strong>Características:</strong></p>
+<ul>
+<li>É uma função com uma <strong>descontinuidade</strong> em <span class="math inline">\(x=0\)</span>.</li>
+<li>Representa uma transição abrupta de 0 para 1.</li>
+</ul>
 <hr>
 </section>
 <section id="a-função-delta-de-dirac" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> A Função Delta de Dirac</h1>
-<p>A <strong>delta de Dirac</strong> <span class="math inline">\(\delta(x)\)</span> é definida pela <strong>propriedade de filtragem</strong> (ou “sifting”):</p>
-<p><span class="math display">\[
+<p>A <strong>delta de Dirac</strong> <span class="math inline">\(\delta(x)\)</span> é definida pela <strong>propriedade de filtragem</strong> (ou “sifting”): <span class="math display">\[
 \int_{-\infty}^{\infty} \delta(x - x_0) \, f(x_0) \, dx_0 = f(x)
-\]</span></p>
-<p>Para qualquer função <span class="math inline">\(f\)</span> suave (bem-comportada).</p>
+\]</span> Para qualquer função <span class="math inline">\(f\)</span> suave (bem-comportada).</p>
 <p><strong>Interpretação:</strong> A delta “seleciona” o valor de <span class="math inline">\(f\)</span> no ponto <span class="math inline">\(x = x_0\)</span>.</p>
 <hr>
 <section id="delta-como-derivada-da-theta" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="delta-como-derivada-da-theta"><span class="header-section-number">3.1</span> Delta como Derivada da Theta</h2>
-<p>Usando o Teorema Fundamental do Cálculo:</p>
-<p><span class="math display">\[
+<p>Usando o Teorema Fundamental do Cálculo: <span class="math display">\[
 \frac{d}{dx} \int_{-\infty}^{x} f(x_0) \, dx_0 = f(x)
-\]</span></p>
-<p>Reescrevendo o limite superior com a função <span class="math inline">\(\theta\)</span>:</p>
-<p><span class="math display">\[
+\]</span> Reescrevendo o limite superior com a função <span class="math inline">\(\theta\)</span>: <span class="math display">\[
 \int_{-\infty}^{\infty} \theta(x - x_0) \, f(x_0) \, dx_0
 = \int_{-\infty}^{x} f(x_0) \, dx_0
-\]</span></p>
-<p>Derivando ambos os lados:</p>
-<p><span class="math display">\[
+\]</span> Derivando ambos os lados: <span class="math display">\[
 \int_{-\infty}^{\infty} \frac{d}{dx} \theta(x - x_0) \, f(x_0) \, dx_0 = f(x)
-\]</span></p>
-<p>Portanto:</p>
-<p><span class="math display">\[
+\]</span> Portanto: <span class="math display">\[
 \boxed{\frac{d}{dx} \theta(x - x_0) = \delta(x - x_0)}
 \]</span></p>
 <hr>
@@ -554,45 +548,47 @@ window.Quarto = {
 \theta(x) = \frac{g'(x) + 1}{2}
 \]</span></li>
 </ul>
-<p><strong>Relação com o módulo:</strong></p>
-<p><span class="math display">\[
+<p><strong>Relação com o módulo:</strong> <span class="math display">\[
 |x| = \sqrt{x^2}
-\]</span></p>
-<p>Assim: <span class="math display">\[
+\]</span> Assim: <span class="math display">\[
 \theta(x) = \frac{1}{2}\left(\frac{d}{dx}\sqrt{x^2} + 1\right)
 \]</span></p>
 <hr>
 </section>
 <section id="aproximação-gaussiana-para-a-delta" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Aproximação Gaussiana para a Delta</h1>
-<p>Considere a <strong>Gaussiana</strong> (distribuição normal):</p>
-<p><span class="math display">\[
+<p>Considere a <strong>Gaussiana</strong> (distribuição normal): <span class="math display">\[
 G_\sigma(x) = \frac{1}{\sqrt{2\pi}\,\sigma} \exp\left(-\frac{x^2}{2\sigma^2}\right)
 \]</span></p>
-<p><strong>Propriedades:</strong> - Normalizada: <span class="math inline">\(\int_{-\infty}^{\infty} G_\sigma(x) \, dx = 1\)</span> - Simétrica: <span class="math inline">\(G_\sigma(-x) = G_\sigma(x)\)</span> - Quando <span class="math inline">\(\sigma \to 0\)</span>, <span class="math inline">\(G_\sigma(x)\)</span> fica <strong>mais estreita e mais alta</strong>, concentrando-se em <span class="math inline">\(x=0\)</span>.</p>
+<p><strong>Propriedades:</strong></p>
+<ul>
+<li>Normalizada: <span class="math inline">\(\int_{-\infty}^{\infty} G_\sigma(x) \, dx = 1\)</span></li>
+<li>Simétrica: <span class="math inline">\(G_\sigma(-x) = G_\sigma(x)\)</span></li>
+<li>Quando <span class="math inline">\(\sigma \to 0\)</span>, <span class="math inline">\(G_\sigma(x)\)</span> fica <strong>mais estreita e mais alta</strong>, concentrando-se em <span class="math inline">\(x=0\)</span>.</li>
+</ul>
 <hr>
 <section id="demonstração-da-propriedade-de-filtragem" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="demonstração-da-propriedade-de-filtragem"><span class="header-section-number">5.1</span> Demonstração da Propriedade de Filtragem</h2>
-<p>Para qualquer função <span class="math inline">\(f(x)\)</span> com série de Taylor:</p>
-<p><span class="math display">\[
+<p>Para qualquer função <span class="math inline">\(f(x)\)</span> com série de Taylor: <span class="math display">\[
 f(x) = f(0) + f'(0)x + \frac{f''(0)}{2}x^2 + \cdots
 \]</span></p>
-<p>Temos:</p>
-<p><span class="math display">\[
+<p>Temos: <span class="math display">\[
 \lim_{\sigma \to 0} \int_{-\infty}^{\infty} G_\sigma(x) f(x) \, dx = f(0)
 \]</span></p>
-<p><strong>Por quê?</strong> - Termos ímpares se anulam por simetria (função par vezes função ímpar). - Termos pares são proporcionais a potências positivas de <span class="math inline">\(\sigma\)</span>, então vão a zero. - Apenas o termo constante <span class="math inline">\(f(0)\)</span> sobrevive.</p>
+<p><strong>Por quê?</strong></p>
+<ul>
+<li>Termos ímpares se anulam por simetria (função par vezes função ímpar).</li>
+<li>Termos pares são proporcionais a potências positivas de <span class="math inline">\(\sigma\)</span>, então vão a zero.</li>
+<li>Apenas o termo constante <span class="math inline">\(f(0)\)</span> sobrevive.</li>
+</ul>
 <hr>
 </section>
 </section>
 <section id="funções-de-green-em-1d" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Funções de Green em 1D</h1>
-<p>A <strong>função de Green</strong> em 1D satisfaz:</p>
-<p><span class="math display">\[
+<p>A <strong>função de Green</strong> em 1D satisfaz: <span class="math display">\[
 \frac{d^2}{dx^2} G(x, x_0) = \delta(x - x_0)
-\]</span></p>
-<p>A solução é:</p>
-<p><span class="math display">\[
+\]</span> A solução é: <span class="math display">\[
 \boxed{G(x, x_0) = \frac{1}{2} |x - x_0|}
 \]</span></p>
 <hr>
@@ -639,26 +635,20 @@ f(x) = f(0) + f'(0)x + \frac{f''(0)}{2}x^2 + \cdots
 </section>
 <section id="o-truque-do-cálculo-da-integral-gaussiana" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> O Truque do Cálculo da Integral Gaussiana</h1>
-<p>Para provar a normalização da Gaussiana, usamos o truque das coordenadas polares:</p>
-<p><span class="math display">\[
+<p>Para provar a normalização da Gaussiana, usamos o truque das coordenadas polares: <span class="math display">\[
 \left( \int_{-\infty}^{\infty} e^{-x^2/2\sigma^2} dx \right)^2
 = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-(x^2+y^2)/2\sigma^2} dx\,dy
-\]</span></p>
-<p>Em coordenadas polares <span class="math inline">\((r, \theta)\)</span>:</p>
-<p><span class="math display">\[
+\]</span> Em coordenadas polares <span class="math inline">\((r, \theta)\)</span>: <span class="math display">\[
 = \int_0^{2\pi} \int_0^\infty e^{-r^2/2\sigma^2} r \, dr \, d\theta
 = 2\pi \sigma^2
-\]</span></p>
-<p>Portanto:</p>
-<p><span class="math display">\[
+\]</span> Portanto: <span class="math display">\[
 \int_{-\infty}^{\infty} e^{-x^2/2\sigma^2} dx = \sqrt{2\pi}\,\sigma
-\]</span></p>
-<p>Assim, o fator de normalização <span class="math inline">\(1/\sqrt{2\pi}\sigma\)</span> está correto.</p>
+\]</span> Assim, o fator de normalização <span class="math inline">\(1/\sqrt{2\pi}\sigma\)</span> está correto.</p>
 <hr>
 </section>
 <section id="visualização-sequência-delta-gaussiana" class="level1 page-columns page-full" data-number="10">
 <h1 data-number="10"><span class="header-section-number">10</span> Visualização: Sequência Delta Gaussiana</h1>
-<div id="a8303026" class="cell page-columns page-full" data-execution_count="1">
+<div id="0b297311" class="cell page-columns page-full" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>

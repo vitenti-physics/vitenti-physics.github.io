@@ -495,29 +495,18 @@ window.Quarto = {
 <h1 data-number="2"><span class="header-section-number">2</span> Base no Espaço de Fase</h1>
 <section id="definição-da-base" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="definição-da-base"><span class="header-section-number">2.1</span> Definição da Base</h2>
-<p>Para cada vetor de onda <span class="math inline">\(\mathbf{k}\)</span>, definimos pares de funções temporais:</p>
-<p><span class="math display">\[f_{\mathbf{k}}(x_0), \quad q_{\mathbf{k}}(x_0)\]</span></p>
-<p>onde <span class="math inline">\(x_0 = ct\)</span> é a coordenada temporal. A base completa no espaço de fase é composta por:</p>
-<p><span class="math display">\[\Psi_{\mathbf{k}} = \begin{pmatrix} f_{\mathbf{k}} \\ q_{\mathbf{k}} \end{pmatrix}\]</span></p>
-<p>com a dependência espacial dada por <span class="math inline">\(e^{i\mathbf{k}\cdot\mathbf{x}}\)</span>.</p>
+<p>Para cada vetor de onda <span class="math inline">\(\mathbf{k}\)</span>, definimos pares de funções temporais: <span class="math display">\[f_{\mathbf{k}}(x_0), \quad q_{\mathbf{k}}(x_0)\]</span> onde <span class="math inline">\(x_0 = ct\)</span> é a coordenada temporal. A base completa no espaço de fase é composta por: <span class="math display">\[\Psi_{\mathbf{k}} = \begin{pmatrix} f_{\mathbf{k}} \\ q_{\mathbf{k}} \end{pmatrix}\]</span> com a dependência espacial dada por <span class="math inline">\(e^{i\mathbf{k}\cdot\mathbf{x}}\)</span>.</p>
 <blockquote class="blockquote">
 <p><strong>Observação:</strong> Estamos usando a notação <span class="math inline">\(x_0\)</span> para a coordenada temporal, seguindo a convenção relativística onde as coordenadas espaço-tempo são <span class="math inline">\((x_0, x_1, x_2, x_3)\)</span>.</p>
 </blockquote>
 </section>
 <section id="produto-simplético" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="produto-simplético"><span class="header-section-number">2.2</span> Produto Simplético</h2>
-<p>O produto entre dois elementos da base é definido por:</p>
-<p><span class="math display">\[(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}'}^* q_{\mathbf{k}} - q_{\mathbf{k}'}^* f_{\mathbf{k}}\right] d^3x\]</span></p>
-<p>Substituindo as dependências espaciais:</p>
-<p><span class="math display">\[(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right]\delta^{(3)}(\mathbf{k} - \mathbf{k}')\]</span></p>
-<p>A base é ortogonal com normalização delta de Dirac.</p>
+<p>O produto entre dois elementos da base é definido por: <span class="math display">\[(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}'}^* q_{\mathbf{k}} - q_{\mathbf{k}'}^* f_{\mathbf{k}}\right] d^3x\]</span> Substituindo as dependências espaciais: <span class="math display">\[(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right]\delta^{(3)}(\mathbf{k} - \mathbf{k}')\]</span> A base é ortogonal com normalização delta de Dirac.</p>
 </section>
 <section id="normalização-da-base" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="normalização-da-base"><span class="header-section-number">2.3</span> Normalização da Base</h2>
-<p>Para que a base seja ortonormal no sentido da delta de Dirac:</p>
-<p><span class="math display">\[-i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right] = 1\]</span></p>
-<p>Equivalentemente:</p>
-<p><span class="math display">\[2\,\text{Im}(f_{\mathbf{k}}^* q_{\mathbf{k}}) = 1\]</span></p>
+<p>Para que a base seja ortonormal no sentido da delta de Dirac: <span class="math display">\[-i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right] = 1\]</span> Equivalentemente: <span class="math display">\[2\,\text{Im}(f_{\mathbf{k}}^* q_{\mathbf{k}}) = 1\]</span></p>
 <blockquote class="blockquote">
 <p><strong>Definição (Vácuo):</strong> A escolha das funções de base que satisfazem a condição de normalização define o vácuo da teoria. Diferentes escolhas correspondem a diferentes definições de vácuo.</p>
 </blockquote>
@@ -539,41 +528,28 @@ window.Quarto = {
 </section>
 <section id="solução-geral-do-oscilador-harmônico" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="solução-geral-do-oscilador-harmônico"><span class="header-section-number">3.2</span> Solução Geral do Oscilador Harmônico</h2>
-<p>A equação de movimento no espaço de Fourier é:</p>
-<p><span class="math display">\[\ddot{f}_{\mathbf{k}} = -\omega_{\mathbf{k}}^2 f_{\mathbf{k}}, \quad \omega_{\mathbf{k}} = |\mathbf{k}|\]</span></p>
-<p>A solução geral é:</p>
-<p><span class="math display">\[f_{\mathbf{k}} = N_{\mathbf{k}} e^{-i\omega_{\mathbf{k}} x_0} + M_{\mathbf{k}} e^{+i\omega_{\mathbf{k}} x_0}\]</span></p>
-<p>onde <span class="math inline">\(N_{\mathbf{k}}, M_{\mathbf{k}} \in \mathbb{C}\)</span>.</p>
+<p>A equação de movimento no espaço de Fourier é: <span class="math display">\[\ddot{f}_{\mathbf{k}} = -\omega_{\mathbf{k}}^2 f_{\mathbf{k}}, \quad \omega_{\mathbf{k}} = |\mathbf{k}|\]</span> A solução geral é: <span class="math display">\[f_{\mathbf{k}} = N_{\mathbf{k}} e^{-i\omega_{\mathbf{k}} x_0} + M_{\mathbf{k}} e^{+i\omega_{\mathbf{k}} x_0}\]</span> onde <span class="math inline">\(N_{\mathbf{k}}, M_{\mathbf{k}} \in \mathbb{C}\)</span>.</p>
 <blockquote class="blockquote">
 <p><strong>Observação:</strong> O primeiro termo representa frequências positivas (propagação para frente no tempo), e o segundo, frequências negativas (propagação para trás no tempo).</p>
 </blockquote>
 </section>
 <section id="condição-de-normalização-em-termos-de-n-e-m" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="condição-de-normalização-em-termos-de-n-e-m"><span class="header-section-number">3.3</span> Condição de Normalização em Termos de N e M</h2>
-<p>Da condição de normalização:</p>
-<p><span class="math display">\[2\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = 1\]</span></p>
-<p>ou, equivalentemente:</p>
-<p><span class="math display">\[\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = \frac{1}{2}\]</span></p>
+<p>Da condição de normalização: <span class="math display">\[2\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = 1\]</span> ou, equivalentemente: <span class="math display">\[\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = \frac{1}{2}\]</span></p>
 <blockquote class="blockquote">
 <p><strong>Observação:</strong> Esta é uma relação hiperbólica que define vetores tipo tempo no espaço de Minkowski.</p>
 </blockquote>
 </section>
 <section id="escolha-do-vácuo" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="escolha-do-vácuo"><span class="header-section-number">3.4</span> Escolha do Vácuo</h2>
-<p>A escolha mais simples é <span class="math inline">\(M_{\mathbf{k}} = 0\)</span>, resultando:</p>
-<p><span class="math display">\[N_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}\]</span></p>
-<p>Isso define as funções de base:</p>
-<p><span class="math display">\[f_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
-<p><span class="math display">\[q_{\mathbf{k}} = -i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
+<p>A escolha mais simples é <span class="math inline">\(M_{\mathbf{k}} = 0\)</span>, resultando: <span class="math display">\[N_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}\]</span> Isso define as funções de base: <span class="math display">\[f_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}\]</span> <span class="math display">\[q_{\mathbf{k}} = -i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
 <blockquote class="blockquote">
 <p><strong>Nota:</strong> Esta escolha elimina as soluções de frequência negativa, definindo o vácuo de Minkowski. A normalização inclui o fator <span class="math inline">\((2\pi)^{-3/2}\)</span> para garantir a ortogonalidade correta.</p>
 </blockquote>
 </section>
 <section id="complexo-conjugado-e-inversão-temporal" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="complexo-conjugado-e-inversão-temporal"><span class="header-section-number">3.5</span> Complexo Conjugado e Inversão Temporal</h2>
-<p>O complexo conjugado das funções de base:</p>
-<p><span class="math display">\[f_{\mathbf{k}}^* = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
-<p><span class="math display">\[q_{\mathbf{k}}^* = +i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
+<p>O complexo conjugado das funções de base: <span class="math display">\[f_{\mathbf{k}}^* = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}\]</span> <span class="math display">\[q_{\mathbf{k}}^* = +i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
 <p><strong>Propriedade Fundamental:</strong> Tomar o complexo conjugado é equivalente a uma inversão temporal: <span class="math inline">\(x_0 \to -x_0\)</span>.</p>
 <blockquote class="blockquote">
 <p><strong>Consequência:</strong> A presença da simetria de inversão temporal implica a existência de partículas e antipartículas na teoria quântica de campos. Esta é uma consequência geométrica da métrica de Minkowski.</p>
@@ -584,70 +560,53 @@ window.Quarto = {
 <h1 data-number="4"><span class="header-section-number">4</span> Decomposição de Campos</h1>
 <section id="decomposição-em-modos" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="decomposição-em-modos"><span class="header-section-number">4.1</span> Decomposição em Modos</h2>
-<p>Qualquer campo escalar real <span class="math inline">\(\phi(x)\)</span> pode ser decomposto como:</p>
-<p><span class="math display">\[\phi(x) = \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^{3/2}} \left[\alpha_{\mathbf{k}} f_{\mathbf{k}}(x) + \alpha_{\mathbf{k}}^* f_{\mathbf{k}}^*(x)\right]\]</span></p>
-<p>ou, de forma equivalente:</p>
-<p><span class="math display">\[\phi(x) = \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^{3/2}} \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \left[a_{\mathbf{k}} e^{-ik\cdot x} + a_{\mathbf{k}}^\dagger e^{+ik\cdot x}\right]\]</span></p>
-<p>onde <span class="math inline">\(k\cdot x = \omega_{\mathbf{k}} x_0 - \mathbf{k}\cdot\mathbf{x}\)</span>.</p>
+<p>Qualquer campo escalar real <span class="math inline">\(\phi(x)\)</span> pode ser decomposto como: <span class="math display">\[\phi(x) = \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^{3/2}} \left[\alpha_{\mathbf{k}} f_{\mathbf{k}}(x) + \alpha_{\mathbf{k}}^* f_{\mathbf{k}}^*(x)\right]\]</span> ou, de forma equivalente: <span class="math display">\[\phi(x) = \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^{3/2}} \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \left[a_{\mathbf{k}} e^{-ik\cdot x} + a_{\mathbf{k}}^\dagger e^{+ik\cdot x}\right]\]</span> onde <span class="math inline">\(k\cdot x = \omega_{\mathbf{k}} x_0 - \mathbf{k}\cdot\mathbf{x}\)</span>.</p>
 </section>
 <section id="coeficientes-de-decomposição" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="coeficientes-de-decomposição"><span class="header-section-number">4.2</span> Coeficientes de Decomposição</h2>
-<p>Os coeficientes são obtidos pelo produto simplético:</p>
-<p><span class="math display">\[\alpha_{\mathbf{k}} = -i(f_{\mathbf{k}}^*, \phi) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}}^* q_\phi - q_{\mathbf{k}}^* f_\phi\right] d^3x\]</span></p>
-<p>Esta relação é fundamental para a quantização do campo.</p>
+<p>Os coeficientes são obtidos pelo produto simplético: <span class="math display">\[\alpha_{\mathbf{k}} = -i(f_{\mathbf{k}}^*, \phi) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}}^* q_\phi - q_{\mathbf{k}}^* f_\phi\right] d^3x\]</span> Esta relação é fundamental para a quantização do campo.</p>
 </section>
 </section>
 <section id="solução-com-fonte-propagador" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Solução com Fonte (Propagador)</h1>
 <section id="problema-com-fonte" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="problema-com-fonte"><span class="header-section-number">5.1</span> Problema com Fonte</h2>
-<p>Queremos resolver a equação:</p>
-<p><span class="math display">\[(\Box + m^2)\phi(x) = J(x)\]</span></p>
-<p>onde <span class="math inline">\(J(x)\)</span> é uma fonte externa.</p>
+<p>Queremos resolver a equação: <span class="math display">\[(\Box + m^2)\phi(x) = J(x)\]</span> onde <span class="math inline">\(J(x)\)</span> é uma fonte externa.</p>
 <blockquote class="blockquote">
 <p><strong>Nota:</strong> Estamos usando o operador d’Alembertiano: <span class="math inline">\(\Box = \partial_0^2 - \nabla^2\)</span>.</p>
 </blockquote>
 </section>
 <section id="construção-do-propagador" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="construção-do-propagador"><span class="header-section-number">5.2</span> Construção do Propagador</h2>
-<p>Construímos a solução como:</p>
-<p><span class="math display">\[\phi_J(x) = \int_{-\infty}^{x_0} dx_0' \int_{\mathbb{R}^3} d^3k \left[\alpha_{\mathbf{k}}^J(x_0') f_{\mathbf{k}}(x_0) - \alpha_{\mathbf{k}}^{J*}(x_0') f_{\mathbf{k}}^*(x_0)\right]\]</span></p>
-<p>onde:</p>
-<p><span class="math display">\[\alpha_{\mathbf{k}}^J(x_0') = -i(f_{\mathbf{k}}^*, J)|_{x_0'}\]</span></p>
+<p>Construímos a solução como: <span class="math display">\[\phi_J(x) = \int_{-\infty}^{x_0} dx_0' \int_{\mathbb{R}^3} d^3k \left[\alpha_{\mathbf{k}}^J(x_0') f_{\mathbf{k}}(x_0) - \alpha_{\mathbf{k}}^{J*}(x_0') f_{\mathbf{k}}^*(x_0)\right]\]</span> onde: <span class="math display">\[\alpha_{\mathbf{k}}^J(x_0') = -i(f_{\mathbf{k}}^*, J)|_{x_0'}\]</span></p>
 <blockquote class="blockquote">
 <p><strong>Observação:</strong> O limite superior <span class="math inline">\(x_0\)</span> na integral temporal garante que o propagador seja causal (propagador retardado).</p>
 </blockquote>
 </section>
 <section id="propriedade-da-solução" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="propriedade-da-solução"><span class="header-section-number">5.3</span> Propriedade da Solução</h2>
-<p>Derivando <span class="math inline">\(\phi_J\)</span> em relação a <span class="math inline">\(x_0\)</span>, obtemos:</p>
-<p><span class="math display">\[\dot{\phi}_J = J + (\Box + m^2)\phi_J\]</span></p>
-<p>Portanto, <span class="math inline">\(\phi_J\)</span> satisfaz a equação com fonte.</p>
+<p>Derivando <span class="math inline">\(\phi_J\)</span> em relação a <span class="math inline">\(x_0\)</span>, obtemos: <span class="math display">\[\dot{\phi}_J = J + (\Box + m^2)\phi_J\]</span> Portanto, <span class="math inline">\(\phi_J\)</span> satisfaz a equação com fonte.</p>
 <blockquote class="blockquote">
 <p><strong>Interpretação:</strong> A fonte <span class="math inline">\(J\)</span> atua como um termo de “forçamento” contínuo, gerando novos modos do campo. Esta é a versão contínua do problema do oscilador harmônico forçado.</p>
 </blockquote>
 </section>
 <section id="estrutura-do-propagador" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="estrutura-do-propagador"><span class="header-section-number">5.4</span> Estrutura do Propagador</h2>
-<p>O propagador retardado tem a forma:</p>
-<p><span class="math display">\[G_R(x - x') = \theta(x_0 - x_0') \int \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega_{\mathbf{k}}} \left[e^{-ik\cdot(x-x')} - e^{+ik\cdot(x-x')}\right]\]</span></p>
+<p>O propagador retardado tem a forma: <span class="math display">\[G_R(x - x') = \theta(x_0 - x_0') \int \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega_{\mathbf{k}}} \left[e^{-ik\cdot(x-x')} - e^{+ik\cdot(x-x')}\right]\]</span></p>
 <blockquote class="blockquote">
 <p><strong>Observação:</strong> Este é o propagador de Feynman para o campo escalar, que será fundamental para o cálculo de amplitudes de espalhamento.</p>
 </blockquote>
 </section>
 <section id="propriedade-de-causalidade" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="propriedade-de-causalidade"><span class="header-section-number">5.5</span> Propriedade de Causalidade</h2>
-<p>O propagador retardado é não nulo apenas quando:</p>
-<p><span class="math display">\[(x_0 - x_0') = |\mathbf{x} - \mathbf{x}'|\]</span></p>
-<p>ou seja, quando os eventos estão conectados por um sinal que se propaga na velocidade da luz.</p>
+<p>O propagador retardado é não nulo apenas quando: <span class="math display">\[(x_0 - x_0') = |\mathbf{x} - \mathbf{x}'|\]</span> ou seja, quando os eventos estão conectados por um sinal que se propaga na velocidade da luz.</p>
 <blockquote class="blockquote">
 <p><strong>Definição (Cone de Luz):</strong> A região do espaço-tempo onde <span class="math inline">\(\Delta x_0 = |\Delta \mathbf{x}|\)</span> é o cone de luz. O propagador é não nulo apenas sobre o cone de luz.</p>
 </blockquote>
 </section>
 <section id="relação-com-eletromagnetismo" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="relação-com-eletromagnetismo"><span class="header-section-number">5.6</span> Relação com Eletromagnetismo</h2>
-<p>No caso do campo escalar, a função de Green do operador de d’Alembert é:</p>
-<p><span class="math display">\[G_R(x - x') = \frac{\delta(x_0 - x_0' - |\mathbf{x} - \mathbf{x}'|)}{4\pi|\mathbf{x} - \mathbf{x}'|}\]</span></p>
+<p>No caso do campo escalar, a função de Green do operador de d’Alembert é: <span class="math display">\[G_R(x - x') = \frac{\delta(x_0 - x_0' - |\mathbf{x} - \mathbf{x}'|)}{4\pi|\mathbf{x} - \mathbf{x}'|}\]</span></p>
 <blockquote class="blockquote">
 <p><strong>Interpretação:</strong> Esta é a função de Green do eletromagnetismo, que descreve a propagação de sinais no vácuo. A aparente propagação superluminal do potencial de Coulomb é um artefato do regime estático.</p>
 </blockquote>

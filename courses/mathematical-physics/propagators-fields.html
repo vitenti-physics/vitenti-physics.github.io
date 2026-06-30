@@ -613,26 +613,19 @@ Note
 <h1 data-number="2"><span class="header-section-number">2</span> Revisão do Formalismo de Partículas</h1>
 <section id="estrutura-simplética-para-partículas" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="estrutura-simplética-para-partículas"><span class="header-section-number">2.1</span> Estrutura Simplética para Partículas</h2>
-<p>Para uma partícula, definimos o vetor no espaço de fase:</p>
-<p><span class="math display">\[V = \begin{pmatrix} y \\ q \end{pmatrix}\]</span></p>
-<p>onde <span class="math inline">\(y\)</span> é a posição e <span class="math inline">\(q\)</span> é o momento (ou derivada temporal).</p>
+<p>Para uma partícula, definimos o vetor no espaço de fase: <span class="math display">\[V = \begin{pmatrix} y \\ q \end{pmatrix}\]</span> onde <span class="math inline">\(y\)</span> é a posição e <span class="math inline">\(q\)</span> é o momento (ou derivada temporal).</p>
 <section id="matriz-simplética" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="matriz-simplética"><span class="header-section-number">2.1.1</span> Matriz Simplética</h3>
-<p>A estrutura simplética é dada pela matriz:</p>
-<p><span class="math display">\[\Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}\]</span></p>
+<p>A estrutura simplética é dada pela matriz: <span class="math display">\[\Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}\]</span></p>
 </section>
 <section id="produto-interno-simplético" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="produto-interno-simplético"><span class="header-section-number">2.1.2</span> Produto Interno Simplético</h3>
-<p>O produto interno simplético entre dois vetores <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span> é:</p>
-<p><span class="math display">\[(V_1, V_2)_\Omega = V_1^T \Omega V_2 = y_1 q_2 - y_2 q_1\]</span></p>
-<p>Este produto interno é conservado quando ambos os vetores são soluções da equação de movimento.</p>
+<p>O produto interno simplético entre dois vetores <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span> é: <span class="math display">\[(V_1, V_2)_\Omega = V_1^T \Omega V_2 = y_1 q_2 - y_2 q_1\]</span> Este produto interno é conservado quando ambos os vetores são soluções da equação de movimento.</p>
 </section>
 </section>
 <section id="decomposição-de-vetores-arbitrários" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="decomposição-de-vetores-arbitrários"><span class="header-section-number">2.2</span> Decomposição de Vetores Arbitrários</h2>
-<p>Mesmo que <span class="math inline">\(S\)</span> não seja uma solução da equação homogênea, podemos decompô-lo na base de soluções:</p>
-<p><span class="math display">\[S(x) = (V_1 \cdot S) V_2 - (V_2 \cdot S) V_1\]</span></p>
-<p>onde <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span> são soluções da equação homogênea.</p>
+<p>Mesmo que <span class="math inline">\(S\)</span> não seja uma solução da equação homogênea, podemos decompô-lo na base de soluções: <span class="math display">\[S(x) = (V_1 \cdot S) V_2 - (V_2 \cdot S) V_1\]</span> onde <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span> são soluções da equação homogênea.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -649,9 +642,7 @@ Important
 </section>
 <section id="função-de-green-para-partículas" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="função-de-green-para-partículas"><span class="header-section-number">2.3</span> Função de Green para Partículas</h2>
-<p>A função de Green avançada é construída como:</p>
-<p><span class="math display">\[U(x) = \int_{-\infty}^{x} [V_1^T(\xi) S(\xi) V_2(x) - V_2^T(\xi) S(\xi) V_1(x)] d\xi\]</span></p>
-<p>Esta construção garante que:</p>
+<p>A função de Green avançada é construída como: <span class="math display">\[U(x) = \int_{-\infty}^{x} [V_1^T(\xi) S(\xi) V_2(x) - V_2^T(\xi) S(\xi) V_1(x)] d\xi\]</span> Esta construção garante que:</p>
 <ol type="1">
 <li><span class="math inline">\(U\)</span> satisfaz a equação não-homogênea</li>
 <li><span class="math inline">\(U(-\infty) = 0\)</span> (condição de contorno no passado)</li>
@@ -675,9 +666,7 @@ Tip
 <h1 data-number="3"><span class="header-section-number">3</span> Extensão para Teoria de Campos</h1>
 <section id="o-espaço-de-funções" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="o-espaço-de-funções"><span class="header-section-number">3.1</span> O Espaço de Funções</h2>
-<p>Na teoria de campos, a função de campo é:</p>
-<p><span class="math display">\[\phi: \mathbb{R}^4 \to \mathbb{R}\]</span></p>
-<p>que associa a cada ponto do espaço-tempo um valor (escalar).</p>
+<p>Na teoria de campos, a função de campo é: <span class="math display">\[\phi: \mathbb{R}^4 \to \mathbb{R}\]</span> que associa a cada ponto do espaço-tempo um valor (escalar).</p>
 <section id="condições-iniciais" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="condições-iniciais"><span class="header-section-number">3.1.1</span> Condições Iniciais</h3>
 <p>Diferente do caso de partículas, agora precisamos especificar:</p>
@@ -705,14 +694,11 @@ Note
 <h2 data-number="3.2" class="anchored" data-anchor-id="produto-interno-para-campos"><span class="header-section-number">3.2</span> Produto Interno para Campos</h2>
 <section id="definição-geral" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="definição-geral"><span class="header-section-number">3.2.1</span> Definição Geral</h3>
-<p>Definimos o produto interno para funções de campo como:</p>
-<p><span class="math display">\[\langle f, g \rangle = \int_{\mathbb{R}^3} f^*(\mathbf{x}) g(\mathbf{x}) W(\mathbf{x}) d^3x\]</span></p>
-<p>onde <span class="math inline">\(W(\mathbf{x})\)</span> é uma função de peso.</p>
+<p>Definimos o produto interno para funções de campo como: <span class="math display">\[\langle f, g \rangle = \int_{\mathbb{R}^3} f^*(\mathbf{x}) g(\mathbf{x}) W(\mathbf{x}) d^3x\]</span> onde <span class="math inline">\(W(\mathbf{x})\)</span> é uma função de peso.</p>
 </section>
 <section id="escolha-do-peso" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="escolha-do-peso"><span class="header-section-number">3.2.2</span> Escolha do Peso</h3>
-<p>Para a geometria euclidiana e o operador laplaciano, a escolha natural é <span class="math inline">\(W(\mathbf{x}) = 1\)</span>:</p>
-<p><span class="math display">\[\langle f, g \rangle = \int_{\mathbb{R}^3} f^*(\mathbf{x}) g(\mathbf{x}) d^3x\]</span></p>
+<p>Para a geometria euclidiana e o operador laplaciano, a escolha natural é <span class="math inline">\(W(\mathbf{x}) = 1\)</span>: <span class="math display">\[\langle f, g \rangle = \int_{\mathbb{R}^3} f^*(\mathbf{x}) g(\mathbf{x}) d^3x\]</span></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -729,27 +715,18 @@ Important
 </section>
 <section id="auto-adjuntividade-do-laplaciano" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="auto-adjuntividade-do-laplaciano"><span class="header-section-number">3.2.3</span> Auto-adjuntividade do Laplaciano</h3>
-<p>O operador laplaciano é auto-adjunto no produto interno definido acima:</p>
-<p><span class="math display">\[\langle f, \nabla^2 g \rangle = \langle \nabla^2 f, g \rangle\]</span></p>
-<p>desde que as funções decaiam suficientemente rápido no infinito (condições de contorno adequadas).</p>
+<p>O operador laplaciano é auto-adjunto no produto interno definido acima: <span class="math display">\[\langle f, \nabla^2 g \rangle = \langle \nabla^2 f, g \rangle\]</span> desde que as funções decaiam suficientemente rápido no infinito (condições de contorno adequadas).</p>
 </section>
 </section>
 <section id="formalismo-simplético-para-campos" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="formalismo-simplético-para-campos"><span class="header-section-number">3.3</span> Formalismo Simplético para Campos</h2>
 <section id="vetor-de-estado-no-espaço-de-fase" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="vetor-de-estado-no-espaço-de-fase"><span class="header-section-number">3.3.1</span> Vetor de Estado no Espaço de Fase</h3>
-<p>Para campos, definimos o vetor no espaço de fase como:</p>
-<p><span class="math display">\[Q = \begin{pmatrix} \phi \\ \pi \end{pmatrix}\]</span></p>
-<p>onde <span class="math inline">\(\pi = \dot{\phi}\)</span> é o momento conjugado (ou derivada temporal).</p>
+<p>Para campos, definimos o vetor no espaço de fase como: <span class="math display">\[Q = \begin{pmatrix} \phi \\ \pi \end{pmatrix}\]</span> onde <span class="math inline">\(\pi = \dot{\phi}\)</span> é o momento conjugado (ou derivada temporal).</p>
 </section>
 <section id="produto-interno-simplético-1" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="produto-interno-simplético-1"><span class="header-section-number">3.3.2</span> Produto Interno Simplético</h3>
-<p>O produto interno simplético para campos é:</p>
-<p><span class="math display">\[(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} Q_1^\dagger \Omega Q_2 d^3x\]</span></p>
-<p>onde:</p>
-<p><span class="math display">\[\Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}\]</span></p>
-<p>Expandindo:</p>
-<p><span class="math display">\[(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x\]</span></p>
+<p>O produto interno simplético para campos é: <span class="math display">\[(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} Q_1^\dagger \Omega Q_2 d^3x\]</span> onde: <span class="math display">\[\Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}\]</span> Expandindo: <span class="math display">\[(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x\]</span></p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -769,36 +746,21 @@ Warning
 <h2 data-number="3.4" class="anchored" data-anchor-id="equação-de-onda-no-formalismo-simplético"><span class="header-section-number">3.4</span> Equação de Onda no Formalismo Simplético</h2>
 <section id="equação-de-onda" class="level3" data-number="3.4.1">
 <h3 data-number="3.4.1" class="anchored" data-anchor-id="equação-de-onda"><span class="header-section-number">3.4.1</span> Equação de Onda</h3>
-<p>A equação de onda é:</p>
-<p><span class="math display">\[\frac{\partial^2 \phi}{\partial x_0^2} = \nabla^2 \phi\]</span></p>
-<p>onde <span class="math inline">\(x_0 = ct\)</span> é a coordenada temporal em unidades de comprimento.</p>
+<p>A equação de onda é: <span class="math display">\[\frac{\partial^2 \phi}{\partial x_0^2} = \nabla^2 \phi\]</span> onde <span class="math inline">\(x_0 = ct\)</span> é a coordenada temporal em unidades de comprimento.</p>
 </section>
 <section id="decomposição-em-primeira-ordem" class="level3" data-number="3.4.2">
 <h3 data-number="3.4.2" class="anchored" data-anchor-id="decomposição-em-primeira-ordem"><span class="header-section-number">3.4.2</span> Decomposição em Primeira Ordem</h3>
-<p>Definindo <span class="math inline">\(\pi = \partial_{x_0} \phi\)</span>, podemos escrever o sistema como:</p>
-<p><span class="math display">\[\dot{\phi} = \pi\]</span> <span class="math display">\[\dot{\pi} = \nabla^2 \phi\]</span></p>
-<p>No formalismo matricial:</p>
-<p><span class="math display">\[\begin{pmatrix} \dot{\phi} \\ \dot{\pi} \end{pmatrix} = \begin{pmatrix} 0 &amp; 1 \\ -\nabla^2 &amp; 0 \end{pmatrix} \begin{pmatrix} \phi \\ \pi \end{pmatrix}\]</span></p>
+<p>Definindo <span class="math inline">\(\pi = \partial_{x_0} \phi\)</span>, podemos escrever o sistema como: <span class="math display">\[\dot{\phi} = \pi\]</span> <span class="math display">\[\dot{\pi} = \nabla^2 \phi\]</span></p>
+<p>No formalismo matricial: <span class="math display">\[\begin{pmatrix} \dot{\phi} \\ \dot{\pi} \end{pmatrix} = \begin{pmatrix} 0 &amp; 1 \\ -\nabla^2 &amp; 0 \end{pmatrix} \begin{pmatrix} \phi \\ \pi \end{pmatrix}\]</span></p>
 </section>
 <section id="matriz-hamiltoniana" class="level3" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="matriz-hamiltoniana"><span class="header-section-number">3.4.3</span> Matriz Hamiltoniana</h3>
-<p>A matriz que gera a evolução temporal é:</p>
-<p><span class="math display">\[H = \begin{pmatrix} 0 &amp; 1 \\ -\nabla^2 &amp; 0 \end{pmatrix}\]</span></p>
-<p>Esta matriz satisfaz <span class="math inline">\(H = \Omega \mathcal{H}\)</span>, onde <span class="math inline">\(\mathcal{H}\)</span> é um operador Hermitiano.</p>
+<p>A matriz que gera a evolução temporal é: <span class="math display">\[H = \begin{pmatrix} 0 &amp; 1 \\ -\nabla^2 &amp; 0 \end{pmatrix}\]</span> Esta matriz satisfaz <span class="math inline">\(H = \Omega \mathcal{H}\)</span>, onde <span class="math inline">\(\mathcal{H}\)</span> é um operador Hermitiano.</p>
 </section>
 </section>
 <section id="conservação-do-wronskiano-de-campos" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="conservação-do-wronskiano-de-campos"><span class="header-section-number">3.5</span> Conservação do Wronskiano de Campos</h2>
-<p>O Wronskiano de campos é definido como:</p>
-<p><span class="math display">\[W(\phi_1, \pi_1; \phi_2, \pi_2) = \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x\]</span></p>
-<p>Sua derivada temporal é:</p>
-<p><span class="math display">\[\frac{dW}{dx_0} = \int_{\mathbb{R}^3} [\pi_1 \pi_2 + \phi_1 \nabla^2 \phi_2 - \pi_2 \pi_1 - \phi_2 \nabla^2 \phi_1] d^3x\]</span></p>
-<p><span class="math display">\[\frac{dW}{dx_0} = \int_{\mathbb{R}^3} [\phi_1 \nabla^2 \phi_2 - \phi_2 \nabla^2 \phi_1] d^3x\]</span></p>
-<p>Usando a auto-adjuntividade do laplaciano:</p>
-<p><span class="math display">\[\int_{\mathbb{R}^3} \phi_1 \nabla^2 \phi_2 d^3x = \int_{\mathbb{R}^3} (\nabla^2 \phi_1) \phi_2 d^3x\]</span></p>
-<p>Portanto:</p>
-<p><span class="math display">\[\frac{dW}{dx_0} = 0\]</span></p>
-<p>Ou seja, o Wronskiano é conservado.</p>
+<p>O Wronskiano de campos é definido como: <span class="math display">\[W(\phi_1, \pi_1; \phi_2, \pi_2) = \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x\]</span> Sua derivada temporal é: <span class="math display">\[\frac{dW}{dx_0} = \int_{\mathbb{R}^3} [\pi_1 \pi_2 + \phi_1 \nabla^2 \phi_2 - \pi_2 \pi_1 - \phi_2 \nabla^2 \phi_1] d^3x\]</span> <span class="math display">\[\frac{dW}{dx_0} = \int_{\mathbb{R}^3} [\phi_1 \nabla^2 \phi_2 - \phi_2 \nabla^2 \phi_1] d^3x\]</span> Usando a auto-adjuntividade do laplaciano: <span class="math display">\[\int_{\mathbb{R}^3} \phi_1 \nabla^2 \phi_2 d^3x = \int_{\mathbb{R}^3} (\nabla^2 \phi_1) \phi_2 d^3x\]</span> Portanto: <span class="math display">\[\frac{dW}{dx_0} = 0\]</span> Ou seja, o Wronskiano é conservado.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -820,8 +782,7 @@ Tip
 <h2 data-number="4.1" class="anchored" data-anchor-id="base-de-ondas-planas"><span class="header-section-number">4.1</span> Base de Ondas Planas</h2>
 <section id="definição" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="definição"><span class="header-section-number">4.1.1</span> Definição</h3>
-<p>As ondas planas formam uma base completa para o espaço de funções em <span class="math inline">\(\mathbb{R}^3\)</span>:</p>
-<p><span class="math display">\[\psi_{\mathbf{k}}(\mathbf{x}) = \frac{e^{i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}}\]</span></p>
+<p>As ondas planas formam uma base completa para o espaço de funções em <span class="math inline">\(\mathbb{R}^3\)</span>: <span class="math display">\[\psi_{\mathbf{k}}(\mathbf{x}) = \frac{e^{i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}}\]</span></p>
 </section>
 <section id="relação-de-ortogonalidade" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="relação-de-ortogonalidade"><span class="header-section-number">4.1.2</span> Relação de Ortogonalidade</h3>
@@ -836,10 +797,7 @@ Tip
 <h2 data-number="4.2" class="anchored" data-anchor-id="decomposição-de-fourier"><span class="header-section-number">4.2</span> Decomposição de Fourier</h2>
 <section id="transformada-de-fourier" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="transformada-de-fourier"><span class="header-section-number">4.2.1</span> Transformada de Fourier</h3>
-<p>Qualquer função (suave) pode ser decomposta como:</p>
-<p><span class="math display">\[f(\mathbf{x}) = \int_{\mathbb{R}^3} \tilde{f}(\mathbf{k}) \frac{e^{i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}} d^3k\]</span></p>
-<p>onde:</p>
-<p><span class="math display">\[\tilde{f}(\mathbf{k}) = \int_{\mathbb{R}^3} f(\mathbf{x}) \frac{e^{-i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}} d^3x\]</span></p>
+<p>Qualquer função (suave) pode ser decomposta como: <span class="math display">\[f(\mathbf{x}) = \int_{\mathbb{R}^3} \tilde{f}(\mathbf{k}) \frac{e^{i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}} d^3k\]</span> onde: <span class="math display">\[\tilde{f}(\mathbf{k}) = \int_{\mathbb{R}^3} f(\mathbf{x}) \frac{e^{-i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}} d^3x\]</span></p>
 </section>
 <section id="propriedades-da-base-de-ondas-planas" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="propriedades-da-base-de-ondas-planas"><span class="header-section-number">4.2.2</span> Propriedades da Base de Ondas Planas</h3>
@@ -854,39 +812,26 @@ Tip
 <h2 data-number="4.3" class="anchored" data-anchor-id="soluções-modais"><span class="header-section-number">4.3</span> Soluções Modais</h2>
 <section id="separação-de-variáveis" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="separação-de-variáveis"><span class="header-section-number">4.3.1</span> Separação de Variáveis</h3>
-<p>Procuramos soluções da forma:</p>
-<p><span class="math display">\[\phi(x_0, \mathbf{x}) = T(x_0) \psi_{\mathbf{k}}(\mathbf{x})\]</span></p>
-<p>Substituindo na equação de onda:</p>
-<p><span class="math display">\[\ddot{T}(x_0) \psi_{\mathbf{k}}(\mathbf{x}) = T(x_0) \nabla^2 \psi_{\mathbf{k}}(\mathbf{x})\]</span></p>
-<p><span class="math display">\[\frac{\ddot{T}(x_0)}{T(x_0)} = \frac{\nabla^2 \psi_{\mathbf{k}}(\mathbf{x})}{\psi_{\mathbf{k}}(\mathbf{x})} = -k^2\]</span></p>
+<p>Procuramos soluções da forma: <span class="math display">\[\phi(x_0, \mathbf{x}) = T(x_0) \psi_{\mathbf{k}}(\mathbf{x})\]</span> Substituindo na equação de onda: <span class="math display">\[\ddot{T}(x_0) \psi_{\mathbf{k}}(\mathbf{x}) = T(x_0) \nabla^2 \psi_{\mathbf{k}}(\mathbf{x})\]</span> <span class="math display">\[\frac{\ddot{T}(x_0)}{T(x_0)} = \frac{\nabla^2 \psi_{\mathbf{k}}(\mathbf{x})}{\psi_{\mathbf{k}}(\mathbf{x})} = -k^2\]</span></p>
 </section>
 <section id="soluções-temporais" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="soluções-temporais"><span class="header-section-number">4.3.2</span> Soluções Temporais</h3>
-<p>Para cada <span class="math inline">\(\mathbf{k}\)</span>, obtemos a equação do oscilador harmônico:</p>
-<p><span class="math display">\[\ddot{T}(x_0) + k^2 T(x_0) = 0\]</span></p>
-<p>As soluções são:</p>
-<p><span class="math display">\[T(x_0) = A e^{-i\omega_k x_0} + B e^{i\omega_k x_0}\]</span></p>
-<p>onde <span class="math inline">\(\omega_k = |\mathbf{k}|\)</span> (no sistema de unidades onde <span class="math inline">\(c=1\)</span>).</p>
+<p>Para cada <span class="math inline">\(\mathbf{k}\)</span>, obtemos a equação do oscilador harmônico: <span class="math display">\[\ddot{T}(x_0) + k^2 T(x_0) = 0\]</span> As soluções são: <span class="math display">\[T(x_0) = A e^{-i\omega_k x_0} + B e^{i\omega_k x_0}\]</span> onde <span class="math inline">\(\omega_k = |\mathbf{k}|\)</span> (no sistema de unidades onde <span class="math inline">\(c=1\)</span>).</p>
 </section>
 <section id="soluções-de-onda-plana" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="soluções-de-onda-plana"><span class="header-section-number">4.3.3</span> Soluções de Onda Plana</h3>
-<p>Portanto, as soluções modais são:</p>
-<p><span class="math display">\[\phi_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{i(\mathbf{k}\cdot\mathbf{x} - \omega_k x_0)}\]</span></p>
-<p><span class="math display">\[\phi_{\mathbf{k}}^*(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{-i(\mathbf{k}\cdot\mathbf{x} - \omega_k x_0)}\]</span></p>
+<p>Portanto, as soluções modais são: <span class="math display">\[\phi_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{i(\mathbf{k}\cdot\mathbf{x} - \omega_k x_0)}\]</span> <span class="math display">\[\phi_{\mathbf{k}}^*(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{-i(\mathbf{k}\cdot\mathbf{x} - \omega_k x_0)}\]</span></p>
 </section>
 </section>
 <section id="formalismo-simplético-para-ondas-planas" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="formalismo-simplético-para-ondas-planas"><span class="header-section-number">4.4</span> Formalismo Simplético para Ondas Planas</h2>
 <section id="base-simplética" class="level3" data-number="4.4.1">
 <h3 data-number="4.4.1" class="anchored" data-anchor-id="base-simplética"><span class="header-section-number">4.4.1</span> Base Simplética</h3>
-<p>Definimos a base de ondas planas no espaço de fase:</p>
-<p><span class="math display">\[Q_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{\sqrt{2}} \begin{pmatrix} \phi_{\mathbf{k}} \\ -i\omega_k \phi_{\mathbf{k}} \end{pmatrix}\]</span></p>
+<p>Definimos a base de ondas planas no espaço de fase: <span class="math display">\[Q_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{\sqrt{2}} \begin{pmatrix} \phi_{\mathbf{k}} \\ -i\omega_k \phi_{\mathbf{k}} \end{pmatrix}\]</span></p>
 </section>
 <section id="produto-interno-dos-modos" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="produto-interno-dos-modos"><span class="header-section-number">4.4.2</span> Produto Interno dos Modos</h3>
-<p>Calculamos o produto interno simplético entre dois modos:</p>
-<p><span class="math display">\[(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega = -i \int_{\mathbb{R}^3} Q_{\mathbf{k}}^\dagger \Omega Q_{\mathbf{k}'} d^3x\]</span></p>
-<p><span class="math display">\[= \delta^{(3)}(\mathbf{k} - \mathbf{k}')\]</span></p>
+<p>Calculamos o produto interno simplético entre dois modos: <span class="math display">\[(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega = -i \int_{\mathbb{R}^3} Q_{\mathbf{k}}^\dagger \Omega Q_{\mathbf{k}'} d^3x\]</span> <span class="math display">\[= \delta^{(3)}(\mathbf{k} - \mathbf{k}')\]</span></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -903,10 +848,7 @@ Important
 </section>
 <section id="decomposição-do-campo" class="level3" data-number="4.4.3">
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="decomposição-do-campo"><span class="header-section-number">4.4.3</span> Decomposição do Campo</h3>
-<p>Qualquer campo pode ser decomposto como:</p>
-<p><span class="math display">\[Q(x_0, \mathbf{x}) = \int_{\mathbb{R}^3} [a_{\mathbf{k}} Q_{\mathbf{k}}(x_0, \mathbf{x}) + a_{\mathbf{k}}^* Q_{\mathbf{k}}^*(x_0, \mathbf{x})] d^3k\]</span></p>
-<p>Os coeficientes são obtidos por:</p>
-<p><span class="math display">\[a_{\mathbf{k}} = (Q_{\mathbf{k}}, Q)_\Omega\]</span></p>
+<p>Qualquer campo pode ser decomposto como: <span class="math display">\[Q(x_0, \mathbf{x}) = \int_{\mathbb{R}^3} [a_{\mathbf{k}} Q_{\mathbf{k}}(x_0, \mathbf{x}) + a_{\mathbf{k}}^* Q_{\mathbf{k}}^*(x_0, \mathbf{x})] d^3k\]</span> Os coeficientes são obtidos por: <span class="math display">\[a_{\mathbf{k}} = (Q_{\mathbf{k}}, Q)_\Omega\]</span></p>
 </section>
 </section>
 </section>
@@ -921,16 +863,14 @@ Important
 </section>
 <section id="simplificação" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="simplificação"><span class="header-section-number">5.1.2</span> Simplificação</h3>
-<p>Esta expressão pode ser simplificada para:</p>
-<p><span class="math display">\[G(x, x') = \Theta(x_0 - x_0') \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^3} \frac{1}{\omega_k} \sin[\omega_k(x_0 - x_0')] e^{i\mathbf{k}\cdot(\mathbf{x} - \mathbf{x}')}\]</span></p>
+<p>Esta expressão pode ser simplificada para: <span class="math display">\[G(x, x') = \Theta(x_0 - x_0') \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^3} \frac{1}{\omega_k} \sin[\omega_k(x_0 - x_0')] e^{i\mathbf{k}\cdot(\mathbf{x} - \mathbf{x}')}\]</span></p>
 </section>
 </section>
 <section id="propriedades-do-propagador" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="propriedades-do-propagador"><span class="header-section-number">5.2</span> Propriedades do Propagador</h2>
 <section id="equação-diferencial" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="equação-diferencial"><span class="header-section-number">5.2.1</span> Equação Diferencial</h3>
-<p>O propagador satisfaz:</p>
-<p><span class="math display">\[(\partial_{x_0}^2 - \nabla^2) G(x, x') = \delta^{(4)}(x - x')\]</span></p>
+<p>O propagador satisfaz: <span class="math display">\[(\partial_{x_0}^2 - \nabla^2) G(x, x') = \delta^{(4)}(x - x')\]</span></p>
 </section>
 <section id="condições-de-contorno" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="condições-de-contorno"><span class="header-section-number">5.2.2</span> Condições de Contorno</h3>
@@ -959,6 +899,8 @@ Warning
 <section id="visualização-de-ondas-planas" class="level2 page-columns page-full" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="visualização-de-ondas-planas"><span class="header-section-number">6.1</span> Visualização de Ondas Planas</h2>
 <div id="cell-fig-ondas-planas" class="cell page-columns page-full" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.animation <span class="im">import</span> FuncAnimation</span>
@@ -1002,6 +944,7 @@ Warning
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>anim <span class="op">=</span> FuncAnimation(fig, animate, frames<span class="op">=</span><span class="bu">len</span>(t), interval<span class="op">=</span><span class="dv">50</span>, blit<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>plt.close()</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>HTML(anim.to_html5_video())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div id="fig-ondas-planas" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored page-columns page-full" data-execution_count="1">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
 <div aria-describedby="fig-ondas-planas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -4814,6 +4757,8 @@ Figure&nbsp;1: Visualização de ondas planas em 1D
 <section id="superposição-de-ondas" class="level2 page-columns page-full" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="superposição-de-ondas"><span class="header-section-number">6.2</span> Superposição de Ondas</h2>
 <div id="cell-fig-superposicao" class="cell page-columns page-full" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4854,6 +4799,7 @@ Figure&nbsp;1: Visualização de ondas planas em 1D
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display page-columns page-full">
 <div id="fig-superposicao" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">
@@ -4871,6 +4817,8 @@ Figure&nbsp;2: Superposição de ondas planas (pacote de ondas)
 <section id="visualização-do-propagador" class="level2 page-columns page-full" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="visualização-do-propagador"><span class="header-section-number">6.3</span> Visualização do Propagador</h2>
 <div id="cell-fig-propagador" class="cell page-columns page-full" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4897,6 +4845,7 @@ Figure&nbsp;2: Superposição de ondas planas (pacote de ondas)
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>ax.axhline(y<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"-"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>ax.axvline(x<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"-"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display page-columns page-full">
 <div id="fig-propagador" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
 <figure class="quarto-float quarto-float-fig figure page-columns page-full">

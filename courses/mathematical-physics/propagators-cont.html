@@ -538,19 +538,12 @@ window.Quarto = {
 <h1 data-number="2"><span class="header-section-number">2</span> Formulação Simplética</h1>
 <section id="estrutura-da-equação" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="estrutura-da-equação"><span class="header-section-number">2.1</span> Estrutura da Equação</h2>
-<p>Consideramos uma equação de segunda ordem na forma:</p>
-<p><span class="math display">\[ y'' + p_1(x) y' + p_0(x) y = 0 \]</span></p>
-<p>que pode ser reescrita no espaço de fase como:</p>
-<p><span class="math display">\[ \begin{pmatrix} y' \\ q' \end{pmatrix} = \begin{pmatrix} 0 &amp; 1/m \\ -m\Omega^2 &amp; 0 \end{pmatrix} \begin{pmatrix} y \\ q \end{pmatrix} \]</span></p>
-<p>onde <span class="math inline">\(q = m y'\)</span> é o momento canônico.</p>
-<p>Definimos o vetor de estado:</p>
-<p><span class="math display">\[ V = \begin{pmatrix} y \\ q \end{pmatrix} \]</span></p>
+<p>Consideramos uma equação de segunda ordem na forma: <span class="math display">\[ y'' + p_1(x) y' + p_0(x) y = 0 \]</span> que pode ser reescrita no espaço de fase como: <span class="math display">\[ \begin{pmatrix} y' \\ q' \end{pmatrix} = \begin{pmatrix} 0 &amp; 1/m \\ -m\Omega^2 &amp; 0 \end{pmatrix} \begin{pmatrix} y \\ q \end{pmatrix} \]</span> onde <span class="math inline">\(q = m y'\)</span> é o momento canônico.</p>
+<p>Definimos o vetor de estado: <span class="math display">\[ V = \begin{pmatrix} y \\ q \end{pmatrix} \]</span></p>
 </section>
 <section id="matriz-simplética" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="matriz-simplética"><span class="header-section-number">2.2</span> Matriz Simplética</h2>
-<p>A estrutura simplética é codificada pela matriz:</p>
-<p><span class="math display">\[ \Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix} \]</span></p>
-<p>Esta matriz é antissimétrica (<span class="math inline">\(\Omega^T = -\Omega\)</span>) e desempenha um papel fundamental na definição do Wronskiano conservado.</p>
+<p>A estrutura simplética é codificada pela matriz: <span class="math display">\[ \Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix} \]</span> Esta matriz é antissimétrica (<span class="math inline">\(\Omega^T = -\Omega\)</span>) e desempenha um papel fundamental na definição do Wronskiano conservado.</p>
 <div class="note">
 <p>O Wronskiano de duas soluções <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span> é dado por:</p>
 <p><span class="math display">\[ W(V_1, V_2) = V_1^T \Omega V_2 \]</span></p>
@@ -559,43 +552,29 @@ window.Quarto = {
 </section>
 <section id="hamiltonianos-e-propriedades" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="hamiltonianos-e-propriedades"><span class="header-section-number">2.3</span> Hamiltonianos e Propriedades</h2>
-<p>O Hamiltoniano associado é:</p>
-<p><span class="math display">\[ H = \begin{pmatrix} m\Omega^2 &amp; 0 \\ 0 &amp; 1/m \end{pmatrix} \]</span></p>
-<p>A equação de movimento pode ser escrita como:</p>
-<p><span class="math display">\[ V' = \Omega H V \]</span></p>
+<p>O Hamiltoniano associado é: <span class="math display">\[ H = \begin{pmatrix} m\Omega^2 &amp; 0 \\ 0 &amp; 1/m \end{pmatrix} \]</span> A equação de movimento pode ser escrita como: <span class="math display">\[ V' = \Omega H V \]</span></p>
 </section>
 </section>
 <section id="soluções-linearmente-independentes" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Soluções Linearmente Independentes</h1>
 <section id="base-no-espaço-de-soluções" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="base-no-espaço-de-soluções"><span class="header-section-number">3.1</span> Base no Espaço de Soluções</h2>
-<p>Para duas soluções linearmente independentes <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span>, temos:</p>
-<p><span class="math display">\[ V_1^T \Omega V_2 = \text{constante} \]</span></p>
-<p>Podemos normalizar convenientemente:</p>
-<p><span class="math display">\[ V_1^T \Omega V_2 = \frac{1}{2} \]</span></p>
+<p>Para duas soluções linearmente independentes <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span>, temos: <span class="math display">\[ V_1^T \Omega V_2 = \text{constante} \]</span> Podemos normalizar convenientemente: <span class="math display">\[ V_1^T \Omega V_2 = \frac{1}{2} \]</span></p>
 </section>
 <section id="solução-geral" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="solução-geral"><span class="header-section-number">3.2</span> Solução Geral</h2>
-<p>Qualquer solução <span class="math inline">\(U\)</span> pode ser escrita como combinação linear:</p>
-<p><span class="math display">\[ U = \alpha_1 V_1 + \alpha_2 V_2 \]</span></p>
-<p>Os coeficientes <span class="math inline">\(\alpha_i\)</span> são constantes e podem ser obtidos via:</p>
-<p><span class="math display">\[ \alpha_1 = 2 (V_1^T \Omega U), \quad \alpha_2 = -2 (V_2^T \Omega U) \]</span></p>
+<p>Qualquer solução <span class="math inline">\(U\)</span> pode ser escrita como combinação linear: <span class="math display">\[ U = \alpha_1 V_1 + \alpha_2 V_2 \]</span> Os coeficientes <span class="math inline">\(\alpha_i\)</span> são constantes e podem ser obtidos via: <span class="math display">\[ \alpha_1 = 2 (V_1^T \Omega U), \quad \alpha_2 = -2 (V_2^T \Omega U) \]</span></p>
 </section>
 </section>
 <section id="complexificação-do-espaço-de-soluções" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Complexificação do Espaço de Soluções</h1>
 <section id="construção-da-solução-complexa" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="construção-da-solução-complexa"><span class="header-section-number">4.1</span> Construção da Solução Complexa</h2>
-<p>Definimos a solução complexificada:</p>
-<p><span class="math display">\[ V = V_1 + i V_2 \]</span></p>
-<p>Esta solução satisfaz a mesma equação diferencial no espaço complexo:</p>
-<p><span class="math display">\[ V' = \Omega H V \]</span></p>
+<p>Definimos a solução complexificada: <span class="math display">\[ V = V_1 + i V_2 \]</span> Esta solução satisfaz a mesma equação diferencial no espaço complexo: <span class="math display">\[ V' = \Omega H V \]</span></p>
 </section>
 <section id="produto-simplético-hermitiano" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="produto-simplético-hermitiano"><span class="header-section-number">4.2</span> Produto Simplético Hermitiano</h2>
-<p>Introduzimos o produto:</p>
-<p><span class="math display">\[ \langle V, U \rangle = -i V^\dagger \Omega U \]</span></p>
-<p>onde <span class="math inline">\(V^\dagger = (V^*)^T\)</span> é o conjugado Hermitiano.</p>
+<p>Introduzimos o produto: <span class="math display">\[ \langle V, U \rangle = -i V^\dagger \Omega U \]</span> onde <span class="math inline">\(V^\dagger = (V^*)^T\)</span> é o conjugado Hermitiano.</p>
 <div class="important">
 <p>Para soluções com normalização <span class="math inline">\(V_1^T\Omega V_2 = 1/2\)</span>, temos:</p>
 <p><span class="math display">\[ \langle V, V \rangle = 1 \]</span></p>
@@ -617,17 +596,11 @@ window.Quarto = {
 <h1 data-number="5"><span class="header-section-number">5</span> Propagação no Tempo</h1>
 <section id="função-de-green-solução-futura" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="função-de-green-solução-futura"><span class="header-section-number">5.1</span> Função de Green (Solução Futura)</h2>
-<p>Consideramos uma solução com interação instantânea em <span class="math inline">\(x_0\)</span>:</p>
-<p><span class="math display">\[ U(x) = \Theta(x - x_0) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] \]</span></p>
-<p>onde <span class="math inline">\(V\)</span> é a solução complexa. Esta solução satisfaz:</p>
-<p><span class="math display">\[ U' - \Omega H U = \delta(x - x_0) U_0 \]</span></p>
+<p>Consideramos uma solução com interação instantânea em <span class="math inline">\(x_0\)</span>: <span class="math display">\[ U(x) = \Theta(x - x_0) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] \]</span> onde <span class="math inline">\(V\)</span> é a solução complexa. Esta solução satisfaz: <span class="math display">\[ U' - \Omega H U = \delta(x - x_0) U_0 \]</span></p>
 </section>
 <section id="solução-passada-avançada" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="solução-passada-avançada"><span class="header-section-number">5.2</span> Solução Passada (Avançada)</h2>
-<p>A solução que propaga informações do futuro para o passado é:</p>
-<p><span class="math display">\[ U(x) = \Theta(x_0 - x) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] \]</span></p>
-<p>satisfazendo:</p>
-<p><span class="math display">\[ U' - \Omega H U = -\delta(x - x_0) U_0 \]</span></p>
+<p>A solução que propaga informações do futuro para o passado é: <span class="math display">\[ U(x) = \Theta(x_0 - x) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] \]</span> satisfazendo: <span class="math display">\[ U' - \Omega H U = -\delta(x - x_0) U_0 \]</span></p>
 <div class="note">
 <p>A diferença de sinal entre as soluções futura e passada é fundamental para a construção de propagadores em teoria quântica de campos.</p>
 </div>
@@ -637,15 +610,11 @@ window.Quarto = {
 <h1 data-number="6"><span class="header-section-number">6</span> Simetria de Reversão Temporal</h1>
 <section id="transformação-das-componentes" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="transformação-das-componentes"><span class="header-section-number">6.1</span> Transformação das Componentes</h2>
-<p>Sob reversão temporal <span class="math inline">\(x \to -x\)</span>, o vetor <span class="math inline">\(V\)</span> se transforma como:</p>
-<p><span class="math display">\[ V_R(x_R) = T V(x) \]</span></p>
-<p>com:</p>
-<p><span class="math display">\[ T = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \]</span></p>
+<p>Sob reversão temporal <span class="math inline">\(x \to -x\)</span>, o vetor <span class="math inline">\(V\)</span> se transforma como: <span class="math display">\[ V_R(x_R) = T V(x) \]</span> com: <span class="math display">\[ T = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} \]</span></p>
 </section>
 <section id="comportamento-da-equação" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="comportamento-da-equação"><span class="header-section-number">6.2</span> Comportamento da Equação</h2>
-<p>A equação de movimento é invariante sob reversão temporal se:</p>
-<p><span class="math display">\[ T H(x) T = H(-x) \]</span></p>
+<p>A equação de movimento é invariante sob reversão temporal se: <span class="math display">\[ T H(x) T = H(-x) \]</span></p>
 <div class="important">
 <p>A invariância por reversão temporal leva à relação entre soluções futuras e passadas, fundamental para a construção de operadores de criação e aniquilação.</p>
 </div>
@@ -655,7 +624,9 @@ window.Quarto = {
 <h1 data-number="7"><span class="header-section-number">7</span> Visualização Computacional</h1>
 <section id="propagador-do-oscilador-harmônico" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="propagador-do-oscilador-harmônico"><span class="header-section-number">7.1</span> Propagador do Oscilador Harmônico</h2>
-<div id="9116b4e4" class="cell" data-execution_count="1">
+<div id="906eaa94" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> solve_ivp</span>
@@ -689,6 +660,7 @@ window.Quarto = {
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -700,7 +672,9 @@ window.Quarto = {
 </section>
 <section id="propagadores-futuro-e-passado" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="propagadores-futuro-e-passado"><span class="header-section-number">7.2</span> Propagadores Futuro e Passado</h2>
-<div id="49b05c7f" class="cell" data-execution_count="2">
+<div id="520a2d42" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulação de um pulso instantâneo (função de Green)</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> green_function_solution(t, t0<span class="op">=</span><span class="fl">3.0</span>, amplitude<span class="op">=</span><span class="fl">1.0</span>, omega<span class="op">=</span><span class="fl">1.0</span>):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Solução futura (causal) com pulso em t0"""</span></span>
@@ -740,6 +714,7 @@ window.Quarto = {
 <span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
