@@ -213,7 +213,7 @@ Assim, o fator de normalização $1/\sqrt{2\pi}\sigma$ está correto.
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(-5, 5, 500)
+x = np.linspace(-2, 2, 500)
 sigmas = [1.0, 0.5, 0.2, 0.05]
 
 plt.figure(figsize=(8, 5))
@@ -227,3 +227,4 @@ plt.title("Sequência Delta Gaussiana")
 plt.legend()
 plt.grid(True)
 plt.show()
+```

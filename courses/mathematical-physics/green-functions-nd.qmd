@@ -1,5 +1,5 @@
 ---
-title: "Aula 8: Funções de Green em 2D e ND"
+title: "Funções de Green em 2D e ND"
 author: "Notas de Aula"
 date: "2026-06-29"
 format:

@@ -1,5 +1,5 @@
 ---
-title: "Aula 04 - Funções de Green em Teoria de Campos"
+title: "Funções de Green em Teoria de Campos"
 format:
   html:
     theme: cosmo
