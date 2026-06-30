@@ -409,7 +409,7 @@ c) Qual é a constante $W_0$?
 Para a equação de Helmholtz em 1D:
 
 $$
-(\frac{d^2}{dx^2} + k^2)G(x, x') = -\delta(x - x')
+\left(\frac{d^2}{dx^2} + k^2\right)G(x, x') = -\delta(x - x')
 $$
 
 a) Mostre que $G(x, x') = \frac{i}{2k}e^{ik|x-x'|}$ é uma solução.
