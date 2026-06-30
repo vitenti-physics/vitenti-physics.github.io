@@ -97,7 +97,7 @@ $$ \langle V, V \rangle = 1 $$
 O espaço complexificado $C^2$ se decompõe em dois subespaços:
 
 - **Norma positiva**: $\langle V, V \rangle = 1$
-- **Norma negativa**: $\langle V, V \rangle = -1$
+- **Norma negativa**: $\langle V^*, V^* \rangle = -1$
 
 ::: {.warning}
 Esta estrutura é análoga à que aparece na mecânica quântica relativística, onde soluções de energia positiva e negativa correspondem a partículas e antipartículas.
@@ -257,7 +257,7 @@ plt.show()
    (b) Calcule $\langle V, V \rangle = -iV^\dagger\Omega V$ e mostre que é igual a 1.
 
 4. **Norma Negativa**  
-   (a) Considere $\tilde{V} = iV$. Calcule $\langle \tilde{V}, \tilde{V} \rangle$.  
+   (a) Considere $\tilde{V} = V^*$. Calcule $\langle \tilde{V}, \tilde{V} \rangle$.  
    (b) Interprete fisicamente este resultado.
 
 5. **Propagador Futuro (Essencial)**  
@@ -297,9 +297,3 @@ plt.show()
 12. **Conexão com Mecânica Quântica**  
     (a) Identifique o análogo do comutador $[x,p]$ no formalismo simplético.  
     (b) Mostre como a estrutura de norma positiva/negativa leva à quantização.
-
-# Referências
-
-- Notas de aula sobre a delta de Dirac (material anterior)
-- Mecânica Clássica Avançada - Capítulos sobre estrutura simplética
-- Teoria Quântica de Campos - Propriedades de propagadores
