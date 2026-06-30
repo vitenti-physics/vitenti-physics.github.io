@@ -342,26 +342,6 @@ $$
 Se a dimensão do espaço fosse diferente de 3, a força entre cargas pontuais seguiria uma lei diferente da lei de Coulomb! Isto mostra que a lei do inverso do quadrado é uma consequência direta da geometria tridimensional do espaço.
 :::
 
-## Topologia do Universo
-
-Medidas precisas da lei de Coulomb podem revelar a dimensão e topologia do espaço:
-
-- **Dimensão exata**: Se a força variasse como $1/r^{2+\epsilon}$, indicaria dimensões fracionárias ou dimensões extras
-- **Topologia não-trivial**: Em universos com topologia de toro, poderíamos observar múltiplas imagens de uma mesma fonte
-
-## Teoria das Cordas
-
-Em teoria de cordas, dimensões extras podem ser "compactificadas" (enroladas em escalas muito pequenas). Nesse caso:
-
-1. Em distâncias grandes (> escala de compactificação): 3D efetivo
-2. Em distâncias pequenas (< escala de compactificação): $N$D efetivo
-
-A lei de Coulomb seria modificada em distâncias muito pequenas, fornecendo um teste experimental para dimensões extras.
-
-::: {.callout-note}
-A regularização dimensional utilizada em física de partículas é análoga à técnica de Frobenius para raízes repetidas. Em ambos os casos, tratamos dimensões não-inteiras como um artifício matemático para obter resultados finitos.
-:::
-
 # Visualizações Computacionais
 
 ```{python}
@@ -588,27 +568,7 @@ $$
 
 **d)** Como a regularização dimensional se relaciona com a detecção de dimensões extras?
 
-## Exercício 8: Topologia do Universo
-
-**a)** O que são "círculos no céu" e como se relacionam com a topologia do universo?
-
-**b)** Por que a topologia do universo é difícil de determinar experimentalmente?
-
-**c)** Qual é a relação entre topologia e funções de Green?
-
-**d)** Como a função de Green mudaria em um universo com topologia de toro?
-
-## Exercício 9: Regularização Dimensional
-
-**a)** Explique o que é regularização dimensional em física de partículas.
-
-**b)** Como ela se relaciona com o método de Frobenius usado na aula?
-
-**c)** Por que a regularização dimensional funciona mesmo com dimensões não-inteiras?
-
-**d)** Dê um exemplo de como a regularização dimensional é usada para calcular integrais divergentes.
-
-## Exercício 10: Implementação Numérica
+## Exercício 8: Implementação Numérica
 
 **a)** Escreva um código Python que calcule numericamente o laplaciano da função de Green regularizada.
 
@@ -618,7 +578,7 @@ $$
 
 **d)** Como a escolha do método de integração numérica afeta a precisão do resultado?
 
-## Exercício 11: Conexão com Eletromagnetismo
+## Exercício 9: Conexão com Eletromagnetismo
 
 **a)** Como a função de Green 3D se relaciona com o potencial eletrostático?
 
@@ -628,7 +588,7 @@ $$
 
 **d)** Como a lei de Gauss se generaliza para dimensões arbitrárias?
 
-## Exercício 12: Caso 1D Detalhado
+## Exercício 10: Caso 1D Detalhado
 
 **a)** Mostre que em 1D, $G(x) = |x|/2$ satisfaz $G''(x) = \delta(x)$.
 
@@ -638,7 +598,7 @@ $$
 
 **d)** Por que em 1D o potencial não decai com a distância?
 
-## Exercício 13: Método de Frobenius
+## Exercício 11: Método de Frobenius
 
 **a)** Explique o método de Frobenius para equações diferenciais com raízes repetidas.
 
@@ -648,17 +608,7 @@ $$
 
 **d)** Compare com a regularização dimensional para obter o mesmo resultado.
 
-## Exercício 14: Espaços Curvos
-
-**a)** Como a função de Synge se generaliza para espaços curvos?
-
-**b)** Qual é a equação que a função de Green satisfaz em um espaço curvo?
-
-**c)** Como a curvatura afeta a função de Green?
-
-**d)** Por que a função de Synge é importante em relatividade geral?
-
-## Exercício 15: Aplicações Práticas
+## Exercício 12: Aplicações Práticas
 
 **a)** Em que áreas da física as funções de Green em diferentes dimensões são utilizadas?
 
