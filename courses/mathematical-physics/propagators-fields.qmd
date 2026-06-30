@@ -541,7 +541,7 @@ $$Q(x_0,\mathbf{x}) = \int [a_{\mathbf{k}} Q_{\mathbf{k}} + a_{\mathbf{k}}^* Q_{
 
 **a)** Como o formalismo se estende para campos vetoriais (como o eletromagnetismo)?
 
-**b)** Discuta as dificuldades de estender o formalismo para espaços curvos.
+**b)** Discuta as dificuldades de estender o formalismo para campos com interações não-lineares.
 
 **c)** O que muda se o campo for complexo em vez de real?
 

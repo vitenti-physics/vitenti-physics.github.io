@@ -26,7 +26,7 @@ Os principais objetivos são:
 6. **Interpretar** fisicamente os resultados (lei de Coulomb, dimensões do espaço)
 
 ::: {.callout-note}
-A abordagem adotada é puramente geométrica, utilizando apenas a métrica do espaço para construir as funções de Green. Isso permite uma generalização natural para espaços curvos e dimensões arbitrárias.
+A abordagem adotada é puramente geométrica, utilizando apenas a distância euclidiana entre pontos para construir as funções de Green. Isso permite uma generalização natural para dimensões arbitrárias.
 :::
 
 # Conceitos Fundamentais
@@ -57,7 +57,7 @@ Esta função é importante porque:
 
 1. **É um escalar** construído apenas a partir da geometria
 2. **É independente da origem** do sistema de coordenadas
-3. **Generaliza** para espaços curvos (relatividade geral)
+3. **Vale em qualquer dimensão** $N$, sem exigir uma decomposição em funções de base
 
 ::: {.callout-important}
 **Propriedades fundamentais do gradiente:**
@@ -499,11 +499,11 @@ $$
 \nabla^2 \sigma = N
 $$
 
-**b)** Calcule $\nabla_\mu \sigma \nabla^\mu \sigma$ em notação tensorial.
+**b)** Calcule $\nabla\sigma \cdot \nabla\sigma$ explicitamente.
 
 **c)** Mostre que $\sigma$ é independente da origem do sistema de coordenadas.
 
-**d)** Qual é a importância da função de Synge em relatividade geral?
+**d)** Por que escrever a função de Green em termos de $\sigma$ evita a necessidade de decompor $G$ em funções de base, ao contrário do método usado nas aulas anteriores?
 
 ## Exercício 2: Lei de Potência **(Essencial)**
 
