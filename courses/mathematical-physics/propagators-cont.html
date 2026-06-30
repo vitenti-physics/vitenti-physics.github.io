@@ -489,7 +489,6 @@ window.Quarto = {
   <li><a href="#propriedades-de-transformação" id="toc-propriedades-de-transformação" class="nav-link" data-scroll-target="#propriedades-de-transformação"><span class="header-section-number">9.3</span> Propriedades de Transformação</a></li>
   <li><a href="#aplicações-e-generalizações" id="toc-aplicações-e-generalizações" class="nav-link" data-scroll-target="#aplicações-e-generalizações"><span class="header-section-number">9.4</span> Aplicações e Generalizações</a></li>
   </ul></li>
-  <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências"><span class="header-section-number">10</span> Referências</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="propagators-cont.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -585,7 +584,7 @@ window.Quarto = {
 <p>O espaço complexificado <span class="math inline">\(C^2\)</span> se decompõe em dois subespaços:</p>
 <ul>
 <li><strong>Norma positiva</strong>: <span class="math inline">\(\langle V, V \rangle = 1\)</span></li>
-<li><strong>Norma negativa</strong>: <span class="math inline">\(\langle V, V \rangle = -1\)</span></li>
+<li><strong>Norma negativa</strong>: <span class="math inline">\(\langle V^*, V^* \rangle = -1\)</span></li>
 </ul>
 <div class="warning">
 <p>Esta estrutura é análoga à que aparece na mecânica quântica relativística, onde soluções de energia positiva e negativa correspondem a partículas e antipartículas.</p>
@@ -624,7 +623,7 @@ window.Quarto = {
 <h1 data-number="7"><span class="header-section-number">7</span> Visualização Computacional</h1>
 <section id="propagador-do-oscilador-harmônico" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="propagador-do-oscilador-harmônico"><span class="header-section-number">7.1</span> Propagador do Oscilador Harmônico</h2>
-<div id="5dc98bf0" class="cell" data-execution_count="1">
+<div id="e3a0d2ea" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -672,7 +671,7 @@ window.Quarto = {
 </section>
 <section id="propagadores-futuro-e-passado" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="propagadores-futuro-e-passado"><span class="header-section-number">7.2</span> Propagadores Futuro e Passado</h2>
-<div id="b4837b1a" class="cell" data-execution_count="2">
+<div id="0a32c233" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulação de um pulso instantâneo (função de Green)</span></span>
@@ -804,7 +803,7 @@ window.Quarto = {
 </ol></li>
 <li><strong>Norma Negativa</strong>
 <ol type="a">
-<li>Considere <span class="math inline">\(\tilde{V} = iV\)</span>. Calcule <span class="math inline">\(\langle \tilde{V}, \tilde{V} \rangle\)</span>.<br>
+<li>Considere <span class="math inline">\(\tilde{V} = V^*\)</span>. Calcule <span class="math inline">\(\langle \tilde{V}, \tilde{V} \rangle\)</span>.<br>
 </li>
 <li>Interprete fisicamente este resultado.</li>
 </ol></li>
@@ -872,17 +871,9 @@ window.Quarto = {
 <li>Mostre como a estrutura de norma positiva/negativa leva à quantização.</li>
 </ol></li>
 </ol>
-</section>
-</section>
-<section id="referências" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Referências</h1>
-<ul>
-<li>Notas de aula sobre a delta de Dirac (material anterior)</li>
-<li>Mecânica Clássica Avançada - Capítulos sobre estrutura simplética</li>
-<li>Teoria Quântica de Campos - Propriedades de propagadores</li>
-</ul>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
