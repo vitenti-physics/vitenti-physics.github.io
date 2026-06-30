@@ -110,7 +110,7 @@ As soluções são:
 
 Portanto, a solução não-trivial é:
 $$
-G_N \propto \sigma^{1-N/2} = |\mathbf{x} - \mathbf{x}_0|^{2-N}
+G_N \propto \sigma^{1-N/2} \propto |\mathbf{x} - \mathbf{x}_0|^{2-N}
 $$
 
 ## Casos Específicos
@@ -121,7 +121,7 @@ $$
 \lambda = 1 - \frac{1}{2} = \frac{1}{2}
 $$
 $$
-G_1 \propto \sigma^{1/2} = |x - x_0|
+G_1 \propto \sigma^{1/2} \propto |x - x_0|
 $$
 
 ::: {.callout-note}
@@ -141,7 +141,7 @@ $$
 \lambda = 1 - \frac{3}{2} = -\frac{1}{2}
 $$
 $$
-G_3 \propto \sigma^{-1/2} = \frac{1}{|\mathbf{x} - \mathbf{x}_0|}
+G_3 \propto \sigma^{-1/2} \propto \frac{1}{|\mathbf{x} - \mathbf{x}_0|}
 $$
 
 ::: {.callout-important}
@@ -215,11 +215,15 @@ $$
 G_\varepsilon = \frac{1}{\sqrt{\sigma + \varepsilon}}
 $$
 
+::: {.callout-note}
+Como $\sigma = r^2/2$, este regulador tende a $\sigma^{-1/2} = \sqrt{2}/r$ quando $\varepsilon \to 0$, e não a $1/r$. O fator $\sqrt{2}$ extra vai aparecer explicitamente no resultado da integral abaixo, e será cancelado na normalização final.
+:::
+
 ### Laplaciano Regularizado
 
 Calculando cuidadosamente:
 $$
-\nabla^2 G_\varepsilon = -3\varepsilon (\sigma + \varepsilon)^{-5/2}
+\nabla^2 G_\varepsilon = -\frac{3}{2}\varepsilon (\sigma + \varepsilon)^{-5/2}
 $$
 
 ::: {.callout-note}
@@ -232,37 +236,37 @@ Para $\varepsilon > 0$, esta expressão é finita em todos os pontos. No limite 
 
 Queremos calcular:
 $$
-\lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, d^3x = -4\pi
+\lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, d^3x = -4\sqrt{2}\,\pi
 $$
 
 #### Passo a Passo da Demonstração
 
 1. **Coordenadas esféricas** centradas em $\mathbf{x}_0$:
 $$
-I_\varepsilon = -3\varepsilon \int_0^{2\pi} \int_0^\pi \int_0^\infty \frac{r^2 \sin\theta}{(r^2/2 + \varepsilon)^{5/2}} \, dr \, d\theta \, d\phi
+I_\varepsilon = -\frac{3}{2}\varepsilon \int_0^{2\pi} \int_0^\pi \int_0^\infty \frac{r^2 \sin\theta}{(r^2/2 + \varepsilon)^{5/2}} \, dr \, d\theta \, d\phi
 $$
 2. **Integração angular**:
 $$
-I_\varepsilon = -4\pi \cdot 3\varepsilon \int_0^\infty \frac{r^2}{(r^2/2 + \varepsilon)^{5/2}} \, dr
+I_\varepsilon = -4\pi \cdot \frac{3}{2}\varepsilon \int_0^\infty \frac{r^2}{(r^2/2 + \varepsilon)^{5/2}} \, dr
 $$
-3. **Integração por partes** (para simplificar):
+3. **Integração por partes** (o termo de fronteira se anula em $r=0$ e $r\to\infty$):
 $$
-I_\varepsilon = -4\pi \cdot 3\varepsilon \left[ \frac{r}{(r^2/2 + \varepsilon)^{3/2}} \right]_0^\infty - \int_0^\infty \frac{1}{(r^2/2 + \varepsilon)^{3/2}} \, dr
+\int_0^\infty \frac{r^2}{(r^2/2 + \varepsilon)^{5/2}} \, dr = \frac{2}{3}\int_0^\infty \frac{dr}{(r^2/2 + \varepsilon)^{3/2}}
 $$
 4. **Substituição** $r = \sqrt{2\varepsilon}\tan\theta$:
 $$
-\int_0^\infty \frac{dr}{(r^2/2 + \varepsilon)^{3/2}} = \frac{1}{\varepsilon}\int_0^{\pi/2} \cos\theta \, d\theta = \frac{1}{\varepsilon}
+\int_0^\infty \frac{dr}{(r^2/2 + \varepsilon)^{3/2}} = \frac{\sqrt{2}}{\varepsilon}\int_0^{\pi/2} \cos\theta \, d\theta = \frac{\sqrt{2}}{\varepsilon}
 $$
 5. **Resultado final**:
 $$
-I_\varepsilon = -4\pi \cdot 3\varepsilon \cdot \frac{1}{\varepsilon} \cdot (-1) = -4\pi
+I_\varepsilon = -4\pi \cdot \frac{3}{2}\varepsilon \cdot \frac{2}{3} \cdot \frac{\sqrt{2}}{\varepsilon} = -4\sqrt{2}\,\pi
 $$
 
 ### Normalização
 
-Definimos:
+Como $G_\varepsilon \to \sigma^{-1/2} = \sqrt{2}/r$ quando $\varepsilon \to 0$, o fator $\sqrt{2}$ herdado do resultado acima se cancela exatamente ao dividirmos por $-4\sqrt{2}\,\pi$:
 $$
-G_3(\mathbf{r} - \mathbf{r}_0) = -\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}
+G_3(\mathbf{r} - \mathbf{r}_0) = \frac{\sigma^{-1/2}}{-4\sqrt{2}\,\pi} = -\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}
 $$
 Então:
 $$
@@ -286,7 +290,7 @@ $$
 ### Análise dos Termos
 
 1. **Termo constante** $f(\mathbf{x}_0)$:
-   - Contribuição: $-4\pi f(\mathbf{x}_0)$ (já calculado)
+   - Contribuição: $-4\sqrt{2}\,\pi f(\mathbf{x}_0)$ (já calculado)
 2. **Termo linear** $\nabla f(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0)$:
    - A integral angular de $\cos\theta$ é zero
    - Contribuição: $0$
@@ -301,14 +305,14 @@ O termo constante sobrevive ao limite $\varepsilon \to 0$, produzindo a normaliz
 
 Portanto:
 $$
-\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = -4\pi f(\mathbf{x}_0)
+\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = -4\sqrt{2}\,\pi f(\mathbf{x}_0)
 $$
 
 ### Normalização Final
 
-Dividindo por $-4\pi$:
+Dividindo por $-4\sqrt{2}\,\pi$:
 $$
-\lim_{\varepsilon \to 0} \int \nabla^2 \left(-\frac{1}{4\pi\sqrt{\sigma+\varepsilon}}\right) f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
+\lim_{\varepsilon \to 0} \int \nabla^2 \left(-\frac{1}{4\sqrt{2}\,\pi\sqrt{\sigma+\varepsilon}}\right) f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
 $$
 Ou seja:
 $$
@@ -413,7 +417,7 @@ plt.show()
 #| code-fold: true
 
 def G_3D_regularizada(r, epsilon=0.1):
-    """Função de Green 3D regularizada"""
+    """Função de Green 3D regularizada (não normalizada, G_ε = (σ+ε)^{-1/2})"""
     r_safe = r + 1e-10
     return 1.0 / np.sqrt(r_safe**2 / 2 + epsilon)
 
@@ -427,10 +431,10 @@ for eps in epsilons:
     G_reg = G_3D_regularizada(r, eps)
     plt.plot(r, G_reg, label=f"ε = {eps}")
 
-# Função sem regularização (singular em r=0)
+# Função sem regularização (singular em r=0); tende a sqrt(2)/r, não 1/r
 r_safe = np.linspace(0.01, 5, 1000)
 G_sing = 1.0 / np.sqrt(r_safe**2 / 2)
-plt.plot(r_safe, G_sing, "k--", linewidth=2, label="Singular (1/r)")
+plt.plot(r_safe, G_sing, "k--", linewidth=2, label="Singular (√2/r)")
 
 plt.xlabel("r")
 plt.ylabel("G_ε(r)")
@@ -452,7 +456,7 @@ plt.show()
 
 def laplaciano_G_regulado(r, epsilon=0.1):
     """Laplaciano da função de Green regularizada em 3D"""
-    return -3 * epsilon / (r**2 / 2 + epsilon) ** (5 / 2)
+    return -(3 / 2) * epsilon / (r**2 / 2 + epsilon) ** (5 / 2)
 
 
 r = np.linspace(0, 3, 1000)
@@ -531,7 +535,7 @@ $$
 
 **b)** Mostre que $\lim_{\varepsilon \to 0} \nabla^2 G_\varepsilon = 0$ para $r \neq 0$.
 
-**c)** Mostre que $\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, d^3x = -4\pi$.
+**c)** Mostre que $\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, d^3x = -4\sqrt{2}\,\pi$, e explique por que o fator $\sqrt{2}$ aparece.
 
 **d)** Interprete fisicamente o papel do parâmetro $\varepsilon$ na regularização.
 
