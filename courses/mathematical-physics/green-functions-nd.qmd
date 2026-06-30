@@ -34,13 +34,10 @@ A abordagem adotada é puramente geométrica, utilizando apenas a métrica do es
 ## Generalização do Operador Laplaciano
 
 Vamos estender o operador de derivada segunda escalar para múltiplas dimensões. Em $N$ dimensões, o laplaciano é dado por:
-
 $$
 \nabla^2_N = \sum_{i=1}^N \frac{\partial^2}{\partial x_i^2}
 $$
-
 O objetivo é encontrar a função de Green $G_N$ que satisfaz:
-
 $$
 \nabla^2_N G_N(\mathbf{x} - \mathbf{x}_0) = \delta^N(\mathbf{x} - \mathbf{x}_0)
 $$
@@ -52,7 +49,6 @@ A diferença crucial entre as dimensões está no comportamento das soluções. 
 ## Função de Mundo de Synge
 
 A função de mundo de Synge é definida como:
-
 $$
 \sigma(\mathbf{x}, \mathbf{x}_0) = \frac{|\mathbf{x} - \mathbf{x}_0|^2}{2}
 $$
@@ -80,11 +76,9 @@ Estas propriedades são a base para todos os cálculos subsequentes.
 ## Ansatz Geral
 
 Vamos buscar soluções da forma:
-
 $$
 G = \sigma^\lambda
 $$
-
 onde $\lambda$ é um expoente a ser determinado.
 
 ### Gradiente e Laplaciano
@@ -93,7 +87,6 @@ onde $\lambda$ é um expoente a ser determinado.
 $$
 \nabla G = \lambda \sigma^{\lambda-1} (\mathbf{x} - \mathbf{x}_0)
 $$
-
 **Laplaciano:**
 $$
 \nabla^2 G = \lambda(2\lambda - 2 + N) \sigma^{\lambda-1}
@@ -106,7 +99,6 @@ Este resultado é obtido aplicando o divergente ao gradiente e usando as proprie
 ### Determinação do Expoente
 
 Para que $\nabla^2 G = 0$ (exceto na origem), precisamos:
-
 $$
 \lambda(2\lambda - 2 + N) = 0
 $$
@@ -117,7 +109,6 @@ As soluções são:
 2. $\lambda = 1 - \frac{N}{2}$
 
 Portanto, a solução não-trivial é:
-
 $$
 G_N \propto \sigma^{1-N/2} = |\mathbf{x} - \mathbf{x}_0|^{2-N}
 $$
@@ -129,7 +120,6 @@ $$
 $$
 \lambda = 1 - \frac{1}{2} = \frac{1}{2}
 $$
-
 $$
 G_1 \propto \sigma^{1/2} = |x - x_0|
 $$
@@ -143,7 +133,6 @@ Este resultado recupera a função módulo obtida na aula anterior. A derivada s
 $$
 \lambda = 1 - 1 = 0
 $$
-
 A solução por lei de potência falha! Precisamos de uma abordagem especial.
 
 ### Caso 3D ($N=3$)
@@ -151,7 +140,6 @@ A solução por lei de potência falha! Precisamos de uma abordagem especial.
 $$
 \lambda = 1 - \frac{3}{2} = -\frac{1}{2}
 $$
-
 $$
 G_3 \propto \sigma^{-1/2} = \frac{1}{|\mathbf{x} - \mathbf{x}_0|}
 $$
@@ -163,7 +151,6 @@ $$
 ### Caso ND ($N\neq2$)
 
 Generalizando:
-
 $$
 G_N(\mathbf{x} - \mathbf{x}_0) = 
 \begin{cases}
@@ -181,7 +168,6 @@ Em 2D, $\lambda = 0$ dá $G = \text{constante}$, que não é uma solução útil
 ## Solução Logarítmica
 
 Inspirados no método de Frobenius (raízes repetidas), testamos:
-
 $$
 G = \ln \sigma
 $$
@@ -192,7 +178,6 @@ $$
 $$
 \nabla (\ln \sigma) = \frac{1}{\sigma}(\mathbf{x} - \mathbf{x}_0)
 $$
-
 **Laplaciano:**
 $$
 \nabla^2 (\ln \sigma) = \frac{2}{\sigma} - \frac{|\mathbf{x} - \mathbf{x}_0|^2}{\sigma^2} = \frac{2}{\sigma} - \frac{2\sigma}{\sigma^2} = 0
@@ -222,13 +207,10 @@ As soluções encontradas divergem na origem ($\mathbf{x} = \mathbf{x}_0$). Prec
 ## Regularização com Parâmetro $\varepsilon$
 
 Introduzimos um parâmetro $\varepsilon > 0$ para controlar a divergência:
-
 $$
 G_\varepsilon(\mathbf{x}, \mathbf{x}_0) = (\sigma + \varepsilon)^\lambda
 $$
-
 Para o caso 3D ($\lambda = -1/2$):
-
 $$
 G_\varepsilon = \frac{1}{\sqrt{\sigma + \varepsilon}}
 $$
@@ -236,7 +218,6 @@ $$
 ### Laplaciano Regularizado
 
 Calculando cuidadosamente:
-
 $$
 \nabla^2 G_\varepsilon = -3\varepsilon (\sigma + \varepsilon)^{-5/2}
 $$
@@ -250,7 +231,6 @@ Para $\varepsilon > 0$, esta expressão é finita em todos os pontos. No limite 
 ### Cálculo para 3D
 
 Queremos calcular:
-
 $$
 \lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, d^3x = -4\pi
 $$
@@ -258,31 +238,22 @@ $$
 #### Passo a Passo da Demonstração
 
 1. **Coordenadas esféricas** centradas em $\mathbf{x}_0$:
-
 $$
 I_\varepsilon = -3\varepsilon \int_0^{2\pi} \int_0^\pi \int_0^\infty \frac{r^2 \sin\theta}{(r^2/2 + \varepsilon)^{5/2}} \, dr \, d\theta \, d\phi
 $$
-
 2. **Integração angular**:
-
 $$
 I_\varepsilon = -4\pi \cdot 3\varepsilon \int_0^\infty \frac{r^2}{(r^2/2 + \varepsilon)^{5/2}} \, dr
 $$
-
 3. **Integração por partes** (para simplificar):
-
 $$
 I_\varepsilon = -4\pi \cdot 3\varepsilon \left[ \frac{r}{(r^2/2 + \varepsilon)^{3/2}} \right]_0^\infty - \int_0^\infty \frac{1}{(r^2/2 + \varepsilon)^{3/2}} \, dr
 $$
-
 4. **Substituição** $r = \sqrt{2\varepsilon}\tan\theta$:
-
 $$
 \int_0^\infty \frac{dr}{(r^2/2 + \varepsilon)^{3/2}} = \frac{1}{\varepsilon}\int_0^{\pi/2} \cos\theta \, d\theta = \frac{1}{\varepsilon}
 $$
-
 5. **Resultado final**:
-
 $$
 I_\varepsilon = -4\pi \cdot 3\varepsilon \cdot \frac{1}{\varepsilon} \cdot (-1) = -4\pi
 $$
@@ -290,13 +261,10 @@ $$
 ### Normalização
 
 Definimos:
-
 $$
 G_3(\mathbf{r} - \mathbf{r}_0) = -\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}
 $$
-
 Então:
-
 $$
 \nabla^2 G_3 = \delta^3(\mathbf{r} - \mathbf{r}_0)
 $$
@@ -304,7 +272,6 @@ $$
 ## Prova da Propriedade de Filtragem
 
 Para mostrar que o laplaciano regularizado se comporta como uma delta de Dirac, precisamos provar:
-
 $$
 \lim_{\varepsilon \to 0} \int_{\mathbb{R}^3} \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
 $$
@@ -312,7 +279,6 @@ $$
 ### Expansão de Taylor
 
 Expandimos $f$ em torno de $\mathbf{x}_0$:
-
 $$
 f(\mathbf{x}) = f(\mathbf{x}_0) + \nabla f(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0) + \frac{1}{2}(\mathbf{x} - \mathbf{x}_0)^T \nabla^2 f(\mathbf{x}_0)(\mathbf{x} - \mathbf{x}_0) + \cdots
 $$
@@ -321,14 +287,11 @@ $$
 
 1. **Termo constante** $f(\mathbf{x}_0)$:
    - Contribuição: $-4\pi f(\mathbf{x}_0)$ (já calculado)
-
 2. **Termo linear** $\nabla f(\mathbf{x}_0) \cdot (\mathbf{x} - \mathbf{x}_0)$:
    - A integral angular de $\cos\theta$ é zero
    - Contribuição: $0$
-
 3. **Termo quadrático**:
    - Contribui com $\mathcal{O}(\varepsilon^{1/2}) \to 0$
-
 4. **Termos de ordem superior**:
    - Contribuem com $\mathcal{O}(\varepsilon^{k/2}) \to 0$ para $k \geq 1$
 
@@ -337,7 +300,6 @@ O termo constante sobrevive ao limite $\varepsilon \to 0$, produzindo a normaliz
 :::
 
 Portanto:
-
 $$
 \lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = -4\pi f(\mathbf{x}_0)
 $$
@@ -345,13 +307,10 @@ $$
 ### Normalização Final
 
 Dividindo por $-4\pi$:
-
 $$
 \lim_{\varepsilon \to 0} \int \nabla^2 \left(-\frac{1}{4\pi\sqrt{\sigma+\varepsilon}}\right) f(\mathbf{x}) \, d^3x = f(\mathbf{x}_0)
 $$
-
 Ou seja:
-
 $$
 \nabla^2 \left(-\frac{1}{4\pi|\mathbf{r} - \mathbf{r}_0|}\right) = \delta^3(\mathbf{r} - \mathbf{r}_0)
 $$
@@ -365,7 +324,6 @@ $$
 ## Dimensão do Espaço e Lei de Coulomb
 
 A função de Green em $N$ dimensões:
-
 $$
 G_N = 
 \begin{cases}
@@ -411,6 +369,7 @@ A regularização dimensional utilizada em física de partículas é análoga à
 #| fig-cap: "Funções de Green em diferentes dimensões"
 #| fig-width: 10
 #| fig-height: 8
+#| code-fold: true
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -471,6 +430,7 @@ plt.show()
 #| fig-cap: "Regularização da função de Green em 3D"
 #| fig-width: 8
 #| fig-height: 6
+#| code-fold: true
 
 def G_3D_regularizada(r, epsilon=0.1):
     """Função de Green 3D regularizada"""
@@ -508,6 +468,7 @@ plt.show()
 #| fig-cap: "Laplaciano da função de Green regularizada"
 #| fig-width: 8
 #| fig-height: 6
+#| code-fold: true
 
 def laplaciano_G_regulado(r, epsilon=0.1):
     """Laplaciano da função de Green regularizada em 3D"""

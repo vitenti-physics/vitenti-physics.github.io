@@ -26,25 +26,18 @@ Nesta aula, exploramos os propagadores dependentes do tempo e a estrutura simpl�
 ## Estrutura da Equação
 
 Consideramos uma equação de segunda ordem na forma:
-
 $$ y'' + p_1(x) y' + p_0(x) y = 0 $$
-
 que pode ser reescrita no espaço de fase como:
-
 $$ \begin{pmatrix} y' \\ q' \end{pmatrix} = \begin{pmatrix} 0 & 1/m \\ -m\Omega^2 & 0 \end{pmatrix} \begin{pmatrix} y \\ q \end{pmatrix} $$
-
 onde $q = m y'$ é o momento canônico.
 
 Definimos o vetor de estado:
-
 $$ V = \begin{pmatrix} y \\ q \end{pmatrix} $$
 
 ## Matriz Simplética
 
 A estrutura simplética é codificada pela matriz:
-
 $$ \Omega = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} $$
-
 Esta matriz é antissimétrica ($\Omega^T = -\Omega$) e desempenha um papel fundamental na definição do Wronskiano conservado.
 
 ::: {.note}
@@ -58,11 +51,8 @@ e é uma constante do movimento (conservado).
 ## Hamiltonianos e Propriedades
 
 O Hamiltoniano associado é:
-
 $$ H = \begin{pmatrix} m\Omega^2 & 0 \\ 0 & 1/m \end{pmatrix} $$
-
 A equação de movimento pode ser escrita como:
-
 $$ V' = \Omega H V $$
 
 # Soluções Linearmente Independentes
@@ -70,21 +60,15 @@ $$ V' = \Omega H V $$
 ## Base no Espaço de Soluções
 
 Para duas soluções linearmente independentes $V_1$ e $V_2$, temos:
-
 $$ V_1^T \Omega V_2 = \text{constante} $$
-
 Podemos normalizar convenientemente:
-
 $$ V_1^T \Omega V_2 = \frac{1}{2} $$
 
 ## Solução Geral
 
 Qualquer solução $U$ pode ser escrita como combinação linear:
-
 $$ U = \alpha_1 V_1 + \alpha_2 V_2 $$
-
 Os coeficientes $\alpha_i$ são constantes e podem ser obtidos via:
-
 $$ \alpha_1 = 2 (V_1^T \Omega U), \quad \alpha_2 = -2 (V_2^T \Omega U) $$
 
 # Complexificação do Espaço de Soluções
@@ -92,19 +76,14 @@ $$ \alpha_1 = 2 (V_1^T \Omega U), \quad \alpha_2 = -2 (V_2^T \Omega U) $$
 ## Construção da Solução Complexa
 
 Definimos a solução complexificada:
-
 $$ V = V_1 + i V_2 $$
-
 Esta solução satisfaz a mesma equação diferencial no espaço complexo:
-
 $$ V' = \Omega H V $$
 
 ## Produto Simplético Hermitiano
 
 Introduzimos o produto:
-
 $$ \langle V, U \rangle = -i V^\dagger \Omega U $$
-
 onde $V^\dagger = (V^*)^T$ é o conjugado Hermitiano.
 
 ::: {.important}
@@ -129,21 +108,15 @@ Esta estrutura é análoga à que aparece na mecânica quântica relativística,
 ## Função de Green (Solução Futura)
 
 Consideramos uma solução com interação instantânea em $x_0$:
-
 $$ U(x) = \Theta(x - x_0) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] $$
-
 onde $V$ é a solução complexa. Esta solução satisfaz:
-
 $$ U' - \Omega H U = \delta(x - x_0) U_0 $$
 
 ## Solução Passada (Avançada)
 
 A solução que propaga informações do futuro para o passado é:
-
 $$ U(x) = \Theta(x_0 - x) [\alpha \bar{V} V(x) + \alpha^* \bar{V}^* V^*(x)] $$
-
 satisfazendo:
-
 $$ U' - \Omega H U = -\delta(x - x_0) U_0 $$
 
 ::: {.note}
@@ -155,17 +128,13 @@ A diferença de sinal entre as soluções futura e passada é fundamental para a
 ## Transformação das Componentes
 
 Sob reversão temporal $x \to -x$, o vetor $V$ se transforma como:
-
 $$ V_R(x_R) = T V(x) $$
-
 com:
-
 $$ T = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} $$
 
 ## Comportamento da Equação
 
 A equação de movimento é invariante sob reversão temporal se:
-
 $$ T H(x) T = H(-x) $$
 
 ::: {.important}
@@ -177,6 +146,8 @@ A invariância por reversão temporal leva à relação entre soluções futuras
 ## Propagador do Oscilador Harmônico
 
 ```{python}
+#| code-fold: true
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
@@ -215,6 +186,7 @@ plt.show()
 ## Propagadores Futuro e Passado
 
 ```{python}
+#| code-fold: true
 # Simulação de um pulso instantâneo (função de Green)
 def green_function_solution(t, t0=3.0, amplitude=1.0, omega=1.0):
     """Solução futura (causal) com pulso em t0"""

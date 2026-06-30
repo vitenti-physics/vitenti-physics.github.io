@@ -32,13 +32,9 @@ Estendemos o problema do oscilador harmônico para o caso de infinitos graus de 
 ## Definição da Base
 
 Para cada vetor de onda $\mathbf{k}$, definimos pares de funções temporais:
-
 $$f_{\mathbf{k}}(x_0), \quad q_{\mathbf{k}}(x_0)$$
-
 onde $x_0 = ct$ é a coordenada temporal. A base completa no espaço de fase é composta por:
-
 $$\Psi_{\mathbf{k}} = \begin{pmatrix} f_{\mathbf{k}} \\ q_{\mathbf{k}} \end{pmatrix}$$
-
 com a dependência espacial dada por $e^{i\mathbf{k}\cdot\mathbf{x}}$.
 
 > **Observação:** Estamos usando a notação $x_0$ para a coordenada temporal, seguindo a convenção relativística onde as coordenadas espaço-tempo são $(x_0, x_1, x_2, x_3)$.
@@ -46,23 +42,16 @@ com a dependência espacial dada por $e^{i\mathbf{k}\cdot\mathbf{x}}$.
 ## Produto Simplético
 
 O produto entre dois elementos da base é definido por:
-
 $$(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}'}^* q_{\mathbf{k}} - q_{\mathbf{k}'}^* f_{\mathbf{k}}\right] d^3x$$
-
 Substituindo as dependências espaciais:
-
 $$(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right]\delta^{(3)}(\mathbf{k} - \mathbf{k}')$$
-
 A base é ortogonal com normalização delta de Dirac.
 
 ## Normalização da Base
 
 Para que a base seja ortonormal no sentido da delta de Dirac:
-
 $$-i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right] = 1$$
-
 Equivalentemente:
-
 $$2\,\text{Im}(f_{\mathbf{k}}^* q_{\mathbf{k}}) = 1$$
 
 > **Definição (Vácuo):** A escolha das funções de base que satisfazem a condição de normalização define o vácuo da teoria. Diferentes escolhas correspondem a diferentes definições de vácuo.
@@ -83,13 +72,9 @@ A liberdade de fase reduz mais um grau de liberdade, resultando em **2 graus de 
 ## Solução Geral do Oscilador Harmônico
 
 A equação de movimento no espaço de Fourier é:
-
 $$\ddot{f}_{\mathbf{k}} = -\omega_{\mathbf{k}}^2 f_{\mathbf{k}}, \quad \omega_{\mathbf{k}} = |\mathbf{k}|$$
-
 A solução geral é:
-
 $$f_{\mathbf{k}} = N_{\mathbf{k}} e^{-i\omega_{\mathbf{k}} x_0} + M_{\mathbf{k}} e^{+i\omega_{\mathbf{k}} x_0}$$
-
 onde $N_{\mathbf{k}}, M_{\mathbf{k}} \in \mathbb{C}$.
 
 > **Observação:** O primeiro termo representa frequências positivas (propagação para frente no tempo), e o segundo, frequências negativas (propagação para trás no tempo).
@@ -97,11 +82,8 @@ onde $N_{\mathbf{k}}, M_{\mathbf{k}} \in \mathbb{C}$.
 ## Condição de Normalização em Termos de N e M
 
 Da condição de normalização:
-
 $$2\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = 1$$
-
 ou, equivalentemente:
-
 $$\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = \frac{1}{2}$$
 
 > **Observação:** Esta é uma relação hiperbólica que define vetores tipo tempo no espaço de Minkowski.
@@ -109,13 +91,9 @@ $$\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = \fra
 ## Escolha do Vácuo
 
 A escolha mais simples é $M_{\mathbf{k}} = 0$, resultando:
-
 $$N_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}$$
-
 Isso define as funções de base:
-
 $$f_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}$$
-
 $$q_{\mathbf{k}} = -i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}$$
 
 > **Nota:** Esta escolha elimina as soluções de frequência negativa, definindo o vácuo de Minkowski. A normalização inclui o fator $(2\pi)^{-3/2}$ para garantir a ortogonalidade correta.
@@ -123,9 +101,7 @@ $$q_{\mathbf{k}} = -i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{-i\omega_{\ma
 ## Complexo Conjugado e Inversão Temporal
 
 O complexo conjugado das funções de base:
-
 $$f_{\mathbf{k}}^* = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}$$
-
 $$q_{\mathbf{k}}^* = +i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}$$
 
 **Propriedade Fundamental:**
@@ -138,21 +114,15 @@ Tomar o complexo conjugado é equivalente a uma inversão temporal: $x_0 \to -x_
 ## Decomposição em Modos
 
 Qualquer campo escalar real $\phi(x)$ pode ser decomposto como:
-
 $$\phi(x) = \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^{3/2}} \left[\alpha_{\mathbf{k}} f_{\mathbf{k}}(x) + \alpha_{\mathbf{k}}^* f_{\mathbf{k}}^*(x)\right]$$
-
 ou, de forma equivalente:
-
 $$\phi(x) = \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^{3/2}} \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \left[a_{\mathbf{k}} e^{-ik\cdot x} + a_{\mathbf{k}}^\dagger e^{+ik\cdot x}\right]$$
-
 onde $k\cdot x = \omega_{\mathbf{k}} x_0 - \mathbf{k}\cdot\mathbf{x}$.
 
 ## Coeficientes de Decomposição
 
 Os coeficientes são obtidos pelo produto simplético:
-
 $$\alpha_{\mathbf{k}} = -i(f_{\mathbf{k}}^*, \phi) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}}^* q_\phi - q_{\mathbf{k}}^* f_\phi\right] d^3x$$
-
 Esta relação é fundamental para a quantização do campo.
 
 # Solução com Fonte (Propagador)
@@ -160,9 +130,7 @@ Esta relação é fundamental para a quantização do campo.
 ## Problema com Fonte
 
 Queremos resolver a equação:
-
 $$(\Box + m^2)\phi(x) = J(x)$$
-
 onde $J(x)$ é uma fonte externa.
 
 > **Nota:** Estamos usando o operador d'Alembertiano: $\Box = \partial_0^2 - \nabla^2$.
@@ -170,11 +138,8 @@ onde $J(x)$ é uma fonte externa.
 ## Construção do Propagador
 
 Construímos a solução como:
-
 $$\phi_J(x) = \int_{-\infty}^{x_0} dx_0' \int_{\mathbb{R}^3} d^3k \left[\alpha_{\mathbf{k}}^J(x_0') f_{\mathbf{k}}(x_0) - \alpha_{\mathbf{k}}^{J*}(x_0') f_{\mathbf{k}}^*(x_0)\right]$$
-
 onde:
-
 $$\alpha_{\mathbf{k}}^J(x_0') = -i(f_{\mathbf{k}}^*, J)|_{x_0'}$$
 
 > **Observação:** O limite superior $x_0$ na integral temporal garante que o propagador seja causal (propagador retardado).
@@ -182,9 +147,7 @@ $$\alpha_{\mathbf{k}}^J(x_0') = -i(f_{\mathbf{k}}^*, J)|_{x_0'}$$
 ## Propriedade da Solução
 
 Derivando $\phi_J$ em relação a $x_0$, obtemos:
-
 $$\dot{\phi}_J = J + (\Box + m^2)\phi_J$$
-
 Portanto, $\phi_J$ satisfaz a equação com fonte.
 
 > **Interpretação:** A fonte $J$ atua como um termo de "forçamento" contínuo, gerando novos modos do campo. Esta é a versão contínua do problema do oscilador harmônico forçado.
@@ -192,7 +155,6 @@ Portanto, $\phi_J$ satisfaz a equação com fonte.
 ## Estrutura do Propagador
 
 O propagador retardado tem a forma:
-
 $$G_R(x - x') = \theta(x_0 - x_0') \int \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega_{\mathbf{k}}} \left[e^{-ik\cdot(x-x')} - e^{+ik\cdot(x-x')}\right]$$
 
 > **Observação:** Este é o propagador de Feynman para o campo escalar, que será fundamental para o cálculo de amplitudes de espalhamento.
@@ -200,9 +162,7 @@ $$G_R(x - x') = \theta(x_0 - x_0') \int \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega_{
 ## Propriedade de Causalidade
 
 O propagador retardado é não nulo apenas quando:
-
 $$(x_0 - x_0') = |\mathbf{x} - \mathbf{x}'|$$
-
 ou seja, quando os eventos estão conectados por um sinal que se propaga na velocidade da luz.
 
 > **Definição (Cone de Luz):** A região do espaço-tempo onde $\Delta x_0 = |\Delta \mathbf{x}|$ é o cone de luz. O propagador é não nulo apenas sobre o cone de luz.
@@ -210,7 +170,6 @@ ou seja, quando os eventos estão conectados por um sinal que se propaga na velo
 ## Relação com Eletromagnetismo
 
 No caso do campo escalar, a função de Green do operador de d'Alembert é:
-
 $$G_R(x - x') = \frac{\delta(x_0 - x_0' - |\mathbf{x} - \mathbf{x}'|)}{4\pi|\mathbf{x} - \mathbf{x}'|}$$
 
 > **Interpretação:** Esta é a função de Green do eletromagnetismo, que descreve a propagação de sinais no vácuo. A aparente propagação superluminal do potencial de Coulomb é um artefato do regime estático.

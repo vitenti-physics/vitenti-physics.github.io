@@ -31,11 +31,9 @@ Os tópicos abordados são:
 ## Definição do Propagador
 
 O propagador escalar, que denotamos por $\phi_J(x)$, é a solução da equação de onda com uma fonte pontual:
-
 $$
 \Box \phi_J(x) = \delta^4(x - x_0) \quad \text{com} \quad \phi_J(x) \to 0 \text{ quando } t \to -\infty
 $$
-
 onde $\Box = \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2$ é o operador d'Alembertiano (ou operador de onda).
 
 Na notação relativística, com $x^0 = ct$, o operador é $\Box = \partial_\mu \partial^\mu$.
@@ -43,11 +41,9 @@ Na notação relativística, com $x^0 = ct$, o operador é $\Box = \partial_\mu 
 ## Decomposição de Fourier
 
 O propagador é construído como uma superposição de modos de Fourier, que são soluções da equação de onda homogênea. Para cada modo com vetor de onda $\mathbf{k}$, a solução geral é uma combinação linear de ondas planas:
-
 $$
 \phi_{\mathbf{k}}(t) = N_k \left( e^{-ik t} + \mathcal{M}_k e^{+ik t} \right)
 $$
-
 onde $k = |\mathbf{k}|$ e $N_k$ é uma constante de normalização.
 
 ::: {.note}
@@ -55,13 +51,10 @@ A escolha das condições de contorno (causalidade) seleciona apenas um dos modo
 :::
 
 A normalização dos modos de Fourier é fixada pela condição de completeza:
-
 $$
 \int \frac{d^3k}{(2\pi)^3} \phi_{\mathbf{k}}(t) \phi_{\mathbf{k}'}^*(t) = \delta^3(\mathbf{k} - \mathbf{k}')
 $$
-
 que leva a:
-
 $$
 N_k = \frac{1}{\sqrt{2k}}
 $$
@@ -69,13 +62,10 @@ $$
 ## O Propagador como Transformada de Fourier
 
 Com as soluções modais, o propagador pode ser escrito como:
-
 $$
 \phi_J(x) = \int \frac{d^3k}{(2\pi)^3} \int_{-\infty}^{x^0} dx'^0 \left[ \phi_{\mathbf{k}}(x^0) \phi_{\mathbf{k}}^*(x'^0) - \phi_{\mathbf{k}}^*(x^0) \phi_{\mathbf{k}}(x'^0) \right] J(x')
 $$
-
 onde $J(x') = - \delta^4(x' - x_0)$ para uma fonte pontual.
-
 Esta expressão é a base para o cálculo do propagador no espaço-tempo.
 
 # Cálculo Explícito do Propagador
@@ -83,19 +73,15 @@ Esta expressão é a base para o cálculo do propagador no espaço-tempo.
 ## Substituição dos Modos de Fourier
 
 Substituindo as expressões para $\phi_{\mathbf{k}}(t)$ e $\phi_{\mathbf{k}}^*(t)$, e usando a fonte pontual $J(x') = - \delta^4(x' - x_0)$, obtemos a integral:
-
 $$
 \phi_J(x) = i \Theta(x^0 - x_0^0) \int \frac{d^3k}{(2\pi)^3} \frac{1}{2k} \left[ e^{ik(x^0 - x_0^0) + i \mathbf{k}\cdot(\mathbf{x} - \mathbf{x}_0)} - e^{-ik(x^0 - x_0^0) - i \mathbf{k}\cdot(\mathbf{x} - \mathbf{x}_0)} \right]
 $$
-
 onde $\Theta$ é a função degrau de Heaviside.
 
 ## Integração Angular
 
 Vamos agora realizar a integração angular. Escrevendo $d^3k = k^2 \, dk \, d\Omega$ e escolhendo o sistema de coordenadas com o eixo $z$ ao longo do vetor $\Delta \mathbf{x} = \mathbf{x} - \mathbf{x}_0$, temos $\mathbf{k} \cdot \Delta \mathbf{x} = k |\Delta \mathbf{x}| \cos\theta$.
-
 A integral angular é:
-
 $$
 \int_0^{2\pi} d\phi \int_0^\pi \sin\theta \, d\theta \, e^{\pm i k |\Delta \mathbf{x}| \cos\theta} = 4\pi \frac{\sin(k|\Delta \mathbf{x}|)}{k|\Delta \mathbf{x}|}
 $$
@@ -107,33 +93,23 @@ Este é um resultado fundamental: a integral angular transforma a onda plana em 
 ## Integral Radial e a Delta de Dirac
 
 Substituindo o resultado da integração angular, ficamos com:
-
 $$
 \phi_J(x) = \frac{i \Theta(\Delta x^0)}{2\pi^2 |\Delta \mathbf{x}|} \int_0^\infty dk \, e^{ik\Delta x^0} \sin(k|\Delta \mathbf{x}|)
 $$
-
 onde definimos $\Delta x^0 = x^0 - x_0^0$ e $|\Delta \mathbf{x}| = |\mathbf{x} - \mathbf{x}_0|$.
-
 Agora, escrevemos o seno como combinação de exponenciais:
-
 $$
 \sin(k|\Delta \mathbf{x}|) = \frac{e^{ik|\Delta \mathbf{x}|} - e^{-ik|\Delta \mathbf{x}|}}{2i}
 $$
-
 e estendemos a integral para todo o eixo real, notando que o integrando é uma função par:
-
 $$
 \int_0^\infty dk \, e^{ik(\Delta x^0 \pm |\Delta \mathbf{x}|)} = \frac{1}{2} \int_{-\infty}^{\infty} dk \, e^{ik(\Delta x^0 \pm |\Delta \mathbf{x}|)}
 $$
-
 Usando a definição da delta de Dirac:
-
 $$
 \int_{-\infty}^{\infty} dk \, e^{ik a} = 2\pi \delta(a)
 $$
-
 obtemos:
-
 $$
 \phi_J(x) = \frac{\Theta(\Delta x^0)}{4\pi |\Delta \mathbf{x}|} \left[ \delta(\Delta x^0 + |\Delta \mathbf{x}|) - \delta(\Delta x^0 - |\Delta \mathbf{x}|) \right]
 $$
@@ -141,11 +117,9 @@ $$
 ## Resultado Final: Propagador Causal
 
 Como $\Theta(\Delta x^0)$ seleciona apenas $\Delta x^0 > 0$, o primeiro termo com $\delta(\Delta x^0 + |\Delta \mathbf{x}|)$ nunca contribui (pois o argumento é positivo). Portanto, o propagador causal é:
-
 $$
 \boxed{ \phi_J(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( \Delta x^0 - |\Delta \mathbf{x}| \right) }
 $$
-
 com $\Delta x^0 = x^0 - x_0^0 = c(t - t_0)$ e $|\Delta \mathbf{x}| = |\mathbf{x} - \mathbf{x}_0|$.
 
 ::: {.important}
@@ -157,17 +131,13 @@ Este é o resultado central da aula. O propagador é uma **distribuição** que 
 ## Propagação na Velocidade da Luz
 
 O propagador encontrado é:
-
 $$
 \phi_J(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right)
 $$
-
 A delta de Dirac impõe a condição:
-
 $$
 c(t - t_0) = |\mathbf{x} - \mathbf{x}_0|
 $$
-
 que é exatamente a condição para que um sinal se propague do ponto $\mathbf{x}_0$ no tempo $t_0$ até o ponto $\mathbf{x}$ no tempo $t$ com a velocidade da luz $c$.
 
 ::: {.note}
@@ -177,11 +147,9 @@ Para tempos futuros ($t > t_0$), o propagador é não nulo apenas sobre a **casc
 ## O Cone de Luz Futuro
 
 Geometricamente, no espaço-tempo de Minkowski, o propagador é suportado no **cone de luz futuro** do evento $x_0$. O cone de luz é definido por:
-
 $$
 \Delta s^2 = c^2(t - t_0)^2 - |\mathbf{x} - \mathbf{x}_0|^2 = 0
 $$
-
 com $\Delta t > 0$.
 
 Fora do cone de luz (regiões espacialmente separadas), o propagador é identicamente nulo. Isso garante a **causalidade**: um distúrbio em $x_0$ só pode afetar pontos que estão em seu cone de luz futuro.
@@ -195,13 +163,10 @@ A equação de onda admite soluções com propagação na velocidade da luz, que
 ## Linhas de Mundo
 
 Uma partícula pontual descreve uma **linha de mundo** no espaço-tempo, parametrizada pelo tempo próprio $\tau$:
-
 $$
 y^\mu(\tau) = (c t(\tau), \mathbf{y}(\tau))
 $$
-
 A quadricorrente associada a uma partícula carregada é:
-
 $$
 J^\mu(x) = q \int_{-\infty}^{\infty} d\tau \, \frac{dy^\mu}{d\tau} \, \delta^4(x - y(\tau))
 $$
@@ -209,33 +174,25 @@ $$
 ## Potencial de uma Carga em Movimento
 
 O campo produzido por uma partícula em movimento é obtido integrando o propagador sobre a linha de mundo:
-
 $$
 \phi(x) = \int d^4x_0 \, \phi_J(x - x_0) J(x_0)
 $$
-
 Substituindo a corrente:
-
 $$
 \phi(x) = - \frac{q}{4\pi} \int_{-\infty}^{\infty} d\tau \, \frac{\delta\left( \Delta x^0(\tau) - |\Delta \mathbf{x}(\tau)| \right)}{|\mathbf{x} - \mathbf{y}(\tau)|}
 $$
-
 onde $\Delta x^0(\tau) = x^0 - y^0(\tau)$ e $\Delta \mathbf{x}(\tau) = \mathbf{x} - \mathbf{y}(\tau)$.
 
 ## O Princípio da Ação a Distância (Retardada)
 
 A integral é não nula apenas quando existe um tempo próprio $\tau$ tal que:
-
 $$
 x^0 - y^0(\tau) = |\mathbf{x} - \mathbf{y}(\tau)|
 $$
-
 isto é, quando o ponto de observação $x$ está sobre o cone de luz futuro de um ponto da linha de mundo. Isso define o **tempo retardado** $\tau_r$, que é a solução da equação:
-
 $$
 t - t_r = \frac{|\mathbf{x} - \mathbf{y}(t_r)|}{c}
 $$
-
 O potencial em $x$ é, portanto, causado pela posição da partícula em um tempo anterior $t_r$, não pela posição simultânea.
 
 ::: {.important}
@@ -247,31 +204,22 @@ Este é o princípio fundamental da eletrodinâmica clássica: o campo eletromag
 ## O Limite Estático
 
 No caso em que a partícula está em repouso, sua linha de mundo é:
-
 $$
 y^\mu(\tau) = (c\tau, \mathbf{y}_0)
 $$
-
 onde $\mathbf{y}_0$ é a posição constante da partícula.
-
 A condição $\Delta x^0(\tau) = |\Delta \mathbf{x}(\tau)|$ torna-se:
-
 $$
 x^0 - c\tau = |\mathbf{x} - \mathbf{y}_0|
 $$
-
 que pode ser resolvida para $\tau$:
-
 $$
 c\tau = x^0 - |\mathbf{x} - \mathbf{y}_0|
 $$
-
 O potencial é então:
-
 $$
 \phi(\mathbf{x}) = - \frac{q}{4\pi} \frac{1}{|\mathbf{x} - \mathbf{y}_0|}
 $$
-
 que é exatamente o potencial eletrostático de Coulomb.
 
 ## A Ilusão da Ação Instantânea
@@ -293,6 +241,7 @@ O código abaixo gera uma visualização da propagação de uma perturbação a 
 #| fig-cap: "Propagação de uma perturbação a partir de uma fonte pontual. A casca esférica se expande com a velocidade da luz."
 #| fig-width: 8
 #| fig-height: 6
+#| code-fold: true
 
 import numpy as np
 import matplotlib.pyplot as plt

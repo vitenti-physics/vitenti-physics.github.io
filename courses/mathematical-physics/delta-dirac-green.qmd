@@ -24,7 +24,6 @@ Nesta aula, vamos conectar o **Teorema Fundamental do Cálculo** à **função d
 # A Função Degrau de Heaviside
 
 A função degrau (ou função de Heaviside) é definida como:
-
 $$
 \theta(x) = 
 \begin{cases}
@@ -34,6 +33,7 @@ $$
 $$
 
 **Características:**
+
 - É uma função com uma **descontinuidade** em $x=0$.
 - Representa uma transição abrupta de 0 para 1.
 
@@ -42,11 +42,9 @@ $$
 # A Função Delta de Dirac
 
 A **delta de Dirac** $\delta(x)$ é definida pela **propriedade de filtragem** (ou "sifting"):
-
 $$
 \int_{-\infty}^{\infty} \delta(x - x_0) \, f(x_0) \, dx_0 = f(x)
 $$
-
 Para qualquer função $f$ suave (bem-comportada).
 
 **Interpretação:** A delta "seleciona" o valor de $f$ no ponto $x = x_0$.
@@ -56,26 +54,19 @@ Para qualquer função $f$ suave (bem-comportada).
 ## Delta como Derivada da Theta
 
 Usando o Teorema Fundamental do Cálculo:
-
 $$
 \frac{d}{dx} \int_{-\infty}^{x} f(x_0) \, dx_0 = f(x)
 $$
-
 Reescrevendo o limite superior com a função $\theta$:
-
 $$
 \int_{-\infty}^{\infty} \theta(x - x_0) \, f(x_0) \, dx_0
 = \int_{-\infty}^{x} f(x_0) \, dx_0
 $$
-
 Derivando ambos os lados:
-
 $$
 \int_{-\infty}^{\infty} \frac{d}{dx} \theta(x - x_0) \, f(x_0) \, dx_0 = f(x)
 $$
-
 Portanto:
-
 $$
 \boxed{\frac{d}{dx} \theta(x - x_0) = \delta(x - x_0)}
 $$
@@ -94,11 +85,9 @@ Podemos construir $\theta(x)$ usando a função módulo:
   $$
 
 **Relação com o módulo:**
-
 $$
 |x| = \sqrt{x^2}
 $$
-
 Assim:
 $$
 \theta(x) = \frac{1}{2}\left(\frac{d}{dx}\sqrt{x^2} + 1\right)
@@ -109,12 +98,12 @@ $$
 # Aproximação Gaussiana para a Delta
 
 Considere a **Gaussiana** (distribuição normal):
-
 $$
 G_\sigma(x) = \frac{1}{\sqrt{2\pi}\,\sigma} \exp\left(-\frac{x^2}{2\sigma^2}\right)
 $$
 
 **Propriedades:**
+
 - Normalizada: $\int_{-\infty}^{\infty} G_\sigma(x) \, dx = 1$
 - Simétrica: $G_\sigma(-x) = G_\sigma(x)$
 - Quando $\sigma \to 0$, $G_\sigma(x)$ fica **mais estreita e mais alta**, concentrando-se em $x=0$.
@@ -124,18 +113,17 @@ $$
 ## Demonstração da Propriedade de Filtragem
 
 Para qualquer função $f(x)$ com série de Taylor:
-
 $$
 f(x) = f(0) + f'(0)x + \frac{f''(0)}{2}x^2 + \cdots
 $$
 
 Temos:
-
 $$
 \lim_{\sigma \to 0} \int_{-\infty}^{\infty} G_\sigma(x) f(x) \, dx = f(0)
 $$
 
 **Por quê?**
+
 - Termos ímpares se anulam por simetria (função par vezes função ímpar).
 - Termos pares são proporcionais a potências positivas de $\sigma$, então vão a zero.
 - Apenas o termo constante $f(0)$ sobrevive.
@@ -145,13 +133,10 @@ $$
 # Funções de Green em 1D
 
 A **função de Green** em 1D satisfaz:
-
 $$
 \frac{d^2}{dx^2} G(x, x_0) = \delta(x - x_0)
 $$
-
 A solução é:
-
 $$
 \boxed{G(x, x_0) = \frac{1}{2} |x - x_0|}
 $$
@@ -181,25 +166,19 @@ A função de Green depende da dimensionalidade do espaço:
 # O Truque do Cálculo da Integral Gaussiana
 
 Para provar a normalização da Gaussiana, usamos o truque das coordenadas polares:
-
 $$
 \left( \int_{-\infty}^{\infty} e^{-x^2/2\sigma^2} dx \right)^2
 = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-(x^2+y^2)/2\sigma^2} dx\,dy
 $$
-
 Em coordenadas polares $(r, \theta)$:
-
 $$
 = \int_0^{2\pi} \int_0^\infty e^{-r^2/2\sigma^2} r \, dr \, d\theta
 = 2\pi \sigma^2
 $$
-
 Portanto:
-
 $$
 \int_{-\infty}^{\infty} e^{-x^2/2\sigma^2} dx = \sqrt{2\pi}\,\sigma
 $$
-
 Assim, o fator de normalização $1/\sqrt{2\pi}\sigma$ está correto.
 
 ---
@@ -209,6 +188,7 @@ Assim, o fator de normalização $1/\sqrt{2\pi}\sigma$ está correto.
 ```{python}
 #| echo: true
 #| fig-cap: "Aproximação gaussiana da delta de Dirac para diferentes valores de sigma"
+#| code-fold: true
 
 import numpy as np
 import matplotlib.pyplot as plt

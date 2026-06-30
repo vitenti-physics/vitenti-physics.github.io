@@ -35,31 +35,24 @@ A transição de partículas para campos envolve mudar de um espaço de fase de 
 ## Estrutura Simplética para Partículas
 
 Para uma partícula, definimos o vetor no espaço de fase:
-
 $$V = \begin{pmatrix} y \\ q \end{pmatrix}$$
-
 onde $y$ é a posição e $q$ é o momento (ou derivada temporal).
 
 ### Matriz Simplética
 
 A estrutura simplética é dada pela matriz:
-
 $$\Omega = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$$
 
 ### Produto Interno Simplético
 
 O produto interno simplético entre dois vetores $V_1$ e $V_2$ é:
-
 $$(V_1, V_2)_\Omega = V_1^T \Omega V_2 = y_1 q_2 - y_2 q_1$$
-
 Este produto interno é conservado quando ambos os vetores são soluções da equação de movimento.
 
 ## Decomposição de Vetores Arbitrários
 
 Mesmo que $S$ não seja uma solução da equação homogênea, podemos decompô-lo na base de soluções:
-
 $$S(x) = (V_1 \cdot S) V_2 - (V_2 \cdot S) V_1$$
-
 onde $V_1$ e $V_2$ são soluções da equação homogênea.
 
 ::: {.callout-important}
@@ -69,9 +62,7 @@ Para que esta decomposição seja válida no mesmo instante de tempo, precisamos
 ## Função de Green para Partículas
 
 A função de Green avançada é construída como:
-
 $$U(x) = \int_{-\infty}^{x} [V_1^T(\xi) S(\xi) V_2(x) - V_2^T(\xi) S(\xi) V_1(x)] d\xi$$
-
 Esta construção garante que:
 
 1. $U$ satisfaz a equação não-homogênea
@@ -86,9 +77,7 @@ A escolha do limite inferior como $-\infty$ corresponde à condição de que a s
 ## O Espaço de Funções
 
 Na teoria de campos, a função de campo é:
-
 $$\phi: \mathbb{R}^4 \to \mathbb{R}$$
-
 que associa a cada ponto do espaço-tempo um valor (escalar).
 
 ### Condições Iniciais
@@ -109,15 +98,12 @@ A especificação de duas funções como condições iniciais é análoga a espe
 ### Definição Geral
 
 Definimos o produto interno para funções de campo como:
-
 $$\langle f, g \rangle = \int_{\mathbb{R}^3} f^*(\mathbf{x}) g(\mathbf{x}) W(\mathbf{x}) d^3x$$
-
 onde $W(\mathbf{x})$ é uma função de peso.
 
 ### Escolha do Peso
 
 Para a geometria euclidiana e o operador laplaciano, a escolha natural é $W(\mathbf{x}) = 1$:
-
 $$\langle f, g \rangle = \int_{\mathbb{R}^3} f^*(\mathbf{x}) g(\mathbf{x}) d^3x$$
 
 ::: {.callout-important}
@@ -127,9 +113,7 @@ A escolha do peso está relacionada ao operador que queremos que seja auto-adjun
 ### Auto-adjuntividade do Laplaciano
 
 O operador laplaciano é auto-adjunto no produto interno definido acima:
-
 $$\langle f, \nabla^2 g \rangle = \langle \nabla^2 f, g \rangle$$
-
 desde que as funções decaiam suficientemente rápido no infinito (condições de contorno adequadas).
 
 ## Formalismo Simplético para Campos
@@ -137,23 +121,16 @@ desde que as funções decaiam suficientemente rápido no infinito (condições 
 ### Vetor de Estado no Espaço de Fase
 
 Para campos, definimos o vetor no espaço de fase como:
-
 $$Q = \begin{pmatrix} \phi \\ \pi \end{pmatrix}$$
-
 onde $\pi = \dot{\phi}$ é o momento conjugado (ou derivada temporal).
 
 ### Produto Interno Simplético
 
 O produto interno simplético para campos é:
-
 $$(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} Q_1^\dagger \Omega Q_2 d^3x$$
-
 onde:
-
 $$\Omega = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$$
-
 Expandindo:
-
 $$(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x$$
 
 ::: {.callout-warning}
@@ -165,50 +142,35 @@ O fator $-i$ na definição do produto interno é crucial para garantir que o pr
 ### Equação de Onda
 
 A equação de onda é:
-
 $$\frac{\partial^2 \phi}{\partial x_0^2} = \nabla^2 \phi$$
-
 onde $x_0 = ct$ é a coordenada temporal em unidades de comprimento.
 
 ### Decomposição em Primeira Ordem
 
 Definindo $\pi = \partial_{x_0} \phi$, podemos escrever o sistema como:
-
 $$\dot{\phi} = \pi$$
 $$\dot{\pi} = \nabla^2 \phi$$
 
 No formalismo matricial:
-
 $$\begin{pmatrix} \dot{\phi} \\ \dot{\pi} \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ -\nabla^2 & 0 \end{pmatrix} \begin{pmatrix} \phi \\ \pi \end{pmatrix}$$
 
 ### Matriz Hamiltoniana
 
 A matriz que gera a evolução temporal é:
-
 $$H = \begin{pmatrix} 0 & 1 \\ -\nabla^2 & 0 \end{pmatrix}$$
-
 Esta matriz satisfaz $H = \Omega \mathcal{H}$, onde $\mathcal{H}$ é um operador Hermitiano.
 
 ## Conservação do Wronskiano de Campos
 
 O Wronskiano de campos é definido como:
-
 $$W(\phi_1, \pi_1; \phi_2, \pi_2) = \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x$$
-
 Sua derivada temporal é:
-
 $$\frac{dW}{dx_0} = \int_{\mathbb{R}^3} [\pi_1 \pi_2 + \phi_1 \nabla^2 \phi_2 - \pi_2 \pi_1 - \phi_2 \nabla^2 \phi_1] d^3x$$
-
 $$\frac{dW}{dx_0} = \int_{\mathbb{R}^3} [\phi_1 \nabla^2 \phi_2 - \phi_2 \nabla^2 \phi_1] d^3x$$
-
 Usando a auto-adjuntividade do laplaciano:
-
 $$\int_{\mathbb{R}^3} \phi_1 \nabla^2 \phi_2 d^3x = \int_{\mathbb{R}^3} (\nabla^2 \phi_1) \phi_2 d^3x$$
-
 Portanto:
-
 $$\frac{dW}{dx_0} = 0$$
-
 Ou seja, o Wronskiano é conservado.
 
 ::: {.callout-tip}
@@ -222,7 +184,6 @@ A conservação do Wronskiano garante que uma base linearmente independente no i
 ### Definição
 
 As ondas planas formam uma base completa para o espaço de funções em $\mathbb{R}^3$:
-
 $$\psi_{\mathbf{k}}(\mathbf{x}) = \frac{e^{i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}}$$
 
 ### Relação de Ortogonalidade
@@ -238,11 +199,8 @@ $$\int_{\mathbb{R}^3} \psi_{\mathbf{k}}(\mathbf{x}) \psi_{\mathbf{k}}^*(\mathbf{
 ### Transformada de Fourier
 
 Qualquer função (suave) pode ser decomposta como:
-
 $$f(\mathbf{x}) = \int_{\mathbb{R}^3} \tilde{f}(\mathbf{k}) \frac{e^{i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}} d^3k$$
-
 onde:
-
 $$\tilde{f}(\mathbf{k}) = \int_{\mathbb{R}^3} f(\mathbf{x}) \frac{e^{-i\mathbf{k}\cdot\mathbf{x}}}{(2\pi)^{3/2}} d^3x$$
 
 ### Propriedades da Base de Ondas Planas
@@ -261,33 +219,23 @@ $$\tilde{f}(\mathbf{k}) = \int_{\mathbb{R}^3} f(\mathbf{x}) \frac{e^{-i\mathbf{k
 ### Separação de Variáveis
 
 Procuramos soluções da forma:
-
 $$\phi(x_0, \mathbf{x}) = T(x_0) \psi_{\mathbf{k}}(\mathbf{x})$$
-
 Substituindo na equação de onda:
-
 $$\ddot{T}(x_0) \psi_{\mathbf{k}}(\mathbf{x}) = T(x_0) \nabla^2 \psi_{\mathbf{k}}(\mathbf{x})$$
-
 $$\frac{\ddot{T}(x_0)}{T(x_0)} = \frac{\nabla^2 \psi_{\mathbf{k}}(\mathbf{x})}{\psi_{\mathbf{k}}(\mathbf{x})} = -k^2$$
 
 ### Soluções Temporais
 
 Para cada $\mathbf{k}$, obtemos a equação do oscilador harmônico:
-
 $$\ddot{T}(x_0) + k^2 T(x_0) = 0$$
-
 As soluções são:
-
 $$T(x_0) = A e^{-i\omega_k x_0} + B e^{i\omega_k x_0}$$
-
 onde $\omega_k = |\mathbf{k}|$ (no sistema de unidades onde $c=1$).
 
 ### Soluções de Onda Plana
 
 Portanto, as soluções modais são:
-
 $$\phi_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{i(\mathbf{k}\cdot\mathbf{x} - \omega_k x_0)}$$
-
 $$\phi_{\mathbf{k}}^*(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{-i(\mathbf{k}\cdot\mathbf{x} - \omega_k x_0)}$$
 
 ## Formalismo Simplético para Ondas Planas
@@ -295,15 +243,12 @@ $$\phi_{\mathbf{k}}^*(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{-i(\mathbf{k}
 ### Base Simplética
 
 Definimos a base de ondas planas no espaço de fase:
-
 $$Q_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{\sqrt{2}} \begin{pmatrix} \phi_{\mathbf{k}} \\ -i\omega_k \phi_{\mathbf{k}} \end{pmatrix}$$
 
 ### Produto Interno dos Modos
 
 Calculamos o produto interno simplético entre dois modos:
-
 $$(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega = -i \int_{\mathbb{R}^3} Q_{\mathbf{k}}^\dagger \Omega Q_{\mathbf{k}'} d^3x$$
-
 $$= \delta^{(3)}(\mathbf{k} - \mathbf{k}')$$
 
 ::: {.callout-important}
@@ -313,11 +258,8 @@ A normalização $\frac{1}{\sqrt{2}}$ foi escolhida para que o produto interno d
 ### Decomposição do Campo
 
 Qualquer campo pode ser decomposto como:
-
 $$Q(x_0, \mathbf{x}) = \int_{\mathbb{R}^3} [a_{\mathbf{k}} Q_{\mathbf{k}}(x_0, \mathbf{x}) + a_{\mathbf{k}}^* Q_{\mathbf{k}}^*(x_0, \mathbf{x})] d^3k$$
-
 Os coeficientes são obtidos por:
-
 $$a_{\mathbf{k}} = (Q_{\mathbf{k}}, Q)_\Omega$$
 
 # Função de Green para Campos
@@ -333,7 +275,6 @@ $$G(x_0, \mathbf{x}; x_0', \mathbf{x}') = -i \Theta(x_0 - x_0') \int_{\mathbb{R}
 ### Simplificação
 
 Esta expressão pode ser simplificada para:
-
 $$G(x, x') = \Theta(x_0 - x_0') \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^3} \frac{1}{\omega_k} \sin[\omega_k(x_0 - x_0')] e^{i\mathbf{k}\cdot(\mathbf{x} - \mathbf{x}')}$$
 
 ## Propriedades do Propagador
@@ -341,7 +282,6 @@ $$G(x, x') = \Theta(x_0 - x_0') \int_{\mathbb{R}^3} \frac{d^3k}{(2\pi)^3} \frac{
 ### Equação Diferencial
 
 O propagador satisfaz:
-
 $$(\partial_{x_0}^2 - \nabla^2) G(x, x') = \delta^{(4)}(x - x')$$
 
 ### Condições de Contorno
@@ -360,6 +300,8 @@ A escolha entre propagador avançado e retardado corresponde a diferentes condi�
 ```{python}
 #| label: fig-ondas-planas
 #| fig-cap: "Visualização de ondas planas em 1D"
+#| code-fold: true
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
@@ -410,6 +352,8 @@ HTML(anim.to_html5_video())
 ```{python}
 #| label: fig-superposicao
 #| fig-cap: "Superposição de ondas planas (pacote de ondas)"
+#| code-fold: true
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -457,6 +401,8 @@ plt.show()
 ```{python}
 #| label: fig-propagador
 #| fig-cap: "Função de Green (propagador) em 1D"
+#| code-fold: true
+
 import numpy as np
 import matplotlib.pyplot as plt
 
