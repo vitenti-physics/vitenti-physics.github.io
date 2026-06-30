@@ -5,12 +5,16 @@ format: html
 
 # Mathematical Physics
 
-These are the lecture notes and exercise lists for the Mathematical Physics course. The material is organized by topic, and currently focuses on core concepts such as the Dirac delta distribution, Green’s functions, and time-dependent operators. The content is under development; most sections contain only exercises for now.
+These are the lecture notes and exercise lists for the Mathematical Physics course. The material is organized by topic, building from the Dirac delta distribution and Green's functions to propagators, symplectic structures, and the quantization of scalar fields. The content is under development. This course material is in portuguese.
 
 ## Course Outline
 
-- [Dirac Delta](dirac-delta.qmd)
-- [Green Functions](green-functions.qmd)
-- [Time Dependent Green Functions](time-dependent-green-functions.qmd)
+- [Dirac Delta](delta-dirac-green.qmd)
+- [Green Functions](green-functions-nd.qmd)
+- [Propagators and Symplectic Structures](propagators-symplectic.qmd)
+- [Propagators: Complete Solutions](propagators-cont.qmd)
+- [Propagators in Field Theory](propagators-fields.qmd)
+- [Scalar Fields](scalar-field.qmd)
+- [Scalar Fields: Propagators and Vacuum](scalar-propagators.qmd)
 
 {{< include /_footer.qmd >}}
