@@ -9,9 +9,14 @@ These are the lecture notes and problem sets for the Electrodynamics course. The
 
 ## Course Outline
 
+- [Conventions and Notation](conventions.qmd)
 - [Geometry Review for Electrodynamics](geometry-review.qmd)
 - [Calculus on Minkowski Spacetime](calculus-on-minkowski-spacetime.qmd)
 - [Maxwell Equations in Covariant Form](maxwell-equations-forms.qmd)
+- [Accelerated Observers and Born Rigidity](accel.qmd)
+- [Energy of the Electromagnetic Field](em-energy.qmd)
+- [Radiation from a Moving Charge](moving-charge-radiation.qmd)
+- [Thomson Scattering](thomson-scattering.qmd)
 
 {{< include /_footer.qmd >}}
 

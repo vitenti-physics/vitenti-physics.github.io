@@ -1,0 +1,173 @@
+---
+title: "Conventions and Notation"
+format:
+  html:
+    number-sections: true
+---
+
+{{< include /_macros.qmd >}}
+
+## Scope
+
+This page fixes, once and for all, the units, metric, and index conventions used
+throughout the electrodynamics notes. Every other page in this course assumes
+these conventions; when a formula elsewhere looks unfamiliar, check here first.
+
+# Units
+
+Unless otherwise stated, SI units are used throughout. The vacuum constants satisfy
+$$
+c=\frac{1}{\sqrt{\mu_0\varepsilon_0}}.
+$$
+
+# Metric
+
+The Minkowski metric is
+$$
+\eta_{\mu\nu}=\mathrm{diag}(-1,+1,+1,+1),
+$$
+so that
+$$
+x^2=\eta_{\mu\nu}x^\mu x^\nu
+=-(x^0)^2+\mathbf{x}^2.
+$$
+Greek indices run from $0$ to $3$, while Latin indices run from $1$ to $3$.
+Repeated indices are summed.
+
+# Coordinates
+
+We write
+$$
+x^\mu=(ct,\mathbf{x}),
+\qquad
+\partial_\mu=\frac{\partial}{\partial x^\mu}.
+$$
+The d'Alembertian is
+$$
+\Box=\partial_\mu\partial^\mu.
+$$
+For two spacetime points,
+$$
+\Delta x^\mu=x^\mu-y^\mu,
+$$
+with
+$$
+(\Delta x)^2=\eta_{\mu\nu}\Delta x^\mu\Delta x^\nu.
+$$
+
+# Electromagnetic field
+
+The electromagnetic tensor is
+$$
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu.
+$$
+Its components are
+$$
+F^{0i}=\frac{E^i}{c},
+\qquad
+F^{ij}=\epsilon^{ijk}B_k.
+$$
+The four-potential is
+$$
+A^\mu=\left(\frac{\phi}{c},\mathbf{A}\right).
+$$
+The four-current is
+$$
+J^\mu=(c\rho,\mathbf{J}).
+$$
+
+# Maxwell equations
+
+The inhomogeneous equations are
+$$
+\partial_\mu F^{\mu\nu}
+=
+-\mu_0J^\nu.
+$$
+The homogeneous equations are
+$$
+\partial_{[\alpha}F_{\beta\gamma]}=0.
+$$
+In the Lorenz gauge,
+$$
+\partial_\mu A^\mu=0,
+$$
+the field equations reduce to
+$$
+\Box A^\mu=-\mu_0J^\mu.
+$$
+
+# Energy-momentum tensor
+
+$$
+T^{\mu\nu}
+=
+\frac{1}{\mu_0}
+\left(
+F^{\mu\alpha}F^\nu{}_\alpha
+-
+\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta}
+\right),
+$$
+with
+$$
+T^{00}=u=\frac{1}{2\mu_0}\left(\frac{E^2}{c^2}+B^2\right),
+\qquad
+T^{0i}=\frac{S^i}{c},
+\qquad
+\mathbf S=\frac{1}{\mu_0}\mathbf E\times\mathbf B.
+$$
+
+# Particle kinematics
+
+The worldline is $y^\mu(\tau)$, and the proper time satisfies
+$$
+c^2\dd\tau^2=-ds^2.
+$$
+The four-velocity is
+$$
+u^\mu=\frac{\dd y^\mu}{c\,\dd\tau}
+=\gamma\left(1,\frac{\mathbf v}{c}\right),
+$$
+with
+$$
+u^\mu u_\mu=-1.
+$$
+The four-acceleration is
+$$
+a^\mu=\frac{\dd u^\mu}{\dd\tau},
+$$
+and obeys
+$$
+u_\mu a^\mu=0.
+$$
+A dot is reserved for the derivative with respect to coordinate time $t$,
+e.g. $\dot{\mathbf v}=\dd\mathbf v/\dd t$; the proper-time derivative above is
+always written out or given its own symbol ($a^\mu$), never as $\dot u^\mu$.
+
+# Useful identities
+
+The retarded Green function satisfies
+$$
+\Box G_R(x-x')=\delta^{(4)}(x-x').
+$$
+The point-particle current is
+$$
+J^\mu(x)
+=
+cq
+\int
+u^\mu(\tau)
+\delta^{(4)}(x-y(\tau))
+\,\dd\tau.
+$$
+Useful distribution identity:
+$$
+\delta(f(x))
+=
+\sum_i
+\frac{\delta(x-x_i)}
+{|f'(x_i)|}.
+$$
+
+{{< include /_footer.qmd >}}

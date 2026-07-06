@@ -1,0 +1,546 @@
+---
+title: "Radiation from a Moving Charge"
+format:
+  html:
+    number-sections: true
+---
+
+{{< include /_macros.qmd >}}
+
+These notes closely follow the original lecture derivation, with only minor
+additions for clarity, and use the [conventions](conventions.qmd) fixed
+earlier in the course.
+
+# Maxwell equations in covariant form
+
+Starting from Maxwell's equations,
+$$
+\partial_\mu F^{\mu\nu}=-\mu_0J^\nu,
+$$
+with $F^{0i}=E^i/c$, $F^{ij}=\epsilon^{ijk}B_k$, and $J^\mu=(c\rho,\mathbf J)$
+as fixed in the [conventions](conventions.qmd#electromagnetic-field), one
+recovers the usual Maxwell equations component by component exactly as in
+[Maxwell Equations in Covariant Form](maxwell-equations-forms.qmd).
+
+Introducing the four-potential,
+$$
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+$$
+the $0i$ component reads $F_{0i}=\partial_0A_i-\partial_iA_0=\frac1c\partial_tA_i-\partial_iA_0$;
+comparing with $F_{0i}=-E_i/c$ (the lowered version of $F^{0i}=E^i/c$) gives
+$$
+\frac{E_i}{c}
+=
+\partial_iA_0
+-
+\frac{1}{c}\frac{\partial A_i}{\partial t},
+$$
+and, from the spatial components,
+$$
+\mathbf B=\nabla\times\mathbf A.
+$$
+In the electrostatic limit,
+$$
+\frac{\partial A_i}{\partial t}=0,
+\qquad
+E_i=\partial_i(cA_0)=-\partial_i\phi,
+$$
+using $cA_0=-\phi$ from $A^\mu=(\phi/c,\mathbf A)$.
+
+# Wave equation for the four-potential
+
+Substituting $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$ into Maxwell's
+equations and using that partial derivatives commute,
+$$
+\partial_\mu F^{\mu\nu}=\Box A^\nu-\partial^\nu(\partial_\mu A^\mu)=-\mu_0J^\nu,
+$$
+that is,
+$$
+\Box A^\nu-\partial^\nu(\partial_\mu A^\mu)
+=
+-\mu_0J^\nu.
+$$
+Using the Lorenz gauge,
+$$
+\partial_\mu A^\mu=0,
+$$
+the equations become
+$$
+\boxed{\Box A^\nu=-\mu_0J^\nu.}
+$$
+
+# Retarded Green function
+
+The Green function satisfies
+$$
+\Box G(x-x')=\delta^{(4)}(x-x').
+$$
+The retarded solution is
+$$
+G_R(x-x')
+=
+\frac{\Theta(x^0-x'^0)
+\delta(x^0-x'^0-|\mathbf x-\mathbf x'|)}
+{4\pi|\mathbf x-\mathbf x'|}.
+$$
+
+# Current of a point charge
+
+For a point charge,
+$$
+J^\mu(x)
+=
+cq
+\int
+u^\mu(\tau)
+\delta^{(4)}(x-y(\tau))
+\,\dd\tau,
+$$
+where
+
+- $y^\mu(\tau)$ is the worldline;
+- $u^\mu=\dd y^\mu/(c\,\dd\tau)$ is the four-velocity, normalized as in the
+  [conventions](conventions.qmd#particle-kinematics).
+
+# Four-potential
+
+Combining the Green function and the current,
+$$
+A^\mu(x)
+=
+-\mu_0
+\int
+G(x-z)
+J^\mu(z)\,
+\dd^4z,
+$$
+Substituting the point-charge current and its own delta function collapses
+the $z$-integral onto the worldline, leaving a single integral over $\tau$:
+$$
+A^\mu(x)
+=
+\frac{\mu_0qc^2}{4\pi}
+\int
+\frac{
+\Theta(x^0-y^0(\tau))
+\delta(x^0-y^0(\tau)-|\mathbf x-\mathbf y(\tau)|)
+}{
+|\mathbf x-\mathbf y(\tau)|
+}
+u^\mu(\tau)\,
+\dd\tau.
+$$
+Only values satisfying
+$$
+x^0-y^0(\tau)=|\mathbf x-\mathbf y(\tau)|
+$$
+contribute to the integral.
+
+# Covariant form
+
+Using
+$$
+(x-y)^2
+=
+-(x^0-y^0)^2
++
+|\mathbf x-\mathbf y|^2,
+$$
+and
+$$
+\delta(f(x))
+=
+\sum_i
+\frac{\delta(x-x_i)}
+{|f'(x_i)|},
+$$
+one finds
+$$
+\Theta(x^0-y^0)
+\delta((x-y)^2)
+=
+\frac{
+\delta(x^0-y^0-|\mathbf x-\mathbf y|)
+}{
+2|\mathbf x-\mathbf y|
+}.
+$$
+Therefore,
+$$
+\boxed{
+A^\mu(x)
+=
+\frac{\mu_0qc^2}{2\pi}
+\int
+\Theta(x^0-y^0(\tau))
+\delta((x-y)^2)
+u^\mu(\tau)
+\,\dd\tau.
+}
+$$
+
+# Retarded time
+
+The retarded proper time is defined implicitly by
+$$
+(x-y(\tau_r))^2=0,
+$$
+with
+$$
+x^0>y^0(\tau_r).
+$$
+Equivalently,
+$$
+t-t_r
+=
+\frac{
+|\mathbf x-\mathbf y(t_r)|
+}{c}.
+$$
+Write this as $f(t_r)=t-t_r-|\mathbf x-\mathbf y(t_r)|/c=0$. Since
+$\dd|\mathbf x-\mathbf y(t_r)|/\dd t_r=-\hat{\mathbf n}\cdot\mathbf v$, with
+$\hat{\mathbf n}$ pointing from the charge to the field point, differentiating
+with respect to $t_r$ gives
+$$
+\dot f
+=
+\frac{\hat{\mathbf n}\cdot\mathbf v}{c}-1<0,
+$$
+which never vanishes, showing that the solution is unique.
+
+**Example (uniform velocity).** For a charge moving with constant velocity
+$\mathbf v_0$, $\mathbf y(t_r)=\mathbf y_0+\mathbf v_0t_r$. Writing
+$\Delta\mathbf x_0=\mathbf x-\mathbf y_0$, the defining condition
+$c(t-t_r)=|\mathbf x-\mathbf y(t_r)|$ squares to
+$$
+c^2(t-t_r)^2=|\Delta\mathbf x_0-\mathbf v_0t_r|^2
+=|\Delta\mathbf x_0|^2-2\Delta\mathbf x_0\cdot\mathbf v_0\,t_r+v_0^2t_r^2.
+$$
+Collecting powers of $t_r$ and dividing by $c^2$ gives a quadratic equation,
+$$
+\left(1-\frac{v_0^2}{c^2}\right)t_r^2
+-2\left(t-\frac{\Delta\mathbf x_0\cdot\mathbf v_0}{c^2}\right)t_r
++\left(t^2-\frac{|\Delta\mathbf x_0|^2}{c^2}\right)=0,
+$$
+with two roots — an advanced and a retarded one. Only the smaller root is
+causal ($t_r<t$), so
+$$
+\boxed{
+t_r
+=
+\frac{
+\left(t-\dfrac{\Delta\mathbf x_0\cdot\mathbf v_0}{c^2}\right)
+-\dfrac1c\sqrt{\left(ct-\dfrac{\Delta\mathbf x_0\cdot\mathbf v_0}{c}\right)^2-\left(1-\dfrac{v_0^2}{c^2}\right)\left(c^2t^2-|\Delta\mathbf x_0|^2\right)}
+}
+{1-v_0^2/c^2}.
+}
+$$
+
+# Liénard–Wiechert potentials
+
+It remains to evaluate the $\tau$-integral in the boxed covariant potential
+using the same distributional identity as in the [Covariant form](#covariant-form)
+section, now applied to $g(\tau)=(x-y(\tau))^2$, which has a single zero at
+$\tau=\tau_r$:
+$$
+\delta((x-y(\tau))^2)=\frac{\delta(\tau-\tau_r)}{|g'(\tau_r)|},
+\qquad
+g'(\tau)=-2c\,u(\tau)\cdot(x-y(\tau)),
+$$
+where $g'$ follows from $\dd y^\mu/\dd\tau=c\,u^\mu$. At $\tau=\tau_r$, with
+$\Delta x^\mu=x^\mu-y^\mu(\tau_r)$ having $\Delta x^0=|\mathbf x-\mathbf y|$ and
+spatial part $|\mathbf x-\mathbf y|\hat{\mathbf n}$,
+$$
+u\cdot\Delta x=-\gamma|\mathbf x-\mathbf y|\left(1-\hat{\mathbf n}\cdot\mathbf v/c\right),
+$$
+so that $|g'(\tau_r)|=2c\gamma|\mathbf x-\mathbf y|(1-\hat{\mathbf n}\cdot\mathbf v/c)$.
+The $\tau$-integral then just picks out $u^\mu(\tau_r)/|g'(\tau_r)|$, and the
+factors of $\gamma$ cancel against those hidden in $u^\mu=\gamma(1,\mathbf v/c)$, giving
+$$
+\boxed{
+A^\mu
+=
+\frac{\mu_0qc}{4\pi}
+\left.
+\frac{(1,\mathbf v/c)}
+{|\mathbf x-\mathbf y|
+\left(1-\hat{\mathbf n}\cdot\mathbf v/c\right)}
+\right|_{t_r}.
+}
+$$
+Hence
+$$
+V
+=
+\frac{q}{4\pi\varepsilon_0}
+\left.
+\frac{1}
+{|\mathbf x-\mathbf y|
+(1-\hat{\mathbf n}\cdot\mathbf v/c)}
+\right|_{t_r},
+$$
+and
+$$
+\mathbf A
+=
+\frac{\mu_0qc}{4\pi}
+\left.
+\frac{\mathbf v}
+{|\mathbf x-\mathbf y|
+(1-\hat{\mathbf n}\cdot\mathbf v/c)}
+\right|_{t_r}.
+$$
+
+# Derivatives of the potential
+
+The field $F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ requires
+differentiating the covariant potential
+$$
+A^\nu
+=
+\frac{\mu_0qc^2}{2\pi}
+\int
+\Theta(x^0-y^0(\tau))
+\delta((x-y(\tau))^2)
+u^\nu(\tau)\,\dd\tau
+$$
+with respect to $x^\mu$. Only $\Theta$ and $\delta$ depend on $x$ inside the
+integral (through $x-y(\tau)$), so
+$$
+\partial_\mu A^\nu
+=
+\frac{\mu_0qc^2}{2\pi}
+\int
+\Big[
+\big(\partial_\mu\Theta(x^0-y^0)\big)\delta((x-y)^2)
++
+\Theta(x^0-y^0)\,\partial_\mu\big[\delta((x-y)^2)\big]
+\Big]
+u^\nu\,\dd\tau.
+$$
+
+**Discarding the self-field term.** The first term has
+$\partial_\mu\Theta(x^0-y^0)\propto\delta^0_\mu\,\delta(x^0-y^0)$, which
+multiplies $\delta((x-y)^2)$. A point where both $x^0=y^0$ and
+$(x-y)^2=-(x^0-y^0)^2+|\mathbf x-\mathbf y|^2=0$ forces $\mathbf x=\mathbf y$
+as well, i.e. $x=y$: this term is supported only at the charge's own
+location and gives an infinite self-field contribution there. It is dropped,
+keeping only the field at points away from the source:
+$$
+\partial_\mu A^\nu
+=
+\frac{\mu_0qc^2}{2\pi}
+\int
+\Theta(x^0-y^0)\,\partial_\mu\big[\delta((x-y)^2)\big]\,u^\nu\,\dd\tau.
+$$
+
+**Trading the $x$-derivative for a $\tau$-derivative.** By the chain rule,
+$$
+\partial_\mu\big[\delta((x-y)^2)\big]
+=
+\delta'((x-y)^2)\,\partial_\mu(x-y)^2
+=
+2\Delta x_\mu\,\delta'((x-y)^2),
+\qquad
+\Delta x^\mu\equiv x^\mu-y^\mu(\tau).
+$$
+Differentiating instead along the worldline, using $\dd y^\mu/\dd\tau=c\,u^\mu$,
+$$
+\frac{\dd}{\dd\tau}\delta((x-y)^2)
+=
+\delta'((x-y)^2)\,\frac{\dd}{\dd\tau}(x-y)^2
+=
+\delta'((x-y)^2)\,\big(-2c\,u\cdot\Delta x\big),
+$$
+so that
+$$
+\delta'((x-y)^2)=-\frac{1}{2c\,u\cdot\Delta x}\frac{\dd}{\dd\tau}\delta((x-y)^2).
+$$
+Substituting,
+$$
+\partial_\mu A^\nu
+=
+-\frac{\mu_0qc}{2\pi}
+\int
+\Theta(x^0-y^0)
+\left[\frac{\dd}{\dd\tau}\delta((x-y)^2)\right]
+\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\,\dd\tau.
+$$
+
+**Integration by parts.** Moving the $\tau$-derivative off $\delta$ and onto
+the rest of the integrand costs a sign; the boundary term and the piece
+hitting $\Theta$ are, again, self-field contributions at $x=y$ and are
+dropped:
+$$
+\partial_\mu A^\nu
+=
+\frac{\mu_0qc}{2\pi}
+\int
+\Theta(x^0-y^0)\,\delta((x-y)^2)\,
+\frac{\dd}{\dd\tau}\left(\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\right)
+\dd\tau.
+$$
+The $\tau$-integral is now done exactly as in the Liénard–Wiechert
+derivation, using
+$\delta((x-y)^2)=\delta(\tau-\tau_r)/(2c|u\cdot\Delta x|)$:
+$$
+\partial_\mu A^\nu
+=
+\frac{\mu_0q}{4\pi}
+\frac{1}{|u\cdot\Delta x|}
+\left.
+\frac{\dd}{\dd\tau}\left(\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\right)
+\right|_{\tau=\tau_r}.
+$$
+
+**Differentiating term by term.** Writing the four-acceleration as
+$a^\mu=\dd u^\mu/\dd\tau$, the product rule gives
+$$
+\frac{\dd}{\dd\tau}\left(\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\right)
+=
+\frac{\dot{(\Delta x_\mu)}\,u^\nu+\Delta x_\mu\,a^\nu}{u\cdot\Delta x}
+-
+\frac{\Delta x_\mu\,u^\nu}{(u\cdot\Delta x)^2}\,\frac{\dd}{\dd\tau}(u\cdot\Delta x).
+$$
+Since $x$ is fixed, $\dot{(\Delta x_\mu)}=-\dd y_\mu/\dd\tau=-c\,u_\mu$, and
+$$
+\frac{\dd}{\dd\tau}(u\cdot\Delta x)
+=
+a\cdot\Delta x+u\cdot\dot{(\Delta x)}
+=
+a\cdot\Delta x-c\,u\cdot u
+=
+a\cdot\Delta x+c,
+$$
+using $u\cdot u=-1$. Substituting both,
+$$
+\frac{\dd}{\dd\tau}\left(\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\right)
+=
+\frac{-c\,u_\mu u^\nu+\Delta x_\mu\,a^\nu}{u\cdot\Delta x}
+-
+\frac{\Delta x_\mu\,u^\nu}{(u\cdot\Delta x)^2}\big(\Delta x\cdot a+c\big),
+$$
+so that
+$$
+\partial_\mu A^\nu
+=
+\frac{\mu_0q}{4\pi}
+\frac{1}{(u\cdot\Delta x)^2}
+\left[
+-c\,u_\mu u^\nu+\Delta x_\mu\,a^\nu
+-
+\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\big(\Delta x\cdot a+c\big)
+\right]_{\tau=\tau_r}.
+$$
+The term $-c\,u_\mu u^\nu$ is symmetric under $\mu\leftrightarrow\nu$ (raising
+the index on $\mu$), so it cancels in the antisymmetric combination
+$F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$ and can be dropped when
+only the field, not the potential's derivative itself, is wanted:
+$$
+\boxed{
+\partial_\mu A_\nu
+=
+\frac{\mu_0q}{4\pi}
+\frac{1}{(u\cdot\Delta x)^2}
+\left[
+\Delta x_\mu\,a_\nu
+-
+\frac{\Delta x_\mu\,u_\nu}{u\cdot\Delta x}\big(\Delta x\cdot a+c\big)
+\right]_{\tau=\tau_r}
++\;(\text{symmetric in }\mu\nu).
+}
+$$
+
+**Near field versus radiation field.** Both $u\cdot\Delta x$ and $\Delta
+x_\mu$ scale with the distance $R=|\mathbf x-\mathbf y|$ to the source:
+$u\cdot\Delta x\sim R$ (Liénard–Wiechert section) and $\Delta x_\mu\sim R$,
+while $u^\nu$ and $a^\nu$, evaluated at the fixed retarded time $\tau_r$, do
+not depend on $R$. In the boxed expression, the term
+$\Delta x_\mu a_\nu/(u\cdot\Delta x)^2$ scales as $R/R^2=1/R$: it carries the
+four-acceleration explicitly, and is the **radiation field**. In the second
+term, the factor $\Delta x\cdot a$ inside the parenthesis itself grows as
+$R$, so it contributes another $R/(u\cdot\Delta x)^3\sim1/R$ piece to the
+radiation field, while the leftover $c$ — the only acceleration-independent
+piece left in the whole expression — contributes $\Delta
+x_\mu u_\nu c/(u\cdot\Delta x)^3\sim1/R^2$. This is exactly the statement in
+the original notes: **terms carrying the acceleration fall off as $1/R$**;
+whatever survives without it falls off as $1/R^2$ and is the near
+(velocity) field.
+
+# Radiation zone
+
+Far from the source, the acceleration field dominates. There it behaves
+locally like a plane wave propagating along $\hat{\mathbf n}=\Delta\mathbf x/|\Delta\mathbf x|$,
+so that
+$$
+\mathbf B=\frac1c\,\hat{\mathbf n}\times\mathbf E,
+\qquad
+|\mathbf E|=c|\mathbf B|.
+$$
+Using the energy density and Poynting vector from
+[Energy of the Electromagnetic Field](em-energy.qmd),
+$$
+u=\frac1{2\mu_0}\left(\frac{E^2}{c^2}+B^2\right),
+\qquad
+\mathbf S=\frac1{\mu_0}\mathbf E\times\mathbf B,
+$$
+and substituting $B=E/c$ gives
+$$
+\boxed{
+u=\varepsilon_0E^2,
+\qquad
+\mathbf S=\frac{E^2}{\mu_0c}\,\hat{\mathbf n}=cu\,\hat{\mathbf n}.
+}
+$$
+Energy flows radially outward at the speed of light, as expected for
+radiation. (Here $u$ is the field energy density, unrelated to the
+four-velocity $u^\mu$ of the previous sections; both are standard uses of the
+same letter and are always distinguished by the presence of the index.)
+
+# Covariant radiation tensor
+
+The radiation contribution to the energy-momentum tensor has the form
+$$
+T^{\mu\nu}_{\rm rad}
+\propto
+\frac{
+(a\cdot a)(\Delta x\cdot u)^2
+-(\Delta x\cdot a)^2
+}
+{(\Delta x\cdot u)^6}
+\Delta x^\mu\Delta x^\nu.
+$$
+Important observations:
+
+- proportional to $\Delta x^\mu\Delta x^\nu$;
+- null, since $\Delta x^2=0$ on the light cone;
+- directed along outgoing light rays;
+- survives at arbitrarily large distances, since the $1/|\Delta\mathbf x|^2$
+  falloff exactly matches the near-field terms falling off faster.
+
+This is the field responsible for energy loss by the source.
+
+# Relativistic Larmor formula
+
+Integrating the radiative flux over a large sphere surrounding the charge
+yields
+$$
+\boxed{
+P
+=
+\frac{\mu_0q^2c}{6\pi}
+a^\mu a_\mu.
+}
+$$
+In the instantaneous rest frame, $u^\mu=(1,\mathbf 0)$, and $u_\mu a^\mu=0$
+forces the time component of $a^\mu$ to vanish there, so $a^\mu=(0,\dot{\mathbf v}/c)$
+for the ordinary acceleration $\dot{\mathbf v}=\dd\mathbf v/\dd t$. Hence
+$$
+a^\mu a_\mu=\frac{\dot v^2}{c^2},
+$$
+and the formula reduces to the familiar non-relativistic Larmor formula,
+$$
+P=\frac{\mu_0q^2\dot v^2}{6\pi c}.
+$$
+
+{{< include /_footer.qmd >}}

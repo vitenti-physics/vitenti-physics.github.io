@@ -1,0 +1,240 @@
+---
+title: "Thomson Scattering"
+format:
+  html:
+    number-sections: true
+---
+
+{{< include /_macros.qmd >}}
+
+These notes use the [conventions](conventions.qmd) fixed earlier in the
+course, and build directly on the covariant radiation field derived in
+[Radiation from a Moving Charge](moving-charge-radiation.qmd) and the energy
+flux introduced in [Energy of the Electromagnetic Field](em-energy.qmd). The
+goal is to go from the covariant field of an accelerated charge, through its
+non-relativistic (local rest-frame) limit, to the classical differential and
+total cross sections for scattering of light by a free charge.
+
+# Setup
+
+A free charge $q$ of mass $m$ (an electron, in practice) sits at rest at the
+origin and is illuminated by a monochromatic plane wave,
+$$
+\mathbf E_{\rm inc}(t)=E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t),
+\qquad
+\mathbf B_{\rm inc}(t)=\frac1c\,\hat{\mathbf k}\times\mathbf E_{\rm inc}(t),
+$$
+with $\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k}$, evaluated at the
+charge's location. Two approximations define the classical (Thomson) regime:
+
+- **non-relativistic motion**: the charge's response velocity $v\ll c$, so
+  terms of order $v/c$ are dropped;
+- **no radiation reaction**: the energy radiated per cycle is a small
+  fraction of the charge's kinetic energy, so the incident field alone
+  drives the motion.
+
+# Equation of motion
+
+The Lorentz force on the charge is $q(\mathbf E_{\rm inc}+\mathbf v\times\mathbf B_{\rm inc})$.
+Since $|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c$, the magnetic term is
+smaller than the electric term by a factor $v/c\ll1$ and is dropped, leaving
+$$
+m\dot{\mathbf v}=q\mathbf E_{\rm inc}(t),
+\qquad
+\dot{\mathbf v}(t)=\frac{q}{m}E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t).
+$$
+The charge oscillates along the fixed direction $\hat{\boldsymbol\epsilon}$
+with acceleration amplitude $a_0\equiv qE_0/m$; since $a_0/\omega\ll c$ in the
+non-relativistic regime, the charge's excursion is tiny compared to the
+wavelength, and it radiates essentially from a fixed point (the dipole
+approximation).
+
+# From the covariant field to the local frame
+
+In [Derivatives of the potential](moving-charge-radiation.qmd#derivatives-of-the-potential),
+the radiative ($1/R$) part of $\partial_\mu A_\nu$ was identified as the
+piece carrying the four-acceleration $a^\mu=\dd u^\mu/\dd\tau$,
+$$
+\partial_\mu A_\nu\Big|_{\rm rad}
+=
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\left[
+\Delta x_\mu a_\nu
+-
+\frac{\Delta x_\mu u_\nu}{u\cdot\Delta x}(\Delta x\cdot a)
+\right]_{\tau=\tau_r},
+$$
+keeping only the acceleration-carrying pieces of the boxed formula (the
+leftover $c$ inside the last parenthesis there is a near-field, $1/R^2$
+contribution and is dropped here). The radiative field tensor follows by
+antisymmetrizing,
+$$
+F_{\mu\nu}\Big|_{\rm rad}
+=
+\partial_\mu A_\nu\Big|_{\rm rad}-\partial_\nu A_\mu\Big|_{\rm rad}
+=
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\left[
+\Delta x_\mu a_\nu-\Delta x_\nu a_\mu
+-
+\frac{\Delta x\cdot a}{u\cdot\Delta x}
+\big(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu\big)
+\right].
+$$
+
+At the instant the charge is at rest, $u^\mu=(1,\mathbf 0)$ and, since
+$u_\mu a^\mu=0$ forces $a^0=0$ there, $a^\mu=(0,\dot{\mathbf v}/c)$ exactly
+(this is the same identification used for the [Larmor formula](moving-charge-radiation.qmd#relativistic-larmor-formula)).
+With $\Delta x^\mu=(R,R\hat{\mathbf n})$, $R=|\mathbf x|$,
+$$
+u\cdot\Delta x=-R,
+\qquad
+\Delta x\cdot a=R\,\frac{\hat{\mathbf n}\cdot\dot{\mathbf v}}{c}.
+$$
+Substituting into $F_{0i}|_{\rm rad}=-E_i/c$ and simplifying (the two
+$1/R$-carrying terms combine; the $\Delta x_\mu u_\nu$ term contributes
+$R\hat n_i$ using $u_i=0,u_0=-1$) gives
+$$
+\boxed{
+\mathbf E_{\rm rad}(\mathbf x,t)
+=
+\frac{\mu_0q}{4\pi R}
+\Big[\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}\Big]_{t_r}
+=
+-\frac{\mu_0q}{4\pi R}\,\hat{\mathbf n}\times\big(\hat{\mathbf n}\times\dot{\mathbf v}\big)\Big|_{t_r},
+}
+$$
+the familiar non-relativistic dipole radiation field, transverse to
+$\hat{\mathbf n}$ by construction. Writing $\Theta$ for the angle between
+$\hat{\mathbf n}$ and $\dot{\mathbf v}$, its magnitude is
+$$
+|\mathbf E_{\rm rad}|=\frac{\mu_0q\,|\dot{\mathbf v}|}{4\pi R}\sin\Theta.
+$$
+
+# Radiated power and a consistency check
+
+In the radiation zone, $u=\varepsilon_0E^2$ and $\mathbf S=cu\,\hat{\mathbf n}$
+(from the [Radiation zone](moving-charge-radiation.qmd#radiation-zone)
+section), so the power radiated per solid angle is
+$$
+\frac{\dd P}{\dd\Omega}=R^2\,\mathbf S\cdot\hat{\mathbf n}=R^2c\varepsilon_0|\mathbf E_{\rm rad}|^2
+=
+\frac{\mu_0q^2\dot v^2}{16\pi^2c}\sin^2\Theta,
+$$
+using $1/(4\pi\varepsilon_0)=\mu_0c^2/(4\pi)$. As a check, integrating over
+solid angle with $\int\sin^2\Theta\,\dd\Omega=8\pi/3$ recovers exactly the
+non-relativistic Larmor formula already derived,
+$$
+P=\int\frac{\dd P}{\dd\Omega}\,\dd\Omega=\frac{\mu_0q^2\dot v^2}{16\pi^2c}\cdot\frac{8\pi}{3}=\frac{\mu_0q^2\dot v^2}{6\pi c},
+$$
+matching [the boxed result](moving-charge-radiation.qmd#relativistic-larmor-formula)
+$P=\mu_0q^2\dot v^2/(6\pi c)$ obtained independently from the covariant
+radiation tensor.
+
+# Differential cross section
+
+The incident wave carries energy density $u_{\rm inc}=\varepsilon_0E_{\rm inc}^2$
+and flux $S_{\rm inc}=cu_{\rm inc}$ (same radiation-zone relations, since a
+plane wave is locally the same kind of transverse field); its time average
+over a cycle is
+$$
+\langle S_{\rm inc}\rangle=c\varepsilon_0\langle E_{\rm inc}^2\rangle=\tfrac12c\varepsilon_0E_0^2.
+$$
+The differential cross section is defined as scattered power per solid
+angle, divided by incident flux:
+$$
+\frac{\dd\sigma}{\dd\Omega}
+\equiv
+\frac{\langle \dd P/\dd\Omega\rangle}{\langle S_{\rm inc}\rangle}.
+$$
+Using $\dot{\mathbf v}=(q/m)\mathbf E_{\rm inc}$ from the equation of motion,
+$\langle\dot v^2\rangle=(q/m)^2\langle E_{\rm inc}^2\rangle=(q/m)^2E_0^2/2$,
+so
+$$
+\left\langle\frac{\dd P}{\dd\Omega}\right\rangle
+=
+\frac{\mu_0q^2}{16\pi^2c}\cdot\frac{q^2E_0^2}{2m^2}\sin^2\Theta,
+$$
+and dividing by $\langle S_{\rm inc}\rangle=c\varepsilon_0E_0^2/2$, with
+$1/\varepsilon_0=\mu_0c^2$,
+$$
+\frac{\dd\sigma}{\dd\Omega}
+=
+\left(\frac{\mu_0q^2}{4\pi m}\right)^{\!2}\sin^2\Theta.
+$$
+Defining the **classical radius** of the charge,
+$$
+r_q\equiv\frac{\mu_0q^2}{4\pi m}=\frac{q^2}{4\pi\varepsilon_0mc^2},
+$$
+this is
+$$
+\boxed{
+\frac{\dd\sigma}{\dd\Omega}=r_q^2\sin^2\Theta,
+}
+$$
+with $\Theta$ the angle between the observation direction $\hat{\mathbf n}$
+and the (fixed) oscillation direction $\hat{\boldsymbol\epsilon}$: scattering
+is strongest broadside to the oscillation and vanishes along it, exactly
+like a driven dipole antenna.
+
+# Unpolarized incident light
+
+For unpolarized incident light, average $\sin^2\Theta$ over the two
+independent transverse polarizations. Take $\hat{\mathbf k}=\hat{\mathbf z}$
+and, without loss of generality, the observation direction in the $x$-$z$
+plane at scattering angle $\theta$ from $\hat{\mathbf k}$,
+$\hat{\mathbf n}=\sin\theta\,\hat{\mathbf x}+\cos\theta\,\hat{\mathbf z}$.
+For $\hat{\boldsymbol\epsilon}=\hat{\mathbf x}$,
+$\sin^2\Theta=1-(\hat{\mathbf n}\cdot\hat{\mathbf x})^2=\cos^2\theta$; for
+$\hat{\boldsymbol\epsilon}=\hat{\mathbf y}$,
+$\hat{\mathbf n}\cdot\hat{\mathbf y}=0$ so $\sin^2\Theta=1$. Averaging the two,
+$$
+\langle\sin^2\Theta\rangle=\frac{\cos^2\theta+1}{2},
+$$
+so that
+$$
+\boxed{
+\left.\frac{\dd\sigma}{\dd\Omega}\right|_{\rm unpol}
+=
+\frac{r_q^2}{2}\left(1+\cos^2\theta\right),
+}
+$$
+the classical Thomson formula, with $\theta$ now the angle between the
+scattered and incident directions.
+
+# Total cross section
+
+Integrating over solid angle, with $x=\cos\theta$,
+$$
+\sigma_T
+=
+\frac{r_q^2}{2}\int_0^{2\pi}\!\!\dd\phi\int_{-1}^{1}(1+x^2)\,\dd x
+=
+\pi r_q^2\left[x+\frac{x^3}{3}\right]_{-1}^{1}
+=
+\pi r_q^2\cdot\frac83,
+$$
+$$
+\boxed{
+\sigma_T=\frac{8\pi}{3}r_q^2.
+}
+$$
+For an electron ($q=e$, $m=m_e$), $r_q$ is the classical electron radius and
+$\sigma_T\approx6.65\times10^{-29}\,\mathrm m^2$ is the Thomson cross
+section.
+
+# Validity
+
+This is a purely classical, elastic calculation: the scattered light has the
+same frequency $\omega$ as the incident light, with no recoil. It holds
+provided:
+
+- $v\ll c$ throughout the motion (already used to drop the magnetic force
+  and to evaluate $a^\mu$ at $u^\mu=(1,\mathbf 0)$);
+- the photon energy $\hbar\omega$ is much smaller than $mc^2$, so that the
+  quantum recoil corrections of Compton scattering are negligible;
+- the charge is genuinely free (or driven far from any resonance), so that
+  no restoring force competes with the incident field in the equation of
+  motion.
+
+{{< include /_footer.qmd >}}

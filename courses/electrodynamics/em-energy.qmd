@@ -1,0 +1,361 @@
+---
+title: "Energy of the Electromagnetic Field"
+format:
+  html:
+    number-sections: true
+---
+
+{{< include /_macros.qmd >}}
+
+These notes follow the [conventions](conventions.qmd) fixed earlier in the
+course: SI units, signature $(-,+,+,+)$, and $x^\mu=(ct,\mathbf x)$.
+
+# Energy stored in the electrostatic field
+
+Assembling a charge distribution means repeatedly bringing in a small charge
+$\dd q$ from infinity against the potential $V$ already set up by the charge
+in place, doing work
+$$
+\dd W = V\,\dd q,
+$$
+and choosing the reference such that the potential vanishes at infinity,
+$$
+V(\infty)=0.
+$$
+Summing this over the whole distribution $\rho$, with the factor $\frac12$
+compensating for counting each pair of charges twice, the total electrostatic
+energy is
+$$
+W=\frac12\int_V V\rho\,\dd^3x.
+$$
+Using Poisson's equation,
+$$
+\nabla^2V=-\frac{\rho}{\varepsilon_0},
+$$
+we obtain
+$$
+W
+=
+-\frac{\varepsilon_0}{2}
+\int_V
+V\nabla^2V\,\dd^3x.
+$$
+Trading $\rho$ for a total-derivative term plus $|\nabla V|^2$ with the
+product rule,
+$$
+V\nabla^2V
+=
+\nabla\cdot(V\nabla V)-|\nabla V|^2,
+$$
+and applying the divergence theorem to the first piece gives
+$$
+W=
+-\frac{\varepsilon_0}{2}
+\oint_{\partial V}
+V\nabla V\cdot \dd\mathbf a
++
+\frac{\varepsilon_0}{2}
+\int_V
+|\mathbf E|^2\,\dd^3x.
+$$
+Assuming the surface term vanishes,
+$$
+\boxed{
+W
+=
+\frac{\varepsilon_0}{2}
+\int_V
+|\mathbf E|^2\,\dd^3x.
+}
+$$
+
+# Building a stationary current
+
+After assembling the electrostatic configuration we slowly establish a stationary current. During this process
+
+- the charge distribution is stationary,
+- $\partial\mathbf E/\partial t=0$ for the electrostatic field,
+- the current varies with time,
+- therefore the magnetic field also varies.
+
+The induced electric field satisfies Faraday's law,
+$$
+\nabla\times\mathbf E_c
+=
+-\frac{\partial\mathbf B}{\partial t}.
+$$
+Here $\mathbf E_c$ denotes the electric field induced by the changing magnetic field.
+
+# Quasi-static approximation
+
+Ampère–Maxwell's equation reads
+$$
+\nabla\times\mathbf B
+-
+\frac1{c^2}
+\frac{\partial\mathbf E_c}{\partial t}
+=
+\mu_0\mathbf J.
+$$
+Estimating $\nabla\sim1/L$ for a source of size $L$, Ampère's law with the
+displacement current dropped gives $B\sim\mu_0JL$,
+$$
+\nabla\sim\frac1L,
+\qquad
+B\sim\mu_0JL,
+$$
+and Faraday's law, with $T$ the timescale over which the current changes,
+gives in the same way $E_c\sim LB/T$,
+$$
+E_c\sim\frac{LB}{T},
+$$
+and therefore
+$$
+\frac1{c^2}
+\frac{\partial E_c}{\partial t}
+\sim
+\mu_0J
+\left(\frac{L}{cT}\right)^2.
+$$
+Hence, if
+$$
+\boxed{\frac{L}{T}\ll c,}
+$$
+the displacement current can be neglected.
+
+# Magnetic energy
+
+For a single charge, the Lorentz force gives the power delivered by the
+fields as $\dd W/\dd t=\mathbf v\cdot\mathbf F=\mathbf v\cdot(q\mathbf E_c+q\mathbf v\times\mathbf B)=q\mathbf v\cdot\mathbf E_c$,
+since the magnetic force is always perpendicular to $\mathbf v$ and does no
+work. For a continuous distribution, $q\mathbf v\to\mathbf J\,\dd^3x$, so the
+work done on the charges is
+$$
+\frac{\dd W}{\dd t}
+=
+\int
+\mathbf J\cdot\mathbf E_c\,\dd^3x.
+$$
+Using the quasi-static approximation,
+$$
+\mathbf J
+=
+\frac1{\mu_0}\nabla\times\mathbf B,
+$$
+and the identity
+$$
+\nabla\cdot(\mathbf E_c\times\mathbf B)
+=
+\mathbf B\cdot(\nabla\times\mathbf E_c)
+-
+\mathbf E_c\cdot(\nabla\times\mathbf B),
+$$
+together with Faraday's law,
+$$
+\nabla\times\mathbf E_c
+=
+-\frac{\partial\mathbf B}{\partial t},
+$$
+the integrand becomes a divergence plus $-\mathbf B\cdot\partial_t\mathbf B/\mu_0=-\frac1{2\mu_0}\partial_t|\mathbf B|^2$, so that, assuming the surface term vanishes,
+$$
+\frac{\dd W}{\dd t}
+=
+-\frac1{2\mu_0}
+\frac{\partial}{\partial t}
+\int
+|\mathbf B|^2\,\dd^3x.
+$$
+This is negative: the induced field $\mathbf E_c$ opposes the growing
+current (Lenz's law), so it does negative work on the charges, and
+whatever drives the current against $\mathbf E_c$ must supply the balance.
+That energy, $W_B\equiv-W$, ends up stored in the magnetic field; if the
+field is initially zero,
+$$
+\boxed{
+W_B
+=
+\frac1{2\mu_0}
+\int
+|\mathbf B|^2\,\dd^3x.
+}
+$$
+
+# Total electromagnetic energy
+
+Once the current is steady, $\mathbf E_c$ has done its job and vanishes; what
+is left is the electrostatic field of the assembled charges plus the
+magnetic field of the assembled current, and the configuration "remembers"
+the energy spent building it: $U\equiv W+W_B$, the total field energy, is
+$$
+\boxed{
+U
+=
+\frac1{2\mu_0}
+\int
+\left(
+\frac{|\mathbf E|^2}{c^2}
++
+|\mathbf B|^2
+\right)
+\dd^3x.
+}
+$$
+Defining the energy density,
+$$
+u
+=
+\frac1{2\mu_0}
+\left(
+\frac{|\mathbf E|^2}{c^2}
++
+|\mathbf B|^2
+\right),
+$$
+its time derivative is
+$$
+\frac{\partial u}{\partial t}
+=
+\frac{1}{\mu_0}
+\left(
+\frac{\mathbf E\cdot\partial_t\mathbf E}{c^2}
++
+\mathbf B\cdot\partial_t\mathbf B
+\right).
+$$
+Now, unlike in the magnetic-energy calculation, the source $\mathbf J$ is
+kept: solving Ampère–Maxwell's law for the displacement current,
+$\partial_t\mathbf E/c^2=\nabla\times\mathbf B-\mu_0\mathbf J$, and using
+Faraday's law, $\partial_t\mathbf B=-\nabla\times\mathbf E$, gives
+$$
+\frac{\partial u}{\partial t}
+=
+\frac{1}{\mu_0}
+\Big(
+\mathbf E\cdot(\nabla\times\mathbf B)-\mathbf B\cdot(\nabla\times\mathbf E)
+\Big)
+-\mathbf J\cdot\mathbf E,
+$$
+and the same identity used above, now with the roles of $\mathbf E$ and
+$\mathbf B$ swapped, turns the first piece into a divergence:
+$$
+\frac{\partial u}{\partial t}
+=
+-\mathbf J\cdot\mathbf E
+-
+\nabla\cdot
+\left(
+\frac{\mathbf E\times\mathbf B}{\mu_0}
+\right).
+$$
+
+# Poynting theorem
+
+Define the Poynting vector,
+$$
+\boxed{
+\mathbf S
+=
+\frac{\mathbf E\times\mathbf B}{\mu_0}.
+}
+$$
+The local conservation law is
+$$
+\boxed{
+\frac{\partial u}{\partial t}
++
+\nabla\cdot\mathbf S
+=
+-\mathbf J\cdot\mathbf E.
+}
+$$
+Integrating over a volume,
+$$
+\frac{\dd}{\dd t}
+\int_Vu\,\dd^3x
++
+\oint_{\partial V}
+\mathbf S\cdot \dd\mathbf a
+=
+-\frac{\dd W}{\dd t}.
+$$
+Thus the change in electromagnetic energy inside a volume equals the energy flux through its boundary plus the work performed on charged matter.
+
+# Covariant expressions
+
+Using the field components fixed in the [conventions](conventions.qmd#electromagnetic-field),
+$$
+F^{0i}=\frac{E^i}{c},
+\qquad
+F^{ij}=\epsilon^{ijk}B_k,
+$$
+summing over all pairs $\mu\nu$ counts each antisymmetric pair $(0i)$ and $(i0)$
+alike, giving a factor of $2$ for the electric part, and similarly for the
+magnetic part,
+$$
+F^{\mu\nu}F_{\mu\nu}
+=
+2\left(
+-\frac{|\mathbf E|^2}{c^2}
++
+|\mathbf B|^2
+\right).
+$$
+Moreover, since $F^{00}=0$, only the spatial index contributes to
+$$
+F^{0\alpha}F^0{}_\alpha
+=
+\frac{|\mathbf E|^2}{c^2}.
+$$
+The energy-momentum tensor is
+$$
+T^{\alpha\beta}
+=
+\frac1{\mu_0}
+\left(
+F^{\alpha\gamma}F^\beta{}_\gamma
+-
+\frac14
+\eta^{\alpha\beta}
+F^{\mu\nu}F_{\mu\nu}
+\right).
+$$
+For $\alpha=\beta=0$, using $\eta^{00}=-1$,
+$$
+T^{00}
+=
+\frac1{\mu_0}
+\left(
+F^{0\alpha}F^0{}_\alpha
++
+\frac14
+F^{\mu\nu}F_{\mu\nu}
+\right)
+=
+\frac1{\mu_0}
+\left(
+\frac{|\mathbf E|^2}{c^2}
++
+\frac12\left(-\frac{|\mathbf E|^2}{c^2}+|\mathbf B|^2\right)
+\right)
+=
+\frac1{2\mu_0}\left(\frac{|\mathbf E|^2}{c^2}+|\mathbf B|^2\right)
+=
+u.
+$$
+For $\alpha=0,\beta=i$, the second term drops out since $\eta^{0i}=0$, and
+only $F^{00}=0$ fails to contribute to the sum over $\gamma$, leaving
+$$
+T^{0i}
+=
+\frac1{\mu_0}F^{0j}F^i{}_j
+=
+\frac1{\mu_0}\frac{E^j}{c}\epsilon^{ijk}B_k
+=
+\frac1{\mu_0c}(\mathbf E\times\mathbf B)^i
+=
+\frac{S^i}{c}.
+$$
+Thus $T^{00}=u$ and $T^{0i}=S^i/c$ are, respectively, the time-time and
+time-space components of a single covariant object.
+
+{{< include /_footer.qmd >}}

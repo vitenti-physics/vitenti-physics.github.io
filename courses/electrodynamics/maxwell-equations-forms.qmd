@@ -110,20 +110,22 @@ $$
 Define the **Faraday tensor** $F_{\mu\nu}$ as a 2-form on spacetime with
 components:
 $$
-F_{0i} = E_i, 
-\qquad 
-F_{ij} = B_{ij},
+F_{0i} = -\frac{E_i}{c},
+\qquad
+F_{ij} = B_{ij}=\epsilon_{ijk}B_k,
 $$
-and antisymmetry $F_{\mu\nu} = -F_{\nu\mu}$.
+and antisymmetry $F_{\mu\nu} = -F_{\nu\mu}$. This matches the
+[conventions](conventions.qmd#electromagnetic-field), where the same tensor
+is fixed by $F^{0i}=E^i/c$, $F^{ij}=\epsilon^{ijk}B_k$.
 
-In matrix form (with $c=1$):
+In matrix form:
 $$
-F_{\mu\nu} = 
+F_{\mu\nu} =
 \begin{pmatrix}
-0 & -E_x & -E_y & -E_z \\
-E_x & 0 & -B_z & B_y \\
-E_y & B_z & 0 & -B_x \\
-E_z & -B_y & B_x & 0
+0 & -E_x/c & -E_y/c & -E_z/c \\
+E_x/c & 0 & B_z & -B_y \\
+E_y/c & -B_z & 0 & B_x \\
+E_z/c & B_y & -B_x & 0
 \end{pmatrix}.
 $$
 
@@ -146,13 +148,14 @@ $$
 \partial_\alpha F_{\mu\nu} + \partial_\mu F_{\nu\alpha} + \partial_\nu F_{\alpha\mu} = 0.
 $$
 
-For $(\alpha,\mu,\nu) = (0,i,j)$:
+For $(\alpha,\mu,\nu) = (0,i,j)$, using $\partial_0=\frac1c\partial_t$:
 $$
 \partial_0 F_{ij} + \partial_i F_{j0} + \partial_j F_{0i} = 0,
 $$
-which gives:
+substituting $F_{ij}=B_{ij}$, $F_{j0}=-F_{0j}=E_j/c$, and $F_{0i}=-E_i/c$, then
+multiplying through by $c$, gives:
 $$
-\partial_t B_{ij} - \partial_i E_j + \partial_j E_i = 0,
+\partial_t B_{ij} + \partial_i E_j - \partial_j E_i = 0,
 $$
 exactly Faraday's law.
 
@@ -196,33 +199,35 @@ $A_\mu$.
 
 The non-homogeneous equations involve the current 4-vector:
 $$
-J^\mu = (\rho, J^x, J^y, J^z).
+J^\mu = (c\rho, J^x, J^y, J^z).
 $$
 
 They are written covariantly as:
 $$
-\partial_\mu F^{\mu\nu} = J^\nu,
+\partial_\mu F^{\mu\nu} = -\mu_0J^\nu,
 $$
 or equivalently, using the Hodge dual:
 $$
-\dd \star F = \star J.
+\dd \star F = -\mu_0\star J.
 $$
 
 ### Component Check
 
-For $\nu = 0$:
+For $\nu = 0$, using $F^{i0}=-E^i/c$:
 $$
-\partial_i F^{i0} = J^0 = \rho,
+\partial_i F^{i0} = -\mu_0J^0 = -\mu_0c\rho,
 $$
-which gives Gauss's law $\nabla \cdot \vec{E} = \rho$.
+i.e. $-\frac1c\nabla\cdot\vec E=-\mu_0c\rho$, which gives Gauss's law
+$\nabla \cdot \vec{E} = \mu_0c^2\rho=\rho/\varepsilon_0$.
 
-For $\nu = k$ (spatial):
+For $\nu = k$ (spatial), using $\partial_0=\frac1c\partial_t$, $F^{0k}=E^k/c$,
+and $\partial_iF^{ik}=-(\nabla\times\vec B)^k$ (from $F^{ik}=\epsilon^{ikl}B_l$):
 $$
-\partial_0 F^{0k} + \partial_i F^{ik} = J^k,
+\partial_0 F^{0k} + \partial_i F^{ik} = -\mu_0J^k,
 $$
 which expands to:
 $$
-\partial_t E^k + (\nabla \times \vec{B})^k = J^k,
+(\nabla \times \vec{B})^k - \frac{1}{c^2}\partial_tE^k = \mu_0J^k,
 $$
 the Ampère-Maxwell law.
 
@@ -245,7 +250,7 @@ $$
 
 **Non-homogeneous equations:**
 $$
-\partial_\mu F^{\mu\nu} = J^\nu.
+\partial_\mu F^{\mu\nu} = -\mu_0J^\nu.
 $$
 :::
 
@@ -269,20 +274,20 @@ This formulation prepares the ground for:
    antisymmetric and correctly encodes $\vec{E}$ and $\vec{B}$.
 
 2. Show explicitly that $\dd F = 0$ gives the component
-   $\partial_t B_{12} - \partial_1 E_2 + \partial_2 E_1 = 0$, and identify this
+   $\partial_t B_{12} + \partial_1 E_2 - \partial_2 E_1 = 0$, and identify this
    with one component of Faraday's law.
 
 3. Prove that if $F = \dd A$, then $\dd F = 0$ automatically.
 
-4. Verify that $\partial_\mu F^{\mu 0} = \rho$ reproduces Gauss's law when
-   $F^{i0} = -E^i$.
+4. Verify that $\partial_\mu F^{\mu 0} = -\mu_0J^0$ reproduces Gauss's law when
+   $F^{i0} = -E^i/c$ and $J^0=c\rho$.
 
 5. Show that the gauge transformation $A_\mu \to A_\mu + \partial_\mu \chi$
    leaves $F_{\mu\nu}$ unchanged.
 
 6. Write the action for free electromagnetism:
    $$
-   S = -\frac{1}{4} \int F_{\mu\nu} F^{\mu\nu} \,\dd^4 x,
+   S = -\frac{1}{4\mu_0} \int F_{\mu\nu} F^{\mu\nu} \,\dd^4 x,
    $$
    and derive the vacuum Maxwell equations by varying $A_\mu$.
 

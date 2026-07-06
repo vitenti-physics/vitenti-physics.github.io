@@ -1,22 +1,19 @@
 ---
-title: "Accelerated Coordinates and Radiation from Moving Charges"
+title: "Accelerated Observers and Born Rigidity"
 ---
 
 {{< include /_macros.qmd >}}
 
 ## Scope
 
-These notes conclude the discussion of accelerated observers in flat spacetime
-and begin the study of radiation from moving charges.
+These notes conclude the discussion of accelerated observers in flat spacetime,
+in preparation for the study of radiation from moving charges.
 
 The goals are:
 
 - understand why Rindler coordinates are special;
 - distinguish accelerated congruences from Born-rigid congruences;
-- construct accelerated coordinates with identical proper acceleration;
-- introduce the electromagnetic energy-momentum tensor;
-- identify the radiative part of the Liénard–Wiechert field;
-- derive the physical meaning of energy and momentum transport by the field.
+- construct accelerated coordinates with identical proper acceleration.
 
 ## Rindler Coordinates Revisited
 
@@ -25,6 +22,11 @@ Consider Minkowski spacetime with coordinates $(T,X,Y,Z)$ and metric
 $$
 ds^2=-dT^2+dX^2+dY^2+dZ^2.
 $$
+
+Here $T$ denotes $x^0=cT_t$ for ordinary time $T_t$, i.e. time measured in
+length units, consistent with the [conventions](conventions.qmd#coordinates)
+fixed for this course; a proper acceleration $\alpha$ quoted below in these
+units corresponds to $\alpha_{\rm SI}=c^2\alpha$ in SI units.
 
 Define
 
@@ -203,382 +205,12 @@ The congruence is accelerated but not of the Rindler type.
 
 ## Transition to Electrodynamics
 
-Accelerated observers reveal nontrivial geometric effects.
-
-Accelerated charges reveal something more dramatic:
-
-they radiate.
-
-The key question is how to identify energy and momentum carried by the
-electromagnetic field.
-
-## Electromagnetic Energy-Momentum Tensor
-
-The electromagnetic field tensor is
-
-$$
-F_{\mu\nu}
-=
-\partial_\mu A_\nu
--
-\partial_\nu A_\mu.
-$$
-
-We work in SI units with $c=1$, so that $\epsilon_0\mu_0=1$ and $\epsilon_0=1/\mu_0$;
-the source equation then reads $\partial_\mu F^{\mu\nu}=-\mu_0 J^\nu$. The
-energy-momentum tensor is
-
-$$
-T^{\mu\nu}
-=
-\frac{1}{\mu_0}\left(
-F^{\mu\alpha}F^\nu{}_\alpha
--
-\frac14
-\eta^{\mu\nu}
-F^{\alpha\beta}F_{\alpha\beta}
-\right).
-$$
-
-This object contains:
-
-- energy density;
-- momentum density;
-- stresses;
-- energy flux.
-
-All local conservation laws are encoded in a single tensor equation.
-
-## Physical Interpretation of the Components
-
-### Energy Density
-
-For an inertial observer,
-
-$$
-T^{00}
-=
-\frac{1}{2\mu_0}(E^2+B^2).
-$$
-
-This is the electromagnetic energy density.
-
-### Momentum Density
-
-The spatial momentum density is
-
-$$
-T^{i0}
-=
-\frac{1}{\mu_0}(\mathbf E\times\mathbf B)^i.
-$$
-
-Energy flux and momentum density coincide because electromagnetic radiation
-travels at the speed of light.
-
-### Poynting Vector
-
-The energy flux is
-
-$$
-S^i=T^{0i}.
-$$
-
-Therefore
-
-$$
-\mathbf S=\frac{1}{\mu_0}\mathbf E\times\mathbf B.
-$$
-
-### Maxwell Stress Tensor
-
-The spatial components are
-
-$$
-T^{ij}
-=
-\frac{1}{\mu_0}\left(
--
-E^iE^j
--
-B^iB^j
-+
-\frac12(E^2+B^2)\delta^{ij}
-\right).
-$$
-
-These describe pressure and momentum transport.
-
-## Poynting's Theorem
-
-We now derive the local statement of energy conservation for the electromagnetic
-field directly from Maxwell's equations. In the SI conventions fixed above ($c=1$,
-$\epsilon_0=1/\mu_0$), the equations containing the sources are
-
-$$
-\nabla\cdot\mathbf E=\mu_0\rho,
-\qquad
-\nabla\times\mathbf B-\partial_t\mathbf E=\mu_0\mathbf J,
-$$
-
-and the homogeneous equations are
-
-$$
-\nabla\cdot\mathbf B=0,
-\qquad
-\nabla\times\mathbf E+\partial_t\mathbf B=0.
-$$
-
-The rate at which the field does work on the charges, per unit volume, is
-$\mathbf J\cdot\mathbf E$. Using Ampère's law to eliminate $\mathbf J$,
-
-$$
-\mathbf J\cdot\mathbf E
-=\frac{1}{\mu_0}\left[\mathbf E\cdot(\nabla\times\mathbf B)-\mathbf E\cdot\partial_t\mathbf E\right].
-$$
-
-The vector identity
-
-$$
-\nabla\cdot(\mathbf E\times\mathbf B)
-=\mathbf B\cdot(\nabla\times\mathbf E)-\mathbf E\cdot(\nabla\times\mathbf B),
-$$
-
-combined with Faraday's law $\nabla\times\mathbf E=-\partial_t\mathbf B$, gives
-
-$$
-\mathbf E\cdot(\nabla\times\mathbf B)
-=-\mathbf B\cdot\partial_t\mathbf B-\nabla\cdot(\mathbf E\times\mathbf B).
-$$
-
-Substituting and collecting the time derivatives,
-
-$$
-\mathbf J\cdot\mathbf E
-=-\partial_t\!\left[\frac{1}{2\mu_0}\left(E^2+B^2\right)\right]
--\nabla\cdot\!\left(\frac{1}{\mu_0}\mathbf E\times\mathbf B\right).
-$$
-
-Introducing the field energy density and the Poynting vector,
-
-$$
-u=\frac{1}{2\mu_0}\left(E^2+B^2\right),
-\qquad
-\mathbf S=\frac{1}{\mu_0}\mathbf E\times\mathbf B,
-$$
-
-this rearranges into **Poynting's theorem**:
-
-$$
-\partial_t u+\nabla\cdot\mathbf S=-\mathbf J\cdot\mathbf E.
-$$
-
-### Integral Form and Interpretation
-
-Integrating over a fixed volume $V$ and applying the divergence theorem,
-
-$$
-\frac{d}{dt}\int_V u\,dV
-+\oint_{\partial V}\mathbf S\cdot d\mathbf A
-=-\int_V \mathbf J\cdot\mathbf E\,dV.
-$$
-
-Each term has a direct physical meaning:
-
-- the first term is the rate of change of the electromagnetic energy stored in $V$;
-- the surface term is the energy flux leaving $V$ through its boundary, carried by the
-  field;
-- the term $\int_V \mathbf J\cdot\mathbf E\,dV$ is the rate of work done by the field on
-  the charges, i.e. the energy transferred from field to matter.
-
-The theorem states that the field energy in $V$ can change only by flowing across the
-boundary or by being delivered to the charges. This identifies $\mathbf S$ as the
-energy flux density of the electromagnetic field.
-
-## Covariant Form of Poynting's Theorem
-
-Poynting's theorem and the analogous statement of momentum conservation are unified in
-a single covariant equation. Starting from Maxwell's equations in covariant form,
-
-$$
-\partial_\mu F^{\mu\nu}=-\mu_0 J^\nu,
-$$
-
-and using the Bianchi identity $\partial_{[\lambda}F_{\mu\nu]}=0$ to dispose of the
-purely field-dependent terms, the divergence of the energy-momentum tensor is
-
-$$
-\partial_\mu T^{\mu\nu}=-F^{\nu\lambda}J_\lambda.
-$$
-
-The right-hand side is (minus) the **Lorentz four-force density**
-
-$$
-f^\nu=F^{\nu\lambda}J_\lambda,
-$$
-
-the rate at which four-momentum is transferred from the field to the charges. The
-single equation $\partial_\mu T^{\mu\nu}=-f^\nu$ therefore contains both energy and
-momentum balance, recovered by fixing the free index $\nu$.
-
-### Energy Component ($\nu=0$)
-
-With $T^{00}=u$ and $T^{i0}=S^i$, the left-hand side is
-
-$$
-\partial_\mu T^{\mu 0}=\partial_t u+\nabla\cdot\mathbf S,
-$$
-
-while the force density gives $f^0=F^{0\lambda}J_\lambda=\mathbf E\cdot\mathbf J$. Hence
-
-$$
-\partial_t u+\nabla\cdot\mathbf S=-\mathbf J\cdot\mathbf E,
-$$
-
-which is exactly Poynting's theorem. The time component of
-$\partial_\mu T^{\mu\nu}=-f^\nu$ is the statement of energy conservation.
-
-### Momentum Components ($\nu=i$)
-
-With $T^{0i}=S^i$ playing the role of the momentum density, the spatial components read
-
-$$
-\partial_t S^i+\partial_j T^{ji}=-f^i,
-\qquad
-f^i=\left(\rho\mathbf E+\mathbf J\times\mathbf B\right)^i,
-$$
-
-where the source is the ordinary Lorentz force density acting on the charges.
-Introducing the Maxwell stress tensor
-$\sigma^{ij}=-T^{ij}=\frac{1}{\mu_0}\left[E^iE^j+B^iB^j-\tfrac12\delta^{ij}(E^2+B^2)\right]$, this becomes
-
-$$
-\partial_t S^i=\partial_j\sigma^{ij}-\left(\rho\mathbf E+\mathbf J\times\mathbf B\right)^i,
-$$
-
-the conservation of momentum: the field momentum density $\mathbf S$ changes through the
-momentum flux carried by the stresses $\sigma^{ij}$ and through the momentum delivered
-to matter by the Lorentz force.
-
-### Vacuum
-
-In the absence of sources,
-
-$$
-J^\mu=0
-\qquad\Longrightarrow\qquad
-\partial_\mu T^{\mu\nu}=0,
-$$
-
-so electromagnetic energy and momentum are separately conserved. This is the situation
-relevant far from a radiating source, where the field propagates freely and
-$T^{\mu\nu}$ describes energy and momentum streaming outward to infinity.
-
-## Liénard–Wiechert Fields
-
-For a moving charge,
-
-$$
-R^\mu=x^\mu-z^\mu(\tau_r),
-$$
-
-where $\tau_r$ is the retarded proper time.
-
-The field naturally separates into
-
-$$
-F_{\mu\nu}
-=
-F^{\mathrm{vel}}_{\mu\nu}
-+
-F^{\mathrm{acc}}_{\mu\nu}.
-$$
-
-The scaling with distance is
-
-$$
-F^{\mathrm{vel}}\sim \frac1{R^2},
-$$
-
-$$
-F^{\mathrm{acc}}\sim \frac1R.
-$$
-
-The radiative contribution is therefore the acceleration field.
-
-## Radiation Zone
-
-Far from the source,
-
-$$
-\mathbf B=\hat{\mathbf n}\times\mathbf E,
-$$
-
-and
-
-$$
-|\mathbf E|=|\mathbf B|.
-$$
-
-Then
-
-$$
-u=T^{00}=\frac{E^2}{\mu_0},
-$$
-
-and
-
-$$
-\mathbf S=\frac{E^2}{\mu_0}\hat{\mathbf n}.
-$$
-
-Energy flows radially outward.
-
-## Covariant Radiation Tensor
-
-The radiation contribution to the energy-momentum tensor has the form
-
-$$
-T^{\mu\nu}_{\rm rad}
-\propto
-\frac{
-a^2(R\cdot u)^2
--(R\cdot a)^2
-}
-{(R\cdot u)^6}
-R^\mu R^\nu.
-$$
-
-Important observations:
-
-- proportional to $R^\mu R^\nu$;
-- null;
-- directed along outgoing light rays;
-- survives at arbitrarily large distances.
-
-This is the field responsible for energy loss by the source.
-
-## Relativistic Larmor Formula
-
-Integrating the radiative flux over a large sphere yields
-
-$$
-P
-=
-\frac{\mu_0 q^2}{6\pi}
-a^\mu a_\mu.
-$$
-
-In the instantaneous rest frame,
-
-$$
-P
-=
-\frac{\mu_0 q^2}{6\pi}
-a^2.
-$$
-
-This is the relativistic form of Larmor's formula.
+Accelerated observers reveal nontrivial geometric effects. Accelerated
+charges reveal something more dramatic: they radiate. The energy-momentum
+tensor needed to make that statement precise, and the derivation of the
+radiation field itself, are developed in
+[Energy of the Electromagnetic Field](em-energy.qmd) and
+[Radiation from a Moving Charge](moving-charge-radiation.qmd).
 
 ## Summary
 
@@ -588,8 +220,5 @@ acceleration varies spatially.
 Uniform proper acceleration for all observers can be achieved, but only at the
 cost of losing Born rigidity.
 
-For electrodynamics, the energy-momentum tensor provides the covariant
-description of energy density, momentum density, stresses, and fluxes.
-
-The radiative part of the Liénard–Wiechert field scales as $1/R$ and produces a
-finite energy flux at infinity, leading to the Larmor radiation formula.
+These accelerated worldlines are exactly the ones whose radiation we study
+next.

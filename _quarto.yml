@@ -72,14 +72,22 @@ website:
               contents:
                 - text: "Overview"
                   href: courses/electrodynamics/index.qmd
+                - text: "Conventions and Notation"
+                  href: courses/electrodynamics/conventions.qmd
                 - text: "Geometry Review for Electrodynamics"
                   href: courses/electrodynamics/geometry-review.qmd
                 - text: "Calculus on Minkowski Spacetime"
                   href: courses/electrodynamics/calculus-on-minkowski-spacetime.qmd
                 - text: "Maxwell Equations in Covariant Form"
                   href: courses/electrodynamics/maxwell-equations-forms.qmd
-                - text: "Electromagnetic Energy and Momentum"
+                - text: "Accelerated Observers and Born Rigidity"
                   href: courses/electrodynamics/accel.qmd
+                - text: "Energy of the Electromagnetic Field"
+                  href: courses/electrodynamics/em-energy.qmd
+                - text: "Radiation from a Moving Charge"
+                  href: courses/electrodynamics/moving-charge-radiation.qmd
+                - text: "Thomson Scattering"
+                  href: courses/electrodynamics/thomson-scattering.qmd
 format:
   html:
     theme:
