@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Accelerated Coordinates and Radiation from Moving Charges – Physics Lecture Notes</title>
+<title>Accelerated Observers and Born Rigidity – Physics Lecture Notes</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -333,7 +333,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/accel.html">Electromagnetic Energy and Momentum</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/accel.html">Accelerated Observers and Born Rigidity</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -540,6 +540,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conventions and Notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Geometry Review for Electrodynamics</span></a>
   </div>
@@ -559,7 +565,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../courses/electrodynamics/accel.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Electromagnetic Energy and Momentum</span></a>
+ <span class="menu-text">Accelerated Observers and Born Rigidity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/em-energy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Energy of the Electromagnetic Field</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/moving-charge-radiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Radiation from a Moving Charge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/thomson-scattering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Thomson Scattering</span></a>
   </div>
 </li>
       </ul>
@@ -585,28 +609,6 @@ window.Quarto = {
   <li><a href="#comparison-with-rindler" id="toc-comparison-with-rindler" class="nav-link" data-scroll-target="#comparison-with-rindler">Comparison with Rindler</a></li>
   </ul></li>
   <li><a href="#transition-to-electrodynamics" id="toc-transition-to-electrodynamics" class="nav-link" data-scroll-target="#transition-to-electrodynamics">Transition to Electrodynamics</a></li>
-  <li><a href="#electromagnetic-energy-momentum-tensor" id="toc-electromagnetic-energy-momentum-tensor" class="nav-link" data-scroll-target="#electromagnetic-energy-momentum-tensor">Electromagnetic Energy-Momentum Tensor</a></li>
-  <li><a href="#physical-interpretation-of-the-components" id="toc-physical-interpretation-of-the-components" class="nav-link" data-scroll-target="#physical-interpretation-of-the-components">Physical Interpretation of the Components</a>
-  <ul class="collapse">
-  <li><a href="#energy-density" id="toc-energy-density" class="nav-link" data-scroll-target="#energy-density">Energy Density</a></li>
-  <li><a href="#momentum-density" id="toc-momentum-density" class="nav-link" data-scroll-target="#momentum-density">Momentum Density</a></li>
-  <li><a href="#poynting-vector" id="toc-poynting-vector" class="nav-link" data-scroll-target="#poynting-vector">Poynting Vector</a></li>
-  <li><a href="#maxwell-stress-tensor" id="toc-maxwell-stress-tensor" class="nav-link" data-scroll-target="#maxwell-stress-tensor">Maxwell Stress Tensor</a></li>
-  </ul></li>
-  <li><a href="#poyntings-theorem" id="toc-poyntings-theorem" class="nav-link" data-scroll-target="#poyntings-theorem">Poynting’s Theorem</a>
-  <ul class="collapse">
-  <li><a href="#integral-form-and-interpretation" id="toc-integral-form-and-interpretation" class="nav-link" data-scroll-target="#integral-form-and-interpretation">Integral Form and Interpretation</a></li>
-  </ul></li>
-  <li><a href="#covariant-form-of-poyntings-theorem" id="toc-covariant-form-of-poyntings-theorem" class="nav-link" data-scroll-target="#covariant-form-of-poyntings-theorem">Covariant Form of Poynting’s Theorem</a>
-  <ul class="collapse">
-  <li><a href="#energy-component-nu0" id="toc-energy-component-nu0" class="nav-link" data-scroll-target="#energy-component-nu0">Energy Component (<span class="math inline">\(\nu=0\)</span>)</a></li>
-  <li><a href="#momentum-components-nui" id="toc-momentum-components-nui" class="nav-link" data-scroll-target="#momentum-components-nui">Momentum Components (<span class="math inline">\(\nu=i\)</span>)</a></li>
-  <li><a href="#vacuum" id="toc-vacuum" class="nav-link" data-scroll-target="#vacuum">Vacuum</a></li>
-  </ul></li>
-  <li><a href="#liénardwiechert-fields" id="toc-liénardwiechert-fields" class="nav-link" data-scroll-target="#liénardwiechert-fields">Liénard–Wiechert Fields</a></li>
-  <li><a href="#radiation-zone" id="toc-radiation-zone" class="nav-link" data-scroll-target="#radiation-zone">Radiation Zone</a></li>
-  <li><a href="#covariant-radiation-tensor" id="toc-covariant-radiation-tensor" class="nav-link" data-scroll-target="#covariant-radiation-tensor">Covariant Radiation Tensor</a></li>
-  <li><a href="#relativistic-larmor-formula" id="toc-relativistic-larmor-formula" class="nav-link" data-scroll-target="#relativistic-larmor-formula">Relativistic Larmor Formula</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="accel.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -615,9 +617,9 @@ window.Quarto = {
 <main class="content column-body" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/accel.html">Electromagnetic Energy and Momentum</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/accel.html">Accelerated Observers and Born Rigidity</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Accelerated Coordinates and Radiation from Moving Charges</h1>
+<h1 class="title">Accelerated Observers and Born Rigidity</h1>
 </div>
 
 
@@ -642,15 +644,12 @@ window.Quarto = {
 
 <section id="scope" class="level2">
 <h2 class="anchored" data-anchor-id="scope">Scope</h2>
-<p>These notes conclude the discussion of accelerated observers in flat spacetime and begin the study of radiation from moving charges.</p>
+<p>These notes conclude the discussion of accelerated observers in flat spacetime, in preparation for the study of radiation from moving charges.</p>
 <p>The goals are:</p>
 <ul>
 <li>understand why Rindler coordinates are special;</li>
 <li>distinguish accelerated congruences from Born-rigid congruences;</li>
-<li>construct accelerated coordinates with identical proper acceleration;</li>
-<li>introduce the electromagnetic energy-momentum tensor;</li>
-<li>identify the radiative part of the Liénard–Wiechert field;</li>
-<li>derive the physical meaning of energy and momentum transport by the field.</li>
+<li>construct accelerated coordinates with identical proper acceleration.</li>
 </ul>
 </section>
 <section id="rindler-coordinates-revisited" class="level2">
@@ -659,6 +658,7 @@ window.Quarto = {
 <p><span class="math display">\[
 ds^2=-dT^2+dX^2+dY^2+dZ^2.
 \]</span></p>
+<p>Here <span class="math inline">\(T\)</span> denotes <span class="math inline">\(x^0=cT_t\)</span> for ordinary time <span class="math inline">\(T_t\)</span>, i.e.&nbsp;time measured in length units, consistent with the <a href="../../courses/electrodynamics/conventions.html#coordinates">conventions</a> fixed for this course; a proper acceleration <span class="math inline">\(\alpha\)</span> quoted below in these units corresponds to <span class="math inline">\(\alpha_{\rm SI}=c^2\alpha\)</span> in SI units.</p>
 <p>Define</p>
 <p><span class="math display">\[
 T=\rho\sinh(a\eta),
@@ -825,297 +825,13 @@ g_{0i}\neq0.
 </section>
 <section id="transition-to-electrodynamics" class="level2">
 <h2 class="anchored" data-anchor-id="transition-to-electrodynamics">Transition to Electrodynamics</h2>
-<p>Accelerated observers reveal nontrivial geometric effects.</p>
-<p>Accelerated charges reveal something more dramatic:</p>
-<p>they radiate.</p>
-<p>The key question is how to identify energy and momentum carried by the electromagnetic field.</p>
-</section>
-<section id="electromagnetic-energy-momentum-tensor" class="level2">
-<h2 class="anchored" data-anchor-id="electromagnetic-energy-momentum-tensor">Electromagnetic Energy-Momentum Tensor</h2>
-<p>The electromagnetic field tensor is</p>
-<p><span class="math display">\[
-F_{\mu\nu}
-=
-\partial_\mu A_\nu
--
-\partial_\nu A_\mu.
-\]</span></p>
-<p>We work in SI units with <span class="math inline">\(c=1\)</span>, so that <span class="math inline">\(\epsilon_0\mu_0=1\)</span> and <span class="math inline">\(\epsilon_0=1/\mu_0\)</span>; the source equation then reads <span class="math inline">\(\partial_\mu F^{\mu\nu}=-\mu_0 J^\nu\)</span>. The energy-momentum tensor is</p>
-<p><span class="math display">\[
-T^{\mu\nu}
-=
-\frac{1}{\mu_0}\left(
-F^{\mu\alpha}F^\nu{}_\alpha
--
-\frac14
-\eta^{\mu\nu}
-F^{\alpha\beta}F_{\alpha\beta}
-\right).
-\]</span></p>
-<p>This object contains:</p>
-<ul>
-<li>energy density;</li>
-<li>momentum density;</li>
-<li>stresses;</li>
-<li>energy flux.</li>
-</ul>
-<p>All local conservation laws are encoded in a single tensor equation.</p>
-</section>
-<section id="physical-interpretation-of-the-components" class="level2">
-<h2 class="anchored" data-anchor-id="physical-interpretation-of-the-components">Physical Interpretation of the Components</h2>
-<section id="energy-density" class="level3">
-<h3 class="anchored" data-anchor-id="energy-density">Energy Density</h3>
-<p>For an inertial observer,</p>
-<p><span class="math display">\[
-T^{00}
-=
-\frac{1}{2\mu_0}(E^2+B^2).
-\]</span></p>
-<p>This is the electromagnetic energy density.</p>
-</section>
-<section id="momentum-density" class="level3">
-<h3 class="anchored" data-anchor-id="momentum-density">Momentum Density</h3>
-<p>The spatial momentum density is</p>
-<p><span class="math display">\[
-T^{i0}
-=
-\frac{1}{\mu_0}(\mathbf E\times\mathbf B)^i.
-\]</span></p>
-<p>Energy flux and momentum density coincide because electromagnetic radiation travels at the speed of light.</p>
-</section>
-<section id="poynting-vector" class="level3">
-<h3 class="anchored" data-anchor-id="poynting-vector">Poynting Vector</h3>
-<p>The energy flux is</p>
-<p><span class="math display">\[
-S^i=T^{0i}.
-\]</span></p>
-<p>Therefore</p>
-<p><span class="math display">\[
-\mathbf S=\frac{1}{\mu_0}\mathbf E\times\mathbf B.
-\]</span></p>
-</section>
-<section id="maxwell-stress-tensor" class="level3">
-<h3 class="anchored" data-anchor-id="maxwell-stress-tensor">Maxwell Stress Tensor</h3>
-<p>The spatial components are</p>
-<p><span class="math display">\[
-T^{ij}
-=
-\frac{1}{\mu_0}\left(
--
-E^iE^j
--
-B^iB^j
-+
-\frac12(E^2+B^2)\delta^{ij}
-\right).
-\]</span></p>
-<p>These describe pressure and momentum transport.</p>
-</section>
-</section>
-<section id="poyntings-theorem" class="level2">
-<h2 class="anchored" data-anchor-id="poyntings-theorem">Poynting’s Theorem</h2>
-<p>We now derive the local statement of energy conservation for the electromagnetic field directly from Maxwell’s equations. In the SI conventions fixed above (<span class="math inline">\(c=1\)</span>, <span class="math inline">\(\epsilon_0=1/\mu_0\)</span>), the equations containing the sources are</p>
-<p><span class="math display">\[
-\nabla\cdot\mathbf E=\mu_0\rho,
-\qquad
-\nabla\times\mathbf B-\partial_t\mathbf E=\mu_0\mathbf J,
-\]</span></p>
-<p>and the homogeneous equations are</p>
-<p><span class="math display">\[
-\nabla\cdot\mathbf B=0,
-\qquad
-\nabla\times\mathbf E+\partial_t\mathbf B=0.
-\]</span></p>
-<p>The rate at which the field does work on the charges, per unit volume, is <span class="math inline">\(\mathbf J\cdot\mathbf E\)</span>. Using Ampère’s law to eliminate <span class="math inline">\(\mathbf J\)</span>,</p>
-<p><span class="math display">\[
-\mathbf J\cdot\mathbf E
-=\frac{1}{\mu_0}\left[\mathbf E\cdot(\nabla\times\mathbf B)-\mathbf E\cdot\partial_t\mathbf E\right].
-\]</span></p>
-<p>The vector identity</p>
-<p><span class="math display">\[
-\nabla\cdot(\mathbf E\times\mathbf B)
-=\mathbf B\cdot(\nabla\times\mathbf E)-\mathbf E\cdot(\nabla\times\mathbf B),
-\]</span></p>
-<p>combined with Faraday’s law <span class="math inline">\(\nabla\times\mathbf E=-\partial_t\mathbf B\)</span>, gives</p>
-<p><span class="math display">\[
-\mathbf E\cdot(\nabla\times\mathbf B)
-=-\mathbf B\cdot\partial_t\mathbf B-\nabla\cdot(\mathbf E\times\mathbf B).
-\]</span></p>
-<p>Substituting and collecting the time derivatives,</p>
-<p><span class="math display">\[
-\mathbf J\cdot\mathbf E
-=-\partial_t\!\left[\frac{1}{2\mu_0}\left(E^2+B^2\right)\right]
--\nabla\cdot\!\left(\frac{1}{\mu_0}\mathbf E\times\mathbf B\right).
-\]</span></p>
-<p>Introducing the field energy density and the Poynting vector,</p>
-<p><span class="math display">\[
-u=\frac{1}{2\mu_0}\left(E^2+B^2\right),
-\qquad
-\mathbf S=\frac{1}{\mu_0}\mathbf E\times\mathbf B,
-\]</span></p>
-<p>this rearranges into <strong>Poynting’s theorem</strong>:</p>
-<p><span class="math display">\[
-\partial_t u+\nabla\cdot\mathbf S=-\mathbf J\cdot\mathbf E.
-\]</span></p>
-<section id="integral-form-and-interpretation" class="level3">
-<h3 class="anchored" data-anchor-id="integral-form-and-interpretation">Integral Form and Interpretation</h3>
-<p>Integrating over a fixed volume <span class="math inline">\(V\)</span> and applying the divergence theorem,</p>
-<p><span class="math display">\[
-\frac{d}{dt}\int_V u\,dV
-+\oint_{\partial V}\mathbf S\cdot d\mathbf A
-=-\int_V \mathbf J\cdot\mathbf E\,dV.
-\]</span></p>
-<p>Each term has a direct physical meaning:</p>
-<ul>
-<li>the first term is the rate of change of the electromagnetic energy stored in <span class="math inline">\(V\)</span>;</li>
-<li>the surface term is the energy flux leaving <span class="math inline">\(V\)</span> through its boundary, carried by the field;</li>
-<li>the term <span class="math inline">\(\int_V \mathbf J\cdot\mathbf E\,dV\)</span> is the rate of work done by the field on the charges, i.e.&nbsp;the energy transferred from field to matter.</li>
-</ul>
-<p>The theorem states that the field energy in <span class="math inline">\(V\)</span> can change only by flowing across the boundary or by being delivered to the charges. This identifies <span class="math inline">\(\mathbf S\)</span> as the energy flux density of the electromagnetic field.</p>
-</section>
-</section>
-<section id="covariant-form-of-poyntings-theorem" class="level2">
-<h2 class="anchored" data-anchor-id="covariant-form-of-poyntings-theorem">Covariant Form of Poynting’s Theorem</h2>
-<p>Poynting’s theorem and the analogous statement of momentum conservation are unified in a single covariant equation. Starting from Maxwell’s equations in covariant form,</p>
-<p><span class="math display">\[
-\partial_\mu F^{\mu\nu}=-\mu_0 J^\nu,
-\]</span></p>
-<p>and using the Bianchi identity <span class="math inline">\(\partial_{[\lambda}F_{\mu\nu]}=0\)</span> to dispose of the purely field-dependent terms, the divergence of the energy-momentum tensor is</p>
-<p><span class="math display">\[
-\partial_\mu T^{\mu\nu}=-F^{\nu\lambda}J_\lambda.
-\]</span></p>
-<p>The right-hand side is (minus) the <strong>Lorentz four-force density</strong></p>
-<p><span class="math display">\[
-f^\nu=F^{\nu\lambda}J_\lambda,
-\]</span></p>
-<p>the rate at which four-momentum is transferred from the field to the charges. The single equation <span class="math inline">\(\partial_\mu T^{\mu\nu}=-f^\nu\)</span> therefore contains both energy and momentum balance, recovered by fixing the free index <span class="math inline">\(\nu\)</span>.</p>
-<section id="energy-component-nu0" class="level3">
-<h3 class="anchored" data-anchor-id="energy-component-nu0">Energy Component (<span class="math inline">\(\nu=0\)</span>)</h3>
-<p>With <span class="math inline">\(T^{00}=u\)</span> and <span class="math inline">\(T^{i0}=S^i\)</span>, the left-hand side is</p>
-<p><span class="math display">\[
-\partial_\mu T^{\mu 0}=\partial_t u+\nabla\cdot\mathbf S,
-\]</span></p>
-<p>while the force density gives <span class="math inline">\(f^0=F^{0\lambda}J_\lambda=\mathbf E\cdot\mathbf J\)</span>. Hence</p>
-<p><span class="math display">\[
-\partial_t u+\nabla\cdot\mathbf S=-\mathbf J\cdot\mathbf E,
-\]</span></p>
-<p>which is exactly Poynting’s theorem. The time component of <span class="math inline">\(\partial_\mu T^{\mu\nu}=-f^\nu\)</span> is the statement of energy conservation.</p>
-</section>
-<section id="momentum-components-nui" class="level3">
-<h3 class="anchored" data-anchor-id="momentum-components-nui">Momentum Components (<span class="math inline">\(\nu=i\)</span>)</h3>
-<p>With <span class="math inline">\(T^{0i}=S^i\)</span> playing the role of the momentum density, the spatial components read</p>
-<p><span class="math display">\[
-\partial_t S^i+\partial_j T^{ji}=-f^i,
-\qquad
-f^i=\left(\rho\mathbf E+\mathbf J\times\mathbf B\right)^i,
-\]</span></p>
-<p>where the source is the ordinary Lorentz force density acting on the charges. Introducing the Maxwell stress tensor <span class="math inline">\(\sigma^{ij}=-T^{ij}=\frac{1}{\mu_0}\left[E^iE^j+B^iB^j-\tfrac12\delta^{ij}(E^2+B^2)\right]\)</span>, this becomes</p>
-<p><span class="math display">\[
-\partial_t S^i=\partial_j\sigma^{ij}-\left(\rho\mathbf E+\mathbf J\times\mathbf B\right)^i,
-\]</span></p>
-<p>the conservation of momentum: the field momentum density <span class="math inline">\(\mathbf S\)</span> changes through the momentum flux carried by the stresses <span class="math inline">\(\sigma^{ij}\)</span> and through the momentum delivered to matter by the Lorentz force.</p>
-</section>
-<section id="vacuum" class="level3">
-<h3 class="anchored" data-anchor-id="vacuum">Vacuum</h3>
-<p>In the absence of sources,</p>
-<p><span class="math display">\[
-J^\mu=0
-\qquad\Longrightarrow\qquad
-\partial_\mu T^{\mu\nu}=0,
-\]</span></p>
-<p>so electromagnetic energy and momentum are separately conserved. This is the situation relevant far from a radiating source, where the field propagates freely and <span class="math inline">\(T^{\mu\nu}\)</span> describes energy and momentum streaming outward to infinity.</p>
-</section>
-</section>
-<section id="liénardwiechert-fields" class="level2">
-<h2 class="anchored" data-anchor-id="liénardwiechert-fields">Liénard–Wiechert Fields</h2>
-<p>For a moving charge,</p>
-<p><span class="math display">\[
-R^\mu=x^\mu-z^\mu(\tau_r),
-\]</span></p>
-<p>where <span class="math inline">\(\tau_r\)</span> is the retarded proper time.</p>
-<p>The field naturally separates into</p>
-<p><span class="math display">\[
-F_{\mu\nu}
-=
-F^{\mathrm{vel}}_{\mu\nu}
-+
-F^{\mathrm{acc}}_{\mu\nu}.
-\]</span></p>
-<p>The scaling with distance is</p>
-<p><span class="math display">\[
-F^{\mathrm{vel}}\sim \frac1{R^2},
-\]</span></p>
-<p><span class="math display">\[
-F^{\mathrm{acc}}\sim \frac1R.
-\]</span></p>
-<p>The radiative contribution is therefore the acceleration field.</p>
-</section>
-<section id="radiation-zone" class="level2">
-<h2 class="anchored" data-anchor-id="radiation-zone">Radiation Zone</h2>
-<p>Far from the source,</p>
-<p><span class="math display">\[
-\mathbf B=\hat{\mathbf n}\times\mathbf E,
-\]</span></p>
-<p>and</p>
-<p><span class="math display">\[
-|\mathbf E|=|\mathbf B|.
-\]</span></p>
-<p>Then</p>
-<p><span class="math display">\[
-u=T^{00}=\frac{E^2}{\mu_0},
-\]</span></p>
-<p>and</p>
-<p><span class="math display">\[
-\mathbf S=\frac{E^2}{\mu_0}\hat{\mathbf n}.
-\]</span></p>
-<p>Energy flows radially outward.</p>
-</section>
-<section id="covariant-radiation-tensor" class="level2">
-<h2 class="anchored" data-anchor-id="covariant-radiation-tensor">Covariant Radiation Tensor</h2>
-<p>The radiation contribution to the energy-momentum tensor has the form</p>
-<p><span class="math display">\[
-T^{\mu\nu}_{\rm rad}
-\propto
-\frac{
-a^2(R\cdot u)^2
--(R\cdot a)^2
-}
-{(R\cdot u)^6}
-R^\mu R^\nu.
-\]</span></p>
-<p>Important observations:</p>
-<ul>
-<li>proportional to <span class="math inline">\(R^\mu R^\nu\)</span>;</li>
-<li>null;</li>
-<li>directed along outgoing light rays;</li>
-<li>survives at arbitrarily large distances.</li>
-</ul>
-<p>This is the field responsible for energy loss by the source.</p>
-</section>
-<section id="relativistic-larmor-formula" class="level2">
-<h2 class="anchored" data-anchor-id="relativistic-larmor-formula">Relativistic Larmor Formula</h2>
-<p>Integrating the radiative flux over a large sphere yields</p>
-<p><span class="math display">\[
-P
-=
-\frac{\mu_0 q^2}{6\pi}
-a^\mu a_\mu.
-\]</span></p>
-<p>In the instantaneous rest frame,</p>
-<p><span class="math display">\[
-P
-=
-\frac{\mu_0 q^2}{6\pi}
-a^2.
-\]</span></p>
-<p>This is the relativistic form of Larmor’s formula.</p>
+<p>Accelerated observers reveal nontrivial geometric effects. Accelerated charges reveal something more dramatic: they radiate. The energy-momentum tensor needed to make that statement precise, and the derivation of the radiation field itself, are developed in <a href="../../courses/electrodynamics/em-energy.html">Energy of the Electromagnetic Field</a> and <a href="../../courses/electrodynamics/moving-charge-radiation.html">Radiation from a Moving Charge</a>.</p>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>The Rindler congruence is a special Born-rigid accelerated frame whose proper acceleration varies spatially.</p>
 <p>Uniform proper acceleration for all observers can be achieved, but only at the cost of losing Born rigidity.</p>
-<p>For electrodynamics, the energy-momentum tensor provides the covariant description of energy density, momentum density, stresses, and fluxes.</p>
-<p>The radiative part of the Liénard–Wiechert field scales as <span class="math inline">\(1/R\)</span> and produces a finite energy flux at infinity, leading to the Larmor radiation formula.</p>
+<p>These accelerated worldlines are exactly the ones whose radiation we study next.</p>
 
 
 </section>

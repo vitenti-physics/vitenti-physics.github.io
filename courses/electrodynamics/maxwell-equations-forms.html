@@ -540,6 +540,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conventions and Notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Geometry Review for Electrodynamics</span></a>
   </div>
@@ -559,7 +565,25 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../courses/electrodynamics/accel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Electromagnetic Energy and Momentum</span></a>
+ <span class="menu-text">Accelerated Observers and Born Rigidity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/em-energy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Energy of the Electromagnetic Field</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/moving-charge-radiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Radiation from a Moving Charge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/thomson-scattering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Thomson Scattering</span></a>
   </div>
 </li>
       </ul>
@@ -721,17 +745,17 @@ x^i \quad (i=1,2,3) \text{ spatial}.
 <section id="the-electromagnetic-field-tensor" class="level3">
 <h3 class="anchored" data-anchor-id="the-electromagnetic-field-tensor">The Electromagnetic Field Tensor</h3>
 <p>Define the <strong>Faraday tensor</strong> <span class="math inline">\(F_{\mu\nu}\)</span> as a 2-form on spacetime with components: <span class="math display">\[
-F_{0i} = E_i,
+F_{0i} = -\frac{E_i}{c},
 \qquad
-F_{ij} = B_{ij},
-\]</span> and antisymmetry <span class="math inline">\(F_{\mu\nu} = -F_{\nu\mu}\)</span>.</p>
-<p>In matrix form (with <span class="math inline">\(c=1\)</span>): <span class="math display">\[
+F_{ij} = B_{ij}=\epsilon_{ijk}B_k,
+\]</span> and antisymmetry <span class="math inline">\(F_{\mu\nu} = -F_{\nu\mu}\)</span>. This matches the <a href="../../courses/electrodynamics/conventions.html#electromagnetic-field">conventions</a>, where the same tensor is fixed by <span class="math inline">\(F^{0i}=E^i/c\)</span>, <span class="math inline">\(F^{ij}=\epsilon^{ijk}B_k\)</span>.</p>
+<p>In matrix form: <span class="math display">\[
 F_{\mu\nu} =
 \begin{pmatrix}
-0 &amp; -E_x &amp; -E_y &amp; -E_z \\
-E_x &amp; 0 &amp; -B_z &amp; B_y \\
-E_y &amp; B_z &amp; 0 &amp; -B_x \\
-E_z &amp; -B_y &amp; B_x &amp; 0
+0 &amp; -E_x/c &amp; -E_y/c &amp; -E_z/c \\
+E_x/c &amp; 0 &amp; B_z &amp; -B_y \\
+E_y/c &amp; -B_z &amp; 0 &amp; B_x \\
+E_z/c &amp; B_y &amp; -B_x &amp; 0
 \end{pmatrix}.
 \]</span></p>
 </section>
@@ -751,10 +775,10 @@ E_z &amp; -B_y &amp; B_x &amp; 0
 <p>The equation <span class="math inline">\(\mathrm{d}F = 0\)</span> expands to: <span class="math display">\[
 \partial_\alpha F_{\mu\nu} + \partial_\mu F_{\nu\alpha} + \partial_\nu F_{\alpha\mu} = 0.
 \]</span></p>
-<p>For <span class="math inline">\((\alpha,\mu,\nu) = (0,i,j)\)</span>: <span class="math display">\[
+<p>For <span class="math inline">\((\alpha,\mu,\nu) = (0,i,j)\)</span>, using <span class="math inline">\(\partial_0=\frac1c\partial_t\)</span>: <span class="math display">\[
 \partial_0 F_{ij} + \partial_i F_{j0} + \partial_j F_{0i} = 0,
-\]</span> which gives: <span class="math display">\[
-\partial_t B_{ij} - \partial_i E_j + \partial_j E_i = 0,
+\]</span> substituting <span class="math inline">\(F_{ij}=B_{ij}\)</span>, <span class="math inline">\(F_{j0}=-F_{0j}=E_j/c\)</span>, and <span class="math inline">\(F_{0i}=-E_i/c\)</span>, then multiplying through by <span class="math inline">\(c\)</span>, gives: <span class="math display">\[
+\partial_t B_{ij} + \partial_i E_j - \partial_j E_i = 0,
 \]</span> exactly Faraday’s law.</p>
 <p>For <span class="math inline">\((\alpha,\mu,\nu) = (i,j,k)\)</span> (cyclic): <span class="math display">\[
 \partial_i B_{jk} + \partial_j B_{ki} + \partial_k B_{ij} = 0,
@@ -790,23 +814,23 @@ E_z &amp; -B_y &amp; B_x &amp; 0
 <section id="source-term" class="level3">
 <h3 class="anchored" data-anchor-id="source-term">Source Term</h3>
 <p>The non-homogeneous equations involve the current 4-vector: <span class="math display">\[
-J^\mu = (\rho, J^x, J^y, J^z).
+J^\mu = (c\rho, J^x, J^y, J^z).
 \]</span></p>
 <p>They are written covariantly as: <span class="math display">\[
-\partial_\mu F^{\mu\nu} = J^\nu,
+\partial_\mu F^{\mu\nu} = -\mu_0J^\nu,
 \]</span> or equivalently, using the Hodge dual: <span class="math display">\[
-\mathrm{d}\star F = \star J.
+\mathrm{d}\star F = -\mu_0\star J.
 \]</span></p>
 </section>
 <section id="component-check" class="level3">
 <h3 class="anchored" data-anchor-id="component-check">Component Check</h3>
-<p>For <span class="math inline">\(\nu = 0\)</span>: <span class="math display">\[
-\partial_i F^{i0} = J^0 = \rho,
-\]</span> which gives Gauss’s law <span class="math inline">\(\nabla \cdot \mathbf{E} = \rho\)</span>.</p>
-<p>For <span class="math inline">\(\nu = k\)</span> (spatial): <span class="math display">\[
-\partial_0 F^{0k} + \partial_i F^{ik} = J^k,
+<p>For <span class="math inline">\(\nu = 0\)</span>, using <span class="math inline">\(F^{i0}=-E^i/c\)</span>: <span class="math display">\[
+\partial_i F^{i0} = -\mu_0J^0 = -\mu_0c\rho,
+\]</span> i.e.&nbsp;<span class="math inline">\(-\frac1c\nabla\cdot\mathbf{E}=-\mu_0c\rho\)</span>, which gives Gauss’s law <span class="math inline">\(\nabla \cdot \mathbf{E} = \mu_0c^2\rho=\rho/\varepsilon_0\)</span>.</p>
+<p>For <span class="math inline">\(\nu = k\)</span> (spatial), using <span class="math inline">\(\partial_0=\frac1c\partial_t\)</span>, <span class="math inline">\(F^{0k}=E^k/c\)</span>, and <span class="math inline">\(\partial_iF^{ik}=-(\nabla\times\mathbf{B})^k\)</span> (from <span class="math inline">\(F^{ik}=\epsilon^{ikl}B_l\)</span>): <span class="math display">\[
+\partial_0 F^{0k} + \partial_i F^{ik} = -\mu_0J^k,
 \]</span> which expands to: <span class="math display">\[
-\partial_t E^k + (\nabla \times \mathbf{B})^k = J^k,
+(\nabla \times \mathbf{B})^k - \frac{1}{c^2}\partial_tE^k = \mu_0J^k,
 \]</span> the Ampère-Maxwell law.</p>
 </section>
 </section>
@@ -830,7 +854,7 @@ F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.
 \mathrm{d}F = 0.
 \]</span></p>
 <p><strong>Non-homogeneous equations:</strong> <span class="math display">\[
-\partial_\mu F^{\mu\nu} = J^\nu.
+\partial_\mu F^{\mu\nu} = -\mu_0J^\nu.
 \]</span></p>
 </div>
 </div>
@@ -853,12 +877,12 @@ F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.
 <h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
 <ol type="1">
 <li><p>Verify that the matrix representation of <span class="math inline">\(F_{\mu\nu}\)</span> given above is antisymmetric and correctly encodes <span class="math inline">\(\mathbf{E}\)</span> and <span class="math inline">\(\mathbf{B}\)</span>.</p></li>
-<li><p>Show explicitly that <span class="math inline">\(\mathrm{d}F = 0\)</span> gives the component <span class="math inline">\(\partial_t B_{12} - \partial_1 E_2 + \partial_2 E_1 = 0\)</span>, and identify this with one component of Faraday’s law.</p></li>
+<li><p>Show explicitly that <span class="math inline">\(\mathrm{d}F = 0\)</span> gives the component <span class="math inline">\(\partial_t B_{12} + \partial_1 E_2 - \partial_2 E_1 = 0\)</span>, and identify this with one component of Faraday’s law.</p></li>
 <li><p>Prove that if <span class="math inline">\(F = \mathrm{d}A\)</span>, then <span class="math inline">\(\mathrm{d}F = 0\)</span> automatically.</p></li>
-<li><p>Verify that <span class="math inline">\(\partial_\mu F^{\mu 0} = \rho\)</span> reproduces Gauss’s law when <span class="math inline">\(F^{i0} = -E^i\)</span>.</p></li>
+<li><p>Verify that <span class="math inline">\(\partial_\mu F^{\mu 0} = -\mu_0J^0\)</span> reproduces Gauss’s law when <span class="math inline">\(F^{i0} = -E^i/c\)</span> and <span class="math inline">\(J^0=c\rho\)</span>.</p></li>
 <li><p>Show that the gauge transformation <span class="math inline">\(A_\mu \to A_\mu + \partial_\mu \chi\)</span> leaves <span class="math inline">\(F_{\mu\nu}\)</span> unchanged.</p></li>
 <li><p>Write the action for free electromagnetism: <span class="math display">\[
-S = -\frac{1}{4} \int F_{\mu\nu} F^{\mu\nu} \,\mathrm{d}^4 x,
+S = -\frac{1}{4\mu_0} \int F_{\mu\nu} F^{\mu\nu} \,\mathrm{d}^4 x,
 \]</span> and derive the vacuum Maxwell equations by varying <span class="math inline">\(A_\mu\)</span>.</p></li>
 <li><p>In 2+1 dimensions, how many independent components does <span class="math inline">\(F_{\mu\nu}\)</span> have? How many for <span class="math inline">\(\mathrm{d}F\)</span>?</p></li>
 <li><p>Discuss why the Hodge dual maps a 2-form to another 2-form in 4D, and explain its role in the source equations.</p></li>

@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Radiation from a Moving Charge – Physics Lecture Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4a0124d671bd5b18cd0e9001f0b304c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-cfd078692f0a6f79ce33d48dd08f487d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-4a0124d671bd5b18cd0e9001f0b304c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R4D0BX334F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R4D0BX334F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"en"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Physics Lecture Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vitenti-physics/vitenti-physics.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/moving-charge-radiation.html">Radiation from a Moving Charge</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Undergraduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introduction to Physics (portuguese)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/physics-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physics and Mathematics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/determinism-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Determinism and Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/intro-stat-mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Statistical Mechanics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Heisenberg Uncertainty Principle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/selected-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vector Calculus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/vector-spaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vector Spaces Products and Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Mathematical Physics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/delta-dirac-green.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dirac Delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/green-functions-nd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Green Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-symplectic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators and Symplectic Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-cont.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators: Complete Solutions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-fields.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators in Field Theory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/scalar-field.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalar Fields</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/scalar-propagators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalar Fields: Propagators and Vacuum</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Special Relativity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/galilean-relativity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Galilean Relativity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/spacetime-algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spacetime Algebra</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Graduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Electrodynamics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conventions and Notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometry Review for Electrodynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/calculus-on-minkowski-spacetime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calculus on Minkowski Spacetime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/maxwell-equations-forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maxwell Equations in Covariant Form</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/accel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accelerated Observers and Born Rigidity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/em-energy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Energy of the Electromagnetic Field</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/moving-charge-radiation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Radiation from a Moving Charge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/thomson-scattering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Thomson Scattering</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#maxwell-equations-in-covariant-form" id="toc-maxwell-equations-in-covariant-form" class="nav-link active" data-scroll-target="#maxwell-equations-in-covariant-form"><span class="header-section-number">1</span> Maxwell equations in covariant form</a></li>
+  <li><a href="#wave-equation-for-the-four-potential" id="toc-wave-equation-for-the-four-potential" class="nav-link" data-scroll-target="#wave-equation-for-the-four-potential"><span class="header-section-number">2</span> Wave equation for the four-potential</a></li>
+  <li><a href="#retarded-green-function" id="toc-retarded-green-function" class="nav-link" data-scroll-target="#retarded-green-function"><span class="header-section-number">3</span> Retarded Green function</a></li>
+  <li><a href="#current-of-a-point-charge" id="toc-current-of-a-point-charge" class="nav-link" data-scroll-target="#current-of-a-point-charge"><span class="header-section-number">4</span> Current of a point charge</a></li>
+  <li><a href="#four-potential" id="toc-four-potential" class="nav-link" data-scroll-target="#four-potential"><span class="header-section-number">5</span> Four-potential</a></li>
+  <li><a href="#covariant-form" id="toc-covariant-form" class="nav-link" data-scroll-target="#covariant-form"><span class="header-section-number">6</span> Covariant form</a></li>
+  <li><a href="#retarded-time" id="toc-retarded-time" class="nav-link" data-scroll-target="#retarded-time"><span class="header-section-number">7</span> Retarded time</a></li>
+  <li><a href="#liénardwiechert-potentials" id="toc-liénardwiechert-potentials" class="nav-link" data-scroll-target="#liénardwiechert-potentials"><span class="header-section-number">8</span> Liénard–Wiechert potentials</a></li>
+  <li><a href="#derivatives-of-the-potential" id="toc-derivatives-of-the-potential" class="nav-link" data-scroll-target="#derivatives-of-the-potential"><span class="header-section-number">9</span> Derivatives of the potential</a></li>
+  <li><a href="#the-radiation-field" id="toc-the-radiation-field" class="nav-link" data-scroll-target="#the-radiation-field"><span class="header-section-number">10</span> The radiation field</a></li>
+  <li><a href="#radiation-zone" id="toc-radiation-zone" class="nav-link" data-scroll-target="#radiation-zone"><span class="header-section-number">11</span> Radiation zone</a></li>
+  <li><a href="#covariant-radiation-tensor" id="toc-covariant-radiation-tensor" class="nav-link" data-scroll-target="#covariant-radiation-tensor"><span class="header-section-number">12</span> Covariant radiation tensor</a></li>
+  <li><a href="#relativistic-larmor-formula" id="toc-relativistic-larmor-formula" class="nav-link" data-scroll-target="#relativistic-larmor-formula"><span class="header-section-number">13</span> Relativistic Larmor formula</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="moving-charge-radiation.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Graduate</li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/index.html">Electrodynamics</a></li><li class="breadcrumb-item"><a href="../../courses/electrodynamics/moving-charge-radiation.html">Radiation from a Moving Charge</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Radiation from a Moving Charge</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sandro Vitenti </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>These notes closely follow the original lecture derivation, with only minor additions for clarity, and use the <a href="../../courses/electrodynamics/conventions.html">conventions</a> fixed earlier in the course.</p>
+<section id="maxwell-equations-in-covariant-form" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Maxwell equations in covariant form</h1>
+<p>Starting from Maxwell’s equations, <span class="math display">\[
+\partial_\mu F^{\mu\nu}=-\mu_0J^\nu,
+\]</span> with <span class="math inline">\(F^{0i}=E^i/c\)</span>, <span class="math inline">\(F^{ij}=\epsilon^{ijk}B_k\)</span>, and <span class="math inline">\(J^\mu=(c\rho,\mathbf J)\)</span> as fixed in the <a href="../../courses/electrodynamics/conventions.html#electromagnetic-field">conventions</a>, one recovers the usual Maxwell equations component by component exactly as in <a href="../../courses/electrodynamics/maxwell-equations-forms.html">Maxwell Equations in Covariant Form</a>.</p>
+<p>Introducing the four-potential, <span class="math display">\[
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+\]</span> the <span class="math inline">\(0i\)</span> component reads <span class="math inline">\(F_{0i}=\partial_0A_i-\partial_iA_0=\frac1c\partial_tA_i-\partial_iA_0\)</span>; comparing with <span class="math inline">\(F_{0i}=-E_i/c\)</span> (the lowered version of <span class="math inline">\(F^{0i}=E^i/c\)</span>) gives <span class="math display">\[
+\frac{E_i}{c}
+=
+\partial_iA_0
+-
+\frac{1}{c}\frac{\partial A_i}{\partial t},
+\]</span> and, from the spatial components, <span class="math display">\[
+\mathbf B=\nabla\times\mathbf A.
+\]</span> In the electrostatic limit, <span class="math display">\[
+\frac{\partial A_i}{\partial t}=0,
+\qquad
+E_i=\partial_i(cA_0)=-\partial_i\phi,
+\]</span> using <span class="math inline">\(cA_0=-\phi\)</span> from <span class="math inline">\(A^\mu=(\phi/c,\mathbf A)\)</span>.</p>
+</section>
+<section id="wave-equation-for-the-four-potential" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Wave equation for the four-potential</h1>
+<p>Substituting <span class="math inline">\(F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu\)</span> into Maxwell’s equations and using that partial derivatives commute, <span class="math display">\[
+\partial_\mu F^{\mu\nu}=\Box A^\nu-\partial^\nu(\partial_\mu A^\mu)=-\mu_0J^\nu,
+\]</span> that is, <span class="math display">\[
+\Box A^\nu-\partial^\nu(\partial_\mu A^\mu)
+=
+-\mu_0J^\nu.
+\]</span> Using the Lorenz gauge, <span class="math display">\[
+\partial_\mu A^\mu=0,
+\]</span> the equations become <span class="math display">\[
+\boxed{\Box A^\nu=-\mu_0J^\nu.}
+\]</span></p>
+</section>
+<section id="retarded-green-function" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Retarded Green function</h1>
+<p>The Green function satisfies <span class="math display">\[
+\Box G(x-x')=\delta^{(4)}(x-x').
+\]</span> The retarded solution is <span class="math display">\[
+G_R(x-x')
+=
+\frac{\Theta(x^0-x'^0)
+\delta(x^0-x'^0-|\mathbf x-\mathbf x'|)}
+{4\pi|\mathbf x-\mathbf x'|}.
+\]</span></p>
+</section>
+<section id="current-of-a-point-charge" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Current of a point charge</h1>
+<p>For a point charge, <span class="math display">\[
+J^\mu(x)
+=
+cq
+\int
+u^\mu(\tau)
+\delta^{(4)}(x-y(\tau))
+\,\mathrm{d}\tau,
+\]</span> where</p>
+<ul>
+<li><span class="math inline">\(y^\mu(\tau)\)</span> is the worldline;</li>
+<li><span class="math inline">\(u^\mu=\mathrm{d}y^\mu/(c\,\mathrm{d}\tau)\)</span> is the four-velocity, normalized as in the <a href="../../courses/electrodynamics/conventions.html#particle-kinematics">conventions</a>.</li>
+</ul>
+</section>
+<section id="four-potential" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Four-potential</h1>
+<p>Combining the Green function and the current, <span class="math display">\[
+A^\mu(x)
+=
+-\mu_0
+\int
+G(x-z)
+J^\mu(z)\,
+\mathrm{d}^4z,
+\]</span> Substituting the point-charge current and its own delta function collapses the <span class="math inline">\(z\)</span>-integral onto the worldline, leaving a single integral over <span class="math inline">\(\tau\)</span>: <span class="math display">\[
+A^\mu(x)
+=
+\frac{\mu_0qc^2}{4\pi}
+\int
+\frac{
+\Theta(x^0-y^0(\tau))
+\delta(x^0-y^0(\tau)-|\mathbf x-\mathbf y(\tau)|)
+}{
+|\mathbf x-\mathbf y(\tau)|
+}
+u^\mu(\tau)\,
+\mathrm{d}\tau.
+\]</span> Only values satisfying <span class="math display">\[
+x^0-y^0(\tau)=|\mathbf x-\mathbf y(\tau)|
+\]</span> contribute to the integral.</p>
+</section>
+<section id="covariant-form" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Covariant form</h1>
+<p>Using <span class="math display">\[
+(x-y)^2
+=
+-(x^0-y^0)^2
++
+|\mathbf x-\mathbf y|^2,
+\]</span> and <span class="math display">\[
+\delta(f(x))
+=
+\sum_i
+\frac{\delta(x-x_i)}
+{|f'(x_i)|},
+\]</span> one finds <span class="math display">\[
+\Theta(x^0-y^0)
+\delta((x-y)^2)
+=
+\frac{
+\delta(x^0-y^0-|\mathbf x-\mathbf y|)
+}{
+2|\mathbf x-\mathbf y|
+}.
+\]</span> Therefore, <span class="math display">\[
+\boxed{
+A^\mu(x)
+=
+\frac{\mu_0qc^2}{2\pi}
+\int
+\Theta(x^0-y^0(\tau))
+\delta((x-y)^2)
+u^\mu(\tau)
+\,\mathrm{d}\tau.
+}
+\]</span></p>
+</section>
+<section id="retarded-time" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Retarded time</h1>
+<p>The retarded proper time is defined implicitly by <span class="math display">\[
+(x-y(\tau_r))^2=0,
+\]</span> with <span class="math display">\[
+x^0&gt;y^0(\tau_r).
+\]</span> Equivalently, <span class="math display">\[
+t-t_r
+=
+\frac{
+|\mathbf x-\mathbf y(t_r)|
+}{c}.
+\]</span> Write this as <span class="math inline">\(f(t_r)=t-t_r-|\mathbf x-\mathbf y(t_r)|/c=0\)</span>. Since <span class="math inline">\(\mathrm{d}|\mathbf x-\mathbf y(t_r)|/\mathrm{d}t_r=-\hat{\mathbf n}\cdot\mathbf v\)</span>, with <span class="math inline">\(\hat{\mathbf n}\)</span> pointing from the charge to the field point, differentiating with respect to <span class="math inline">\(t_r\)</span> gives <span class="math display">\[
+\dot f
+=
+\frac{\hat{\mathbf n}\cdot\mathbf v}{c}-1&lt;0,
+\]</span> which never vanishes, showing that the solution is unique.</p>
+<p><strong>Example (uniform velocity).</strong> For a charge moving with constant velocity <span class="math inline">\(\mathbf v_0\)</span>, <span class="math inline">\(\mathbf y(t_r)=\mathbf y_0+\mathbf v_0t_r\)</span>. Writing <span class="math inline">\(\Delta\mathbf x_0=\mathbf x-\mathbf y_0\)</span>, the defining condition <span class="math inline">\(c(t-t_r)=|\mathbf x-\mathbf y(t_r)|\)</span> squares to <span class="math display">\[
+c^2(t-t_r)^2=|\Delta\mathbf x_0-\mathbf v_0t_r|^2
+=|\Delta\mathbf x_0|^2-2\Delta\mathbf x_0\cdot\mathbf v_0\,t_r+v_0^2t_r^2.
+\]</span> Collecting powers of <span class="math inline">\(t_r\)</span> and dividing by <span class="math inline">\(c^2\)</span> gives a quadratic equation, <span class="math display">\[
+\left(1-\frac{v_0^2}{c^2}\right)t_r^2
+-2\left(t-\frac{\Delta\mathbf x_0\cdot\mathbf v_0}{c^2}\right)t_r
++\left(t^2-\frac{|\Delta\mathbf x_0|^2}{c^2}\right)=0,
+\]</span> with two roots — an advanced and a retarded one. Only the smaller root is causal (<span class="math inline">\(t_r&lt;t\)</span>), so <span class="math display">\[
+\boxed{
+t_r
+=
+\frac{
+\left(t-\dfrac{\Delta\mathbf x_0\cdot\mathbf v_0}{c^2}\right)
+-\dfrac1c\sqrt{\left(ct-\dfrac{\Delta\mathbf x_0\cdot\mathbf v_0}{c}\right)^2-\left(1-\dfrac{v_0^2}{c^2}\right)\left(c^2t^2-|\Delta\mathbf x_0|^2\right)}
+}
+{1-v_0^2/c^2}.
+}
+\]</span></p>
+</section>
+<section id="liénardwiechert-potentials" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Liénard–Wiechert potentials</h1>
+<p>It remains to evaluate the <span class="math inline">\(\tau\)</span>-integral in the boxed covariant potential using the same distributional identity as in the <a href="#covariant-form">Covariant form</a> section, now applied to <span class="math inline">\(g(\tau)=(x-y(\tau))^2\)</span>, which has a single zero at <span class="math inline">\(\tau=\tau_r\)</span>: <span class="math display">\[
+\delta((x-y(\tau))^2)=\frac{\delta(\tau-\tau_r)}{|g'(\tau_r)|},
+\qquad
+g'(\tau)=-2c\,u(\tau)\cdot(x-y(\tau)),
+\]</span> where <span class="math inline">\(g'\)</span> follows from <span class="math inline">\(\mathrm{d}y^\mu/\mathrm{d}\tau=c\,u^\mu\)</span>. At <span class="math inline">\(\tau=\tau_r\)</span>, with <span class="math inline">\(\Delta x^\mu=x^\mu-y^\mu(\tau_r)\)</span> having <span class="math inline">\(\Delta x^0=|\mathbf x-\mathbf y|\)</span> and spatial part <span class="math inline">\(|\mathbf x-\mathbf y|\hat{\mathbf n}\)</span>, <span class="math display">\[
+u\cdot\Delta x=-\gamma|\mathbf x-\mathbf y|\left(1-\hat{\mathbf n}\cdot\mathbf v/c\right),
+\]</span> so that <span class="math inline">\(|g'(\tau_r)|=2c\gamma|\mathbf x-\mathbf y|(1-\hat{\mathbf n}\cdot\mathbf v/c)\)</span>. The <span class="math inline">\(\tau\)</span>-integral then just picks out <span class="math inline">\(u^\mu(\tau_r)/|g'(\tau_r)|\)</span>, and the factors of <span class="math inline">\(\gamma\)</span> cancel against those hidden in <span class="math inline">\(u^\mu=\gamma(1,\mathbf v/c)\)</span>, giving <span class="math display">\[
+\boxed{
+A^\mu
+=
+\frac{\mu_0qc}{4\pi}
+\left.
+\frac{(1,\mathbf v/c)}
+{|\mathbf x-\mathbf y|
+\left(1-\hat{\mathbf n}\cdot\mathbf v/c\right)}
+\right|_{t_r}.
+}
+\]</span> Hence <span class="math display">\[
+V
+=
+\frac{q}{4\pi\varepsilon_0}
+\left.
+\frac{1}
+{|\mathbf x-\mathbf y|
+(1-\hat{\mathbf n}\cdot\mathbf v/c)}
+\right|_{t_r},
+\]</span> and <span class="math display">\[
+\mathbf A
+=
+\frac{\mu_0qc}{4\pi}
+\left.
+\frac{\mathbf v}
+{|\mathbf x-\mathbf y|
+(1-\hat{\mathbf n}\cdot\mathbf v/c)}
+\right|_{t_r}.
+\]</span></p>
+</section>
+<section id="derivatives-of-the-potential" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Derivatives of the potential</h1>
+<p>The field <span class="math inline">\(F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu\)</span> requires differentiating the covariant potential <span class="math display">\[
+A^\nu
+=
+\frac{\mu_0qc^2}{2\pi}
+\int
+\Theta(x^0-y^0(\tau))
+\delta((x-y(\tau))^2)
+u^\nu(\tau)\,\mathrm{d}\tau
+\]</span> with respect to <span class="math inline">\(x^\mu\)</span>. Only <span class="math inline">\(\Theta\)</span> and <span class="math inline">\(\delta\)</span> depend on <span class="math inline">\(x\)</span> inside the integral (through <span class="math inline">\(x-y(\tau)\)</span>), so <span class="math display">\[
+\partial_\mu A^\nu
+=
+\frac{\mu_0qc^2}{2\pi}
+\int
+\Big[
+\big(\partial_\mu\Theta(x^0-y^0)\big)\delta((x-y)^2)
++
+\Theta(x^0-y^0)\,\partial_\mu\big[\delta((x-y)^2)\big]
+\Big]
+u^\nu\,\mathrm{d}\tau.
+\]</span></p>
+<p><strong>Discarding the self-field term.</strong> The first term has <span class="math inline">\(\partial_\mu\Theta(x^0-y^0)\propto\delta^0_\mu\,\delta(x^0-y^0)\)</span>, which multiplies <span class="math inline">\(\delta((x-y)^2)\)</span>. A point where both <span class="math inline">\(x^0=y^0\)</span> and <span class="math inline">\((x-y)^2=-(x^0-y^0)^2+|\mathbf x-\mathbf y|^2=0\)</span> forces <span class="math inline">\(\mathbf x=\mathbf y\)</span> as well, i.e.&nbsp;<span class="math inline">\(x=y\)</span>: this term is supported only at the charge’s own location and gives an infinite self-field contribution there. It is dropped, keeping only the field at points away from the source: <span class="math display">\[
+\partial_\mu A^\nu
+=
+\frac{\mu_0qc^2}{2\pi}
+\int
+\Theta(x^0-y^0)\,\partial_\mu\big[\delta((x-y)^2)\big]\,u^\nu\,\mathrm{d}\tau.
+\]</span></p>
+<p><strong>Trading the <span class="math inline">\(x\)</span>-derivative for a <span class="math inline">\(\tau\)</span>-derivative.</strong> By the chain rule, <span class="math display">\[
+\partial_\mu\big[\delta((x-y)^2)\big]
+=
+\delta'((x-y)^2)\,\partial_\mu(x-y)^2
+=
+2\Delta x_\mu\,\delta'((x-y)^2),
+\qquad
+\Delta x^\mu\equiv x^\mu-y^\mu(\tau).
+\]</span> Differentiating instead along the worldline, using <span class="math inline">\(\mathrm{d}y^\mu/\mathrm{d}\tau=c\,u^\mu\)</span>, <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d}\tau}\delta((x-y)^2)
+=
+\delta'((x-y)^2)\,\frac{\mathrm{d}}{\mathrm{d}\tau}(x-y)^2
+=
+\delta'((x-y)^2)\,\big(-2c\,u\cdot\Delta x\big),
+\]</span> so that <span class="math display">\[
+\delta'((x-y)^2)=-\frac{1}{2c\,u\cdot\Delta x}\frac{\mathrm{d}}{\mathrm{d}\tau}\delta((x-y)^2).
+\]</span> Substituting, <span class="math display">\[
+\partial_\mu A^\nu
+=
+-\frac{\mu_0qc}{2\pi}
+\int
+\Theta(x^0-y^0)
+\left[\frac{\mathrm{d}}{\mathrm{d}\tau}\delta((x-y)^2)\right]
+\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\,\mathrm{d}\tau.
+\]</span></p>
+<p><strong>Integration by parts.</strong> Moving the <span class="math inline">\(\tau\)</span>-derivative off <span class="math inline">\(\delta\)</span> and onto the rest of the integrand costs a sign; the boundary term and the piece hitting <span class="math inline">\(\Theta\)</span> are, again, self-field contributions at <span class="math inline">\(x=y\)</span> and are dropped: <span class="math display">\[
+\partial_\mu A^\nu
+=
+\frac{\mu_0qc}{2\pi}
+\int
+\Theta(x^0-y^0)\,\delta((x-y)^2)\,
+\frac{\mathrm{d}}{\mathrm{d}\tau}\left(\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\right)
+\mathrm{d}\tau.
+\]</span> The <span class="math inline">\(\tau\)</span>-integral is now done exactly as in the Liénard–Wiechert derivation, using <span class="math inline">\(\delta((x-y)^2)=\delta(\tau-\tau_r)/(2c|u\cdot\Delta x|)\)</span>: <span class="math display">\[
+\partial_\mu A^\nu
+=
+\frac{\mu_0q}{4\pi}
+\frac{1}{|u\cdot\Delta x|}
+\left.
+\frac{\mathrm{d}}{\mathrm{d}\tau}\left(\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\right)
+\right|_{\tau=\tau_r}.
+\]</span></p>
+<p><strong>Differentiating term by term.</strong> Writing the four-acceleration as <span class="math inline">\(a^\mu=\mathrm{d}u^\mu/\mathrm{d}\tau\)</span>, the product rule gives <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d}\tau}\left(\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\right)
+=
+\frac{\dot{(\Delta x_\mu)}\,u^\nu+\Delta x_\mu\,a^\nu}{u\cdot\Delta x}
+-
+\frac{\Delta x_\mu\,u^\nu}{(u\cdot\Delta x)^2}\,\frac{\mathrm{d}}{\mathrm{d}\tau}(u\cdot\Delta x).
+\]</span> Since <span class="math inline">\(x\)</span> is fixed, <span class="math inline">\(\dot{(\Delta x_\mu)}=-\mathrm{d}y_\mu/\mathrm{d}\tau=-c\,u_\mu\)</span>, and <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d}\tau}(u\cdot\Delta x)
+=
+a\cdot\Delta x+u\cdot\dot{(\Delta x)}
+=
+a\cdot\Delta x-c\,u\cdot u
+=
+a\cdot\Delta x+c,
+\]</span> using <span class="math inline">\(u\cdot u=-1\)</span>. Substituting both, <span class="math display">\[
+\frac{\mathrm{d}}{\mathrm{d}\tau}\left(\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\right)
+=
+\frac{-c\,u_\mu u^\nu+\Delta x_\mu\,a^\nu}{u\cdot\Delta x}
+-
+\frac{\Delta x_\mu\,u^\nu}{(u\cdot\Delta x)^2}\big(\Delta x\cdot a+c\big),
+\]</span> so that <span class="math display">\[
+\partial_\mu A^\nu
+=
+\frac{\mu_0q}{4\pi}
+\frac{1}{(u\cdot\Delta x)^2}
+\left[
+-c\,u_\mu u^\nu+\Delta x_\mu\,a^\nu
+-
+\frac{\Delta x_\mu\,u^\nu}{u\cdot\Delta x}\big(\Delta x\cdot a+c\big)
+\right]_{\tau=\tau_r}.
+\]</span> The term <span class="math inline">\(-c\,u_\mu u^\nu\)</span> is symmetric under <span class="math inline">\(\mu\leftrightarrow\nu\)</span> (raising the index on <span class="math inline">\(\mu\)</span>), so it cancels in the antisymmetric combination <span class="math inline">\(F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu\)</span> and can be dropped when only the field, not the potential’s derivative itself, is wanted: <span class="math display">\[
+\boxed{
+\partial_\mu A_\nu
+=
+\frac{\mu_0q}{4\pi}
+\frac{1}{(u\cdot\Delta x)^2}
+\left[
+\Delta x_\mu\,a_\nu
+-
+\frac{\Delta x_\mu\,u_\nu}{u\cdot\Delta x}\big(\Delta x\cdot a+c\big)
+\right]_{\tau=\tau_r}
++\;(\text{symmetric in }\mu\nu).
+}
+\]</span></p>
+<p><strong>Near field versus radiation field.</strong> Both <span class="math inline">\(u\cdot\Delta x\)</span> and <span class="math inline">\(\Delta
+x_\mu\)</span> scale with the distance <span class="math inline">\(R=|\mathbf x-\mathbf y|\)</span> to the source: <span class="math inline">\(u\cdot\Delta x\sim R\)</span> (Liénard–Wiechert section) and <span class="math inline">\(\Delta x_\mu\sim R\)</span>, while <span class="math inline">\(u^\nu\)</span> and <span class="math inline">\(a^\nu\)</span>, evaluated at the fixed retarded time <span class="math inline">\(\tau_r\)</span>, do not depend on <span class="math inline">\(R\)</span>. In the boxed expression, the term <span class="math inline">\(\Delta x_\mu a_\nu/(u\cdot\Delta x)^2\)</span> scales as <span class="math inline">\(R/R^2=1/R\)</span>: it carries the four-acceleration explicitly, and is the <strong>radiation field</strong>. In the second term, the factor <span class="math inline">\(\Delta x\cdot a\)</span> inside the parenthesis itself grows as <span class="math inline">\(R\)</span>, so it contributes another <span class="math inline">\(R/(u\cdot\Delta x)^3\sim1/R\)</span> piece to the radiation field, while the leftover <span class="math inline">\(c\)</span> — the only acceleration-independent piece left in the whole expression — contributes <span class="math inline">\(\Delta
+x_\mu u_\nu c/(u\cdot\Delta x)^3\sim1/R^2\)</span>. This is exactly the statement in the original notes: <strong>terms carrying the acceleration fall off as <span class="math inline">\(1/R\)</span></strong>; whatever survives without it falls off as <span class="math inline">\(1/R^2\)</span> and is the near (velocity) field.</p>
+</section>
+<section id="the-radiation-field" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> The radiation field</h1>
+<p>The boxed formula above is for <span class="math inline">\(\partial_\mu A_\nu\)</span>, not yet the field. Since the symmetric piece cancels in the antisymmetric combination, the full field tensor is obtained simply by antisymmetrizing the whole bracket (dropping nothing this time — this is exact, not just the radiative part): <span class="math display">\[
+F_{\mu\nu}
+=
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\left[
+\Delta x_\mu a_\nu-\Delta x_\nu a_\mu
+-
+\frac{\Delta x\cdot a+c}{u\cdot\Delta x}
+\big(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu\big)
+\right]_{\tau=\tau_r}.
+\]</span> Splitting off the radiative (<span class="math inline">\(1/R\)</span>) part identified above — the terms carrying <span class="math inline">\(a^\mu\)</span> — from the near-field (<span class="math inline">\(1/R^2\)</span>) part left over, <span class="math display">\[
+F_{\mu\nu}
+=
+\underbrace{
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\left[
+\Delta x_\mu a_\nu-\Delta x_\nu a_\mu
+-
+\frac{\Delta x\cdot a}{u\cdot\Delta x}
+\big(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu\big)
+\right]
+}_{F_{\mu\nu}^{\rm rad}}
+\;-\;
+\underbrace{
+\frac{\mu_0qc}{4\pi(u\cdot\Delta x)^3}
+\big(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu\big)
+}_{F_{\mu\nu}^{\rm near}}.
+\]</span></p>
+<p><strong>Why the radiation field is transverse.</strong> Contract <span class="math inline">\(F_{\mu\nu}^{\rm rad}\)</span> with <span class="math inline">\(\Delta x^\nu\)</span>. Every term picks up either <span class="math inline">\(\Delta x\cdot\Delta x\)</span> or a combination that cancels exactly: <span class="math display">\[
+F_{\mu\nu}^{\rm rad}\Delta x^\nu
+=
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\Big[
+\Delta x_\mu(a\cdot\Delta x)-a_\mu(\Delta x\cdot\Delta x)
+-\frac{\Delta x\cdot a}{u\cdot\Delta x}\big(\Delta x_\mu(u\cdot\Delta x)-u_\mu(\Delta x\cdot\Delta x)\big)
+\Big].
+\]</span> Since <span class="math inline">\(\Delta x=x-y(\tau_r)\)</span> is null, <span class="math inline">\(\Delta x\cdot\Delta x=0\)</span> (the defining condition of <span class="math inline">\(\tau_r\)</span>), so this collapses to <span class="math display">\[
+F_{\mu\nu}^{\rm rad}\Delta x^\nu
+=
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\Big[\Delta x_\mu(a\cdot\Delta x)-\Delta x_\mu(a\cdot\Delta x)\Big]
+=
+0.
+\]</span> The same is not true of <span class="math inline">\(F_{\mu\nu}^{\rm near}\)</span> (there is nothing to cancel the leftover <span class="math inline">\(u_\mu(\Delta x\cdot\Delta x)\)</span> term against): only the radiation field is null in this sense, not the full field.</p>
+<p><strong>In 3-vector form.</strong> With <span class="math inline">\(\Delta x^0=R\equiv|\mathbf x-\mathbf y|\)</span>, <span class="math inline">\(\Delta x^i=R\hat n^i\)</span>, and <span class="math inline">\(F^{0i}=E^i/c\)</span>, <span class="math inline">\(F^{ij}=\epsilon^{ijk}B_k\)</span>, the statement <span class="math inline">\(F_{\mu\nu}^{\rm rad}\Delta x^\nu=0\)</span> reads, for <span class="math inline">\(\mu=0\)</span>, <span class="math display">\[
+F_{0i}^{\rm rad}\Delta x^i=0
+\;\Longrightarrow\;
+\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0,
+\]</span> and for <span class="math inline">\(\mu=j\)</span>, using <span class="math inline">\(F_{j0}=E_j/c\)</span> and <span class="math inline">\(F_{ji}=\epsilon_{jik}B_k\)</span>, <span class="math display">\[
+F_{j0}^{\rm rad}\Delta x^0+F_{ji}^{\rm rad}\Delta x^i=0
+\;\Longrightarrow\;
+\frac{E_j}{c}=-\epsilon_{jik}\hat n^iB_k
+\;\Longrightarrow\;
+\boxed{
+\mathbf B_{\rm rad}=\frac1c\,\hat{\mathbf n}\times\mathbf E_{\rm rad},
+\qquad
+\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0.
+}
+\]</span> This is exact, for a source moving with any velocity: the radiation field looks locally like a plane wave propagating along <span class="math inline">\(\hat{\mathbf n}\)</span>, which is why <span class="math inline">\(|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|\)</span> is used below. The explicit radiation field itself follows from <span class="math inline">\(E_i^{\rm rad}=-cF_{0i}^{\rm rad}\)</span>, <span class="math display">\[
+\mathbf E_{\rm rad}\cdot\hat{\mathbf e}_i
+=
+-\frac{\mu_0qc}{4\pi(u\cdot\Delta x)^2}
+\left[
+\Delta x_0a_i-\Delta x_ia_0
+-\frac{\Delta x\cdot a}{u\cdot\Delta x}\big(\Delta x_0u_i-\Delta x_iu_0\big)
+\right]_{\tau=\tau_r},
+\]</span> valid for any velocity of the source. Specializing to a source instantaneously at rest, <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span>, reduces this to the non-relativistic dipole field used in <a href="../../courses/electrodynamics/thomson-scattering.html#from-the-covariant-field-to-the-local-frame">Thomson Scattering</a>.</p>
+</section>
+<section id="radiation-zone" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Radiation zone</h1>
+<p>Far from the source only the radiation field survives, with <span class="math inline">\(B=E/c\)</span> as just shown. Substituting this into the energy density and Poynting vector from <a href="../../courses/electrodynamics/em-energy.html">Energy of the Electromagnetic Field</a>, <span class="math display">\[
+u=\frac1{2\mu_0}\left(\frac{E^2}{c^2}+B^2\right),
+\qquad
+\mathbf S=\frac1{\mu_0}\mathbf E\times\mathbf B,
+\]</span> gives <span class="math display">\[
+\boxed{
+u=\varepsilon_0E^2,
+\qquad
+\mathbf S=\frac{E^2}{\mu_0c}\,\hat{\mathbf n}=cu\,\hat{\mathbf n}.
+}
+\]</span> Energy flows radially outward at the speed of light, as expected for radiation. (Here <span class="math inline">\(u\)</span> is the field energy density, unrelated to the four-velocity <span class="math inline">\(u^\mu\)</span> of the previous sections; both are standard uses of the same letter and are always distinguished by the presence of the index.)</p>
+</section>
+<section id="covariant-radiation-tensor" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Covariant radiation tensor</h1>
+<p>Write <span class="math inline">\(F_{\mu\nu}^{\rm rad}=C(\Delta x_\mu b_\nu-\Delta x_\nu b_\mu)\)</span>, with <span class="math inline">\(C\equiv\mu_0q/[4\pi(u\cdot\Delta x)^2]\)</span> and <span class="math inline">\(b_\nu\equiv a_\nu-\lambda u_\nu\)</span>, <span class="math inline">\(\lambda\equiv(\Delta x\cdot a)/(u\cdot\Delta x)\)</span>, matching the bracket in the formula above term by term. Two facts make what follows easy: <span class="math display">\[
+\Delta x\cdot b=\Delta x\cdot a-\lambda(\Delta x\cdot u)=\Delta x\cdot a-\Delta x\cdot a=0,
+\qquad
+\Delta x\cdot\Delta x=0.
+\]</span> The first is just <span class="math inline">\(\lambda\)</span>’s definition; the second is the null condition used above. Together they make the field itself null, <span class="math display">\[
+F^{\alpha\beta}_{\rm rad}F_{\alpha\beta}^{\rm rad}
+=
+2C^2\big[(\Delta x\cdot\Delta x)(b\cdot b)-(\Delta x\cdot b)^2\big]
+=
+0,
+\]</span> consistent with <span class="math inline">\(|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|\)</span> found above (a plane wave has <span class="math inline">\(F^{\alpha\beta}F_{\alpha\beta}=2(B^2-E^2/c^2)=0\)</span> exactly when <span class="math inline">\(E=cB\)</span>). So the second term of <span class="math inline">\(T^{\mu\nu}=\frac1{\mu_0}(F^{\mu\alpha}F^\nu{}_\alpha-\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta})\)</span> drops out for the radiation piece, leaving <span class="math display">\[
+\mu_0T^{\mu\nu}_{\rm rad}
+=
+F^{\mu\alpha}_{\rm rad}F^{\nu}{}_{\alpha,\rm rad}
+=
+C^2(\Delta x^\mu b^\alpha-\Delta x^\alpha b^\mu)(\Delta x^\nu b_\alpha-\Delta x_\alpha b^\nu).
+\]</span> Expanding the product, every term with a lone <span class="math inline">\(\Delta x\cdot b\)</span> or <span class="math inline">\(\Delta x\cdot\Delta x\)</span> vanishes, leaving only <span class="math display">\[
+\mu_0T^{\mu\nu}_{\rm rad}=C^2(b\cdot b)\,\Delta x^\mu\Delta x^\nu.
+\]</span> Finally, expand <span class="math inline">\(b\cdot b=(a-\lambda u)\cdot(a-\lambda u)=a\cdot a-2\lambda(a\cdot u)+\lambda^2(u\cdot u)\)</span>. The middle term drops since <span class="math inline">\(a\cdot u=0\)</span>, and <span class="math inline">\(u\cdot u=-1\)</span> turns the last term negative, so <span class="math display">\[
+b\cdot b=a\cdot a-\lambda^2=\frac{(a\cdot a)(\Delta x\cdot u)^2-(\Delta x\cdot a)^2}{(\Delta x\cdot u)^2}.
+\]</span> Substituting <span class="math inline">\(C^2=\mu_0^2q^2/[16\pi^2(u\cdot\Delta x)^4]\)</span>, <span class="math display">\[
+\boxed{
+T^{\mu\nu}_{\rm rad}
+=
+\frac{\mu_0q^2}{16\pi^2(\Delta x\cdot u)^6}
+\Big[(a\cdot a)(\Delta x\cdot u)^2-(\Delta x\cdot a)^2\Big]
+\Delta x^\mu\Delta x^\nu.
+}
+\]</span> Important observations:</p>
+<ul>
+<li>proportional to <span class="math inline">\(\Delta x^\mu\Delta x^\nu\)</span>;</li>
+<li>null, since <span class="math inline">\(\Delta x^2=0\)</span> on the light cone;</li>
+<li>directed along outgoing light rays;</li>
+<li>survives at arbitrarily large distances, since the <span class="math inline">\(1/|\Delta\mathbf x|^2\)</span> falloff exactly matches the near-field terms falling off faster.</li>
+</ul>
+<p>This is the field responsible for energy loss by the source.</p>
+</section>
+<section id="relativistic-larmor-formula" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Relativistic Larmor formula</h1>
+<p>“Power radiated” is ambiguous for an accelerated source unless a frame is specified: a general observer sees the flux Doppler-shifted by the retarded-time relation between source and observation time. The unambiguous, covariant quantity is the energy radiated <strong>per unit proper time of the source</strong>, computed as the flux of <span class="math inline">\(T^{\mu\nu}_{\rm rad}\)</span> through a sphere surrounding the charge <em>in its own instantaneous rest frame</em>, where this subtlety is absent because the source is momentarily not moving. Since this power, so defined, and <span class="math inline">\(a^\mu a_\mu\)</span> are both Lorentz scalars, a relation between them established in one frame (the simplest one, the rest frame) holds in every frame.</p>
+<p><strong>Step 1: compute the flux in the rest frame.</strong> There, <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span>, <span class="math inline">\(\Delta x\cdot u=-R\)</span>, and <span class="math inline">\(u_\mu a^\mu=0\)</span> forces <span class="math inline">\(a^\mu=(0,\dot{\mathbf v}/c)\)</span> for the ordinary acceleration <span class="math inline">\(\dot{\mathbf v}=\mathrm{d}\mathbf v/\mathrm{d}t\)</span>, so <span class="math display">\[
+a\cdot a=\frac{\dot v^2}{c^2},
+\qquad
+\Delta x\cdot a=R\,\frac{\hat{\mathbf n}\cdot\dot{\mathbf v}}{c},
+\]</span> exactly as used for the <a href="../../courses/electrodynamics/thomson-scattering.html#from-the-covariant-field-to-the-local-frame">Thomson-scattering radiation field</a>. Substituting into the boxed <span class="math inline">\(T^{\mu\nu}_{\rm rad}\)</span> above, with <span class="math inline">\(\chi\)</span> the angle between <span class="math inline">\(\hat{\mathbf n}\)</span> and <span class="math inline">\(\dot{\mathbf v}\)</span> (kept distinct from the Heaviside <span class="math inline">\(\Theta\)</span> used throughout this page), <span class="math display">\[
+(a\cdot a)(\Delta x\cdot u)^2-(\Delta x\cdot a)^2
+=
+\frac{R^2}{c^2}\Big[\dot v^2-(\hat{\mathbf n}\cdot\dot{\mathbf v})^2\Big]
+=
+\frac{R^2\dot v^2}{c^2}\sin^2\chi,
+\]</span> so that, using <span class="math inline">\(T^{0i}=S^i/c\)</span> and <span class="math inline">\((\Delta x\cdot u)^6=R^6\)</span>, <span class="math display">\[
+\mathbf S\cdot\hat{\mathbf n}=cT^{0i}\hat n^i
+=
+c\cdot\frac{\mu_0q^2}{16\pi^2R^6}\cdot\frac{R^2\dot v^2\sin^2\chi}{c^2}\cdot R^2
+=
+\frac{\mu_0q^2\dot v^2}{16\pi^2cR^2}\sin^2\chi.
+\]</span></p>
+<p><strong>Step 2: integrate over the sphere.</strong> The power radiated per solid angle is <span class="math display">\[
+\frac{\mathrm{d}P}{\mathrm{d}\Omega}=R^2\,\mathbf S\cdot\hat{\mathbf n}=\frac{\mu_0q^2\dot v^2}{16\pi^2c}\sin^2\chi.
+\]</span> Using <span class="math inline">\(\int\sin^2\chi\,\mathrm{d}\Omega=2\pi\int_0^\pi\sin^3\chi\,\mathrm{d}\chi=2\pi\cdot\frac43=\frac{8\pi}{3}\)</span>, <span class="math display">\[
+P=\int\frac{\mathrm{d}P}{\mathrm{d}\Omega}\,\mathrm{d}\Omega
+=
+\frac{\mu_0q^2\dot v^2}{16\pi^2c}\cdot\frac{8\pi}{3}
+=
+\frac{\mu_0q^2\dot v^2}{6\pi c},
+\]</span> the familiar non-relativistic Larmor formula.</p>
+<p><strong>Step 3: covariantize.</strong> In this same rest frame, <span class="math inline">\(a^\mu a_\mu=\dot v^2/c^2\)</span>, so the result of Step 2 is exactly <span class="math display">\[
+P=\frac{\mu_0q^2c}{6\pi}\,a^\mu a_\mu.
+\]</span> Both sides of this equation are Lorentz scalars (<span class="math inline">\(P\)</span> by the proper-time construction above, <span class="math inline">\(a^\mu a_\mu\)</span> trivially), and they agree in one frame; therefore they agree in every frame. The relation is thus valid for a source moving with arbitrary velocity, not just at the instant it is at rest: <span class="math display">\[
+\boxed{
+P
+=
+\frac{\mu_0q^2c}{6\pi}
+a^\mu a_\mu.
+}
+\]</span></p>
+<hr>
+<p>Feel free to create issues, ask questions, or suggest improvements in the <a href="https://github.com/vitenti-physics/undergrad">GitHub repository</a>.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/vitenti-physics\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
