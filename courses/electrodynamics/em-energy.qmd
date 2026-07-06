@@ -3,6 +3,8 @@ title: "Energy of the Electromagnetic Field"
 format:
   html:
     number-sections: true
+  pdf:
+    number-sections: true
 ---
 
 {{< include /_macros.qmd >}}

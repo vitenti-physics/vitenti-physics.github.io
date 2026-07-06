@@ -3,6 +3,8 @@ title: "Thomson Scattering"
 format:
   html:
     number-sections: true
+  pdf:
+    number-sections: true
 ---
 
 {{< include /_macros.qmd >}}
@@ -51,27 +53,10 @@ approximation).
 
 # From the covariant field to the local frame
 
-In [Derivatives of the potential](moving-charge-radiation.qmd#derivatives-of-the-potential),
-the radiative ($1/R$) part of $\partial_\mu A_\nu$ was identified as the
-piece carrying the four-acceleration $a^\mu=\dd u^\mu/\dd\tau$,
+[The radiation field](moving-charge-radiation.qmd#the-radiation-field) of an
+accelerated charge, valid for any velocity, was written covariantly as
 $$
-\partial_\mu A_\nu\Big|_{\rm rad}
-=
-\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
-\left[
-\Delta x_\mu a_\nu
--
-\frac{\Delta x_\mu u_\nu}{u\cdot\Delta x}(\Delta x\cdot a)
-\right]_{\tau=\tau_r},
-$$
-keeping only the acceleration-carrying pieces of the boxed formula (the
-leftover $c$ inside the last parenthesis there is a near-field, $1/R^2$
-contribution and is dropped here). The radiative field tensor follows by
-antisymmetrizing,
-$$
-F_{\mu\nu}\Big|_{\rm rad}
-=
-\partial_\mu A_\nu\Big|_{\rm rad}-\partial_\nu A_\mu\Big|_{\rm rad}
+F_{\mu\nu}^{\rm rad}
 =
 \frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
 \left[
@@ -79,8 +64,11 @@ F_{\mu\nu}\Big|_{\rm rad}
 -
 \frac{\Delta x\cdot a}{u\cdot\Delta x}
 \big(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu\big)
-\right].
+\right]_{\tau=\tau_r},
 $$
+with $a^\mu=\dd u^\mu/\dd\tau$. Here this is specialized to a charge that is
+instantaneously at rest, as is the case for the non-relativistic oscillation
+driven by the incident wave.
 
 At the instant the charge is at rest, $u^\mu=(1,\mathbf 0)$ and, since
 $u_\mu a^\mu=0$ forces $a^0=0$ there, $a^\mu=(0,\dot{\mathbf v}/c)$ exactly
@@ -105,10 +93,10 @@ $$
 }
 $$
 the familiar non-relativistic dipole radiation field, transverse to
-$\hat{\mathbf n}$ by construction. Writing $\Theta$ for the angle between
+$\hat{\mathbf n}$ by construction. Writing $\chi$ for the angle between
 $\hat{\mathbf n}$ and $\dot{\mathbf v}$, its magnitude is
 $$
-|\mathbf E_{\rm rad}|=\frac{\mu_0q\,|\dot{\mathbf v}|}{4\pi R}\sin\Theta.
+|\mathbf E_{\rm rad}|=\frac{\mu_0q\,|\dot{\mathbf v}|}{4\pi R}\sin\chi.
 $$
 
 # Radiated power and a consistency check
@@ -119,10 +107,10 @@ section), so the power radiated per solid angle is
 $$
 \frac{\dd P}{\dd\Omega}=R^2\,\mathbf S\cdot\hat{\mathbf n}=R^2c\varepsilon_0|\mathbf E_{\rm rad}|^2
 =
-\frac{\mu_0q^2\dot v^2}{16\pi^2c}\sin^2\Theta,
+\frac{\mu_0q^2\dot v^2}{16\pi^2c}\sin^2\chi,
 $$
 using $1/(4\pi\varepsilon_0)=\mu_0c^2/(4\pi)$. As a check, integrating over
-solid angle with $\int\sin^2\Theta\,\dd\Omega=8\pi/3$ recovers exactly the
+solid angle with $\int\sin^2\chi\,\dd\Omega=8\pi/3$ recovers exactly the
 non-relativistic Larmor formula already derived,
 $$
 P=\int\frac{\dd P}{\dd\Omega}\,\dd\Omega=\frac{\mu_0q^2\dot v^2}{16\pi^2c}\cdot\frac{8\pi}{3}=\frac{\mu_0q^2\dot v^2}{6\pi c},
@@ -153,14 +141,14 @@ so
 $$
 \left\langle\frac{\dd P}{\dd\Omega}\right\rangle
 =
-\frac{\mu_0q^2}{16\pi^2c}\cdot\frac{q^2E_0^2}{2m^2}\sin^2\Theta,
+\frac{\mu_0q^2}{16\pi^2c}\cdot\frac{q^2E_0^2}{2m^2}\sin^2\chi,
 $$
 and dividing by $\langle S_{\rm inc}\rangle=c\varepsilon_0E_0^2/2$, with
 $1/\varepsilon_0=\mu_0c^2$,
 $$
 \frac{\dd\sigma}{\dd\Omega}
 =
-\left(\frac{\mu_0q^2}{4\pi m}\right)^{\!2}\sin^2\Theta.
+\left(\frac{\mu_0q^2}{4\pi m}\right)^{\!2}\sin^2\chi.
 $$
 Defining the **classical radius** of the charge,
 $$
@@ -169,27 +157,27 @@ $$
 this is
 $$
 \boxed{
-\frac{\dd\sigma}{\dd\Omega}=r_q^2\sin^2\Theta,
+\frac{\dd\sigma}{\dd\Omega}=r_q^2\sin^2\chi,
 }
 $$
-with $\Theta$ the angle between the observation direction $\hat{\mathbf n}$
+with $\chi$ the angle between the observation direction $\hat{\mathbf n}$
 and the (fixed) oscillation direction $\hat{\boldsymbol\epsilon}$: scattering
 is strongest broadside to the oscillation and vanishes along it, exactly
 like a driven dipole antenna.
 
 # Unpolarized incident light
 
-For unpolarized incident light, average $\sin^2\Theta$ over the two
+For unpolarized incident light, average $\sin^2\chi$ over the two
 independent transverse polarizations. Take $\hat{\mathbf k}=\hat{\mathbf z}$
 and, without loss of generality, the observation direction in the $x$-$z$
 plane at scattering angle $\theta$ from $\hat{\mathbf k}$,
 $\hat{\mathbf n}=\sin\theta\,\hat{\mathbf x}+\cos\theta\,\hat{\mathbf z}$.
 For $\hat{\boldsymbol\epsilon}=\hat{\mathbf x}$,
-$\sin^2\Theta=1-(\hat{\mathbf n}\cdot\hat{\mathbf x})^2=\cos^2\theta$; for
+$\sin^2\chi=1-(\hat{\mathbf n}\cdot\hat{\mathbf x})^2=\cos^2\theta$; for
 $\hat{\boldsymbol\epsilon}=\hat{\mathbf y}$,
-$\hat{\mathbf n}\cdot\hat{\mathbf y}=0$ so $\sin^2\Theta=1$. Averaging the two,
+$\hat{\mathbf n}\cdot\hat{\mathbf y}=0$ so $\sin^2\chi=1$. Averaging the two,
 $$
-\langle\sin^2\Theta\rangle=\frac{\cos^2\theta+1}{2},
+\langle\sin^2\chi\rangle=\frac{\cos^2\theta+1}{2},
 $$
 so that
 $$

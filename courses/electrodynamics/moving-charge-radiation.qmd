@@ -3,6 +3,8 @@ title: "Radiation from a Moving Charge"
 format:
   html:
     number-sections: true
+  pdf:
+    number-sections: true
 ---
 
 {{< include /_macros.qmd >}}
@@ -467,24 +469,118 @@ the original notes: **terms carrying the acceleration fall off as $1/R$**;
 whatever survives without it falls off as $1/R^2$ and is the near
 (velocity) field.
 
+# The radiation field
+
+The boxed formula above is for $\partial_\mu A_\nu$, not yet the field. Since
+the symmetric piece cancels in the antisymmetric combination, the full field
+tensor is obtained simply by antisymmetrizing the whole bracket (dropping
+nothing this time — this is exact, not just the radiative part):
+$$
+F_{\mu\nu}
+=
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\left[
+\Delta x_\mu a_\nu-\Delta x_\nu a_\mu
+-
+\frac{\Delta x\cdot a+c}{u\cdot\Delta x}
+\big(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu\big)
+\right]_{\tau=\tau_r}.
+$$
+Splitting off the radiative ($1/R$) part identified above — the terms
+carrying $a^\mu$ — from the near-field ($1/R^2$) part left over,
+$$
+F_{\mu\nu}
+=
+\underbrace{
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\left[
+\Delta x_\mu a_\nu-\Delta x_\nu a_\mu
+-
+\frac{\Delta x\cdot a}{u\cdot\Delta x}
+\big(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu\big)
+\right]
+}_{F_{\mu\nu}^{\rm rad}}
+\;-\;
+\underbrace{
+\frac{\mu_0qc}{4\pi(u\cdot\Delta x)^3}
+\big(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu\big)
+}_{F_{\mu\nu}^{\rm near}}.
+$$
+
+**Why the radiation field is transverse.** Contract $F_{\mu\nu}^{\rm rad}$
+with $\Delta x^\nu$. Every term picks up either $\Delta x\cdot\Delta x$ or a
+combination that cancels exactly:
+$$
+F_{\mu\nu}^{\rm rad}\Delta x^\nu
+=
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\Big[
+\Delta x_\mu(a\cdot\Delta x)-a_\mu(\Delta x\cdot\Delta x)
+-\frac{\Delta x\cdot a}{u\cdot\Delta x}\big(\Delta x_\mu(u\cdot\Delta x)-u_\mu(\Delta x\cdot\Delta x)\big)
+\Big].
+$$
+Since $\Delta x=x-y(\tau_r)$ is null, $\Delta x\cdot\Delta x=0$ (the defining
+condition of $\tau_r$), so this collapses to
+$$
+F_{\mu\nu}^{\rm rad}\Delta x^\nu
+=
+\frac{\mu_0q}{4\pi(u\cdot\Delta x)^2}
+\Big[\Delta x_\mu(a\cdot\Delta x)-\Delta x_\mu(a\cdot\Delta x)\Big]
+=
+0.
+$$
+The same is not true of $F_{\mu\nu}^{\rm near}$ (there is nothing to cancel
+the leftover $u_\mu(\Delta x\cdot\Delta x)$ term against): only the radiation
+field is null in this sense, not the full field.
+
+**In 3-vector form.** With $\Delta x^0=R\equiv|\mathbf x-\mathbf y|$,
+$\Delta x^i=R\hat n^i$, and $F^{0i}=E^i/c$, $F^{ij}=\epsilon^{ijk}B_k$, the
+statement $F_{\mu\nu}^{\rm rad}\Delta x^\nu=0$ reads, for $\mu=0$,
+$$
+F_{0i}^{\rm rad}\Delta x^i=0
+\;\Longrightarrow\;
+\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0,
+$$
+and for $\mu=j$, using $F_{j0}=E_j/c$ and $F_{ji}=\epsilon_{jik}B_k$,
+$$
+F_{j0}^{\rm rad}\Delta x^0+F_{ji}^{\rm rad}\Delta x^i=0
+\;\Longrightarrow\;
+\frac{E_j}{c}=-\epsilon_{jik}\hat n^iB_k
+\;\Longrightarrow\;
+\boxed{
+\mathbf B_{\rm rad}=\frac1c\,\hat{\mathbf n}\times\mathbf E_{\rm rad},
+\qquad
+\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0.
+}
+$$
+This is exact, for a source moving with any velocity: the radiation field
+looks locally like a plane wave propagating along $\hat{\mathbf n}$, which is
+why $|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|$ is used below. The explicit
+radiation field itself follows from $E_i^{\rm rad}=-cF_{0i}^{\rm rad}$,
+$$
+\mathbf E_{\rm rad}\cdot\hat{\mathbf e}_i
+=
+-\frac{\mu_0qc}{4\pi(u\cdot\Delta x)^2}
+\left[
+\Delta x_0a_i-\Delta x_ia_0
+-\frac{\Delta x\cdot a}{u\cdot\Delta x}\big(\Delta x_0u_i-\Delta x_iu_0\big)
+\right]_{\tau=\tau_r},
+$$
+valid for any velocity of the source. Specializing to a source
+instantaneously at rest, $u^\mu=(1,\mathbf 0)$, reduces this to the
+non-relativistic dipole field used in [Thomson Scattering](thomson-scattering.qmd#from-the-covariant-field-to-the-local-frame).
+
 # Radiation zone
 
-Far from the source, the acceleration field dominates. There it behaves
-locally like a plane wave propagating along $\hat{\mathbf n}=\Delta\mathbf x/|\Delta\mathbf x|$,
-so that
-$$
-\mathbf B=\frac1c\,\hat{\mathbf n}\times\mathbf E,
-\qquad
-|\mathbf E|=c|\mathbf B|.
-$$
-Using the energy density and Poynting vector from
+Far from the source only the radiation field survives, with $B=E/c$ as just
+shown. Substituting this into the energy density and Poynting vector from
 [Energy of the Electromagnetic Field](em-energy.qmd),
 $$
 u=\frac1{2\mu_0}\left(\frac{E^2}{c^2}+B^2\right),
 \qquad
 \mathbf S=\frac1{\mu_0}\mathbf E\times\mathbf B,
 $$
-and substituting $B=E/c$ gives
+gives
 $$
 \boxed{
 u=\varepsilon_0E^2,
@@ -499,16 +595,55 @@ same letter and are always distinguished by the presence of the index.)
 
 # Covariant radiation tensor
 
-The radiation contribution to the energy-momentum tensor has the form
+Write $F_{\mu\nu}^{\rm rad}=C(\Delta x_\mu b_\nu-\Delta x_\nu b_\mu)$, with
+$C\equiv\mu_0q/[4\pi(u\cdot\Delta x)^2]$ and $b_\nu\equiv a_\nu-\lambda u_\nu$,
+$\lambda\equiv(\Delta x\cdot a)/(u\cdot\Delta x)$, matching the bracket in
+the formula above term by term. Two facts make what follows easy:
 $$
+\Delta x\cdot b=\Delta x\cdot a-\lambda(\Delta x\cdot u)=\Delta x\cdot a-\Delta x\cdot a=0,
+\qquad
+\Delta x\cdot\Delta x=0.
+$$
+The first is just $\lambda$'s definition; the second is the null condition
+used above. Together they make the field itself null,
+$$
+F^{\alpha\beta}_{\rm rad}F_{\alpha\beta}^{\rm rad}
+=
+2C^2\big[(\Delta x\cdot\Delta x)(b\cdot b)-(\Delta x\cdot b)^2\big]
+=
+0,
+$$
+consistent with $|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|$ found above (a
+plane wave has $F^{\alpha\beta}F_{\alpha\beta}=2(B^2-E^2/c^2)=0$ exactly when
+$E=cB$). So the second term of $T^{\mu\nu}=\frac1{\mu_0}(F^{\mu\alpha}F^\nu{}_\alpha-\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta})$
+drops out for the radiation piece, leaving
+$$
+\mu_0T^{\mu\nu}_{\rm rad}
+=
+F^{\mu\alpha}_{\rm rad}F^{\nu}{}_{\alpha,\rm rad}
+=
+C^2(\Delta x^\mu b^\alpha-\Delta x^\alpha b^\mu)(\Delta x^\nu b_\alpha-\Delta x_\alpha b^\nu).
+$$
+Expanding the product, every term with a lone $\Delta x\cdot b$ or
+$\Delta x\cdot\Delta x$ vanishes, leaving only
+$$
+\mu_0T^{\mu\nu}_{\rm rad}=C^2(b\cdot b)\,\Delta x^\mu\Delta x^\nu.
+$$
+Finally, expand $b\cdot b=(a-\lambda u)\cdot(a-\lambda u)=a\cdot a-2\lambda(a\cdot u)+\lambda^2(u\cdot u)$.
+The middle term drops since $a\cdot u=0$, and $u\cdot u=-1$ turns the last
+term negative, so
+$$
+b\cdot b=a\cdot a-\lambda^2=\frac{(a\cdot a)(\Delta x\cdot u)^2-(\Delta x\cdot a)^2}{(\Delta x\cdot u)^2}.
+$$
+Substituting $C^2=\mu_0^2q^2/[16\pi^2(u\cdot\Delta x)^4]$,
+$$
+\boxed{
 T^{\mu\nu}_{\rm rad}
-\propto
-\frac{
-(a\cdot a)(\Delta x\cdot u)^2
--(\Delta x\cdot a)^2
-}
-{(\Delta x\cdot u)^6}
+=
+\frac{\mu_0q^2}{16\pi^2(\Delta x\cdot u)^6}
+\Big[(a\cdot a)(\Delta x\cdot u)^2-(\Delta x\cdot a)^2\Big]
 \Delta x^\mu\Delta x^\nu.
+}
 $$
 Important observations:
 
@@ -522,8 +657,69 @@ This is the field responsible for energy loss by the source.
 
 # Relativistic Larmor formula
 
-Integrating the radiative flux over a large sphere surrounding the charge
-yields
+"Power radiated" is ambiguous for an accelerated source unless a frame is
+specified: a general observer sees the flux Doppler-shifted by the
+retarded-time relation between source and observation time. The
+unambiguous, covariant quantity is the energy radiated **per unit proper
+time of the source**, computed as the flux of $T^{\mu\nu}_{\rm rad}$ through
+a sphere surrounding the charge *in its own instantaneous rest frame*, where
+this subtlety is absent because the source is momentarily not moving. Since
+this power, so defined, and $a^\mu a_\mu$ are both Lorentz scalars, a
+relation between them established in one frame (the simplest one, the rest
+frame) holds in every frame.
+
+**Step 1: compute the flux in the rest frame.** There, $u^\mu=(1,\mathbf 0)$,
+$\Delta x\cdot u=-R$, and $u_\mu a^\mu=0$ forces $a^\mu=(0,\dot{\mathbf v}/c)$
+for the ordinary acceleration $\dot{\mathbf v}=\dd\mathbf v/\dd t$, so
+$$
+a\cdot a=\frac{\dot v^2}{c^2},
+\qquad
+\Delta x\cdot a=R\,\frac{\hat{\mathbf n}\cdot\dot{\mathbf v}}{c},
+$$
+exactly as used for the [Thomson-scattering radiation field](thomson-scattering.qmd#from-the-covariant-field-to-the-local-frame).
+Substituting into the boxed $T^{\mu\nu}_{\rm rad}$ above, with $\chi$ the
+angle between $\hat{\mathbf n}$ and $\dot{\mathbf v}$ (kept distinct from the
+Heaviside $\Theta$ used throughout this page),
+$$
+(a\cdot a)(\Delta x\cdot u)^2-(\Delta x\cdot a)^2
+=
+\frac{R^2}{c^2}\Big[\dot v^2-(\hat{\mathbf n}\cdot\dot{\mathbf v})^2\Big]
+=
+\frac{R^2\dot v^2}{c^2}\sin^2\chi,
+$$
+so that, using $T^{0i}=S^i/c$ and $(\Delta x\cdot u)^6=R^6$,
+$$
+\mathbf S\cdot\hat{\mathbf n}=cT^{0i}\hat n^i
+=
+c\cdot\frac{\mu_0q^2}{16\pi^2R^6}\cdot\frac{R^2\dot v^2\sin^2\chi}{c^2}\cdot R^2
+=
+\frac{\mu_0q^2\dot v^2}{16\pi^2cR^2}\sin^2\chi.
+$$
+
+**Step 2: integrate over the sphere.** The power radiated per solid angle is
+$$
+\frac{\dd P}{\dd\Omega}=R^2\,\mathbf S\cdot\hat{\mathbf n}=\frac{\mu_0q^2\dot v^2}{16\pi^2c}\sin^2\chi.
+$$
+Using $\int\sin^2\chi\,\dd\Omega=2\pi\int_0^\pi\sin^3\chi\,\dd\chi=2\pi\cdot\frac43=\frac{8\pi}{3}$,
+$$
+P=\int\frac{\dd P}{\dd\Omega}\,\dd\Omega
+=
+\frac{\mu_0q^2\dot v^2}{16\pi^2c}\cdot\frac{8\pi}{3}
+=
+\frac{\mu_0q^2\dot v^2}{6\pi c},
+$$
+the familiar non-relativistic Larmor formula.
+
+**Step 3: covariantize.** In this same rest frame, $a^\mu a_\mu=\dot v^2/c^2$,
+so the result of Step 2 is exactly
+$$
+P=\frac{\mu_0q^2c}{6\pi}\,a^\mu a_\mu.
+$$
+Both sides of this equation are Lorentz scalars ($P$ by the proper-time
+construction above, $a^\mu a_\mu$ trivially), and they agree in one frame;
+therefore they agree in every frame. The relation is thus valid for a
+source moving with arbitrary velocity, not just at the instant it is at
+rest:
 $$
 \boxed{
 P
@@ -531,16 +727,6 @@ P
 \frac{\mu_0q^2c}{6\pi}
 a^\mu a_\mu.
 }
-$$
-In the instantaneous rest frame, $u^\mu=(1,\mathbf 0)$, and $u_\mu a^\mu=0$
-forces the time component of $a^\mu$ to vanish there, so $a^\mu=(0,\dot{\mathbf v}/c)$
-for the ordinary acceleration $\dot{\mathbf v}=\dd\mathbf v/\dd t$. Hence
-$$
-a^\mu a_\mu=\frac{\dot v^2}{c^2},
-$$
-and the formula reduces to the familiar non-relativistic Larmor formula,
-$$
-P=\frac{\mu_0q^2\dot v^2}{6\pi c}.
 $$
 
 {{< include /_footer.qmd >}}

@@ -3,6 +3,8 @@ title: "Conventions and Notation"
 format:
   html:
     number-sections: true
+  pdf:
+    number-sections: true
 ---
 
 {{< include /_macros.qmd >}}
