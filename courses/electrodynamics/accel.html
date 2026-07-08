@@ -610,6 +610,13 @@ window.Quarto = {
   </ul></li>
   <li><a href="#transition-to-electrodynamics" id="toc-transition-to-electrodynamics" class="nav-link" data-scroll-target="#transition-to-electrodynamics">Transition to Electrodynamics</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-kinematics-of-the-rindler-congruence-essential" id="toc-exercise-1-kinematics-of-the-rindler-congruence-essential" class="nav-link" data-scroll-target="#exercise-1-kinematics-of-the-rindler-congruence-essential">Exercise 1: Kinematics of the Rindler Congruence <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-2-born-rigidity-of-the-rindler-congruence-essential" id="toc-exercise-2-born-rigidity-of-the-rindler-congruence-essential" class="nav-link" data-scroll-target="#exercise-2-born-rigidity-of-the-rindler-congruence-essential">Exercise 2: Born Rigidity of the Rindler Congruence <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-3-kinematics-of-the-equal-acceleration-family" id="toc-exercise-3-kinematics-of-the-equal-acceleration-family" class="nav-link" data-scroll-target="#exercise-3-kinematics-of-the-equal-acceleration-family">Exercise 3: Kinematics of the Equal-Acceleration Family</a></li>
+  <li><a href="#exercise-4-comparing-the-two-congruences" id="toc-exercise-4-comparing-the-two-congruences" class="nav-link" data-scroll-target="#exercise-4-comparing-the-two-congruences">Exercise 4: Comparing the Two Congruences</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="accel.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -832,8 +839,39 @@ g_{0i}\neq0.
 <p>The Rindler congruence is a special Born-rigid accelerated frame whose proper acceleration varies spatially.</p>
 <p>Uniform proper acceleration for all observers can be achieved, but only at the cost of losing Born rigidity.</p>
 <p>These accelerated worldlines are exactly the ones whose radiation we study next.</p>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<section id="exercise-1-kinematics-of-the-rindler-congruence-essential" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-kinematics-of-the-rindler-congruence-essential">Exercise 1: Kinematics of the Rindler Congruence <strong>(Essential)</strong></h3>
+<p><strong>a)</strong> Starting from <span class="math inline">\(T=\rho\sinh(a\eta)\)</span>, <span class="math inline">\(X=\rho\cosh(a\eta)\)</span> and <span class="math inline">\(\mathrm{d}\tau=a\rho\,\mathrm{d}\eta\)</span>, compute <span class="math inline">\(\mathrm{d}T/\mathrm{d}\tau\)</span> and <span class="math inline">\(\mathrm{d}X/\mathrm{d}\tau\)</span> directly and confirm <span class="math inline">\(u^\mu=(\cosh(\tau/\rho),\sinh(\tau/\rho))\)</span>.</p>
+<p><strong>b)</strong> Differentiate <span class="math inline">\(u^\mu\)</span> with respect to <span class="math inline">\(\tau\)</span> to obtain <span class="math inline">\(a^\mu\)</span>, and verify explicitly that <span class="math inline">\(a^\mu a_\mu=1/\rho^2\)</span>.</p>
+<p><strong>c)</strong> Using the <span class="math inline">\(u^\mu\)</span> found in (a), check that <span class="math inline">\(X^2-T^2=\rho^2\)</span> is preserved along the worldline, i.e.&nbsp;that <span class="math inline">\(\mathrm{d}(X^2-T^2)/\mathrm{d}\tau=0\)</span>.</p>
+</section>
+<section id="exercise-2-born-rigidity-of-the-rindler-congruence-essential" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-born-rigidity-of-the-rindler-congruence-essential">Exercise 2: Born Rigidity of the Rindler Congruence <strong>(Essential)</strong></h3>
+<p>The notes assert that “Rindler observers satisfy this condition” (<span class="math inline">\(\Theta_{\mu\nu}=0\)</span>) without showing why. This exercise fills that gap.</p>
+<p><strong>a)</strong> In the coordinates <span class="math inline">\((\eta,\rho,Y,Z)\)</span>, write down the spatial part of <span class="math display">\[
+ds^2=-(a\rho)^2\mathrm{d}\eta^2+\mathrm{d}\rho^2+\mathrm{d}Y^2+\mathrm{d}Z^2
+\]</span> (the coefficients of <span class="math inline">\(\mathrm{d}\rho^2\)</span>, <span class="math inline">\(\mathrm{d}Y^2\)</span>, <span class="math inline">\(\mathrm{d}Z^2\)</span>) and note that none of them depend on <span class="math inline">\(\eta\)</span>, and that there are no <span class="math inline">\(\mathrm{d}\eta\,\mathrm{d}\rho\)</span>, <span class="math inline">\(\mathrm{d}\eta\,\mathrm{d}Y\)</span>, <span class="math inline">\(\mathrm{d}\eta\,\mathrm{d}Z\)</span> cross terms.</p>
+<p><strong>b)</strong> Explain why a spatial metric between neighboring <span class="math inline">\(\rho=\mathrm{const}\)</span> worldlines that is independent of <span class="math inline">\(\eta\)</span>, with no such cross terms, means those worldlines maintain constant proper separation for all <span class="math inline">\(\eta\)</span> — i.e. <span class="math inline">\(\Theta_{\mu\nu}=0\)</span>.</p>
+<p><strong>c)</strong> Contrast this with the equal-acceleration family of the next section, where a term <span class="math inline">\(2\sinh(a\tau)\,\mathrm{d}\tau\,\mathrm{d}\xi\)</span> appears in the metric: explain why this cross term signals a departure from Born rigidity.</p>
+</section>
+<section id="exercise-3-kinematics-of-the-equal-acceleration-family" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-kinematics-of-the-equal-acceleration-family">Exercise 3: Kinematics of the Equal-Acceleration Family</h3>
+<p><strong>a)</strong> Starting from <span class="math inline">\(T(\tau,\xi)=\frac1a\sinh(a\tau)\)</span>, <span class="math inline">\(X(\tau,\xi)=\xi+\frac1a\cosh(a\tau)\)</span>, compute <span class="math inline">\(u^\mu=\partial(T,X)/\partial\tau\)</span> at fixed <span class="math inline">\(\xi\)</span> and <span class="math inline">\(a^\mu=\partial u^\mu/\partial\tau\)</span>, and verify explicitly that <span class="math inline">\(a^\mu a_\mu=a^2\)</span>, independent of <span class="math inline">\(\xi\)</span>.</p>
+<p><strong>b)</strong> Using <span class="math inline">\(\mathrm{d}T=\cosh(a\tau)\mathrm{d}\tau\)</span> and <span class="math inline">\(\mathrm{d}X=\mathrm{d}\xi+\sinh(a\tau)\mathrm{d}\tau\)</span> as given in the notes, substitute into <span class="math inline">\(ds^2=-\mathrm{d}T^2+\mathrm{d}X^2+\mathrm{d}Y^2+\mathrm{d}Z^2\)</span> and verify term by term that <span class="math display">\[
+ds^2=-\mathrm{d}\tau^2+2\sinh(a\tau)\,\mathrm{d}\tau\,\mathrm{d}\xi+\mathrm{d}\xi^2.
+\]</span></p>
+<p><strong>c)</strong> Identify which metric component is responsible for the loss of Born rigidity found in Exercise 2.</p>
+</section>
+<section id="exercise-4-comparing-the-two-congruences" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-comparing-the-two-congruences">Exercise 4: Comparing the Two Congruences</h3>
+<p><strong>a)</strong> In the Rindler congruence, the proper acceleration <span class="math inline">\(\alpha=1/\rho\)</span> genuinely differs between worldlines at different <span class="math inline">\(\rho\)</span>, while in the equal-acceleration family every worldline has the same <span class="math inline">\(a^\mu a_\mu=a^2\)</span> regardless of <span class="math inline">\(\xi\)</span>. Using the results of Exercises 2 and 3, explain in your own words which of these two behaviors is compatible with <span class="math inline">\(\Theta_{\mu\nu}=0\)</span>, and why.</p>
+<p><strong>b)</strong> The qualitative argument in “Why Equal Acceleration is Incompatible with Born Rigidity” states that the rear observer of a rigid pair “must have acquired a slightly larger velocity than the front observer.” Identify which metric component found in Exercise 3(b) encodes exactly this effect.</p>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->

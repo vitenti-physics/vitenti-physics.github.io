@@ -508,10 +508,12 @@ window.Quarto = {
   <li><a href="#resumo-dos-conceitos" id="toc-resumo-dos-conceitos" class="nav-link" data-scroll-target="#resumo-dos-conceitos"><span class="header-section-number">8</span> Resumo dos Conceitos</a></li>
   <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">9</span> Exercícios</a>
   <ul class="collapse">
-  <li><a href="#conceitos-fundamentais" id="toc-conceitos-fundamentais" class="nav-link" data-scroll-target="#conceitos-fundamentais"><span class="header-section-number">9.1</span> Conceitos Fundamentais</a></li>
-  <li><a href="#propagadores-e-condições-de-contorno" id="toc-propagadores-e-condições-de-contorno" class="nav-link" data-scroll-target="#propagadores-e-condições-de-contorno"><span class="header-section-number">9.2</span> Propagadores e Condições de Contorno</a></li>
-  <li><a href="#propriedades-de-transformação" id="toc-propriedades-de-transformação" class="nav-link" data-scroll-target="#propriedades-de-transformação"><span class="header-section-number">9.3</span> Propriedades de Transformação</a></li>
-  <li><a href="#aplicações-e-generalizações" id="toc-aplicações-e-generalizações" class="nav-link" data-scroll-target="#aplicações-e-generalizações"><span class="header-section-number">9.4</span> Aplicações e Generalizações</a></li>
+  <li><a href="#exercício-1-wronskiano-e-solução-geral-essencial" id="toc-exercício-1-wronskiano-e-solução-geral-essencial" class="nav-link" data-scroll-target="#exercício-1-wronskiano-e-solução-geral-essencial"><span class="header-section-number">9.1</span> Exercício 1: Wronskiano e Solução Geral <strong>(Essencial)</strong></a></li>
+  <li><a href="#exercício-2-complexificação-e-normas-essencial" id="toc-exercício-2-complexificação-e-normas-essencial" class="nav-link" data-scroll-target="#exercício-2-complexificação-e-normas-essencial"><span class="header-section-number">9.2</span> Exercício 2: Complexificação e Normas <strong>(Essencial)</strong></a></li>
+  <li><a href="#exercício-3-propagadores-futuro-e-passado-essencial" id="toc-exercício-3-propagadores-futuro-e-passado-essencial" class="nav-link" data-scroll-target="#exercício-3-propagadores-futuro-e-passado-essencial"><span class="header-section-number">9.3</span> Exercício 3: Propagadores Futuro e Passado <strong>(Essencial)</strong></a></li>
+  <li><a href="#exercício-4-condições-de-contorno-espaciais" id="toc-exercício-4-condições-de-contorno-espaciais" class="nav-link" data-scroll-target="#exercício-4-condições-de-contorno-espaciais"><span class="header-section-number">9.4</span> Exercício 4: Condições de Contorno Espaciais</a></li>
+  <li><a href="#exercício-5-reversão-temporal-e-rotações" id="toc-exercício-5-reversão-temporal-e-rotações" class="nav-link" data-scroll-target="#exercício-5-reversão-temporal-e-rotações"><span class="header-section-number">9.5</span> Exercício 5: Reversão Temporal e Rotações</a></li>
+  <li><a href="#exercício-6-oscilador-forçado-e-conexão-com-a-mecânica-quântica" id="toc-exercício-6-oscilador-forçado-e-conexão-com-a-mecânica-quântica" class="nav-link" data-scroll-target="#exercício-6-oscilador-forçado-e-conexão-com-a-mecânica-quântica"><span class="header-section-number">9.6</span> Exercício 6: Oscilador Forçado e Conexão com a Mecânica Quântica</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="propagators-cont.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -697,7 +699,7 @@ Important
 <h1 data-number="7"><span class="header-section-number">7</span> Visualização Computacional</h1>
 <section id="propagador-do-oscilador-harmônico" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="propagador-do-oscilador-harmônico"><span class="header-section-number">7.1</span> Propagador do Oscilador Harmônico</h2>
-<div id="a0e732fe" class="cell" data-execution_count="1">
+<div id="00aa6247" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -745,7 +747,7 @@ Important
 </section>
 <section id="propagadores-futuro-e-passado" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="propagadores-futuro-e-passado"><span class="header-section-number">7.2</span> Propagadores Futuro e Passado</h2>
-<div id="9fcca915" class="cell" data-execution_count="2">
+<div id="64b4fcb0" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulação de um pulso instantâneo (função de Green)</span></span>
@@ -854,96 +856,35 @@ Important
 </section>
 <section id="exercícios" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> Exercícios</h1>
-<section id="conceitos-fundamentais" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="conceitos-fundamentais"><span class="header-section-number">9.1</span> Conceitos Fundamentais</h2>
-<ol type="1">
-<li><strong>Wronskiano e Independência Linear</strong>
-<ol type="a">
-<li>Mostre que o Wronskiano <span class="math inline">\(W(V_1,V_2) = V_1^T\Omega V_2\)</span> é constante para soluções da equação <span class="math inline">\(V' = \Omega H V\)</span>.<br>
-</li>
-<li>Verifique que <span class="math inline">\(W(V_1,V_1) = 0\)</span> usando a propriedade de antissimetria de <span class="math inline">\(\Omega\)</span>.</li>
-</ol></li>
-<li><strong>Normalização de Soluções</strong>
-<ol type="a">
-<li>Dada a normalização <span class="math inline">\(V_1^T\Omega V_2 = 1/2\)</span>, expresse a solução geral <span class="math inline">\(U\)</span> em termos de <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span>.<br>
-</li>
-<li>Calcule os coeficientes <span class="math inline">\(\alpha_1\)</span> e <span class="math inline">\(\alpha_2\)</span> para uma condição inicial genérica.</li>
-</ol></li>
-<li><strong>Complexificação (Essencial)</strong>
-<ol type="a">
-<li>Verifique que <span class="math inline">\(V = V_1 - iV_2\)</span> satisfaz a mesma equação diferencial.</li>
-<li>Calcule <span class="math inline">\(\langle V, V \rangle = iV^\dagger\Omega V\)</span> e mostre que é igual a 1.</li>
-</ol></li>
-<li><strong>Norma Negativa</strong>
-<ol type="a">
-<li>Considere <span class="math inline">\(\tilde{V} = V^*\)</span>. Calcule <span class="math inline">\(\langle \tilde{V}, \tilde{V} \rangle\)</span>.<br>
-</li>
-<li>Interprete fisicamente este resultado.</li>
-</ol></li>
-<li><strong>Propagador Futuro (Essencial)</strong>
-<ol type="a">
-<li>Mostre que a solução <span class="math inline">\(U(x) = \Theta(x-x_0)[\alpha V(x) + \alpha^* V^*(x)]\)</span> satisfaz a equação com fonte <span class="math inline">\(U' - \Omega H U = \delta(x-x_0)U_0\)</span>.<br>
-</li>
-<li>Determine a constante <span class="math inline">\(U_0\)</span> em termos de <span class="math inline">\(\alpha\)</span>.</li>
-</ol></li>
-</ol>
+<section id="exercício-1-wronskiano-e-solução-geral-essencial" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="exercício-1-wronskiano-e-solução-geral-essencial"><span class="header-section-number">9.1</span> Exercício 1: Wronskiano e Solução Geral <strong>(Essencial)</strong></h2>
+<p><strong>a)</strong> Mostre que o Wronskiano <span class="math inline">\(W(V_1,V_2) = V_1^T\Omega V_2\)</span> é constante para soluções da equação <span class="math inline">\(V' = \Omega H V\)</span>, e que <span class="math inline">\(W(V_1,V_1) = 0\)</span> usando a antissimetria de <span class="math inline">\(\Omega\)</span>.</p>
+<p><strong>b)</strong> Dada a normalização <span class="math inline">\(V_1^T\Omega V_2 = 1/2\)</span>, expresse a solução geral <span class="math inline">\(U = \alpha_1 V_1 + \alpha_2 V_2\)</span> e calcule os coeficientes <span class="math inline">\(\alpha_1\)</span>, <span class="math inline">\(\alpha_2\)</span> para uma condição inicial genérica.</p>
 </section>
-<section id="propagadores-e-condições-de-contorno" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="propagadores-e-condições-de-contorno"><span class="header-section-number">9.2</span> Propagadores e Condições de Contorno</h2>
-<ol start="6" type="1">
-<li><strong>Propagador Passado</strong>
-<ol type="a">
-<li>Construa a solução com condições no futuro <span class="math inline">\(U(x) = \Theta(x_0-x)[\alpha V(x) + \alpha^* V^*(x)]\)</span>.<br>
-</li>
-<li>Mostre que ela satisfaz <span class="math inline">\(U' - \Omega H U = -\delta(x-x_0)U_0\)</span>.</li>
-</ol></li>
-<li><strong>Condições de Contorno Espaciais</strong>
-<ol type="a">
-<li>Para o problema de uma corda presa em <span class="math inline">\(x=0\)</span> e <span class="math inline">\(x=L\)</span>, determine como combinar os propagadores futuro e passado.<br>
-</li>
-<li>Explique por que a solução envolve ambas as direções de propagação.</li>
-</ol></li>
-</ol>
+<section id="exercício-2-complexificação-e-normas-essencial" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="exercício-2-complexificação-e-normas-essencial"><span class="header-section-number">9.2</span> Exercício 2: Complexificação e Normas <strong>(Essencial)</strong></h2>
+<p><strong>a)</strong> Verifique que <span class="math inline">\(V = V_1 - iV_2\)</span> satisfaz a mesma equação diferencial que <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span>.</p>
+<p><strong>b)</strong> Calcule <span class="math inline">\(\langle V, V \rangle = iV^\dagger\Omega V\)</span> e mostre que é igual a <span class="math inline">\(1\)</span>.</p>
+<p><strong>c)</strong> Para <span class="math inline">\(\tilde{V} = V^*\)</span>, calcule <span class="math inline">\(\langle \tilde{V}, \tilde{V} \rangle\)</span> e interprete fisicamente este resultado (norma negativa).</p>
 </section>
-<section id="propriedades-de-transformação" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="propriedades-de-transformação"><span class="header-section-number">9.3</span> Propriedades de Transformação</h2>
-<ol start="8" type="1">
-<li><strong>Reversão Temporal</strong>
-<ol type="a">
-<li>Verifique que <span class="math inline">\(T = \text{diag}(1,-1)\)</span> transforma <span class="math inline">\(V = (y,q)^T\)</span> em <span class="math inline">\(V_R = (y,-q)^T\)</span>.<br>
-</li>
-<li>Mostre que <span class="math inline">\(T\Omega T = -\Omega\)</span> e <span class="math inline">\(THT = H\)</span> para o oscilador harmônico.</li>
-</ol></li>
-<li><strong>Transformação de Rotações</strong>
-<ol type="a">
-<li>Considere uma rotação no espaço de fase <span class="math inline">\(R\)</span>. Mostre que <span class="math inline">\(R^T\Omega R = \Omega\)</span>.<br>
-</li>
-<li>Compare com a transformação temporal <span class="math inline">\(T\)</span> e discuta a diferença.</li>
-</ol></li>
-</ol>
+<section id="exercício-3-propagadores-futuro-e-passado-essencial" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="exercício-3-propagadores-futuro-e-passado-essencial"><span class="header-section-number">9.3</span> Exercício 3: Propagadores Futuro e Passado <strong>(Essencial)</strong></h2>
+<p><strong>a)</strong> Mostre que a solução <span class="math inline">\(U(x) = \Theta(x-x_0)[\alpha V(x) + \alpha^* V^*(x)]\)</span> satisfaz a equação com fonte <span class="math inline">\(U' - \Omega H U = \delta(x-x_0)U_0\)</span>, e determine a constante <span class="math inline">\(U_0\)</span> em termos de <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong>b)</strong> Construa a solução com condições no futuro, <span class="math inline">\(U(x) = \Theta(x_0-x)[\alpha V(x) + \alpha^* V^*(x)]\)</span>, e mostre que ela satisfaz <span class="math inline">\(U' - \Omega H U = -\delta(x-x_0)U_0\)</span>.</p>
 </section>
-<section id="aplicações-e-generalizações" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="aplicações-e-generalizações"><span class="header-section-number">9.4</span> Aplicações e Generalizações</h2>
-<ol start="10" type="1">
-<li><strong>Oscilador Harmônico com Forçamento</strong>
-<ol type="a">
-<li>Resolva a equação <span class="math inline">\(y'' + \omega^2 y = f(x)\)</span> usando os propagadores construídos.<br>
-</li>
-<li>Escreva a solução geral e identifique os termos futuro e passado.</li>
-</ol></li>
-<li><strong>Sistemas com <span class="math inline">\(\Omega\)</span> Dependente do Tempo</strong>
-<ol type="a">
-<li>Generalize a construção para <span class="math inline">\(V' = \Omega(x) H(x) V\)</span> com <span class="math inline">\(\Omega(x)\)</span> variável.<br>
-</li>
-<li>Discuta como a conservação do Wronskiano é afetada.</li>
-</ol></li>
-<li><strong>Conexão com Mecânica Quântica</strong>
-<ol type="a">
-<li>Identifique o análogo do comutador <span class="math inline">\([x,p]\)</span> no formalismo simplético.<br>
-</li>
-<li>Mostre como a estrutura de norma positiva/negativa leva à quantização.</li>
-</ol></li>
-</ol>
+<section id="exercício-4-condições-de-contorno-espaciais" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="exercício-4-condições-de-contorno-espaciais"><span class="header-section-number">9.4</span> Exercício 4: Condições de Contorno Espaciais</h2>
+<p>Para o problema de uma corda presa em <span class="math inline">\(x=0\)</span> e <span class="math inline">\(x=L\)</span>, explique como combinar os propagadores futuro e passado, e por que a solução geral envolve ambas as direções de propagação.</p>
+</section>
+<section id="exercício-5-reversão-temporal-e-rotações" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="exercício-5-reversão-temporal-e-rotações"><span class="header-section-number">9.5</span> Exercício 5: Reversão Temporal e Rotações</h2>
+<p><strong>a)</strong> Verifique que <span class="math inline">\(T = \text{diag}(1,-1)\)</span> transforma <span class="math inline">\(V = (y,q)^T\)</span> em <span class="math inline">\(V_R = (y,-q)^T\)</span>, e mostre que <span class="math inline">\(T\Omega T = -\Omega\)</span> e <span class="math inline">\(THT = H\)</span> para o oscilador harmônico.</p>
+<p><strong>b)</strong> Para uma rotação <span class="math inline">\(R\)</span> no espaço de fase, mostre que <span class="math inline">\(R^T\Omega R = \Omega\)</span>, e compare com a transformação temporal <span class="math inline">\(T\)</span>: em que sentido elas são estruturalmente diferentes?</p>
+</section>
+<section id="exercício-6-oscilador-forçado-e-conexão-com-a-mecânica-quântica" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="exercício-6-oscilador-forçado-e-conexão-com-a-mecânica-quântica"><span class="header-section-number">9.6</span> Exercício 6: Oscilador Forçado e Conexão com a Mecânica Quântica</h2>
+<p><strong>a)</strong> Resolva a equação <span class="math inline">\(y'' + \omega^2 y = f(x)\)</span> usando os propagadores construídos nesta aula, identificando os termos futuro e passado na solução geral.</p>
+<p><strong>b)</strong> Identifique o análogo do comutador <span class="math inline">\([x,p]\)</span> no formalismo simplético, e explique como a estrutura de norma positiva/negativa (Exercício 2) se relaciona com a quantização.</p>
 
 
 </section>

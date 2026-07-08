@@ -627,9 +627,13 @@ window.Quarto = {
   <li><a href="#component-check" id="toc-component-check" class="nav-link" data-scroll-target="#component-check">Component Check</a></li>
   </ul></li>
   <li><a href="#final-structure" id="toc-final-structure" class="nav-link" data-scroll-target="#final-structure">Final Structure</a></li>
-  <li><a href="#conceptual-summary" id="toc-conceptual-summary" class="nav-link" data-scroll-target="#conceptual-summary">Conceptual Summary</a>
+  <li><a href="#conceptual-summary" id="toc-conceptual-summary" class="nav-link" data-scroll-target="#conceptual-summary">Conceptual Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#exercise-1-the-faraday-tensor-and-the-homogeneous-equation-essential" id="toc-exercise-1-the-faraday-tensor-and-the-homogeneous-equation-essential" class="nav-link" data-scroll-target="#exercise-1-the-faraday-tensor-and-the-homogeneous-equation-essential">Exercise 1: The Faraday Tensor and the Homogeneous Equation <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-2-the-non-homogeneous-equation-and-gauge-invariance-essential" id="toc-exercise-2-the-non-homogeneous-equation-and-gauge-invariance-essential" class="nav-link" data-scroll-target="#exercise-2-the-non-homogeneous-equation-and-gauge-invariance-essential">Exercise 2: The Non-Homogeneous Equation and Gauge Invariance <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-3-electrodynamics-from-an-action-principle-essential" id="toc-exercise-3-electrodynamics-from-an-action-principle-essential" class="nav-link" data-scroll-target="#exercise-3-electrodynamics-from-an-action-principle-essential">Exercise 3: Electrodynamics from an Action Principle <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-4-dimension-counting-and-the-hodge-dual" id="toc-exercise-4-dimension-counting-and-the-hodge-dual" class="nav-link" data-scroll-target="#exercise-4-dimension-counting-and-the-hodge-dual">Exercise 4: Dimension-Counting and the Hodge Dual</a></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="maxwell-equations-forms.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -873,23 +877,33 @@ F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.
 <li>generalizing to curved spacetime (general relativity),</li>
 <li>interpreting electromagnetism as a <span class="math inline">\(U(1)\)</span> gauge theory.</li>
 </ul>
-<section id="exercises" class="level3 callout-exercise">
-<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
-<ol type="1">
-<li><p>Verify that the matrix representation of <span class="math inline">\(F_{\mu\nu}\)</span> given above is antisymmetric and correctly encodes <span class="math inline">\(\mathbf{E}\)</span> and <span class="math inline">\(\mathbf{B}\)</span>.</p></li>
-<li><p>Show explicitly that <span class="math inline">\(\mathrm{d}F = 0\)</span> gives the component <span class="math inline">\(\partial_t B_{12} + \partial_1 E_2 - \partial_2 E_1 = 0\)</span>, and identify this with one component of Faraday’s law.</p></li>
-<li><p>Prove that if <span class="math inline">\(F = \mathrm{d}A\)</span>, then <span class="math inline">\(\mathrm{d}F = 0\)</span> automatically.</p></li>
-<li><p>Verify that <span class="math inline">\(\partial_\mu F^{\mu 0} = -\mu_0J^0\)</span> reproduces Gauss’s law when <span class="math inline">\(F^{i0} = -E^i/c\)</span> and <span class="math inline">\(J^0=c\rho\)</span>.</p></li>
-<li><p>Show that the gauge transformation <span class="math inline">\(A_\mu \to A_\mu + \partial_\mu \chi\)</span> leaves <span class="math inline">\(F_{\mu\nu}\)</span> unchanged.</p></li>
-<li><p>Write the action for free electromagnetism: <span class="math display">\[
-S = -\frac{1}{4\mu_0} \int F_{\mu\nu} F^{\mu\nu} \,\mathrm{d}^4 x,
-\]</span> and derive the vacuum Maxwell equations by varying <span class="math inline">\(A_\mu\)</span>.</p></li>
-<li><p>In 2+1 dimensions, how many independent components does <span class="math inline">\(F_{\mu\nu}\)</span> have? How many for <span class="math inline">\(\mathrm{d}F\)</span>?</p></li>
-<li><p>Discuss why the Hodge dual maps a 2-form to another 2-form in 4D, and explain its role in the source equations.</p></li>
-</ol>
 </section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
+<section id="exercise-1-the-faraday-tensor-and-the-homogeneous-equation-essential" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1-the-faraday-tensor-and-the-homogeneous-equation-essential">Exercise 1: The Faraday Tensor and the Homogeneous Equation <strong>(Essential)</strong></h3>
+<p><strong>a)</strong> Verify that the matrix representation of <span class="math inline">\(F_{\mu\nu}\)</span> given above is antisymmetric and correctly encodes <span class="math inline">\(\mathbf{E}\)</span> and <span class="math inline">\(\mathbf{B}\)</span>.</p>
+<p><strong>b)</strong> Show explicitly that <span class="math inline">\(\mathrm{d}F=0\)</span> gives the component <span class="math inline">\(\partial_tB_{12}+\partial_1E_2-\partial_2E_1=0\)</span>, and identify this with one component of Faraday’s law.</p>
+<p><strong>c)</strong> Prove that if <span class="math inline">\(F=\mathrm{d}A\)</span>, then <span class="math inline">\(\mathrm{d}F=0\)</span> automatically.</p>
+</section>
+<section id="exercise-2-the-non-homogeneous-equation-and-gauge-invariance-essential" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-2-the-non-homogeneous-equation-and-gauge-invariance-essential">Exercise 2: The Non-Homogeneous Equation and Gauge Invariance <strong>(Essential)</strong></h3>
+<p><strong>a)</strong> Verify that <span class="math inline">\(\partial_\mu F^{\mu0}=-\mu_0J^0\)</span> reproduces Gauss’s law when <span class="math inline">\(F^{i0}=-E^i/c\)</span> and <span class="math inline">\(J^0=c\rho\)</span>.</p>
+<p><strong>b)</strong> Show that the gauge transformation <span class="math inline">\(A_\mu\to A_\mu+\partial_\mu\chi\)</span> leaves <span class="math inline">\(F_{\mu\nu}\)</span> unchanged.</p>
+</section>
+<section id="exercise-3-electrodynamics-from-an-action-principle-essential" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-3-electrodynamics-from-an-action-principle-essential">Exercise 3: Electrodynamics from an Action Principle <strong>(Essential)</strong></h3>
+<p>Write the action for free electromagnetism, <span class="math display">\[
+S=-\frac1{4\mu_0}\int F_{\mu\nu}F^{\mu\nu}\,\mathrm{d}^4x,
+\]</span> and derive the vacuum Maxwell equations by varying <span class="math inline">\(A_\mu\)</span>.</p>
+</section>
+<section id="exercise-4-dimension-counting-and-the-hodge-dual" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-4-dimension-counting-and-the-hodge-dual">Exercise 4: Dimension-Counting and the Hodge Dual</h3>
+<p><strong>a)</strong> In 2+1 dimensions, how many independent components does <span class="math inline">\(F_{\mu\nu}\)</span> have? How many does <span class="math inline">\(\mathrm{d}F\)</span> have?</p>
+<p><strong>b)</strong> Explain why the Hodge dual maps a 2-form to another 2-form in 4D specifically, and what role this plays in writing the non-homogeneous equations as <span class="math inline">\(\mathrm{d}\star F=-\mu_0\star J\)</span>.</p>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->

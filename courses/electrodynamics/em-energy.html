@@ -607,6 +607,13 @@ window.Quarto = {
   <li><a href="#total-electromagnetic-energy" id="toc-total-electromagnetic-energy" class="nav-link" data-scroll-target="#total-electromagnetic-energy"><span class="header-section-number">5</span> Total electromagnetic energy</a></li>
   <li><a href="#poynting-theorem" id="toc-poynting-theorem" class="nav-link" data-scroll-target="#poynting-theorem"><span class="header-section-number">6</span> Poynting theorem</a></li>
   <li><a href="#covariant-expressions" id="toc-covariant-expressions" class="nav-link" data-scroll-target="#covariant-expressions"><span class="header-section-number">7</span> Covariant expressions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-self-energy-of-a-uniformly-charged-sphere-essential" id="toc-exercise-1-self-energy-of-a-uniformly-charged-sphere-essential" class="nav-link" data-scroll-target="#exercise-1-self-energy-of-a-uniformly-charged-sphere-essential"><span class="header-section-number">8.1</span> Exercise 1: Self-Energy of a Uniformly Charged Sphere <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-2-the-surface-term-at-infinity" id="toc-exercise-2-the-surface-term-at-infinity" class="nav-link" data-scroll-target="#exercise-2-the-surface-term-at-infinity"><span class="header-section-number">8.2</span> Exercise 2: The Surface Term at Infinity</a></li>
+  <li><a href="#exercise-3-the-magnetic-energy-identity-essential" id="toc-exercise-3-the-magnetic-energy-identity-essential" class="nav-link" data-scroll-target="#exercise-3-the-magnetic-energy-identity-essential"><span class="header-section-number">8.3</span> Exercise 3: The Magnetic-Energy Identity <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-4-poyntings-theorem-for-a-current-carrying-resistor-essential" id="toc-exercise-4-poyntings-theorem-for-a-current-carrying-resistor-essential" class="nav-link" data-scroll-target="#exercise-4-poyntings-theorem-for-a-current-carrying-resistor-essential"><span class="header-section-number">8.4</span> Exercise 4: Poynting’s Theorem for a Current-Carrying Resistor <strong>(Essential)</strong></a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="em-energy.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -896,10 +903,40 @@ T^{0i}
 =
 \frac{S^i}{c}.
 \]</span> Thus <span class="math inline">\(T^{00}=u\)</span> and <span class="math inline">\(T^{0i}=S^i/c\)</span> are, respectively, the time-time and time-space components of a single covariant object.</p>
+</section>
+<section id="exercises" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Exercises</h1>
+<section id="exercise-1-self-energy-of-a-uniformly-charged-sphere-essential" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="exercise-1-self-energy-of-a-uniformly-charged-sphere-essential"><span class="header-section-number">8.1</span> Exercise 1: Self-Energy of a Uniformly Charged Sphere <strong>(Essential)</strong></h2>
+<p><strong>a)</strong> For a uniformly charged solid sphere of radius <span class="math inline">\(R\)</span> and total charge <span class="math inline">\(Q\)</span>, use Gauss’s law to write <span class="math inline">\(\mathbf E(r)\)</span> for <span class="math inline">\(r&lt;R\)</span> and <span class="math inline">\(r&gt;R\)</span>.</p>
+<p><strong>b)</strong> Compute <span class="math inline">\(W=\frac{\varepsilon_0}{2}\int|\mathbf E|^2\,\mathrm{d}^3x\)</span>, splitting the integral at <span class="math inline">\(r=R\)</span>, and show that <span class="math display">\[
+W=\frac{3}{20\pi\varepsilon_0}\frac{Q^2}{R}=\frac35\left(\frac{Q^2}{4\pi\varepsilon_0R}\right).
+\]</span></p>
+<p><strong>c)</strong> Using <span class="math inline">\(V(r)=\dfrac{Q}{4\pi\varepsilon_0}\left(\dfrac{3}{2R}-\dfrac{r^2}{2R^3}\right)\)</span> for <span class="math inline">\(r&lt;R\)</span> (the potential inside a uniformly charged sphere) and <span class="math inline">\(\rho=Q/(\tfrac43\pi R^3)\)</span>, evaluate <span class="math inline">\(W=\frac12\int_VV\rho\,\mathrm{d}^3x\)</span> directly from the assembling-work definition and confirm it agrees with (b).</p>
+</section>
+<section id="exercise-2-the-surface-term-at-infinity" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="exercise-2-the-surface-term-at-infinity"><span class="header-section-number">8.2</span> Exercise 2: The Surface Term at Infinity</h2>
+<p><strong>a)</strong> For a localized charge distribution, estimate how <span class="math inline">\(V\)</span> and <span class="math inline">\(|\nabla V|\)</span> fall off with distance <span class="math inline">\(r\)</span> far from the source, and how the area of a bounding sphere grows with <span class="math inline">\(r\)</span>. Use these estimates to show that <span class="math inline">\(\oint_{\partial V}V\nabla V\cdot\mathrm{d}\mathbf a\to0\)</span> as the bounding surface is taken to infinity.</p>
+<p><strong>b)</strong> The same assumption is used again (for <span class="math inline">\(\mathbf E_c\times\mathbf B\)</span>) in the magnetic-energy derivation, and once more (for <span class="math inline">\(\mathbf S\)</span>) in the Poynting-theorem derivation. In the radiation zone studied in <a href="../../courses/electrodynamics/moving-charge-radiation.html#radiation-zone">Radiation from a Moving Charge</a>, <span class="math inline">\(\mathbf S\)</span> falls off only as <span class="math inline">\(1/r^2\)</span> while the area grows as <span class="math inline">\(r^2\)</span>: explain why this is exactly the marginal case where the surface term does <em>not</em> vanish, and why that is precisely what allows a source to radiate energy to infinity.</p>
+</section>
+<section id="exercise-3-the-magnetic-energy-identity-essential" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="exercise-3-the-magnetic-energy-identity-essential"><span class="header-section-number">8.3</span> Exercise 3: The Magnetic-Energy Identity <strong>(Essential)</strong></h2>
+<p><strong>a)</strong> Starting from the identity <span class="math inline">\(\nabla\cdot(\mathbf E_c\times\mathbf B)=\mathbf B\cdot(\nabla\times\mathbf E_c)-\mathbf E_c\cdot(\nabla\times\mathbf B)\)</span>, substitute Faraday’s law and the quasi-static Ampère law <span class="math inline">\(\mathbf J=\frac1{\mu_0}\nabla\times\mathbf B\)</span> term by term to reproduce <span class="math display">\[
+\frac{\mathrm{d}W}{\mathrm{d}t}=-\frac1{2\mu_0}\frac{\partial}{\partial t}\int|\mathbf B|^2\,\mathrm{d}^3x.
+\]</span></p>
+<p><strong>b)</strong> For a long solenoid with <span class="math inline">\(n\)</span> turns per unit length and radius <span class="math inline">\(a\)</span>, carrying current <span class="math inline">\(I(t)\)</span>, with <span class="math inline">\(\mathbf B=\mu_0nI\,\hat{\mathbf z}\)</span> inside and <span class="math inline">\(\approx0\)</span> outside, evaluate <span class="math inline">\(W_B\)</span> per unit length and compare with the standard inductance formula <span class="math inline">\(W_B=\frac12LI^2\)</span>, <span class="math inline">\(L=\mu_0n^2\pi a^2\)</span> per unit length.</p>
+</section>
+<section id="exercise-4-poyntings-theorem-for-a-current-carrying-resistor-essential" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="exercise-4-poyntings-theorem-for-a-current-carrying-resistor-essential"><span class="header-section-number">8.4</span> Exercise 4: Poynting’s Theorem for a Current-Carrying Resistor <strong>(Essential)</strong></h2>
+<p>A cylindrical resistor of radius <span class="math inline">\(a\)</span> and length <span class="math inline">\(L\)</span> carries a steady current <span class="math inline">\(I\)</span> along its axis, with a uniform axial field <span class="math inline">\(E=V/L\)</span> on and inside its surface, where <span class="math inline">\(V=IR\)</span> is the voltage drop along its length.</p>
+<p><strong>a)</strong> Using Ampère’s law, find <span class="math inline">\(\mathbf B\)</span> on the lateral surface <span class="math inline">\(r=a\)</span>.</p>
+<p><strong>b)</strong> Compute <span class="math inline">\(\mathbf S=\mathbf E\times\mathbf B/\mu_0\)</span> on that surface and show that it points radially <em>inward</em>.</p>
+<p><strong>c)</strong> Compute the total inward flux of <span class="math inline">\(\mathbf S\)</span> through the lateral surface and show that it equals <span class="math inline">\(IV=I^2R\)</span> — the power dissipated as Joule heating, entering the resistor entirely through the fields at its surface rather than “along the wire.”</p>
 <hr>
 <p>Feel free to create issues, ask questions, or suggest improvements in the <a href="https://github.com/vitenti-physics/undergrad">GitHub repository</a>.</p>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->

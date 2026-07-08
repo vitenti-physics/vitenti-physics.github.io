@@ -614,6 +614,15 @@ window.Quarto = {
   <li><a href="#covariant-radiation-tensor" id="toc-covariant-radiation-tensor" class="nav-link" data-scroll-target="#covariant-radiation-tensor"><span class="header-section-number">12</span> Covariant radiation tensor</a></li>
   <li><a href="#relativistic-larmor-formula" id="toc-relativistic-larmor-formula" class="nav-link" data-scroll-target="#relativistic-larmor-formula"><span class="header-section-number">13</span> Relativistic Larmor formula</a></li>
   <li><a href="#manifestly-covariant-derivation" id="toc-manifestly-covariant-derivation" class="nav-link" data-scroll-target="#manifestly-covariant-derivation"><span class="header-section-number">14</span> Manifestly covariant derivation</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">15</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-the-wave-equation-for-the-four-potential" id="toc-exercise-1-the-wave-equation-for-the-four-potential" class="nav-link" data-scroll-target="#exercise-1-the-wave-equation-for-the-four-potential"><span class="header-section-number">15.1</span> Exercise 1: The Wave Equation for the Four-Potential</a></li>
+  <li><a href="#exercise-2-retarded-time-special-cases-essential" id="toc-exercise-2-retarded-time-special-cases-essential" class="nav-link" data-scroll-target="#exercise-2-retarded-time-special-cases-essential"><span class="header-section-number">15.2</span> Exercise 2: Retarded Time — Special Cases <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-3-the-denominator-of-the-liénardwiechert-potentials-essential" id="toc-exercise-3-the-denominator-of-the-liénardwiechert-potentials-essential" class="nav-link" data-scroll-target="#exercise-3-the-denominator-of-the-liénardwiechert-potentials-essential"><span class="header-section-number">15.3</span> Exercise 3: The Denominator of the Liénard–Wiechert Potentials <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-4-near-field-is-not-transverse" id="toc-exercise-4-near-field-is-not-transverse" class="nav-link" data-scroll-target="#exercise-4-near-field-is-not-transverse"><span class="header-section-number">15.4</span> Exercise 4: Near Field Is Not Transverse</a></li>
+  <li><a href="#exercise-5-a-general-identity-for-null-bivectors-essential" id="toc-exercise-5-a-general-identity-for-null-bivectors-essential" class="nav-link" data-scroll-target="#exercise-5-a-general-identity-for-null-bivectors-essential"><span class="header-section-number">15.5</span> Exercise 5: A General Identity for Null Bivectors <strong>(Essential)</strong></a></li>
+  <li><a href="#exercise-6-rest-frame-check-of-the-sphere-moment-integrals" id="toc-exercise-6-rest-frame-check-of-the-sphere-moment-integrals" class="nav-link" data-scroll-target="#exercise-6-rest-frame-check-of-the-sphere-moment-integrals"><span class="header-section-number">15.6</span> Exercise 6: Rest-Frame Check of the Sphere-Moment Integrals</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="moving-charge-radiation.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -1249,10 +1258,54 @@ a_\alpha a_\beta\cdot\frac{4\pi}3\big(\eta^{\alpha\beta}+u^\alpha u^\beta\big)
 }
 \]</span></p>
 <p><strong>Recovering Step 3, and more.</strong> In the source’s own instantaneous rest frame, <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span>, so only the <span class="math inline">\(\mu=0\)</span> component survives; with <span class="math inline">\(P^0=E/c\)</span> this gives <span class="math inline">\(P=c\,\mathrm{d}P^0/\mathrm{d}\tau=\mu_0q^2c(a\cdot a)/6\pi\)</span>, the same boxed formula as Step 3. But the derivation here never left a general frame, so it delivers a stronger, manifestly covariant statement for free: the four-momentum radiated per unit proper time is <em>exactly</em> along <span class="math inline">\(u^\mu\)</span>, in every frame — there is no net recoil transverse to the source’s own motion, not just on average in its rest frame. This is the calculation Dirac used as the starting point for deriving the radiation-reaction (Abraham–Lorentz–Dirac) force, by balancing this momentum loss against the mechanical momentum of the charge.</p>
+</section>
+<section id="exercises" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Exercises</h1>
+<section id="exercise-1-the-wave-equation-for-the-four-potential" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="exercise-1-the-wave-equation-for-the-four-potential"><span class="header-section-number">15.1</span> Exercise 1: The Wave Equation for the Four-Potential</h2>
+<p><strong>a)</strong> Substitute <span class="math inline">\(F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu\)</span> into <span class="math inline">\(\partial_\mu F^{\mu\nu}=-\mu_0J^\nu\)</span> and use that partial derivatives commute to derive, writing out each term explicitly, <span class="math display">\[
+\Box A^\nu-\partial^\nu(\partial_\mu A^\mu)=-\mu_0J^\nu.
+\]</span></p>
+<p><strong>b)</strong> Confirm that this reduces to the boxed <span class="math inline">\(\Box A^\nu=-\mu_0J^\nu\)</span> precisely in the Lorenz gauge <span class="math inline">\(\partial_\mu A^\mu=0\)</span>, and explain why it is the gauge choice — not any additional physics — that removes the second term.</p>
+</section>
+<section id="exercise-2-retarded-time-special-cases-essential" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="exercise-2-retarded-time-special-cases-essential"><span class="header-section-number">15.2</span> Exercise 2: Retarded Time — Special Cases <strong>(Essential)</strong></h2>
+<p><strong>a)</strong> Using <span class="math inline">\(|\hat{\mathbf n}\cdot\mathbf v|\le v&lt;c\)</span>, verify explicitly that <span class="math inline">\(\dot f=(\hat{\mathbf n}\cdot\mathbf v)/c-1&lt;0\)</span> always, confirming the retarded time equation has at most one solution.</p>
+<p><strong>b)</strong> Set <span class="math inline">\(\mathbf v_0=0\)</span> in the boxed quadratic-formula solution for <span class="math inline">\(t_r\)</span> (uniform-velocity case) and confirm it reduces to the elementary result <span class="math inline">\(t_r=t-|\Delta\mathbf x_0|/c\)</span> for a charge at rest.</p>
+<p><strong>c)</strong> Take the non-relativistic limit <span class="math inline">\(v_0\ll c\)</span> of the same boxed formula (keep only the zeroth order in <span class="math inline">\(v_0/c\)</span>) and confirm it reduces to the same naive light-travel-time result <span class="math inline">\(t_r\approx t-|\Delta\mathbf x_0|/c\)</span>.</p>
+</section>
+<section id="exercise-3-the-denominator-of-the-liénardwiechert-potentials-essential" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="exercise-3-the-denominator-of-the-liénardwiechert-potentials-essential"><span class="header-section-number">15.3</span> Exercise 3: The Denominator of the Liénard–Wiechert Potentials <strong>(Essential)</strong></h2>
+<p><strong>a)</strong> Starting from <span class="math inline">\(u^\mu=\gamma(1,\mathbf v/c)\)</span> and, at <span class="math inline">\(\tau=\tau_r\)</span>, <span class="math inline">\(\Delta x^\mu=(|\mathbf x-\mathbf y|,|\mathbf x-\mathbf y|\hat{\mathbf n})\)</span>, compute the Minkowski product <span class="math inline">\(u\cdot\Delta x\)</span> directly from its definition and verify <span class="math display">\[
+u\cdot\Delta x=-\gamma|\mathbf x-\mathbf y|\left(1-\hat{\mathbf n}\cdot\mathbf v/c\right).
+\]</span></p>
+<p><strong>b)</strong> Explain why this factor, and not simply <span class="math inline">\(|\mathbf x-\mathbf y|\)</span>, is what appears in the denominator of <span class="math inline">\(A^\mu\)</span> — i.e.&nbsp;identify where the <span class="math inline">\(\tau\)</span>-integral in the <a href="#liénard-wiechert-potentials">Liénard–Wiechert potentials</a> section produces it.</p>
+</section>
+<section id="exercise-4-near-field-is-not-transverse" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="exercise-4-near-field-is-not-transverse"><span class="header-section-number">15.4</span> Exercise 4: Near Field Is Not Transverse</h2>
+<p>The notes show that <span class="math inline">\(F_{\mu\nu}^{\rm rad}\Delta x^\nu=0\)</span> but only remark that “the same is not true of <span class="math inline">\(F_{\mu\nu}^{\rm near}\)</span>.”</p>
+<p><strong>a)</strong> Contract <span class="math inline">\(F_{\mu\nu}^{\rm near}=\dfrac{\mu_0qc}{4\pi(u\cdot\Delta x)^3}(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu)\)</span> with <span class="math inline">\(\Delta x^\nu\)</span>, using <span class="math inline">\(\Delta x\cdot\Delta x=0\)</span>, and show explicitly that <span class="math display">\[
+F_{\mu\nu}^{\rm near}\Delta x^\nu=\frac{\mu_0qc}{4\pi(u\cdot\Delta x)^2}\Delta x_\mu\neq0.
+\]</span></p>
+<p><strong>b)</strong> In one sentence, relate this to the fact that only the radiation field is null (<span class="math inline">\(F^{\rm rad}_{\alpha\beta}F_{\rm rad}^{\alpha\beta}=0\)</span>), while the full field is not.</p>
+</section>
+<section id="exercise-5-a-general-identity-for-null-bivectors-essential" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="exercise-5-a-general-identity-for-null-bivectors-essential"><span class="header-section-number">15.5</span> Exercise 5: A General Identity for Null Bivectors <strong>(Essential)</strong></h2>
+<p><strong>a)</strong> For any bivector <span class="math inline">\(W_{\mu\nu}=A_\mu B_\nu-A_\nu B_\mu\)</span> built from two four-vectors <span class="math inline">\(A^\mu,B^\mu\)</span>, prove the general identity <span class="math display">\[
+W^{\alpha\beta}W_{\alpha\beta}=2\Big[(A\cdot A)(B\cdot B)-(A\cdot B)^2\Big].
+\]</span></p>
+<p><strong>b)</strong> Apply this identity with <span class="math inline">\(A^\mu=\Delta x^\mu\)</span>, <span class="math inline">\(B^\mu=b^\mu\)</span> to re-derive <span class="math inline">\(F_{\rm rad}^{\alpha\beta}F_{\alpha\beta}^{\rm rad}=0\)</span> directly from <span class="math inline">\(\Delta x\cdot\Delta x=0\)</span> and <span class="math inline">\(\Delta x\cdot b=0\)</span>, without expanding the product term by term as the notes do.</p>
+</section>
+<section id="exercise-6-rest-frame-check-of-the-sphere-moment-integrals" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="exercise-6-rest-frame-check-of-the-sphere-moment-integrals"><span class="header-section-number">15.6</span> Exercise 6: Rest-Frame Check of the Sphere-Moment Integrals</h2>
+<p>In the source’s instantaneous rest frame, <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span> and <span class="math inline">\(n^\mu=(0,\hat{\mathbf n})\)</span>.</p>
+<p><strong>a)</strong> Show that the covariant moment formula <span class="math inline">\(\oint n^\mu n^\nu\,\mathrm{d}\Omega=\frac{4\pi}3(\eta^{\mu\nu}+u^\mu u^\nu)\)</span> reduces, for purely spatial indices <span class="math inline">\(\mu=i,\nu=j\)</span>, to the familiar 3D result <span class="math inline">\(\oint\hat n^i\hat n^j\,\mathrm{d}\Omega=\frac{4\pi}3\delta^{ij}\)</span>.</p>
+<p><strong>b)</strong> Check the <span class="math inline">\(\mu=\nu=0\)</span> and mixed <span class="math inline">\(\mu=0,\nu=j\)</span> components of the same covariant formula in this frame, and confirm they are trivially consistent with <span class="math inline">\(n^0=0\)</span>.</p>
 <hr>
 <p>Feel free to create issues, ask questions, or suggest improvements in the <a href="https://github.com/vitenti-physics/undergrad">GitHub repository</a>.</p>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
