@@ -21,7 +21,7 @@ Ao adotar a linguagem estatística, encontramos dois dialetos principais, duas f
 
 - A Ideia Central: A probabilidade de um evento é a sua frequência relativa de ocorrência em um grande número de tentativas idênticas.
 - Como Funciona: Imagine lançar uma moeda. A probabilidade de dar "cara" é $P = 0.5$ porque, após lançarmos a moeda $N$ vezes (com $N$ muito grande), esperamos encontrar aproximadamente $N/2$ caras. $P = (\text{Número de sucessos}) / (\text{Número total de tentativas})$.
-- O Conceito de Limite: Crucialmente, a probabilidade é definida como o limite da frequência relativa quando o número de tentativas tende ao infinito: $P(A) = \lim_{n \to \infty} \frac{n_A}{n}$. Esta é uma idealização matemática: algo que supomos existir mas nunca podemos alcançar na prática. Nunca podemos realizar infinitas tentativas, mas observamos que as frequências relativas tendem a se estabilizar around um valor específico à medida que coletamos mais dados. Esta estabilidade das frequências é o que nos permite falar em "probabilidade" no sentido frequentista.
+- O Conceito de Limite: Crucialmente, a probabilidade é definida como o limite da frequência relativa quando o número de tentativas tende ao infinito: $P(A) = \lim_{n \to \infty} \frac{n_A}{n}$. Esta é uma idealização matemática: algo que supomos existir mas nunca podemos alcançar na prática. Nunca podemos realizar infinitas tentativas, mas observamos que as frequências relativas tendem a se estabilizar em torno de um valor específico à medida que coletamos mais dados. Esta estabilidade das frequências é o que nos permite falar em "probabilidade" no sentido frequentista.
 - O Foco: Está inteiramente nos dados coletados. É objetiva e baseada puramente na repetição.
 - Limitação: Não é fácil aplicar a eventos únicos e não repetíveis. Qual é a probabilidade frequentista de um candidato específico ganhar uma eleição? A eleição só acontece uma vez. O frequentista diria que isso não é uma probabilidade, mas sim uma certeza que nós desconhecemos.
 
@@ -34,7 +34,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Configuração do experimento
-np.random.seed(42)  # Para reproducibilidade
+np.random.seed(42)  # Para reprodutibilidade
 n_lancamentos = 10000
 moeda_justa = [0.5, 0.5]  # Probabilidades: [0] = cara, [1] = coroa
 
@@ -304,7 +304,7 @@ print(f"Distribuição espalhada: {prob2:.3f}")
 
 1. $\rho(x)$ não é uma probabilidade: É uma densidade. Suas unidades são [probabilidade/comprimento].
 2. Apenas integrais de $\rho(x)$ têm significado probabilístico: $P(a \leq x \leq b) = \int_a^b \rho(x)  \dd x$.
-3. Valores relativos importam: $\rho(x_2)>\rho(x_1)$ significa que intervalos infinitesimais around $x_2$ são mais prováveis que around $x_1$.
+3. Valores relativos importam: $\rho(x_2)>\rho(x_1)$ significa que intervalos infinitesimais em torno de $x_2$ são mais prováveis que em torno de $x_1$.
 
 Esta transição conceitual é fundamental para a mecânica quântica, onde a função de onda $\psi(x)$ está relacionada à densidade de probabilidade por:
 $$
@@ -349,7 +349,7 @@ Diante dessa impossibilidade prática (e fundamental) de determinar o estado exa
 
 Em vez de um ponto $(x_0, p_0)$ no espaço de fase, temos uma distribuição de probabilidade $\rho(x, p, t_0)$ que representa nosso conhecimento sobre o estado do sistema.
 
-Interpretação: $\rho(x, p, t_0)  \dd x \dd p$ representa a probabilidade de encontrar o sistema em um elemento infinitesimal do espaço de fase around do ponto $(x, p)$ no instante $t_0$.
+Interpretação: $\rho(x, p, t_0)  \dd x \dd p$ representa a probabilidade de encontrar o sistema em um elemento infinitesimal do espaço de fase em torno do ponto $(x, p)$ no instante $t_0$.
 
 ### Evolução Temporal da Distribuição
 

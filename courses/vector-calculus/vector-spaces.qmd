@@ -31,7 +31,7 @@ Finally, we can define the concept of a real vector space:
 ::: {#def-vecspace}
 ### Real Vector Space
 
-A vector space over the real numbers $\mathbb{R}$ is given by a set $\mathbb{V}$ and two operations: scalar multiplication and vector addition. The elements of $\mathbb{V}$ are denoted with an arrow above the symbol, i.e., $\vec{v} \in \mathbb{V}$. The operations are defined as:
+A vector space over the real numbers $\mathbb{R}$ is given by a set $\mathbb{V}$ and two operations: scalar multiplication and vector addition. The elements of $\mathbb{V}$ are denoted in bold, i.e., $\vec{v} \in \mathbb{V}$. The operations are defined as:
 $$\cdot: \mathbb{R} \times \mathbb{V} \to \mathbb{V}, \quad +: \mathbb{V} \times \mathbb{V} \to \mathbb{V}.$$
 The addition operation $+$ satisfies the following properties (where $\vec{v}, \vec{u}, \vec{w} \in \mathbb{V}$):
 
@@ -78,7 +78,7 @@ From a physics perspective, we are interested in using mathematical concepts to 
 
 In this chapter, we will focus on three-dimensional vector spaces, which is the arena where electromagnetism will be developed in this course.
 
-## Exercise Vector Space
+## Exercises Vector Space
 
 1. Show that $\mathbb{R}^2$ and $\mathbb{R}^3$ are vector spaces of dimension two and three, respectively.
 
@@ -176,7 +176,7 @@ It is easy to verify that this space is three-dimensional, meaning there are onl
 
 ## Vector Product
 
-To define our map, we can set $\vec{e}_1 \wedge \vec{e}_2 \to \vec{e}_3$. However, note that planes can have different signs (e.g., $\vec{e}_1 \wedge \vec{e}_2 = -\vec{e}_2 \wedge \vec{e}_1$). Thus, to determine the map, we need to choose the signs of the planes mapped to vectors. Here, we follow the standard “right-hand rule” convention.[^2] We choose the sign according to the position of the thumb of the right hand when the first vector of the product is aligned with the palm and the second with the fingertips, i.e., we define the linear map $V: \mathbb{V} \wedge \mathbb{V} \to \mathbb{V}$ as:
+To define our map, we can set $\vec{e}_1 \wedge \vec{e}_2 \to \vec{e}_3$. However, note that planes can have different signs (e.g., $\vec{e}_1 \wedge \vec{e}_2 = -\vec{e}_2 \wedge \vec{e}_1$). Thus, to determine the map, we need to choose the signs of the planes mapped to vectors. Here, we follow the standard “right-hand rule” convention. We choose the sign according to the position of the thumb of the right hand when the first vector of the product is aligned with the palm and the second with the fingertips, i.e., we define the linear map $V: \mathbb{V} \wedge \mathbb{V} \to \mathbb{V}$ as:
 $$V(\vec{e}_1 \wedge \vec{e}_2) = \vec{e}_3, \quad V(\vec{e}_3 \wedge \vec{e}_1) = \vec{e}_2, \quad V(\vec{e}_2 \wedge \vec{e}_3) = \vec{e}_1.$${#eq-vecprod}
 Let us now explicitly calculate the exterior product of two vectors and compute its map to the space $\mathbb{V}$:
 $$\begin{aligned}
@@ -196,7 +196,7 @@ For completeness we provide the following definition:
 ::: {#def-levicivita}
 ### Levi-Civita Symbol
 
-The Levi-Civita symbol is defined the complete antisymmetric tensor $\epsilon_{ijk}$ such that $\epsilon_{123} = 1$.
+The Levi-Civita symbol is defined as the complete antisymmetric tensor $\epsilon_{ijk}$ such that $\epsilon_{123} = 1$.
 :::
 
 From a geometric perspective, we can understand the meaning of this product by calculating the vector product between the vector $\vec{v} = \vec{e}_1$ and the vector $\vec{u} = a^1 \vec{e}_1 + a^2 \vec{e}_2$:
@@ -217,7 +217,7 @@ In Gibbs’ vector analysis, instead of using the exterior product, the vector p
 
 ## Relation to the Exterior Product {#sec-trip}
 
-As discussed in the @def-exteriorprod, the exterior product can be used to define mathematical objects that describe planes and volumes. Naturally, $\vec{e}_1 \wedge \vec{e}_2 \wedge \vec{e}_3$ is a first example of a triple product. However, we need to relate this quantity to the tools available, namely the vector product and inner product. Using the definition of the map $V$ given in @eq-vecprod, it is straightforward to see that there is a relation between this map and $\Upsilon$, i.e.,
+As discussed in @def-exteriorprod, the exterior product can be used to define mathematical objects that describe planes and volumes. Naturally, $\vec{e}_1 \wedge \vec{e}_2 \wedge \vec{e}_3$ is a first example of a triple product. However, we need to relate this quantity to the tools available, namely the vector product and inner product. Using the definition of the map $V$ given in @eq-vecprod, it is straightforward to see that there is a relation between this map and $\Upsilon$, i.e.,
 $$\begin{aligned}
 \vec{e}_1 \cdot V(\vec{e}_2 \wedge \vec{e}_3) &= \Upsilon(\vec{e}_1 \wedge \vec{e}_2 \wedge \vec{e}_3), \\
 \vec{e}_2 \cdot V(\vec{e}_3 \wedge \vec{e}_1) &= \Upsilon(\vec{e}_1 \wedge \vec{e}_2 \wedge \vec{e}_3), \\
@@ -312,7 +312,7 @@ Spherical coordinates highlight how Cartesian coordinates and position vectors s
 Using geometric concepts represented by position vectors, we define the space of tangent vectors. Given a curve described by the position vector $\vec{x}(t)$, the displacement due to a parameter change $t \to t + \delta t$ is:
 $$\Delta \vec{x}(t) \equiv \vec{x}(t + \delta t) - \vec{x}(t).$${#eq-displacement}
 As $\delta t \to 0$, $\Delta \vec{x}(t)$ approximates the true displacement along the curve:
-$$\Delta \vec{x}(t) \approx \dot{\vec{x}}(t) \delta t, \quad \dot{\vec{x}}(t) \equiv \frac{\partial \vec{x}(t)}{\partial t}.$${#eq-tangent-approx}
+$$\Delta \vec{x}(t) \approx \dot{\vec{x}}(t) \delta t, \quad \dot{\vec{x}}(t) \equiv \frac{\dd \vec{x}(t)}{\dd t}.$${#eq-tangent-approx}
 We call $\dot{\vec{x}}(t)$ the **tangent vector** to the curve $\vec{x}(t)$.
 
 ::: {#def-tangent-space}

@@ -127,14 +127,14 @@ onde $\pi = \dot{\phi}$ é o momento conjugado (ou derivada temporal).
 ### Produto Interno Simplético
 
 O produto interno simplético para campos é:
-$$(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} Q_1^\dagger \Omega Q_2 d^3x$$
+$$(Q_1, Q_2)_\Omega = i \int_{\mathbb{R}^3} Q_1^\dagger \Omega Q_2 d^3x$$
 onde:
 $$\Omega = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$$
 Expandindo:
-$$(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x$$
+$$(Q_1, Q_2)_\Omega = i \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x$$
 
 ::: {.callout-warning}
-O fator $-i$ na definição do produto interno é crucial para garantir que o produto seja positivo definido quando trabalhamos com funções complexas.
+O fator $i$ na definição do produto interno é crucial para garantir que o produto seja positivo definido quando trabalhamos com funções complexas.
 :::
 
 ## Equação de Onda no Formalismo Simplético
@@ -243,16 +243,16 @@ $$\phi_{\mathbf{k}}^*(x_0, \mathbf{x}) = \frac{1}{(2\pi)^{3/2}} e^{-i(\mathbf{k}
 ### Base Simplética
 
 Definimos a base de ondas planas no espaço de fase:
-$$Q_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{\sqrt{2}} \begin{pmatrix} \phi_{\mathbf{k}} \\ -i\omega_k \phi_{\mathbf{k}} \end{pmatrix}$$
+$$Q_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{\sqrt{2\omega_k}} \begin{pmatrix} \phi_{\mathbf{k}} \\ -i\omega_k \phi_{\mathbf{k}} \end{pmatrix}$$
 
 ### Produto Interno dos Modos
 
 Calculamos o produto interno simplético entre dois modos:
-$$(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega = -i \int_{\mathbb{R}^3} Q_{\mathbf{k}}^\dagger \Omega Q_{\mathbf{k}'} d^3x$$
+$$(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega = i \int_{\mathbb{R}^3} Q_{\mathbf{k}}^\dagger \Omega Q_{\mathbf{k}'} d^3x$$
 $$= \delta^{(3)}(\mathbf{k} - \mathbf{k}')$$
 
 ::: {.callout-important}
-A normalização $\frac{1}{\sqrt{2}}$ foi escolhida para que o produto interno dos modos seja exatamente uma delta de Dirac.
+A normalização $\frac{1}{\sqrt{2\omega_k}}$ foi escolhida para que o produto interno dos modos seja exatamente uma delta de Dirac (o fator $1/\sqrt{\omega_k}$ extra, em relação à normalização ingênua $1/\sqrt2$, cancela o fator $\omega_k$ que a derivada temporal $\pi_{\mathbf k}=-i\omega_k\phi_{\mathbf k}$ traz consigo).
 :::
 
 ### Decomposição do Campo
@@ -438,7 +438,7 @@ plt.show()
 | **Espaço de fase** | $\mathbb{R}^2$ (posição, momento) | Espaço de funções (dimensão infinita) |
 | **Vetor de estado** | $V = (y, q)^T$ | $Q = (\phi, \pi)^T$ |
 | **Matriz simplética** | $\Omega = \begin{pmatrix}0 & 1 \\ -1 & 0\end{pmatrix}$ | $\Omega = \begin{pmatrix}0 & 1 \\ -1 & 0\end{pmatrix}$ |
-| **Produto interno** | $V_1^T \Omega V_2$ | $-i\int Q_1^\dagger \Omega Q_2 d^3x$ |
+| **Produto interno** | $V_1^T \Omega V_2$ | $i\int Q_1^\dagger \Omega Q_2 d^3x$ |
 | **Hamiltoniana** | $H = \begin{pmatrix}0 & 1 \\ -\omega^2 & 0\end{pmatrix}$ | $H = \begin{pmatrix}0 & 1 \\ -\nabla^2 & 0\end{pmatrix}$ |
 | **Base** | 2 vetores $V_1, V_2$ | Infinitos modos $Q_{\mathbf{k}}$ |
 | **Condições iniciais** | $y(0), q(0)$ | $\phi(0,\mathbf{x}), \pi(0,\mathbf{x})$ |
@@ -480,7 +480,7 @@ plt.show()
 
 **a)** Calcule $(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega$ para os modos de onda plana.
 
-**b)** Mostre que $(Q_{\mathbf{k}}^*, Q_{\mathbf{k}'})_\Omega = -\delta^{(3)}(\mathbf{k} - \mathbf{k}')$.
+**b)** Mostre que $(Q_{\mathbf{k}}^*, Q_{\mathbf{k}'})_\Omega = 0$.
 
 **c)** Verifique que $(Q_{\mathbf{k}}, Q_{\mathbf{k}'}^*)_\Omega = 0$.
 

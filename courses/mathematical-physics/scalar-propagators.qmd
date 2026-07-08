@@ -46,7 +46,7 @@ $$
 $$
 onde $k = |\mathbf{k}|$ e $N_k$ é uma constante de normalização.
 
-::: {.note}
+::: {.callout-note}
 A escolha das condições de contorno (causalidade) seleciona apenas um dos modos. A condição $\phi_J(x) \to 0$ quando $t \to -\infty$ implica que $\mathcal{M}_k = 0$, ou seja, apenas o modo de frequência positiva (viajando para o futuro) contribui.
 :::
 
@@ -65,16 +65,16 @@ Com as soluções modais, o propagador pode ser escrito como:
 $$
 \phi_J(x) = \int \frac{d^3k}{(2\pi)^3} \int_{-\infty}^{x^0} dx'^0 \left[ \phi_{\mathbf{k}}(x^0) \phi_{\mathbf{k}}^*(x'^0) - \phi_{\mathbf{k}}^*(x^0) \phi_{\mathbf{k}}(x'^0) \right] J(x')
 $$
-onde $J(x') = - \delta^4(x' - x_0)$ para uma fonte pontual.
+onde $J(x') = \delta^4(x' - x_0)$ para uma fonte pontual.
 Esta expressão é a base para o cálculo do propagador no espaço-tempo.
 
 # Cálculo Explícito do Propagador
 
 ## Substituição dos Modos de Fourier
 
-Substituindo as expressões para $\phi_{\mathbf{k}}(t)$ e $\phi_{\mathbf{k}}^*(t)$, e usando a fonte pontual $J(x') = - \delta^4(x' - x_0)$, obtemos a integral:
+Substituindo as expressões para $\phi_{\mathbf{k}}(t)$ e $\phi_{\mathbf{k}}^*(t)$, e usando a fonte pontual $J(x') = \delta^4(x' - x_0)$, obtemos a integral:
 $$
-\phi_J(x) = i \Theta(x^0 - x_0^0) \int \frac{d^3k}{(2\pi)^3} \frac{1}{2k} \left[ e^{ik(x^0 - x_0^0) + i \mathbf{k}\cdot(\mathbf{x} - \mathbf{x}_0)} - e^{-ik(x^0 - x_0^0) - i \mathbf{k}\cdot(\mathbf{x} - \mathbf{x}_0)} \right]
+\phi_J(x) = -i \Theta(x^0 - x_0^0) \int \frac{d^3k}{(2\pi)^3} \frac{1}{2k} \left[ e^{ik(x^0 - x_0^0) + i \mathbf{k}\cdot(\mathbf{x} - \mathbf{x}_0)} - e^{-ik(x^0 - x_0^0) - i \mathbf{k}\cdot(\mathbf{x} - \mathbf{x}_0)} \right]
 $$
 onde $\Theta$ é a função degrau de Heaviside.
 
@@ -86,7 +86,7 @@ $$
 \int_0^{2\pi} d\phi \int_0^\pi \sin\theta \, d\theta \, e^{\pm i k |\Delta \mathbf{x}| \cos\theta} = 4\pi \frac{\sin(k|\Delta \mathbf{x}|)}{k|\Delta \mathbf{x}|}
 $$
 
-::: {.tip}
+::: {.callout-tip}
 Este é um resultado fundamental: a integral angular transforma a onda plana em uma onda esférica, expressa pelo fator $\sin(k|\Delta \mathbf{x}|)/(k|\Delta \mathbf{x}|)$.
 :::
 
@@ -94,7 +94,7 @@ Este é um resultado fundamental: a integral angular transforma a onda plana em 
 
 Substituindo o resultado da integração angular, ficamos com:
 $$
-\phi_J(x) = \frac{i \Theta(\Delta x^0)}{2\pi^2 |\Delta \mathbf{x}|} \int_0^\infty dk \, e^{ik\Delta x^0} \sin(k|\Delta \mathbf{x}|)
+\phi_J(x) = -\frac{i \Theta(\Delta x^0)}{2\pi^2 |\Delta \mathbf{x}|} \int_0^\infty dk \, e^{ik\Delta x^0} \sin(k|\Delta \mathbf{x}|)
 $$
 onde definimos $\Delta x^0 = x^0 - x_0^0$ e $|\Delta \mathbf{x}| = |\mathbf{x} - \mathbf{x}_0|$.
 Agora, escrevemos o seno como combinação de exponenciais:
@@ -111,18 +111,18 @@ $$
 $$
 obtemos:
 $$
-\phi_J(x) = \frac{\Theta(\Delta x^0)}{4\pi |\Delta \mathbf{x}|} \left[ \delta(\Delta x^0 + |\Delta \mathbf{x}|) - \delta(\Delta x^0 - |\Delta \mathbf{x}|) \right]
+\phi_J(x) = -\frac{\Theta(\Delta x^0)}{4\pi |\Delta \mathbf{x}|} \left[ \delta(\Delta x^0 + |\Delta \mathbf{x}|) - \delta(\Delta x^0 - |\Delta \mathbf{x}|) \right]
 $$
 
 ## Resultado Final: Propagador Causal
 
 Como $\Theta(\Delta x^0)$ seleciona apenas $\Delta x^0 > 0$, o primeiro termo com $\delta(\Delta x^0 + |\Delta \mathbf{x}|)$ nunca contribui (pois o argumento é positivo). Portanto, o propagador causal é:
 $$
-\boxed{ \phi_J(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( \Delta x^0 - |\Delta \mathbf{x}| \right) }
+\boxed{ \phi_J(x) = \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( \Delta x^0 - |\Delta \mathbf{x}| \right) }
 $$
 com $\Delta x^0 = x^0 - x_0^0 = c(t - t_0)$ e $|\Delta \mathbf{x}| = |\mathbf{x} - \mathbf{x}_0|$.
 
-::: {.important}
+::: {.callout-important}
 Este é o resultado central da aula. O propagador é uma **distribuição** que é não nula apenas sobre o **cone de luz futuro** do evento fonte.
 :::
 
@@ -132,7 +132,7 @@ Este é o resultado central da aula. O propagador é uma **distribuição** que 
 
 O propagador encontrado é:
 $$
-\phi_J(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right)
+\phi_J(x) = \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right)
 $$
 A delta de Dirac impõe a condição:
 $$
@@ -140,7 +140,7 @@ c(t - t_0) = |\mathbf{x} - \mathbf{x}_0|
 $$
 que é exatamente a condição para que um sinal se propague do ponto $\mathbf{x}_0$ no tempo $t_0$ até o ponto $\mathbf{x}$ no tempo $t$ com a velocidade da luz $c$.
 
-::: {.note}
+::: {.callout-note}
 Para tempos futuros ($t > t_0$), o propagador é não nulo apenas sobre a **casca esférica** de raio $c(t - t_0)$ centrada em $\mathbf{x}_0$. Esta casca se expande com a velocidade da luz.
 :::
 
@@ -154,7 +154,7 @@ com $t > t_0$.
 
 Fora do cone de luz (regiões espacialmente separadas), o propagador é identicamente nulo. Isso garante a **causalidade**: um distúrbio em $x_0$ só pode afetar pontos que estão em seu cone de luz futuro.
 
-::: {.warning}
+::: {.callout-warning}
 A equação de onda admite soluções com propagação na velocidade da luz, que é a velocidade máxima de propagação de informação na teoria da relatividade restrita. A existência de um propagador com suporte no cone de luz é uma manifestação da causalidade na teoria de campos.
 :::
 
@@ -179,7 +179,7 @@ $$
 $$
 Substituindo a corrente:
 $$
-\phi(x) = - \frac{q}{4\pi} \int_{-\infty}^{\infty} d\tau \, \frac{\delta\left( \Delta x^0(\tau) - |\Delta \mathbf{x}(\tau)| \right)}{|\mathbf{x} - \mathbf{y}(\tau)|}
+\phi(x) = \frac{q}{4\pi} \int_{-\infty}^{\infty} d\tau \, \frac{\delta\left( \Delta x^0(\tau) - |\Delta \mathbf{x}(\tau)| \right)}{|\mathbf{x} - \mathbf{y}(\tau)|}
 $$
 onde $\Delta x^0(\tau) = x^0 - y^0(\tau)$ e $\Delta \mathbf{x}(\tau) = \mathbf{x} - \mathbf{y}(\tau)$.
 
@@ -195,7 +195,7 @@ t - t_r = \frac{|\mathbf{x} - \mathbf{y}(t_r)|}{c}
 $$
 O potencial em $x$ é, portanto, causado pela posição da partícula em um tempo anterior $t_r$, não pela posição simultânea.
 
-::: {.important}
+::: {.callout-important}
 Este é o princípio fundamental da eletrodinâmica clássica: o campo eletromagnético se propaga com a velocidade da luz. Uma carga em movimento não produz um campo instantâneo, mas um campo retardado.
 :::
 
@@ -218,7 +218,7 @@ c\tau = x^0 - |\mathbf{x} - \mathbf{y}_0|
 $$
 O potencial é então:
 $$
-\phi(\mathbf{x}) = - \frac{q}{4\pi} \frac{1}{|\mathbf{x} - \mathbf{y}_0|}
+\phi(\mathbf{x}) = \frac{q}{4\pi} \frac{1}{|\mathbf{x} - \mathbf{y}_0|}
 $$
 que é exatamente o potencial eletrostático de Coulomb.
 
@@ -226,7 +226,7 @@ que é exatamente o potencial eletrostático de Coulomb.
 
 No caso estático, a posição da partícula não varia com o tempo. Portanto, a posição retardada é a mesma que a posição simultânea. Isso cria a **ilusão** de que a força é instantânea.
 
-::: {.tip}
+::: {.callout-tip}
 A aparente ação instantânea na eletrostática é uma consequência do fato de que a fonte está em repouso. Se a partícula se move, o campo não é mais dado pelo potencial de Coulomb, e a dependência temporal do campo reflete a propagação com velocidade finita.
 :::
 
@@ -331,7 +331,7 @@ b) Determine a solução geral para $f_{\mathbf{k}}(t)$.
 Considere o propagador causal encontrado na aula:
 
 $$
-\phi_J(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right)
+\phi_J(x) = \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right)
 $$
 
 a) Mostre que $\phi_J(x)$ satisfaz a equação $\Box \phi_J = \delta^4(x - x_0)$.
@@ -379,7 +379,7 @@ Explique por que o potencial de Coulomb parece implicar ação instantânea, mes
 Considere o propagador avançado, definido por:
 
 $$
-\phi_J^{\text{adv}}(x) = - \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) + |\mathbf{x} - \mathbf{x}_0| \right)
+\phi_J^{\text{adv}}(x) = \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) + |\mathbf{x} - \mathbf{x}_0| \right)
 $$
 
 a) Qual é o suporte deste propagador?
@@ -391,7 +391,7 @@ b) Por que ele não é usado como solução causal?
 Mostre que o propagador causal pode ser escrito como:
 
 $$
-\phi_J(x) = - \frac{1}{4\pi} \int_{-\infty}^{\infty} d\tau \, \frac{\delta\left( \Delta x^0(\tau) - |\Delta \mathbf{x}(\tau)| \right)}{|\mathbf{x} - \mathbf{y}(\tau)|}
+\phi_J(x) = \frac{1}{4\pi} \int_{-\infty}^{\infty} d\tau \, \frac{\delta\left( \Delta x^0(\tau) - |\Delta \mathbf{x}(\tau)| \right)}{|\mathbf{x} - \mathbf{y}(\tau)|}
 $$
 
 para uma linha de mundo $y^\mu(\tau)$.

@@ -40,7 +40,7 @@ A estrutura simplética é codificada pela matriz:
 $$ \Omega = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix} $$
 Esta matriz é antissimétrica ($\Omega^T = -\Omega$) e desempenha um papel fundamental na definição do Wronskiano conservado.
 
-::: {.note}
+::: {.callout-note}
 O Wronskiano de duas soluções $V_1$ e $V_2$ é dado por:
 
 $$ W(V_1, V_2) = V_1^T \Omega V_2 $$
@@ -69,24 +69,24 @@ $$ V_1^T \Omega V_2 = \frac{1}{2} $$
 Qualquer solução $U$ pode ser escrita como combinação linear:
 $$ U = \alpha_1 V_1 + \alpha_2 V_2 $$
 Os coeficientes $\alpha_i$ são constantes e podem ser obtidos via:
-$$ \alpha_1 = 2 (V_1^T \Omega U), \quad \alpha_2 = -2 (V_2^T \Omega U) $$
+$$ \alpha_1 = -2 (V_2^T \Omega U), \quad \alpha_2 = 2 (V_1^T \Omega U) $$
 
 # Complexificação do Espaço de Soluções
 
 ## Construção da Solução Complexa
 
 Definimos a solução complexificada:
-$$ V = V_1 + i V_2 $$
+$$ V = V_1 - i V_2 $$
 Esta solução satisfaz a mesma equação diferencial no espaço complexo:
 $$ V' = \Omega H V $$
 
 ## Produto Simplético Hermitiano
 
 Introduzimos o produto:
-$$ \langle V, U \rangle = -i V^\dagger \Omega U $$
+$$ \langle V, U \rangle = i V^\dagger \Omega U $$
 onde $V^\dagger = (V^*)^T$ é o conjugado Hermitiano.
 
-::: {.important}
+::: {.callout-important}
 Para soluções com normalização $V_1^T\Omega V_2 = 1/2$, temos:
 
 $$ \langle V, V \rangle = 1 $$
@@ -99,7 +99,7 @@ O espaço complexificado $C^2$ se decompõe em dois subespaços:
 - **Norma positiva**: $\langle V, V \rangle = 1$
 - **Norma negativa**: $\langle V^*, V^* \rangle = -1$
 
-::: {.warning}
+::: {.callout-warning}
 Esta estrutura é análoga à que aparece na mecânica quântica relativística, onde soluções de energia positiva e negativa correspondem a partículas e antipartículas.
 :::
 
@@ -119,7 +119,7 @@ $$ U(x) = \Theta(x_0 - x) [\alpha V(x) + \alpha^* V^*(x)] $$
 satisfazendo:
 $$ U' - \Omega H U = -\delta(x - x_0) U_0 $$
 
-::: {.note}
+::: {.callout-note}
 A diferença de sinal entre as soluções futura e passada é fundamental para a construção de propagadores em teoria quântica de campos.
 :::
 
@@ -137,7 +137,7 @@ $$ T = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} $$
 A equação de movimento é invariante sob reversão temporal se:
 $$ T H(x) T = H(-x) $$
 
-::: {.important}
+::: {.callout-important}
 A invariância por reversão temporal leva à relação entre soluções futuras e passadas, fundamental para a construção de operadores de criação e aniquilação.
 :::
 
@@ -233,8 +233,8 @@ plt.show()
 | Conceito | Descrição | Aplicação |
 |----------|-----------|-----------|
 | Matriz Simplética ($\Omega$) | Codifica a estrutura simplética do espaço de fase | Wronskiano conservado |
-| Solução Complexa ($V$) | Combinação $V_1 + iV_2$ | Unifica duas soluções independentes |
-| Produto Hermitiano | $\langle V,U \rangle = -iV^\dagger\Omega U$ | Define norma e ortogonalidade |
+| Solução Complexa ($V$) | Combinação $V_1 - iV_2$ | Unifica duas soluções independentes |
+| Produto Hermitiano | $\langle V,U \rangle = iV^\dagger\Omega U$ | Define norma e ortogonalidade |
 | Norma Positiva/Negativa | $\langle V,V\rangle = \pm 1$ | Partículas/Antipartículas |
 | Prop. Futuro (Causal) | $\Theta(x-x_0)$ | Propagação para frente no tempo |
 | Prop. Passado (Avançado) | $\Theta(x_0-x)$ | Propagação para trás no tempo |
@@ -252,9 +252,9 @@ plt.show()
    (a) Dada a normalização $V_1^T\Omega V_2 = 1/2$, expresse a solução geral $U$ em termos de $V_1$ e $V_2$.  
    (b) Calcule os coeficientes $\alpha_1$ e $\alpha_2$ para uma condição inicial genérica.
 
-3. **Complexificação (Essencial)**  
-   (a) Verifique que $V = V_1 + iV_2$ satisfaz a mesma equação diferencial.  
-   (b) Calcule $\langle V, V \rangle = -iV^\dagger\Omega V$ e mostre que é igual a 1.
+3. **Complexificação (Essencial)**
+   (a) Verifique que $V = V_1 - iV_2$ satisfaz a mesma equação diferencial.
+   (b) Calcule $\langle V, V \rangle = iV^\dagger\Omega V$ e mostre que é igual a 1.
 
 4. **Norma Negativa**  
    (a) Considere $\tilde{V} = V^*$. Calcule $\langle \tilde{V}, \tilde{V} \rangle$.  

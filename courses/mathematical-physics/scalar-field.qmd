@@ -42,17 +42,17 @@ com a dependência espacial dada por $e^{i\mathbf{k}\cdot\mathbf{x}}$.
 ## Produto Simplético
 
 O produto entre dois elementos da base é definido por:
-$$(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}'}^* q_{\mathbf{k}} - q_{\mathbf{k}'}^* f_{\mathbf{k}}\right] d^3x$$
+$$(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}'}^* q_{\mathbf{k}} - q_{\mathbf{k}'}^* f_{\mathbf{k}}\right] d^3x$$
 Substituindo as dependências espaciais:
-$$(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right]\delta^{(3)}(\mathbf{k} - \mathbf{k}')$$
+$$(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right]\delta^{(3)}(\mathbf{k} - \mathbf{k}')$$
 A base é ortogonal com normalização delta de Dirac.
 
 ## Normalização da Base
 
 Para que a base seja ortonormal no sentido da delta de Dirac:
-$$-i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right] = 1$$
+$$i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right] = 1$$
 Equivalentemente:
-$$2\,\text{Im}(f_{\mathbf{k}}^* q_{\mathbf{k}}) = 1$$
+$$2\,\text{Im}(f_{\mathbf{k}}^* q_{\mathbf{k}}) = -1$$
 
 > **Definição (Vácuo):** A escolha das funções de base que satisfazem a condição de normalização define o vácuo da teoria. Diferentes escolhas correspondem a diferentes definições de vácuo.
 
@@ -93,16 +93,16 @@ $$\omega_{\mathbf{k}}\left(|N_{\mathbf{k}}|^2 - |M_{\mathbf{k}}|^2\right) = \fra
 A escolha mais simples é $M_{\mathbf{k}} = 0$, resultando:
 $$N_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}$$
 Isso define as funções de base:
-$$f_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}$$
-$$q_{\mathbf{k}} = -i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}$$
+$$f_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} e^{-i\omega_{\mathbf{k}} x_0} e^{i\mathbf{k}\cdot\mathbf{x}}$$
+$$q_{\mathbf{k}} = -i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} e^{-i\omega_{\mathbf{k}} x_0} e^{i\mathbf{k}\cdot\mathbf{x}}$$
 
-> **Nota:** Esta escolha elimina as soluções de frequência negativa, definindo o vácuo de Minkowski. A normalização inclui o fator $(2\pi)^{-3/2}$ para garantir a ortogonalidade correta.
+> **Nota:** Esta escolha elimina as soluções de frequência negativa, definindo o vácuo de Minkowski. O fator $(2\pi)^{-3/2}$ que garante a ortogonalidade correta aparece na medida $d^3k$ da decomposição do campo (abaixo), não nas próprias funções de base.
 
 ## Complexo Conjugado e Inversão Temporal
 
 O complexo conjugado das funções de base:
-$$f_{\mathbf{k}}^* = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}$$
-$$q_{\mathbf{k}}^* = +i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}$$
+$$f_{\mathbf{k}}^* = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} e^{+i\omega_{\mathbf{k}} x_0} e^{-i\mathbf{k}\cdot\mathbf{x}}$$
+$$q_{\mathbf{k}}^* = +i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} e^{+i\omega_{\mathbf{k}} x_0} e^{-i\mathbf{k}\cdot\mathbf{x}}$$
 
 **Propriedade Fundamental:**
 Tomar o complexo conjugado é equivalente a uma inversão temporal: $x_0 \to -x_0$.
@@ -122,7 +122,7 @@ onde $k\cdot x = \omega_{\mathbf{k}} x_0 - \mathbf{k}\cdot\mathbf{x}$.
 ## Coeficientes de Decomposição
 
 Os coeficientes são obtidos pelo produto simplético:
-$$\alpha_{\mathbf{k}} = -i(f_{\mathbf{k}}^*, \phi) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}}^* q_\phi - q_{\mathbf{k}}^* f_\phi\right] d^3x$$
+$$\alpha_{\mathbf{k}} = i(f_{\mathbf{k}}^*, \phi) = i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}}^* q_\phi - q_{\mathbf{k}}^* f_\phi\right] d^3x$$
 Esta relação é fundamental para a quantização do campo.
 
 # Solução com Fonte (Propagador)
@@ -138,9 +138,9 @@ onde $J(x)$ é uma fonte externa.
 ## Construção do Propagador
 
 Construímos a solução como:
-$$\phi_J(x) = \int_{-\infty}^{x_0} dx_0' \int_{\mathbb{R}^3} d^3k \left[\alpha_{\mathbf{k}}^J(x_0') f_{\mathbf{k}}(x_0) - \alpha_{\mathbf{k}}^{J*}(x_0') f_{\mathbf{k}}^*(x_0)\right]$$
+$$\phi_J(x) = \int_{-\infty}^{x_0} dx_0' \int_{\mathbb{R}^3} d^3k \left[\alpha_{\mathbf{k}}^{J*}(x_0') f_{\mathbf{k}}^*(x_0) - \alpha_{\mathbf{k}}^J(x_0') f_{\mathbf{k}}(x_0)\right]$$
 onde:
-$$\alpha_{\mathbf{k}}^J(x_0') = -i(f_{\mathbf{k}}^*, J)|_{x_0'}$$
+$$\alpha_{\mathbf{k}}^J(x_0') = i(f_{\mathbf{k}}^*, J)|_{x_0'}$$
 
 > **Observação:** O limite superior $x_0$ na integral temporal garante que o propagador seja causal (propagador retardado).
 
@@ -179,8 +179,8 @@ $$G_R(x - x') = \frac{\delta(x_0 - x_0' - |\mathbf{x} - \mathbf{x}'|)}{4\pi|\mat
 | Conceito | Fórmula | Interpretação Física |
 |----------|---------|---------------------|
 | Base no espaço de fase | $\Psi_{\mathbf{k}} = \begin{pmatrix} f_{\mathbf{k}} \\ q_{\mathbf{k}} \end{pmatrix} e^{i\mathbf{k}\cdot\mathbf{x}}$ | Modos de Fourier do campo |
-| Ortogonalidade | $(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i[f^*q - q^*f]\delta^{(3)}(\mathbf{k}-\mathbf{k}')$ | Bases ortogonais no espaço de fase |
-| Normalização | $-i[f^*q - q^*f] = 1$ | Normalização delta de Dirac |
+| Ortogonalidade | $(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = i[f^*q - q^*f]\delta^{(3)}(\mathbf{k}-\mathbf{k}')$ | Bases ortogonais no espaço de fase |
+| Normalização | $i[f^*q - q^*f] = 1$ | Normalização delta de Dirac |
 | Escolha do vácuo | $M_{\mathbf{k}} = 0$, $N_{\mathbf{k}} = 1/\sqrt{2\omega_{\mathbf{k}}}$ | Vácuo de Minkowski |
 | Decomposição do campo | $\phi(x) = \int \frac{d^3k}{(2\pi)^{3/2}} \frac{1}{\sqrt{2\omega}} [a_{\mathbf{k}}e^{-ik\cdot x} + a_{\mathbf{k}}^\dagger e^{ik\cdot x}]$ | Partículas e antipartículas |
 | Propagador retardado | $G_R(x-x') = \theta(x_0-x_0') \int \frac{d^3k}{(2\pi)^3} \frac{1}{2\omega} [e^{-ik\cdot\Delta x} - e^{+ik\cdot\Delta x}]$ | Causalidade e cone de luz |
@@ -190,7 +190,7 @@ $$G_R(x - x') = \frac{\delta(x_0 - x_0' - |\mathbf{x} - \mathbf{x}'|)}{4\pi|\mat
 ## Exercício 1: Normalização da Base
 Considere a condição de normalização da base no espaço de fase.
 
-a) Mostre que a condição $(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = \delta^{(3)}(\mathbf{k} - \mathbf{k}')$ implica que $-i[f^*_{\mathbf{k}} q_{\mathbf{k}} - q^*_{\mathbf{k}} f_{\mathbf{k}}] = 1$.
+a) Mostre que a condição $(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = \delta^{(3)}(\mathbf{k} - \mathbf{k}')$ implica que $i[f^*_{\mathbf{k}} q_{\mathbf{k}} - q^*_{\mathbf{k}} f_{\mathbf{k}}] = 1$.
 
 b) Verifique que a escolha $f_{\mathbf{k}} = 1/\sqrt{2\omega_{\mathbf{k}}} e^{-i\omega_{\mathbf{k}} x_0}$ e $q_{\mathbf{k}} = -i\sqrt{\omega_{\mathbf{k}}/2} e^{-i\omega_{\mathbf{k}} x_0}$ satisfaz esta condição.
 

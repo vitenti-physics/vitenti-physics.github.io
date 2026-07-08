@@ -602,15 +602,17 @@ Para $x \geq 1$ (usando $f(x) = 2x^2$):
 $$
 |2x^2 - 2| < 0.1 \Rightarrow 1.9 < 2x^2 < 2.1 \Rightarrow x \in (\sqrt{0.95}, \sqrt{1.05}) \approx (0.975, 1.025)
 $$
+Como esse ramo só vale para $x \geq 1$, a parte relevante desse intervalo é $[1, 1.025)$.
 
 Para $x < 1$ (usando $f(x) = x$):
 $$
 |x - 2| < 0.1 \Rightarrow x \in (1.9, 2.1)
 $$
+Esse intervalo não intersecta o domínio $x < 1$ desse ramo, ou seja, nenhum ponto com $x < 1$ satisfaz $|f(x) - 2| < 0.1$.
 
 Portanto, o conjunto total onde $|f(x) - 2| < 0.1$ é aproximadamente:
 $$
-(0.975, 1.025) \cup (1.9, 2.1)
+[1, 1.025)
 $$
 
 O problema: Qualquer intervalo $(1-\delta, 1+\delta)$ com $\delta > 0$ conterá pontos que não pertencem a este conjunto. Especificamente, conterá pontos em $(1-\delta, 1)$ onde $f(x) = x \approx 1$, e portanto $|f(x) - 2| \approx 1 > 0.1$.

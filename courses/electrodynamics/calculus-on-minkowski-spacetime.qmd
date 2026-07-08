@@ -643,8 +643,8 @@ In an oriented orthonormal basis, $\star \alpha$ can be understood as the form o
    (\star \tilde{w})_{\alpha\beta\gamma} = w_\nu \eta^{\nu\mu} \epsilon_{\mu\alpha\beta\gamma}.
    $$
 2. Derive the expression for $\star(\dd x^\mu)$ explicitly.
-3. Show that $\star^2 = -1$ on 1-forms in Minkowski signature $(-,+,+,+)$.
-4. Verify that $\star 1 = \mathbb{e}^4$ and $\star \mathbb{e}^4 = 1$.
+3. Show that $\star^2 = +1$ on 1-forms in Minkowski signature $(-,+,+,+)$.
+4. Verify that $\star 1 = \mathbb{e}^4$ and $\star \mathbb{e}^4 = -1$.
 5. Compute $\star(\dd x^0 \wedge \dd x^1)$.
 6. Verify explicitly the raising/lowering steps in
    $$

@@ -184,7 +184,7 @@ $$
 $$
 
 ::: {.callout-success}
-A solução logarítmica funciona! Em 2D, $G_2 = -\frac{1}{2\pi}\ln|\mathbf{r} - \mathbf{r}_0|$ é a função de Green do laplaciano. O fator $-1/(2\pi)$ garante a normalização correta.
+A solução logarítmica funciona! Em 2D, $G_2 = \frac{1}{2\pi}\ln|\mathbf{r} - \mathbf{r}_0|$ é a função de Green do laplaciano. O fator $1/(2\pi)$ garante a normalização correta.
 :::
 
 ## Interpretação Física

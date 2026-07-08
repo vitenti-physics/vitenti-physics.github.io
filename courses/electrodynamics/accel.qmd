@@ -23,7 +23,7 @@ $$
 ds^2=-dT^2+dX^2+dY^2+dZ^2.
 $$
 
-Here $T$ denotes $x^0=cT_t$ for ordinary time $T_t$, i.e. time measured in
+Here $T\equiv x^0=ct$ for ordinary time $t$, i.e. time measured in
 length units, consistent with the [conventions](conventions.qmd#coordinates)
 fixed for this course; a proper acceleration $\alpha$ quoted below in these
 units corresponds to $\alpha_{\rm SI}=c^2\alpha$ in SI units.
@@ -93,7 +93,7 @@ The observer closest to the horizon accelerates the most.
 For a congruence with four-velocity $u^\mu$, define
 
 $$
-h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu.
+h_{\mu\nu}=\eta_{\mu\nu}+u_\mu u_\nu.
 $$
 
 The spatial deformation tensor is
