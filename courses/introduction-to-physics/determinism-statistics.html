@@ -725,7 +725,7 @@ window.Quarto = {
 <ul>
 <li>A Ideia Central: A probabilidade de um evento é a sua frequência relativa de ocorrência em um grande número de tentativas idênticas.</li>
 <li>Como Funciona: Imagine lançar uma moeda. A probabilidade de dar “cara” é <span class="math inline">\(P = 0.5\)</span> porque, após lançarmos a moeda <span class="math inline">\(N\)</span> vezes (com <span class="math inline">\(N\)</span> muito grande), esperamos encontrar aproximadamente <span class="math inline">\(N/2\)</span> caras. <span class="math inline">\(P = (\text{Número de sucessos}) / (\text{Número total de tentativas})\)</span>.</li>
-<li>O Conceito de Limite: Crucialmente, a probabilidade é definida como o limite da frequência relativa quando o número de tentativas tende ao infinito: <span class="math inline">\(P(A) = \lim_{n \to \infty} \frac{n_A}{n}\)</span>. Esta é uma idealização matemática: algo que supomos existir mas nunca podemos alcançar na prática. Nunca podemos realizar infinitas tentativas, mas observamos que as frequências relativas tendem a se estabilizar around um valor específico à medida que coletamos mais dados. Esta estabilidade das frequências é o que nos permite falar em “probabilidade” no sentido frequentista.</li>
+<li>O Conceito de Limite: Crucialmente, a probabilidade é definida como o limite da frequência relativa quando o número de tentativas tende ao infinito: <span class="math inline">\(P(A) = \lim_{n \to \infty} \frac{n_A}{n}\)</span>. Esta é uma idealização matemática: algo que supomos existir mas nunca podemos alcançar na prática. Nunca podemos realizar infinitas tentativas, mas observamos que as frequências relativas tendem a se estabilizar em torno de um valor específico à medida que coletamos mais dados. Esta estabilidade das frequências é o que nos permite falar em “probabilidade” no sentido frequentista.</li>
 <li>O Foco: Está inteiramente nos dados coletados. É objetiva e baseada puramente na repetição.</li>
 <li>Limitação: Não é fácil aplicar a eventos únicos e não repetíveis. Qual é a probabilidade frequentista de um candidato específico ganhar uma eleição? A eleição só acontece uma vez. O frequentista diria que isso não é uma probabilidade, mas sim uma certeza que nós desconhecemos.</li>
 </ul>
@@ -736,7 +736,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuração do experimento</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)  <span class="co"># Para reproducibilidade</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)  <span class="co"># Para reprodutibilidade</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>n_lancamentos <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>moeda_justa <span class="op">=</span> [<span class="fl">0.5</span>, <span class="fl">0.5</span>]  <span class="co"># Probabilidades: [0] = cara, [1] = coroa</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -1019,9 +1019,9 @@ P(x = x_0) = \int_{x_0}^{x_0} \rho(x)  \mathrm{d}x = 0.
 &lt;&gt;:24: SyntaxWarning: invalid escape sequence '\s'
 &lt;&gt;:23: SyntaxWarning: invalid escape sequence '\s'
 &lt;&gt;:24: SyntaxWarning: invalid escape sequence '\s'
-/tmp/ipykernel_4247/3023404317.py:23: SyntaxWarning: invalid escape sequence '\s'
+/tmp/ipykernel_4221/3023404317.py:23: SyntaxWarning: invalid escape sequence '\s'
   ax1.plot(x, rho1, "b-", linewidth=2, label="ρ(x) concentrada (\sigma=0.5)")
-/tmp/ipykernel_4247/3023404317.py:24: SyntaxWarning: invalid escape sequence '\s'
+/tmp/ipykernel_4221/3023404317.py:24: SyntaxWarning: invalid escape sequence '\s'
   ax1.plot(x, rho2, "r-", linewidth=2, label="ρ(x) espalhada (\sigma=1.0)")</code></pre>
 </div>
 <div class="cell-output cell-output-display page-columns page-full">
@@ -1048,7 +1048,7 @@ Distribuição espalhada: 0.683</code></pre>
 <ol type="1">
 <li><span class="math inline">\(\rho(x)\)</span> não é uma probabilidade: É uma densidade. Suas unidades são [probabilidade/comprimento].</li>
 <li>Apenas integrais de <span class="math inline">\(\rho(x)\)</span> têm significado probabilístico: <span class="math inline">\(P(a \leq x \leq b) = \int_a^b \rho(x)  \mathrm{d}x\)</span>.</li>
-<li>Valores relativos importam: <span class="math inline">\(\rho(x_2)&gt;\rho(x_1)\)</span> significa que intervalos infinitesimais around <span class="math inline">\(x_2\)</span> são mais prováveis que around <span class="math inline">\(x_1\)</span>.</li>
+<li>Valores relativos importam: <span class="math inline">\(\rho(x_2)&gt;\rho(x_1)\)</span> significa que intervalos infinitesimais em torno de <span class="math inline">\(x_2\)</span> são mais prováveis que em torno de <span class="math inline">\(x_1\)</span>.</li>
 </ol>
 <p>Esta transição conceitual é fundamental para a mecânica quântica, onde a função de onda <span class="math inline">\(\psi(x)\)</span> está relacionada à densidade de probabilidade por: <span class="math display">\[
 \rho(x) = |\psi(x)|^2.
@@ -1089,7 +1089,7 @@ Distribuição espalhada: 0.683</code></pre>
 <h3 class="anchored" data-anchor-id="a-necessidade-da-descrição-probabilística">A Necessidade da Descrição Probabilística</h3>
 <p>Diante dessa impossibilidade prática (e fundamental) de determinar o estado exato, adotamos uma descrição probabilística:</p>
 <p>Em vez de um ponto <span class="math inline">\((x_0, p_0)\)</span> no espaço de fase, temos uma distribuição de probabilidade <span class="math inline">\(\rho(x, p, t_0)\)</span> que representa nosso conhecimento sobre o estado do sistema.</p>
-<p>Interpretação: <span class="math inline">\(\rho(x, p, t_0)  \mathrm{d}x \mathrm{d}p\)</span> representa a probabilidade de encontrar o sistema em um elemento infinitesimal do espaço de fase around do ponto <span class="math inline">\((x, p)\)</span> no instante <span class="math inline">\(t_0\)</span>.</p>
+<p>Interpretação: <span class="math inline">\(\rho(x, p, t_0)  \mathrm{d}x \mathrm{d}p\)</span> representa a probabilidade de encontrar o sistema em um elemento infinitesimal do espaço de fase em torno do ponto <span class="math inline">\((x, p)\)</span> no instante <span class="math inline">\(t_0\)</span>.</p>
 </section>
 <section id="evolução-temporal-da-distribuição" class="level3">
 <h3 class="anchored" data-anchor-id="evolução-temporal-da-distribuição">Evolução Temporal da Distribuição</h3>
@@ -1209,11 +1209,11 @@ Figure&nbsp;4: Evolução da incerteza posicional no MRU
 &lt;&gt;:22: SyntaxWarning: invalid escape sequence '\p'
 &lt;&gt;:31: SyntaxWarning: invalid escape sequence '\s'
 &lt;&gt;:32: SyntaxWarning: invalid escape sequence '\s'
-/tmp/ipykernel_4247/3749421272.py:22: SyntaxWarning: invalid escape sequence '\p'
+/tmp/ipykernel_4221/3749421272.py:22: SyntaxWarning: invalid escape sequence '\p'
   label="Zona de incerteza ($\pm\sigma$)",
-/tmp/ipykernel_4247/3749421272.py:31: SyntaxWarning: invalid escape sequence '\s'
+/tmp/ipykernel_4221/3749421272.py:31: SyntaxWarning: invalid escape sequence '\s'
   print(f"Incerteza inicial: $\sigma_x$ = {x0_sigma:.3f} m")
-/tmp/ipykernel_4247/3749421272.py:32: SyntaxWarning: invalid escape sequence '\s'
+/tmp/ipykernel_4221/3749421272.py:32: SyntaxWarning: invalid escape sequence '\s'
   print(f"Incerteza final (t=1s): $\sigma_x$ = {sigma_x[-1]:.3f} m")</code></pre>
 </div>
 <div class="cell-output cell-output-display page-columns page-full">

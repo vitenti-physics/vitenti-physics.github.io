@@ -740,9 +740,9 @@ p(t) \equiv m \dot{x}(t).
 <section id="expansão-temporal-para-delta-t" class="level3">
 <h3 class="anchored" data-anchor-id="expansão-temporal-para-delta-t">Expansão temporal para <span class="math inline">\(\delta t\)</span></h3>
 <p>Para um pequeno intervalo <span class="math inline">\(\delta t\)</span>, expandindo por Taylor de primeira ordem: <span class="math display">\[
-x(t+\delta t) \approx x(t) + \frac{p(t)}{m} , \delta t,
+x(t+\delta t) \approx x(t) + \frac{p(t)}{m} \, \delta t,
 \]</span> <span class="math display">\[
-p(t+\delta t) \approx p(t) + F(x,t),\delta t.
+p(t+\delta t) \approx p(t) + F(x,t) \, \delta t.
 \]</span></p>
 </section>
 <section id="força-conservativa-e-potencial" class="level3">
@@ -944,8 +944,8 @@ Figure&nbsp;2: Área orientada gerada por dois vetores no plano de fase. O sinal
 <li>Verifique que, para <span class="math inline">\(\mathbf{v}_1 = \begin{pmatrix}x_1 \\ p_1\end{pmatrix}\)</span> e <span class="math inline">\(\mathbf{v}_2 = \begin{pmatrix}x_2 \\ p_2\end{pmatrix}\)</span>, o produto <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2\)</span> é antissimétrico, ou seja, <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2 = - \mathbf{v}_2^T J \mathbf{v}_1\)</span>.</li>
 <li>Mostre que <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2 = 0\)</span> se e somente se os vetores <span class="math inline">\(\mathbf{v}_1\)</span> e <span class="math inline">\(\mathbf{v}_2\)</span> forem linearmente dependentes.</li>
 <li>Para os vetores <span class="math inline">\(\mathbf{v}_1 = \begin{pmatrix}1\\0\end{pmatrix}\)</span> e <span class="math inline">\(\mathbf{v}_2 = \begin{pmatrix}0\\1\end{pmatrix}\)</span>, calcule <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2\)</span> e interprete o resultado geometricamente.</li>
-<li>Considere as funções <span class="math inline">\(f(x,p) = x^2 p\)</span> e <span class="math inline">\(g(x,p) = x p^2\)</span>. Calcule os parênteses de Poisson <span class="math inline">\({f,g}\)</span> explicitamente.</li>
-<li>Demonstre que os parênteses de Poisson satisfazem a antissimetria: <span class="math inline">\({f,g} = -{g,f}\)</span>.</li>
+<li>Considere as funções <span class="math inline">\(f(x,p) = x^2 p\)</span> e <span class="math inline">\(g(x,p) = x p^2\)</span>. Calcule os parênteses de Poisson <span class="math inline">\(\{f,g\}\)</span> explicitamente.</li>
+<li>Demonstre que os parênteses de Poisson satisfazem a antissimetria: <span class="math inline">\(\{f,g\} = -\{g,f\}\)</span>.</li>
 <li>Explique como a interpretação de “área orientada” do determinante <span class="math inline">\(\mathbf{v}_1^T J \mathbf{v}_2\)</span> se relaciona com a independência de funções no espaço de fase.</li>
 </ol>
 </section>
@@ -1040,7 +1040,7 @@ Figure&nbsp;3: Fluxo no espaço de fase gerado pelo Hamiltoniano do oscilador ha
 </div>
 </div>
 </div>
-<p>Note que as curvas de nível de energia, como mostrado na <a href="#fig-hamilton-flow" class="quarto-xref">Figure&nbsp;3</a>, sinalizam os níveis de energia, enquanto o campo vetorial ilustra o fluxo no espaço de fase. As curvas de nível coincidem com as trajetórias clássicas. Essa visualização reforça a interpretação de que o Hamiltoniano atua como gerador de transformações temporais: ao calcular <span class="math inline">\(\dot{f} = {f,H}\)</span>, vemos que o parêntese de Poisson com <span class="math inline">\(H\)</span> fornece a regra de evolução de qualquer observável no tempo.</p>
+<p>Note que as curvas de nível de energia, como mostrado na <a href="#fig-hamilton-flow" class="quarto-xref">Figure&nbsp;3</a>, sinalizam os níveis de energia, enquanto o campo vetorial ilustra o fluxo no espaço de fase. As curvas de nível coincidem com as trajetórias clássicas. Essa visualização reforça a interpretação de que o Hamiltoniano atua como gerador de transformações temporais: ao calcular <span class="math inline">\(\dot{f} = \{f,H\}\)</span>, vemos que o parêntese de Poisson com <span class="math inline">\(H\)</span> fornece a regra de evolução de qualquer observável no tempo.</p>
 </section>
 <section id="exercícios-2" class="level3">
 <h3 class="anchored" data-anchor-id="exercícios-2">Exercícios</h3>
@@ -1048,7 +1048,7 @@ Figure&nbsp;3: Fluxo no espaço de fase gerado pelo Hamiltoniano do oscilador ha
 <li>Mostre que a regra da cadeia aplicada a uma função <span class="math inline">\(f(x(t),p(t))\)</span> leva a <span class="math inline">\(\dot{f} = \{f,H\}\)</span> usando as equações de Hamilton.</li>
 <li>Verifique explicitamente que <span class="math inline">\(\{x,p\} = 1\)</span> e <span class="math inline">\(\{p,x\} = -1\)</span>, e explique o significado físico dessas relações.</li>
 <li>Considere o Hamiltoniano <span class="math inline">\(H = \frac{p^2}{2m} + \frac{1}{2}kx^2\)</span>. Calcule <span class="math inline">\(\dot{x}\)</span> e <span class="math inline">\(\dot{p}\)</span> usando parênteses de Poisson e confirme que obtém as equações de movimento do oscilador harmônico.</li>
-<li>Mostre que se <span class="math inline">\(H\)</span> não depende explicitamente do tempo, então <span class="math inline">\(\dot{H} = {H,H} = 0\)</span>, garantindo a conservação da energia.</li>
+<li>Mostre que se <span class="math inline">\(H\)</span> não depende explicitamente do tempo, então <span class="math inline">\(\dot{H} = \{H,H\} = 0\)</span>, garantindo a conservação da energia.</li>
 <li>Para três funções <span class="math inline">\(A=x\)</span>, <span class="math inline">\(B=p\)</span>, <span class="math inline">\(C=H\)</span>, verifique a identidade de Jacobi: <span class="math display">\[
 \{\{A,B\},C\} + \{\{C,A\},B\} + \{\{B,C\},A\} = 0.
 \]</span></li>
@@ -1207,7 +1207,7 @@ Figure&nbsp;4: Ilustração do valor esperado: barras representam a soma discret
 <section id="exemplo-distribuição-uniforme-em-ab" class="level3">
 <h3 class="anchored" data-anchor-id="exemplo-distribuição-uniforme-em-ab">Exemplo: distribuição uniforme em <span class="math inline">\([a,b]\)</span></h3>
 <p>Para uma distribuição uniforme, <span class="math inline">\(P(x) = 1/(b-a)\)</span>. O valor esperado é <span class="math display">\[
-\mu = \langle x \rangle = \int_a^b x P(x)\mathrm{d}x = \frac{1}{b-a} \int_a^b x\mathrm{d}= \frac{a+b}{2}.
+\mu = \langle x \rangle = \int_a^b x P(x)\mathrm{d}x = \frac{1}{b-a} \int_a^b x\mathrm{d}x = \frac{a+b}{2}.
 \]</span></p>
 <p>O segundo momento é <span class="math display">\[
 \langle x^2 \rangle = \int_a^b x^2 P(x)\mathrm{d}x = \frac{1}{b-a} \int_a^b x^2\mathrm{d}x = \frac{b^3 - a^3}{3(b-a)} = \frac{a^2 + ab + b^2}{3}.
@@ -1291,9 +1291,9 @@ Figure&nbsp;5: Distribuição uniforme em [0,1] mostrando média (linha vermelha
 <section id="desigualdade-de-cauchy-schwarz" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="desigualdade-de-cauchy-schwarz">Desigualdade de Cauchy-Schwarz</h2>
 <p>A desigualdade de Cauchy-Schwarz é uma ferramenta fundamental em álgebra linear e mecânica quântica. Ela estabelece que, para quaisquer vetores <span class="math inline">\(\mathbf{u}\)</span> e <span class="math inline">\(\mathbf{v}\)</span> em um espaço vetorial com produto interno, temos: <span class="math display">\[
-|\langle \mathbf{u}, \mathbf{v} \rangle|^2 \leq \langle \mathbf{u}, \mathbf{u} \rangle , \langle \mathbf{v}, \mathbf{v} \rangle,
+|\langle \mathbf{u}, \mathbf{v} \rangle|^2 \leq \langle \mathbf{u}, \mathbf{u} \rangle \, \langle \mathbf{v}, \mathbf{v} \rangle,
 \]</span> ou equivalentemente, <span class="math display">\[
-|\langle \mathbf{u}, \mathbf{v} \rangle| \leq |\mathbf{u}| , |\mathbf{v}|.
+|\langle \mathbf{u}, \mathbf{v} \rangle| \leq |\mathbf{u}| \, |\mathbf{v}|.
 \]</span></p>
 <section id="interpretação-geométrica-em-mathbbr2" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="interpretação-geométrica-em-mathbbr2">Interpretação geométrica em <span class="math inline">\(\mathbb{R}^2\)</span></h3>
@@ -1389,12 +1389,12 @@ Figure&nbsp;6: Ilustração geométrica da desigualdade de Cauchy-Schwarz em R^2
 \]</span> com <span class="math display">\[
 \sigma_x^2 = \langle f | f \rangle, \quad \sigma_p^2 = \langle g | g \rangle.
 \]</span></p>
-<p>Aplicando a desigualdade de Cauchy–Schwarz: <span class="math display">\[
-\langle f|f \rangle , \langle g|g \rangle \ge |\langle f|g \rangle|^2 \implies \sigma_x^2 \sigma_p^2 \ge |\langle f|g \rangle|^2.
+<p>Aplicando a desigualdade de Cauchy-Schwarz: <span class="math display">\[
+\langle f|f \rangle \, \langle g|g \rangle \ge |\langle f|g \rangle|^2 \implies \sigma_x^2 \sigma_p^2 \ge |\langle f|g \rangle|^2.
 \]</span></p>
 <p>O produto <span class="math inline">\(\langle f|g \rangle\)</span> pode ser decomposto em comutador e anti-comutador: <span class="math display">\[
 \langle f|g \rangle = \frac{1}{2} \langle \psi | \{\hat{x}-\langle x\rangle, \hat{p}-\langle p\rangle\} | \psi \rangle + \frac{1}{2} \langle \psi | [\hat{x}-\langle x\rangle, \hat{p}-\langle p\rangle] | \psi \rangle,
-\]</span> onde <span class="math inline">\({\cdot,\cdot}\)</span> é o anti-comutador e <span class="math inline">\([\cdot,\cdot]\)</span> é o comutador.</p>
+\]</span> onde <span class="math inline">\(\{\cdot,\cdot\}\)</span> é o anti-comutador e <span class="math inline">\([\cdot,\cdot]\)</span> é o comutador.</p>
 <ul>
 <li>O anti-comutador é hermitiano e, portanto, produz um número real.</li>
 <li>O comutador é anti-hermitiano e, portanto, produz um número imaginário puro.</li>
@@ -1402,9 +1402,9 @@ Figure&nbsp;6: Ilustração geométrica da desigualdade de Cauchy-Schwarz em R^2
 <p>Se considerarmos apenas a contribuição do comutador, que fornece o limite fundamental, temos: <span class="math display">\[
 |\langle f|g \rangle|^2 \ge \left|\frac{1}{2}\langle [\hat{x},\hat{p}] \rangle\right|^2 = \frac{\hbar^2}{4},
 \]</span> o que leva à forma usual da desigualdade de Heisenberg: <span class="math display">\[
-\sigma_x , \sigma_p \ge \frac{\hbar}{2}.
+\sigma_x \, \sigma_p \ge \frac{\hbar}{2}.
 \]</span></p>
-<p>A interpretação é clara: quanto mais preciso conhecemos a posição ((<span class="math inline">\(\sigma_x\)</span>) pequeno), menos preciso é o momento ((<span class="math inline">\(\sigma_p\)</span>) grande), e vice-versa. O termo do anti-comutador pode aumentar a desigualdade, mas não diminui o limite fundamental estabelecido pelo comutador.</p>
+<p>A interpretação é clara: quanto mais preciso conhecemos a posição (<span class="math inline">\(\sigma_x\)</span> pequeno), menos preciso é o momento (<span class="math inline">\(\sigma_p\)</span> grande), e vice-versa. O termo do anti-comutador pode aumentar a desigualdade, mas não diminui o limite fundamental estabelecido pelo comutador.</p>
 <div id="cell-fig-comm-anticomm" class="cell page-columns page-full" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>

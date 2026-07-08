@@ -613,6 +613,7 @@ window.Quarto = {
   <li><a href="#radiation-zone" id="toc-radiation-zone" class="nav-link" data-scroll-target="#radiation-zone"><span class="header-section-number">11</span> Radiation zone</a></li>
   <li><a href="#covariant-radiation-tensor" id="toc-covariant-radiation-tensor" class="nav-link" data-scroll-target="#covariant-radiation-tensor"><span class="header-section-number">12</span> Covariant radiation tensor</a></li>
   <li><a href="#relativistic-larmor-formula" id="toc-relativistic-larmor-formula" class="nav-link" data-scroll-target="#relativistic-larmor-formula"><span class="header-section-number">13</span> Relativistic Larmor formula</a></li>
+  <li><a href="#manifestly-covariant-derivation" id="toc-manifestly-covariant-derivation" class="nav-link" data-scroll-target="#manifestly-covariant-derivation"><span class="header-section-number">14</span> Manifestly covariant derivation</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="moving-charge-radiation.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -1021,12 +1022,45 @@ F_{j0}^{\rm rad}\Delta x^0+F_{ji}^{\rm rad}\Delta x^i=0
 \;\Longrightarrow\;
 \frac{E_j}{c}=-\epsilon_{jik}\hat n^iB_k
 \;\Longrightarrow\;
+\mathbf E_{\rm rad}=-c\,\hat{\mathbf n}\times\mathbf B_{\rm rad}.
+\]</span> This last step only solves for <span class="math inline">\(\mathbf E_{\rm rad}\)</span> in terms of <span class="math inline">\(\mathbf B_{\rm rad}\)</span>, not the other way around: a cross product with <span class="math inline">\(\hat{\mathbf n}\)</span> only fixes the component of <span class="math inline">\(\mathbf B_{\rm rad}\)</span> <em>perpendicular</em> to <span class="math inline">\(\hat{\mathbf n}\)</span>, so a hypothetical piece of <span class="math inline">\(\mathbf B_{\rm rad}\)</span> along <span class="math inline">\(\hat{\mathbf n}\)</span> would drop out of <span class="math inline">\(\hat{\mathbf n}\times\mathbf B_{\rm rad}\)</span> and go undetected. Inverting the relation therefore needs one more fact — that <span class="math inline">\(\mathbf B_{\rm rad}\)</span>, too, has no component along <span class="math inline">\(\hat{\mathbf n}\)</span>.</p>
+<p><strong>Transversality of <span class="math inline">\(\mathbf B_{\rm rad}\)</span>.</strong> This extra fact follows from the structure of <span class="math inline">\(F_{\mu\nu}^{\rm rad}\)</span> itself, not from the equation above. Writing <span class="math inline">\(C\equiv\mu_0q/[4\pi(u\cdot\Delta x)^2]\)</span> and <span class="math display">\[
+b_\nu\equiv a_\nu-\lambda u_\nu,
+\qquad
+\lambda\equiv\frac{\Delta x\cdot a}{u\cdot\Delta x},
+\]</span> geometrically <span class="math inline">\(b^\mu\)</span> is <span class="math inline">\(a^\mu\)</span> with its “<span class="math inline">\(\Delta x\)</span>-ward” part removed: <span class="math inline">\(\Delta x^\mu\)</span> is null, so it cannot be used to build a projector the usual way (<span class="math inline">\(\Delta x\cdot\Delta x=0\)</span> in the denominator would blow up), and <span class="math inline">\(u^\mu\)</span> is the only other vector on hand at <span class="math inline">\(\tau_r\)</span> to do the job instead — <span class="math inline">\(\lambda\)</span> is fixed by exactly the requirement <span class="math inline">\(\Delta x\cdot b=0\)</span> (confirmed in <a href="#covariant-radiation-tensor">Covariant radiation tensor</a> below, where <span class="math inline">\(b\)</span> is used again). With this, the boxed bracket above is, term by term, already of the form <span class="math display">\[
+F_{\mu\nu}^{\rm rad}=C\big(\Delta x_\mu b_\nu-\Delta x_\nu b_\mu\big).
+\]</span> For <span class="math inline">\(\mu=i,\nu=j\)</span> both spatial, <span class="math inline">\(\Delta x_i=R\hat n_i\)</span>, so <span class="math display">\[
+F_{ij}^{\rm rad}=CR\big(\hat n_ib_j-\hat n_jb_i\big)
+\;\Longrightarrow\;
+\mathbf B_{\rm rad}=CR\,\hat{\mathbf n}\times\mathbf b,
+\]</span> manifestly transverse to <span class="math inline">\(\hat{\mathbf n}\)</span> — being itself a cross product with <span class="math inline">\(\hat{\mathbf n}\)</span> — for a source moving with any velocity, not only one instantaneously at rest.</p>
+<p><strong>Inverting.</strong> With <span class="math inline">\(\hat{\mathbf n}\cdot\mathbf B_{\rm rad}=0\)</span> established independently, cross <span class="math inline">\(\mathbf E_{\rm rad}/c=-\hat{\mathbf n}\times\mathbf
+B_{\rm rad}\)</span> with <span class="math inline">\(\hat{\mathbf n}\)</span> and expand the double cross product using <span class="math inline">\(\hat{\mathbf n}\cdot\hat{\mathbf n}=1\)</span>, <span class="math display">\[
+\hat{\mathbf n}\times\frac{\mathbf E_{\rm rad}}c
+=
+-\hat{\mathbf n}\times(\hat{\mathbf n}\times\mathbf B_{\rm rad})
+=
+\mathbf B_{\rm rad}(\hat{\mathbf n}\cdot\hat{\mathbf n})-\hat{\mathbf n}(\hat{\mathbf n}\cdot\mathbf B_{\rm rad})
+=
+\mathbf B_{\rm rad},
+\]</span> so that <span class="math display">\[
 \boxed{
 \mathbf B_{\rm rad}=\frac1c\,\hat{\mathbf n}\times\mathbf E_{\rm rad},
 \qquad
 \hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0.
 }
-\]</span> This is exact, for a source moving with any velocity: the radiation field looks locally like a plane wave propagating along <span class="math inline">\(\hat{\mathbf n}\)</span>, which is why <span class="math inline">\(|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|\)</span> is used below. The explicit radiation field itself follows from <span class="math inline">\(E_i^{\rm rad}=-cF_{0i}^{\rm rad}\)</span>, <span class="math display">\[
+\]</span> This is exact, for a source moving with any velocity: the radiation field looks locally like a plane wave propagating along <span class="math inline">\(\hat{\mathbf n}\)</span>, with <span class="math inline">\(\hat{\mathbf n}\)</span>, <span class="math inline">\(\mathbf E_{\rm rad}\)</span>, <span class="math inline">\(\mathbf B_{\rm rad}\)</span> mutually orthogonal — <span class="math inline">\(\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0\)</span> is boxed above, and <span class="math inline">\(\mathbf B_{\rm rad}\cdot\mathbf E_{\rm rad}=0\)</span> follows immediately since a cross product is orthogonal to both factors entering it. This orthogonality of <span class="math inline">\(\hat{\mathbf n}\)</span> and <span class="math inline">\(\mathbf E_{\rm rad}\)</span> is exactly what fixes the <em>magnitude</em> of <span class="math inline">\(\mathbf B_{\rm rad}\)</span>: taking the norm of the boxed cross product and using <span class="math inline">\(\sin 90^\circ=1\)</span>, <span class="math display">\[
+|\mathbf B_{\rm rad}|
+=
+\frac1c\big|\hat{\mathbf n}\times\mathbf E_{\rm rad}\big|
+=
+\frac1c\,\big|\hat{\mathbf n}\big|\,\big|\mathbf E_{\rm rad}\big|\sin 90^\circ
+=
+\frac1c\big|\mathbf E_{\rm rad}\big|,
+\]</span> so that <span class="math display">\[
+\boxed{|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|.}
+\]</span> Had <span class="math inline">\(\hat{\mathbf n}\)</span> and <span class="math inline">\(\mathbf E_{\rm rad}\)</span> not been perpendicular, the <span class="math inline">\(\sin\theta\)</span> factor would have survived and no such clean relation would hold — transversality is doing all the work here, not just the cross product itself. This magnitude relation is used below. Its <strong>covariant counterpart</strong> is that the radiation field is <em>null</em>, <span class="math inline">\(F_{\rm rad}^{\mu\nu}F_{\mu\nu}^{\rm rad}=0\)</span>, derived in <a href="#covariant-radiation-tensor">Covariant radiation tensor</a>: since <span class="math inline">\(F^{\mu\nu}F_{\mu\nu}=2(B^2-E^2/c^2)\)</span> for any electromagnetic field, this single Lorentz-invariant statement is exactly <span class="math inline">\(E=cB\)</span>, but now frame-independent — it is the coordinate-free version of the component relation just derived. The explicit radiation field itself follows from <span class="math inline">\(E_i^{\rm rad}=-cF_{0i}^{\rm rad}\)</span>, <span class="math display">\[
 \mathbf E_{\rm rad}\cdot\hat{\mathbf e}_i
 =
 -\frac{\mu_0qc}{4\pi(u\cdot\Delta x)^2}
@@ -1052,7 +1086,7 @@ u=\varepsilon_0E^2,
 </section>
 <section id="covariant-radiation-tensor" class="level1" data-number="12">
 <h1 data-number="12"><span class="header-section-number">12</span> Covariant radiation tensor</h1>
-<p>Write <span class="math inline">\(F_{\mu\nu}^{\rm rad}=C(\Delta x_\mu b_\nu-\Delta x_\nu b_\mu)\)</span>, with <span class="math inline">\(C\equiv\mu_0q/[4\pi(u\cdot\Delta x)^2]\)</span> and <span class="math inline">\(b_\nu\equiv a_\nu-\lambda u_\nu\)</span>, <span class="math inline">\(\lambda\equiv(\Delta x\cdot a)/(u\cdot\Delta x)\)</span>, matching the bracket in the formula above term by term. Two facts make what follows easy: <span class="math display">\[
+<p>Recall from above, <span class="math inline">\(F_{\mu\nu}^{\rm rad}=C(\Delta x_\mu b_\nu-\Delta x_\nu b_\mu)\)</span>, with <span class="math inline">\(C\equiv\mu_0q/[4\pi(u\cdot\Delta x)^2]\)</span> and <span class="math inline">\(b_\nu\equiv a_\nu-\lambda u_\nu\)</span>, <span class="math inline">\(\lambda\equiv(\Delta x\cdot a)/(u\cdot\Delta x)\)</span> — the same regrouping already used to establish <span class="math inline">\(\hat{\mathbf n}\cdot\mathbf B_{\rm rad}=0\)</span>. Two facts make what follows easy: <span class="math display">\[
 \Delta x\cdot b=\Delta x\cdot a-\lambda(\Delta x\cdot u)=\Delta x\cdot a-\Delta x\cdot a=0,
 \qquad
 \Delta x\cdot\Delta x=0.
@@ -1062,7 +1096,8 @@ F^{\alpha\beta}_{\rm rad}F_{\alpha\beta}^{\rm rad}
 2C^2\big[(\Delta x\cdot\Delta x)(b\cdot b)-(\Delta x\cdot b)^2\big]
 =
 0,
-\]</span> consistent with <span class="math inline">\(|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|\)</span> found above (a plane wave has <span class="math inline">\(F^{\alpha\beta}F_{\alpha\beta}=2(B^2-E^2/c^2)=0\)</span> exactly when <span class="math inline">\(E=cB\)</span>). So the second term of <span class="math inline">\(T^{\mu\nu}=\frac1{\mu_0}(F^{\mu\alpha}F^\nu{}_\alpha-\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta})\)</span> drops out for the radiation piece, leaving <span class="math display">\[
+\]</span> consistent with <span class="math inline">\(|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|\)</span> found above (a plane wave has <span class="math inline">\(F^{\alpha\beta}F_{\alpha\beta}=2(B^2-E^2/c^2)=0\)</span> exactly when <span class="math inline">\(E=cB\)</span>). This is one of the two Lorentz invariants built from <span class="math inline">\(F^{\mu\nu}\)</span>; the other, built from its Hodge dual, is proportional to <span class="math inline">\(\mathbf
+E\cdot\mathbf B\)</span>, and it vanishes too, since <span class="math inline">\(\mathbf B_{\rm rad}\cdot\mathbf E_{\rm rad}=0\)</span> was already noted above. Both invariants vanishing together is exactly the covariant statement that the radiation field is null, i.e.&nbsp;plane-wave-like: unlike a generic field, there is no frame in which it looks purely electric or purely magnetic. So the second term of <span class="math inline">\(T^{\mu\nu}=\frac1{\mu_0}(F^{\mu\alpha}F^\nu{}_\alpha-\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta})\)</span> drops out for the radiation piece, leaving <span class="math display">\[
 \mu_0T^{\mu\nu}_{\rm rad}
 =
 F^{\mu\alpha}_{\rm rad}F^{\nu}{}_{\alpha,\rm rad}
@@ -1128,6 +1163,92 @@ P
 a^\mu a_\mu.
 }
 \]</span></p>
+</section>
+<section id="manifestly-covariant-derivation" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Manifestly covariant derivation</h1>
+<p>Steps 1–3 above compute the flux in one convenient frame (the rest frame) and then invoke Lorentz invariance to promote the result to every frame. Dirac’s original treatment (1938) instead integrates the already-covariant <span class="math inline">\(T^{\mu\nu}_{\rm rad}\)</span> found above directly, keeping <span class="math inline">\(u^\mu\)</span> general throughout, so the result is covariant by construction rather than by appeal to an invariance argument at the end.</p>
+<p><strong>The invariant celestial sphere.</strong> Define <span class="math display">\[
+n^\mu\equiv\frac{\Delta x^\mu}{R}-u^\mu,
+\qquad
+R\equiv-u\cdot\Delta x,
+\]</span> so that <span class="math inline">\(\Delta x^\mu=R(u^\mu+n^\mu)\)</span>. This <span class="math inline">\(n^\mu\)</span> is the covariant, frame-independent replacement for <span class="math inline">\(\hat{\mathbf n}\)</span>: using <span class="math inline">\(u\cdot u=-1\)</span> and <span class="math inline">\(\Delta x\cdot\Delta x=0\)</span>, <span class="math display">\[
+n\cdot u=\frac{\Delta x\cdot u}{R}-u\cdot u=-1-(-1)=0,
+\qquad
+n\cdot n=\frac{\Delta x\cdot\Delta x}{R^2}-\frac{2\,u\cdot\Delta x}{R}+u\cdot u=0+2-1=1,
+\]</span> so <span class="math inline">\(n^\mu\)</span> is a unit spacelike vector orthogonal to <span class="math inline">\(u^\mu\)</span> — it ranges over the unit sphere in the rest space of <span class="math inline">\(u^\mu(\tau_r)\)</span>, whatever frame is used to write down its components. In the source’s instantaneous rest frame this is exactly the sphere <span class="math inline">\(\hat{\mathbf n}\)</span> of Step 1; here it is kept general.</p>
+<p><strong>Rewriting the invariants.</strong> Since <span class="math inline">\(a\cdot u=0\)</span>, <span class="math display">\[
+\Delta x\cdot a=R(u\cdot a+n\cdot a)=R\,(n\cdot a),
+\qquad
+(\Delta x\cdot u)^2=R^2,
+\]</span> so the bracket in <span class="math inline">\(T^{\mu\nu}_{\rm rad}\)</span> becomes <span class="math inline">\((a\cdot a)(\Delta x\cdot u)^2-(\Delta x\cdot a)^2=R^2\big[(a\cdot a)-(n\cdot a)^2\big]\)</span>, and <span class="math display">\[
+T^{\mu\nu}_{\rm rad}
+=
+\frac{\mu_0q^2}{16\pi^2R^2}
+\Big[(a\cdot a)-(n\cdot a)^2\Big]
+(u^\mu+n^\mu)(u^\nu+n^\nu).
+\]</span></p>
+<p><strong>Aside: <span class="math inline">\(b\)</span> and <span class="math inline">\(n\)</span> are not independent.</strong> The vector <span class="math inline">\(b^\mu\)</span> used earlier to prove <span class="math inline">\(\hat{\mathbf n}\cdot\mathbf B_{\rm rad}=0\)</span> and the <span class="math inline">\(n^\mu\)</span> just introduced are secretly the same construction viewed twice. Since <span class="math inline">\(\Delta x\cdot b=0\)</span> (shown in <a href="#covariant-radiation-tensor">Covariant radiation tensor</a>) and <span class="math inline">\(\Delta x=R(u+n)\)</span>, <span class="math display">\[
+0=\Delta x\cdot b=R(u\cdot b+n\cdot b)
+\;\Longrightarrow\;
+n\cdot b=-u\cdot b=-\lambda,
+\]</span> using <span class="math inline">\(u\cdot b=u\cdot a-\lambda(u\cdot u)=\lambda\)</span> (from <span class="math inline">\(a\cdot u=0\)</span>, <span class="math inline">\(u\cdot u=-1\)</span>). So <span class="math inline">\(b\)</span>’s components along <span class="math inline">\(u\)</span> and along <span class="math inline">\(n\)</span> are not independent data — they are equal and opposite, both fixed by the single number <span class="math inline">\(\lambda\)</span>. This is no accident: <span class="math inline">\(F_{\mu\nu}^{\rm rad}=C(\Delta x_\mu
+b_\nu-\Delta x_\nu b_\mu)\)</span> is unchanged by <span class="math inline">\(b_\nu\to b_\nu+\kappa\Delta
+x_\nu=b_\nu+\kappa R(u_\nu+n_\nu)\)</span> for any scalar <span class="math inline">\(\kappa\)</span> (a term along <span class="math inline">\(\Delta x_\nu\)</span> drops out of its own wedge product), so only the part of <span class="math inline">\(b\)</span> transverse to <span class="math inline">\(\Delta x\)</span> — equivalently, transverse to <span class="math inline">\(u+n\)</span> — is ever physical; the equal-and-opposite <span class="math inline">\(u\)</span>- and <span class="math inline">\(n\)</span>-components found above are exactly this redundant, unphysical piece. Removing it, using <span class="math inline">\(\lambda=-(n\cdot a)\)</span> (immediate from <span class="math inline">\(\Delta x\cdot a=R(n\cdot a)\)</span> above), leaves <span class="math display">\[
+b^\mu=\underbrace{(n\cdot a)(u^\mu+n^\mu)}_{\text{redundant, }\propto\,\Delta x^\mu}
++\;a_\perp^\mu,
+\qquad
+a_\perp^\mu\equiv a^\mu-(n\cdot a)n^\mu,
+\]</span> so <span class="math inline">\(b\)</span> is really just <span class="math inline">\(a_\perp\)</span> in disguise: the four-acceleration projected transverse to <em>both</em> <span class="math inline">\(u^\mu\)</span> and <span class="math inline">\(n^\mu\)</span> (already transverse to <span class="math inline">\(u^\mu\)</span> alone, since <span class="math inline">\(a\cdot u=0\)</span>). This doubly-transverse piece is exactly what shows up explicitly in the rest-frame dipole field found earlier, <span class="math inline">\(\mathbf E_{\rm rad}\propto\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf
+v})\hat{\mathbf n}\)</span> — <span class="math inline">\(b\)</span> was never a new ingredient, only a covariant repackaging of that same transverse acceleration.</p>
+<p><strong>Flux through the sphere.</strong> The radiated four-momentum per unit proper time is <span class="math display">\[
+\frac{\mathrm{d}P^\mu}{\mathrm{d}\tau}
+=
+\oint T^{\mu\nu}_{\rm rad}\,n_\nu\,R^2\,\mathrm{d}\Omega(n),
+\]</span> with <span class="math inline">\(\mathrm{d}\Omega(n)\)</span> the invariant solid-angle measure on the unit sphere in the rest space of <span class="math inline">\(u^\mu(\tau_r)\)</span> — the same measure as in Step 2, now left covariant instead of specialized to <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span>. Using <span class="math inline">\(n\cdot(u+n)=n\cdot u+n\cdot n=1\)</span>, <span class="math display">\[
+T^{\mu\nu}_{\rm rad}\,n_\nu\,R^2
+=
+\frac{\mu_0q^2}{16\pi^2}
+\Big[(a\cdot a)-(n\cdot a)^2\Big](u^\mu+n^\mu).
+\]</span></p>
+<p><strong>Sphere integrals.</strong> The moments of <span class="math inline">\(n^\mu\)</span> over this sphere generalize <span class="math inline">\(\oint\hat n^i\hat n^j\,\mathrm{d}\Omega=\frac{4\pi}3\delta^{ij}\)</span>: odd moments vanish by <span class="math inline">\(n\to-n\)</span> symmetry, and the quadratic moment must be built from the only invariant tensors available that respect <span class="math inline">\(n\cdot u=0\)</span>, namely <span class="math inline">\(\eta^{\mu\nu}+u^\mu u^\nu\)</span>, with the coefficient fixed by matching traces (<span class="math inline">\(\eta_{\mu\nu}(\eta^{\mu\nu}+u^\mu u^\nu)=4-1=3\)</span> against <span class="math inline">\(\oint n\cdot n\,\mathrm{d}\Omega=4\pi\)</span>): <span class="math display">\[
+\oint\mathrm{d}\Omega=4\pi,
+\qquad
+\oint n^\mu\,\mathrm{d}\Omega=0,
+\qquad
+\oint n^\mu n^\nu\,\mathrm{d}\Omega=\frac{4\pi}3\big(\eta^{\mu\nu}+u^\mu u^\nu\big),
+\qquad
+\oint n^\mu n^\nu n^\rho\,\mathrm{d}\Omega=0.
+\]</span> Hence, writing <span class="math inline">\((n\cdot a)^2=a_\alpha a_\beta\,n^\alpha n^\beta\)</span> and using <span class="math inline">\(a\cdot u=0\)</span> again, <span class="math display">\[
+\oint(n\cdot a)^2\,\mathrm{d}\Omega
+=
+a_\alpha a_\beta\cdot\frac{4\pi}3\big(\eta^{\alpha\beta}+u^\alpha u^\beta\big)
+=
+\frac{4\pi}3(a\cdot a),
+\qquad
+\oint(n\cdot a)^2n^\mu\,\mathrm{d}\Omega=0.
+\]</span></p>
+<p><strong>Assembling.</strong> Substituting these moments term by term, <span class="math display">\[
+\frac{\mathrm{d}P^\mu}{\mathrm{d}\tau}
+=
+\frac{\mu_0q^2}{16\pi^2}
+\left[
+(a\cdot a)\cdot4\pi\,u^\mu
+-
+\frac{4\pi}3(a\cdot a)\,u^\mu
++
+(a\cdot a)\cdot0-0
+\right]
+=
+\frac{\mu_0q^2}{16\pi^2}\cdot\frac{8\pi}3(a\cdot a)\,u^\mu,
+\]</span> so that <span class="math display">\[
+\boxed{
+\frac{\mathrm{d}P^\mu}{\mathrm{d}\tau}
+=
+\frac{\mu_0q^2}{6\pi}
+(a^\nu a_\nu)\,u^\mu.
+}
+\]</span></p>
+<p><strong>Recovering Step 3, and more.</strong> In the source’s own instantaneous rest frame, <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span>, so only the <span class="math inline">\(\mu=0\)</span> component survives; with <span class="math inline">\(P^0=E/c\)</span> this gives <span class="math inline">\(P=c\,\mathrm{d}P^0/\mathrm{d}\tau=\mu_0q^2c(a\cdot a)/6\pi\)</span>, the same boxed formula as Step 3. But the derivation here never left a general frame, so it delivers a stronger, manifestly covariant statement for free: the four-momentum radiated per unit proper time is <em>exactly</em> along <span class="math inline">\(u^\mu\)</span>, in every frame — there is no net recoil transverse to the source’s own motion, not just on average in its rest frame. This is the calculation Dirac used as the starting point for deriving the radiation-reaction (Abraham–Lorentz–Dirac) force, by balancing this momentum loss against the mechanical momentum of the charge.</p>
 <hr>
 <p>Feel free to create issues, ask questions, or suggest improvements in the <a href="https://github.com/vitenti-physics/undergrad">GitHub repository</a>.</p>
 

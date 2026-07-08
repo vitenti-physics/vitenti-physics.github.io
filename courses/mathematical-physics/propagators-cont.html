@@ -567,10 +567,20 @@ window.Quarto = {
 <section id="matriz-simplética" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="matriz-simplética"><span class="header-section-number">2.2</span> Matriz Simplética</h2>
 <p>A estrutura simplética é codificada pela matriz: <span class="math display">\[ \Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix} \]</span> Esta matriz é antissimétrica (<span class="math inline">\(\Omega^T = -\Omega\)</span>) e desempenha um papel fundamental na definição do Wronskiano conservado.</p>
-<div class="note">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>O Wronskiano de duas soluções <span class="math inline">\(V_1\)</span> e <span class="math inline">\(V_2\)</span> é dado por:</p>
 <p><span class="math display">\[ W(V_1, V_2) = V_1^T \Omega V_2 \]</span></p>
 <p>e é uma constante do movimento (conservado).</p>
+</div>
 </div>
 </section>
 <section id="hamiltonianos-e-propriedades" class="level2" data-number="2.3">
@@ -586,21 +596,31 @@ window.Quarto = {
 </section>
 <section id="solução-geral" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="solução-geral"><span class="header-section-number">3.2</span> Solução Geral</h2>
-<p>Qualquer solução <span class="math inline">\(U\)</span> pode ser escrita como combinação linear: <span class="math display">\[ U = \alpha_1 V_1 + \alpha_2 V_2 \]</span> Os coeficientes <span class="math inline">\(\alpha_i\)</span> são constantes e podem ser obtidos via: <span class="math display">\[ \alpha_1 = 2 (V_1^T \Omega U), \quad \alpha_2 = -2 (V_2^T \Omega U) \]</span></p>
+<p>Qualquer solução <span class="math inline">\(U\)</span> pode ser escrita como combinação linear: <span class="math display">\[ U = \alpha_1 V_1 + \alpha_2 V_2 \]</span> Os coeficientes <span class="math inline">\(\alpha_i\)</span> são constantes e podem ser obtidos via: <span class="math display">\[ \alpha_1 = -2 (V_2^T \Omega U), \quad \alpha_2 = 2 (V_1^T \Omega U) \]</span></p>
 </section>
 </section>
 <section id="complexificação-do-espaço-de-soluções" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Complexificação do Espaço de Soluções</h1>
 <section id="construção-da-solução-complexa" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="construção-da-solução-complexa"><span class="header-section-number">4.1</span> Construção da Solução Complexa</h2>
-<p>Definimos a solução complexificada: <span class="math display">\[ V = V_1 + i V_2 \]</span> Esta solução satisfaz a mesma equação diferencial no espaço complexo: <span class="math display">\[ V' = \Omega H V \]</span></p>
+<p>Definimos a solução complexificada: <span class="math display">\[ V = V_1 - i V_2 \]</span> Esta solução satisfaz a mesma equação diferencial no espaço complexo: <span class="math display">\[ V' = \Omega H V \]</span></p>
 </section>
 <section id="produto-simplético-hermitiano" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="produto-simplético-hermitiano"><span class="header-section-number">4.2</span> Produto Simplético Hermitiano</h2>
-<p>Introduzimos o produto: <span class="math display">\[ \langle V, U \rangle = -i V^\dagger \Omega U \]</span> onde <span class="math inline">\(V^\dagger = (V^*)^T\)</span> é o conjugado Hermitiano.</p>
-<div class="important">
+<p>Introduzimos o produto: <span class="math display">\[ \langle V, U \rangle = i V^\dagger \Omega U \]</span> onde <span class="math inline">\(V^\dagger = (V^*)^T\)</span> é o conjugado Hermitiano.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Para soluções com normalização <span class="math inline">\(V_1^T\Omega V_2 = 1/2\)</span>, temos:</p>
 <p><span class="math display">\[ \langle V, V \rangle = 1 \]</span></p>
+</div>
 </div>
 </section>
 <section id="subespaços-de-norma-positiva-e-negativa" class="level2" data-number="4.3">
@@ -610,8 +630,18 @@ window.Quarto = {
 <li><strong>Norma positiva</strong>: <span class="math inline">\(\langle V, V \rangle = 1\)</span></li>
 <li><strong>Norma negativa</strong>: <span class="math inline">\(\langle V^*, V^* \rangle = -1\)</span></li>
 </ul>
-<div class="warning">
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Esta estrutura é análoga à que aparece na mecânica quântica relativística, onde soluções de energia positiva e negativa correspondem a partículas e antipartículas.</p>
+</div>
 </div>
 </section>
 </section>
@@ -624,8 +654,18 @@ window.Quarto = {
 <section id="solução-passada-avançada" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="solução-passada-avançada"><span class="header-section-number">5.2</span> Solução Passada (Avançada)</h2>
 <p>A solução que propaga informações do futuro para o passado é: <span class="math display">\[ U(x) = \Theta(x_0 - x) [\alpha V(x) + \alpha^* V^*(x)] \]</span> satisfazendo: <span class="math display">\[ U' - \Omega H U = -\delta(x - x_0) U_0 \]</span></p>
-<div class="note">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>A diferença de sinal entre as soluções futura e passada é fundamental para a construção de propagadores em teoria quântica de campos.</p>
+</div>
 </div>
 </section>
 </section>
@@ -638,8 +678,18 @@ window.Quarto = {
 <section id="comportamento-da-equação" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="comportamento-da-equação"><span class="header-section-number">6.2</span> Comportamento da Equação</h2>
 <p>A equação de movimento é invariante sob reversão temporal se: <span class="math display">\[ T H(x) T = H(-x) \]</span></p>
-<div class="important">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>A invariância por reversão temporal leva à relação entre soluções futuras e passadas, fundamental para a construção de operadores de criação e aniquilação.</p>
+</div>
 </div>
 </section>
 </section>
@@ -647,7 +697,7 @@ window.Quarto = {
 <h1 data-number="7"><span class="header-section-number">7</span> Visualização Computacional</h1>
 <section id="propagador-do-oscilador-harmônico" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="propagador-do-oscilador-harmônico"><span class="header-section-number">7.1</span> Propagador do Oscilador Harmônico</h2>
-<div id="41a05ca4" class="cell" data-execution_count="1">
+<div id="a0e732fe" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -695,7 +745,7 @@ window.Quarto = {
 </section>
 <section id="propagadores-futuro-e-passado" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="propagadores-futuro-e-passado"><span class="header-section-number">7.2</span> Propagadores Futuro e Passado</h2>
-<div id="d982e9d1" class="cell" data-execution_count="2">
+<div id="9fcca915" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulação de um pulso instantâneo (função de Green)</span></span>
@@ -771,12 +821,12 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>Solução Complexa (<span class="math inline">\(V\)</span>)</td>
-<td>Combinação <span class="math inline">\(V_1 + iV_2\)</span></td>
+<td>Combinação <span class="math inline">\(V_1 - iV_2\)</span></td>
 <td>Unifica duas soluções independentes</td>
 </tr>
 <tr class="odd">
 <td>Produto Hermitiano</td>
-<td><span class="math inline">\(\langle V,U \rangle = -iV^\dagger\Omega U\)</span></td>
+<td><span class="math inline">\(\langle V,U \rangle = iV^\dagger\Omega U\)</span></td>
 <td>Define norma e ortogonalidade</td>
 </tr>
 <tr class="even">
@@ -821,9 +871,8 @@ window.Quarto = {
 </ol></li>
 <li><strong>Complexificação (Essencial)</strong>
 <ol type="a">
-<li>Verifique que <span class="math inline">\(V = V_1 + iV_2\)</span> satisfaz a mesma equação diferencial.<br>
-</li>
-<li>Calcule <span class="math inline">\(\langle V, V \rangle = -iV^\dagger\Omega V\)</span> e mostre que é igual a 1.</li>
+<li>Verifique que <span class="math inline">\(V = V_1 - iV_2\)</span> satisfaz a mesma equação diferencial.</li>
+<li>Calcule <span class="math inline">\(\langle V, V \rangle = iV^\dagger\Omega V\)</span> e mostre que é igual a 1.</li>
 </ol></li>
 <li><strong>Norma Negativa</strong>
 <ol type="a">

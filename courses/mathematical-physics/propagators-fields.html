@@ -750,7 +750,7 @@ Important
 </section>
 <section id="produto-interno-simplético-1" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="produto-interno-simplético-1"><span class="header-section-number">3.3.2</span> Produto Interno Simplético</h3>
-<p>O produto interno simplético para campos é: <span class="math display">\[(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} Q_1^\dagger \Omega Q_2 d^3x\]</span> onde: <span class="math display">\[\Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}\]</span> Expandindo: <span class="math display">\[(Q_1, Q_2)_\Omega = -i \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x\]</span></p>
+<p>O produto interno simplético para campos é: <span class="math display">\[(Q_1, Q_2)_\Omega = i \int_{\mathbb{R}^3} Q_1^\dagger \Omega Q_2 d^3x\]</span> onde: <span class="math display">\[\Omega = \begin{pmatrix} 0 &amp; 1 \\ -1 &amp; 0 \end{pmatrix}\]</span> Expandindo: <span class="math display">\[(Q_1, Q_2)_\Omega = i \int_{\mathbb{R}^3} (\phi_1 \pi_2 - \phi_2 \pi_1) d^3x\]</span></p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -761,7 +761,7 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>O fator <span class="math inline">\(-i\)</span> na definição do produto interno é crucial para garantir que o produto seja positivo definido quando trabalhamos com funções complexas.</p>
+<p>O fator <span class="math inline">\(i\)</span> na definição do produto interno é crucial para garantir que o produto seja positivo definido quando trabalhamos com funções complexas.</p>
 </div>
 </div>
 </section>
@@ -851,11 +851,11 @@ Tip
 <h2 data-number="4.4" class="anchored" data-anchor-id="formalismo-simplético-para-ondas-planas"><span class="header-section-number">4.4</span> Formalismo Simplético para Ondas Planas</h2>
 <section id="base-simplética" class="level3" data-number="4.4.1">
 <h3 data-number="4.4.1" class="anchored" data-anchor-id="base-simplética"><span class="header-section-number">4.4.1</span> Base Simplética</h3>
-<p>Definimos a base de ondas planas no espaço de fase: <span class="math display">\[Q_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{\sqrt{2}} \begin{pmatrix} \phi_{\mathbf{k}} \\ -i\omega_k \phi_{\mathbf{k}} \end{pmatrix}\]</span></p>
+<p>Definimos a base de ondas planas no espaço de fase: <span class="math display">\[Q_{\mathbf{k}}(x_0, \mathbf{x}) = \frac{1}{\sqrt{2\omega_k}} \begin{pmatrix} \phi_{\mathbf{k}} \\ -i\omega_k \phi_{\mathbf{k}} \end{pmatrix}\]</span></p>
 </section>
 <section id="produto-interno-dos-modos" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="produto-interno-dos-modos"><span class="header-section-number">4.4.2</span> Produto Interno dos Modos</h3>
-<p>Calculamos o produto interno simplético entre dois modos: <span class="math display">\[(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega = -i \int_{\mathbb{R}^3} Q_{\mathbf{k}}^\dagger \Omega Q_{\mathbf{k}'} d^3x\]</span> <span class="math display">\[= \delta^{(3)}(\mathbf{k} - \mathbf{k}')\]</span></p>
+<p>Calculamos o produto interno simplético entre dois modos: <span class="math display">\[(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega = i \int_{\mathbb{R}^3} Q_{\mathbf{k}}^\dagger \Omega Q_{\mathbf{k}'} d^3x\]</span> <span class="math display">\[= \delta^{(3)}(\mathbf{k} - \mathbf{k}')\]</span></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -866,7 +866,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A normalização <span class="math inline">\(\frac{1}{\sqrt{2}}\)</span> foi escolhida para que o produto interno dos modos seja exatamente uma delta de Dirac.</p>
+<p>A normalização <span class="math inline">\(\frac{1}{\sqrt{2\omega_k}}\)</span> foi escolhida para que o produto interno dos modos seja exatamente uma delta de Dirac (o fator <span class="math inline">\(1/\sqrt{\omega_k}\)</span> extra, em relação à normalização ingênua <span class="math inline">\(1/\sqrt2\)</span>, cancela o fator <span class="math inline">\(\omega_k\)</span> que a derivada temporal <span class="math inline">\(\pi_{\mathbf k}=-i\omega_k\phi_{\mathbf k}\)</span> traz consigo).</p>
 </div>
 </div>
 </section>
@@ -4919,7 +4919,7 @@ Figure&nbsp;3: Função de Green (propagador) em 1D
 <tr class="even">
 <td><strong>Produto interno</strong></td>
 <td><span class="math inline">\(V_1^T \Omega V_2\)</span></td>
-<td><span class="math inline">\(-i\int Q_1^\dagger \Omega Q_2 d^3x\)</span></td>
+<td><span class="math inline">\(i\int Q_1^\dagger \Omega Q_2 d^3x\)</span></td>
 </tr>
 <tr class="odd">
 <td><strong>Hamiltoniana</strong></td>
@@ -4970,7 +4970,7 @@ Figure&nbsp;3: Função de Green (propagador) em 1D
 <section id="exercício-4-produto-interno-simplético" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="exercício-4-produto-interno-simplético"><span class="header-section-number">8.4</span> Exercício 4: Produto Interno Simplético</h2>
 <p><strong>a)</strong> Calcule <span class="math inline">\((Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega\)</span> para os modos de onda plana.</p>
-<p><strong>b)</strong> Mostre que <span class="math inline">\((Q_{\mathbf{k}}^*, Q_{\mathbf{k}'})_\Omega = -\delta^{(3)}(\mathbf{k} - \mathbf{k}')\)</span>.</p>
+<p><strong>b)</strong> Mostre que <span class="math inline">\((Q_{\mathbf{k}}^*, Q_{\mathbf{k}'})_\Omega = 0\)</span>.</p>
 <p><strong>c)</strong> Verifique que <span class="math inline">\((Q_{\mathbf{k}}, Q_{\mathbf{k}'}^*)_\Omega = 0\)</span>.</p>
 <p><strong>d)</strong> Interprete o significado físico destes resultados.</p>
 </section>

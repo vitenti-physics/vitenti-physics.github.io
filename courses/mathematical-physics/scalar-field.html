@@ -526,11 +526,11 @@ window.Quarto = {
 </section>
 <section id="produto-simplético" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="produto-simplético"><span class="header-section-number">2.2</span> Produto Simplético</h2>
-<p>O produto entre dois elementos da base é definido por: <span class="math display">\[(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}'}^* q_{\mathbf{k}} - q_{\mathbf{k}'}^* f_{\mathbf{k}}\right] d^3x\]</span> Substituindo as dependências espaciais: <span class="math display">\[(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right]\delta^{(3)}(\mathbf{k} - \mathbf{k}')\]</span> A base é ortogonal com normalização delta de Dirac.</p>
+<p>O produto entre dois elementos da base é definido por: <span class="math display">\[(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}'}^* q_{\mathbf{k}} - q_{\mathbf{k}'}^* f_{\mathbf{k}}\right] d^3x\]</span> Substituindo as dependências espaciais: <span class="math display">\[(\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right]\delta^{(3)}(\mathbf{k} - \mathbf{k}')\]</span> A base é ortogonal com normalização delta de Dirac.</p>
 </section>
 <section id="normalização-da-base" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="normalização-da-base"><span class="header-section-number">2.3</span> Normalização da Base</h2>
-<p>Para que a base seja ortonormal no sentido da delta de Dirac: <span class="math display">\[-i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right] = 1\]</span> Equivalentemente: <span class="math display">\[2\,\text{Im}(f_{\mathbf{k}}^* q_{\mathbf{k}}) = 1\]</span></p>
+<p>Para que a base seja ortonormal no sentido da delta de Dirac: <span class="math display">\[i\left[f_{\mathbf{k}}^* q_{\mathbf{k}} - q_{\mathbf{k}}^* f_{\mathbf{k}}\right] = 1\]</span> Equivalentemente: <span class="math display">\[2\,\text{Im}(f_{\mathbf{k}}^* q_{\mathbf{k}}) = -1\]</span></p>
 <blockquote class="blockquote">
 <p><strong>Definição (Vácuo):</strong> A escolha das funções de base que satisfazem a condição de normalização define o vácuo da teoria. Diferentes escolhas correspondem a diferentes definições de vácuo.</p>
 </blockquote>
@@ -566,14 +566,14 @@ window.Quarto = {
 </section>
 <section id="escolha-do-vácuo" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="escolha-do-vácuo"><span class="header-section-number">3.4</span> Escolha do Vácuo</h2>
-<p>A escolha mais simples é <span class="math inline">\(M_{\mathbf{k}} = 0\)</span>, resultando: <span class="math display">\[N_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}\]</span> Isso define as funções de base: <span class="math display">\[f_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}\]</span> <span class="math display">\[q_{\mathbf{k}} = -i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{-i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
+<p>A escolha mais simples é <span class="math inline">\(M_{\mathbf{k}} = 0\)</span>, resultando: <span class="math display">\[N_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}}\]</span> Isso define as funções de base: <span class="math display">\[f_{\mathbf{k}} = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} e^{-i\omega_{\mathbf{k}} x_0} e^{i\mathbf{k}\cdot\mathbf{x}}\]</span> <span class="math display">\[q_{\mathbf{k}} = -i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} e^{-i\omega_{\mathbf{k}} x_0} e^{i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
 <blockquote class="blockquote">
-<p><strong>Nota:</strong> Esta escolha elimina as soluções de frequência negativa, definindo o vácuo de Minkowski. A normalização inclui o fator <span class="math inline">\((2\pi)^{-3/2}\)</span> para garantir a ortogonalidade correta.</p>
+<p><strong>Nota:</strong> Esta escolha elimina as soluções de frequência negativa, definindo o vácuo de Minkowski. O fator <span class="math inline">\((2\pi)^{-3/2}\)</span> que garante a ortogonalidade correta aparece na medida <span class="math inline">\(d^3k\)</span> da decomposição do campo (abaixo), não nas próprias funções de base.</p>
 </blockquote>
 </section>
 <section id="complexo-conjugado-e-inversão-temporal" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="complexo-conjugado-e-inversão-temporal"><span class="header-section-number">3.5</span> Complexo Conjugado e Inversão Temporal</h2>
-<p>O complexo conjugado das funções de base: <span class="math display">\[f_{\mathbf{k}}^* = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}\]</span> <span class="math display">\[q_{\mathbf{k}}^* = +i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} \frac{e^{+i\omega_{\mathbf{k}} x_0}}{\sqrt{(2\pi)^3}} e^{-i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
+<p>O complexo conjugado das funções de base: <span class="math display">\[f_{\mathbf{k}}^* = \frac{1}{\sqrt{2\omega_{\mathbf{k}}}} e^{+i\omega_{\mathbf{k}} x_0} e^{-i\mathbf{k}\cdot\mathbf{x}}\]</span> <span class="math display">\[q_{\mathbf{k}}^* = +i\sqrt{\frac{\omega_{\mathbf{k}}}{2}} e^{+i\omega_{\mathbf{k}} x_0} e^{-i\mathbf{k}\cdot\mathbf{x}}\]</span></p>
 <p><strong>Propriedade Fundamental:</strong> Tomar o complexo conjugado é equivalente a uma inversão temporal: <span class="math inline">\(x_0 \to -x_0\)</span>.</p>
 <blockquote class="blockquote">
 <p><strong>Consequência:</strong> A presença da simetria de inversão temporal implica a existência de partículas e antipartículas na teoria quântica de campos. Esta é uma consequência geométrica da métrica de Minkowski.</p>
@@ -588,7 +588,7 @@ window.Quarto = {
 </section>
 <section id="coeficientes-de-decomposição" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="coeficientes-de-decomposição"><span class="header-section-number">4.2</span> Coeficientes de Decomposição</h2>
-<p>Os coeficientes são obtidos pelo produto simplético: <span class="math display">\[\alpha_{\mathbf{k}} = -i(f_{\mathbf{k}}^*, \phi) = -i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}}^* q_\phi - q_{\mathbf{k}}^* f_\phi\right] d^3x\]</span> Esta relação é fundamental para a quantização do campo.</p>
+<p>Os coeficientes são obtidos pelo produto simplético: <span class="math display">\[\alpha_{\mathbf{k}} = i(f_{\mathbf{k}}^*, \phi) = i\int_{\mathbb{R}^3} \left[f_{\mathbf{k}}^* q_\phi - q_{\mathbf{k}}^* f_\phi\right] d^3x\]</span> Esta relação é fundamental para a quantização do campo.</p>
 </section>
 </section>
 <section id="solução-com-fonte-propagador" class="level1" data-number="5">
@@ -602,7 +602,7 @@ window.Quarto = {
 </section>
 <section id="construção-do-propagador" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="construção-do-propagador"><span class="header-section-number">5.2</span> Construção do Propagador</h2>
-<p>Construímos a solução como: <span class="math display">\[\phi_J(x) = \int_{-\infty}^{x_0} dx_0' \int_{\mathbb{R}^3} d^3k \left[\alpha_{\mathbf{k}}^J(x_0') f_{\mathbf{k}}(x_0) - \alpha_{\mathbf{k}}^{J*}(x_0') f_{\mathbf{k}}^*(x_0)\right]\]</span> onde: <span class="math display">\[\alpha_{\mathbf{k}}^J(x_0') = -i(f_{\mathbf{k}}^*, J)|_{x_0'}\]</span></p>
+<p>Construímos a solução como: <span class="math display">\[\phi_J(x) = \int_{-\infty}^{x_0} dx_0' \int_{\mathbb{R}^3} d^3k \left[\alpha_{\mathbf{k}}^{J*}(x_0') f_{\mathbf{k}}^*(x_0) - \alpha_{\mathbf{k}}^J(x_0') f_{\mathbf{k}}(x_0)\right]\]</span> onde: <span class="math display">\[\alpha_{\mathbf{k}}^J(x_0') = i(f_{\mathbf{k}}^*, J)|_{x_0'}\]</span></p>
 <blockquote class="blockquote">
 <p><strong>Observação:</strong> O limite superior <span class="math inline">\(x_0\)</span> na integral temporal garante que o propagador seja causal (propagador retardado).</p>
 </blockquote>
@@ -659,12 +659,12 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>Ortogonalidade</td>
-<td><span class="math inline">\((\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = -i[f^*q - q^*f]\delta^{(3)}(\mathbf{k}-\mathbf{k}')\)</span></td>
+<td><span class="math inline">\((\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = i[f^*q - q^*f]\delta^{(3)}(\mathbf{k}-\mathbf{k}')\)</span></td>
 <td>Bases ortogonais no espaço de fase</td>
 </tr>
 <tr class="odd">
 <td>Normalização</td>
-<td><span class="math inline">\(-i[f^*q - q^*f] = 1\)</span></td>
+<td><span class="math inline">\(i[f^*q - q^*f] = 1\)</span></td>
 <td>Normalização delta de Dirac</td>
 </tr>
 <tr class="even">
@@ -691,7 +691,7 @@ window.Quarto = {
 <h2 data-number="7.1" class="anchored" data-anchor-id="exercício-1-normalização-da-base"><span class="header-section-number">7.1</span> Exercício 1: Normalização da Base</h2>
 <p>Considere a condição de normalização da base no espaço de fase.</p>
 <ol type="a">
-<li><p>Mostre que a condição <span class="math inline">\((\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = \delta^{(3)}(\mathbf{k} - \mathbf{k}')\)</span> implica que <span class="math inline">\(-i[f^*_{\mathbf{k}} q_{\mathbf{k}} - q^*_{\mathbf{k}} f_{\mathbf{k}}] = 1\)</span>.</p></li>
+<li><p>Mostre que a condição <span class="math inline">\((\Psi_{\mathbf{k}'}, \Psi_{\mathbf{k}}) = \delta^{(3)}(\mathbf{k} - \mathbf{k}')\)</span> implica que <span class="math inline">\(i[f^*_{\mathbf{k}} q_{\mathbf{k}} - q^*_{\mathbf{k}} f_{\mathbf{k}}] = 1\)</span>.</p></li>
 <li><p>Verifique que a escolha <span class="math inline">\(f_{\mathbf{k}} = 1/\sqrt{2\omega_{\mathbf{k}}} e^{-i\omega_{\mathbf{k}} x_0}\)</span> e <span class="math inline">\(q_{\mathbf{k}} = -i\sqrt{\omega_{\mathbf{k}}/2} e^{-i\omega_{\mathbf{k}} x_0}\)</span> satisfaz esta condição.</p></li>
 <li><p>Qual é o valor da expressão se escolhermos <span class="math inline">\(M_{\mathbf{k}} \neq 0\)</span>?</p></li>
 </ol>
