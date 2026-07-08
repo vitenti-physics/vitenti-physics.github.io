@@ -20,14 +20,27 @@ total cross sections for scattering of light by a free charge.
 # Setup
 
 A free charge $q$ of mass $m$ (an electron, in practice) sits at rest at the
-origin and is illuminated by a monochromatic plane wave,
+origin and is illuminated by a monochromatic plane wave arriving from a
+distant source along the fixed direction $\hat{\mathbf k}$,
 $$
 \mathbf E_{\rm inc}(t)=E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t),
 \qquad
 \mathbf B_{\rm inc}(t)=\frac1c\,\hat{\mathbf k}\times\mathbf E_{\rm inc}(t),
 $$
 with $\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k}$, evaluated at the
-charge's location. Two approximations define the classical (Thomson) regime:
+charge's location. This is exactly the radiation-field structure found in
+[Radiation from a Moving Charge](moving-charge-radiation.qmd#the-radiation-field),
+$\mathbf B_{\rm rad}=\frac1c\hat{\mathbf n}\times\mathbf E_{\rm rad}$ with
+$\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0$: a plane wave is simply what any
+radiation field looks like once its distant source is out of the picture,
+with $\hat{\mathbf k}$ now playing the role of the *incoming* propagation
+direction, in place of the outgoing $\hat{\mathbf n}$ used there to point
+from source to observer, and $\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k}$
+the same transversality condition as $\hat{\mathbf n}\cdot\mathbf E_{\rm
+rad}=0$. In particular $|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c$
+follows immediately, [exactly as for any radiation
+field](moving-charge-radiation.qmd#the-radiation-field). Two approximations
+define the classical (Thomson) regime:
 
 - **non-relativistic motion**: the charge's response velocity $v\ll c$, so
   terms of order $v/c$ are dropped;
@@ -128,14 +141,35 @@ over a cycle is
 $$
 \langle S_{\rm inc}\rangle=c\varepsilon_0\langle E_{\rm inc}^2\rangle=\tfrac12c\varepsilon_0E_0^2.
 $$
-The differential cross section is defined as scattered power per solid
-angle, divided by incident flux:
+
+**What a cross section measures.** A distant detector at angle
+$(\theta,\phi)$ subtending solid angle $\dd\Omega$ records scattered power
+$\langle\dd P/\dd\Omega\rangle\,\dd\Omega$, independent of its distance
+(since $\dd P/\dd\Omega$ was built from the $R$-independent radiation field
+found above). The incident beam is instead characterized by its flux
+$\langle S_{\rm inc}\rangle$, a power per unit *area* crossing a surface
+perpendicular to $\hat{\mathbf k}$. Dividing the two cancels the (arbitrary)
+incident intensity and turns "power per solid angle" into "area per solid
+angle" — hence the name *cross section*:
 $$
 \frac{\dd\sigma}{\dd\Omega}
 \equiv
-\frac{\langle \dd P/\dd\Omega\rangle}{\langle S_{\rm inc}\rangle}.
+\frac{\langle \dd P/\dd\Omega\rangle}{\langle S_{\rm inc}\rangle},
+\qquad
+\big[\dd\sigma/\dd\Omega\big]=\text{area}.
 $$
-Using $\dot{\mathbf v}=(q/m)\mathbf E_{\rm inc}$ from the equation of motion,
+Concretely, $\dd\sigma$ is the cross-sectional area of the incident beam
+that carries exactly the power the charge re-radiates into $\dd\Omega$;
+integrated over all directions ([below](#total-cross-section)), the total
+cross section $\sigma$ is the area of a flat, perfectly absorbing target
+that would intercept, head-on, the same total power the charge actually
+scatters in every direction. It is the effective size the charge presents to
+the beam. Because both $\langle\dd P/\dd\Omega\rangle$ and $\langle
+S_{\rm inc}\rangle$ scale as $E_0^2$, this ratio is independent of the
+incident intensity: it depends only on the scattering geometry and on $q$
+and $m$, which is what makes a cross section a property of the charge (or
+process) rather than of any particular beam. Using $\dot{\mathbf
+v}=(q/m)\mathbf E_{\rm inc}$ from the equation of motion,
 $\langle\dot v^2\rangle=(q/m)^2\langle E_{\rm inc}^2\rangle=(q/m)^2E_0^2/2$,
 so
 $$

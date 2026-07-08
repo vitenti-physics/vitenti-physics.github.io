@@ -547,6 +547,61 @@ F_{j0}^{\rm rad}\Delta x^0+F_{ji}^{\rm rad}\Delta x^i=0
 \;\Longrightarrow\;
 \frac{E_j}{c}=-\epsilon_{jik}\hat n^iB_k
 \;\Longrightarrow\;
+\mathbf E_{\rm rad}=-c\,\hat{\mathbf n}\times\mathbf B_{\rm rad}.
+$$
+This last step only solves for $\mathbf E_{\rm rad}$ in terms of
+$\mathbf B_{\rm rad}$, not the other way around: a cross product with
+$\hat{\mathbf n}$ only fixes the component of $\mathbf B_{\rm rad}$
+*perpendicular* to $\hat{\mathbf n}$, so a hypothetical piece of
+$\mathbf B_{\rm rad}$ along $\hat{\mathbf n}$ would drop out of
+$\hat{\mathbf n}\times\mathbf B_{\rm rad}$ and go undetected. Inverting the
+relation therefore needs one more fact — that $\mathbf B_{\rm rad}$, too,
+has no component along $\hat{\mathbf n}$.
+
+**Transversality of $\mathbf B_{\rm rad}$.** This extra fact follows from
+the structure of $F_{\mu\nu}^{\rm rad}$ itself, not from the equation above.
+Writing $C\equiv\mu_0q/[4\pi(u\cdot\Delta x)^2]$ and
+$$
+b_\nu\equiv a_\nu-\lambda u_\nu,
+\qquad
+\lambda\equiv\frac{\Delta x\cdot a}{u\cdot\Delta x},
+$$
+geometrically $b^\mu$ is $a^\mu$ with its "$\Delta x$-ward" part removed:
+$\Delta x^\mu$ is null, so it cannot be used to build a projector the usual
+way ($\Delta x\cdot\Delta x=0$ in the denominator would blow up), and
+$u^\mu$ is the only other vector on hand at $\tau_r$ to do the job instead —
+$\lambda$ is fixed by exactly the requirement $\Delta x\cdot b=0$ (confirmed
+in [Covariant radiation tensor](#covariant-radiation-tensor) below, where
+$b$ is used again). With this, the boxed bracket above is, term by
+term, already of the form
+$$
+F_{\mu\nu}^{\rm rad}=C\big(\Delta x_\mu b_\nu-\Delta x_\nu b_\mu\big).
+$$
+For $\mu=i,\nu=j$ both spatial, $\Delta x_i=R\hat n_i$, so
+$$
+F_{ij}^{\rm rad}=CR\big(\hat n_ib_j-\hat n_jb_i\big)
+\;\Longrightarrow\;
+\mathbf B_{\rm rad}=CR\,\hat{\mathbf n}\times\mathbf b,
+$$
+manifestly transverse to $\hat{\mathbf n}$ — being itself a cross product
+with $\hat{\mathbf n}$ — for a source moving with any velocity, not only
+one instantaneously at rest.
+
+**Inverting.** With $\hat{\mathbf n}\cdot\mathbf B_{\rm rad}=0$ established
+independently, cross $\mathbf E_{\rm rad}/c=-\hat{\mathbf n}\times\mathbf
+B_{\rm rad}$ with $\hat{\mathbf n}$ and expand the double cross product
+using $\hat{\mathbf n}\cdot\hat{\mathbf n}=1$,
+$$
+\hat{\mathbf n}\times\frac{\mathbf E_{\rm rad}}c
+=
+-\hat{\mathbf n}\times(\hat{\mathbf n}\times\mathbf B_{\rm rad})
+=
+\mathbf B_{\rm rad}(\hat{\mathbf n}\cdot\hat{\mathbf n})-\hat{\mathbf n}(\hat{\mathbf n}\cdot\mathbf B_{\rm rad})
+=
+\mathbf B_{\rm rad},
+$$
+so that
+$$
 \boxed{
 \mathbf B_{\rm rad}=\frac1c\,\hat{\mathbf n}\times\mathbf E_{\rm rad},
 \qquad
@@ -554,8 +609,37 @@ F_{j0}^{\rm rad}\Delta x^0+F_{ji}^{\rm rad}\Delta x^i=0
 }
 $$
 This is exact, for a source moving with any velocity: the radiation field
-looks locally like a plane wave propagating along $\hat{\mathbf n}$, which is
-why $|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|$ is used below. The explicit
+looks locally like a plane wave propagating along $\hat{\mathbf n}$, with
+$\hat{\mathbf n}$, $\mathbf E_{\rm rad}$, $\mathbf B_{\rm rad}$ mutually
+orthogonal — $\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0$ is boxed above, and
+$\mathbf B_{\rm rad}\cdot\mathbf E_{\rm rad}=0$ follows immediately since a
+cross product is orthogonal to both factors entering it. This orthogonality
+of $\hat{\mathbf n}$ and $\mathbf E_{\rm rad}$ is exactly what fixes the
+*magnitude* of $\mathbf B_{\rm rad}$: taking the norm of the boxed cross
+product and using $\sin 90^\circ=1$,
+$$
+|\mathbf B_{\rm rad}|
+=
+\frac1c\big|\hat{\mathbf n}\times\mathbf E_{\rm rad}\big|
+=
+\frac1c\,\big|\hat{\mathbf n}\big|\,\big|\mathbf E_{\rm rad}\big|\sin 90^\circ
+=
+\frac1c\big|\mathbf E_{\rm rad}\big|,
+$$
+so that
+$$
+\boxed{|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|.}
+$$
+Had $\hat{\mathbf n}$ and $\mathbf E_{\rm rad}$ not been perpendicular, the
+$\sin\theta$ factor would have survived and no such clean relation would
+hold — transversality is doing all the work here, not just the cross
+product itself. This magnitude relation is used below. Its **covariant
+counterpart** is that the radiation field is *null*,
+$F_{\rm rad}^{\mu\nu}F_{\mu\nu}^{\rm rad}=0$, derived in [Covariant radiation
+tensor](#covariant-radiation-tensor): since $F^{\mu\nu}F_{\mu\nu}=2(B^2-E^2/c^2)$
+for any electromagnetic field, this single Lorentz-invariant statement is
+exactly $E=cB$, but now frame-independent — it is the coordinate-free version
+of the component relation just derived. The explicit
 radiation field itself follows from $E_i^{\rm rad}=-cF_{0i}^{\rm rad}$,
 $$
 \mathbf E_{\rm rad}\cdot\hat{\mathbf e}_i
@@ -595,10 +679,11 @@ same letter and are always distinguished by the presence of the index.)
 
 # Covariant radiation tensor
 
-Write $F_{\mu\nu}^{\rm rad}=C(\Delta x_\mu b_\nu-\Delta x_\nu b_\mu)$, with
-$C\equiv\mu_0q/[4\pi(u\cdot\Delta x)^2]$ and $b_\nu\equiv a_\nu-\lambda u_\nu$,
-$\lambda\equiv(\Delta x\cdot a)/(u\cdot\Delta x)$, matching the bracket in
-the formula above term by term. Two facts make what follows easy:
+Recall from above, $F_{\mu\nu}^{\rm rad}=C(\Delta x_\mu b_\nu-\Delta x_\nu b_\mu)$,
+with $C\equiv\mu_0q/[4\pi(u\cdot\Delta x)^2]$ and $b_\nu\equiv a_\nu-\lambda u_\nu$,
+$\lambda\equiv(\Delta x\cdot a)/(u\cdot\Delta x)$ — the same regrouping
+already used to establish $\hat{\mathbf n}\cdot\mathbf B_{\rm rad}=0$. Two
+facts make what follows easy:
 $$
 \Delta x\cdot b=\Delta x\cdot a-\lambda(\Delta x\cdot u)=\Delta x\cdot a-\Delta x\cdot a=0,
 \qquad
@@ -615,7 +700,14 @@ F^{\alpha\beta}_{\rm rad}F_{\alpha\beta}^{\rm rad}
 $$
 consistent with $|\mathbf E_{\rm rad}|=c|\mathbf B_{\rm rad}|$ found above (a
 plane wave has $F^{\alpha\beta}F_{\alpha\beta}=2(B^2-E^2/c^2)=0$ exactly when
-$E=cB$). So the second term of $T^{\mu\nu}=\frac1{\mu_0}(F^{\mu\alpha}F^\nu{}_\alpha-\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta})$
+$E=cB$). This is one of the two Lorentz invariants built from $F^{\mu\nu}$;
+the other, built from its Hodge dual, is proportional to $\mathbf
+E\cdot\mathbf B$, and it vanishes too, since
+$\mathbf B_{\rm rad}\cdot\mathbf E_{\rm rad}=0$ was already noted above. Both
+invariants vanishing together is exactly the covariant statement that the
+radiation field is null, i.e. plane-wave-like: unlike a generic field, there
+is no frame in which it looks purely electric or purely magnetic. So the
+second term of $T^{\mu\nu}=\frac1{\mu_0}(F^{\mu\alpha}F^\nu{}_\alpha-\frac14\eta^{\mu\nu}F^{\alpha\beta}F_{\alpha\beta})$
 drops out for the radiation piece, leaving
 $$
 \mu_0T^{\mu\nu}_{\rm rad}
@@ -728,5 +820,169 @@ P
 a^\mu a_\mu.
 }
 $$
+
+# Manifestly covariant derivation
+
+Steps 1–3 above compute the flux in one convenient frame (the rest frame)
+and then invoke Lorentz invariance to promote the result to every frame.
+Dirac's original treatment (1938) instead integrates the already-covariant
+$T^{\mu\nu}_{\rm rad}$ found above directly, keeping $u^\mu$ general
+throughout, so the result is covariant by construction rather than by
+appeal to an invariance argument at the end.
+
+**The invariant celestial sphere.** Define
+$$
+n^\mu\equiv\frac{\Delta x^\mu}{R}-u^\mu,
+\qquad
+R\equiv-u\cdot\Delta x,
+$$
+so that $\Delta x^\mu=R(u^\mu+n^\mu)$. This $n^\mu$ is the covariant,
+frame-independent replacement for $\hat{\mathbf n}$: using $u\cdot u=-1$ and
+$\Delta x\cdot\Delta x=0$,
+$$
+n\cdot u=\frac{\Delta x\cdot u}{R}-u\cdot u=-1-(-1)=0,
+\qquad
+n\cdot n=\frac{\Delta x\cdot\Delta x}{R^2}-\frac{2\,u\cdot\Delta x}{R}+u\cdot u=0+2-1=1,
+$$
+so $n^\mu$ is a unit spacelike vector orthogonal to $u^\mu$ — it ranges over
+the unit sphere in the rest space of $u^\mu(\tau_r)$, whatever frame is used
+to write down its components. In the source's instantaneous rest frame this
+is exactly the sphere $\hat{\mathbf n}$ of Step 1; here it is kept general.
+
+**Rewriting the invariants.** Since $a\cdot u=0$,
+$$
+\Delta x\cdot a=R(u\cdot a+n\cdot a)=R\,(n\cdot a),
+\qquad
+(\Delta x\cdot u)^2=R^2,
+$$
+so the bracket in $T^{\mu\nu}_{\rm rad}$ becomes
+$(a\cdot a)(\Delta x\cdot u)^2-(\Delta x\cdot a)^2=R^2\big[(a\cdot a)-(n\cdot a)^2\big]$,
+and
+$$
+T^{\mu\nu}_{\rm rad}
+=
+\frac{\mu_0q^2}{16\pi^2R^2}
+\Big[(a\cdot a)-(n\cdot a)^2\Big]
+(u^\mu+n^\mu)(u^\nu+n^\nu).
+$$
+
+**Aside: $b$ and $n$ are not independent.** The vector $b^\mu$ used earlier
+to prove $\hat{\mathbf n}\cdot\mathbf B_{\rm rad}=0$ and the $n^\mu$ just
+introduced are secretly the same construction viewed twice. Since
+$\Delta x\cdot b=0$ (shown in [Covariant radiation
+tensor](#covariant-radiation-tensor)) and $\Delta x=R(u+n)$,
+$$
+0=\Delta x\cdot b=R(u\cdot b+n\cdot b)
+\;\Longrightarrow\;
+n\cdot b=-u\cdot b=-\lambda,
+$$
+using $u\cdot b=u\cdot a-\lambda(u\cdot u)=\lambda$ (from $a\cdot u=0$,
+$u\cdot u=-1$). So $b$'s components along $u$ and along $n$ are not
+independent data — they are equal and opposite, both fixed by the single
+number $\lambda$. This is no accident: $F_{\mu\nu}^{\rm rad}=C(\Delta x_\mu
+b_\nu-\Delta x_\nu b_\mu)$ is unchanged by $b_\nu\to b_\nu+\kappa\Delta
+x_\nu=b_\nu+\kappa R(u_\nu+n_\nu)$ for any scalar $\kappa$ (a term along
+$\Delta x_\nu$ drops out of its own wedge product), so only the part of $b$
+transverse to $\Delta x$ — equivalently, transverse to $u+n$ — is ever
+physical; the equal-and-opposite $u$- and $n$-components found above are
+exactly this redundant, unphysical piece. Removing it, using
+$\lambda=-(n\cdot a)$ (immediate from $\Delta x\cdot a=R(n\cdot a)$ above),
+leaves
+$$
+b^\mu=\underbrace{(n\cdot a)(u^\mu+n^\mu)}_{\text{redundant, }\propto\,\Delta x^\mu}
++\;a_\perp^\mu,
+\qquad
+a_\perp^\mu\equiv a^\mu-(n\cdot a)n^\mu,
+$$
+so $b$ is really just $a_\perp$ in disguise: the four-acceleration
+projected transverse to *both* $u^\mu$ and $n^\mu$ (already transverse to
+$u^\mu$ alone, since $a\cdot u=0$). This doubly-transverse piece is exactly
+what shows up explicitly in the rest-frame dipole field found earlier,
+$\mathbf E_{\rm rad}\propto\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf
+v})\hat{\mathbf n}$ — $b$ was never a new ingredient, only a covariant
+repackaging of that same transverse acceleration.
+
+**Flux through the sphere.** The radiated four-momentum per unit proper
+time is
+$$
+\frac{\dd P^\mu}{\dd\tau}
+=
+\oint T^{\mu\nu}_{\rm rad}\,n_\nu\,R^2\,\dd\Omega(n),
+$$
+with $\dd\Omega(n)$ the invariant solid-angle measure on the unit sphere in
+the rest space of $u^\mu(\tau_r)$ — the same measure as in Step 2, now left
+covariant instead of specialized to $u^\mu=(1,\mathbf 0)$. Using
+$n\cdot(u+n)=n\cdot u+n\cdot n=1$,
+$$
+T^{\mu\nu}_{\rm rad}\,n_\nu\,R^2
+=
+\frac{\mu_0q^2}{16\pi^2}
+\Big[(a\cdot a)-(n\cdot a)^2\Big](u^\mu+n^\mu).
+$$
+
+**Sphere integrals.** The moments of $n^\mu$ over this sphere generalize
+$\oint\hat n^i\hat n^j\,\dd\Omega=\frac{4\pi}3\delta^{ij}$: odd moments
+vanish by $n\to-n$ symmetry, and the quadratic moment must be built from the
+only invariant tensors available that respect $n\cdot u=0$, namely
+$\eta^{\mu\nu}+u^\mu u^\nu$, with the coefficient fixed by matching traces
+($\eta_{\mu\nu}(\eta^{\mu\nu}+u^\mu u^\nu)=4-1=3$ against
+$\oint n\cdot n\,\dd\Omega=4\pi$):
+$$
+\oint\dd\Omega=4\pi,
+\qquad
+\oint n^\mu\,\dd\Omega=0,
+\qquad
+\oint n^\mu n^\nu\,\dd\Omega=\frac{4\pi}3\big(\eta^{\mu\nu}+u^\mu u^\nu\big),
+\qquad
+\oint n^\mu n^\nu n^\rho\,\dd\Omega=0.
+$$
+Hence, writing $(n\cdot a)^2=a_\alpha a_\beta\,n^\alpha n^\beta$ and using
+$a\cdot u=0$ again,
+$$
+\oint(n\cdot a)^2\,\dd\Omega
+=
+a_\alpha a_\beta\cdot\frac{4\pi}3\big(\eta^{\alpha\beta}+u^\alpha u^\beta\big)
+=
+\frac{4\pi}3(a\cdot a),
+\qquad
+\oint(n\cdot a)^2n^\mu\,\dd\Omega=0.
+$$
+
+**Assembling.** Substituting these moments term by term,
+$$
+\frac{\dd P^\mu}{\dd\tau}
+=
+\frac{\mu_0q^2}{16\pi^2}
+\left[
+(a\cdot a)\cdot4\pi\,u^\mu
+-
+\frac{4\pi}3(a\cdot a)\,u^\mu
++
+(a\cdot a)\cdot0-0
+\right]
+=
+\frac{\mu_0q^2}{16\pi^2}\cdot\frac{8\pi}3(a\cdot a)\,u^\mu,
+$$
+so that
+$$
+\boxed{
+\frac{\dd P^\mu}{\dd\tau}
+=
+\frac{\mu_0q^2}{6\pi}
+(a^\nu a_\nu)\,u^\mu.
+}
+$$
+
+**Recovering Step 3, and more.** In the source's own instantaneous rest
+frame, $u^\mu=(1,\mathbf 0)$, so only the $\mu=0$ component survives; with
+$P^0=E/c$ this gives $P=c\,\dd P^0/\dd\tau=\mu_0q^2c(a\cdot a)/6\pi$, the same
+boxed formula as Step 3. But the derivation here never left a general frame,
+so it delivers a stronger, manifestly covariant statement for free: the
+four-momentum radiated per unit proper time is *exactly* along $u^\mu$, in
+every frame — there is no net recoil transverse to the source's own motion,
+not just on average in its rest frame. This is the calculation Dirac used as
+the starting point for deriving the radiation-reaction (Abraham–Lorentz–Dirac)
+force, by balancing this momentum loss against the mechanical momentum of the
+charge.
 
 {{< include /_footer.qmd >}}
