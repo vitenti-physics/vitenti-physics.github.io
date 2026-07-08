@@ -222,3 +222,70 @@ cost of losing Born rigidity.
 
 These accelerated worldlines are exactly the ones whose radiation we study
 next.
+
+## Exercises
+
+### Exercise 1: Kinematics of the Rindler Congruence **(Essential)**
+
+**a)** Starting from $T=\rho\sinh(a\eta)$, $X=\rho\cosh(a\eta)$ and
+$\dd\tau=a\rho\,\dd\eta$, compute $\dd T/\dd\tau$ and $\dd X/\dd\tau$ directly
+and confirm $u^\mu=(\cosh(\tau/\rho),\sinh(\tau/\rho))$.
+
+**b)** Differentiate $u^\mu$ with respect to $\tau$ to obtain $a^\mu$, and
+verify explicitly that $a^\mu a_\mu=1/\rho^2$.
+
+**c)** Using the $u^\mu$ found in (a), check that $X^2-T^2=\rho^2$ is
+preserved along the worldline, i.e. that $\dd(X^2-T^2)/\dd\tau=0$.
+
+### Exercise 2: Born Rigidity of the Rindler Congruence **(Essential)**
+
+The notes assert that "Rindler observers satisfy this condition" ($\Theta_{\mu\nu}=0$)
+without showing why. This exercise fills that gap.
+
+**a)** In the coordinates $(\eta,\rho,Y,Z)$, write down the spatial part of
+$$
+ds^2=-(a\rho)^2\dd\eta^2+\dd\rho^2+\dd Y^2+\dd Z^2
+$$
+(the coefficients of $\dd\rho^2$, $\dd Y^2$, $\dd Z^2$) and note that none of
+them depend on $\eta$, and that there are no $\dd\eta\,\dd\rho$,
+$\dd\eta\,\dd Y$, $\dd\eta\,\dd Z$ cross terms.
+
+**b)** Explain why a spatial metric between neighboring $\rho=\mathrm{const}$
+worldlines that is independent of $\eta$, with no such cross terms, means
+those worldlines maintain constant proper separation for all $\eta$ — i.e.
+$\Theta_{\mu\nu}=0$.
+
+**c)** Contrast this with the equal-acceleration family of the next section,
+where a term $2\sinh(a\tau)\,\dd\tau\,\dd\xi$ appears in the metric: explain
+why this cross term signals a departure from Born rigidity.
+
+### Exercise 3: Kinematics of the Equal-Acceleration Family
+
+**a)** Starting from $T(\tau,\xi)=\frac1a\sinh(a\tau)$,
+$X(\tau,\xi)=\xi+\frac1a\cosh(a\tau)$, compute $u^\mu=\partial(T,X)/\partial\tau$
+at fixed $\xi$ and $a^\mu=\partial u^\mu/\partial\tau$, and verify explicitly
+that $a^\mu a_\mu=a^2$, independent of $\xi$.
+
+**b)** Using $\dd T=\cosh(a\tau)\dd\tau$ and $\dd X=\dd\xi+\sinh(a\tau)\dd\tau$
+as given in the notes, substitute into $ds^2=-\dd T^2+\dd X^2+\dd Y^2+\dd Z^2$
+and verify term by term that
+$$
+ds^2=-\dd\tau^2+2\sinh(a\tau)\,\dd\tau\,\dd\xi+\dd\xi^2.
+$$
+
+**c)** Identify which metric component is responsible for the loss of Born
+rigidity found in Exercise 2.
+
+### Exercise 4: Comparing the Two Congruences
+
+**a)** In the Rindler congruence, the proper acceleration $\alpha=1/\rho$
+genuinely differs between worldlines at different $\rho$, while in the
+equal-acceleration family every worldline has the same $a^\mu a_\mu=a^2$
+regardless of $\xi$. Using the results of Exercises 2 and 3, explain in your
+own words which of these two behaviors is compatible with $\Theta_{\mu\nu}=0$,
+and why.
+
+**b)** The qualitative argument in "Why Equal Acceleration is Incompatible
+with Born Rigidity" states that the rear observer of a rigid pair "must have
+acquired a slightly larger velocity than the front observer." Identify which
+metric component found in Exercise 3(b) encodes exactly this effect.

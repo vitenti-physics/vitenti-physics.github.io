@@ -316,108 +316,65 @@ HTML(anim.to_jshtml())
 | Tempo Retardado | O campo em um ponto é causado pela fonte em um tempo anterior. |
 | Eletrostática | No limite estático, o propagador dá o potencial de Coulomb. |
 
+
 # Exercícios
 
-## Exercício 1
+## Exercício 1: Ondas Planas e a Integral Angular **(Essencial)**
 
-Mostre que a solução da equação de onda homogênea $\Box \phi = 0$ pode ser escrita como uma superposição de ondas planas da forma $\phi_{\mathbf{k}}(t, \mathbf{x}) = f_{\mathbf{k}}(t) e^{i\mathbf{k}\cdot\mathbf{x}}$.
+**a)** Mostre que a solução da equação de onda homogênea $\Box \phi = 0$ pode ser escrita como uma superposição de ondas planas $\phi_{\mathbf{k}}(t, \mathbf{x}) = f_{\mathbf{k}}(t) e^{i\mathbf{k}\cdot\mathbf{x}}$, escrevendo a equação diferencial para $f_{\mathbf{k}}(t)$ e sua solução geral.
 
-a) Escreva a equação diferencial para $f_{\mathbf{k}}(t)$.
-
-b) Determine a solução geral para $f_{\mathbf{k}}(t)$.
+**b)** Demonstre a integral angular
+$$
+\int_0^{2\pi} d\phi \int_0^\pi \sin\theta \, d\theta \, e^{i k r \cos\theta} = 4\pi \frac{\sin(k r)}{k r},
+$$
+usada na construção do propagador.
 
 ## Exercício 2 **(Essencial)**
 
 Considere o propagador causal encontrado na aula:
-
 $$
-\phi_J(x) = \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right)
+\phi_J(x) = \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) - |\mathbf{x} - \mathbf{x}_0| \right).
 $$
 
-a) Mostre que $\phi_J(x)$ satisfaz a equação $\Box \phi_J = \delta^4(x - x_0)$.
+**a)** Mostre que $\phi_J(x)$ satisfaz a equação $\Box \phi_J = \delta^4(x - x_0)$.
 
-b) Qual é o suporte de $\phi_J(x)$ no espaço-tempo?
+**b)** Qual é o suporte de $\phi_J(x)$ no espaço-tempo?
 
-## Exercício 3
+## Exercício 3: Fonte com Velocidade Uniforme
 
 Uma partícula pontual se move com velocidade constante $\mathbf{v}$. A linha de mundo é $y^\mu(\tau) = (\gamma c\tau, \gamma \mathbf{v}\tau)$.
 
-a) Calcule o potencial $\phi(x)$ produzido pela partícula.
+**a)** Calcule o potencial $\phi(x)$ produzido pela partícula.
 
-b) Mostre que, no limite $v \ll c$, o potencial se reduz ao potencial de Coulomb.
+**b)** Mostre que, no limite $v \ll c$, o potencial se reduz ao potencial de Coulomb.
 
-## Exercício 4
+## Exercício 4: O Propagador Avançado
 
-Considere duas partículas carregadas, uma em $\mathbf{x}_1 = 0$ (em repouso) e outra em $\mathbf{x}_2 = \mathbf{a}$ (em repouso).
-
-a) Calcule a força elétrica sobre a partícula 2 usando o potencial retardado.
-
-b) A força é instantânea? Justifique sua resposta.
-
-## Exercício 5
-
-Demonstre que a integral angular utilizada no cálculo do propagador é:
-
+Considere o propagador avançado, definido por
 $$
-\int_0^{2\pi} d\phi \int_0^\pi \sin\theta \, d\theta \, e^{i k r \cos\theta} = 4\pi \frac{\sin(k r)}{k r}
+\phi_J^{\text{adv}}(x) = \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) + |\mathbf{x} - \mathbf{x}_0| \right).
 $$
 
-## Exercício 6
+**a)** Qual é o suporte deste propagador?
 
-Uma partícula carregada oscila harmonicamente: $\mathbf{y}(t) = A \cos(\omega t) \hat{\mathbf{z}}$.
+**b)** Por que ele não é usado como solução causal, apesar de satisfazer a mesma equação diferencial que $\phi_J$?
 
-a) Escreva a quadricorrente da partícula.
+## Exercício 5: A Integral sobre a Linha de Mundo e o Limite Estático **(Essencial)**
 
-b) Mostre que o potencial produzido tem componentes que dependem do tempo retardado.
-
-## Exercício 7 **(Essencial)**
-
-Explique por que o potencial de Coulomb parece implicar ação instantânea, mesmo sendo obtido a partir de um propagador causal.
-
-## Exercício 8
-
-Considere o propagador avançado, definido por:
-
-$$
-\phi_J^{\text{adv}}(x) = \frac{1}{4\pi |\mathbf{x} - \mathbf{x}_0|} \delta\left( c(t - t_0) + |\mathbf{x} - \mathbf{x}_0| \right)
-$$
-
-a) Qual é o suporte deste propagador?
-
-b) Por que ele não é usado como solução causal?
-
-## Exercício 9
-
-Mostre que o propagador causal pode ser escrito como:
-
+**a)** Mostre que o propagador causal pode ser escrito como
 $$
 \phi_J(x) = \frac{1}{4\pi} \int_{-\infty}^{\infty} d\tau \, \frac{\delta\left( \Delta x^0(\tau) - |\Delta \mathbf{x}(\tau)| \right)}{|\mathbf{x} - \mathbf{y}(\tau)|}
 $$
-
 para uma linha de mundo $y^\mu(\tau)$.
 
-## Exercício 10
+**b)** Para uma partícula em repouso, resolva a condição do cone de luz para $\tau$ e mostre que se recupera o potencial de Coulomb.
 
-a) Explique o que é o tempo retardado.
+**c)** Explique por que o potencial de Coulomb parece implicar ação instantânea, mesmo sendo obtido a partir de um propagador causal.
 
-b) Qual é a equação que define o tempo retardado para uma partícula em movimento?
+## Exercício 6: Duas Cargas Estáticas e a Força Retardada
 
-c) Como o tempo retardado se relaciona com a causalidade?
+Considere duas partículas carregadas, uma em $\mathbf{x}_1 = 0$ (em repouso) e outra em $\mathbf{x}_2 = \mathbf{a}$ (em repouso).
 
-## Exercício 11
+**a)** Calcule a força elétrica sobre a partícula 2 usando o potencial retardado.
 
-Considere uma fonte estendida com densidade de corrente $J(x)$.
-
-a) Escreva a solução geral para o campo $\phi(x)$ usando o propagador.
-
-b) Qual é a interpretação física da integral?
-
-## Exercício 12
-
-Demonstre que, para uma partícula em repouso, a condição do cone de luz:
-
-$$
-c(t - t_0) = |\mathbf{x} - \mathbf{x}_0|
-$$
-
-é resolvida por $c t_0 = c t - |\mathbf{x} - \mathbf{x}_0|$, e que isso leva ao potencial de Coulomb.
+**b)** A força é instantânea? Justifique sua resposta.

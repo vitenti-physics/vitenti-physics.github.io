@@ -259,4 +259,78 @@ provided:
   no restoring force competes with the incident field in the equation of
   motion.
 
+# Exercises
+
+## Exercise 1: Dropping the Magnetic Force
+
+**a)** Using $|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c$, estimate the
+ratio $|q\mathbf v\times\mathbf B_{\rm inc}|/|q\mathbf E_{\rm inc}|$ in terms
+of $v/c$, confirming that it is suppressed for non-relativistic motion.
+
+**b)** Using $v\sim a_0/\omega$ for the oscillation velocity scale, with
+$a_0=qE_0/m$, express $v/c$ in terms of $q,E_0,m,\omega,c$, and check that it
+is indeed small for visible light ($\omega\sim10^{15}\,\mathrm{s^{-1}}$)
+incident on a free electron at ordinary laboratory intensities.
+
+## Exercise 2: The Local-Frame Radiation Field **(Essential)**
+
+**a)** Starting from $F_{\mu\nu}^{\rm rad}$ specialized to $u^\mu=(1,\mathbf 0)$,
+with $\Delta x^\mu=(R,R\hat{\mathbf n})$ and
+$\Delta x\cdot a=R\,\hat{\mathbf n}\cdot\dot{\mathbf v}/c$, write out
+$F_{0i}^{\rm rad}$ term by term and show that the two $1/R$-carrying
+contributions combine into
+$$
+\mathbf E_{\rm rad}=\frac{\mu_0q}{4\pi R}\Big[\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}\Big].
+$$
+
+**b)** Verify the equivalent form
+$-\hat{\mathbf n}\times(\hat{\mathbf n}\times\dot{\mathbf v})=\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}$
+using the BAC-CAB rule.
+
+## Exercise 3: Larmor Consistency Check **(Essential)**
+
+**a)** Verify $\int\sin^2\chi\,\dd\Omega=8\pi/3$ by direct integration in
+spherical coordinates, with $\chi$ the polar angle measured from
+$\dot{\mathbf v}$.
+
+**b)** Substitute this into $\dd P/\dd\Omega$ and confirm that the result
+reproduces exactly the Larmor formula $P=\mu_0q^2\dot v^2/(6\pi c)$ derived
+covariantly in [Radiation from a Moving Charge](moving-charge-radiation.qmd#relativistic-larmor-formula),
+matching the numerical prefactor as well as the power of $\dot v$.
+
+## Exercise 4: The Differential Cross Section, Step by Step **(Essential)**
+
+**a)** Using $\dot{\mathbf v}=(q/m)\mathbf E_{\rm inc}$ and
+$\langle E_{\rm inc}^2\rangle=E_0^2/2$, verify
+$\langle\dot v^2\rangle=(q/m)^2E_0^2/2$ and substitute it into
+$\langle\dd P/\dd\Omega\rangle$ to reproduce the boxed intermediate
+expression given in the notes.
+
+**b)** Divide by $\langle S_{\rm inc}\rangle$ and, using
+$1/\varepsilon_0=\mu_0c^2$, verify explicitly that every factor of $c$,
+$\mu_0$, and $m$ combines to leave $\dd\sigma/\dd\Omega=r_q^2\sin^2\chi$,
+an area.
+
+## Exercise 5: Unpolarized Averaging in a General Direction
+
+**a)** Starting from $\cos\chi=\hat{\mathbf n}\cdot\hat{\boldsymbol\epsilon}$,
+verify $\sin^2\chi=1-(\hat{\mathbf n}\cdot\hat{\boldsymbol\epsilon})^2$.
+
+**b)** Using the rotational symmetry of the setup about $\hat{\mathbf k}$,
+argue that the unpolarized $\dd\sigma/\dd\Omega$ can only depend on the polar
+angle $\theta$ between $\hat{\mathbf n}$ and $\hat{\mathbf k}$, never on the
+azimuthal angle of $\hat{\mathbf n}$ — so it suffices to check the formula
+for $\hat{\mathbf n}$ in a single plane containing $\hat{\mathbf k}$, as the
+notes do.
+
+## Exercise 6: The Total Cross Section **(Essential)**
+
+**a)** Verify $\int_0^{2\pi}\dd\phi\int_{-1}^1(1+x^2)\,\dd x=8\pi/3$ step by
+step, and hence confirm $\sigma_T=\frac{8\pi}3r_q^2$.
+
+**b)** Using $r_q=q^2/(4\pi\varepsilon_0mc^2)$ and
+$e=1.6\times10^{-19}\,\mathrm C$, $m_e=9.11\times10^{-31}\,\mathrm{kg}$,
+verify numerically that $\sigma_T\approx6.65\times10^{-29}\,\mathrm m^2$ for
+an electron.
+
 {{< include /_footer.qmd >}}

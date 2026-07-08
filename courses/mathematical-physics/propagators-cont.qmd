@@ -240,60 +240,41 @@ plt.show()
 | Prop. Passado (Avançado) | $\Theta(x_0-x)$ | Propagação para trás no tempo |
 | Reversão Temporal | $T = \text{diag}(1,-1)$ | Simetria fundamental |
 
+
 # Exercícios
 
-## Conceitos Fundamentais
+## Exercício 1: Wronskiano e Solução Geral **(Essencial)**
 
-1. **Wronskiano e Independência Linear**  
-   (a) Mostre que o Wronskiano $W(V_1,V_2) = V_1^T\Omega V_2$ é constante para soluções da equação $V' = \Omega H V$.  
-   (b) Verifique que $W(V_1,V_1) = 0$ usando a propriedade de antissimetria de $\Omega$.
+**a)** Mostre que o Wronskiano $W(V_1,V_2) = V_1^T\Omega V_2$ é constante para soluções da equação $V' = \Omega H V$, e que $W(V_1,V_1) = 0$ usando a antissimetria de $\Omega$.
 
-2. **Normalização de Soluções**  
-   (a) Dada a normalização $V_1^T\Omega V_2 = 1/2$, expresse a solução geral $U$ em termos de $V_1$ e $V_2$.  
-   (b) Calcule os coeficientes $\alpha_1$ e $\alpha_2$ para uma condição inicial genérica.
+**b)** Dada a normalização $V_1^T\Omega V_2 = 1/2$, expresse a solução geral $U = \alpha_1 V_1 + \alpha_2 V_2$ e calcule os coeficientes $\alpha_1$, $\alpha_2$ para uma condição inicial genérica.
 
-3. **Complexificação (Essencial)**
-   (a) Verifique que $V = V_1 - iV_2$ satisfaz a mesma equação diferencial.
-   (b) Calcule $\langle V, V \rangle = iV^\dagger\Omega V$ e mostre que é igual a 1.
+## Exercício 2: Complexificação e Normas **(Essencial)**
 
-4. **Norma Negativa**  
-   (a) Considere $\tilde{V} = V^*$. Calcule $\langle \tilde{V}, \tilde{V} \rangle$.  
-   (b) Interprete fisicamente este resultado.
+**a)** Verifique que $V = V_1 - iV_2$ satisfaz a mesma equação diferencial que $V_1$ e $V_2$.
 
-5. **Propagador Futuro (Essencial)**  
-   (a) Mostre que a solução $U(x) = \Theta(x-x_0)[\alpha V(x) + \alpha^* V^*(x)]$ satisfaz a equação com fonte $U' - \Omega H U = \delta(x-x_0)U_0$.  
-   (b) Determine a constante $U_0$ em termos de $\alpha$.
+**b)** Calcule $\langle V, V \rangle = iV^\dagger\Omega V$ e mostre que é igual a $1$.
 
-## Propagadores e Condições de Contorno
+**c)** Para $\tilde{V} = V^*$, calcule $\langle \tilde{V}, \tilde{V} \rangle$ e interprete fisicamente este resultado (norma negativa).
 
-6. **Propagador Passado**  
-   (a) Construa a solução com condições no futuro $U(x) = \Theta(x_0-x)[\alpha V(x) + \alpha^* V^*(x)]$.  
-   (b) Mostre que ela satisfaz $U' - \Omega H U = -\delta(x-x_0)U_0$.
+## Exercício 3: Propagadores Futuro e Passado **(Essencial)**
 
-7. **Condições de Contorno Espaciais**  
-   (a) Para o problema de uma corda presa em $x=0$ e $x=L$, determine como combinar os propagadores futuro e passado.  
-   (b) Explique por que a solução envolve ambas as direções de propagação.
+**a)** Mostre que a solução $U(x) = \Theta(x-x_0)[\alpha V(x) + \alpha^* V^*(x)]$ satisfaz a equação com fonte $U' - \Omega H U = \delta(x-x_0)U_0$, e determine a constante $U_0$ em termos de $\alpha$.
 
-## Propriedades de Transformação
+**b)** Construa a solução com condições no futuro, $U(x) = \Theta(x_0-x)[\alpha V(x) + \alpha^* V^*(x)]$, e mostre que ela satisfaz $U' - \Omega H U = -\delta(x-x_0)U_0$.
 
-8. **Reversão Temporal**  
-   (a) Verifique que $T = \text{diag}(1,-1)$ transforma $V = (y,q)^T$ em $V_R = (y,-q)^T$.  
-   (b) Mostre que $T\Omega T = -\Omega$ e $THT = H$ para o oscilador harmônico.
+## Exercício 4: Condições de Contorno Espaciais
 
-9. **Transformação de Rotações**  
-   (a) Considere uma rotação no espaço de fase $R$. Mostre que $R^T\Omega R = \Omega$.  
-   (b) Compare com a transformação temporal $T$ e discuta a diferença.
+Para o problema de uma corda presa em $x=0$ e $x=L$, explique como combinar os propagadores futuro e passado, e por que a solução geral envolve ambas as direções de propagação.
 
-## Aplicações e Generalizações
+## Exercício 5: Reversão Temporal e Rotações
 
-10. **Oscilador Harmônico com Forçamento**  
-    (a) Resolva a equação $y'' + \omega^2 y = f(x)$ usando os propagadores construídos.  
-    (b) Escreva a solução geral e identifique os termos futuro e passado.
+**a)** Verifique que $T = \text{diag}(1,-1)$ transforma $V = (y,q)^T$ em $V_R = (y,-q)^T$, e mostre que $T\Omega T = -\Omega$ e $THT = H$ para o oscilador harmônico.
 
-11. **Sistemas com $\Omega$ Dependente do Tempo**  
-    (a) Generalize a construção para $V' = \Omega(x) H(x) V$ com $\Omega(x)$ variável.  
-    (b) Discuta como a conservação do Wronskiano é afetada.
+**b)** Para uma rotação $R$ no espaço de fase, mostre que $R^T\Omega R = \Omega$, e compare com a transformação temporal $T$: em que sentido elas são estruturalmente diferentes?
 
-12. **Conexão com Mecânica Quântica**  
-    (a) Identifique o análogo do comutador $[x,p]$ no formalismo simplético.  
-    (b) Mostre como a estrutura de norma positiva/negativa leva à quantização.
+## Exercício 6: Oscilador Forçado e Conexão com a Mecânica Quântica
+
+**a)** Resolva a equação $y'' + \omega^2 y = f(x)$ usando os propagadores construídos nesta aula, identificando os termos futuro e passado na solução geral.
+
+**b)** Identifique o análogo do comutador $[x,p]$ no formalismo simplético, e explique como a estrutura de norma positiva/negativa (Exercício 2) se relaciona com a quantização.

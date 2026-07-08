@@ -444,105 +444,49 @@ plt.show()
 | **Condições iniciais** | $y(0), q(0)$ | $\phi(0,\mathbf{x}), \pi(0,\mathbf{x})$ |
 | **Função de Green** | $G(x,x')$ | $G(x_0,\mathbf{x}; x_0',\mathbf{x}')$ |
 
+
 # Exercícios
 
-## Exercício 1: Formalismo Simplético para Campos
+## Exercício 1: Formalismo Simplético para Campos **(Essencial)**
 
-**a)** Mostre que o produto interno simplético para campos é conservado.
+**a)** Mostre que o produto interno simplético para campos é conservado (use a autoadjunção do laplaciano).
 
 **b)** Verifique que a matriz $\Omega$ satisfaz $\Omega^2 = -I$ e $\Omega^T = -\Omega$.
 
-**c)** Mostre que o operador $H$ da equação de onda pode ser escrito como $H = \Omega \mathcal{H}$, onde $\mathcal{H}$ é um operador Hermitiano.
+**c)** Mostre que o operador $H$ da equação de onda pode ser escrito como $H = \Omega \mathcal{H}$, com $\mathcal{H}$ Hermitiano, e determine a forma explícita de $\mathcal{H}$ para o campo escalar.
 
-**d)** Determine a forma explícita de $\mathcal{H}$ para o campo escalar.
-
-## Exercício 2: Ondas Planas
+## Exercício 2: Ondas Planas e a Transformada de Fourier
 
 **a)** Verifique que as ondas planas formam uma base ortonormal no produto interno $\langle f,g \rangle = \int f^* g \, d^3x$.
 
-**b)** Mostre que a transformada de Fourier é uma transformação unitária.
+**b)** Mostre que a transformada de Fourier diagonaliza o operador laplaciano.
 
 **c)** Calcule a transformada de Fourier da função gaussiana $f(\mathbf{x}) = e^{-a|\mathbf{x}|^2}$.
 
-**d)** Mostre que a transformada de Fourier diagonaliza o operador laplaciano.
+## Exercício 3: Soluções Modais da Equação de Onda
 
-## Exercício 3: Soluções da Equação de Onda
+**a)** Resolva a equação de onda $\partial_{x_0}^2 \phi = \nabla^2 \phi$ por separação de variáveis, mostrando que cada modo $\mathbf{k}$ satisfaz a equação de um oscilador harmônico.
 
-**a)** Resolva a equação de onda $\partial_{x_0}^2 \phi = \nabla^2 \phi$ usando o método de separação de variáveis.
+**b)** Escreva a solução geral da equação de onda como uma integral sobre $\mathbf{k}$.
 
-**b)** Encontre todas as soluções modais da forma $\phi(x_0,\mathbf{x}) = T(x_0)\psi(\mathbf{x})$.
+## Exercício 4: O Produto Interno Simplético dos Modos **(Essencial)**
 
-**c)** Mostre que para cada $\mathbf{k}$ obtemos um oscilador harmônico.
+**a)** Calcule $(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega$ para os modos de onda plana e mostre que é igual a $\delta^{(3)}(\mathbf{k} - \mathbf{k}')$.
 
-**d)** Escreva a solução geral da equação de onda como uma integral sobre $\mathbf{k}$.
+**b)** Mostre que $(Q_{\mathbf{k}}^*, Q_{\mathbf{k}'})_\Omega = 0$ — note que este resultado é forçado pela $\delta^{(3)}(\mathbf{k}+\mathbf{k}')$ que aparece nesse produto, e vale independentemente da convenção de sinal do produto simplético.
 
-## Exercício 4: Produto Interno Simplético
+**c)** Interprete o significado físico destes resultados de ortogonalidade.
 
-**a)** Calcule $(Q_{\mathbf{k}}, Q_{\mathbf{k}'})_\Omega$ para os modos de onda plana.
+## Exercício 5: Decomposição do Campo e o Propagador Retardado **(Essencial)**
 
-**b)** Mostre que $(Q_{\mathbf{k}}^*, Q_{\mathbf{k}'})_\Omega = 0$.
+**a)** Mostre que qualquer campo pode ser decomposto como $Q(x_0,\mathbf{x}) = \int [a_{\mathbf{k}} Q_{\mathbf{k}} + a_{\mathbf{k}}^* Q_{\mathbf{k}}^*] \, d^3k$, e encontre $a_{\mathbf{k}}$ em termos do campo e de sua derivada temporal.
 
-**c)** Verifique que $(Q_{\mathbf{k}}, Q_{\mathbf{k}'}^*)_\Omega = 0$.
+**b)** Construa o propagador retardado usando o formalismo simplético e verifique que ele satisfaz $(\partial_{x_0}^2 - \nabla^2)G(x,x') = \delta^{(4)}(x-x')$.
 
-**d)** Interprete o significado físico destes resultados.
+**c)** Mostre que $G(x,x') = 0$ para $x_0 < x_0'$ (causalidade), e calcule $G$ explicitamente em 1+1 dimensões.
 
-## Exercício 5: Decomposição do Campo **(Essencial)**
+## Exercício 6: Massa e a Relação de Dispersão
 
-**a)** Mostre que qualquer campo pode ser decomposto como:
-$$Q(x_0,\mathbf{x}) = \int [a_{\mathbf{k}} Q_{\mathbf{k}} + a_{\mathbf{k}}^* Q_{\mathbf{k}}^*] d^3k$$
+**a)** Estenda o formalismo para a equação de Klein-Gordon $(\partial_{x_0}^2 - \nabla^2 + m^2)\phi = 0$ e mostre que as soluções modais têm frequência $\omega_k = \sqrt{k^2+m^2}$.
 
-**b)** Encontre a expressão para $a_{\mathbf{k}}$ em termos do campo e de sua derivada temporal.
-
-**c)** Determine as relações de comutação para os operadores $a_{\mathbf{k}}$ e $a_{\mathbf{k}}^\dagger$.
-
-**d)** Interpretar $a_{\mathbf{k}}$ e $a_{\mathbf{k}}^\dagger$ como operadores de criação e aniquilação.
-
-## Exercício 6: Propagador Retardado **(Essencial)**
-
-**a)** Construa o propagador retardado para a equação de onda usando o formalismo simplético.
-
-**b)** Verifique que o propagador satisfaz a equação $(\partial_{x_0}^2 - \nabla^2)G(x,x') = \delta^{(4)}(x-x')$.
-
-**c)** Mostre que $G(x,x') = 0$ para $x_0 < x_0'$ (condição de causalidade).
-
-**d)** Calcule o propagador em 1+1 dimensões explicitamente.
-
-## Exercício 7: Condições de Contorno
-
-**a)** Discuta a diferença entre propagador avançado e propagador retardado.
-
-**b)** Por que o propagador retardado é adequado para problemas de espalhamento?
-
-**c)** Como as condições de contorno no infinito afetam a escolha do propagador?
-
-**d)** Mostre que o propagador avançado e retardado estão relacionados por $G_{\text{ret}} = G_{\text{adv}}^*$.
-
-## Exercício 8: Massa e Modos de Fourier
-
-**a)** Estenda o formalismo para a equação de Klein-Gordon: $(\partial_{x_0}^2 - \nabla^2 + m^2)\phi = 0$.
-
-**b)** Mostre que as soluções modais têm frequência $\omega_k = \sqrt{k^2 + m^2}$.
-
-**c)** Como a massa modifica a relação de dispersão?
-
-**d)** Discuta o limite $m \to 0$ e compare com o caso sem massa.
-
-## Exercício 9: Simulações Numéricas
-
-**a)** Implemente uma simulação numérica para a equação de onda em 1D usando diferenças finitas.
-
-**b)** Visualize a evolução temporal de um pacote de ondas.
-
-**c)** Compare a evolução de uma solução com e sem massa.
-
-**d)** Implemente o propagador numericamente e verifique suas propriedades.
-
-## Exercício 10: Generalizações
-
-**a)** Como o formalismo se estende para campos vetoriais (como o eletromagnetismo)?
-
-**b)** Discuta as dificuldades de estender o formalismo para campos com interações não-lineares.
-
-**c)** O que muda se o campo for complexo em vez de real?
-
-**d)** Discuta a relação entre este formalismo e a quantização canônica.
+**b)** Discuta o limite $m \to 0$ e compare com o caso sem massa.

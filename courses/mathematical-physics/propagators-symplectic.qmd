@@ -379,124 +379,56 @@ plt.show()
 | **Propagadores** | Causal (passado→futuro) e avançado (futuro→passado) | Ambas as escolhas são necessárias na teoria quântica de campos |
 | **Unidade imaginária** | $i$ na equação de Schrödinger | Garante preservação da probabilidade; análoga à estrutura simplética |
 
+
 # Exercícios
 
-## Exercício 1: Soluções da Equação de Helmholtz
+## Exercício 1: Soluções da Equação de Helmholtz **(Essencial)**
 
-Considere a equação de Helmholtz unidimensional:
-$$
-\psi''(x) + k^2\psi(x) = 0
-$$
+Considere a equação de Helmholtz unidimensional $\psi''(x) + k^2\psi(x) = 0$.
 
-a) Mostre que as soluções podem ser escritas como $\psi(x) = A\sin(kx) + B\cos(kx)$ e também como $\psi(x) = \alpha e^{ikx} + \beta e^{-ikx}$.
+**a)** Mostre que as soluções podem ser escritas como $\psi(x) = A\sin(kx) + B\cos(kx)$ e também como $\psi(x) = \alpha e^{ikx} + \beta e^{-ikx}$, e encontre a relação entre as constantes $(A,B)$ e $(\alpha,\beta)$.
 
-b) Encontre a relação entre as constantes $(A, B)$ e $(\alpha, \beta)$.
-
-c) Qual das representações é mais adequada para condições de contorno do tipo $\psi(0) = 0$ e $\psi(L) = 0$?
+**b)** Qual representação é mais adequada para condições de contorno do tipo $\psi(0) = 0$ e $\psi(L) = 0$? Por quê?
 
 ## Exercício 2: Wronskiano **(Essencial)**
 
 Para a equação $y'' + 2y' + 5y = 0$:
 
-a) Encontre as duas soluções linearmente independentes.
+**a)** Encontre as duas soluções linearmente independentes.
 
-b) Calcule o Wronskiano e verifique que $W' = -2W$ (confirmando a fórmula geral).
+**b)** Calcule o Wronskiano e verifique que $W' = -2W$, confirmando a fórmula geral $W(x) = W_0\exp\left(-\int P(x)\,dx\right)$.
 
-c) Qual é a constante $W_0$?
+## Exercício 3: A Função de Green de Helmholtz
 
-## Exercício 3: Função de Green
+Para a equação de Helmholtz em 1D, $\left(\dfrac{d^2}{dx^2} + k^2\right)G(x, x') = -\delta(x - x')$:
 
-Para a equação de Helmholtz em 1D:
+**a)** Mostre que $G(x, x') = \dfrac{i}{2k}e^{ik|x-x'|}$ é solução.
 
-$$
-\left(\frac{d^2}{dx^2} + k^2\right)G(x, x') = -\delta(x - x')
-$$
+**b)** Interprete fisicamente a diferença entre as escolhas $+ik$ e $-ik$ na exponencial.
 
-a) Mostre que $G(x, x') = \frac{i}{2k}e^{ik|x-x'|}$ é uma solução.
-
-b) Qual é a diferença entre as escolhas $+ik$ e $-ik$ na exponencial?
-
-c) Interprete fisicamente cada escolha.
-
-## Exercício 4: Espaço de Fase
-
-Para o oscilador harmônico com $y'' + \omega^2 y = 0$:
-
-a) Escreva as equações de Hamilton correspondentes.
-
-b) Mostre que a Hamiltoniana $H = \frac{p^2}{2m} + \frac{1}{2}m\omega^2 y^2$ é conservada.
-
-c) Calcule a matriz $\Omega$ e verifique que $\Omega^2 = -I$.
-
-## Exercício 5: Estrutura Simplética **(Essencial)**
+## Exercício 4: A Estrutura Simplética **(Essencial)**
 
 Para o sistema $y'' + P(x)y' + Q(x)y = 0$:
 
-a) Defina $p = m(x)y'$ e mostre que $m(x)$ satisfaz $m'(x) = P(x)m(x)$.
+**a)** Defina $p = m(x)y'$ e mostre que $m(x)$ satisfaz $m'(x) = P(x)m(x)$.
 
-b) Mostre que o Wronskiano pode ser escrito como $W = y_1 p_2 - y_2 p_1$.
+**b)** Mostre que o Wronskiano $W = y_1 p_2 - y_2 p_1$ satisfaz $\dfrac{d}{dx}(y_1 p_2 - y_2 p_1) = 0$.
 
-c) Verifique que $\frac{d}{dx}(y_1 p_2 - y_2 p_1) = 0$.
+**c)** Calcule a matriz $\Omega$ para o oscilador harmônico e verifique que $\Omega^2 = -I$.
 
-## Exercício 6: Propagação no Espaço de Fase
+## Exercício 5: Separação de Variáveis e a Equação de Klein-Gordon
 
-Considere uma região circular no espaço de fase de um oscilador harmônico.
+**a)** Separe variáveis na equação de onda $\dfrac1{c^2}\dfrac{\partial^2\phi}{\partial t^2} = \nabla^2\phi$ e mostre que a parte espacial satisfaz a equação de Helmholtz.
 
-a) Mostre que a área da região é conservada (teorema de Liouville).
+**b)** Para a equação de Klein-Gordon $(\Box + m^2)\phi = 0$, mostre que a separação $\phi = e^{-iEt/\hbar}\psi(\mathbf{x})$ leva à mesma equação de Helmholtz. Com que valor de $k^2$?
 
-b) Como a forma da região evolui no tempo?
-
-c) Represente graficamente a evolução para diferentes tempos.
-
-## Exercício 7: Separação de Variáveis
-
-Considere a equação de onda em 3D:
-
-$$
-\frac{1}{c^2}\frac{\partial^2\phi}{\partial t^2} = \nabla^2\phi
-$$
-
-a) Faça a separação de variáveis $\phi(t, \mathbf{x}) = T(t)X(\mathbf{x})$ e obtenha as equações para $T$ e $X$.
-
-b) Mostre que $X$ satisfaz a equação de Helmholtz.
-
-c) Qual é a relação entre as constantes de separação?
-
-## Exercício 8: Métrica de Minkowski
-
-Na teoria de campos, a equação de Klein-Gordon é:
-
-$$
-(\Box + m^2)\phi = 0
-$$
-
-onde $\Box = \frac{1}{c^2}\frac{\partial^2}{\partial t^2} - \nabla^2$.
-
-a) Mostre que, ao separar variáveis com $\phi = e^{-iEt/\hbar}\psi(\mathbf{x})$, obtém-se a equação de Helmholtz.
-
-b) Como a métrica de Minkowski (com assinatura $+---$) influencia o sinal da equação?
-
-c) Explique por que a rotação de Wick ($t \to it$) transforma a equação de Klein-Gordon em uma equação de Laplace.
-
-## Exercício 9: Geradores de Transformação
-
-Na mecânica quântica, a evolução temporal é dada por $U(t) = e^{-iHt/\hbar}$.
-
-a) Mostre que $U(t)$ é um operador unitário (preserva a norma).
-
-b) Compare com a evolução no espaço de fase clássico: $e^{t\Omega}$.
-
-c) Qual é o análogo clássico da unidade imaginária $i$?
-
-## Exercício 10: Propagadores Avançados
+## Exercício 6: Propagadores Causal e Avançado
 
 Na teoria quântica de campos, dois propagadores são definidos:
 
-- Causal (de Feynman): $G_F(x, x') = \frac{e^{ik|x-x'|}}{4\pi|x-x'|}$
-- Avançado: $G_A(x, x') = \frac{e^{-ik|x-x'|}}{4\pi|x-x'|}$
+- Causal (de Feynman): $G_F(x, x') = \dfrac{e^{ik|x-x'|}}{4\pi|x-x'|}$
+- Avançado: $G_A(x, x') = \dfrac{e^{-ik|x-x'|}}{4\pi|x-x'|}$
 
-a) Qual é a diferença de sinal entre eles?
+**a)** Qual é a diferença de sinal entre eles, e como cada um se comporta no limite $|x-x'|\to\infty$?
 
-b) Como cada propagador se comporta no limite $x \to \infty$ (condições de contorno)?
-
-c) Por que ambos são necessários na teoria de campos?
+**b)** Por que ambos são necessários na teoria de campos?

@@ -211,124 +211,53 @@ plt.show()
 
 ---
 
+
 # Exercícios
 
-## Exercício 1: Função Degrau de Heaviside
+## Exercício 1: A Função Degrau e Sua Derivada **(Essencial)**
 
-**a)** Esboce o gráfico de $\theta(x)$ e identifique o tipo de descontinuidade em $x=0$.
+**a)** Refaça a derivação de $\boxed{\dfrac{d}{dx}\theta(x-x_0) = \delta(x-x_0)}$ partindo do Teorema Fundamental do Cálculo, explicitando cada passo.
 
-**b)** Calcule $\theta(x) + \theta(-x)$ para $x \neq 0$. O que acontece em $x=0$?
+**b)** A partir de $g(x)=|x|=\sqrt{x^2}$, mostre que $g'(x)=\text{sgn}(x)$ para $x\neq0$ e recupere $\theta(x)=\dfrac{g'(x)+1}{2}$.
 
-**c)** Mostre que $\theta(x - x_0)$ representa um deslocamento da descontinuidade para $x = x_0$.
+**c)** Generalize o resultado de (a) para $\dfrac{d}{dx}\big[f(x)\,\theta(x-x_0)\big]$, com $f$ suave.
 
 **d)** Por que a convenção do valor de $\theta(0)$ (0, 1/2 ou indefinido) raramente afeta cálculos físicos?
 
-## Exercício 2: Propriedade de Filtragem da Delta
+## Exercício 2: Filtragem e a Sequência Delta Gaussiana **(Essencial)**
 
-**a)** Use a definição de filtragem para calcular $\int_{-\infty}^{\infty} \delta(x-3) \, x^2 \, dx$.
+**a)** Calcule $\int_{-\infty}^{\infty}\delta(x-3)\,x^2\,dx$ e generalize o resultado para $\int_{-\infty}^\infty \delta(ax)\,dx$.
 
-**b)** Mostre que $\delta(x)$ não é uma função no sentido usual (dica: considere seu valor em $x=0$ e sua integral).
+**b)** Verifique que $G_\sigma(x)$ é normalizada para qualquer $\sigma>0$, e que $G_\sigma(0)=\dfrac1{\sqrt{2\pi}\sigma}$ diverge quando $\sigma\to0$.
 
-**c)** Calcule $\int_{-\infty}^{\infty} \delta(2x) \, dx$ e generalize para $\delta(ax)$.
+**c)** Refaça a demonstração da propriedade de filtragem via série de Taylor para uma função par $f(x)=\cos(x)$ até ordem $x^2$, explicando por que apenas o termo constante $f(0)$ sobrevive no limite $\sigma\to0$.
 
-**d)** Interprete fisicamente $\delta(x-x_0)$ como densidade de uma partícula pontual.
+## Exercício 3: O Truque da Integral Gaussiana
 
-## Exercício 3: Delta como Derivada da Theta **(Essencial)**
+**a)** Refaça a mudança para coordenadas polares na integral dupla e calcule explicitamente $\int_0^\infty e^{-r^2/2\sigma^2}\,r\,dr$.
 
-**a)** Refaça a derivação de $\boxed{\frac{d}{dx}\theta(x-x_0) = \delta(x-x_0)}$ partindo do Teorema Fundamental do Cálculo, explicitando cada passo.
+**b)** Use o resultado para verificar a normalização de $G_\sigma(x)$.
 
-**b)** Use este resultado para calcular $\frac{d}{dx}\big[x\,\theta(x)\big]$.
-
-**c)** Calcule $\frac{d^2}{dx^2}\big[x\,\theta(x)\big]$ e interprete o resultado.
-
-**d)** Generalize para $\frac{d}{dx}\big[f(x)\,\theta(x-x_0)\big]$, com $f$ suave.
-
-## Exercício 4: Construindo a Theta a Partir do Módulo
-
-**a)** Verifique que $g(x) = |x| = \sqrt{x^2}$ é contínua mas não diferenciável em $x=0$.
-
-**b)** Mostre explicitamente que $g'(x) = \text{sgn}(x)$ para $x \neq 0$.
-
-**c)** A partir de $\theta(x) = \dfrac{g'(x)+1}{2}$, recupere a definição original de $\theta$ por casos.
-
-**d)** Proponha uma construção análoga de $\theta(x)$ a partir da função $\arctan$ ou $\tanh$, tomando um limite apropriado.
-
-## Exercício 5: Aproximação Gaussiana para a Delta
-
-**a)** Verifique que $G_\sigma(x)$ é normalizada para qualquer $\sigma > 0$.
-
-**b)** Mostre que $G_\sigma(0) = \dfrac{1}{\sqrt{2\pi}\,\sigma}$ diverge quando $\sigma \to 0$.
-
-**c)** Calcule a largura à meia altura (FWHM) de $G_\sigma(x)$ e mostre que ela vai a zero com $\sigma$.
-
-**d)** Explique por que $G_\sigma(x)$, apesar de divergir pontualmente, converge para $\delta(x)$ no sentido de distribuições.
-
-## Exercício 6: Demonstração da Propriedade de Filtragem via Taylor
-
-**a)** Repita a demonstração das notas para uma função par $f(x) = \cos(x)$ até ordem $x^2$ e verifique o resultado $\lim_{\sigma\to0}\int G_\sigma(x) f(x)\,dx = f(0)$.
-
-**b)** Explique por que apenas o termo constante $f(0)$ sobrevive no limite $\sigma \to 0$.
-
-**c)** Mostre que os termos pares de ordem $x^{2k}$ contribuem com potências $\sigma^{2k} \to 0$.
-
-**d)** O que aconteceria se $f$ não fosse suave em $x=0$ (por exemplo, $f(x) = |x|$)?
-
-## Exercício 7: Função de Green em 1D **(Essencial)**
+## Exercício 4: Função de Green em 1D **(Essencial)**
 
 **a)** Verifique por substituição direta que $G(x,x_0) = \frac{1}{2}|x-x_0|$ satisfaz $\frac{d^2}{dx^2}G = \delta(x-x_0)$.
 
-**b)** Mostre que $G(x,x_0)$ não é única: some uma função linear $a + bx$ e verifique que a equação ainda é satisfeita.
+**b)** Mostre que $G(x,x_0)$ não é única: some uma função linear $a+bx$ e verifique que a equação ainda é satisfeita. Que condições de contorno fixam essa constante de integração?
 
-**c)** Que condições de contorno fixam a constante de integração na prática?
+**c)** Interprete $G(x,x_0)$ como o deslocamento de uma corda infinita sob uma força pontual em $x_0$.
 
-**d)** Interprete $G(x,x_0)$ como o deslocamento de uma corda infinita sob uma força pontual em $x_0$.
-
-## Exercício 8: Dependência com a Dimensão
-
-**a)** Verifique, por aplicação direta do laplaciano radial, que $G \propto \log|x-x_0|$ resolve a equação de Green em 2D.
-
-**b)** Verifique que $G \propto 1/|x-x_0|$ resolve a equação de Green em 3D.
-
-**c)** Compare o comportamento assintótico (crescimento ou decaimento) nas três dimensões da tabela e explique a tendência.
-
-**d)** O que você espera que aconteça com a função de Green em 4D? Justifique sem fazer a conta completa.
-
-## Exercício 9: Interpretação Física
-
-**a)** Dê outro exemplo físico (além da aceleração instantânea) de uma grandeza idealizada como limite de um processo suave.
-
-**b)** Compare a analogia delta/processo-suave com a analogia número-irracional/sequência-racional discutida nas notas. Em que pontos a analogia é forte? Em que pontos ela é frágil?
-
-**c)** Por que dizemos que a delta de Dirac "não é uma função" no sentido clássico?
-
-**d)** Em que sentido a delta é, ainda assim, um objeto matemático rigoroso?
-
-## Exercício 10: O Truque da Integral Gaussiana
-
-**a)** Refaça a mudança para coordenadas polares na integral dupla e explique por que ela elimina a dificuldade de integrar $e^{-x^2}$ diretamente.
-
-**b)** Calcule explicitamente $\int_0^\infty e^{-r^2/2\sigma^2}\, r\,dr$ e confirme o resultado $2\pi\sigma^2$ do produto das integrais.
-
-**c)** Use o resultado para verificar a normalização de $G_\sigma(x)$ explicitamente.
-
-**d)** Generalize o truque das coordenadas polares para calcular $\int_{-\infty}^{\infty} e^{-x^2/2\sigma^2}\,x^2\,dx$.
-
-## Exercício 11: Outras Sequências Delta
+## Exercício 5: Outras Sequências Delta
 
 **a)** Mostre que a função retangular $R_\epsilon(x) = \frac{1}{\epsilon}$ para $|x|<\epsilon/2$ e $0$ caso contrário também converge para $\delta(x)$ quando $\epsilon \to 0$.
 
-**b)** Verifique a propriedade de filtragem para $R_\epsilon(x)$ diretamente, sem expansão de Taylor.
+**b)** Mostre que a Lorentziana $L_\epsilon(x) = \dfrac{1}{\pi}\dfrac{\epsilon}{x^2+\epsilon^2}$ também é uma sequência delta válida.
 
-**c)** Mostre que a Lorentziana $L_\epsilon(x) = \dfrac{1}{\pi}\dfrac{\epsilon}{x^2+\epsilon^2}$ também é uma sequência delta válida.
+**c)** Compare a velocidade de convergência (na cauda, longe de $x=0$) entre $G_\sigma$, $R_\epsilon$ e $L_\epsilon$.
 
-**d)** Compare a velocidade de convergência (na cauda, longe de $x=0$) entre $G_\sigma$, $R_\epsilon$ e $L_\epsilon$.
+## Exercício 6: Dependência com a Dimensão e Interpretação Física
 
-## Exercício 12: Implementação Numérica
+**a)** Verifique, por aplicação direta do laplaciano radial, que $G\propto\log|x-x_0|$ resolve a equação de Green em 2D e que $G\propto1/|x-x_0|$ a resolve em 3D.
 
-**a)** Modifique o código Python das notas para sobrepor a função degrau $\theta(x)$ ao gráfico da integral acumulada de $G_\sigma(x)$.
+**b)** O que você espera que aconteça com a função de Green em 4D? Justifique sem fazer a conta completa (o caso geral será tratado na próxima aula).
 
-**b)** Verifique numericamente que $\int_{-\infty}^{\infty} G_\sigma(x)\,dx \approx 1$ para os valores de $\sigma$ usados no código.
-
-**c)** Adicione ao gráfico a aproximação retangular $R_\epsilon(x)$ do Exercício 11 e compare visualmente a convergência para a delta.
-
-**d)** Estime numericamente, para um $f(x)$ de sua escolha, o erro $\left|\int G_\sigma(x) f(x)\,dx - f(0)\right|$ em função de $\sigma$, e verifique como ele decresce.
+**c)** Por que dizemos que a delta de Dirac "não é uma função" no sentido clássico? Em que sentido ela é, ainda assim, um objeto matemático rigoroso?

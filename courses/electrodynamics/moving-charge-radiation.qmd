@@ -985,4 +985,90 @@ the starting point for deriving the radiation-reaction (Abraham–Lorentz–Dira
 force, by balancing this momentum loss against the mechanical momentum of the
 charge.
 
+# Exercises
+
+## Exercise 1: The Wave Equation for the Four-Potential
+
+**a)** Substitute $F^{\mu\nu}=\partial^\mu A^\nu-\partial^\nu A^\mu$ into
+$\partial_\mu F^{\mu\nu}=-\mu_0J^\nu$ and use that partial derivatives
+commute to derive, writing out each term explicitly,
+$$
+\Box A^\nu-\partial^\nu(\partial_\mu A^\mu)=-\mu_0J^\nu.
+$$
+
+**b)** Confirm that this reduces to the boxed $\Box A^\nu=-\mu_0J^\nu$
+precisely in the Lorenz gauge $\partial_\mu A^\mu=0$, and explain why it is
+the gauge choice — not any additional physics — that removes the second term.
+
+## Exercise 2: Retarded Time — Special Cases **(Essential)**
+
+**a)** Using $|\hat{\mathbf n}\cdot\mathbf v|\le v<c$, verify explicitly that
+$\dot f=(\hat{\mathbf n}\cdot\mathbf v)/c-1<0$ always, confirming the retarded
+time equation has at most one solution.
+
+**b)** Set $\mathbf v_0=0$ in the boxed quadratic-formula solution for $t_r$
+(uniform-velocity case) and confirm it reduces to the elementary result
+$t_r=t-|\Delta\mathbf x_0|/c$ for a charge at rest.
+
+**c)** Take the non-relativistic limit $v_0\ll c$ of the same boxed formula
+(keep only the zeroth order in $v_0/c$) and confirm it reduces to the same
+naive light-travel-time result $t_r\approx t-|\Delta\mathbf x_0|/c$.
+
+## Exercise 3: The Denominator of the Liénard–Wiechert Potentials **(Essential)**
+
+**a)** Starting from $u^\mu=\gamma(1,\mathbf v/c)$ and, at $\tau=\tau_r$,
+$\Delta x^\mu=(|\mathbf x-\mathbf y|,|\mathbf x-\mathbf y|\hat{\mathbf n})$,
+compute the Minkowski product $u\cdot\Delta x$ directly from its definition
+and verify
+$$
+u\cdot\Delta x=-\gamma|\mathbf x-\mathbf y|\left(1-\hat{\mathbf n}\cdot\mathbf v/c\right).
+$$
+
+**b)** Explain why this factor, and not simply $|\mathbf x-\mathbf y|$, is
+what appears in the denominator of $A^\mu$ — i.e. identify where the
+$\tau$-integral in the [Liénard–Wiechert potentials](#liénard-wiechert-potentials)
+section produces it.
+
+## Exercise 4: Near Field Is Not Transverse
+
+The notes show that $F_{\mu\nu}^{\rm rad}\Delta x^\nu=0$ but only remark that
+"the same is not true of $F_{\mu\nu}^{\rm near}$."
+
+**a)** Contract $F_{\mu\nu}^{\rm near}=\dfrac{\mu_0qc}{4\pi(u\cdot\Delta x)^3}(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu)$
+with $\Delta x^\nu$, using $\Delta x\cdot\Delta x=0$, and show explicitly that
+$$
+F_{\mu\nu}^{\rm near}\Delta x^\nu=\frac{\mu_0qc}{4\pi(u\cdot\Delta x)^2}\Delta x_\mu\neq0.
+$$
+
+**b)** In one sentence, relate this to the fact that only the radiation field
+is null ($F^{\rm rad}_{\alpha\beta}F_{\rm rad}^{\alpha\beta}=0$), while the
+full field is not.
+
+## Exercise 5: A General Identity for Null Bivectors **(Essential)**
+
+**a)** For any bivector $W_{\mu\nu}=A_\mu B_\nu-A_\nu B_\mu$ built from two
+four-vectors $A^\mu,B^\mu$, prove the general identity
+$$
+W^{\alpha\beta}W_{\alpha\beta}=2\Big[(A\cdot A)(B\cdot B)-(A\cdot B)^2\Big].
+$$
+
+**b)** Apply this identity with $A^\mu=\Delta x^\mu$, $B^\mu=b^\mu$ to
+re-derive $F_{\rm rad}^{\alpha\beta}F_{\alpha\beta}^{\rm rad}=0$ directly from
+$\Delta x\cdot\Delta x=0$ and $\Delta x\cdot b=0$, without expanding the
+product term by term as the notes do.
+
+## Exercise 6: Rest-Frame Check of the Sphere-Moment Integrals
+
+In the source's instantaneous rest frame, $u^\mu=(1,\mathbf 0)$ and
+$n^\mu=(0,\hat{\mathbf n})$.
+
+**a)** Show that the covariant moment formula
+$\oint n^\mu n^\nu\,\dd\Omega=\frac{4\pi}3(\eta^{\mu\nu}+u^\mu u^\nu)$
+reduces, for purely spatial indices $\mu=i,\nu=j$, to the familiar 3D result
+$\oint\hat n^i\hat n^j\,\dd\Omega=\frac{4\pi}3\delta^{ij}$.
+
+**b)** Check the $\mu=\nu=0$ and mixed $\mu=0,\nu=j$ components of the same
+covariant formula in this frame, and confirm they are trivially consistent
+with $n^0=0$.
+
 {{< include /_footer.qmd >}}

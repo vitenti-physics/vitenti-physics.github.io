@@ -267,33 +267,40 @@ This formulation prepares the ground for:
 - generalizing to curved spacetime (general relativity),
 - interpreting electromagnetism as a $U(1)$ gauge theory.
 
-::: {.callout-exercise}
-### Exercises
+## Exercises
 
-1. Verify that the matrix representation of $F_{\mu\nu}$ given above is
-   antisymmetric and correctly encodes $\vec{E}$ and $\vec{B}$.
+### Exercise 1: The Faraday Tensor and the Homogeneous Equation **(Essential)**
 
-2. Show explicitly that $\dd F = 0$ gives the component
-   $\partial_t B_{12} + \partial_1 E_2 - \partial_2 E_1 = 0$, and identify this
-   with one component of Faraday's law.
+**a)** Verify that the matrix representation of $F_{\mu\nu}$ given above is
+antisymmetric and correctly encodes $\vec E$ and $\vec B$.
 
-3. Prove that if $F = \dd A$, then $\dd F = 0$ automatically.
+**b)** Show explicitly that $\dd F=0$ gives the component
+$\partial_tB_{12}+\partial_1E_2-\partial_2E_1=0$, and identify this with one
+component of Faraday's law.
 
-4. Verify that $\partial_\mu F^{\mu 0} = -\mu_0J^0$ reproduces Gauss's law when
-   $F^{i0} = -E^i/c$ and $J^0=c\rho$.
+**c)** Prove that if $F=\dd A$, then $\dd F=0$ automatically.
 
-5. Show that the gauge transformation $A_\mu \to A_\mu + \partial_\mu \chi$
-   leaves $F_{\mu\nu}$ unchanged.
+### Exercise 2: The Non-Homogeneous Equation and Gauge Invariance **(Essential)**
 
-6. Write the action for free electromagnetism:
-   $$
-   S = -\frac{1}{4\mu_0} \int F_{\mu\nu} F^{\mu\nu} \,\dd^4 x,
-   $$
-   and derive the vacuum Maxwell equations by varying $A_\mu$.
+**a)** Verify that $\partial_\mu F^{\mu0}=-\mu_0J^0$ reproduces Gauss's law
+when $F^{i0}=-E^i/c$ and $J^0=c\rho$.
 
-7. In 2+1 dimensions, how many independent components does $F_{\mu\nu}$ have?
-   How many for $\dd F$?
+**b)** Show that the gauge transformation $A_\mu\to A_\mu+\partial_\mu\chi$
+leaves $F_{\mu\nu}$ unchanged.
 
-8. Discuss why the Hodge dual maps a 2-form to another 2-form in 4D, and
-   explain its role in the source equations.
-:::
+### Exercise 3: Electrodynamics from an Action Principle **(Essential)**
+
+Write the action for free electromagnetism,
+$$
+S=-\frac1{4\mu_0}\int F_{\mu\nu}F^{\mu\nu}\,\dd^4x,
+$$
+and derive the vacuum Maxwell equations by varying $A_\mu$.
+
+### Exercise 4: Dimension-Counting and the Hodge Dual
+
+**a)** In 2+1 dimensions, how many independent components does $F_{\mu\nu}$
+have? How many does $\dd F$ have?
+
+**b)** Explain why the Hodge dual maps a 2-form to another 2-form in 4D
+specifically, and what role this plays in writing the non-homogeneous
+equations as $\dd\star F=-\mu_0\star J$.

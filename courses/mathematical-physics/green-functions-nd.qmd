@@ -493,134 +493,51 @@ A normalização da delta de Dirac em $N$ dimensões é $\delta^N(\mathbf{r})$, 
 
 # Exercícios
 
-## Exercício 1: Função de Synge
+## Exercício 1: A Função de Synge
 
-**a)** Mostre que $\sigma = |\mathbf{x} - \mathbf{x}_0|^2/2$ satisfaz:
-$$
-\nabla \sigma = \mathbf{x} - \mathbf{x}_0
-$$
-$$
-\nabla^2 \sigma = N
-$$
+**a)** Mostre que $\sigma = |\mathbf{x} - \mathbf{x}_0|^2/2$ satisfaz $\nabla \sigma = \mathbf{x} - \mathbf{x}_0$ e $\nabla^2 \sigma = N$.
 
-**b)** Calcule $\nabla\sigma \cdot \nabla\sigma$ explicitamente.
+**b)** Mostre que $\sigma$ é independente da origem do sistema de coordenadas.
 
-**c)** Mostre que $\sigma$ é independente da origem do sistema de coordenadas.
+**c)** Por que escrever a função de Green em termos de $\sigma$ evita a necessidade de decompor $G$ em funções de base, ao contrário do método usado nas aulas anteriores?
 
-**d)** Por que escrever a função de Green em termos de $\sigma$ evita a necessidade de decompor $G$ em funções de base, ao contrário do método usado nas aulas anteriores?
-
-## Exercício 2: Lei de Potência **(Essencial)**
+## Exercício 2: Soluções por Lei de Potência **(Essencial)**
 
 **a)** Verifique que $G = \sigma^\lambda$ é solução da equação $\nabla^2 G = 0$ para $\lambda = 1 - N/2$.
 
-**b)** Mostre que para $N=3$ esta solução recupera o potencial Coulombiano.
+**b)** Mostre que para $N=3$ esta solução recupera o potencial Coulombiano, e explique por que a lei de potência falha para $N=2$.
 
-**c)** O que acontece para $N=2$? Explique por que a lei de potência falha neste caso.
+**c)** Para $N=4$, qual é a forma da função de Green? Qual seria a lei de força correspondente?
 
-**d)** Para $N=4$, qual é a forma da função de Green? Qual seria a lei de força correspondente?
+## Exercício 3: A Solução Logarítmica em 2D
 
-## Exercício 3: Solução 2D
+**a)** Mostre que $G = \ln \sigma$ satisfaz $\nabla^2 G = 0$ em 2D calculando o laplaciano explicitamente.
 
-**a)** Mostre que $G = \ln \sigma$ satisfaz $\nabla^2 G = 0$ em 2D.
+**b)** Calcule $\nabla^2(\ln\sigma)$ em $N$ dimensões genéricas e verifique que só se anula para $N=2$.
 
-**b)** Calcule $\nabla^2 G$ em $N$ dimensões para $G = \ln \sigma$ e verifique que só funciona para $N=2$.
+**c)** Verifique que $\lim_{N \to 2} \dfrac{r^{2-N} - 1}{N-2} = -\ln r$, conectando a solução 2D ao limite $N\to2$ da solução geral.
 
-**c)** Qual é a função de Green normalizada em 2D? Justifique o fator de normalização.
+## Exercício 4: Regularização em 3D **(Essencial)**
 
-**d)** Como a solução 2D se relaciona com o limite $N \to 2$ da solução geral?
+**a)** Para $G_\varepsilon = (\sigma + \varepsilon)^{-1/2}$, calcule $\nabla^2 G_\varepsilon$ explicitamente e mostre que $\lim_{\varepsilon\to0}\nabla^2G_\varepsilon=0$ para $r \neq 0$.
 
-## Exercício 4: Regularização 3D **(Essencial)**
+**b)** Refaça, passo a passo, a integral $\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, d^3x = -4\sqrt{2}\,\pi$ (mudança para coordenadas esféricas, integração por partes, substituição $r=\sqrt{2\varepsilon}\tan\theta$).
 
-**a)** Para $G_\varepsilon = (\sigma + \varepsilon)^{-1/2}$, calcule $\nabla^2 G_\varepsilon$ explicitamente.
+**c)** Usando a expansão de Taylor de $f$ em torno de $\mathbf{x}_0$, mostre que os termos linear e de ordem superior não contribuem no limite $\varepsilon \to 0$, deixando apenas o termo constante $f(\mathbf{x}_0)$.
 
-**b)** Mostre que $\lim_{\varepsilon \to 0} \nabla^2 G_\varepsilon = 0$ para $r \neq 0$.
-
-**c)** Mostre que $\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, d^3x = -4\sqrt{2}\,\pi$, e explique por que o fator $\sqrt{2}$ aparece.
-
-**d)** Interprete fisicamente o papel do parâmetro $\varepsilon$ na regularização.
-
-## Exercício 5: Propriedade de Filtragem
-
-**a)** Use a expansão de Taylor para mostrar que:
-$$
-\lim_{\varepsilon \to 0} \int \nabla^2 G_\varepsilon \, f(\mathbf{x}) \, d^3x = -4\pi f(\mathbf{x}_0)
-$$
-
-**b)** Mostre que o termo linear em $(\mathbf{x} - \mathbf{x}_0)$ contribui com zero.
-
-**c)** Mostre que os termos de ordem superior contribuem com $\mathcal{O}(\varepsilon^{k/2}) \to 0$.
-
-**d)** O que este resultado prova sobre a natureza do laplaciano da função de Green?
-
-## Exercício 6: Generalização ND
+## Exercício 5: Generalização a $N$ Dimensões
 
 **a)** Mostre que $G_N = \sigma^{1-N/2}$ satisfaz $\nabla^2 G_N = 0$ para $N \neq 2$.
 
-**b)** Calcule a constante de normalização para $N > 2$ em termos da função Gamma.
+**b)** Calcule a constante de normalização para $N > 2$ em termos da função Gama, e mostre que ela é proporcional a $(N-2)$.
 
-**c)** Mostre que a normalização é $\propto (N-2)$.
+**c)** O que acontece com essa normalização no limite $N \to 2$? Relacione com a necessidade de uma solução logarítmica separada.
 
-**d)** O que acontece com a normalização no limite $N \to 2$?
+## Exercício 6: Interpretação Física
 
-## Exercício 7: Interpretação Física
+**a)** Explique por que a lei de Coulomb seria diferente (em potência de $r$) em um espaço com 4 dimensões espaciais.
 
-**a)** Explique por que a lei de Coulomb seria diferente em um universo com 4 dimensões espaciais.
-
-**b)** Em teoria de cordas, como dimensões extras poderiam ser detectadas?
-
-**c)** O que a precisão da lei de Coulomb nos diz sobre a geometria do espaço?
-
-**d)** Como a regularização dimensional se relaciona com a detecção de dimensões extras?
-
-## Exercício 8: Implementação Numérica
-
-**a)** Escreva um código Python que calcule numericamente o laplaciano da função de Green regularizada.
-
-**b)** Verifique que a integral se aproxima de $-4\pi$ para $\varepsilon \to 0$.
-
-**c)** Plote o laplaciano para diferentes valores de $\varepsilon$ e discuta o comportamento.
-
-**d)** Como a escolha do método de integração numérica afeta a precisão do resultado?
-
-## Exercício 9: Conexão com Eletromagnetismo
-
-**a)** Como a função de Green 3D se relaciona com o potencial eletrostático?
-
-**b)** Derive a lei de Coulomb a partir da função de Green.
-
-**c)** Qual seria a lei de força em 2D? Em 4D?
-
-**d)** Como a lei de Gauss se generaliza para dimensões arbitrárias?
-
-## Exercício 10: Caso 1D Detalhado
-
-**a)** Mostre que em 1D, $G(x) = |x|/2$ satisfaz $G''(x) = \delta(x)$.
-
-**b)** Qual é a interpretação física da função de Green em 1D?
-
-**c)** Como a solução 1D se relaciona com o caso geral $N=1$?
-
-**d)** Por que em 1D o potencial não decai com a distância?
-
-## Exercício 11: Método de Frobenius
-
-**a)** Explique o método de Frobenius para equações diferenciais com raízes repetidas.
-
-**b)** Como este método se aplica ao caso 2D da função de Green?
-
-**c)** Mostre que a solução logarítmica surge naturalmente do método de Frobenius.
-
-**d)** Compare com a regularização dimensional para obter o mesmo resultado.
-
-## Exercício 12: Aplicações Práticas
-
-**a)** Em que áreas da física as funções de Green em diferentes dimensões são utilizadas?
-
-**b)** Como a função de Green 2D aparece em sistemas de vórtices?
-
-**c)** Qual é a relação entre funções de Green e equações de difusão?
-
-**d)** Como a regularização de funções de Green é usada em teoria quântica de campos?
+**b)** O fluxo $\oint \mathbf{E}\cdot d\mathbf{a}$ através de uma esfera de raio $r$, usado para obter a lei do inverso do quadrado em 3D, generaliza-se para uma lei $\propto 1/r^{N-1}$ em $N$ dimensões. Relacione este expoente com o expoente $2-N$ de $G_N$.
 
 # Conclusão
 

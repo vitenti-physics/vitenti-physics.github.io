@@ -133,38 +133,6 @@ information that cannot be removed by such changes is the count of positive and 
 signs. This is why the signature labels an invariant class of metrics rather than a
 particular matrix of components.
 
-::: callout-exercise
-### Exercises
-
-1.  **Metric invariance**
-
-    Consider the Lorentz transformation
-    $$\begin{aligned}
-    t' &= \gamma\left(t - \frac{v}{c^2}x\right) \\
-    x' &= \gamma(x - vt)
-    \end{aligned}$$
-    with $y'=y$ and $z'=z$.
-
-    Show explicitly that
-    $$\dd s'^2 = -c^2\dd t'^2 + \dd x'^2 + \dd y'^2 + \dd z'^2$$
-    is equal to
-    $$\dd s^2 = -c^2\dd t^2 + \dd x^2 + \dd y^2 + \dd z^2 .$$
-
-2.  **Metric components**
-
-    Starting from
-    $$\dd s^2 = -c^2\dd t^2 + \dd x^2 + \dd y^2 + \dd z^2,$$
-    rewrite the interval in the form
-    $$\dd s^2 = \eta_{\mu\nu}\dd x^\mu \dd x^\nu$$
-    and determine all components of $\eta_{\mu\nu}$.
-
-3.  **Timelike normalization**
-
-    Let $v^\mu$ be a timelike vector. Show that it can always be rescaled so that
-    $$\eta_{\mu\nu}v^\mu v^\nu = -1.$$
-    Explain the physical meaning of this normalization in relativity.
-:::
-
 ## Vectors and the Metric
 
 To understand the role of the metric more clearly, it is useful to think about
@@ -194,32 +162,6 @@ In relativistic spacetime the same idea applies. The metric still provides a bil
 operation that takes two vectors and produces a number. The difference is that the sign
 structure of the metric is no longer Euclidean, reflecting the different roles of time
 and space in Minkowski geometry.
-
-::: callout-exercise
-### Exercises
-
-1.  **Orthogonality**
-
-    Two vectors are said to be orthogonal if
-    $$g(u,v)=0.$$
-    Show that orthogonality in Minkowski space does not imply that the vectors are
-    spatially perpendicular in the usual Euclidean sense.
-
-2.  **Metric as a map**
-
-    Show that the metric defines a linear map
-    $$g : \mathbb{V} \rightarrow \mathbb{V}^*$$
-    by associating to every vector $v$ the covector
-    $$g(v,\cdot).$$
-    Verify explicitly that this map is linear.
-
-3.  **Degeneracy**
-
-    Show that if a bilinear form $g$ satisfies
-    $$g(v,u)=0$$
-    for all $u$, then $v$ must vanish. Explain why this property is called
-    **non-degeneracy**.
-:::
 
 ## Points, Vectors, and Tangent Spaces
 
@@ -294,34 +236,6 @@ space,
 $$p \in M \quad \longrightarrow \quad T_pM.$$
 Geometric objects such as vectors, covectors, and tensors are defined in these tangent
 spaces, not directly on $M$ itself.
-
-::: callout-exercise
-### Exercises
-
-1.  **Tangent vector transformation**
-
-    Let a curve be parametrized by $\lambda$,
-    $$x^\mu(\lambda).$$
-    Show that under a change of parameter $\lambda \to \lambda'(\lambda)$ the vector
-    $$v^\mu = \frac{\dd x^\mu}{\dd \lambda}$$
-    transforms as
-    $$v'^\mu = \frac{\dd \lambda}{\dd \lambda'} v^\mu .$$
-
-2.  **Tangent space dimension**
-
-    Consider spacetime with coordinates $(x^0,x^1,x^2,x^3)$.
-
-    Show that the vectors
-    $$\partial_\mu = \frac{\partial}{\partial x^\mu}$$
-    form a basis of the tangent space at each point.
-
-3.  **Coordinate change**
-
-    Under a coordinate transformation $x^\mu \to x'^\mu(x)$ show that the basis vectors
-    transform according to
-    $$\partial_\mu =
-    \frac{\partial x'^\nu}{\partial x^\mu}\partial'_\nu .$$
-:::
 
 ## Covectors and the Dual Space
 
@@ -402,28 +316,6 @@ $$
 so the set $\{\dd x^\mu\}$ forms a basis of $T_p^*M$ dual to the basis
 $\{\partial_\mu\}$ of $T_pM$.
 
-::: callout-exercise
-### Exercises
-
-1.  Show directly from the definition that the pairing $\tilde{w}(v)$ is bilinear in
-    both arguments.
-
-2.  Starting from a basis $\{e_i\}$ of $\mathbb{V}$, construct the dual basis explicitly
-    and show that it is unique.
-
-3.  Given a change of basis $e_i' = A^j{}_i e_j$, determine how the dual basis must
-    transform so that $\tilde{e}^i(e_j)=\delta^i_j$ remains valid.
-
-4.  Using the definition $\dd f(v) = v(f)$, show that $\dd (fg) = f\,\dd g + g\,\dd f$.
-
-5.  Show that $\dd x^\mu(\partial_\nu) = \delta^\mu_\nu$ and explain why this implies
-    that $\{\dd x^\mu\}$ is a basis of $T_p^*M$.
-
-6.  Verify explicitly that the map $\mathbb{V} \to \mathbb{V}^{**}$ defined by
-    $v \mapsto V \in \mathbb{V}^{**}$ such that $V(\tilde{w}) = \tilde{w}(v)$ is an
-    isomorphism in finite dimensions.
-:::
-
 ## Tensor Products
 
 Once vectors and covectors have been introduced, we can construct more general objects
@@ -491,32 +383,6 @@ where $\eta^{\mu\nu}$ is the inverse matrix of $\eta_{\mu\nu}$. Its action on a 
 is
 $$\eta^{-1}(\dd x^\mu) = \eta^{\mu\nu} \partial_\nu.$$
 
-::: callout-exercise
-### Exercises
-
-1.  Show that the tensor product is bilinear, that is,
-    $$(a w_1 + b w_2) \otimes k = a (w_1 \otimes k) + b (w_2 \otimes k),$$
-    and similarly in the second argument.
-
-2.  Verify explicitly that
-    $$(\dd x^\mu \otimes \dd x^\nu)(v,u) = v^\mu u^\nu.$$
-
-3.  Show that the tensor
-    $$\dd x^0 \otimes \dd x^1 + \dd x^1 \otimes \dd x^0$$
-    cannot be written as a single tensor product of two covectors.
-
-4.  If $\dim \mathbb{V} = n$, show that the space of rank-two covariant tensors has
-    dimension $n^2$.
-
-5.  Given a vector $v = v^\mu \partial_\mu$, compute explicitly the components of the
-    covector $\eta(v)$.
-
-6.  Show that applying $\eta^{-1}$ to $\eta(v)$ recovers the original vector $v$.
-
-7.  Show that the components $\eta^{\mu\nu}$ satisfy
-    $$\eta^{\mu\alpha} \eta_{\alpha\nu} = \delta^\mu{}_\nu.$$
-:::
-
 ## Symmetric and Antisymmetric Tensors
 
 When tensor products involve multiple copies of the same vector space, it is useful to
@@ -559,22 +425,6 @@ basis and its evaluation as a bilinear map.
 
 More generally, the wedge product corresponds to the antisymmetrization of a tensor
 product and produces tensors that vanish whenever two arguments are equal.
-
-::: callout-exercise
-### Exercises
-
-1.  Show that the symmetric and antisymmetric projections are orthogonal in the sense
-    that
-    $$T_{(\mu\nu)} R^{[\mu\nu]} = 0.$$
-
-2.  Show that the number of independent components of a symmetric tensor in $n$
-    dimensions is
-    $$\frac{n(n+1)}{2}.$$
-
-3.  Show that the number of independent components of an antisymmetric tensor in $n$
-    dimensions is
-    $$\frac{n(n-1)}{2}.$$
-:::
 
 The antisymmetric product has a direct geometric interpretation. Given two vectors $v$
 and $u$, the object $v \wedge u$ represents an oriented area element.
@@ -635,21 +485,6 @@ vanish, because at least two of the vectors must be linearly dependent.
 
 This property reflects the fact that an $n$-dimensional space cannot contain geometric
 objects with dimension larger than $n$.
-
-::: callout-exercise
-### Exercises
-
-1.  Prove that the wedge product is bilinear and antisymmetric.
-
-2.  Show that if $v_1,\dots,v_n$ are vectors in an $n$-dimensional space then
-    $$
-    v_1\wedge\dots\wedge v_n
-    $$
-    vanishes if and only if the vectors are linearly dependent.
-
-3.  Show that in an $n$-dimensional space any wedge product containing more than $n$
-    vectors must vanish.
-:::
 
 ## Differential Forms and Integration
 
@@ -731,26 +566,6 @@ producing new forms whose antisymmetric structure encodes derivatives in a
 coordinate-independent way. This construction will allow us to write the equations of
 electromagnetism in a compact geometric form.
 
-::: callout-exercise
-### Exercises
-
-1.  Compute $\dd f$ for
-    $$
-    f(x,y,z)=x^2yz.
-    $$
-
-2.  Show that the exterior derivative satisfies the Leibniz rule
-    $$
-    \dd(fg)=f\,\dd g + g\,\dd f.
-    $$
-
-3.  Show that
-    $$
-    \dd^2 f = 0
-    $$
-    for any smooth scalar function $f$.
-:::
-
 ## The Exterior Derivative and Stokes' Theorem
 
 The exterior derivative allows us to connect differentiation with integration in a
@@ -798,16 +613,6 @@ In the context of electromagnetism, these relations play a central role because
 Maxwell's equations can be written compactly in terms of differential forms and their
 exterior derivatives.
 
-::: callout-exercise
-### Exercises
-
-1.  Show that the fundamental theorem of calculus
-    $$
-    \int_a^b \dd f = f(b)-f(a)
-    $$
-    is the one-dimensional version of Stokes' theorem.
-:::
-
 ## Gradients as Covectors
 
 Given a scalar function $f(x)$, its exterior derivative $\dd f$ defines a covector field with components
@@ -828,20 +633,6 @@ $$
 
 Thus, the familiar gradient is not a fundamentally new object, but rather the vector obtained from the covector $\dd f$ using the metric. Without a metric, $\dd f$ is the natural geometric object, while the notion of a gradient as a vector depends on the additional structure provided by $\eta$.
 
-::: callout-exercise
-### Exercises
-
-1.  Let
-    $$f(x,y,z)=x^2+y^2+z^2 .$$
-    Compute $\dd f$ and evaluate $\dd f(v)$ for $v=(1,1,1)$.
-
-2.  Show that $\partial_\mu f$ transforms as a covector under coordinate
-    transformations.
-
-3.  In Euclidean space verify that raising the index with $\delta^{ij}$ gives the usual
-    gradient vector.
-:::
-
 ## Coordinate Dependence of the Metric
 
 The components of the metric tensor depend on the coordinate system used to describe
@@ -856,23 +647,6 @@ should be written in a form that remains valid under arbitrary changes of coordi
 In flat spacetime, invariance under Lorentz transformations is an important special case
 of this broader principle. The covariant formulation makes clear which statements are
 geometric and therefore independent of any chosen frame.
-
-
-::: callout-exercise
-### Exercises
-
-1.  Consider the coordinate transformation
-    $$
-    x = r\cos\theta, \qquad y = r\sin\theta.
-    $$
-    Compute the metric components in polar coordinates.
-
-2.  Show explicitly that the scalar product of two vectors remains invariant under this
-    transformation.
-
-3.  Explain why the matrix representation of the metric changes even though the geometry
-    does not.
-:::
 
 ## Covariant Observer Decomposition and Rapidity
 
@@ -921,44 +695,113 @@ intrinsically a standard vector. The familiar pseudovector description of $\math
 is a special feature of three spatial dimensions, where oriented areas can be identified
 with directions.
 
-::: {.callout-exercise}
-### Exercises
+## Exercises
 
-1. Show explicitly that $h_{\mu\nu}u^\nu = 0$ and that $h^\mu{}_{\nu}$ acts as a projector, i.e.,
-   $$
-   h^\mu{}_{\alpha}h^\alpha{}_{\nu} = h^\mu{}_{\nu}.
-   $$
+### Exercise 1: Signature and the Minkowski Metric **(Essential)**
 
-2. Given a vector $v^\mu$, define its temporal and spatial parts relative to $u^\mu$ by
-   $$
-   v_\parallel^\mu = -(u \cdot v)\, u^\mu, \qquad v_\perp^\mu = h^\mu{}_{\nu} v^\nu.
-   $$
-   Show that $v^\mu = v_\parallel^\mu + v_\perp^\mu$ and that $u_\mu v_\perp^\mu = 0$.
+**a)** For the Lorentz transformation $t'=\gamma(t-vx/c^2)$, $x'=\gamma(x-vt)$,
+$y'=y$, $z'=z$, show explicitly that
+$-c^2\dd t'^2+\dd x'^2+\dd y'^2+\dd z'^2$ equals
+$-c^2\dd t^2+\dd x^2+\dd y^2+\dd z^2$.
 
-3. For two unit timelike vectors $u^\mu$ and $w^\mu$, show that $-(u \cdot w) \ge 1$ and interpret this result physically.
+**b)** Show that any timelike vector $v^\mu$ can always be rescaled so that
+$\eta_{\mu\nu}v^\mu v^\nu=-1$, and explain the physical meaning of this
+normalization (it is exactly the condition satisfied by a four-velocity).
 
-4. Starting from the definition of rapidity, derive the relations
-   $$
-   \cosh^2 \xi - \sinh^2 \xi = 1,
-   $$
-   and verify that this identity is consistent with the normalization of $w^\mu$.
+### Exercise 2: Orthogonality and Non-Degeneracy
 
-5. In a frame where $u^\mu = (1,0,0,0)$, write $w^\mu$ explicitly in terms of $\xi$ and show that it corresponds to a boost with velocity $v$ satisfying $\tanh \xi = v/c$.
+**a)** Two vectors are orthogonal if $g(u,v)=0$. Give an explicit example of
+two nonzero vectors in Minkowski space that are orthogonal in this sense but
+are *not* perpendicular in the ordinary Euclidean sense (consider a null
+vector).
 
-6. Show that the spatial vector $h^\mu{}_{\nu} w^\nu$ has norm $\sinh \xi$ using the metric.
+**b)** Show that if a bilinear form $g$ satisfies $g(v,u)=0$ for every $u$,
+then $v=0$. Explain why this property is called non-degeneracy, and why it
+is what allows the metric to be inverted.
 
-7. Verify that the decomposition of $w^\mu$ preserves its normalization, i.e.,
-   $$
-   \eta_{\mu\nu} w^\mu w^\nu = -1.
-   $$
+### Exercise 3: Tangent Vectors and Coordinate Changes **(Essential)**
 
-8. Consider a rank-two antisymmetric tensor $F_{\mu\nu}$. Define its electric and magnetic parts relative to $u^\mu$ by
-   $$
-   E_\mu = F_{\mu\nu} u^\nu, \qquad B^\mu = \frac{1}{2} \epsilon^{\mu\nu\alpha\beta} u_\nu F_{\alpha\beta}.
-   $$
-   Show that both $E_\mu$ and $B^\mu$ are orthogonal to $u^\mu$.
+**a)** For a curve $x^\mu(\lambda)$, show that under a reparametrization
+$\lambda\to\lambda'(\lambda)$ the tangent vector $v^\mu=\dd x^\mu/\dd\lambda$
+transforms as $v'^\mu=(\dd\lambda/\dd\lambda')\,v^\mu$.
 
-9. Show that if $u^\mu$ is changed (i.e., a different observer is chosen), the decomposition into electric and magnetic parts changes, even though $F_{\mu\nu}$ remains the same.
+**b)** Using the directional-derivative definition $v(f)=v^\mu\partial_\mu f$,
+show that the coordinate basis vectors $\{\partial_\mu\}$ are linearly
+independent and span $T_pM$, i.e. that they form a basis.
 
-10. Interpret geometrically why the magnetic field is naturally associated with an antisymmetric tensor rather than a vector.
-:::
+**c)** Under a coordinate change $x^\mu\to x'^\mu(x)$, show that the basis
+vectors transform as $\partial_\mu=(\partial x'^\nu/\partial x^\mu)\,\partial'_\nu$.
+
+### Exercise 4: The Dual Basis and the Exterior Derivative
+
+**a)** Given a basis $\{e_i\}$ of $\mathbb V$, construct the dual basis
+$\{\tilde e^i\}$ explicitly and show that it is unique.
+
+**b)** Show that $\dd x^\mu(\partial_\nu)=\delta^\mu_\nu$, and explain why
+this is exactly what is needed for $\{\dd x^\mu\}$ to be the basis of
+$T_p^*M$ dual to $\{\partial_\mu\}$.
+
+**c)** Using only $\dd f(v)=v(f)$, show that $\dd(fg)=f\,\dd g+g\,\dd f$.
+
+### Exercise 5: The Metric as a Map Between Vectors and Covectors **(Essential)**
+
+**a)** For $v=v^\mu\partial_\mu$, compute the components of the covector
+$\eta(v)$.
+
+**b)** Show that applying $\eta^{-1}$ to $\eta(v)$ recovers the original
+vector $v$ — i.e. that lowering an index and then raising it is the
+identity.
+
+### Exercise 6: Wedge Products, Area, and Linear Independence **(Essential)**
+
+**a)** For two vectors $v,u$, show that $v\wedge u=0$ if and only if $v$ and
+$u$ are linearly dependent.
+
+**b)** Show that in an $n$-dimensional space, any wedge product of more than
+$n$ vectors must vanish.
+
+**c)** Using the interpretation of $v\wedge u$ as an oriented area element,
+explain in your own words why (a) and (b) are geometrically obvious rather
+than merely algebraic coincidences.
+
+### Exercise 7: The Exterior Derivative and Stokes' Theorem **(Essential)**
+
+**a)** Compute $\dd f$ explicitly for $f(x,y,z)=x^2yz$.
+
+**b)** Show that $\dd^2f=0$ for any smooth scalar function $f$ (this relies
+on partial derivatives commuting).
+
+**c)** Show that the fundamental theorem of calculus,
+$\int_a^b\dd f=f(b)-f(a)$, is precisely the one-dimensional case of Stokes'
+theorem $\int_{\partial\Omega}\omega=\int_\Omega\dd\omega$.
+
+### Exercise 8: Gradients and the Role of Coordinates
+
+**a)** In Euclidean space, verify that raising the index of $\dd f$ with
+$\delta^{ij}$ reproduces the usual gradient vector $\nabla f$.
+
+**b)** Starting from $\dd s^2=\dd x^2+\dd y^2$, compute the metric components
+in polar coordinates $x=r\cos\theta$, $y=r\sin\theta$, and verify that the
+scalar product $g(v,u)$ of two fixed vectors is unchanged by the coordinate
+change.
+
+**c)** Explain why the matrix representation of the metric changes under
+this coordinate transformation even though the underlying geometry does not.
+
+### Exercise 9: Observer Decomposition, Rapidity, and the Electric/Magnetic Split **(Essential)**
+
+**a)** Show explicitly that $h_{\mu\nu}u^\nu=0$ and that $h^\mu{}_\nu$ is a
+projector, i.e. $h^\mu{}_\alpha h^\alpha{}_\nu=h^\mu{}_\nu$.
+
+**b)** For a vector $v^\mu$, define $v_\parallel^\mu=-(u\cdot v)\,u^\mu$ and
+$v_\perp^\mu=h^\mu{}_\nu v^\nu$. Show that $v^\mu=v_\parallel^\mu+v_\perp^\mu$
+and that $u_\mu v_\perp^\mu=0$.
+
+**c)** For two unit timelike vectors $u^\mu,w^\mu$, show that $-(u\cdot w)\ge1$,
+and using $-(u\cdot w)=\cosh\xi=\gamma$, interpret this bound physically.
+
+**d)** For a rank-two antisymmetric tensor $F_{\mu\nu}$, define
+$E_\mu\equiv F_{\mu\nu}u^\nu$ and $B^\mu\equiv\frac12\epsilon^{\mu\nu\alpha\beta}u_\nu F_{\alpha\beta}$.
+Show that both are orthogonal to $u^\mu$, and explain why changing the
+observer $u^\mu$ changes this electric/magnetic split even though $F_{\mu\nu}$
+itself does not.
