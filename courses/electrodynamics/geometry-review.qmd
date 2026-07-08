@@ -237,6 +237,22 @@ smooth functions on the manifold, $C^\infty(M)$ and
 $f(x^0, x^1, x^2, x^3) \in C^\infty(M)$, we define the action of a vector $v$ at a point
 $p$ as the directional derivative of $f$ along $v$ at $p$:
 $$v(f) = \lim_{\epsilon \to 0} \frac{f(p + \epsilon v) - f(p)}{\epsilon}.$$
+Here $p + \epsilon v$ is not literal addition of a point and a vector — that
+operation is not defined on a general manifold, as emphasized below. It is
+shorthand for any curve $\gamma:(-\delta,\delta) \to M$ through $p$ with
+initial tangent $v$, i.e. a map from an interval of $\mathbb R$ into $M$
+satisfying $\gamma(0) = p$ and $\dd x^\mu(\gamma(\epsilon))/\dd\epsilon|_{\epsilon=0} = v^\mu$
+in some (any) coordinate chart. Taylor-expanding such a curve in coordinates
+around $\epsilon=0$ gives exactly
+$$x^\mu(\gamma(\epsilon)) = x^\mu(p) + \epsilon\, v^\mu + O(\epsilon^2)$$
+for small enough $\epsilon$, which is what "$p+\epsilon v$" really denotes:
+the point reached after parameter distance $\epsilon$ along *some* curve
+realizing $v$ at $p$, not a sum performed on $M$ itself. Since the definition
+of $v(f)$ keeps only the $\epsilon \to 0$ limit, the result does not depend
+on which such curve is used; substituting the expansion above into
+$f(\gamma(\epsilon))$ and differentiating recovers the coordinate expression
+below directly, by the chain rule.
+
 In coordinates, this becomes
 $$v(f) = v^\mu \frac{\partial f}{\partial x^\mu}.$$
 This definition captures the idea of a vector as a directional derivative operator and

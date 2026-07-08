@@ -215,7 +215,7 @@ In Gibbs’ vector analysis, instead of using the exterior product, the vector p
 4. Show that the exterior product of three vectors $\vec{v} \wedge \vec{u} \wedge \vec{w}$ is proportional to $\vec{e}_1 \wedge \vec{e}_2 \wedge \vec{e}_3$.
 
 
-## Relation to the Exterior Product {#sec-trip}
+## Triple Products {#sec-trip}
 
 As discussed in @def-exteriorprod, the exterior product can be used to define mathematical objects that describe planes and volumes. Naturally, $\vec{e}_1 \wedge \vec{e}_2 \wedge \vec{e}_3$ is a first example of a triple product. However, we need to relate this quantity to the tools available, namely the vector product and inner product. Using the definition of the map $V$ given in @eq-vecprod, it is straightforward to see that there is a relation between this map and $\Upsilon$, i.e.,
 $$\begin{aligned}
