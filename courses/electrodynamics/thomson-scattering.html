@@ -46,9 +46,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4a0124d671bd5b18cd0e9001f0b304c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-cfd078692f0a6f79ce33d48dd08f487d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-4a0124d671bd5b18cd0e9001f0b304c6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-662906faa82d171eadf40c93dbbc1b7f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-d6c73839a1259b32a8f5e612f4acd70d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-662906faa82d171eadf40c93dbbc1b7f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -653,11 +653,22 @@ window.Quarto = {
 <section id="setup" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Setup</h1>
 <p>A free charge <span class="math inline">\(q\)</span> of mass <span class="math inline">\(m\)</span> (an electron, in practice) sits at rest at the origin and is illuminated by a monochromatic plane wave arriving from a distant source along the fixed direction <span class="math inline">\(\hat{\mathbf k}\)</span>, <span class="math display">\[
-\mathbf E_{\rm inc}(t)=E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t),
+\mathbf E_{\rm inc}(\mathbf x,t)=E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t-\mathbf k\cdot\mathbf x),
 \qquad
-\mathbf B_{\rm inc}(t)=\frac1c\,\hat{\mathbf k}\times\mathbf E_{\rm inc}(t),
-\]</span> with <span class="math inline">\(\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k}\)</span>, evaluated at the charge’s location. This is exactly the radiation-field structure found in <a href="../../courses/electrodynamics/moving-charge-radiation.html#the-radiation-field">Radiation from a Moving Charge</a>, <span class="math inline">\(\mathbf B_{\rm rad}=\frac1c\hat{\mathbf n}\times\mathbf E_{\rm rad}\)</span> with <span class="math inline">\(\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0\)</span>: a plane wave is simply what any radiation field looks like once its distant source is out of the picture, with <span class="math inline">\(\hat{\mathbf k}\)</span> now playing the role of the <em>incoming</em> propagation direction, in place of the outgoing <span class="math inline">\(\hat{\mathbf n}\)</span> used there to point from source to observer, and <span class="math inline">\(\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k}\)</span> the same transversality condition as <span class="math inline">\(\hat{\mathbf n}\cdot\mathbf E_{\rm
-rad}=0\)</span>. In particular <span class="math inline">\(|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c\)</span> follows immediately, <a href="../../courses/electrodynamics/moving-charge-radiation.html#the-radiation-field">exactly as for any radiation field</a>. Two approximations define the classical (Thomson) regime:</p>
+\mathbf k\equiv\frac{\omega}{c}\hat{\mathbf k},
+\qquad
+\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k},
+\]</span> which reduces, at the charge’s location <span class="math inline">\(\mathbf x=\mathbf 0\)</span>, to <span class="math inline">\(\mathbf E_{\rm inc}(t)=E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t)\)</span> used below. This is a solution of the source-free Maxwell equations. Since <span class="math inline">\(\hat{\boldsymbol\epsilon}\)</span> is a fixed vector, only the scalar factor is differentiated, with <span class="math inline">\(\nabla\cos(\omega t-\mathbf k\cdot\mathbf x)=\mathbf k\,\sin(\omega t-\mathbf k\cdot\mathbf x)\)</span>; Gauss’s law <span class="math inline">\(\nabla\cdot\mathbf E_{\rm inc}=0\)</span> then holds automatically, <span class="math display">\[
+\nabla\cdot\mathbf E_{\rm inc}=E_0\sin(\omega t-\mathbf k\cdot\mathbf x)\,(\hat{\boldsymbol\epsilon}\cdot\mathbf k)=0,
+\]</span> by the transversality condition <span class="math inline">\(\hat{\boldsymbol\epsilon}\perp\hat{\mathbf
+k}\)</span>; and the wave equation <span class="math inline">\(\Box\mathbf E_{\rm inc}=0\)</span> fixes <span class="math inline">\(|\mathbf k|=\omega/c\)</span>, i.e.&nbsp;exactly the dispersion relation used above to define <span class="math inline">\(\mathbf k\)</span>. The magnetic field follows from Faraday’s law, <span class="math inline">\(\nabla\times\mathbf E_{\rm inc}=-\partial_t\mathbf B_{\rm inc}\)</span>: using <span class="math inline">\(\nabla\times\big(g(\mathbf x)\hat{\boldsymbol\epsilon}\big)=(\nabla g)\times\hat{\boldsymbol\epsilon}\)</span> for the same reason (any scalar function <span class="math inline">\(g\)</span> times the fixed vector <span class="math inline">\(\hat{\boldsymbol\epsilon}\)</span>), <span class="math display">\[
+\nabla\times\mathbf E_{\rm inc}=E_0\sin(\omega t-\mathbf k\cdot\mathbf x)\,\big(\mathbf k\times\hat{\boldsymbol\epsilon}\big)
+=-\partial_t\mathbf B_{\rm inc},
+\]</span> which integrates in <span class="math inline">\(t\)</span> (dropping an irrelevant static constant) to <span class="math display">\[
+\mathbf B_{\rm inc}(\mathbf x,t)=\frac{E_0}{\omega}\cos(\omega t-\mathbf k\cdot\mathbf x)\,\big(\mathbf k\times\hat{\boldsymbol\epsilon}\big)
+=\frac1c\,\hat{\mathbf k}\times\mathbf E_{\rm inc}(\mathbf x,t),
+\]</span> using <span class="math inline">\(\mathbf k=(\omega/c)\hat{\mathbf k}\)</span> in the last step. As a consistency check, this is exactly the radiation-field structure found in <a href="../../courses/electrodynamics/moving-charge-radiation.html#the-radiation-field">Radiation from a Moving Charge</a>, <span class="math inline">\(\mathbf B_{\rm rad}=\frac1c\hat{\mathbf n}\times\mathbf E_{\rm rad}\)</span> with <span class="math inline">\(\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0\)</span>: a plane wave is simply what any radiation field looks like once its distant source is out of the picture, with <span class="math inline">\(\hat{\mathbf k}\)</span> now playing the role of the <em>incoming</em> propagation direction, in place of the outgoing <span class="math inline">\(\hat{\mathbf n}\)</span> used there to point from source to observer, and <span class="math inline">\(\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k}\)</span> the same transversality condition as <span class="math inline">\(\hat{\mathbf n}\cdot\mathbf E_{\rm
+rad}=0\)</span>. Either way, <span class="math inline">\(|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c\)</span>, <a href="../../courses/electrodynamics/moving-charge-radiation.html#the-radiation-field">exactly as for any radiation field</a>. Two approximations define the classical (Thomson) regime:</p>
 <ul>
 <li><strong>non-relativistic motion</strong>: the charge’s response velocity <span class="math inline">\(v\ll c\)</span>, so terms of order <span class="math inline">\(v/c\)</span> are dropped;</li>
 <li><strong>no radiation reaction</strong>: the energy radiated per cycle is a small fraction of the charge’s kinetic energy, so the incident field alone drives the motion.</li>
@@ -665,7 +676,26 @@ rad}=0\)</span>. In particular <span class="math inline">\(|\mathbf B_{\rm inc}|
 </section>
 <section id="equation-of-motion" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Equation of motion</h1>
-<p>The Lorentz force on the charge is <span class="math inline">\(q(\mathbf E_{\rm inc}+\mathbf v\times\mathbf B_{\rm inc})\)</span>. Since <span class="math inline">\(|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c\)</span>, the magnetic term is smaller than the electric term by a factor <span class="math inline">\(v/c\ll1\)</span> and is dropped, leaving <span class="math display">\[
+<p>The charge’s motion is governed by the covariant Lorentz force law, <span class="math display">\[
+m\,a^\mu=q\,F^{\mu\nu}u_\nu,
+\qquad
+a^\mu\equiv\frac{\mathrm{d}u^\mu}{\mathrm{d}\tau},
+\]</span> with <span class="math inline">\(u^\mu\)</span> the four-velocity fixed in the <a href="../../courses/electrodynamics/conventions.html#particle-kinematics">conventions</a>. This is the same content as the standard <span class="math inline">\(\mathrm{d}p^\mu/\mathrm{d}\tau=qF^{\mu\nu}U_\nu\)</span> with <span class="math inline">\(p^\mu=mU^\mu\)</span> and the textbook (dimensionful) <span class="math inline">\(U^\mu=\mathrm{d}y^\mu/\mathrm{d}\tau=cu^\mu\)</span>; writing it in terms of this course’s dimensionless <span class="math inline">\(u^\mu=U^\mu/c\)</span> multiplies both sides by <span class="math inline">\(c\)</span>, which cancels, leaving the equation above with no explicit factor of <span class="math inline">\(c\)</span> in front.</p>
+<p>To extract the familiar 3-vector force law, specialize first to the instant at which the charge is at rest, <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span> — the same specialization used <a href="#from-the-covariant-field-to-the-local-frame">below</a> for the radiation field — so that <span class="math inline">\(u_0=-1\)</span>, <span class="math inline">\(u_i=0\)</span>, and, exactly as there, <span class="math inline">\(a^\mu=(0,\dot{\mathbf v}/c)\)</span>. Then <span class="math display">\[
+F^{i\nu}u_\nu=F^{i0}u_0=-F^{i0}=F^{0i}=\frac{E^i_{\rm inc}}{c},
+\]</span> with no contribution from the <span class="math inline">\(F^{ij}u_j\)</span> piece, since <span class="math inline">\(u_j=0\)</span> at this instant: the magnetic force vanishes identically, not merely approximately, whenever <span class="math inline">\(\mathbf v=\mathbf 0\)</span>. The covariant equation of motion then reads <span class="math inline">\(m\dot v^i/c=qE^i_{\rm inc}/c\)</span>, i.e. <span class="math display">\[
+m\dot{\mathbf v}=q\mathbf E_{\rm inc}(t).
+\]</span> This is exact only at the single instant used to define the rest frame; away from it <span class="math inline">\(\mathbf v\neq\mathbf 0\)</span> and a magnetic force reappears. To see how small it is, repeat the computation without specializing <span class="math inline">\(u^\mu\)</span>, keeping the general lab-frame <span class="math inline">\(u^\mu=\gamma(1,\mathbf v/c)\)</span>, so that <span class="math inline">\(u_0=-\gamma\)</span>, <span class="math inline">\(u_j=\gamma v_j/c\)</span>. Then <span class="math display">\[
+F^{i\nu}u_\nu
+=
+F^{i0}u_0+F^{ij}u_j
+=
+\frac{\gamma}{c}\Big[E^i_{\rm inc}+(\mathbf v\times\mathbf B_{\rm inc})^i\Big],
+\]</span> using <span class="math inline">\(F^{i0}=-E^i_{\rm inc}/c\)</span> and <span class="math inline">\(F^{ij}v_j=\epsilon^{ijk}B_kv_j=(\mathbf
+v\times\mathbf B_{\rm inc})^i\)</span>, while <span class="math inline">\(a^i=\mathrm{d}u^i/\mathrm{d}\tau=\gamma\,\mathrm{d}(\gamma
+v^i/c)/\mathrm{d}t\)</span> using <span class="math inline">\(\mathrm{d}/\mathrm{d}\tau=\gamma\,\mathrm{d}/\mathrm{d}t\)</span>. Substituting both into <span class="math inline">\(ma^\mu=qF^{\mu\nu}u_\nu\)</span> and cancelling the common factor <span class="math inline">\(\gamma/c\)</span> from both sides gives the standard relativistic 3-force law, <span class="math display">\[
+m\frac{\mathrm{d}(\gamma\mathbf v)}{\mathrm{d}t}=q\big(\mathbf E_{\rm inc}+\mathbf v\times\mathbf B_{\rm inc}\big).
+\]</span> Since <span class="math inline">\(|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c\)</span>, the magnetic term here is smaller than the electric term by a factor <span class="math inline">\(v/c\)</span>; in the non-relativistic regime <span class="math inline">\(v\ll c\)</span> assumed throughout (<a href="#setup">Setup</a>) this holds at every instant along the trajectory, not just the one where the charge happens to be at rest, and <span class="math inline">\(\gamma\approx1\)</span> to the same accuracy. Dropping both recovers exactly the rest-frame result found above, now understood to hold throughout the motion, <span class="math display">\[
 m\dot{\mathbf v}=q\mathbf E_{\rm inc}(t),
 \qquad
 \dot{\mathbf v}(t)=\frac{q}{m}E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t).
@@ -684,20 +714,54 @@ F_{\mu\nu}^{\rm rad}
 \big(\Delta x_\mu u_\nu-\Delta x_\nu u_\mu\big)
 \right]_{\tau=\tau_r},
 \]</span> with <span class="math inline">\(a^\mu=\mathrm{d}u^\mu/\mathrm{d}\tau\)</span>. Here this is specialized to a charge that is instantaneously at rest, as is the case for the non-relativistic oscillation driven by the incident wave.</p>
-<p>At the instant the charge is at rest, <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span> and, since <span class="math inline">\(u_\mu a^\mu=0\)</span> forces <span class="math inline">\(a^0=0\)</span> there, <span class="math inline">\(a^\mu=(0,\dot{\mathbf v}/c)\)</span> exactly (this is the same identification used for the <a href="../../courses/electrodynamics/moving-charge-radiation.html#relativistic-larmor-formula">Larmor formula</a>). With <span class="math inline">\(\Delta x^\mu=(R,R\hat{\mathbf n})\)</span>, <span class="math inline">\(R=|\mathbf x|\)</span>, <span class="math display">\[
+<p>To turn <span class="math inline">\(F_{\mu\nu}^{\rm rad}\)</span> into an electric field, use the same covariant contraction as in the <a href="#equation-of-motion">equation of motion</a> above: the field measured by an observer of four-velocity <span class="math inline">\(w^\mu\)</span> is <span class="math display">\[
+E^\mu(w)\equiv c\,F^{\mu\nu}w_\nu,
+\]</span> automatically orthogonal to the observer, <span class="math inline">\(w_\mu E^\mu(w)=0\)</span> (by antisymmetry of <span class="math inline">\(F^{\mu\nu}\)</span>), and equal to <span class="math inline">\((0,\mathbf E)\)</span> in that observer’s own rest frame: at <span class="math inline">\(w^\mu=(1,\mathbf 0)\)</span>, <span class="math inline">\(E^0(w)=cF^{00}w_0=0\)</span> and, using <span class="math inline">\(F^{i0}=-F^{0i}=-E^i/c\)</span>, <span class="math display">\[
+E^i(w)=cF^{i\nu}w_\nu=cF^{i0}w_0=-cF^{i0}=cF^{0i}=E^i.
+\]</span> (The similar-looking contraction <span class="math inline">\(u_\nu F^{\nu\mu}=-F^{\mu\nu}u_\nu\)</span> has the opposite sign and is missing this factor of <span class="math inline">\(c\)</span>; the correctly normalized object is <span class="math inline">\(E^\mu=cF^{\mu\nu}u_\nu\)</span>, not <span class="math inline">\(u_\nu F^{\nu\mu}\)</span>.)</p>
+<p>Apply this with <span class="math inline">\(w^\mu=u^\mu\)</span>, the radiating charge’s own four-velocity, at the instant it is at rest: <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span> and, since <span class="math inline">\(u_\mu a^\mu=0\)</span> forces <span class="math inline">\(a^0=0\)</span> there, <span class="math inline">\(a^\mu=(0,\dot{\mathbf v}/c)\)</span> exactly (this is the same identification used for the <a href="../../courses/electrodynamics/moving-charge-radiation.html#relativistic-larmor-formula">Larmor formula</a>). With <span class="math inline">\(\Delta x^\mu=(R,R\hat{\mathbf n})\)</span>, <span class="math inline">\(R=|\mathbf x|\)</span>, <span class="math display">\[
 u\cdot\Delta x=-R,
 \qquad
 \Delta x\cdot a=R\,\frac{\hat{\mathbf n}\cdot\dot{\mathbf v}}{c}.
-\]</span> Substituting into <span class="math inline">\(F_{0i}|_{\rm rad}=-E_i/c\)</span> and simplifying (the two <span class="math inline">\(1/R\)</span>-carrying terms combine; the <span class="math inline">\(\Delta x_\mu u_\nu\)</span> term contributes <span class="math inline">\(R\hat n_i\)</span> using <span class="math inline">\(u_i=0,u_0=-1\)</span>) gives <span class="math display">\[
+\]</span> Since <span class="math inline">\(u^0=1\)</span>, <span class="math inline">\(u^i=0\)</span>, only the <span class="math inline">\(\mu=i,\nu=0\)</span> component of the bracket in <span class="math inline">\(F_{\mu\nu}^{\rm rad}\)</span> contributes to <span class="math inline">\(E_i^{\rm rad}=cF_{i\nu}^{\rm
+rad}u^\nu=cF_{i0}^{\rm rad}\)</span>. Using <span class="math inline">\(a_0=0\)</span>, <span class="math inline">\(u_0=-1\)</span>, <span class="math inline">\(u_i=0\)</span>, <span class="math inline">\(\Delta x_0=-R\)</span>, <span class="math inline">\(\Delta x_i=R\hat n_i\)</span>, and <span class="math inline">\(\Delta x\cdot a/(u\cdot\Delta x)=-\hat{\mathbf n}\cdot\dot{\mathbf v}/c\)</span>, <span class="math display">\[
+F_{i0}^{\rm rad}
+=
+\frac{\mu_0q}{4\pi R^2}
+\left[
+\Delta x_i a_0-\Delta x_0 a_i-\frac{\Delta x\cdot a}{u\cdot\Delta x}(\Delta x_i u_0-\Delta x_0 u_i)
+\right]
+=
+\frac{\mu_0q}{4\pi R^2}
+\left[
+R\frac{\dot v_i}{c}
++
+\frac{\hat{\mathbf n}\cdot\dot{\mathbf v}}{c}(R\hat n_i)
+\right],
+\]</span> so that <span class="math display">\[
+E_i^{\rm rad}=cF_{i0}^{\rm rad}=\frac{\mu_0q}{4\pi R}\Big[\dot v_i-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat n_i\Big],
+\qquad
 \boxed{
 \mathbf E_{\rm rad}(\mathbf x,t)
 =
 \frac{\mu_0q}{4\pi R}
-\Big[\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}\Big]_{t_r}
-=
--\frac{\mu_0q}{4\pi R}\,\hat{\mathbf n}\times\big(\hat{\mathbf n}\times\dot{\mathbf v}\big)\Big|_{t_r},
+\Big[\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}\Big]_{t_r}.
 }
-\]</span> the familiar non-relativistic dipole radiation field, transverse to <span class="math inline">\(\hat{\mathbf n}\)</span> by construction. Writing <span class="math inline">\(\chi\)</span> for the angle between <span class="math inline">\(\hat{\mathbf n}\)</span> and <span class="math inline">\(\dot{\mathbf v}\)</span>, its magnitude is <span class="math display">\[
+\]</span></p>
+<p>The bracket is the component of <span class="math inline">\(\dot{\mathbf v}\)</span> transverse to <span class="math inline">\(\hat{\mathbf n}\)</span>: writing <span class="math inline">\(\dot{\mathbf v}=(\hat{\mathbf n}\cdot\dot{\mathbf
+v})\hat{\mathbf n}+\dot{\mathbf v}_\perp\)</span>, the bracket is exactly <span class="math inline">\(\dot{\mathbf v}_\perp\)</span>, manifestly orthogonal to <span class="math inline">\(\hat{\mathbf n}\)</span>. The same projection has an equivalent double-cross-product form: the BAC-CAB rule <span class="math inline">\(\mathbf A\times(\mathbf B\times\mathbf C)=\mathbf B(\mathbf A\cdot\mathbf
+C)-\mathbf C(\mathbf A\cdot\mathbf B)\)</span> with <span class="math inline">\(\mathbf A=\mathbf B=\hat{\mathbf
+n}\)</span>, <span class="math inline">\(\mathbf C=\dot{\mathbf v}\)</span>, gives <span class="math display">\[
+\hat{\mathbf n}\times(\hat{\mathbf n}\times\dot{\mathbf v})
+=
+\hat{\mathbf n}(\hat{\mathbf n}\cdot\dot{\mathbf v})-\dot{\mathbf v}(\hat{\mathbf n}\cdot\hat{\mathbf n})
+=
+(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}-\dot{\mathbf v},
+\]</span> using <span class="math inline">\(\hat{\mathbf n}\cdot\hat{\mathbf n}=1\)</span>, so <span class="math inline">\(\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}=-\hat{\mathbf n}\times(\hat{\mathbf n}\times\dot{\mathbf v})\)</span> and, equivalently, <span class="math display">\[
+\mathbf E_{\rm rad}(\mathbf x,t)
+=
+-\frac{\mu_0q}{4\pi R}\,\hat{\mathbf n}\times\big(\hat{\mathbf n}\times\dot{\mathbf v}\big)\Big|_{t_r}.
+\]</span> Both forms make the transversality of the dipole radiation field to <span class="math inline">\(\hat{\mathbf n}\)</span> manifest: the first as an explicit orthogonal projection, the second because <span class="math inline">\(\hat{\mathbf n}\times(\text{anything})\)</span> is automatically perpendicular to <span class="math inline">\(\hat{\mathbf n}\)</span>. Writing <span class="math inline">\(\chi\)</span> for the angle between <span class="math inline">\(\hat{\mathbf n}\)</span> and <span class="math inline">\(\dot{\mathbf v}\)</span>, its magnitude is <span class="math display">\[
 |\mathbf E_{\rm rad}|=\frac{\mu_0q\,|\dot{\mathbf v}|}{4\pi R}\sin\chi.
 \]</span></p>
 </section>
@@ -786,7 +850,7 @@ r_q\equiv\frac{\mu_0q^2}{4\pi m}=\frac{q^2}{4\pi\varepsilon_0mc^2},
 </section>
 <section id="exercise-2-the-local-frame-radiation-field-essential" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="exercise-2-the-local-frame-radiation-field-essential"><span class="header-section-number">9.2</span> Exercise 2: The Local-Frame Radiation Field <strong>(Essential)</strong></h2>
-<p><strong>a)</strong> Starting from <span class="math inline">\(F_{\mu\nu}^{\rm rad}\)</span> specialized to <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span>, with <span class="math inline">\(\Delta x^\mu=(R,R\hat{\mathbf n})\)</span> and <span class="math inline">\(\Delta x\cdot a=R\,\hat{\mathbf n}\cdot\dot{\mathbf v}/c\)</span>, write out <span class="math inline">\(F_{0i}^{\rm rad}\)</span> term by term and show that the two <span class="math inline">\(1/R\)</span>-carrying contributions combine into <span class="math display">\[
+<p><strong>a)</strong> Starting from <span class="math inline">\(E_i^{\rm rad}=cF_{i\nu}^{\rm rad}u^\nu\)</span> specialized to <span class="math inline">\(u^\mu=(1,\mathbf 0)\)</span>, with <span class="math inline">\(\Delta x^\mu=(R,R\hat{\mathbf n})\)</span> and <span class="math inline">\(\Delta x\cdot a=R\,\hat{\mathbf n}\cdot\dot{\mathbf v}/c\)</span>, write out <span class="math inline">\(F_{i0}^{\rm rad}\)</span> term by term and confirm <span class="math display">\[
 \mathbf E_{\rm rad}=\frac{\mu_0q}{4\pi R}\Big[\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}\Big].
 \]</span></p>
 <p><strong>b)</strong> Verify the equivalent form <span class="math inline">\(-\hat{\mathbf n}\times(\hat{\mathbf n}\times\dot{\mathbf v})=\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}\)</span> using the BAC-CAB rule.</p>
