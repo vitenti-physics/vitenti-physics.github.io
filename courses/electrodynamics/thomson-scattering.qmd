@@ -23,12 +23,41 @@ A free charge $q$ of mass $m$ (an electron, in practice) sits at rest at the
 origin and is illuminated by a monochromatic plane wave arriving from a
 distant source along the fixed direction $\hat{\mathbf k}$,
 $$
-\mathbf E_{\rm inc}(t)=E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t),
+\mathbf E_{\rm inc}(\mathbf x,t)=E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t-\mathbf k\cdot\mathbf x),
 \qquad
-\mathbf B_{\rm inc}(t)=\frac1c\,\hat{\mathbf k}\times\mathbf E_{\rm inc}(t),
+\mathbf k\equiv\frac{\omega}{c}\hat{\mathbf k},
+\qquad
+\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k},
 $$
-with $\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k}$, evaluated at the
-charge's location. This is exactly the radiation-field structure found in
+which reduces, at the charge's location $\mathbf x=\mathbf 0$, to
+$\mathbf E_{\rm inc}(t)=E_0\,\hat{\boldsymbol\epsilon}\,\cos(\omega t)$ used
+below. This is a solution of the source-free Maxwell equations. Since
+$\hat{\boldsymbol\epsilon}$ is a fixed vector, only the scalar factor is
+differentiated, with
+$\nabla\cos(\omega t-\mathbf k\cdot\mathbf x)=\mathbf k\,\sin(\omega t-\mathbf k\cdot\mathbf x)$;
+Gauss's law $\nabla\cdot\mathbf E_{\rm inc}=0$ then holds automatically,
+$$
+\nabla\cdot\mathbf E_{\rm inc}=E_0\sin(\omega t-\mathbf k\cdot\mathbf x)\,(\hat{\boldsymbol\epsilon}\cdot\mathbf k)=0,
+$$
+by the transversality condition $\hat{\boldsymbol\epsilon}\perp\hat{\mathbf
+k}$; and the wave equation $\Box\mathbf E_{\rm inc}=0$ fixes
+$|\mathbf k|=\omega/c$, i.e. exactly the dispersion relation used above to
+define $\mathbf k$. The magnetic field follows from Faraday's law,
+$\nabla\times\mathbf E_{\rm inc}=-\partial_t\mathbf B_{\rm inc}$: using
+$\nabla\times\big(g(\mathbf x)\hat{\boldsymbol\epsilon}\big)=(\nabla g)\times\hat{\boldsymbol\epsilon}$
+for the same reason (any scalar function $g$ times the fixed vector
+$\hat{\boldsymbol\epsilon}$),
+$$
+\nabla\times\mathbf E_{\rm inc}=E_0\sin(\omega t-\mathbf k\cdot\mathbf x)\,\big(\mathbf k\times\hat{\boldsymbol\epsilon}\big)
+=-\partial_t\mathbf B_{\rm inc},
+$$
+which integrates in $t$ (dropping an irrelevant static constant) to
+$$
+\mathbf B_{\rm inc}(\mathbf x,t)=\frac{E_0}{\omega}\cos(\omega t-\mathbf k\cdot\mathbf x)\,\big(\mathbf k\times\hat{\boldsymbol\epsilon}\big)
+=\frac1c\,\hat{\mathbf k}\times\mathbf E_{\rm inc}(\mathbf x,t),
+$$
+using $\mathbf k=(\omega/c)\hat{\mathbf k}$ in the last step. As a
+consistency check, this is exactly the radiation-field structure found in
 [Radiation from a Moving Charge](moving-charge-radiation.qmd#the-radiation-field),
 $\mathbf B_{\rm rad}=\frac1c\hat{\mathbf n}\times\mathbf E_{\rm rad}$ with
 $\hat{\mathbf n}\cdot\mathbf E_{\rm rad}=0$: a plane wave is simply what any
@@ -37,8 +66,8 @@ with $\hat{\mathbf k}$ now playing the role of the *incoming* propagation
 direction, in place of the outgoing $\hat{\mathbf n}$ used there to point
 from source to observer, and $\hat{\boldsymbol\epsilon}\perp\hat{\mathbf k}$
 the same transversality condition as $\hat{\mathbf n}\cdot\mathbf E_{\rm
-rad}=0$. In particular $|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c$
-follows immediately, [exactly as for any radiation
+rad}=0$. Either way, $|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c$, [exactly
+as for any radiation
 field](moving-charge-radiation.qmd#the-radiation-field). Two approximations
 define the classical (Thomson) regime:
 
@@ -50,9 +79,62 @@ define the classical (Thomson) regime:
 
 # Equation of motion
 
-The Lorentz force on the charge is $q(\mathbf E_{\rm inc}+\mathbf v\times\mathbf B_{\rm inc})$.
-Since $|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c$, the magnetic term is
-smaller than the electric term by a factor $v/c\ll1$ and is dropped, leaving
+The charge's motion is governed by the covariant Lorentz force law,
+$$
+m\,a^\mu=q\,F^{\mu\nu}u_\nu,
+\qquad
+a^\mu\equiv\frac{\dd u^\mu}{\dd\tau},
+$$
+with $u^\mu$ the four-velocity fixed in the
+[conventions](conventions.qmd#particle-kinematics). This is the same content
+as the standard $\dd p^\mu/\dd\tau=qF^{\mu\nu}U_\nu$ with $p^\mu=mU^\mu$ and
+the textbook (dimensionful) $U^\mu=\dd y^\mu/\dd\tau=cu^\mu$; writing it in
+terms of this course's dimensionless $u^\mu=U^\mu/c$ multiplies both sides by
+$c$, which cancels, leaving the equation above with no explicit factor of
+$c$ in front.
+
+To extract the familiar 3-vector force law, specialize first to the instant
+at which the charge is at rest, $u^\mu=(1,\mathbf 0)$ — the same
+specialization used [below](#from-the-covariant-field-to-the-local-frame) for
+the radiation field — so that $u_0=-1$, $u_i=0$, and, exactly as there,
+$a^\mu=(0,\dot{\mathbf v}/c)$. Then
+$$
+F^{i\nu}u_\nu=F^{i0}u_0=-F^{i0}=F^{0i}=\frac{E^i_{\rm inc}}{c},
+$$
+with no contribution from the $F^{ij}u_j$ piece, since $u_j=0$ at this
+instant: the magnetic force vanishes identically, not merely approximately,
+whenever $\mathbf v=\mathbf 0$. The covariant equation of motion then reads
+$m\dot v^i/c=qE^i_{\rm inc}/c$, i.e.
+$$
+m\dot{\mathbf v}=q\mathbf E_{\rm inc}(t).
+$$
+This is exact only at the single instant used to define the rest frame; away
+from it $\mathbf v\neq\mathbf 0$ and a magnetic force reappears. To see how
+small it is, repeat the computation without specializing $u^\mu$, keeping the
+general lab-frame $u^\mu=\gamma(1,\mathbf v/c)$, so that $u_0=-\gamma$,
+$u_j=\gamma v_j/c$. Then
+$$
+F^{i\nu}u_\nu
+=
+F^{i0}u_0+F^{ij}u_j
+=
+\frac{\gamma}{c}\Big[E^i_{\rm inc}+(\mathbf v\times\mathbf B_{\rm inc})^i\Big],
+$$
+using $F^{i0}=-E^i_{\rm inc}/c$ and $F^{ij}v_j=\epsilon^{ijk}B_kv_j=(\mathbf
+v\times\mathbf B_{\rm inc})^i$, while $a^i=\dd u^i/\dd\tau=\gamma\,\dd(\gamma
+v^i/c)/\dd t$ using $\dd/\dd\tau=\gamma\,\dd/\dd t$. Substituting both into
+$ma^\mu=qF^{\mu\nu}u_\nu$ and cancelling the common factor $\gamma/c$ from
+both sides gives the standard relativistic 3-force law,
+$$
+m\frac{\dd(\gamma\mathbf v)}{\dd t}=q\big(\mathbf E_{\rm inc}+\mathbf v\times\mathbf B_{\rm inc}\big).
+$$
+Since $|\mathbf B_{\rm inc}|=|\mathbf E_{\rm inc}|/c$, the magnetic term here
+is smaller than the electric term by a factor $v/c$; in the non-relativistic
+regime $v\ll c$ assumed throughout ([Setup](#setup)) this holds at every
+instant along the trajectory, not just the one where the charge happens to
+be at rest, and $\gamma\approx1$ to the same accuracy. Dropping both
+recovers exactly the rest-frame result found above, now understood to hold
+throughout the motion,
 $$
 m\dot{\mathbf v}=q\mathbf E_{\rm inc}(t),
 \qquad
@@ -83,30 +165,92 @@ with $a^\mu=\dd u^\mu/\dd\tau$. Here this is specialized to a charge that is
 instantaneously at rest, as is the case for the non-relativistic oscillation
 driven by the incident wave.
 
-At the instant the charge is at rest, $u^\mu=(1,\mathbf 0)$ and, since
-$u_\mu a^\mu=0$ forces $a^0=0$ there, $a^\mu=(0,\dot{\mathbf v}/c)$ exactly
-(this is the same identification used for the [Larmor formula](moving-charge-radiation.qmd#relativistic-larmor-formula)).
+To turn $F_{\mu\nu}^{\rm rad}$ into an electric field, use the same
+covariant contraction as in the [equation of motion](#equation-of-motion)
+above: the field measured by an observer of four-velocity $w^\mu$ is
+$$
+E^\mu(w)\equiv c\,F^{\mu\nu}w_\nu,
+$$
+automatically orthogonal to the observer, $w_\mu E^\mu(w)=0$ (by
+antisymmetry of $F^{\mu\nu}$), and equal to $(0,\mathbf E)$ in that
+observer's own rest frame: at $w^\mu=(1,\mathbf 0)$, $E^0(w)=cF^{00}w_0=0$
+and, using $F^{i0}=-F^{0i}=-E^i/c$,
+$$
+E^i(w)=cF^{i\nu}w_\nu=cF^{i0}w_0=-cF^{i0}=cF^{0i}=E^i.
+$$
+(The similar-looking contraction $u_\nu F^{\nu\mu}=-F^{\mu\nu}u_\nu$ has the
+opposite sign and is missing this factor of $c$; the correctly normalized
+object is $E^\mu=cF^{\mu\nu}u_\nu$, not $u_\nu F^{\nu\mu}$.)
+
+Apply this with $w^\mu=u^\mu$, the radiating charge's own four-velocity, at
+the instant it is at rest: $u^\mu=(1,\mathbf 0)$ and, since $u_\mu a^\mu=0$
+forces $a^0=0$ there, $a^\mu=(0,\dot{\mathbf v}/c)$ exactly (this is the same
+identification used for the [Larmor formula](moving-charge-radiation.qmd#relativistic-larmor-formula)).
 With $\Delta x^\mu=(R,R\hat{\mathbf n})$, $R=|\mathbf x|$,
 $$
 u\cdot\Delta x=-R,
 \qquad
 \Delta x\cdot a=R\,\frac{\hat{\mathbf n}\cdot\dot{\mathbf v}}{c}.
 $$
-Substituting into $F_{0i}|_{\rm rad}=-E_i/c$ and simplifying (the two
-$1/R$-carrying terms combine; the $\Delta x_\mu u_\nu$ term contributes
-$R\hat n_i$ using $u_i=0,u_0=-1$) gives
+Since $u^0=1$, $u^i=0$, only the $\mu=i,\nu=0$ component of the bracket in
+$F_{\mu\nu}^{\rm rad}$ contributes to $E_i^{\rm rad}=cF_{i\nu}^{\rm
+rad}u^\nu=cF_{i0}^{\rm rad}$. Using $a_0=0$, $u_0=-1$, $u_i=0$,
+$\Delta x_0=-R$, $\Delta x_i=R\hat n_i$, and
+$\Delta x\cdot a/(u\cdot\Delta x)=-\hat{\mathbf n}\cdot\dot{\mathbf v}/c$,
 $$
+F_{i0}^{\rm rad}
+=
+\frac{\mu_0q}{4\pi R^2}
+\left[
+\Delta x_i a_0-\Delta x_0 a_i-\frac{\Delta x\cdot a}{u\cdot\Delta x}(\Delta x_i u_0-\Delta x_0 u_i)
+\right]
+=
+\frac{\mu_0q}{4\pi R^2}
+\left[
+R\frac{\dot v_i}{c}
++
+\frac{\hat{\mathbf n}\cdot\dot{\mathbf v}}{c}(R\hat n_i)
+\right],
+$$
+so that
+$$
+E_i^{\rm rad}=cF_{i0}^{\rm rad}=\frac{\mu_0q}{4\pi R}\Big[\dot v_i-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat n_i\Big],
+\qquad
 \boxed{
 \mathbf E_{\rm rad}(\mathbf x,t)
 =
 \frac{\mu_0q}{4\pi R}
-\Big[\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}\Big]_{t_r}
-=
--\frac{\mu_0q}{4\pi R}\,\hat{\mathbf n}\times\big(\hat{\mathbf n}\times\dot{\mathbf v}\big)\Big|_{t_r},
+\Big[\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}\Big]_{t_r}.
 }
 $$
-the familiar non-relativistic dipole radiation field, transverse to
-$\hat{\mathbf n}$ by construction. Writing $\chi$ for the angle between
+
+The bracket is the component of $\dot{\mathbf v}$ transverse to
+$\hat{\mathbf n}$: writing $\dot{\mathbf v}=(\hat{\mathbf n}\cdot\dot{\mathbf
+v})\hat{\mathbf n}+\dot{\mathbf v}_\perp$, the bracket is exactly
+$\dot{\mathbf v}_\perp$, manifestly orthogonal to $\hat{\mathbf n}$. The same
+projection has an equivalent double-cross-product form: the BAC-CAB rule
+$\mathbf A\times(\mathbf B\times\mathbf C)=\mathbf B(\mathbf A\cdot\mathbf
+C)-\mathbf C(\mathbf A\cdot\mathbf B)$ with $\mathbf A=\mathbf B=\hat{\mathbf
+n}$, $\mathbf C=\dot{\mathbf v}$, gives
+$$
+\hat{\mathbf n}\times(\hat{\mathbf n}\times\dot{\mathbf v})
+=
+\hat{\mathbf n}(\hat{\mathbf n}\cdot\dot{\mathbf v})-\dot{\mathbf v}(\hat{\mathbf n}\cdot\hat{\mathbf n})
+=
+(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}-\dot{\mathbf v},
+$$
+using $\hat{\mathbf n}\cdot\hat{\mathbf n}=1$, so
+$\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}=-\hat{\mathbf n}\times(\hat{\mathbf n}\times\dot{\mathbf v})$
+and, equivalently,
+$$
+\mathbf E_{\rm rad}(\mathbf x,t)
+=
+-\frac{\mu_0q}{4\pi R}\,\hat{\mathbf n}\times\big(\hat{\mathbf n}\times\dot{\mathbf v}\big)\Big|_{t_r}.
+$$
+Both forms make the transversality of the dipole radiation field to
+$\hat{\mathbf n}$ manifest: the first as an explicit orthogonal projection,
+the second because $\hat{\mathbf n}\times(\text{anything})$ is automatically
+perpendicular to $\hat{\mathbf n}$. Writing $\chi$ for the angle between
 $\hat{\mathbf n}$ and $\dot{\mathbf v}$, its magnitude is
 $$
 |\mathbf E_{\rm rad}|=\frac{\mu_0q\,|\dot{\mathbf v}|}{4\pi R}\sin\chi.
@@ -274,11 +418,10 @@ incident on a free electron at ordinary laboratory intensities.
 
 ## Exercise 2: The Local-Frame Radiation Field **(Essential)**
 
-**a)** Starting from $F_{\mu\nu}^{\rm rad}$ specialized to $u^\mu=(1,\mathbf 0)$,
-with $\Delta x^\mu=(R,R\hat{\mathbf n})$ and
+**a)** Starting from $E_i^{\rm rad}=cF_{i\nu}^{\rm rad}u^\nu$ specialized to
+$u^\mu=(1,\mathbf 0)$, with $\Delta x^\mu=(R,R\hat{\mathbf n})$ and
 $\Delta x\cdot a=R\,\hat{\mathbf n}\cdot\dot{\mathbf v}/c$, write out
-$F_{0i}^{\rm rad}$ term by term and show that the two $1/R$-carrying
-contributions combine into
+$F_{i0}^{\rm rad}$ term by term and confirm
 $$
 \mathbf E_{\rm rad}=\frac{\mu_0q}{4\pi R}\Big[\dot{\mathbf v}-(\hat{\mathbf n}\cdot\dot{\mathbf v})\hat{\mathbf n}\Big].
 $$
