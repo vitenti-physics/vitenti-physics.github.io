@@ -1,0 +1,70 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+$font-family-serif: "Crimson Pro", serif;
+$presentation-heading-font: "Crimson Pro", serif;
+$presentation-font-size-root: 36px;
+$link-color: #1111ff;
+
+/*-- scss:rules --*/
+
+.reveal .slide-number {
+  font-size: 0.8em !important;
+}
+
+.reveal .title-slide h1,
+.reveal .title-slide .subtitle,
+.reveal .title-slide .quarto-title-authors {
+  text-align: center;
+}
+
+.reveal .footer {
+  font-size: 0.8em !important;
+  text-align: center !important;
+}
+
+.reveal code {
+  font-size: smaller;
+}
+
+.reveal .sourceCode {
+  font-size: smaller;
+}
+
+// Link to the matching notes section, bottom left of every slide.
+.reveal .slide aside.aside {
+  font-size: 0.6em;
+  color: #666;
+}
+
+// Figures embedded from the notes: center them and let them use the slide width.
+.reveal .slide figure,
+.reveal .slide .quarto-figure {
+  text-align: center;
+}
+
+.reveal .slide figure img {
+  max-width: 100%;
+  max-height: 640px;
+  width: auto;
+  height: auto;
+}
+
+// jshtml animations (matplotlib): fill the width, small controls.
+.reveal .slide .animation {
+  font-size: 0.55em;
+  text-align: center;
+}
+
+.reveal .slide .animation img {
+  width: 1300px;
+  max-width: 100%;
+  height: auto;
+}
+
+.reveal .slide figcaption {
+  font-size: 0.65em;
+  color: #666;
+  text-align: left;
+}

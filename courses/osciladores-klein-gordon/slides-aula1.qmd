@@ -1,0 +1,843 @@
+---
+title: "Aula 1: Do Oscilador Harmônico às Matrizes Circulantes"
+subtitle: "Minicurso: Osciladores Acoplados e a Equação de Klein–Gordon"
+author: "Sandro Vitenti, Universidade Estadual de Londrina"
+draft: true
+lang: pt
+format:
+  revealjs:
+    theme: [serif, slides.scss]
+    include-after-body: slides-titulo.html
+    width: 1920
+    height: 1080
+    margin: 0.04
+    max-scale: 4.0
+    min-scale: 0.05
+    center: true
+    navigation-mode: linear
+    slide-number: true
+    fig-align: center
+    footer: "Osciladores Acoplados e Klein–Gordon | Aula 1 | [Notas completas](aula1.html)"
+    title-slide-attributes:
+      data-background-color: black
+      data-background-image: logos.png
+      data-background-size: 45%
+      data-background-position: left 3% bottom 4%
+---
+
+## Roteiro do minicurso
+
+:::: {.columns}
+::: {.column width="50%"}
+**Aula 1**
+
+1. O oscilador harmônico: espaço de fase e integração numérica
+2. A cadeia de osciladores
+3. Matrizes circulantes e a transformada de Fourier discreta
+:::
+::: {.column width="50%"}
+**Aula 2**
+
+4. O limite contínuo e a equação de Klein–Gordon
+5. Variáveis de criação e aniquilação clássicas
+:::
+::::
+
+Notas, código e notebooks: [página do minicurso](index.html)
+
+# O oscilador harmônico {#sec-ho}
+
+## Equações de Hamilton e espaço de fase
+
+$$
+m\ddot x = -\kappa x,
+\qquad
+\omega \equiv \sqrt{\kappa/m},
+\qquad
+H(x, p) \equiv \frac{p^2}{2m} + \frac{m\omega^2 x^2}{2},
+\qquad
+\dot x = \frac{\partial H}{\partial p},
+\quad
+\dot p = -\frac{\partial H}{\partial x}
+$$
+
+```{python}
+#| echo: false
+# Copy of fig-ho-animacao in aula1.qmd: Quarto cannot embed HTML outputs across documents.
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+m_an, omega_an = 1.0, 2.0
+t_an = np.linspace(0, 2 * np.pi / omega_an, 80, endpoint=False)
+x_an = np.cos(omega_an * t_an)
+p_an = -m_an * omega_an * np.sin(omega_an * t_an)
+
+
+def mola(x0, x1, y=0.0, voltas=8, largura=0.12):
+    s = np.linspace(0, 1, 2 * voltas + 1)
+    xs = x0 + (x1 - x0) * s
+    ys = y + largura * np.where(np.arange(len(s)) % 2 == 1, 1, -1) * (s > 0) * (s < 1)
+    return xs, ys
+
+
+fig_an, (ax_x, ax_pf) = plt.subplots(1, 2, figsize=(10, 4), dpi=100, gridspec_kw={"width_ratios": [1.4, 1]})
+ax_x.axvline(-2.0, color="k", lw=3)
+ax_x.axvline(0.0, color="gray", ls=":", lw=1)
+(linha_mola,) = ax_x.plot([], [], color="C0", lw=1.5)
+(ponto_massa,) = ax_x.plot([], [], "o", color="C3", ms=18)
+ax_x.set_xlim(-2.2, 1.5)
+ax_x.set_ylim(-1, 1)
+ax_x.set_yticks([])
+ax_x.set_xlabel("$x$")
+ax_pf.plot(x_an, p_an, color="gray", lw=1)
+(rastro,) = ax_pf.plot([], [], color="C3", lw=2)
+(ponto_fase,) = ax_pf.plot([], [], "o", color="C3", ms=10)
+ax_pf.set_xlim(-1.3, 1.3)
+ax_pf.set_ylim(-2.6, 2.6)
+ax_pf.set_xlabel("$x$")
+ax_pf.set_ylabel("$p$")
+ax_pf.grid(True, alpha=0.3)
+fig_an.tight_layout()
+
+
+def quadro(i):
+    xs, ys = mola(-2.0, x_an[i])
+    linha_mola.set_data(xs, ys)
+    ponto_massa.set_data([x_an[i]], [0.0])
+    rastro.set_data(x_an[: i + 1], p_an[: i + 1])
+    ponto_fase.set_data([x_an[i]], [p_an[i]])
+    return linha_mola, ponto_massa, rastro, ponto_fase
+
+
+anim = FuncAnimation(fig_an, quadro, frames=len(t_an), interval=50, blit=True)
+plt.close(fig_an)
+HTML(anim.to_jshtml())
+```
+
+::: {.aside}
+Notas: [Equações de Hamilton](aula1.html#sec-ho-hamilton)
+:::
+
+## Forma matricial
+
+$$
+X \equiv \begin{pmatrix} x \\ p \end{pmatrix},
+\qquad
+H = \frac{1}{2} X^{\mathsf T}\, \mathsf H\, X,
+\qquad
+\mathsf H \equiv \begin{pmatrix} m\omega^2 & 0 \\ 0 & 1/m \end{pmatrix}
+$$
+$$
+\dot X = \Omega\, \mathsf H\, X \equiv A X,
+\qquad
+\Omega \equiv \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}
+$$
+
+- $\Omega$ (matriz simplética) contém os sinais das equações de Hamilton e é
+  a mesma para todo sistema; o sistema entra apenas por $\mathsf H$.
+- $N$ graus de liberdade: mesma forma, com blocos $N\times N$. É assim que
+  escreveremos a cadeia.
+
+::: {.aside}
+Notas: [Forma matricial](aula1.html#sec-ho-matricial)
+:::
+
+## Potências de $A$
+
+$$
+A = \begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix}
+$$
+$$
+A^2 = \begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix}
+\begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix}
+= \begin{pmatrix} -\omega^2 & 0 \\ 0 & -\omega^2 \end{pmatrix}
+= -\omega^2 I
+$$
+$$
+A^3 = -\omega^2 A,
+\qquad
+A^4 = \omega^4 I,
+\qquad
+A^5 = \omega^4 A,
+\qquad
+A^6 = -\omega^6 I,
+\qquad\dots
+$$
+$$
+A^{2n} = (-\omega^2)^n I,
+\qquad
+A^{2n+1} = (-\omega^2)^n A
+$$
+
+- Potências pares: múltiplos de $I$. Potências ímpares: múltiplos de $A$.
+
+::: {.aside}
+Notas: [Potências de $A$](aula1.html#sec-ho-potencias)
+:::
+
+## A exponencial de uma matriz
+
+Para um número: $\dot x = ax \Rightarrow x(t) = e^{at}x(0)$, com
+$e^{at} = 1 + at + (at)^2/2 + \dots$. Para a matriz, a mesma série:
+$$
+e^{tA} \equiv I + tA + \frac{t^2A^2}{2} + \frac{t^3A^3}{6} + \frac{t^4A^4}{24} + \dots,
+\qquad
+\frac{\mathrm d}{\mathrm dt}e^{tA} = A\,e^{tA}
+\quad\Rightarrow\quad
+X(t) = e^{tA}X(0)
+$$
+Com as potências de $A$, separando pares e ímpares:
+$$
+e^{tA}
+= \underbrace{\left(1 - \frac{\omega^2t^2}{2} + \frac{\omega^4t^4}{24} - \dots\right)}_{\cos\omega t} I
++ \underbrace{\left(t - \frac{\omega^2t^3}{6} + \frac{\omega^4t^5}{120} - \dots\right)}_{\sin(\omega t)/\omega} A
+$$
+
+::: {.aside}
+Notas: [Soma da série](aula1.html#sec-ho-soma-serie)
+:::
+
+## Solução exata
+
+$$
+e^{tA} = \cos(\omega t)\, I + \frac{\sin(\omega t)}{\omega}\, A
+= \begin{pmatrix}
+\cos\omega t & \dfrac{\sin\omega t}{m\omega} \\[2ex]
+-m\omega\sin\omega t & \cos\omega t
+\end{pmatrix}
+$$
+$$
+x(t) = x(0)\cos\omega t + \frac{p(0)}{m\omega}\sin\omega t,
+\qquad
+p(t) = p(0)\cos\omega t - m\omega\, x(0)\sin\omega t
+$$
+
+1. **Energia conservada:** as trajetórias são as elipses $H = \text{constante}$.
+2. **Produto simplético conservado:** para duas soluções,
+   $\Omega(X, Y) \equiv X^{\mathsf T}\Omega\, Y = x_X p_Y - p_X x_Y$ é
+   constante, pois $A^{\mathsf T}\Omega + \Omega A = 0$. Equivale a
+   $\det e^{tA} = 1$: áreas preservadas.
+
+::: {.aside}
+Notas: [Solução exata](aula1.html#sec-ho-exata)
+:::
+
+## Integração numérica: um passo exato é uma rotação
+
+:::: {.columns}
+::: {.column width="58%"}
+$$
+\xi \equiv \sqrt{m}\,\omega\, x,
+\qquad
+\eta \equiv \frac{p}{\sqrt m},
+\qquad
+\varepsilon \equiv \omega\,\Delta t
+$$
+$$
+H = \frac{\xi^2 + \eta^2}{2},
+\qquad
+\frac{\mathrm d}{\mathrm dt}\begin{pmatrix} \xi \\ \eta \end{pmatrix} = \omega\,\Omega\begin{pmatrix} \xi \\ \eta \end{pmatrix}
+$$
+$$
+M_{\rm ex}(\varepsilon) \equiv \cos\varepsilon\, I + \sin\varepsilon\, \Omega
+= \begin{pmatrix} \cos\varepsilon & \sin\varepsilon \\ -\sin\varepsilon & \cos\varepsilon \end{pmatrix}
+$$
+
+Em $z \equiv \xi + i\eta$: $z_{n+1} = e^{-i\varepsilon} z_n$.
+:::
+::: {.column width="42%"}
+{{< embed aula1.qmd#fig-ho-rotacao >}}
+:::
+::::
+
+::: {.aside}
+Notas: [Variáveis adimensionais](aula1.html#sec-ho-adimensionais)
+:::
+
+## Os métodos como aproximações da rotação
+
+Cada método substitui $M_{\rm ex}(\varepsilon)$ por uma matriz
+$M(\varepsilon)$ polinomial em $\varepsilon$: $X_{n+1} = M(\varepsilon)X_n$.
+
+1. **Ordem.** $M - M_{\rm ex} = O(\varepsilon^{k+1})$: erro acumulado
+   $O(\Delta t^k)$ depois de $n = t/\Delta t$ passos.
+2. **Determinante.** $\det M$ multiplica as áreas a cada passo. Exato: $1$.
+3. **Autovalores.** $X_n = M^nX_0$ cresce como $|\lambda|^n$. Exato:
+   $\lambda = e^{\pm i\varepsilon}$, $|\lambda| = 1$.
+
+Se $\det M = 1$ e $|\operatorname{tr} M| < 2$: $\lambda = e^{\pm i\theta}$,
+$2\cos\theta = \operatorname{tr} M$. A solução fica limitada; $\theta \neq \varepsilon$ é um erro de fase.
+
+::: {.aside}
+Notas: [Os métodos como aproximações da rotação](aula1.html#sec-ho-aproximacoes)
+:::
+
+## Euler explícito
+
+Taylor truncado: $X(t_{n+1}) = X(t_n) + \Delta t\,AX(t_n) + O(\Delta t^2)$
+$$
+X_{n+1} = (I + \Delta t\, A)\, X_n,
+\qquad
+M_{\rm E}(\varepsilon) = I + \varepsilon\Omega = \begin{pmatrix} 1 & \varepsilon \\ -\varepsilon & 1 \end{pmatrix}
+= \sqrt{1+\varepsilon^2}\;M_{\rm ex}(\arctan\varepsilon)
+$$
+
+- Segue a tangente: rotação de $\arctan\varepsilon < \varepsilon$ e
+  dilatação por $\sqrt{1+\varepsilon^2}$.
+- Primeira ordem: $M_{\rm E} - M_{\rm ex} = (\varepsilon^2/2)\,I + O(\varepsilon^3)$.
+- $H_n = (1+\varepsilon^2)^n H_0$: espiral que se afasta da origem;
+  $\det M_{\rm E} = 1 + \varepsilon^2$.
+
+::: {.aside}
+Notas: [Euler explícito](aula1.html#sec-ho-euler)
+:::
+
+## Euler simplético: dois cisalhamentos
+
+{{< embed aula1.qmd#fig-ho-cisalhamento >}}
+
+::: {.aside}
+Notas: [Euler simplético](aula1.html#sec-ho-euler-simpletico)
+:::
+
+## Euler simplético
+
+$$
+S_\eta(\varepsilon) \equiv \begin{pmatrix} 1 & 0 \\ -\varepsilon & 1 \end{pmatrix},
+\qquad
+S_\xi(\varepsilon) \equiv \begin{pmatrix} 1 & \varepsilon \\ 0 & 1 \end{pmatrix},
+\qquad
+\det S_\eta = \det S_\xi = 1
+$$
+$$
+M_{\rm SE}(\varepsilon) = S_\xi(\varepsilon)\, S_\eta(\varepsilon)
+= \begin{pmatrix} 1 - \varepsilon^2 & \varepsilon \\ -\varepsilon & 1 \end{pmatrix},
+\qquad
+\det M_{\rm SE} = 1,
+\qquad
+\operatorname{tr} M_{\rm SE} = 2 - \varepsilon^2
+$$
+
+- Primeira ordem, mas o erro deforma em vez de dilatar.
+- Conserva exatamente
+  $\tilde H_{\rm SE} \equiv (\xi^2 + \eta^2 - \varepsilon\xi\eta)/2$:
+  a trajetória é uma elipse inclinada.
+- $H$ oscila com amplitude relativa $\approx\varepsilon/2$, sem crescer.
+
+::: {.aside}
+Notas: [Euler simplético](aula1.html#sec-ho-euler-simpletico)
+:::
+
+## Verlet: três cisalhamentos
+
+Meio passo em $p$, passo em $x$, meio passo em $p$:
+$$
+M_{\rm V}(\varepsilon) = S_\eta(\varepsilon/2)\, S_\xi(\varepsilon)\, S_\eta(\varepsilon/2)
+= \begin{pmatrix} 1 - \varepsilon^2/2 & \varepsilon \\ -\varepsilon + \varepsilon^3/4 & 1 - \varepsilon^2/2 \end{pmatrix}
+$$
+$$
+M_{\rm V} - M_{\rm ex} = \begin{pmatrix} -\varepsilon^4/24 & \varepsilon^3/6 \\ \varepsilon^3/12 & -\varepsilon^4/24 \end{pmatrix} + O(\varepsilon^5)
+$$
+
+- Segunda ordem: $M_{\rm V}(-\varepsilon) = M_{\rm V}(\varepsilon)^{-1}$
+  elimina o erro de ordem $\varepsilon^2$.
+- $\operatorname{tr} M_{\rm V} = 2 - \varepsilon^2 = 2\cos\theta_{\rm V}$:
+  avança $\theta_{\rm V} = 2\arcsin(\varepsilon/2) = \varepsilon + \varepsilon^3/24 + \dots$ por passo.
+- Estável somente se $\omega\Delta t < 2$. Conserva
+  $\tilde H_{\rm V} \equiv \eta^2/2 + (1 - \varepsilon^2/4)\,\xi^2/2$.
+
+::: {.aside}
+Notas: [Verlet](aula1.html#sec-ho-verlet)
+:::
+
+## Runge–Kutta de quarta ordem
+
+Quatro velocidades, média com os pesos $1, 2, 2, 1$ de Simpson:
+$$
+k_1 = f(X_n),
+\qquad
+k_2 = f\!\left(X_n + \tfrac{\Delta t}{2}k_1\right),
+\qquad
+k_3 = f\!\left(X_n + \tfrac{\Delta t}{2}k_2\right),
+\qquad
+k_4 = f\!\left(X_n + \Delta t\,k_3\right)
+$$
+$$
+X_{n+1} = X_n + \frac{\Delta t}{6}\left(k_1 + 2k_2 + 2k_3 + k_4\right),
+\qquad
+M_{\rm RK4} = \left(1 - \frac{\varepsilon^2}{2} + \frac{\varepsilon^4}{24}\right) I + \left(\varepsilon - \frac{\varepsilon^3}{6}\right)\Omega
+$$
+
+- Para $f(X) = AX$ a média dá $I + \Delta t\,A + \dots + \Delta t^4A^4/24$,
+  os cinco primeiros termos da série de $e^{\Delta t\,A}$.
+- $M_{\rm RK4}$ é a rotação com $\cos\varepsilon$ e $\sin\varepsilon$
+  truncados na ordem $\varepsilon^4$: quarta ordem.
+- $\dfrac{H_{n+1}}{H_n} = \det M_{\rm RK4} = 1 - \dfrac{\varepsilon^6}{72} + \dfrac{\varepsilon^8}{576}$:
+  erro pequeno, sempre com o mesmo sinal.
+
+::: {.aside}
+Notas: [RK4](aula1.html#sec-ho-rk4)
+:::
+
+## Resumo
+
+| Método | $M(\varepsilon)$ | Ordem | $\det M$ | $\lvert\lambda\rvert$ |
+|---|---|---|---|---|
+| Exato | $\cos\varepsilon\, I + \sin\varepsilon\, \Omega$ | | $1$ | $1$ |
+| Euler explícito | $I + \varepsilon\Omega$ | 1 | $1 + \varepsilon^2$ | $\sqrt{1 + \varepsilon^2}$ |
+| Euler simplético | $S_\xi(\varepsilon)\, S_\eta(\varepsilon)$ | 1 | $1$ | $1$ para $\varepsilon < 2$ |
+| Verlet | $S_\eta(\varepsilon/2)\, S_\xi(\varepsilon)\, S_\eta(\varepsilon/2)$ | 2 | $1$ | $1$ para $\varepsilon < 2$ |
+| RK4 | $\sum_{k=0}^{4} (\varepsilon\Omega)^k/k!$ | 4 | $1 - \varepsilon^6/72 + \varepsilon^8/576$ | $\sqrt{\det M}$ |
+
+- Simpléticos: $\det M = 1$, $|\lambda| = 1$, a energia oscila e não deriva.
+- Não simpléticos: $|\lambda| \neq 1$, a energia muda com o mesmo sinal a cada passo.
+
+::: {.aside}
+Notas: [Resumo](aula1.html#sec-ho-resumo)
+:::
+
+## Oito passos com $\varepsilon = 0{,}8$
+
+{{< embed aula1.qmd#fig-ho-um-passo >}}
+
+::: {.aside}
+Notas: [Implementação e comparação](aula1.html#sec-ho-implementacao)
+:::
+
+## Implementação
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.python}
+def passo_rk4(f, X, dt):
+    k1 = f(X)
+    k2 = f(X + 0.5 * dt * k1)
+    k3 = f(X + 0.5 * dt * k2)
+    k4 = f(X + dt * k3)
+    return X + dt * (k1 + 2 * k2 + 2 * k3 + k4) / 6
+```
+:::
+::: {.column width="50%"}
+```{.python}
+def passo_verlet(F, x, p, dt, m):
+    p = p + 0.5 * dt * F(x)
+    x = x + dt * p / m
+    p = p + 0.5 * dt * F(x)
+    return x, p
+```
+:::
+::::
+
+As mesmas funções servem para a cadeia: $x$, $p$ e $F$ passam a ser vetores.
+
+::: {.aside}
+Notas: [Implementação e comparação](aula1.html#sec-ho-implementacao)
+:::
+
+## Vinte períodos: erro na energia
+
+{{< embed aula1.qmd#fig-ho-energia >}}
+
+## Vinte períodos: espaço de fase
+
+{{< embed aula1.qmd#fig-ho-fase >}}
+
+# A cadeia de osciladores {#sec-cadeia}
+
+## O modelo
+
+{{< embed aula1.qmd#fig-cadeia-esquema >}}
+
+- $N$ partículas de massa $m$, alturas $h^j(t)$, molas de comprimento natural nulo, $h^N \equiv h^0$.
+
+::: {.aside}
+Notas: [O modelo](aula1.html#sec-cadeia-modelo)
+:::
+
+## Forças e equações de movimento
+
+Mola de comprimento natural nulo: força $= K \times$ (vetor até a outra extremidade).
+$$
+K\begin{pmatrix} \Delta x \\ h^{j+1} - h^j \end{pmatrix}
++ K\begin{pmatrix} -\Delta x \\ h^{j-1} - h^j \end{pmatrix}
+= \begin{pmatrix} 0 \\ K\left(h^{j+1} - 2h^j + h^{j-1}\right) \end{pmatrix}
+$$
+$$
+m\ddot h^j = K\left(h^{j+1} - 2h^j + h^{j-1}\right) - K_0\, h^j
+$$
+
+- $K = 0$: $N$ osciladores independentes de frequência $\omega_0 \equiv \sqrt{K_0/m}$.
+- $K \neq 0$: a equação de $h^j$ contém $h^{j \pm 1}$, os osciladores estão acoplados.
+- Exata para qualquer inclinação; com comprimento natural $\ell_0$, só na ordem linear.
+
+::: {.aside}
+Notas: [Forças e equações de movimento](aula1.html#sec-cadeia-forcas)
+:::
+
+## O operador de translação
+
+$$
+(Th)^j \equiv h^{j+1},
+\qquad
+T = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \end{pmatrix},
+\qquad
+T\begin{pmatrix} h^0 \\ h^1 \\ h^2 \\ h^3 \end{pmatrix} = \begin{pmatrix} h^1 \\ h^2 \\ h^3 \\ h^0 \end{pmatrix}
+\qquad (N = 4)
+$$
+
+- Matriz de permutação: $T^{-1} = T^{\mathsf T}$, $(T^{-1}h)^j = h^{j-1}$, e $T^N = I$.
+- O $1$ no canto inferior esquerdo é a condição periódica.
+- No `numpy`: `np.roll(h, -1)` é $Th$ e `np.roll(h, 1)` é $T^{-1}h$.
+
+::: {.aside}
+Notas: [O operador de translação](aula1.html#sec-cadeia-translacao)
+:::
+
+## A matriz $D$
+
+$$
+h^{j+1} - 2h^j + h^{j-1} = -(Dh)^j,
+\qquad
+D \equiv 2I - T - T^{-1},
+\qquad
+m\ddot h = -\left(KD + K_0 I\right) h
+$$
+
+{{< embed aula1.qmd#fig-cadeia-matrizes >}}
+
+::: {.aside}
+Notas: [O operador de translação](aula1.html#sec-cadeia-translacao)
+:::
+
+## Hamiltoniana
+
+$$
+V = \frac{K}{2}\sum_j\left(h^{j+1} - h^j\right)^2 + \frac{K_0}{2}\sum_j \left(h^j\right)^2
+= \frac12\, h^{\mathsf T}\left(KD + K_0 I\right) h,
+\qquad
+H = \sum_j \frac{p_j^2}{2m} + V
+$$
+$$
+\dot X = AX,
+\qquad
+A = \Omega\,\mathsf H = \begin{pmatrix} 0 & I/m \\ -\left(KD + K_0 I\right) & 0 \end{pmatrix}
+$$
+$$
+A^2 = -\frac1m\begin{pmatrix} KD + K_0 I & 0 \\ 0 & KD + K_0 I \end{pmatrix}
+$$
+
+- O oscilador isolado com $m\omega^2 \to KD + K_0 I$, blocos $N \times N$.
+- $A^2$ não é múltiplo de $I$: é preciso diagonalizar $KD + K_0 I$ (próxima seção).
+
+::: {.aside}
+Notas: [Energia e Hamiltoniana](aula1.html#sec-cadeia-hamiltoniana)
+:::
+
+## O modo zero
+
+Com $K_0 = 0$, $H$ não muda com $h \to h + \beta\,\mathbf 1$: nenhuma altura é preferida.
+$$
+D\,\mathbf 1 = 0,
+\qquad
+P \equiv \sum_j p_j,
+\qquad
+\dot P = \sum_j F_j = -K_0 N\,\bar h,
+\qquad
+\bar h \equiv \frac1N\sum_j h^j,
+\qquad
+\ddot{\bar h} = -\omega_0^2\,\bar h
+$$
+
+- $K_0 = 0$: $P$ conservado, $\bar h(t) = \bar h(0) + Pt/(Nm)$. Partícula livre, frequência zero.
+- $K_0 > 0$: $h = 0$ é a altura de equilíbrio e $\bar h$ oscila com $\omega_0$.
+- Na Aula 2, $K_0$ dará o termo de massa: um campo sem massa não tem valor preferido.
+
+::: {.aside}
+Notas: [O modo zero](aula1.html#sec-cadeia-modo-zero)
+:::
+
+## Altura média
+
+{{< embed aula1.qmd#fig-modo-zero >}}
+
+::: {.aside}
+Notas: [Simulação](aula1.html#sec-cadeia-simulacao)
+:::
+
+## Simulação
+
+```{.python}
+def forca_cadeia(h, K, K0):
+    return K * (np.roll(h, -1) - 2 * h + np.roll(h, 1)) - K0 * h
+```
+
+- O mesmo `passo_verlet` do oscilador, com `h` e `p` vetores.
+- $N = 15$, $m = K = 1$; $h^0(0) = 1$, partículas $1$ e $2$ com velocidade $0{,}5$: $P = 1$.
+- $K_0 = 0$ e $K_0 = 0{,}2$; $\Delta t = 0{,}05$, 1200 passos.
+
+::: {.aside}
+Notas: [Simulação](aula1.html#sec-cadeia-simulacao)
+:::
+
+## Animação
+
+```{python}
+#| echo: false
+# Copy of the simulation and of fig-cadeia-animacao in aula1.qmd: Quarto cannot embed HTML outputs across documents.
+def passo_verlet(F, x, p, dt, m):
+    p = p + 0.5 * dt * F(x)
+    x = x + dt * p / m
+    p = p + 0.5 * dt * F(x)
+    return x, p
+
+
+def forca_cadeia(h, K, K0):
+    return K * (np.roll(h, -1) - 2 * h + np.roll(h, 1)) - K0 * h
+
+
+def simula_cadeia(h0, p0, m, K, K0, dt, n_passos, a_cada=1):
+    F = lambda h: forca_cadeia(h, K, K0)
+    h, p = h0.copy(), p0.copy()
+    hs, ps = [h.copy()], [p.copy()]
+    for n in range(1, n_passos + 1):
+        h, p = passo_verlet(F, h, p, dt, m)
+        if n % a_cada == 0:
+            hs.append(h.copy())
+            ps.append(p.copy())
+    t = dt * a_cada * np.arange(len(hs))
+    return t, np.array(hs), np.array(ps)
+
+
+N, m, K = 15, 1.0, 1.0
+h0 = np.zeros(N)
+p0 = np.zeros(N)
+h0[0] = 1.0
+p0[1] = p0[2] = 0.5 * m
+dt, n_passos = 0.05, 1200
+resultados = {K0: simula_cadeia(h0, p0, m, K, K0, dt, n_passos, a_cada=5) for K0 in [0.0, 0.2]}
+
+fig_cad, axs_cad = plt.subplots(1, 2, figsize=(10, 4), dpi=80, sharey=True)
+quadros = range(0, len(resultados[0.0][0]), 3)
+linhas_cad = []
+for ax, K0 in zip(axs_cad, [0.0, 0.2]):
+    t, hs, ps = resultados[K0]
+    ax.set_title(f"$K_0 = {K0:g}$")
+    ax.set_xlim(-0.5, N - 0.5)
+    ax.set_xlabel("partícula $j$")
+    ax.grid(True, alpha=0.3)
+    (linha,) = ax.plot([], [], "o-", color="C3")
+    (media,) = ax.plot([], [], "--", color="k", lw=1)
+    linhas_cad.append((linha, media, hs))
+axs_cad[0].set_ylim(-1.0, 4.8)
+axs_cad[0].set_ylabel("$h^j$")
+texto_t = axs_cad[0].text(0.02, 0.95, "", transform=axs_cad[0].transAxes, va="top")
+fig_cad.tight_layout()
+
+
+def quadro_cadeia(i):
+    artistas = []
+    for linha, media, hs in linhas_cad:
+        linha.set_data(np.arange(N), hs[i])
+        media.set_data([-0.5, N - 0.5], [hs[i].mean()] * 2)
+        artistas += [linha, media]
+    texto_t.set_text(f"$t = {resultados[0.0][0][i]:.1f}$")
+    return artistas + [texto_t]
+
+
+anim_cad = FuncAnimation(fig_cad, quadro_cadeia, frames=quadros, interval=80, blit=True)
+plt.close(fig_cad)
+HTML(anim_cad.to_jshtml())
+```
+
+Linha tracejada: $\bar h(t)$. Com $K_0 = 0$ a cadeia inteira sobe; com $K_0 = 0{,}2$ ela oscila em torno de $h = 0$.
+
+::: {.aside}
+Notas: [Simulação](aula1.html#sec-cadeia-simulacao)
+:::
+
+## Desvios em relação à média
+
+{{< embed aula1.qmd#fig-cadeia-xt >}}
+
+::: {.aside}
+Notas: [Simulação](aula1.html#sec-cadeia-simulacao)
+:::
+
+# Matrizes circulantes e a transformada de Fourier discreta {#sec-circulantes}
+
+## Matrizes circulantes
+
+$$
+C = \begin{pmatrix}
+b_0 & b_1 & b_2 & b_3 \\
+b_3 & b_0 & b_1 & b_2 \\
+b_2 & b_3 & b_0 & b_1 \\
+b_1 & b_2 & b_3 & b_0
+\end{pmatrix},
+\qquad
+C^j{}_k = b_{k-j},
+\qquad
+C = \sum_{r=0}^{N-1} b_r\, T^r
+$$
+
+- Cada linha é a anterior deslocada para a direita. Exemplo: $KD + K_0 I$,
+  com $b_0 = 2K + K_0$ e $b_1 = b_{N-1} = -K$.
+- Circulantes comutam entre si: são polinômios em $T$.
+- $C$ é circulante se, e somente se, $CT = TC$: a regra é a mesma em todos os
+  pontos do anel (invariância por translação).
+
+::: {.aside}
+Notas: [Matrizes circulantes](aula1.html#sec-circ-def)
+:::
+
+## Autovetores de $T$: a base de Fourier
+
+$$
+v^{j+1} = \lambda v^j
+\;\Rightarrow\;
+v^j = \lambda^j v^0,
+\qquad
+\lambda^N = 1,
+\qquad
+v_a^{\,j} \equiv \frac{e^{2\pi i a j/N}}{\sqrt N},
+\qquad
+T v_a = e^{2\pi i a/N} v_a,
+\qquad
+v_a^\dagger v_b = \delta_{ab}
+$$
+
+{{< embed aula1.qmd#fig-circ-fourier >}}
+
+::: {.aside}
+Notas: [A base de Fourier](aula1.html#sec-circ-fourier)
+:::
+
+## A transformada de Fourier discreta
+
+$$
+h = \sum_a \tilde h^a\, v_a,
+\qquad
+\tilde h^a \equiv v_a^\dagger h = \frac{1}{\sqrt N}\sum_{j=0}^{N-1} e^{-2\pi i aj/N}\, h^j,
+\qquad
+h^j = \frac{1}{\sqrt N}\sum_a e^{2\pi i aj/N}\,\tilde h^a
+$$
+
+- $a$ é definido módulo $N$: $v_{a+N} = v_a$. Usamos o intervalo simétrico,
+  o de menor $|a|$.
+- $h$ real: $\tilde h^{-a} = \left(\tilde h^a\right)^*$.
+- `np.fft.fft(h, norm="ortho")` dá $\tilde h^a$ com $O(N\log N)$ operações.
+
+::: {.aside}
+Notas: [A base de Fourier](aula1.html#sec-circ-fourier)
+:::
+
+## Toda circulante é diagonal na base de Fourier
+
+$$
+C\, v_a = \sum_r b_r\, T^r v_a = \lambda_a(C)\, v_a,
+\qquad
+\lambda_a(C) = \sum_{r=0}^{N-1} b_r\, e^{2\pi i a r/N},
+\qquad
+U^\dagger C\,U = \operatorname{diag}\big(\lambda_a(C)\big)
+$$
+$$
+\lambda_a(D) = 2 - e^{2\pi i a/N} - e^{-2\pi i a/N} = 2 - 2\cos\frac{2\pi a}{N} = 4\sin^2\frac{\pi a}{N}
+$$
+
+- Os autovetores são os mesmos para toda circulante; os autovalores são a
+  transformada de Fourier da primeira linha.
+- $\lambda_a(D) = 0$ somente para $a = 0$: $v_0 = \mathbf 1/\sqrt N$, o modo zero.
+
+::: {.aside}
+Notas: [Toda circulante é diagonal](aula1.html#sec-circ-diag)
+:::
+
+## A relação de dispersão
+
+$$
+\omega_a = \sqrt{\omega_0^2 + \frac{4K}{m}\sin^2\frac{\pi a}{N}}
+$$
+
+{{< embed aula1.qmd#fig-dispersao >}}
+
+::: {.aside}
+Notas: [A relação de dispersão](aula1.html#sec-circ-dispersao)
+:::
+
+## Modos normais
+
+$$
+m\,\ddot{\tilde h}^a = -m\,\omega_a^2\,\tilde h^a,
+\qquad
+\tilde h^a(t) = \tilde h^a(0)\cos\omega_a t + \frac{\tilde p^a(0)}{m\,\omega_a}\sin\omega_a t
+$$
+$$
+H = \sum_a \left(\frac{|\tilde p^a|^2}{2m} + \frac{m\,\omega_a^2\,|\tilde h^a|^2}{2}\right)
+$$
+
+- $N$ osciladores acoplados $\to$ $N$ osciladores independentes, um por modo.
+- $a = 0$, $K_0 = 0$: $\tilde h^0 = \sqrt N\,\bar h$ e $\tilde p^0 = P/\sqrt N$
+  dão $\bar h(0) + Pt/(Nm)$, o modo zero.
+- Para $h$ real, $N$ números reais: $\tilde h^0$ e os pares $(a, -a)$.
+
+::: {.aside}
+Notas: [Modos normais](aula1.html#sec-circ-modos)
+:::
+
+## A base real de Hartley
+
+$$
+\chi_a^{\,j} \equiv \frac{1}{\sqrt N}\left(\cos\frac{2\pi a j}{N} + \sin\frac{2\pi a j}{N}\right) = \frac{(1 - i)\,v_a^{\,j} + (1 + i)\,v_{-a}^{\,j}}{2},
+\qquad
+\chi_a^{\mathsf T}\chi_b = \delta_{ab}
+$$
+
+{{< embed aula1.qmd#fig-circ-modos >}}
+
+- $\chi_a\cos\omega_a t$: onda estacionária. $v_a e^{-i\omega_a t}$: onda viajante,
+  para $j$ crescente se $a > 0$.
+
+::: {.aside}
+Notas: [A base real de Hartley](aula1.html#sec-circ-hartley)
+:::
+
+## Solução exata pela FFT
+
+```{.python}
+ht0 = np.fft.fft(h0, norm="ortho")
+pt0 = np.fft.fft(p0, norm="ortho")
+ht = ht0 * np.cos(w * t) + pt0 / m * t * np.sinc(w * t / np.pi)
+h = np.fft.ifft(ht, axis=1, norm="ortho").real
+```
+
+- FFT, evolução exata de cada modo, FFT inversa: $O(N\log N)$ para qualquer $t$.
+- `t * np.sinc(w * t / np.pi)` é $\sin(\omega_a t)/\omega_a$, igual a $t$ para $\omega_a = 0$.
+- Verlet com $\Delta t$ dividido por $2$: erro dividido por $4{,}0$ (segunda ordem).
+
+::: {.aside}
+Notas: [Solução exata pela FFT](aula1.html#sec-circ-fft)
+:::
+
+## Exata $\times$ Verlet
+
+{{< embed aula1.qmd#fig-circ-fft-verlet >}}
+
+::: {.aside}
+Notas: [Solução exata pela FFT](aula1.html#sec-circ-fft)
+:::
+
+## Estabilidade do Verlet na cadeia
+
+$$
+\Delta t < \frac{2}{\omega_{\max}},
+\qquad
+\omega_{\max} = \max_a\omega_a \le \sqrt{\omega_0^2 + \frac{4K}{m}}
+$$
+
+{{< embed aula1.qmd#fig-cfl >}}
+
+::: {.aside}
+Notas: [Estabilidade do Verlet na cadeia](aula1.html#sec-circ-estabilidade)
+:::

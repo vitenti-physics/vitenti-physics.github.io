@@ -1,0 +1,92 @@
+---
+title: "Osciladores Acoplados e a Equação de Klein–Gordon"
+subtitle: "Minicurso (2 aulas de 1h30)"
+draft: true
+lang: pt
+format:
+  html:
+    toc: true
+    number-sections: false
+---
+
+O minicurso parte de um sistema discreto de osciladores harmônicos acoplados
+em uma dimensão e estuda a passagem da descrição discreta para a contínua. O
+percurso inclui matrizes circulantes e a transformada de Fourier discreta,
+o limite contínuo que leva à equação de Klein–Gordon e a construção, ainda
+na mecânica clássica, das variáveis de criação e aniquilação. Cada etapa é
+acompanhada de uma implementação em Python e da solução numérica das
+equações.
+
+**Público.** Estudantes de graduação a partir da metade do curso e
+estudantes de pós-graduação. Pré-requisitos: mecânica clássica (equações de
+Hamilton), álgebra linear (autovalores e autovetores) e noções de Python.
+
+## Material
+
+| Aula | Notas | Slides |
+|---|---|---|
+| 1. Do oscilador harmônico às matrizes circulantes | [Notas](aula1.qmd) | [Slides](slides-aula1.qmd) |
+| 2. O limite contínuo e as variáveis de criação e aniquilação | em preparação | em preparação |
+
+Os slides e as notas têm as mesmas seções: durante a aula os slides são
+projetados e as notas trazem todas as contas e o código completo. Cada
+página de notas pode ser baixada como notebook Jupyter ou como script
+Python, ou aberta diretamente no Google Colab.
+
+## Notação {#sec-notacao}
+
+Cada símbolo tem um único significado em todas as páginas do minicurso.
+
+| Símbolo | Significado | Definido em |
+|---|---|---|
+| $m$ | massa de uma partícula | [Aula 1](aula1.qmd#sec-ho-hamilton) |
+| $\kappa$ | constante da mola do oscilador isolado | [Aula 1](aula1.qmd#sec-ho-hamilton) |
+| $\omega$ | frequência angular, $\omega \equiv \sqrt{\kappa/m}$ | [Aula 1](aula1.qmd#sec-ho-hamilton) |
+| $x$, $p$ | posição e momento do oscilador isolado (na cadeia, $p$ é o vetor dos momentos) | [Aula 1](aula1.qmd#sec-ho-hamilton) |
+| $H$ | Hamiltoniana | [Aula 1](aula1.qmd#sec-ho-hamilton) |
+| $X$ | vetor do espaço de fase (dimensão $2$ no oscilador, $2N$ na cadeia) | [Aula 1](aula1.qmd#sec-ho-matricial) |
+| $\mathsf H$ | matriz da Hamiltoniana, $H = \frac12 X^{\mathsf T}\mathsf H X$ | [Aula 1](aula1.qmd#sec-ho-matricial) |
+| $\Omega$ | matriz simplética | [Aula 1](aula1.qmd#sec-ho-matricial) |
+| $A$ | gerador da evolução, $A \equiv \Omega\mathsf H$ | [Aula 1](aula1.qmd#sec-ho-matricial) |
+| $\Omega(X, Y)$ | produto simplético, $\Omega(X, Y) \equiv X^{\mathsf T}\Omega\, Y$ | [Aula 1](aula1.qmd#sec-ho-exata) |
+| $\Delta t$, $t_n$ | passo de tempo e instantes $t_n \equiv n\Delta t$ | [Aula 1](aula1.qmd#sec-ho-numerico) |
+| $\xi$, $\eta$ | variáveis adimensionais, $\xi \equiv \sqrt m\,\omega x$, $\eta \equiv p/\sqrt m$ | [Aula 1](aula1.qmd#sec-ho-adimensionais) |
+| $\varepsilon$ | passo adimensional, $\varepsilon \equiv \omega\Delta t$ | [Aula 1](aula1.qmd#sec-ho-adimensionais) |
+| $z$ | variável complexa, $z \equiv \xi + i\eta$ | [Aula 1](aula1.qmd#sec-ho-adimensionais) |
+| $M_{\rm ex}(\varepsilon)$ | matriz do passo exato no plano $(\xi, \eta)$, rotação de ângulo $\varepsilon$ | [Aula 1](aula1.qmd#sec-ho-adimensionais) |
+| $M_{\rm E}$, $M_{\rm SE}$, $M_{\rm V}$, $M_{\rm RK4}$ | matrizes de um passo dos quatro métodos no plano $(\xi, \eta)$ | [Aula 1](aula1.qmd#sec-ho-aproximacoes) |
+| $S_\xi(\varepsilon)$, $S_\eta(\varepsilon)$ | cisalhamentos que atualizam $\xi$ e $\eta$ | [Aula 1](aula1.qmd#sec-ho-euler-simpletico) |
+| $\tilde H_{\rm SE}$, $\tilde H_{\rm V}$; $Q_{\rm SE}$, $Q_{\rm V}$ | formas quadráticas conservadas pelo Euler simplético e pelo Verlet, e suas matrizes | [Aula 1](aula1.qmd#sec-ho-euler-simpletico) |
+| $\theta_{\rm V}$ | ângulo avançado por um passo de Verlet, $\cos\theta_{\rm V} = 1 - \varepsilon^2/2$ | [Aula 1](aula1.qmd#sec-ho-verlet) |
+| $F$ | força | [Aula 1](aula1.qmd#sec-ho-verlet) |
+| $k_1, \dots, k_4$ | avaliações de $AX$ em um passo do RK4 | [Aula 1](aula1.qmd#sec-ho-rk4) |
+| $R$ | fator de amplificação do RK4 | [Aula 1](aula1.qmd#sec-ho-rk4) |
+| $N$ | número de partículas da cadeia | [Aula 1](aula1.qmd#sec-cadeia-modelo) |
+| $\Delta x$ | espaçamento horizontal entre partículas vizinhas | [Aula 1](aula1.qmd#sec-cadeia-modelo) |
+| $h^j$, $h$ | altura da partícula $j$ e vetor das $N$ alturas | [Aula 1](aula1.qmd#sec-cadeia-modelo) |
+| $K$ | constante das molas entre partículas vizinhas | [Aula 1](aula1.qmd#sec-cadeia-modelo) |
+| $K_0$ | constante das molas que prendem cada partícula à posição de equilíbrio | [Aula 1](aula1.qmd#sec-cadeia-modelo) |
+| $F_j$ | força vertical sobre a partícula $j$ | [Aula 1](aula1.qmd#sec-cadeia-forcas) |
+| $\omega_0$ | frequência de uma partícula com $K = 0$, $\omega_0 \equiv \sqrt{K_0/m}$ | [Aula 1](aula1.qmd#sec-cadeia-forcas) |
+| $\ell_0$, $\tau$ | comprimento natural de uma mola e tensão, $\tau \equiv K(\Delta x - \ell_0)$ | [Aula 1](aula1.qmd#sec-cadeia-forcas) |
+| $T$ | operador de translação, $(Th)^j \equiv h^{j+1}$ | [Aula 1](aula1.qmd#sec-cadeia-translacao) |
+| $D$ | $D \equiv 2I - T - T^{-1}$; $-D$ é o Laplaciano discreto periódico | [Aula 1](aula1.qmd#sec-cadeia-translacao) |
+| $V$ | energia potencial da cadeia | [Aula 1](aula1.qmd#sec-cadeia-hamiltoniana) |
+| $p_j$, $p$ | momento da partícula $j$, $p_j \equiv m\dot h^j$, e vetor dos $N$ momentos | [Aula 1](aula1.qmd#sec-cadeia-hamiltoniana) |
+| $\mathbf 1$ | vetor com todas as componentes iguais a $1$ | [Aula 1](aula1.qmd#sec-cadeia-modo-zero) |
+| $\beta$ | deslocamento comum de todas as alturas, $h \to h + \beta\,\mathbf 1$ | [Aula 1](aula1.qmd#sec-cadeia-modo-zero) |
+| $P$ | momento total da cadeia, $P \equiv \sum_j p_j$ | [Aula 1](aula1.qmd#sec-cadeia-modo-zero) |
+| $\bar h$ | altura média (do centro de massa), $\bar h \equiv \frac1N\sum_j h^j$ | [Aula 1](aula1.qmd#sec-cadeia-modo-zero) |
+| $\{f, g\}$ | parêntese de Poisson | [Aula 1](aula1.qmd#sec-cadeia-modo-zero) |
+| $b_r$ | elementos da primeira linha de uma matriz circulante, $C^j{}_k = b_{k-j}$ | [Aula 1](aula1.qmd#sec-circ-def) |
+| $C$ | matriz circulante, $C = \sum_r b_r T^r$ | [Aula 1](aula1.qmd#sec-circ-def) |
+| $v_a$ | vetores de Fourier, $v_a^{\,j} \equiv e^{2\pi i aj/N}/\sqrt N$ | [Aula 1](aula1.qmd#sec-circ-fourier) |
+| $u^\dagger w$ | produto escalar complexo, $u^\dagger w \equiv \sum_j (u^j)^* w^j$ | [Aula 1](aula1.qmd#sec-circ-fourier) |
+| $\tilde h^a$, $\tilde p^a$ | componentes de $h$ e $p$ na base de Fourier (DFT), $\tilde h^a \equiv v_a^\dagger h$ | [Aula 1](aula1.qmd#sec-circ-fourier) |
+| $\lambda_a(C)$ | autovalor de $C$ associado a $v_a$ | [Aula 1](aula1.qmd#sec-circ-diag) |
+| $U$ | matriz unitária com colunas $v_a$ | [Aula 1](aula1.qmd#sec-circ-diag) |
+| $\omega_a$ | frequência do modo $a$ (relação de dispersão); $\omega_{a=0} = \omega_0$ | [Aula 1](aula1.qmd#sec-circ-dispersao) |
+| $\omega_{\max}$ | maior das frequências $\omega_a$ | [Aula 1](aula1.qmd#sec-circ-dispersao) |
+| $\chi_a$, $q^a$ | vetores de Hartley e coordenadas $q^a \equiv \chi_a^{\mathsf T}h$ | [Aula 1](aula1.qmd#sec-circ-hartley) |
+
+{{< include /_footer.qmd >}}

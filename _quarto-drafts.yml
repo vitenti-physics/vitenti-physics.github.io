@@ -1,0 +1,4 @@
+# Local review of pages marked draft: quarto render --profile drafts
+website:
+  draft-mode: visible
+  cookie-consent: false

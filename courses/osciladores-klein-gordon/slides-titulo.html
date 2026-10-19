@@ -1,0 +1,24 @@
+<style>
+  .hide {
+    display: none !important;
+  }
+</style>
+
+<script>
+  // Hide the footer and the slide number on the title slide only.
+  function ocultaNoTitulo() {
+    const footer = document.querySelector('div.footer');
+    const slideNo = document.querySelector('div.slide-number');
+    const atualiza = () => {
+      const noTitulo = Reveal.isFirstSlide();
+      for (const el of [footer, slideNo]) {
+        if (!el) continue;
+        el.classList.toggle('hide', noTitulo);
+      }
+    };
+    atualiza();
+    Reveal.on('slidechanged', atualiza);
+  }
+
+  window.addEventListener('load', ocultaNoTitulo);
+</script>

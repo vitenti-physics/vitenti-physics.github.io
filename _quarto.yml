@@ -1,5 +1,7 @@
 project:
   type: website
+  post-render:
+    - ./ipynb_to_py.sh
 
 website:
   title: "Physics Lecture Notes"
@@ -88,6 +90,16 @@ website:
                   href: courses/electrodynamics/moving-charge-radiation.qmd
                 - text: "Thomson Scattering"
                   href: courses/electrodynamics/thomson-scattering.qmd
+        - section: "Minicourses"
+          contents:
+            - section: "Coupled Oscillators and Klein–Gordon (portuguese)"
+              contents:
+                - text: "Overview"
+                  href: courses/osciladores-klein-gordon/index.qmd
+                - text: "Aula 1: Osciladores e Matrizes Circulantes"
+                  href: courses/osciladores-klein-gordon/aula1.qmd
+                - text: "Slides: Aula 1"
+                  href: courses/osciladores-klein-gordon/slides-aula1.qmd
 format:
   html:
     theme:

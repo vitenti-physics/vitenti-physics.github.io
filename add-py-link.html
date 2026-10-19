@@ -1,0 +1,30 @@
+<script>
+  // Next to each notebook download, add a plain Python download and an
+  // "open in Colab" link pointing to the notebook published on gh-pages.
+  document.addEventListener("DOMContentLoaded", () => {
+    const colabBase =
+      "https://colab.research.google.com/github/vitenti-physics/vitenti-physics.github.io/blob/gh-pages";
+    const containers = document.querySelectorAll(".quarto-alternate-formats ul");
+
+    containers.forEach(ul => {
+      ul.querySelectorAll('a[href$=".ipynb"]').forEach(ipynb => {
+        const href = ipynb.getAttribute("href");
+        const nbPath = new URL(href, window.location.href).pathname;
+
+        const py = document.createElement("li");
+        py.innerHTML =
+          `<a href="${href.replace(/\.ipynb$/, ".py")}" download>
+             <i class="bi bi-filetype-py"></i>Python
+           </a>`;
+        ul.appendChild(py);
+
+        const colab = document.createElement("li");
+        colab.innerHTML =
+          `<a href="${colabBase}${nbPath}" target="_blank" rel="noopener">
+             <i class="bi bi-play-circle"></i>Abrir no Colab
+           </a>`;
+        ul.appendChild(colab);
+      });
+    });
+  });
+</script>
