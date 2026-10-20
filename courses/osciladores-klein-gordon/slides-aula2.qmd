@@ -163,40 +163,89 @@ $$
 Notas: [A Hamiltoniana](aula2.html#sec-cont-hamiltoniana)
 :::
 
+## Energia dos osciladores e das molas
+
+:::: {.columns}
+::: {.column width="50%"}
+**Oscilador $j$** (partícula e mola $K_0$), em $x_j$:
+$$
+E_j \equiv \frac{p_j^2}{2m} + \frac{K_0}{2}\left(h^j\right)^2
+$$
+**Mola entre $j$ e $j+1$**, em $x_{j+1/2} \equiv \left(j + \tfrac12\right)\Delta x$:
+$$
+E_{j+1/2} \equiv \frac K2\left(h^{j+1} - h^j\right)^2
+$$
+$$
+H = \sum_j\left(E_j + E_{j+1/2}\right)
+$$
+
+- Índice inteiro: na partícula. Índice semi-inteiro: na mola.
+:::
+::: {.column width="50%"}
+**Como variam**
+$$
+\dot E_j = K\left(h^{j+1} - h^j\right)\dot h^j - K\left(h^j - h^{j-1}\right)\dot h^j
+$$
+$$
+\dot E_{j+1/2} = K\left(h^{j+1} - h^j\right)\left(\dot h^{j+1} - \dot h^j\right)
+$$
+**Energia de uma partícula** (oscilador e meia mola de cada lado):
+$$
+e_j \equiv E_j + \frac{E_{j-1/2} + E_{j+1/2}}{2},
+\qquad
+\dot e_j = -\left(S_{j+1/2} - S_{j-1/2}\right)
+$$
+$$
+S_{j+1/2} \equiv -\frac K2\left(h^{j+1} - h^j\right)\left(\dot h^j + \dot h^{j+1}\right)
+$$
+:::
+::::
+
+::: {.aside}
+Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)
+:::
+
 ## A energia passa pelas molas
 
 :::: {.columns}
 ::: {.column width="55%"}
-**Cadeia**
+**Cadeia**, com $m = \rho\Delta x$, $K = \tau/\Delta x$, $K_0 = \rho\mu^2\Delta x$:
 $$
-\dot e_j = -\left(S_{j+1/2} - S_{j-1/2}\right)
-$$
-$$
-S_{j+1/2} = -\frac K2\left(h^{j+1} - h^j\right)\left(\dot h^j + \dot h^{j+1}\right)
+E_j = \Delta x\left[\frac{1}{2\rho}\left(\frac{p_j}{\Delta x}\right)^2 + \frac{\rho\mu^2}{2}\left(h^j\right)^2\right]
 $$
 $$
+E_{j+1/2} = \Delta x\;\frac\tau2\left(\frac{h^{j+1} - h^j}{\Delta x}\right)^2
+$$
+$$
+S_{j+1/2} = -\tau\,\frac{h^{j+1} - h^j}{\Delta x}\,\frac{\dot h^j + \dot h^{j+1}}{2}
+$$
+$$
+\frac{\mathrm d}{\mathrm dt}\frac{e_j}{\Delta x} = -\frac{S_{j+1/2} - S_{j-1/2}}{\Delta x},
+\qquad
 |S_{j+1/2}| \le \frac{c}{\Delta x}\,e_{j+1/2}
 $$
-
-- $e_j$: energia da partícula; $e_{j+1/2}$: energia da mola.
-- A energia de uma mola passa no máximo para a seguinte a cada $\Delta x/c$.
 :::
 ::: {.column width="45%"}
 **Limite contínuo**
 $$
-\frac{\partial\mathcal E}{\partial t} + \frac{\partial\mathcal S}{\partial x} = 0
+\frac{E_j}{\Delta x} \to \frac{\Pi^2}{2\rho} + \frac{\rho\mu^2}2\phi^2,
+\qquad
+\frac{E_{j+1/2}}{\Delta x} \to \frac\tau2\phi'^2
 $$
 $$
-\mathcal E = \frac{\Pi^2}{2\rho} + \frac\tau2\phi'^2 + \frac{\rho\mu^2}2\phi^2
+\mathcal E = \frac{\Pi^2}{2\rho} + \frac\tau2\phi'^2 + \frac{\rho\mu^2}2\phi^2,
+\qquad
+\mathcal S = -\tau\phi'\dot\phi = -c^2\Pi\phi'
 $$
 $$
-\mathcal S = -c^2\Pi\phi'
-$$
-$$
+\frac{\partial\mathcal E}{\partial t} + \frac{\partial\mathcal S}{\partial x} = 0,
+\qquad
 |\mathcal S| \le c\,\mathcal E
 $$
 :::
 ::::
+
+- A energia de uma mola passa no máximo para a seguinte a cada $\Delta x/c$.
 
 ::: {.aside}
 Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)

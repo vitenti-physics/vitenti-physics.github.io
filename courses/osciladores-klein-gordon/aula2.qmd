@@ -220,18 +220,68 @@ $$ {#eq-cont-poisson}
 ## O fluxo de energia {#sec-cont-fluxos}
 
 A energia total $H$ é conservada, mas ela não fica parada: passa de uma
-partícula para a vizinha através das molas. Atribuímos a cada partícula a
-sua energia cinética, a da sua mola de constante $K_0$ e metade da energia
-de cada uma das duas molas de constante $K$ ligadas a ela:
+partícula para a vizinha através das molas. Para acompanhar esse
+movimento, dividimos $H$ em partes localizadas na cadeia.
+
+**A energia de cada oscilador.** A partícula $j$ com a sua mola de
+constante $K_0$ forma um oscilador, o da Aula 1 com $\kappa = K_0$. A sua
+energia, cinética mais a da mola $K_0$, é
 $$
-e_j \equiv \frac{p_j^2}{2m} + \frac{K_0}{2}\left(h^j\right)^2 + \frac{K}{4}\left[\left(h^{j+1} - h^j\right)^2 + \left(h^j - h^{j-1}\right)^2\right],
+E_j \equiv \frac{p_j^2}{2m} + \frac{K_0}{2}\left(h^j\right)^2 .
+$$
+Se $K = 0$, cada $E_j$ é conservada separadamente.
+
+**A energia de cada mola.** A mola de constante $K$ entre as partículas
+$j$ e $j + 1$ guarda a energia
+$$
+E_{j+1/2} \equiv \frac{K}{2}\left(h^{j+1} - h^j\right)^2,
+$$
+sem o termo constante $K\Delta x^2/2$ da Aula 1. O índice $j + 1/2$ indica
+onde essa energia está: a mola liga $x_j$ a $x_{j+1}$, e o seu ponto
+médio é
+$$
+x_{j+1/2} \equiv \left(j + \tfrac12\right)\Delta x .
+$$
+Na notação, índices inteiros $j$ marcam grandezas que estão nas
+partículas, e índices semi-inteiros $j + 1/2$ marcam grandezas que estão
+nas molas entre elas. A Hamiltoniana @eq-cont-H-cadeia é a soma das duas:
+$$
+H = \sum_{j=0}^{N-1}\left(E_j + E_{j+1/2}\right).
+$$
+
+**Como $E_j$ e $E_{j+1/2}$ variam.** Com $\dot h^j = p_j/m$ e
+@eq-cont-newton,
+$$
+\dot E_j = \frac{p_j\,\dot p_j}{m} + K_0\,h^j\,\dot h^j
+= \dot h^j\left(\dot p_j + K_0 h^j\right)
+= K\left(h^{j+1} - h^j\right)\dot h^j - K\left(h^j - h^{j-1}\right)\dot h^j .
+$$
+Os termos com $K_0$ se cancelaram: a mola $K_0$ só troca energia com a sua
+própria partícula. Os dois termos que sobram são a potência (força vezes
+velocidade) que a mola da direita e a mola da esquerda fazem sobre a
+partícula $j$. Para a mola,
+$$
+\dot E_{j+1/2} = K\left(h^{j+1} - h^j\right)\left(\dot h^{j+1} - \dot h^j\right)
+= -K\left(h^{j+1} - h^j\right)\dot h^j + K\left(h^{j+1} - h^j\right)\dot h^{j+1} :
+$$
+a mola perde a potência que entrega à partícula $j$ e ganha a que recebe
+da partícula $j + 1$, com os sinais trocados, pois a força que ela exerce
+sobre $j + 1$ é $-K(h^{j+1} - h^j)$. A energia que sai de uma partícula
+entra numa mola, e vice-versa.
+
+**A energia de uma partícula e o fluxo.** Para obter uma energia por
+partícula, atribuímos a cada partícula o seu oscilador e metade de cada
+uma das duas molas ligadas a ela:
+$$
+e_j \equiv E_j + \frac{E_{j-1/2} + E_{j+1/2}}{2}
+= \frac{p_j^2}{2m} + \frac{K_0}{2}\left(h^j\right)^2 + \frac{K}{4}\left[\left(h^{j+1} - h^j\right)^2 + \left(h^j - h^{j-1}\right)^2\right],
 \qquad
 \sum_j e_j = H .
 $$
-Derivando no tempo e usando $\dot p_j = K(h^{j+1} - 2h^j + h^{j-1}) - K_0 h^j$,
-os termos com $K_0$ se cancelam e sobra
+Somando as três derivadas acima,
 $$
-\dot e_j = K\left(h^{j+1} - h^j\right)\left[\dot h^j + \frac{\dot h^{j+1} - \dot h^j}{2}\right] - K\left(h^j - h^{j-1}\right)\left[\dot h^j - \frac{\dot h^j - \dot h^{j-1}}{2}\right],
+\dot e_j = \dot E_j + \frac{\dot E_{j-1/2} + \dot E_{j+1/2}}{2}
+= K\left(h^{j+1} - h^j\right)\frac{\dot h^j + \dot h^{j+1}}{2} - K\left(h^j - h^{j-1}\right)\frac{\dot h^{j-1} + \dot h^j}{2},
 $$
 isto é,
 $$
@@ -239,21 +289,47 @@ $$
 \qquad
 S_{j+1/2} \equiv -\frac{K}{2}\left(h^{j+1} - h^j\right)\left(\dot h^j + \dot h^{j+1}\right) .
 $$ {#eq-cont-fluxo-cadeia}
-A mola entre $j$ e $j+1$ exerce a força $K(h^{j+1} - h^j)$ sobre $j$ e
-$-K(h^{j+1} - h^j)$ sobre $j + 1$. Ela recebe de $j$ a potência
-$-K(h^{j+1} - h^j)\dot h^j$ e entrega a $j + 1$ a potência
-$-K(h^{j+1} - h^j)\dot h^{j+1}$; a diferença entre as duas é a variação da
-energia guardada na mola, e $S_{j+1/2}$ é a média entre elas: a potência
-que atravessa a mola no sentido de $j$ crescente. A energia de cada
-partícula só muda pela energia que entra ou sai pelas suas duas molas.
+O fluxo $S_{j+1/2}$ está na mola entre $j$ e $j + 1$, daí o índice
+semi-inteiro. Ele é a média entre a potência que a mola recebe de $j$,
+$-K(h^{j+1} - h^j)\dot h^j$, e a que ela entrega a $j + 1$,
+$-K(h^{j+1} - h^j)\dot h^{j+1}$: a potência que atravessa a mola no
+sentido de $j$ crescente. A energia de cada partícula só muda pela
+energia que entra ou sai pelas suas duas molas.
+
+**As mesmas grandezas em termos de $\Delta x$.** Com @eq-cont-escalas,
+$m = \rho\Delta x$, $K = \tau/\Delta x$ e $K_0 = \rho\mu^2\Delta x$, as
+energias são
+$$
+E_j = \Delta x\left[\frac{1}{2\rho}\left(\frac{p_j}{\Delta x}\right)^2 + \frac{\rho\,\mu^2}{2}\left(h^j\right)^2\right],
+\qquad
+E_{j+1/2} = \Delta x\;\frac{\tau}{2}\left(\frac{h^{j+1} - h^j}{\Delta x}\right)^2,
+$$
+e o fluxo é
+$$
+S_{j+1/2} = -\tau\;\frac{h^{j+1} - h^j}{\Delta x}\;\frac{\dot h^j + \dot h^{j+1}}{2} .
+$$
+Cada energia é $\Delta x$ vezes uma combinação do momento por unidade de
+comprimento $p_j/\Delta x$, da altura $h^j$ e da inclinação
+$(h^{j+1} - h^j)/\Delta x$, nenhuma das quais depende de $N$. O fluxo não
+tem o fator $\Delta x$: é uma potência, e não uma energia guardada num
+trecho de comprimento $\Delta x$. Dividindo @eq-cont-fluxo-cadeia por
+$\Delta x$,
+$$
+\frac{\mathrm d}{\mathrm dt}\left(\frac{e_j}{\Delta x}\right) = -\,\frac{S_{j+1/2} - S_{j-1/2}}{\Delta x} :
+$$ {#eq-cont-fluxo-dx}
+a variação da energia por unidade de comprimento em $x_j$ é menos a
+diferença entre o fluxo à direita e o fluxo à esquerda, dividida pela
+distância $\Delta x$ entre os pontos $x_{j+1/2}$ e $x_{j-1/2}$ onde esses
+fluxos estão.
 
 **A energia avança no máximo uma partícula a cada $\Delta x/c$.** O fluxo
 $S_{j+1/2}$ está numa mola, e deve ser comparado com a energia associada
-a essa mola. Atribuímos à mola entre $j$ e $j+1$ a sua própria energia,
-metade da energia cinética e metade da energia da mola $K_0$ de cada uma
-das duas partículas:
+a essa mola. Atribuímos à mola entre $j$ e $j+1$ a sua própria energia
+$E_{j+1/2}$ e metade da energia de cada um dos dois osciladores que ela
+liga:
 $$
-e_{j+1/2} \equiv \frac{K}{2}\left(h^{j+1} - h^j\right)^2 + \frac{p_j^2 + p_{j+1}^2}{4m} + \frac{K_0}{4}\left[\left(h^j\right)^2 + \left(h^{j+1}\right)^2\right],
+e_{j+1/2} \equiv E_{j+1/2} + \frac{E_j + E_{j+1}}{2}
+= \frac{K}{2}\left(h^{j+1} - h^j\right)^2 + \frac{p_j^2 + p_{j+1}^2}{4m} + \frac{K_0}{4}\left[\left(h^j\right)^2 + \left(h^{j+1}\right)^2\right],
 \qquad
 \sum_j e_{j+1/2} = H .
 $$
@@ -269,16 +345,19 @@ naquela mola, e nunca é maior que $c$: em cada intervalo $\Delta x/c$, a
 energia de uma mola pode no máximo passar para a mola seguinte.
 
 ::: {.callout-tip title="No limite contínuo: densidade e fluxo de energia"}
-Com @eq-cont-escalas, $e_j/\Delta x$ e $e_{j+1/2}/\Delta x$ tendem à mesma
-densidade de energia $\mathcal E$, e $S_{j+1/2}$ tende ao fluxo $\mathcal S$,
-com
+Com $p_j = \Delta x\,\Pi(t, x_j)$, $h^j = \phi(t, x_j)$ e
+$(h^{j+1} - h^j)/\Delta x \to \partial\phi/\partial x$, as expressões em
+termos de $\Delta x$ dão $E_j/\Delta x \to \Pi^2/(2\rho) + \rho\mu^2\phi^2/2$
+e $E_{j+1/2}/\Delta x \to (\tau/2)(\partial\phi/\partial x)^2$. As
+energias $e_j/\Delta x$ e $e_{j+1/2}/\Delta x$ tendem à mesma densidade de
+energia $\mathcal E$, e $S_{j+1/2}$ tende ao fluxo $\mathcal S$, com
 $$
 \mathcal E \equiv \frac{\Pi^2}{2\rho} + \frac{\tau}{2}\left(\frac{\partial\phi}{\partial x}\right)^2 + \frac{\rho\,\mu^2}{2}\,\phi^2,
 \qquad
 \mathcal S \equiv -\tau\,\frac{\partial\phi}{\partial x}\,\frac{\partial\phi}{\partial t} = -c^2\,\Pi\,\frac{\partial\phi}{\partial x} .
 $$
-Dividindo @eq-cont-fluxo-cadeia por $\Delta x$, a diferença
-$S_{j+1/2} - S_{j-1/2}$ dá a derivada em $x$:
+Em @eq-cont-fluxo-dx, a diferença $S_{j+1/2} - S_{j-1/2}$ dividida por
+$\Delta x$ dá a derivada em $x$:
 $$
 \frac{\partial\mathcal E}{\partial t} + \frac{\partial\mathcal S}{\partial x} = 0 ,
 $$ {#eq-cont-continuidade-energia}
