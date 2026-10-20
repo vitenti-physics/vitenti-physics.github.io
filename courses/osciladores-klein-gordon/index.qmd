@@ -26,7 +26,7 @@ Hamilton), álgebra linear (autovalores e autovetores) e noções de Python.
 | Aula | Notas | Slides |
 |---|---|---|
 | 1. Do oscilador harmônico às matrizes circulantes | [Notas](aula1.qmd) | [Slides](slides-aula1.qmd) |
-| 2. O limite contínuo e as variáveis de criação e aniquilação | em preparação | em preparação |
+| 2. O limite contínuo e as variáveis de criação e aniquilação | [Notas](aula2.qmd) | [Slides](slides-aula2.qmd) |
 
 Os slides e as notas têm as mesmas seções: durante a aula os slides são
 projetados e as notas trazem todas as contas e o código completo. Cada
@@ -68,7 +68,7 @@ Cada símbolo tem um único significado em todas as páginas do minicurso.
 | $K_0$ | constante das molas que prendem cada partícula à posição de equilíbrio | [Aula 1](aula1.qmd#sec-cadeia-modelo) |
 | $F_j$ | força vertical sobre a partícula $j$ | [Aula 1](aula1.qmd#sec-cadeia-forcas) |
 | $\omega_0$ | frequência de uma partícula com $K = 0$, $\omega_0 \equiv \sqrt{K_0/m}$ | [Aula 1](aula1.qmd#sec-cadeia-forcas) |
-| $\ell_0$, $\tau$ | comprimento natural de uma mola e tensão, $\tau \equiv K(\Delta x - \ell_0)$ | [Aula 1](aula1.qmd#sec-cadeia-forcas) |
+| $\ell_0$, $\tau$ | comprimento natural de uma mola e tensão, $\tau \equiv K(\Delta x - \ell_0)$ (na Aula 2, a tensão da corda) | [Aula 1](aula1.qmd#sec-cadeia-forcas) |
 | $T$ | operador de translação, $(Th)^j \equiv h^{j+1}$ | [Aula 1](aula1.qmd#sec-cadeia-translacao) |
 | $D$ | $D \equiv 2I - T - T^{-1}$; $-D$ é o Laplaciano discreto periódico | [Aula 1](aula1.qmd#sec-cadeia-translacao) |
 | $V$ | energia potencial da cadeia | [Aula 1](aula1.qmd#sec-cadeia-hamiltoniana) |
@@ -88,5 +88,35 @@ Cada símbolo tem um único significado em todas as páginas do minicurso.
 | $\omega_a$ | frequência do modo $a$ (relação de dispersão); $\omega_{a=0} = \omega_0$ | [Aula 1](aula1.qmd#sec-circ-dispersao) |
 | $\omega_{\max}$ | maior das frequências $\omega_a$ | [Aula 1](aula1.qmd#sec-circ-dispersao) |
 | $\chi_a$, $q^a$ | vetores de Hartley e coordenadas $q^a \equiv \chi_a^{\mathsf T}h$ | [Aula 1](aula1.qmd#sec-circ-hartley) |
+| $x_j$, $L$ | posição da partícula $j$, $x_j \equiv j\Delta x$, e comprimento do anel, $L \equiv N\Delta x$ | [Aula 2](aula2.qmd#sec-cont-campo) |
+| $\phi(t, x)$ | campo, $\phi(t, x_j) \equiv h^j(t)$ | [Aula 2](aula2.qmd#sec-cont-campo) |
+| $\rho$ | densidade linear de massa, $m = \rho\Delta x$ | [Aula 2](aula2.qmd#sec-cont-campo) |
+| $\mu$ | parâmetro de massa, $K_0 = \rho\mu^2\Delta x$; $\mu = \omega_0$ | [Aula 2](aula2.qmd#sec-cont-campo) |
+| $c$ | velocidade, $c \equiv \sqrt{\tau/\rho}$ | [Aula 2](aula2.qmd#sec-cont-campo) |
+| $\Pi(t, x)$ | momento por unidade de comprimento, $\Pi(t, x_j) \equiv p_j/\Delta x$ | [Aula 2](aula2.qmd#sec-cont-hamiltoniana) |
+| $\delta(x - y)$ | delta de Dirac | [Aula 2](aula2.qmd#sec-cont-hamiltoniana) |
+| $k_a$ | número de onda, $k_a \equiv 2\pi a/L$ | [Aula 2](aula2.qmd#sec-cont-dispersao) |
+| $\omega_{\Delta x}(k)$, $\omega(k)$ | relação de dispersão da cadeia e do campo, $\omega(k)^2 \equiv \mu^2 + c^2k^2$ | [Aula 2](aula2.qmd#sec-cont-dispersao) |
+| $u_a(x)$ | funções de Fourier, $u_a(x) \equiv e^{ik_ax}/\sqrt L$ | [Aula 2](aula2.qmd#sec-cont-fourier) |
+| $\tilde\phi^a$, $\tilde\Pi^a$ | coeficientes de Fourier do campo, $\tilde\phi^a \equiv \int_0^L u_a^*\phi\,\mathrm dx$ | [Aula 2](aula2.qmd#sec-cont-fourier) |
+| $\psi^j$, $c_a$, $k_0$, $\sigma_{\rm p}$, $x_{\rm p}$, $x_{\rm c}$ | pacote de ondas complexo, seus coeficientes, número de onda central, largura, posição inicial e centro | [Aula 2](aula2.qmd#sec-cont-numerico) |
+| $e_j$, $e_{j+1/2}$, $S_{j+1/2}$ | energia da partícula $j$, energia da mola entre $j$ e $j+1$, e potência que atravessa essa mola | [Aula 2](aula2.qmd#sec-cont-fluxos) |
+| $P_{\rm rede}$ | momento da cadeia, associado à translação $T$ | [Aula 2](aula2.qmd#sec-cont-momento) |
+| $\kappa(k)$, $\kappa_a$ | $\kappa(k) \equiv \sin(k\Delta x)/\Delta x$, momento da cadeia por partícula do modo $a$ (dividido por $\hbar$) | [Aula 2](aula2.qmd#sec-cont-dispersao) |
+| $\mathcal E$, $\mathcal S$ | densidade e fluxo de energia do campo | [Aula 2](aula2.qmd#sec-cont-fluxos) |
+| $\mathcal P$, $\mathcal T$ | densidade e fluxo de momento do campo | [Aula 2](aula2.qmd#sec-cont-momento) |
+| $\langle h_1, h_2\rangle$, $\langle\phi_1, \phi_2\rangle$ | produto simplético de soluções complexas da cadeia, e seu limite, o produto de Klein–Gordon | [Aula 2](aula2.qmd#sec-part-produto) |
+| $f_a^{\,j}(t)$, $f_a(t, x)$ | modos de frequência positiva da cadeia, $f_a^{\,j} \equiv v_a^{\,j}e^{-i\omega_a t}/\sqrt{2m\omega_a}$, e do campo | [Aula 2](aula2.qmd#sec-part-modos) |
+| $\alpha_a$ | variáveis de criação e aniquilação clássicas, $\alpha_a \equiv \langle f_a, h\rangle$ | [Aula 2](aula2.qmd#sec-part-modos) |
+| $\psi_+$ | parte de frequência positiva de uma solução real | [Aula 2](aula2.qmd#sec-part-modos) |
+| $\mathcal H_n$, $\mathcal F$ | espaço de $n$ partículas e espaço de Fock | [Aula 2](aula2.qmd#sec-part-uma) |
+| $\psi^a$, $\Psi^{a_1\cdots a_n}$, $\Psi^{j_1j_2}$ | componentes de estados de uma e de $n$ partículas, e amplitude de duas partículas nas posições | [Aula 2](aula2.qmd#sec-part-uma) |
+| $\psi_{\rm E}$, $\psi_{\rm D}$ | pacotes vindos da esquerda e da direita | [Aula 2](aula2.qmd#sec-part-fock) |
+| $\lvert 0\rangle$, $n_a$ | vácuo e números de ocupação | [Aula 2](aula2.qmd#sec-part-fock) |
+| $a(\psi)$, $a^\dagger(\chi)$, $a_a$, $a_a^\dagger$ | operadores de aniquilação e de criação | [Aula 2](aula2.qmd#sec-part-operadores) |
+| $\hat n_a$, $\hat H$, $\hat P_{\rm rede}$, $\hat P_{\rm campo}$ | operadores de número, de energia, de momento da cadeia e de momento do campo | [Aula 2](aula2.qmd#sec-part-operadores) |
+| $\hbar$ | constante de Planck reduzida | [Aula 2](aula2.qmd#sec-part-uma) |
+| $\hat h^j$, $\hat p_j$; $\hat\phi$, $\hat\Pi$ | alturas e momentos da cadeia quântica; campo quântico e seu momento conjugado | [Aula 2](aula2.qmd#sec-part-campo) |
+| $\hat H_{\rm cadeia}$, $E_{\rm vácuo}$ | Hamiltoniana da cadeia quântica e energia do vácuo, $E_{\rm vácuo} \equiv \sum_a\hbar\omega_a/2$ | [Aula 2](aula2.qmd#sec-part-campo) |
 
 {{< include /_footer.qmd >}}

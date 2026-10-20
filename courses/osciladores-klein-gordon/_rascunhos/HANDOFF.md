@@ -132,7 +132,119 @@ did not object to this default; confirm when reaching it).
   $h_j$. Rework it under the rules when its turn comes; its code (np.roll
   force, Verlet chain, FFT exact solution, CFL demo, circulant check) ran
   correctly.
-- **Pieces 4 and 5: not written.** Plan in section 5 below.
+- **Aula 1 committed** locally as `d82b725` on `main` (not pushed; Sandro:
+  "Don't push"). Sandro's own `.gitignore` edit and the two PDFs stay out
+  of every commit.
+- **Piece 4: written (2026-10-19), awaiting Sandro's review.** New files
+  `aula2.qmd` (section `#sec-continuo`) and `slides-aula2.qmd` (13 slides,
+  all at 0 px overflow), both in the sidebar; `index.qmd` material table
+  says "seção 1 de 2". Content: positions $x_j$, field $\phi(t,x_j) =
+  h^j$, scalings @eq-cont-escalas ($\omega_0 = \mu$, $K/m = c^2/\Delta x^2$);
+  Taylor of the second difference with the $\Delta x^4/12$ term; KG
+  equation; Hamiltonian density and $\{\phi(x),\Pi(y)\} = \delta(x-y)$ as the
+  limit of $\delta^j{}_k/\Delta x$; lattice and continuum dispersion,
+  group velocity $\le c\cos(k\Delta x/2)$, phase velocity $> c$; Fourier
+  series as limit of the DFT ($u_a$, completeness, why the symmetric range);
+  field modes; numerics with the same FFT solver (lattice vs KG); 6
+  exercises. Measured: spectral KG vs d'Alembert $5.4\times10^{-16}$;
+  lattice vs KG at $t=15$, $N = 128 \dots 1024$, error ratios 2.41, 3.72,
+  4.07 ($\mu=0$), so order $\Delta x^2$; dispersion error at $k=2$ divided
+  by about 4 per halving; outside $|x-x_0| > ct+5\sigma$, $|\phi| \le
+  1.5\times10^{-5}$ (lattice, $\mu=0$) against $3.4\times10^{-6}$
+  (Gaussian tail); lattice minus continuum beyond the cone falls from
+  $2.8\times10^{-4}$ to $1.8\times10^{-7}$ from distance 2 to 4 (the plan's
+  "exponentially small" was not claimed, only these numbers); packet centre
+  velocity 0.8841 = spectrum-weighted mean of $\mathrm d\omega/\mathrm dk$
+  (0.8841), $\mathrm d\omega/\mathrm dk(k_0) = 0.8915$, phase velocity
+  1.117. Checks in `_rascunhos/ferramentas/verify_piece4.py` and
+  `numbers_piece4.py`.
+  **Naming decisions to confirm with Sandro:** $\Pi$ (not $\pi$) for the
+  momentum density, because $2\pi a/L$ is everywhere on the page;
+  $\omega_{\Delta x}(k)$ for the lattice dispersion and $\omega(k)$ for
+  the continuum; group velocity written as $\mathrm d\omega/\mathrm dk$
+  with no symbol ($v_{\rm g}$ would collide with the Fourier vectors $v_a$).
+  **Collision to resolve before Piece 5:** on `aula2.qmd`, $x$ is now the
+  position along the ring, while Piece 5 starts from the single oscillator
+  whose coordinate is $x$ in Aula 1. Options: write the single oscillator
+  in Piece 5 with $(\xi, \eta)$ or with $h$, or add a note on that page.
+- **Energy and momentum flow (Sandro's request, 2026-10-19), written** as
+  `#sec-cont-fluxos` in `aula2.qmd` plus numerics and 3 slides: the chain
+  balance $\dot e_j = -(S_{j+1/2} - S_{j-1/2})$ (half of each spring's
+  energy to each end; $S$ = mean of the power the spring takes from $j$
+  and gives to $j+1$), its limit $\partial_t\mathcal E + \partial_x\mathcal S = 0$,
+  $|\mathcal S| \le c\,\mathcal E$ by completing the square, momentum
+  density $\mathcal P = -\Pi\phi'$ with flux $\mathcal T$, $\mathcal S = c^2\mathcal P$,
+  and the table of three symmetries (field momentum is not the vertical
+  momentum $P$ of Aula 1). Measured: window energy vs time-integrated flux
+  $1.6\times10^{-6}$; $|\mathcal S|/(c\mathcal E) \le 0.9993$ (continuum;
+  the lattice ratio of a bond flux to a site density exceeds 1 where the
+  density is small, so the local velocity is computed in the continuum);
+  packet energy velocity 0.8932 = energy-weighted mean of
+  $\mathrm d\omega/\mathrm dk$ (the $|\psi|^2$ centre, 0.8841, uses weights
+  $|c_a|^2$). Note: the lattice central-difference field momentum is also
+  conserved exactly (any form diagonal in the modes is), so "the lattice
+  breaks translations and momentum is approximate" was NOT written.
+- **Piece 5: written (2026-10-19) following Sandro's design**: "linear
+  combinations of one Fourier mode in time form the Hilbert space of a
+  single particle, the space of two forms two indistinguishable particles,
+  and so on". Section `#sec-particulas` of `aula2.qmd`, 10 slides: KG
+  product (conserved, Hermitian, indefinite), positive-frequency modes
+  $f_a$ (needs $\mu > 0$), classical $\alpha_a$ with $H = \sum\omega_a|\alpha_a|^2$,
+  $\int\mathcal P = \sum k_a|\alpha_a|^2$, $\{\alpha_a,\alpha_b^*\} = -i\delta_{ab}$;
+  $\mathcal H_1$ with the relativistic Schrödinger equation; symmetric
+  $\mathcal H_2$ (two crossing packets, interference fringes at the
+  crossing), $\mathcal H_n$, Fock space, single mode = oscillator levels;
+  $a^\dagger(\chi)$, $a(\psi)$ on symmetric tensors (code), commutators,
+  $\hat H$, $\hat P_{\rm campo}$, energy-momentum plot with the two-particle
+  band from $2\hbar\mu$; Dirac rule, $\alpha_a = \sqrt\hbar\,a_a$, quantum
+  field and $[\hat\phi,\hat\Pi] = i\hbar\delta$. This goes beyond the earlier
+  "stay classical" default, at Sandro's direction. The $x$ collision is
+  avoided by working on the field, not on a single oscillator. Checks in
+  `verify_piece5.py`, `numbers_piece5.py`, `verify_fluxos.py`. In
+  this section $\omega_a$ means $\omega(k_a)$ (stated in the text and in the
+  notation table).
+- **Aula 2 restructured, chain first (Sandro, 2026-10-19: "in the second
+  lecture you kind of switched to continuum and made a standard
+  presentation, I want to keep discrete all the way and only show in
+  parallel the continuity limit").** `aula2.qmd` now derives everything on
+  the chain; each result is followed by a `::: {.callout-tip title="No
+  limite contínuo: ..."}` box with its continuum form, and every two-way
+  slide in `slides-aula2.qmd` has two columns, **Cadeia** | **Limite
+  contínuo** (25 slides, all at 0 px overflow). Sections: `#sec-cont-campo`
+  (string scalings, chain equation $\rho\ddot h^j = \tau\,\Delta^2h/\Delta x^2 -
+  \rho\mu^2h^j$; box: Taylor, KG), `#sec-cont-hamiltoniana`, `#sec-cont-fluxos`
+  (chain $e_j$, $S_{j+1/2}$, spring energy $e_{j+1/2}$ and the lattice bound
+  $|S_{j+1/2}| \le (c/\Delta x)e_{j+1/2}$; box: $\mathcal E$, $\mathcal S$),
+  `#sec-cont-momento` (chain momentum $P_{\rm rede} = -\sum_j p_j(h^{j+1} -
+  h^{j-1})/(2\Delta x)$, exactly conserved because $(KD+K_0I)(T - T^{-1})$
+  is antisymmetric, $\Delta x\sum_j S_{j+1/2} = c^2P_{\rm rede}$; table of
+  three symmetries; box: $\mathcal P$, $\mathcal T$), `#sec-cont-dispersao`
+  ($\kappa(k) = \sin(k\Delta x)/\Delta x$, $\mathrm d\omega/\mathrm dk =
+  c^2\kappa/\omega$), `#sec-cont-fourier`, `#sec-cont-numerico` (all figures
+  on the chain; the energy-flow figure now uses spring energies, where the
+  bound holds: max ratio 0.9968), then `#sec-particulas` on the chain:
+  product $i X_1^\dagger\Omega X_2$ (the Aula 1 symplectic product),
+  modes $f_a^{\,j} = v_a^{\,j}e^{-i\omega_a t}/\sqrt{2m\omega_a}$ (equal to the
+  field modes at $x_j$), $\alpha_a = (m\omega_a\tilde h^a + i\tilde p^a)/\sqrt{2m\omega_a}$,
+  $P_{\rm rede} = \sum\kappa_a|\alpha_a|^2$, $\mathcal H_1 \cong \mathbb C^N$ with
+  $i\dot\psi = \sqrt{(KD + K_0I)/m}\,\psi$ (scipy `sqrtm`), $\Psi^{j_1j_2}$,
+  $\dim\mathcal H_n = \binom{n+N-1}{n}$, $\hat P_{\rm rede} = \sum\hbar\kappa_a\hat n_a$,
+  and "A cadeia quântica": $\hat h^j$, $[\hat h^j, \hat p_k] = i\hbar\delta$,
+  checked as matrices for $N = 3$ in the occupation basis, $\hat H_{\rm cadeia}
+  = \sum\hbar\omega_a(\hat n_a + 1/2)$, finite $E_{\rm vácuo}$ that grows as
+  $N^2$ (ratios 8.2, 14.1, 15.8 per $N \times 4$); box: field, $[\hat\phi, \hat\Pi]
+  = i\hbar\delta$, energy measured from the vacuum. In Aula 2 $\omega_a$ is
+  again the chain frequency (the separate notation-table row was removed).
+  Checks: `_rascunhos/ferramentas/verify_discreto.py`, `numbers_discreto.py`.
+  The continuum-first version is not kept in the repository.
+- **Length and level (Sandro asked; nothing cut, he evaluates).** Aula 1:
+  39 content slides for 90 min, Piece 1 alone 17 slides for a planned 30
+  min. Aula 2: 23 content slides; Piece 4 with the flows is 14 slides for
+  50 min, Piece 5 is 9 dense slides for 40 min. Notes: about 5800 prose
+  words for Aula 1 and 4300 for Aula 2. Level: Pieces 1 to 4 are within
+  the stated prerequisites (Hamiltonian mechanics, linear algebra);
+  Piece 5 needs quantum mechanics (Hilbert spaces, ladder operators,
+  tensor products), which `index.qmd` does not list.
 - `index.qmd`: course page with material table and the notation table
   (`#sec-notacao`), the single arbiter for symbols. Extend it with each piece.
 
@@ -256,11 +368,67 @@ follows his earlier lectures (`~/Documents/UEL/Lectures/*/presentation.qmd`):
   of embedded figures must not contain cross-references (`@sec-...`,
   `@eq-...`): they are rendered inside the deck, where the targets do not
   exist, and Quarto warns "Unable to resolve crossref".
+- **Math in the decks is KaTeX 0.16.11** (Sandro, 2026-10-19: some LaTeX
+  rendered incompletely, e.g. missing fraction bars, until a reload).
+  The default was MathJax 2.7.9 with HTML-CSS output, whose thin rule
+  boxes can round to zero height under reveal.js scaling and whose layout
+  depends on font timing. Both decks set
+  `html-math-method: {method: katex, url: https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/}`
+  (pinned: Quarto's default is `katex@latest`). A deck with Jupyter HTML
+  outputs (Aula 1's animations) also loads `require.js`, and KaTeX then
+  registers as an AMD module, leaving no global `katex` (zero formulas
+  rendered); `slides-titulo.html` hides `define.amd` until
+  `DOMContentLoaded` to avoid that. `mede_slides.sh` now waits for KaTeX,
+  reports the number of formulas and of `.katex-error`, and measures each
+  formula as a whole (KaTeX's SVG pieces are oversized and clipped).
+  Last run: 366 formulas in Aula 1 and 249 in Aula 2, 0 errors, 0 px
+  overflow. The notes pages keep MathJax (not scaled, not affected).
+- **Aula 2 animations (Sandro, 2026-10-19: "make more animations for
+  class 2").** Five jshtml animations in `aula2.qmd`, each right after its
+  static figure: `fig-anim-cone`, `fig-anim-convergencia` ($N = 16$, $32$,
+  $128$ vs Klein–Gordon with $\sigma = 2$; max differences 0.136, 0.053,
+  0.004), `fig-anim-energia` ($\pm e_{j+1/2}/\Delta x$ and $S_{j+1/2}/c$;
+  99.3% of the flux right of $x_0$ points outward, the rest returns near
+  $x_0$ and inside the cone), `fig-anim-pacote` (crest line at the phase
+  velocity, centre line), `fig-anim-dois` (square-root colour scale).
+  80 dpi, 61 to 101 frames; `aula2.html` and `slides-aula2.html` are 14 MB
+  each.
+  **The deck does not copy the animation code.** Its first cell (echo
+  and output off) reads `aula2.qmd`, executes every code cell into the dict
+  `notas` (lines starting with `#|` or `HTML(` skipped, stdout discarded,
+  `plt.show` closes figures), and each animation slide calls
+  `HTML(notas["anim_..."].to_jshtml())`. Consequence for new animation code
+  in the notes: a frame function must not read a global that a later cell
+  reassigns (the frames are drawn after all cells ran); copy such data
+  into names of its own (`x_cone`, `x_pa`, `psi_pa`). A scan for this is
+  in the conversation history: list the free names of each `quadro_*`
+  function and check none is assigned in two places. Square animations go
+  inside `::: {.anim-quadrada}` (640 px wide, centred, `slides.scss`).
+  Aula 1 still duplicates its two animation cells in the deck; it could
+  use the same mechanism.
+- **Aula 1, Hartley modes animation (Sandro, 2026-10-20: "make all four
+  eigenmodes oscillate with an animation, in sync").** `fig-anim-modos` in
+  `aula1.qmd`, right after the static `fig-circ-modos` (kept for the
+  notebook): $a = 0, 1, 2, 7$ with one common clock over one period of
+  $a = 0$, $2\pi/\omega_0 = 14.05$ (in that time $a = 1, 2, 7$ complete 1.37,
+  2.08, 4.56 oscillations), 101 frames. The cell is self-contained, and the
+  Hartley slide runs that single cell (found by its label) instead of
+  embedding the static figure. Aula 1 pages are now 15 MB each (the wide
+  four-panel frames); 61 frames would roughly halve the new part.
+  Rendering note: a whole-folder render failed again with the "rename ...
+  No such file" error after a clean; rendering the five files one at a
+  time (`index`, `aula1`, `aula2`, `slides-aula1`, `slides-aula2`) worked.
+- **No code cells inside callouts.** The ipynb format turns a code cell
+  inside `::: {.callout-...}` into markdown text, so it does not run in the
+  downloadable notebook or in Colab (the HTML still runs it). Put the cell
+  right after the box. A check: no line starting with ```` ```{python} ````
+  between a `::: {.callout` line and its closing `:::`.
 - **Stale intermediates.** If a render fails with "File
   'aula1_files/figure-ipynb/...png' not found in resource path" (seen
-  twice), remove `courses/osciladores-klein-gordon/aula1_files`,
-  `slides-aula1_files`, any `*.quarto_ipynb*` there, and `.quarto/embed`,
-  then render again. Figures come from the
+  twice), or with "rename .../index.html ... No such file or directory",
+  remove `courses/osciladores-klein-gordon/*_files`, any `*.quarto_ipynb*`,
+  `*.embed.ipynb` and stray `*.html` there except `slides-titulo.html`, and
+  `.quarto/embed`, then render again. Figures come from the
   notes via `{{< embed aula1.qmd#fig-... >}}`; the notes figure is therefore
   designed with the slide in mind (wide, 1x4 panels rather than 2x2).
 - **HTML outputs cannot be embedded across documents.** Quarto renders the
@@ -287,14 +455,7 @@ follows his earlier lectures (`~/Documents/UEL/Lectures/*/presentation.qmd`):
 
 ## 8. Next action
 
-Sandro reviews Piece 3 (notes `#sec-circulantes`, slides 32 to 42; Piece
-2 review may come with it). Then Aula 2: create `aula2.qmd` and
-`slides-aula2.qmd` with the same front matter as Aula 1 (notes: html +
-ipynb with `eval: true`; deck: section 7a format), add both to the
-`_quarto.yml` sidebar only once the files exist, update the material
-table in `index.qmd`, and write Piece 4 (continuum limit, section 5)
-under the symbols of section 4 ($x_j = j\Delta x$, $L \equiv N\Delta x$,
-$k_a \equiv 2\pi a/L$, $\rho$, $\tau$, $\mu$, $c^2 \equiv \tau/\rho$,
-$\phi$, $\pi$). Aula 2 must be self-contained for code: it is a separate
-notebook, so the functions it needs from Aula 1 are redefined there.
-Render with `--profile drafts`, run `mede_slides.sh`, report, stop.
+Sandro evaluates everything (Pieces 2 to 5, the flows, the naming
+decisions, the length and level assessment) and decides what to move,
+split or cut. All five pieces now exist in notes and slides. Commit only
+when asked, never push.

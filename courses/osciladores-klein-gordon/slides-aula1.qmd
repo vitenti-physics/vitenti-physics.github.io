@@ -7,6 +7,9 @@ lang: pt
 format:
   revealjs:
     theme: [serif, slides.scss]
+    html-math-method:
+      method: katex
+      url: https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/
     include-after-body: slides-titulo.html
     width: 1920
     height: 1080
@@ -61,6 +64,8 @@ H(x, p) \equiv \frac{p^2}{2m} + \frac{m\omega^2 x^2}{2},
 \dot p = -\frac{\partial H}{\partial x}
 $$
 
+::: {.anim-75}
+
 ```{python}
 #| echo: false
 # Copy of fig-ho-animacao in aula1.qmd: Quarto cannot embed HTML outputs across documents.
@@ -82,7 +87,7 @@ def mola(x0, x1, y=0.0, voltas=8, largura=0.12):
     return xs, ys
 
 
-fig_an, (ax_x, ax_pf) = plt.subplots(1, 2, figsize=(10, 4), dpi=100, gridspec_kw={"width_ratios": [1.4, 1]})
+fig_an, (ax_x, ax_pf) = plt.subplots(1, 2, figsize=(10, 4), dpi=120, gridspec_kw={"width_ratios": [1.4, 1]})
 ax_x.axvline(-2.0, color="k", lw=3)
 ax_x.axvline(0.0, color="gray", ls=":", lw=1)
 (linha_mola,) = ax_x.plot([], [], color="C0", lw=1.5)
@@ -115,6 +120,8 @@ anim = FuncAnimation(fig_an, quadro, frames=len(t_an), interval=50, blit=True)
 plt.close(fig_an)
 HTML(anim.to_jshtml())
 ```
+
+:::
 
 ::: {.aside}
 Notas: [Equações de Hamilton](aula1.html#sec-ho-hamilton)
@@ -583,6 +590,8 @@ Notas: [Simulação](aula1.html#sec-cadeia-simulacao)
 
 ## Animação
 
+::: {.anim-75}
+
 ```{python}
 #| echo: false
 # Copy of the simulation and of fig-cadeia-animacao in aula1.qmd: Quarto cannot embed HTML outputs across documents.
@@ -618,7 +627,7 @@ p0[1] = p0[2] = 0.5 * m
 dt, n_passos = 0.05, 1200
 resultados = {K0: simula_cadeia(h0, p0, m, K, K0, dt, n_passos, a_cada=5) for K0 in [0.0, 0.2]}
 
-fig_cad, axs_cad = plt.subplots(1, 2, figsize=(10, 4), dpi=80, sharey=True)
+fig_cad, axs_cad = plt.subplots(1, 2, figsize=(10, 4), dpi=120, sharey=True)
 quadros = range(0, len(resultados[0.0][0]), 3)
 linhas_cad = []
 for ax, K0 in zip(axs_cad, [0.0, 0.2]):
@@ -650,6 +659,8 @@ anim_cad = FuncAnimation(fig_cad, quadro_cadeia, frames=quadros, interval=80, bl
 plt.close(fig_cad)
 HTML(anim_cad.to_jshtml())
 ```
+
+:::
 
 Linha tracejada: $\bar h(t)$. Com $K_0 = 0$ a cadeia inteira sobe; com $K_0 = 0{,}2$ ela oscila em torno de $h = 0$.
 
@@ -794,7 +805,17 @@ $$
 \chi_a^{\mathsf T}\chi_b = \delta_{ab}
 $$
 
-{{< embed aula1.qmd#fig-circ-modos >}}
+```{python}
+#| echo: false
+# Runs the cell fig-anim-modos of aula1.qmd (self-contained); Quarto cannot embed HTML outputs across documents.
+import re as _re
+_celula = _re.search(r"```\{python\}\n#\| label: fig-anim-modos\n(.*?)```", open("aula1.qmd", encoding="utf-8").read(), flags=_re.S).group(1)
+_notas_md = {"np": np, "plt": plt}
+exec("\n".join(l for l in _celula.splitlines() if not l.startswith("#|") and not l.startswith("HTML(")), _notas_md)
+HTML(_notas_md["anim_modos"].to_jshtml())
+```
+
+Os quatro modos com o mesmo relógio: cada um oscila com a sua $\omega_a$, sempre com a mesma forma.
 
 - $\chi_a\cos\omega_a t$: onda estacionária. $v_a e^{-i\omega_a t}$: onda viajante,
   para $j$ crescente se $a > 0$.

@@ -51,20 +51,39 @@ $link-color: #1111ff;
   height: auto;
 }
 
-// jshtml animations (matplotlib): fill the width, small controls.
+// jshtml animations (matplotlib): full slide width, like the static figures; small controls.
 .reveal .slide .animation {
   font-size: 0.55em;
   text-align: center;
 }
 
+// matplotlib styles .animation as inline-block, which shrinks it to the image's natural width.
+.reveal .slide .animation {
+  display: block;
+  width: 100%;
+}
+
 .reveal .slide .animation img {
-  width: 1300px;
-  max-width: 100%;
+  width: 100%;
   height: auto;
+}
+
+// Animations with taller frames (height above about 1/3 of the width) use 72% of the width.
+.reveal .slide .anim-75 .animation img {
+  width: 72%;
 }
 
 .reveal .slide figcaption {
   font-size: 0.65em;
   color: #666;
   text-align: left;
+}
+
+// Square animations (e.g. the two-particle density): narrower so they fit the slide height.
+.reveal .slide .anim-quadrada .animation img {
+  width: 640px;
+}
+
+.reveal .slide .anim-quadrada {
+  text-align: center;
 }

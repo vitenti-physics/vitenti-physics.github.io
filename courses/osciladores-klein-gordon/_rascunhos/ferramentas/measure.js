@@ -1,7 +1,12 @@
 (async () => {
   const wait = ms => new Promise(r => setTimeout(r, ms));
-  for (let i = 0; i < 100; i++) {
+  // Wait for the math: MathJax 2 (queue) or KaTeX (number of rendered formulas stable for 1 s).
+  let ultimo = -1;
+  for (let i = 0; i < 150; i++) {
     if (window.MathJax && MathJax.Hub) { await new Promise(r => MathJax.Hub.Queue(r)); break; }
+    const n = document.querySelectorAll('.katex').length;
+    if (n > 0 && n === ultimo && i % 10 === 0) break;
+    if (i % 10 === 0) ultimo = n;
     await wait(100);
   }
   await wait(1000);
@@ -35,7 +40,10 @@
     let maxRight = r.right, maxBottom = r.bottom, worst = '', worstB = '';
     sec.querySelectorAll('*').forEach(el => {
       const b = el.getBoundingClientRect();
-      if (b.width === 0 || el.closest('aside') || el.closest('.MJX_Assistive_MathML')) return;
+      if (b.width === 0 || el.closest('aside') || el.closest('.MJX_Assistive_MathML') || el.closest('.katex-mathml')) return;
+      // inside a KaTeX formula, measure only the formula box (its SVG pieces are oversized and clipped)
+      const kx = el.closest('.katex');
+      if (kx && kx !== el) return;
       if (b.right > maxRight) { maxRight = b.right; worst = el.tagName + (el.className ? '.' + String(el.className).split(' ')[0] : ''); }
       if (b.bottom > maxBottom) { maxBottom = b.bottom; worstB = el.tagName + (el.className ? '.' + String(el.className).split(' ')[0] : '') + (el.id ? '#' + el.id : ''); }
     });
@@ -46,5 +54,7 @@
     out.push({ i, title: h ? h.textContent.trim().slice(0, 40) : '', secW: Math.round(r.width / scale), secH: Math.round(contentH), overflowRight: Math.round((maxRight - r.right) / scale), overflowBottom: Math.round(Math.max(0, contentH - usable)), worst, worstB, scale: +scale.toFixed(3) });
     prevs.forEach(p => { p.el.style.display = p.d; p.el.style.visibility = p.v; p.el.style.opacity = p.o; });
   });
+  const erros = document.querySelectorAll('.katex-error').length;
+  out.push({ i: -1, title: `katex: ${document.querySelectorAll('.katex').length} fórmulas, ${erros} erros`, secW: 0, secH: 0, overflowRight: 0, overflowBottom: 0, worst: '', scale: 0 });
   await fetch('/report', { method: 'POST', body: JSON.stringify(out) });
 })();

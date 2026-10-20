@@ -100,6 +100,10 @@ website:
                   href: courses/osciladores-klein-gordon/aula1.qmd
                 - text: "Slides: Aula 1"
                   href: courses/osciladores-klein-gordon/slides-aula1.qmd
+                - text: "Aula 2: Limite Contínuo e Criação e Aniquilação"
+                  href: courses/osciladores-klein-gordon/aula2.qmd
+                - text: "Slides: Aula 2"
+                  href: courses/osciladores-klein-gordon/slides-aula2.qmd
 format:
   html:
     theme:

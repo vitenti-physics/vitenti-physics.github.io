@@ -5,6 +5,19 @@
 </style>
 
 <script>
+  // Decks with Jupyter HTML outputs (the animations) load require.js before
+  // KaTeX; KaTeX would then register as an AMD module and the global `katex`
+  // used by Quarto's renderer would not exist. This inline script runs before
+  // the deferred KaTeX script, hides define.amd while KaTeX loads, and puts it
+  // back once the page is parsed.
+  if (window.define && window.define.amd) {
+    const amd = window.define.amd;
+    delete window.define.amd;
+    document.addEventListener('DOMContentLoaded', () => { window.define.amd = amd; });
+  }
+</script>
+
+<script>
   // Hide the footer and the slide number on the title slide only.
   function ocultaNoTitulo() {
     const footer = document.querySelector('div.footer');

@@ -101,7 +101,7 @@ def mola(x0, x1, y=0.0, voltas=8, largura=0.12):
     return xs, ys
 
 
-fig_an, (ax_x, ax_pf) = plt.subplots(1, 2, figsize=(10, 4), dpi=100, gridspec_kw={"width_ratios": [1.4, 1]})
+fig_an, (ax_x, ax_pf) = plt.subplots(1, 2, figsize=(10, 4), dpi=120, gridspec_kw={"width_ratios": [1.4, 1]})
 ax_x.axvline(-2.0, color="k", lw=3)
 ax_x.axvline(0.0, color="gray", ls=":", lw=1)
 (linha_mola,) = ax_x.plot([], [], color="C0", lw=1.5)
@@ -1420,7 +1420,7 @@ plt.show()
 #| label: fig-cadeia-animacao
 #| fig-cap: "Animação da cadeia durante $0 \\le t \\le 60$ para $K_0 = 0$ (esquerda) e $K_0 = 0{,}2$ (direita). A linha tracejada é a altura média $\\bar h(t)$. Com $K_0 = 0$ a cadeia inteira sobe, e $\\bar h$ vai de $0{,}067$ a $4{,}07$; com $K_0 = 0{,}2$ ela oscila em torno de $h = 0$."
 #| code-fold: true
-fig_cad, axs_cad = plt.subplots(1, 2, figsize=(10, 4), dpi=80, sharey=True)
+fig_cad, axs_cad = plt.subplots(1, 2, figsize=(10, 4), dpi=120, sharey=True)
 quadros = range(0, len(resultados[0.0][0]), 3)
 linhas_cad = []
 for ax, K0 in zip(axs_cad, [0.0, 0.2]):
@@ -1825,6 +1825,50 @@ for ax, aa in zip(axs, [0, 1, 2, 7]):
 axs[0].set_ylabel(r"$\chi_a^{\,j}\cos\omega_a t$")
 fig.tight_layout()
 plt.show()
+```
+
+Na animação abaixo os quatro modos oscilam ao mesmo tempo, com o mesmo
+relógio: cada um com a sua frequência $\omega_a$, sempre com a mesma forma.
+
+```{python}
+#| label: fig-anim-modos
+#| fig-cap: "Animação dos quatro modos normais reais da @fig-circ-modos ($N = 15$, $m = K = 1$, $K_0 = 0{,}2$), todos com o mesmo relógio: em cada painel, $\\chi_a^{\\,j}\\cos\\omega_a t$ (pontos) e a forma $\\pm\\chi_a^{\\,j}$ (cinza), durante $0 \\le t \\le 2\\pi/\\omega_0 = 14{,}05$, um período do modo $a = 0$. Nesse intervalo o modo $a = 1$ completa $1{,}37$ oscilações, o modo $a = 2$ completa $2{,}08$ e o modo $a = 7$ completa $4{,}56$."
+#| code-fold: true
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+
+N_md, m_md, K_md, K0_md = 15, 1.0, 1.0, 0.2
+j_md = np.arange(N_md)
+modos_md = [0, 1, 2, 7]
+chi_md = {a: (np.cos(2 * np.pi * a * j_md / N_md) + np.sin(2 * np.pi * a * j_md / N_md)) / np.sqrt(N_md) for a in modos_md}
+w_md = {a: np.sqrt(K0_md / m_md + 4 * K_md / m_md * np.sin(np.pi * a / N_md) ** 2) for a in modos_md}
+t_md = np.linspace(0, 2 * np.pi / w_md[0], 61)
+fig_md, axs_md = plt.subplots(1, 4, figsize=(15, 2.9), dpi=120, sharey=True)
+linhas_md = []
+for ax, a in zip(axs_md, modos_md):
+    ax.plot(j_md, chi_md[a], color="0.75", lw=1)
+    ax.plot(j_md, -chi_md[a], color="0.75", lw=1)
+    ax.axhline(0, color="k", lw=0.5)
+    (linha,) = ax.plot([], [], "o-", color="C3", ms=4, lw=1.2)
+    ax.set_title(rf"$a = {a}$, $\omega_a = {w_md[a]:.3f}$")
+    ax.set_xlabel("$j$")
+    ax.set_ylim(-0.42, 0.42)
+    linhas_md.append((linha, a))
+axs_md[0].set_ylabel(r"$\chi_a^{\,j}\cos\omega_a t$")
+texto_md = axs_md[0].text(0.03, 0.88, "", transform=axs_md[0].transAxes)
+fig_md.tight_layout()
+
+
+def quadro_md(i):
+    for linha, a in linhas_md:
+        linha.set_data(j_md, chi_md[a] * np.cos(w_md[a] * t_md[i]))
+    texto_md.set_text(f"$t = {t_md[i]:.1f}$")
+    return [l for l, _ in linhas_md] + [texto_md]
+
+
+anim_modos = FuncAnimation(fig_md, quadro_md, frames=len(t_md), interval=130, blit=True)
+plt.close(fig_md)
+HTML(anim_modos.to_jshtml())
 ```
 
 ## Solução exata pela FFT {#sec-circ-fft}

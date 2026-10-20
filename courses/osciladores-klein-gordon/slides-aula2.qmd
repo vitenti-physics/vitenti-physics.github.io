@@ -1,0 +1,685 @@
+---
+title: "Aula 2: O Limite Contínuo e as Variáveis de Criação e Aniquilação"
+subtitle: "Minicurso: Osciladores Acoplados e a Equação de Klein–Gordon"
+author: "Sandro Vitenti, Universidade Estadual de Londrina"
+draft: true
+lang: pt
+format:
+  revealjs:
+    theme: [serif, slides.scss]
+    html-math-method:
+      method: katex
+      url: https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/
+    include-after-body: slides-titulo.html
+    width: 1920
+    height: 1080
+    margin: 0.04
+    max-scale: 4.0
+    min-scale: 0.05
+    center: true
+    navigation-mode: linear
+    slide-number: true
+    fig-align: center
+    footer: "Osciladores Acoplados e Klein–Gordon | Aula 2 | [Notas completas](aula2.html)"
+    title-slide-attributes:
+      data-background-color: black
+      data-background-image: logos.png
+      data-background-size: 45%
+      data-background-position: left 3% bottom 4%
+---
+
+```{python}
+#| echo: false
+#| output: false
+# Runs the code cells of aula2.qmd and keeps their variables in `notas`, so that the
+# animations below come from the notes (Quarto cannot embed HTML outputs across documents).
+import contextlib
+import io
+import re
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from IPython.display import HTML
+
+celulas = re.findall(r"```\{python\}\n(.*?)```", open("aula2.qmd", encoding="utf-8").read(), flags=re.S)
+notas = {}
+mostra = plt.show
+plt.show = lambda *a, **k: plt.close("all")
+with contextlib.redirect_stdout(io.StringIO()):
+    for celula in celulas:
+        codigo = "\n".join(l for l in celula.splitlines() if not l.startswith("#|") and not l.startswith("HTML("))
+        exec(codigo, notas)
+plt.show = mostra
+```
+
+## Roteiro do minicurso
+
+:::: {.columns}
+::: {.column width="50%"}
+**Aula 1** ([slides](slides-aula1.html))
+
+1. O oscilador harmônico: espaço de fase e integração numérica
+2. A cadeia de osciladores
+3. Matrizes circulantes e a transformada de Fourier discreta
+:::
+::: {.column width="50%"}
+**Aula 2**
+
+4. A cadeia e o seu limite contínuo
+5. Partículas a partir das soluções da cadeia
+:::
+::::
+
+Em toda a Aula 2: **a cadeia** à esquerda, **o limite contínuo** à direita.
+
+Notas, código e notebooks: [página do minicurso](index.html)
+
+# A cadeia e o seu limite contínuo {#sec-continuo}
+
+## A cadeia como uma corda
+
+$$
+x_j \equiv j\,\Delta x,
+\qquad
+L \equiv N\Delta x,
+\qquad
+m = \rho\,\Delta x,
+\qquad
+K = \frac{\tau}{\Delta x},
+\qquad
+K_0 = \rho\,\mu^2\Delta x
+$$
+$$
+\omega_0 = \mu,
+\qquad
+\frac Km = \frac{c^2}{\Delta x^2},
+\qquad
+c \equiv \sqrt{\tau/\rho}
+$$
+
+{{< embed aula2.qmd#fig-cont-amostras >}}
+
+- $\rho$, $\tau$, $\mu$, $c \equiv \sqrt{\tau/\rho}$ descrevem a corda e não dependem de $N$.
+
+::: {.aside}
+Notas: [Os parâmetros de uma corda](aula2.html#sec-cont-campo)
+:::
+
+## A equação de movimento
+
+:::: {.columns}
+::: {.column width="50%"}
+**Cadeia**
+$$
+\rho\,\ddot h^j = \tau\,\frac{h^{j+1} - 2h^j + h^{j-1}}{\Delta x^2} - \rho\mu^2 h^j
+$$
+
+- A segunda diferença dividida por $\Delta x^2$.
+- $N$ equações acopladas, resolvidas na Aula 1.
+:::
+::: {.column width="50%"}
+**Limite contínuo**, $h^j = \phi(t, x_j)$
+$$
+h^{j+1} - 2h^j + h^{j-1} = \Delta x^2\phi'' + \frac{\Delta x^4}{12}\phi'''' + \dots
+$$
+$$
+\frac{\partial^2\phi}{\partial t^2} - c^2\frac{\partial^2\phi}{\partial x^2} + \mu^2\phi = 0
+$$
+
+- Klein–Gordon; $\mu^2\phi$ é o termo de massa.
+:::
+::::
+
+::: {.aside}
+Notas: [Os parâmetros de uma corda](aula2.html#sec-cont-campo)
+:::
+
+## Hamiltoniana
+
+:::: {.columns}
+::: {.column width="50%"}
+**Cadeia**
+$$
+H = \sum_j\left[\frac{p_j^2}{2\rho\Delta x} + \frac{\tau}{2\Delta x}\left(h^{j+1} - h^j\right)^2 + \frac{\rho\mu^2\Delta x}{2}\left(h^j\right)^2\right]
+$$
+$$
+\{h^j, p_k\} = \delta^j{}_k
+$$
+:::
+::: {.column width="50%"}
+**Limite contínuo**, $\Pi(x_j) \equiv p_j/\Delta x$
+$$
+H = \int_0^L\left[\frac{\Pi^2}{2\rho} + \frac\tau2\phi'^2 + \frac{\rho\mu^2}{2}\phi^2\right]\mathrm dx
+$$
+$$
+\{\phi(x_j), \Pi(x_k)\} = \frac{\delta^j{}_k}{\Delta x} \;\to\; \delta(x - y)
+$$
+:::
+::::
+
+::: {.aside}
+Notas: [A Hamiltoniana](aula2.html#sec-cont-hamiltoniana)
+:::
+
+## A energia passa pelas molas
+
+:::: {.columns}
+::: {.column width="55%"}
+**Cadeia**
+$$
+\dot e_j = -\left(S_{j+1/2} - S_{j-1/2}\right)
+$$
+$$
+S_{j+1/2} = -\frac K2\left(h^{j+1} - h^j\right)\left(\dot h^j + \dot h^{j+1}\right)
+$$
+$$
+|S_{j+1/2}| \le \frac{c}{\Delta x}\,e_{j+1/2}
+$$
+
+- $e_j$: energia da partícula; $e_{j+1/2}$: energia da mola.
+- A energia de uma mola passa no máximo para a seguinte a cada $\Delta x/c$.
+:::
+::: {.column width="45%"}
+**Limite contínuo**
+$$
+\frac{\partial\mathcal E}{\partial t} + \frac{\partial\mathcal S}{\partial x} = 0
+$$
+$$
+\mathcal E = \frac{\Pi^2}{2\rho} + \frac\tau2\phi'^2 + \frac{\rho\mu^2}2\phi^2
+$$
+$$
+\mathcal S = -c^2\Pi\phi'
+$$
+$$
+|\mathcal S| \le c\,\mathcal E
+$$
+:::
+::::
+
+::: {.aside}
+Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)
+:::
+
+## O momento ao longo da cadeia
+
+:::: {.columns}
+::: {.column width="55%"}
+**Cadeia**
+$$
+P_{\rm rede} = -\sum_j p_j\,\frac{h^{j+1} - h^{j-1}}{2\Delta x},
+\qquad
+\dot P_{\rm rede} = 0
+$$
+$$
+\Delta x\sum_j S_{j+1/2} = c^2 P_{\rm rede}
+$$
+
+| Simetria | Conservada |
+|---|---|
+| tempo | $H$ |
+| translação $T$ | $P_{\rm rede}$ |
+| $h \to h + \beta\mathbf 1$ ($K_0 = 0$) | $P = \sum_j p_j$ |
+:::
+::: {.column width="45%"}
+**Limite contínuo**
+$$
+\mathcal P = -\Pi\phi',
+\qquad
+\mathcal S = c^2\mathcal P
+$$
+$$
+\frac{\partial\mathcal P}{\partial t} + \frac{\partial\mathcal T}{\partial x} = 0
+$$
+$$
+\mathcal T = \frac{\Pi^2}{2\rho} + \frac\tau2\phi'^2 - \frac{\rho\mu^2}2\phi^2
+$$
+
+- $T$ por uma partícula passa a ser a translação por qualquer distância.
+:::
+::::
+
+::: {.aside}
+Notas: [O momento ao longo da cadeia](aula2.html#sec-cont-momento)
+:::
+
+## Relação de dispersão e velocidade de grupo
+
+:::: {.columns}
+::: {.column width="55%"}
+**Cadeia**, $k_a \equiv 2\pi a/L$
+$$
+\omega_{\Delta x}(k) = \sqrt{\mu^2 + \frac{4c^2}{\Delta x^2}\sin^2\frac{k\Delta x}{2}}
+$$
+$$
+\frac{\mathrm d\omega_{\Delta x}}{\mathrm dk} = \frac{c^2\kappa(k)}{\omega_{\Delta x}},
+\qquad
+\kappa(k) = \frac{\sin k\Delta x}{\Delta x},
+\qquad
+\left|\frac{\mathrm d\omega_{\Delta x}}{\mathrm dk}\right| \le c\cos\frac{k\Delta x}2
+$$
+:::
+::: {.column width="45%"}
+**Limite contínuo**
+$$
+\omega(k)^2 = \mu^2 + c^2k^2
+$$
+$$
+\frac{\mathrm d\omega}{\mathrm dk} = \frac{c^2k}{\omega} < c,
+\qquad
+\frac{\omega}{k} > c
+$$
+
+- As cristas andam mais rápido que $c$, mas não transportam o pacote.
+:::
+::::
+
+::: {.aside}
+Notas: [Relação de dispersão e velocidade de grupo](aula2.html#sec-cont-dispersao)
+:::
+
+## Cadeia $\times$ contínuo
+
+{{< embed aula2.qmd#fig-cont-dispersao >}}
+
+::: {.aside}
+Notas: [Relação de dispersão e velocidade de grupo](aula2.html#sec-cont-dispersao)
+:::
+
+## A base de Fourier
+
+:::: {.columns}
+::: {.column width="50%"}
+**Cadeia**
+$$
+v_a^{\,j} = \frac{e^{ik_ax_j}}{\sqrt N},
+\qquad
+v_a^\dagger v_b = \delta_{ab}
+$$
+$$
+\sum_a v_a^{\,j}\left(v_a^{\,k}\right)^* = \delta^{jk}
+$$
+
+- $a$ no intervalo simétrico: o de menor $|a|$ para cada vetor.
+:::
+::: {.column width="50%"}
+**Limite contínuo**
+$$
+v_a^{\,j} = \sqrt{\Delta x}\,u_a(x_j),
+\qquad
+u_a(x) = \frac{e^{ik_ax}}{\sqrt L}
+$$
+$$
+\phi(x) = \sum_{a\in\mathbb Z}\tilde\phi^a u_a(x)
+$$
+$$
+\sum_{a\in\mathbb Z}u_a(x)u_a^*(y) = \delta(x - y)
+$$
+:::
+::::
+
+::: {.aside}
+Notas: [A base de Fourier](aula2.html#sec-cont-fourier)
+:::
+
+## O cone de luz
+
+{{< embed aula2.qmd#fig-cont-cone >}}
+
+::: {.aside}
+Notas: [Simulações](aula2.html#sec-cont-numerico)
+:::
+
+## O cone de luz: animação
+
+```{python}
+#| echo: false
+HTML(notas["anim_cone"].to_jshtml())
+```
+
+Com $\mu = 0$ os pulsos andam sobre as bordas do cone; com $\mu = 1$ ficam um pouco atrás e a cadeia continua oscilando dentro do cone.
+
+::: {.aside}
+Notas: [Simulações](aula2.html#sec-cont-numerico)
+:::
+
+## A energia no cone de luz
+
+{{< embed aula2.qmd#fig-cont-energia >}}
+
+::: {.aside}
+Notas: [Simulações](aula2.html#sec-cont-numerico)
+:::
+
+## O fluxo de energia: animação
+
+```{python}
+#| echo: false
+HTML(notas["anim_energia"].to_jshtml())
+```
+
+$S_{j+1/2}/c$ (azul) fica entre $\pm e_{j+1/2}/\Delta x$ (verde): a energia não anda mais rápido que $c$.
+
+::: {.aside}
+Notas: [Simulações](aula2.html#sec-cont-numerico)
+:::
+
+## Um pacote de ondas
+
+$$
+\psi^j(t) = \sum_{k_a > 0} c_a\,v_a^{\,j}\,e^{-i\omega_at},
+\qquad
+c_a = e^{-(k_a - k_0)^2\sigma_{\rm p}^2/2}\,e^{-ik_ax_{\rm p}},
+\qquad
+h^j = \mathrm{Re}\,\psi^j
+$$
+
+{{< embed aula2.qmd#fig-cont-pacote >}}
+
+::: {.aside}
+Notas: [Simulações](aula2.html#sec-cont-numerico)
+:::
+
+## O pacote: cristas e envoltória
+
+```{python}
+#| echo: false
+HTML(notas["anim_pacote"].to_jshtml())
+```
+
+As cristas andam com $\omega/k = 1{,}117 > c$ e atravessam a envoltória; o centro anda com $0{,}884 < c$.
+
+::: {.aside}
+Notas: [Simulações](aula2.html#sec-cont-numerico)
+:::
+
+## A cadeia converge para Klein–Gordon
+
+```{.python}
+def evolui(h0, p0, t, w, m):
+    ft0, pt0 = np.fft.fft(h0), np.fft.fft(p0)
+    ...  # cada modo como um oscilador de frequência w
+```
+
+- Cadeia: $w = \omega_{\Delta x}(k_a)$. Klein–Gordon na mesma rede: $w = \omega(k_a)$.
+- Gaussiana em repouso: cadeia $-$ Klein–Gordon em $t = 15$ dividido por $4{,}07$ e $4{,}03$
+  quando $\Delta x$ cai de $L/512$ para $L/1024$: erro de ordem $\Delta x^2$.
+- Energia do pacote: $c^2P_{\rm rede}/H = 0{,}8932$, constante, menor que $c$.
+
+::: {.aside}
+Notas: [Simulações](aula2.html#sec-cont-numerico)
+:::
+
+## A cadeia se aproxima do campo
+
+```{python}
+#| echo: false
+HTML(notas["anim_conv"].to_jshtml())
+```
+
+Vermelho: cadeias com $N = 16$, $32$, $128$. Cinza: Klein–Gordon. Maior diferença: $0{,}136$, $0{,}053$, $0{,}004$.
+
+::: {.aside}
+Notas: [Simulações](aula2.html#sec-cont-numerico)
+:::
+
+# Partículas a partir das soluções da cadeia {#sec-particulas}
+
+## O produto simplético
+
+:::: {.columns}
+::: {.column width="55%"}
+**Cadeia**, soluções complexas $h(t)$, $p = m\dot h$
+$$
+\langle h_1, h_2\rangle \equiv i\sum_j\left[(h_1^j)^*p_{2,j} - (p_{1,j})^*h_2^j\right] = i\,X_1^\dagger\Omega X_2
+$$
+
+- Conservado: $A^{\mathsf T}\Omega + \Omega A = 0$ (Aula 1).
+- $\langle h_1, h_2\rangle^* = \langle h_2, h_1\rangle$, $\langle h_1^*, h_2^*\rangle = -\langle h_2, h_1\rangle$.
+- Toda solução real tem $\langle h, h\rangle = 0$.
+:::
+::: {.column width="45%"}
+**Limite contínuo**
+$$
+\langle\phi_1, \phi_2\rangle = i\int_0^L\left(\phi_1^*\Pi_2 - \Pi_1^*\phi_2\right)\mathrm dx
+$$
+
+- O produto de Klein–Gordon: a mesma soma, como integral.
+:::
+::::
+
+::: {.aside}
+Notas: [O produto simplético](aula2.html#sec-part-produto)
+:::
+
+## Modos de frequência positiva
+
+:::: {.columns}
+::: {.column width="55%"}
+**Cadeia**
+$$
+f_a^{\,j}(t) \equiv \frac{v_a^{\,j}\,e^{-i\omega_at}}{\sqrt{2m\omega_a}}
+$$
+$$
+\langle f_a, f_b\rangle = \delta_{ab},
+\quad
+\langle f_a^*, f_b^*\rangle = -\delta_{ab},
+\quad
+\langle f_a, f_b^*\rangle = 0
+$$
+$$
+h = \sum_a\left(\alpha_af_a + \alpha_a^*f_a^*\right),
+\qquad
+\alpha_a = \frac{m\omega_a\tilde h^a + i\tilde p^a}{\sqrt{2m\omega_a}}
+$$
+$$
+H = \sum_a\omega_a|\alpha_a|^2,
+\qquad
+P_{\rm rede} = \sum_a\kappa_a|\alpha_a|^2
+$$
+$$
+\{\alpha_a, \alpha_b^*\} = -i\delta_{ab}
+$$
+:::
+::: {.column width="45%"}
+**Limite contínuo**
+$$
+f_a(t, x) = \frac{u_a(x)\,e^{-i\omega(k_a)t}}{\sqrt{2\rho\,\omega(k_a)}}
+$$
+$$
+f_a^{\,j}(t) = f_a(t, x_j)
+$$
+$$
+\int\mathcal P\,\mathrm dx = \sum_{a\in\mathbb Z}k_a|\alpha_a|^2
+$$
+
+- $K_0 > 0$ (ou $\mu > 0$): com $K_0 = 0$ o modo $a = 0$ é uma partícula livre, sem $\alpha_0$.
+:::
+::::
+
+::: {.aside}
+Notas: [Modos de frequência positiva](aula2.html#sec-part-modos)
+:::
+
+## O espaço de uma partícula
+
+:::: {.columns}
+::: {.column width="55%"}
+**Cadeia**
+$$
+\mathcal H_1 = \left\{\psi = \sum_a\psi^af_a\right\} \cong \mathbb C^N,
+\qquad
+\langle\psi, \chi\rangle = \sum_a(\psi^a)^*\chi^a
+$$
+$$
+i\,\frac{\mathrm d\psi}{\mathrm dt} = \sqrt{\frac{KD + K_0I}{m}}\;\psi
+$$
+
+- Em $\mathcal H_1$ o produto é positivo: espaço de Hilbert de dimensão $N$.
+- $f_a$: energia $\hbar\omega_a$, momento da cadeia $\hbar\kappa_a$.
+:::
+::: {.column width="45%"}
+**Limite contínuo**
+$$
+i\,\frac{\partial\psi}{\partial t} = \sqrt{\mu^2 - c^2\frac{\partial^2}{\partial x^2}}\;\psi
+$$
+$$
+(\hbar\omega)^2 = (\hbar\mu)^2 + c^2(\hbar k)^2
+$$
+
+- Dimensão infinita; partícula relativística de energia de repouso $\hbar\mu$.
+:::
+::::
+
+::: {.aside}
+Notas: [O espaço de uma partícula](aula2.html#sec-part-uma)
+:::
+
+## Duas partículas indistinguíveis
+
+:::: {.columns}
+::: {.column width="55%"}
+**Cadeia**
+$$
+\Psi^{j_1j_2}(t) = \sum_{a,b}\Psi^{ab}f_a^{\,j_1}(t)f_b^{\,j_2}(t),
+\qquad
+\Psi^{ab} = \Psi^{ba}
+$$
+$$
+\Psi = \frac{\psi_{\rm E}\otimes\psi_{\rm D} + \psi_{\rm D}\otimes\psi_{\rm E}}{\sqrt2}
+$$
+
+- Uma amplitude para cada par de partículas $(j_1, j_2)$ da cadeia.
+- Trocar os rótulos dá o mesmo estado.
+:::
+::: {.column width="45%"}
+**Limite contínuo**
+$$
+\Psi(t; x_1, x_2) = \Psi(t; x_2, x_1)
+$$
+
+- Uma função simétrica de duas posições.
+:::
+::::
+
+::: {.aside}
+Notas: [O espaço de Fock](aula2.html#sec-part-fock)
+:::
+
+## Dois pacotes que se cruzam
+
+{{< embed aula2.qmd#fig-part-dois >}}
+
+::: {.aside}
+Notas: [O espaço de Fock](aula2.html#sec-part-fock)
+:::
+
+## Dois pacotes que se cruzam: animação
+
+::: {.anim-quadrada}
+
+```{python}
+#| echo: false
+HTML(notas["anim_dois"].to_jshtml())
+```
+
+:::
+
+Os picos de um lado e do outro da diagonal são o mesmo estado; no cruzamento aparecem franjas paralelas à diagonal.
+
+::: {.aside}
+Notas: [O espaço de Fock](aula2.html#sec-part-fock)
+:::
+
+## O espaço de Fock
+
+:::: {.columns}
+::: {.column width="55%"}
+**Cadeia**
+$$
+\mathcal F = \mathcal H_0 \oplus \mathcal H_1 \oplus \mathcal H_2 \oplus \cdots,
+\qquad
+\dim\mathcal H_n = \binom{n + N - 1}{n}
+$$
+
+- $N = 15$: $1$, $15$, $120$, $680$, $3060$ estados com $0, \dots, 4$ partículas.
+- Números de ocupação $n_a$, com $\sum_a n_a = n$.
+- Um único modo: $|0\rangle, |1\rangle, |2\rangle, \dots$, os níveis do oscilador.
+:::
+::: {.column width="45%"}
+**Limite contínuo**
+
+- Cada $\mathcal H_n$ com $n \ge 1$ tem dimensão infinita.
+- O vácuo $|0\rangle$ continua único.
+:::
+::::
+
+::: {.aside}
+Notas: [O espaço de Fock](aula2.html#sec-part-fock)
+:::
+
+## Criação e aniquilação
+
+$$
+\left(a^\dagger(\chi)\Psi\right)^{a_1\cdots a_{n+1}} = \frac{1}{\sqrt{n+1}}\sum_i\chi^{a_i}\Psi^{a_1\cdots\widehat{a_i}\cdots a_{n+1}},
+\qquad
+\left(a(\psi)\Psi\right)^{a_2\cdots a_n} = \sqrt n\sum_{a_1}(\psi^{a_1})^*\Psi^{a_1\cdots a_n}
+$$
+$$
+\left[a(\psi), a^\dagger(\chi)\right] = \langle\psi, \chi\rangle,
+\qquad
+\left[a^\dagger(\psi), a^\dagger(\chi)\right] = 0,
+\qquad
+\left[a_a, a_b^\dagger\right] = \delta_{ab}
+$$
+$$
+\hat H = \sum_a\hbar\,\omega_a\,a_a^\dagger a_a,
+\qquad
+\hat P_{\rm rede} = \sum_a\hbar\,\kappa_a\,a_a^\dagger a_a
+$$
+
+::: {.aside}
+Notas: [Operadores de criação e aniquilação](aula2.html#sec-part-operadores)
+:::
+
+## Energia e momento das partículas
+
+{{< embed aula2.qmd#fig-part-espectro >}}
+
+::: {.aside}
+Notas: [Operadores de criação e aniquilação](aula2.html#sec-part-operadores)
+:::
+
+## A cadeia quântica
+
+:::: {.columns}
+::: {.column width="55%"}
+**Cadeia**, $\{F, G\} \to [\hat F, \hat G]/(i\hbar)$, $\alpha_a = \sqrt\hbar\,a_a$
+$$
+\hat h^j = \sqrt\hbar\sum_a\left(a_af_a^{\,j} + a_a^\dagger(f_a^{\,j})^*\right)
+$$
+$$
+\left[\hat h^j, \hat p_k\right] = i\hbar\,\delta^j{}_k
+$$
+$$
+\hat H_{\rm cadeia} = \sum_a\hbar\,\omega_a\left(\hat n_a + \tfrac12\right)
+$$
+
+- $N$ osciladores quânticos: uma partícula é um quantum de um modo normal.
+- $E_{\rm vácuo} = \sum_a\hbar\omega_a/2$ é finita (conferido com $N = 3$).
+:::
+::: {.column width="45%"}
+**Limite contínuo**
+$$
+\hat\phi = \sqrt\hbar\sum_{a\in\mathbb Z}\left(a_af_a + a_a^\dagger f_a^*\right)
+$$
+$$
+\left[\hat\phi(x), \hat\Pi(y)\right] = i\hbar\,\delta(x - y)
+$$
+
+- $E_{\rm vácuo}$ cresce sem limite ($\times 15{,}8$ de $N = 256$ para $1024$): a energia é medida a partir do vácuo.
+:::
+::::
+
+::: {.aside}
+Notas: [A cadeia quântica](aula2.html#sec-part-campo)
+:::
