@@ -17,6 +17,8 @@ format:
       echo: true
       output: true
 format-links: [ipynb]
+execute:
+  cache: true
 ---
 
 ::: {.callout-note}
@@ -54,8 +56,10 @@ numéricos. Os mesmos métodos serão usados para a cadeia.
 
 ## Equações de Hamilton {#sec-ho-hamilton}
 
-Uma partícula de massa $m$, presa a uma mola de constante $\kappa$, obedece à
-segunda lei de Newton:
+Um ponto sobre uma variável indica a derivada em relação ao tempo:
+$\dot x \equiv \mathrm dx/\mathrm dt$ e
+$\ddot x \equiv \mathrm d^2x/\mathrm dt^2$. Uma partícula de massa $m$,
+presa a uma mola de constante $\kappa$, obedece à segunda lei de Newton:
 $$
 m\ddot x = -\kappa x,
 \qquad\text{ou seja,}\qquad
@@ -66,23 +70,25 @@ $$ {#eq-ho-newton}
 Multiplicando por $\dot x$ e integrando no tempo, obtemos a conservação da
 energia:
 $$
-\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{m\dot x^2}{2} + \frac{m\omega^2 x^2}{2}\right) = 0.
+\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{m\dot x^2}{2} + \frac{\kappa x^2}{2}\right) = 0.
 $$
 Com o momento $p \equiv m\dot x$, a energia é a Hamiltoniana
 $$
-H(x, p) \equiv \frac{p^2}{2m} + \frac{m\omega^2 x^2}{2},
+H(x, p) \equiv \frac{p^2}{2m} + \frac{\kappa x^2}{2},
 $$ {#eq-ho-hamiltoniana}
-e as equações de Hamilton
+e as equações de Hamilton são
 $$
 \dot x = \frac{\partial H}{\partial p} = \frac{p}{m},
 \qquad
-\dot p = -\frac{\partial H}{\partial x} = -m\omega^2 x
+\dot p = -\frac{\partial H}{\partial x} = -\kappa x .
 $$ {#eq-ho-hamilton}
-reproduzem @eq-ho-newton. Uma equação de segunda ordem para $x(t)$ foi
-substituída por duas equações de primeira ordem para o par $(x, p)$. O
-estado do sistema em um instante é um ponto $(x, p)$ do **espaço de fase**.
-A animação abaixo mostra a partícula e o ponto $(x, p)$ correspondente, que
-percorre a curva $H = \text{constante}$ (uma elipse, @sec-ho-exata).
+A primeira é a definição do momento; substituída na segunda, dá
+$m\ddot x = -\kappa x$, que é @eq-ho-newton. Uma equação de segunda ordem
+para $x(t)$ foi substituída por duas equações de primeira ordem para o par
+$(x, p)$. O estado do sistema em um instante é um ponto $(x, p)$ do
+**espaço de fase**. A animação abaixo mostra a partícula e o ponto
+$(x, p)$ correspondente, que percorre a curva $H = \text{constante}$ (uma
+elipse, @sec-ho-exata).
 
 ```{python}
 #| label: fig-ho-animacao
@@ -137,74 +143,165 @@ HTML(anim.to_jshtml())
 
 ## Forma matricial {#sec-ho-matricial}
 
-Reunimos as duas variáveis em um vetor do espaço de fase:
+Reunimos as duas variáveis no vetor coluna
 $$
-X \equiv \begin{pmatrix} x \\ p \end{pmatrix}.
+\vec\chi \equiv \begin{pmatrix} x \\ p \end{pmatrix},
+$$ {#eq-ho-chi}
+que representa um ponto do espaço de fase, e as duas derivadas parciais de
+$H$ no gradiente
 $$
-A Hamiltoniana @eq-ho-hamiltoniana é uma forma quadrática em $X$,
+\vec\partial H \equiv \begin{pmatrix} \partial H/\partial x \\ \partial H/\partial p \end{pmatrix}
+= \begin{pmatrix} \kappa x \\ p/m \end{pmatrix}.
 $$
-H = \frac{1}{2} X^{\mathsf T}\, \mathsf H\, X,
+As equações de Hamilton @eq-ho-hamilton não dizem que a velocidade
+$\dot{\vec\chi}$ é o gradiente: as duas componentes aparecem trocadas, e
+uma delas com o sinal trocado,
+$$
+\dot{\vec\chi} = \begin{pmatrix} \dot x \\ \dot p \end{pmatrix}
+= \begin{pmatrix} \partial H/\partial p \\ -\partial H/\partial x \end{pmatrix}
+= \Omega\,\vec\partial H,
 \qquad
-\mathsf H \equiv \begin{pmatrix} m\omega^2 & 0 \\ 0 & 1/m \end{pmatrix},
+\Omega \equiv \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}.
+$$ {#eq-ho-hamilton-Omega}
+A **matriz simplética** $\Omega$ faz essa troca: aplicada a um vetor
+$(u, w)$, ela devolve $(w, -u)$, o mesmo vetor girado de $90^\circ$ no
+sentido horário. O gradiente é perpendicular às curvas
+$H = \text{constante}$, e girado de $90^\circ$ ele é tangente a elas
+(@fig-ho-gradiente). Por isso o ponto $\vec\chi(t)$ não sai da curva de
+energia em que começou:
 $$
-e as equações de Hamilton @eq-ho-hamilton são
+\frac{\mathrm dH}{\mathrm dt}
+= \frac{\partial H}{\partial x}\,\dot x + \frac{\partial H}{\partial p}\,\dot p
+= \left(\vec\partial H\right)^{\mathsf T}\dot{\vec\chi}
+= \left(\vec\partial H\right)^{\mathsf T}\Omega\,\vec\partial H
+= 0 .
 $$
-\dot X = \Omega\, \mathsf H\, X \equiv A X,
+A última igualdade vale para qualquer vetor $\vec u$: o número
+$\vec u^{\mathsf T}\Omega\,\vec u$ é igual ao seu transposto,
+$\vec u^{\mathsf T}\Omega^{\mathsf T}\vec u = -\vec u^{\mathsf T}\Omega\,\vec u$,
+e portanto é nulo.
+
+```{python}
+#| label: fig-ho-gradiente
+#| fig-cap: "Curvas $H = 1/4$, $1$ e $9/4$ (cinza) do oscilador com $m = 1$ e $\\kappa = 2$. Em oito pontos da curva $H = 1$: o gradiente $\\vec\\partial H$ (azul), perpendicular à curva, e a velocidade $\\dot{\\vec\\chi} = \\Omega\\,\\vec\\partial H$ (vermelho), o gradiente girado de $90^\\circ$ no sentido horário, tangente à curva. Os dois eixos estão na mesma escala, para que os ângulos retos apareçam como tais."
+#| code-fold: true
+m_g, kappa_g = 1.0, 2.0
+xs_g = np.linspace(-1.9, 1.9, 300)
+ps_g = np.linspace(-2.4, 2.4, 300)
+x_malha, p_malha = np.meshgrid(xs_g, ps_g)
+H_malha = p_malha**2 / (2 * m_g) + kappa_g * x_malha**2 / 2
+Omega_g = np.array([[0.0, 1.0], [-1.0, 0.0]])
+
+fig, ax = plt.subplots(figsize=(6, 6))
+ax.contour(x_malha, p_malha, H_malha, levels=[0.25, 1.0, 2.25], colors="gray", linewidths=1)
+for th in np.linspace(0, 2 * np.pi, 8, endpoint=False) + 0.35:
+    # ponto da curva H = 1: kappa x^2 / 2 = cos^2, p^2 / (2m) = sin^2
+    ponto_g = np.array([np.sqrt(2 / kappa_g) * np.cos(th), np.sqrt(2 * m_g) * np.sin(th)])
+    grad_g = np.array([kappa_g * ponto_g[0], ponto_g[1] / m_g])
+    for vetor, cor in [(grad_g, "C0"), (Omega_g @ grad_g, "C3")]:
+        ax.annotate("", xy=ponto_g + 0.22 * vetor, xytext=ponto_g,
+                    arrowprops=dict(arrowstyle="-|>", color=cor, lw=1.8))
+    ax.plot(*ponto_g, "o", color="k", ms=4)
+ax.plot([], [], color="C0", lw=1.8, label=r"$\vec\partial H$")
+ax.plot([], [], color="C3", lw=1.8, label=r"$\dot{\vec\chi} = \Omega\,\vec\partial H$")
+ax.set_xlim(-1.9, 1.9)
+ax.set_ylim(-2.4, 2.4)
+ax.set_aspect("equal")
+ax.set_xlabel("$x$")
+ax.set_ylabel("$p$")
+ax.legend(loc="upper right")
+plt.show()
+```
+
+O oscilador tem uma Hamiltoniana quadrática:
+$$
+H = \frac{1}{2}\, \vec\chi^{\mathsf T}\, \mathsf H\, \vec\chi,
 \qquad
-\Omega \equiv \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix},
+\mathsf H \equiv \begin{pmatrix} \kappa & 0 \\ 0 & 1/m \end{pmatrix},
 \qquad
-A = \begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix}.
+\vec\partial H = \mathsf H\,\vec\chi .
+$$
+A última igualdade se confere diretamente,
+$\mathsf H\vec\chi = (\kappa x,\ p/m)^{\mathsf T}$, e vale para qualquer
+matriz simétrica $\mathsf H$. As equações de Hamilton
+@eq-ho-hamilton-Omega são então
+$$
+\dot{\vec\chi} = \Omega\, \mathsf H\, \vec\chi \equiv A \vec\chi,
+\qquad
+A = \begin{pmatrix} 0 & 1/m \\ -\kappa & 0 \end{pmatrix}.
 $$ {#eq-ho-matricial}
-A matriz $\Omega$ é a **matriz simplética**. Ela contém os sinais das
-equações de Hamilton ($\dot x = +\partial H/\partial p$,
-$\dot p = -\partial H/\partial x$) e não depende do sistema; o sistema
-entra apenas pela matriz $\mathsf H$. A mesma estrutura vale para $N$ graus
-de liberdade, com $\mathsf H$ de dimensão $2N\times 2N$ e $\Omega$ formada
-por blocos $N \times N$. É nessa forma que escreveremos a cadeia de
-osciladores.
+A matriz $\Omega$ contém os sinais das equações de Hamilton
+($\dot x = +\partial H/\partial p$, $\dot p = -\partial H/\partial x$) e
+não depende do sistema; o sistema entra apenas pela matriz $\mathsf H$. A
+mesma estrutura vale para $N$ graus de liberdade, com $\mathsf H$ de
+dimensão $2N\times 2N$ e $\Omega$ formada por blocos $N \times N$. É nessa
+forma que escreveremos a cadeia de osciladores.
+
+**A derivada temporal como a matriz $A$.** A equação @eq-ho-matricial diz
+que, ao longo de uma solução, derivar $\vec\chi$ em relação ao tempo é o
+mesmo que multiplicá-lo por $A$. Como $A$ é constante, o mesmo vale para
+as derivadas seguintes:
+$$
+\ddot{\vec\chi} = \frac{\mathrm d}{\mathrm dt}\left(A\vec\chi\right) = A\,\dot{\vec\chi} = A^2\vec\chi,
+\qquad
+\frac{\mathrm d^3\vec\chi}{\mathrm dt^3} = A^3\vec\chi,
+\qquad\dots,\qquad
+\frac{\mathrm d^n\vec\chi}{\mathrm dt^n} = A^n\vec\chi .
+$$ {#eq-ho-derivadas}
+Sobre as soluções, a operação $\mathrm d/\mathrm dt$ é representada pela
+matriz $A$, e $\mathrm d^n/\mathrm dt^n$ pela potência $A^n$.
 
 ## Solução exata {#sec-ho-exata}
 
-Para uma única variável, a equação $\dot x = a x$ com $a$ constante tem
-solução $x(t) = e^{at}x(0)$, e a exponencial é a série
+A série de Taylor de $\vec\chi(t)$ em torno de $t = 0$ é
 $$
-e^{at} = 1 + at + \frac{(at)^2}{2} + \frac{(at)^3}{6} + \dots = \sum_{n=0}^\infty \frac{(at)^n}{n!}.
+\vec\chi(t) = \vec\chi(0) + t\,\dot{\vec\chi}(0) + \frac{t^2}{2}\,\ddot{\vec\chi}(0) + \dots
+= \sum_{n=0}^\infty \frac{t^n}{n!}\,\frac{\mathrm d^n\vec\chi}{\mathrm dt^n}(0).
 $$
-O sistema @eq-ho-matricial, $\dot X = AX$, tem a mesma forma, com a matriz
-constante $A$ no lugar do número $a$. A exponencial de uma matriz é
-definida pela mesma série,
+Por @eq-ho-derivadas, cada derivada em $t = 0$ é uma potência de $A$
+aplicada à condição inicial, $\mathrm d^n\vec\chi/\mathrm dt^n(0) = A^n\vec\chi(0)$.
+Trocando as derivadas pelas potências de $A$,
 $$
-e^{tA} \equiv I + tA + \frac{t^2A^2}{2} + \frac{t^3A^3}{6} + \frac{t^4A^4}{24} + \dots
-= \sum_{n=0}^\infty \frac{t^n A^n}{n!},
+\vec\chi(t) = \left(I + tA + \frac{t^2A^2}{2} + \frac{t^3A^3}{6} + \dots\right)\vec\chi(0) .
+$$
+A matriz entre parênteses define a **exponencial** de $tA$:
+$$
+e^{tA} \equiv \sum_{n=0}^\infty \frac{t^n A^n}{n!}
+= I + tA + \frac{t^2A^2}{2} + \frac{t^3A^3}{6} + \frac{t^4A^4}{24} + \dots,
+\qquad
+\vec\chi(t) = e^{tA}\,\vec\chi(0),
 $$ {#eq-ho-exp-serie}
-em que $A^n$ é o produto de $n$ cópias de $A$ e $A^0 \equiv I$. Cada termo
-é uma matriz $2\times 2$ e a soma é uma matriz $2\times 2$ que depende de
-$t$. Derivando a série termo a termo,
+em que $A^n$ é o produto de $n$ cópias de $A$ e $A^0 \equiv I$. Cada
+termo é uma matriz $2\times 2$, e a soma é uma matriz $2\times 2$ que
+depende de $t$. Com um número $a$ no lugar da matriz $A$, a série é a de
+$e^{at}$, e o mesmo argumento aplicado a $\dot x = ax$ dá
+$x(t) = e^{at}x(0)$. Derivando a série termo a termo,
 $$
 \frac{\mathrm{d}}{\mathrm{d}t} e^{tA}
 = A + tA^2 + \frac{t^2A^3}{2} + \dots
 = A\left(I + tA + \frac{t^2A^2}{2} + \dots\right)
 = A\,e^{tA},
 $$
-e $e^{0A} = I$. Portanto $X(t) = e^{tA}X(0)$ satisfaz $\dot X = AX$ e vale
-$X(0)$ em $t = 0$: é a solução. Resta somar a série para a matriz do
-oscilador.
+e $e^{0A} = I$: a função $e^{tA}\vec\chi(0)$ satisfaz
+$\dot{\vec\chi} = A\vec\chi$ e vale $\vec\chi(0)$ em $t = 0$, como deve.
+Resta somar a série para a matriz do oscilador.
 
 ### Potências de $A$ {#sec-ho-potencias}
 
 Com $A$ dada em @eq-ho-matricial,
 $$
-A^2 = \begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix}
-\begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix}
-= \begin{pmatrix} -\omega^2 & 0 \\ 0 & -\omega^2 \end{pmatrix}
+A^2 = \begin{pmatrix} 0 & 1/m \\ -\kappa & 0 \end{pmatrix}
+\begin{pmatrix} 0 & 1/m \\ -\kappa & 0 \end{pmatrix}
+= \begin{pmatrix} -\kappa/m & 0 \\ 0 & -\kappa/m \end{pmatrix}
 = -\omega^2 I.
 $$ {#eq-ho-A2}
-O elemento $(1,1)$ é $0\cdot 0 + (1/m)(-m\omega^2) = -\omega^2$ e o
+O elemento $(1,1)$ é $0\cdot 0 + (1/m)(-\kappa) = -\kappa/m$ e o
 elemento $(1,2)$ é $0\cdot(1/m) + (1/m)\cdot 0 = 0$; os outros dois seguem
-do mesmo modo. As potências seguintes são obtidas multiplicando por $A$
+do mesmo modo. A frequência $\omega = \sqrt{\kappa/m}$ de @eq-ho-newton
+aparece aqui. As potências seguintes são obtidas multiplicando por $A$
 ou por $A^2$:
 $$
-A^3 = A^2A = -\omega^2 A = \begin{pmatrix} 0 & -\omega^2/m \\ m\omega^4 & 0 \end{pmatrix},
+A^3 = A^2A = -\omega^2 A = \begin{pmatrix} 0 & -\omega^2/m \\ \kappa\,\omega^2 & 0 \end{pmatrix},
 \qquad
 A^4 = A^2A^2 = \omega^4 I,
 \qquad
@@ -240,8 +337,9 @@ e^{tA} = \cos(\omega t)\, I + \frac{\sin(\omega t)}{\omega}\, A
 -m\omega\sin\omega t & \cos\omega t
 \end{pmatrix}.
 $$ {#eq-ho-exp}
-A segunda igualdade usa $A/\omega = \begin{pmatrix} 0 & 1/(m\omega) \\ -m\omega & 0 \end{pmatrix}$.
-Em componentes, $X(t) = e^{tA}X(0)$ é
+A segunda igualdade usa $\kappa/\omega = m\omega$, de modo que
+$A/\omega = \begin{pmatrix} 0 & 1/(m\omega) \\ -m\omega & 0 \end{pmatrix}$.
+Em componentes, $\vec\chi(t) = e^{tA}\vec\chi(0)$ é
 $$
 x(t) = x(0)\cos\omega t + \frac{p(0)}{m\omega}\sin\omega t,
 \qquad
@@ -267,32 +365,93 @@ print(f"t = {t1}: max |série (14 termos) - fórmula| = {np.abs(serie - exata).m
 print(f"max |expm(tA) - fórmula| = {np.abs(expm(t1 * A) - exata).max():.1e}")
 ```
 
-A evolução $e^{tA}$ tem duas propriedades que usaremos ao longo do
-minicurso.
+### O produto simplético {#sec-ho-produto}
 
-1. **Conservação da energia.** $H(X(t)) = H(X(0))$. As trajetórias no
-   espaço de fase são as elipses $H = \text{constante}$.
-2. **Conservação do produto simplético.** Para duas soluções $X(t)$ e
-   $Y(t)$, com componentes $(x_X, p_X)$ e $(x_Y, p_Y)$, a quantidade
-   $$
-   \Omega(X, Y) \equiv X^{\mathsf T}\Omega\, Y = x_X\, p_Y - p_X\, x_Y
-   $$ {#eq-ho-produto-simpletico}
-   é constante no tempo. De fato, com $\dot X = AX$ e $\dot Y = AY$,
-   $$
-   \frac{\mathrm{d}}{\mathrm{d}t}\left(X^{\mathsf T}\Omega\, Y\right)
-   = X^{\mathsf T}\left(A^{\mathsf T}\Omega + \Omega A\right) Y,
-   \qquad
-   A^{\mathsf T}\Omega + \Omega A = \mathsf H\,\Omega^{\mathsf T}\Omega + \Omega^2\mathsf H = \mathsf H - \mathsf H = 0,
-   $$
-   em que usamos $A = \Omega\mathsf H$, $\mathsf H^{\mathsf T} = \mathsf H$,
-   $\Omega^{\mathsf T} = -\Omega$ e $\Omega^2 = -I$. Em termos da matriz de
-   evolução, $\left(e^{tA}\right)^{\mathsf T}\Omega\, e^{tA} = \Omega$. Para
-   matrizes $2\times 2$ essa condição é equivalente a $\det e^{tA} = 1$: a
-   evolução preserva áreas no espaço de fase (teorema de Liouville). Da
-   matriz em @eq-ho-exp,
-   $\det e^{tA} = \cos^2\omega t + \dfrac{\sin\omega t}{m\omega}\,m\omega\sin\omega t = 1$.
-   O produto simplético é a estrutura que, na Aula 2, dará origem às
-   variáveis de criação e aniquilação.
+Para dois vetores do espaço de fase, $\vec\chi_1 = (x_1, p_1)^{\mathsf T}$
+e $\vec\chi_2 = (x_2, p_2)^{\mathsf T}$, o **produto simplético** é
+$$
+\Omega(\vec\chi_1, \vec\chi_2) \equiv \vec\chi_1^{\mathsf T}\,\Omega\,\vec\chi_2
+= x_1\, p_2 - p_1\, x_2
+= \det\begin{pmatrix} x_1 & x_2 \\ p_1 & p_2 \end{pmatrix}.
+$$ {#eq-ho-produto-simpletico}
+É a área orientada do paralelogramo de lados $\vec\chi_1$ e $\vec\chi_2$
+no plano $(x, p)$: o valor absoluto é a área, o sinal é positivo quando
+$\vec\chi_2$ está no sentido anti-horário a partir de $\vec\chi_1$, e o
+produto é nulo quando os dois vetores são paralelos. Em particular,
+$\Omega(\vec u, \vec u) = 0$ para qualquer $\vec u$, a propriedade usada
+acima na conservação da energia.
+
+Se $\vec\chi_1(t)$ e $\vec\chi_2(t)$ são duas soluções,
+$\dot{\vec\chi}_1 = A\vec\chi_1$ e $\dot{\vec\chi}_2 = A\vec\chi_2$, então
+$$
+\frac{\mathrm d}{\mathrm dt}\,\Omega(\vec\chi_1, \vec\chi_2)
+= \dot{\vec\chi}_1^{\mathsf T}\,\Omega\,\vec\chi_2 + \vec\chi_1^{\mathsf T}\,\Omega\,\dot{\vec\chi}_2
+= \vec\chi_1^{\mathsf T}\left(A^{\mathsf T}\Omega + \Omega A\right)\vec\chi_2 .
+$$
+Para $A = \Omega\mathsf H$, com qualquer matriz simétrica $\mathsf H$,
+$$
+A^{\mathsf T}\Omega + \Omega A
+= \mathsf H^{\mathsf T}\Omega^{\mathsf T}\Omega + \Omega\,\Omega\,\mathsf H
+= \mathsf H - \mathsf H = 0,
+$$ {#eq-ho-AOmega}
+em que usamos $\mathsf H^{\mathsf T} = \mathsf H$,
+$\Omega^{\mathsf T}\Omega = I$ e $\Omega^2 = -I$. A conta não usa a forma
+particular de $\mathsf H$ do oscilador: vale para qualquer Hamiltoniana
+quadrática, e a usaremos de novo para a cadeia. O produto simplético de
+duas soluções é constante no tempo: o paralelogramo de lados
+$\vec\chi_1(t)$ e $\vec\chi_2(t)$ muda de forma, mas não de área
+(@fig-ho-area). Como a evolução é linear, ela leva o paralelogramo de
+vértices $0$, $\vec\chi_1$, $\vec\chi_1 + \vec\chi_2$ e $\vec\chi_2$ no
+paralelogramo de vértices $0$, $\vec\chi_1(t)$,
+$\vec\chi_1(t) + \vec\chi_2(t)$ e $\vec\chi_2(t)$. Uma região qualquer do
+espaço de fase pode ser preenchida por paralelogramos pequenos, e
+portanto a evolução preserva a área de qualquer região (teorema de
+Liouville).
+
+```{python}
+#| label: fig-ho-area
+#| fig-cap: "O paralelogramo de lados $\\vec\\chi_1(t)$ (azul) e $\\vec\\chi_2(t)$ (laranja) em três instantes, para o oscilador com $m = 1$, $\\kappa = 4$ ($\\omega = 2$) e $\\vec\\chi_1(0) = (1;\\ 0{,}4)$, $\\vec\\chi_2(0) = (0{,}2;\\ 1{,}2)$. Cada vetor percorre a sua elipse $H = \\text{constante}$ (cinza). A forma do paralelogramo muda, e a sua área, $\\Omega(\\vec\\chi_1, \\vec\\chi_2) = 1{,}1200$, é a mesma nos três painéis."
+#| code-fold: true
+m_ar, kappa_ar = 1.0, 4.0
+omega_ar = np.sqrt(kappa_ar / m_ar)
+A_ar = np.array([[0.0, 1.0 / m_ar], [-kappa_ar, 0.0]])
+Omega_ar = np.array([[0.0, 1.0], [-1.0, 0.0]])
+chi1_ar = np.array([1.0, 0.4])
+chi2_ar = np.array([0.2, 1.2])
+s_ar = np.linspace(0, 2 * np.pi / omega_ar, 300)
+elipses_ar = [np.array([expm(s * A_ar) @ c for s in s_ar]) for c in (chi1_ar, chi2_ar)]
+
+fig, axs = plt.subplots(1, 3, figsize=(11, 2.8))
+for ax, t_ar in zip(axs, [0.0, 0.3, 0.7]):
+    c1, c2 = expm(t_ar * A_ar) @ chi1_ar, expm(t_ar * A_ar) @ chi2_ar
+    for elipse in elipses_ar:
+        ax.plot(elipse[:, 0], elipse[:, 1], color="gray", lw=0.8)
+    vertices = np.array([[0, 0], c1, c1 + c2, c2])
+    ax.fill(vertices[:, 0], vertices[:, 1], color="C2", alpha=0.25)
+    for c, cor in [(c1, "C0"), (c2, "C1")]:
+        ax.annotate("", xy=c, xytext=(0, 0), arrowprops=dict(arrowstyle="-|>", color=cor, lw=2))
+    ax.set_title(f"$t = {t_ar:g}$".replace(".", "{,}")
+                 + "\n" + rf"$\Omega(\vec\chi_1, \vec\chi_2) = {c1 @ Omega_ar @ c2:.4f}$".replace(".", "{,}"))
+    ax.set_xlim(-1.7, 1.7)
+    ax.set_ylim(-3.1, 3.1)
+    ax.set_xlabel("$x$")
+    ax.grid(True, alpha=0.3)
+axs[0].set_ylabel("$p$")
+fig.tight_layout()
+plt.show()
+```
+
+Em termos da matriz de evolução,
+$\Omega\big(e^{tA}\vec\chi_1, e^{tA}\vec\chi_2\big) = \vec\chi_1^{\mathsf T}\left(e^{tA}\right)^{\mathsf T}\Omega\,e^{tA}\,\vec\chi_2$,
+e a conservação para quaisquer $\vec\chi_1$ e $\vec\chi_2$ é
+$$
+\left(e^{tA}\right)^{\mathsf T}\Omega\, e^{tA} = \Omega .
+$$ {#eq-ho-simpletica}
+Uma matriz $M$ com $M^{\mathsf T}\Omega M = \Omega$ é chamada
+**simplética**. Na @sec-ho-aproximacoes veremos que, para matrizes
+$2\times 2$, essa condição é o mesmo que $\det M = 1$. O produto
+simplético é a estrutura que, na Aula 2, dará origem às variáveis de
+criação e aniquilação.
 
 ## Integração numérica {#sec-ho-numerico}
 
@@ -300,8 +459,9 @@ Para a cadeia de osciladores com uma condição inicial qualquer, e mais
 tarde para problemas sem solução fechada, precisaremos de integração
 numérica. O oscilador harmônico é o caso em que podemos comparar cada
 método com a solução exata @eq-ho-exp. Discretizamos o tempo em
-$t_n \equiv n\,\Delta t$ e construímos uma regra $X_n \mapsto X_{n+1}$ tal
-que $X_n$ aproxime $X(t_n)$.
+$t_n \equiv n\,\Delta t$ e construímos uma regra
+$\vec\chi_n \mapsto \vec\chi_{n+1}$ tal que $\vec\chi_n$ aproxime
+$\vec\chi(t_n)$.
 
 ### Variáveis adimensionais {#sec-ho-adimensionais}
 
@@ -336,7 +496,7 @@ M_{\rm ex}(\varepsilon) \equiv \cos\varepsilon\, I + \sin\varepsilon\, \Omega
 = \begin{pmatrix} \cos\varepsilon & \sin\varepsilon \\ -\sin\varepsilon & \cos\varepsilon \end{pmatrix},
 $$ {#eq-ho-passo-exato}
 a matriz de rotação de ângulo $\varepsilon$ no sentido horário
-(@fig-ho-rotacao). Para os métodos lineares em $X$ é útil também a
+(@fig-ho-rotacao). Para os métodos lineares em $\vec\chi$ é útil também a
 variável complexa
 $$
 z \equiv \xi + i\eta,
@@ -385,47 +545,106 @@ plt.show()
 
 Cada método numérico substitui $M_{\rm ex}(\varepsilon)$ por uma matriz
 $M(\varepsilon)$ cujos elementos são polinômios em $\varepsilon$, e o
-passo é $X_{n+1} = M(\varepsilon)X_n$. Três propriedades de $M(\varepsilon)$
-determinam o comportamento da solução numérica.
+passo é $\vec\chi_{n+1} = M(\varepsilon)\,\vec\chi_n$. Três propriedades de
+$M(\varepsilon)$ determinam o comportamento da solução numérica.
 
 1. **Ordem.** O erro de um passo é $M(\varepsilon) - M_{\rm ex}(\varepsilon)$.
    Se ele é $O(\varepsilon^{k+1})$, o método é de ordem $k$: depois de
    $n = t/\Delta t$ passos o erro acumulado é $O(n\varepsilon^{k+1}) = O(\Delta t^k)$.
-2. **Determinante.** $\det M$ é o fator pelo qual um passo multiplica as
-   áreas no espaço de fase. A evolução exata tem $\det M_{\rm ex} = 1$.
-3. **Autovalores.** Depois de $n$ passos, $X_n = M^n X_0$, e $M^n$ cresce
-   ou decresce como $|\lambda|^n$, em que $\lambda$ são os autovalores de
-   $M$. A evolução exata tem $\lambda = e^{\pm i\varepsilon}$, com
-   $|\lambda| = 1$.
+2. **Produto simplético.** Um passo leva o produto simplético
+   @eq-ho-produto-simpletico de dois vetores em
+   $\Omega(M\vec\chi_1, M\vec\chi_2) = \vec\chi_1^{\mathsf T}\,M^{\mathsf T}\Omega M\,\vec\chi_2$.
+   A evolução exata satisfaz $M_{\rm ex}^{\mathsf T}\Omega M_{\rm ex} = \Omega$
+   (@eq-ho-simpletica), e é isso que queremos de $M$.
+3. **Autovalores.** Depois de $n$ passos, $\vec\chi_n = M^n\vec\chi_0$, e
+   $M^n$ cresce ou decresce como $|\lambda|^n$, em que $\lambda$ são os
+   autovalores de $M$. A evolução exata tem $\lambda = e^{\pm i\varepsilon}$,
+   com $|\lambda| = 1$.
 
-Para uma matriz $2\times 2$ real com $\det M = 1$ e $|\operatorname{tr} M| < 2$,
-os autovalores são $e^{\pm i\theta}$ com $2\cos\theta = \operatorname{tr} M$,
-de módulo 1. Para um método com essas propriedades a solução numérica fica
-limitada, e a diferença entre $\theta$ e $\varepsilon$ é um erro de fase: a
-trajetória numérica percorre a elipse com uma frequência um pouco
-diferente de $\omega$.
+**O determinante mede a mudança das áreas.** Para uma matriz
+$2\times 2$ qualquer,
+$$
+M = \begin{pmatrix} M_{11} & M_{12} \\ M_{21} & M_{22} \end{pmatrix},
+\qquad
+M^{\mathsf T}\Omega M
+= \begin{pmatrix} M_{11} & M_{21} \\ M_{12} & M_{22} \end{pmatrix}
+\begin{pmatrix} M_{21} & M_{22} \\ -M_{11} & -M_{12} \end{pmatrix}
+= \begin{pmatrix} 0 & \det M \\ -\det M & 0 \end{pmatrix}
+= \det(M)\,\Omega,
+$$
+com $\det M = M_{11}M_{22} - M_{12}M_{21}$. Portanto
+$$
+\Omega(M\vec\chi_1, M\vec\chi_2) = \det(M)\;\Omega(\vec\chi_1, \vec\chi_2):
+$$ {#eq-ho-det}
+o determinante é o fator pelo qual um passo multiplica o produto
+simplético, isto é, as áreas no espaço de fase. Em duas dimensões, $M$ é
+simplética se, e somente se, $\det M = 1$, e o determinante é uma forma
+indireta de medir $M^{\mathsf T}\Omega M$. Para a matriz exata
+@eq-ho-exp, $\det e^{tA} = \cos^2\omega t + \dfrac{\sin\omega t}{m\omega}\,m\omega\sin\omega t = 1$.
+Em $2N$ dimensões a condição $M^{\mathsf T}\Omega M = \Omega$ é mais forte
+que $\det M = 1$, e é ela que vale para a cadeia.
+
+**Autovalores a partir do traço e do determinante.** Os autovalores de
+$M$ são as raízes do polinômio característico
+$$
+\det(M - \lambda I) = (M_{11} - \lambda)(M_{22} - \lambda) - M_{12}M_{21}
+= \lambda^2 - (\operatorname{tr} M)\,\lambda + \det M,
+$$
+com $\operatorname{tr} M \equiv M_{11} + M_{22}$. Escrevendo o polinômio
+como $(\lambda - \lambda_1)(\lambda - \lambda_2)$ e comparando os
+coeficientes,
+$$
+\lambda_1 + \lambda_2 = \operatorname{tr} M,
+\qquad
+\lambda_1\lambda_2 = \det M,
+\qquad
+\lambda_{1,2} = \frac{\operatorname{tr} M \pm \sqrt{(\operatorname{tr} M)^2 - 4\det M}}{2} .
+$$ {#eq-ho-autovalores}
+Os dois números $\operatorname{tr} M$ e $\det M$ determinam os
+autovalores. Para uma matriz real há três casos.
+
+* $(\operatorname{tr} M)^2 < 4\det M$: os autovalores são complexos
+  conjugados, $\lambda_2 = \lambda_1^*$, e
+  $|\lambda_1|^2 = \lambda_1\lambda_2 = \det M$. A solução numérica cresce
+  se $\det M > 1$ e decresce se $\det M < 1$.
+* $\det M = 1$ e $|\operatorname{tr} M| < 2$: o caso anterior com
+  $|\lambda| = 1$. Os autovalores são $e^{\pm i\theta}$ com
+  $2\cos\theta = \operatorname{tr} M$, a solução numérica fica limitada, e
+  a diferença entre $\theta$ e $\varepsilon$ é um erro de fase: a
+  trajetória numérica percorre a elipse com uma frequência um pouco
+  diferente de $\omega$. A rotação exata tem
+  $\operatorname{tr} M_{\rm ex} = 2\cos\varepsilon$, logo $\theta = \varepsilon$.
+* $\det M = 1$ e $|\operatorname{tr} M| > 2$: os autovalores são reais, com
+  produto $1$, e um deles tem módulo maior que $1$. A solução numérica
+  cresce exponencialmente.
 
 ### Euler explícito {#sec-ho-euler}
 
-A série de Taylor de $X(t)$ em torno de $t_n$ é
+A série de Taylor da @sec-ho-exata, agora em torno de $t_n$ e com
+$\dot{\vec\chi} = A\vec\chi$, é
 $$
-X(t_{n+1}) = X(t_n) + \Delta t\,\dot X(t_n) + \frac{\Delta t^2}{2}\ddot X(t_n) + \dots
-= X(t_n) + \Delta t\, A X(t_n) + O(\Delta t^2).
+\vec\chi(t_{n+1}) = \vec\chi(t_n) + \Delta t\,\dot{\vec\chi}(t_n) + \frac{\Delta t^2}{2}\,\ddot{\vec\chi}(t_n) + \dots
+= \vec\chi(t_n) + \Delta t\, A \vec\chi(t_n) + O(\Delta t^2).
 $$
 O método de Euler explícito mantém os dois primeiros termos:
 $$
-X_{n+1} = X_n + \Delta t\, A X_n = (I + \Delta t\, A)\, X_n.
+\vec\chi_{n+1} = \vec\chi_n + \Delta t\, A \vec\chi_n = (I + \Delta t\, A)\, \vec\chi_n.
 $$
-O passo segue a reta tangente à trajetória em $X_n$, na direção da
-velocidade $AX_n$ no espaço de fase, durante $\Delta t$. Nas variáveis
-adimensionais, $\Delta t\,A \to \varepsilon\Omega$ e a matriz do passo é
+O passo segue a reta tangente à trajetória em $\vec\chi_n$, na direção da
+velocidade $A\vec\chi_n$ no espaço de fase, durante $\Delta t$. Nas
+variáveis adimensionais, $\Delta t\,A \to \varepsilon\Omega$ e a matriz do
+passo é
 $$
 M_{\rm E}(\varepsilon) \equiv I + \varepsilon\Omega
 = \begin{pmatrix} 1 & \varepsilon \\ -\varepsilon & 1 \end{pmatrix},
 $$ {#eq-euler-matriz}
 os dois primeiros termos da série de $M_{\rm ex} = \cos\varepsilon\,I + \sin\varepsilon\,\Omega$.
 Como $M_{\rm E} - M_{\rm ex} = (\varepsilon^2/2)\,I + O(\varepsilon^3)$, o
-método é de primeira ordem. A matriz $M_{\rm E}$ pode ser escrita como
+método é de primeira ordem. O traço é $\operatorname{tr} M_{\rm E} = 2$ e o
+determinante é $\det M_{\rm E} = 1 + \varepsilon^2$; por
+@eq-ho-autovalores os autovalores são $\lambda = 1 \pm i\varepsilon$, de
+módulo $\sqrt{1 + \varepsilon^2} > 1$. A matriz $M_{\rm E}$ pode ser
+escrita como
 $$
 M_{\rm E}(\varepsilon) = \sqrt{1+\varepsilon^2}\;M_{\rm ex}(\arctan\varepsilon),
 $$
@@ -441,12 +660,29 @@ H_{n+1} = \left(1 + \varepsilon^2\right) H_n,
 \qquad
 H_n = \left(1 + \varepsilon^2\right)^n H_0 .
 $$
-A energia cresce por um fator fixo a cada passo; para $\varepsilon \ll 1$,
-$H_n \approx e^{\omega^2\Delta t\, t_n} H_0$. O erro, portanto, não é apenas
-de ordem $\Delta t$ em cada passo: ele se acumula com o mesmo sinal e a
-trajetória no espaço de fase é uma espiral que se afasta da origem. O
-determinante $\det M_{\rm E} = 1 + \varepsilon^2 \neq 1$ é o fator de
-dilatação das áreas em um passo.
+A energia cresce por um fator fixo a cada passo. O erro não é apenas de
+ordem $\Delta t$ em cada passo: ele se acumula com o mesmo sinal, e a
+trajetória no espaço de fase é uma espiral que se afasta da origem. Pela
+@eq-ho-det, as áreas também crescem pelo fator
+$\det M_{\rm E} = 1 + \varepsilon^2$ a cada passo.
+
+**Passo pequeno ou passo grande.** Para integrar até um instante $t$ são
+necessários $n = t/\Delta t = \omega t/\varepsilon$ passos, e
+$$
+\frac{H_n}{H_0} = \left(1 + \varepsilon^2\right)^{\omega t/\varepsilon}
+\approx e^{\varepsilon\,\omega t}
+\qquad (\varepsilon \ll 1).
+$$
+Um passo menor reduz o erro relativo, que é $\approx\varepsilon\,\omega t$
+enquanto é pequeno, mas exige proporcionalmente mais passos. Um passo
+maior economiza passos, e o erro cresce exponencialmente com
+$\varepsilon\,\omega t$. Para 20 períodos ($\omega t = 40\pi$) com erro
+de $1\%$ na energia, é preciso $\varepsilon < \ln(1{,}01)/(40\pi) = 7{,}9\times 10^{-5}$,
+isto é, $1{,}6\times 10^{6}$ passos. Com $\varepsilon = 0{,}05$ são
+$2513$ passos, e a energia final é $5{,}3\times 10^{2}$ vezes maior que a
+inicial (@sec-ho-implementacao). Por ser de primeira ordem, o Euler
+explícito precisa de dez vezes mais passos para reduzir o erro por um
+fator dez.
 
 ### Euler simplético {#sec-ho-euler-simpletico}
 
@@ -455,7 +691,7 @@ valores antigos um do outro. O método de Euler simplético atualiza
 primeiro o momento e usa o momento já atualizado para atualizar a
 posição:
 $$
-p_{n+1} = p_n - \Delta t\, m\omega^2 x_n,
+p_{n+1} = p_n - \Delta t\, \kappa x_n,
 \qquad
 x_{n+1} = x_n + \Delta t\, \frac{p_{n+1}}{m}.
 $$
@@ -487,6 +723,28 @@ com $\det M_{\rm SE} = \det S_\xi \det S_\eta = 1$: o método preserva
 $M_{\rm SE} - M_{\rm ex} = \begin{pmatrix} -\varepsilon^2/2 & 0 \\ 0 & \varepsilon^2/2 \end{pmatrix} + O(\varepsilon^3)$:
 o método é de primeira ordem, como o Euler explícito, mas o erro de um
 passo deforma a figura em vez de dilatá-la.
+
+**O grupo simplético.** O que se exige de um passo é
+$M^{\mathsf T}\Omega M = \Omega$, a propriedade @eq-ho-simpletica da
+evolução exata; em duas dimensões é o mesmo que $\det M = 1$
+(@eq-ho-det). As matrizes com essa propriedade formam um grupo, o
+**grupo simplético** $\mathrm{Sp}(2, \mathbb R)$: o produto de duas delas
+satisfaz
+$(M_1M_2)^{\mathsf T}\Omega\,M_1M_2 = M_2^{\mathsf T}\big(M_1^{\mathsf T}\Omega M_1\big)M_2 = M_2^{\mathsf T}\Omega M_2 = \Omega$,
+e a inversa de uma delas também pertence ao grupo. Os cisalhamentos
+$S_\xi(\alpha)$ e $S_\eta(\alpha)$, com $\alpha$ real qualquer, pertencem a
+$\mathrm{Sp}(2, \mathbb R)$ e geram o grupo: toda matriz
+$M \in \mathrm{Sp}(2, \mathbb R)$ com $M_{12} \neq 0$ é o produto de três
+cisalhamentos,
+$$
+M = S_\eta\!\left(\frac{1 - M_{22}}{M_{12}}\right) S_\xi(M_{12})\, S_\eta\!\left(\frac{1 - M_{11}}{M_{12}}\right)
+$$ {#eq-ho-sp2-cisalhamentos}
+(@sec-ho-exercicios, exercício 5), e as matrizes com $M_{12} = 0$ são
+produtos de quatro. Para construir um método que preserva o produto
+simplético basta, portanto, compor cisalhamentos. Cada cisalhamento
+atualiza uma das variáveis usando apenas a outra, o que se programa para
+qualquer força $F(x)$; é assim que são construídos o Euler simplético e
+o Verlet.
 
 ```{python}
 #| label: fig-ho-cisalhamento
@@ -528,9 +786,10 @@ axs[2].plot([np.cos(eps_c)], [-np.sin(eps_c)], "o", mfc="none", color="gray", ms
 plt.show()
 ```
 
-O traço de $M_{\rm SE}$ é $2 - \varepsilon^2$. Para $\varepsilon < 2$ os
-autovalores são $e^{\pm i\theta}$ com $\cos\theta = 1 - \varepsilon^2/2$,
-de módulo 1, e a solução numérica não cresce. Mais que isso: a forma
+O traço de $M_{\rm SE}$ é $2 - \varepsilon^2$ e o determinante é $1$.
+Por @eq-ho-autovalores, para $\varepsilon < 2$ os autovalores são
+$e^{\pm i\theta}$ com $\cos\theta = 1 - \varepsilon^2/2$, de módulo 1, e a
+solução numérica não cresce. Mais que isso: a forma
 quadrática
 $$
 \tilde H_{\rm SE} \equiv \frac{\xi^2 + \eta^2 - \varepsilon\, \xi\eta}{2}
@@ -558,7 +817,7 @@ x_{n+1} = x_n + \Delta t\,\frac{p_{n+1/2}}{m},
 \qquad
 p_{n+1} = p_{n+1/2} + \frac{\Delta t}{2} F(x_{n+1}),
 $$ {#eq-verlet}
-com $F(x) = -m\omega^2 x$ para o oscilador. Nas variáveis adimensionais o
+com $F(x) = -\kappa x$ para o oscilador. Nas variáveis adimensionais o
 passo é o produto de três cisalhamentos,
 $$
 M_{\rm V}(\varepsilon) \equiv S_\eta(\varepsilon/2)\,S_\xi(\varepsilon)\,S_\eta(\varepsilon/2)
@@ -614,37 +873,37 @@ amplitude relativa de até $\varepsilon^2/4$.
 ### Runge–Kutta de quarta ordem {#sec-ho-rk4}
 
 O método de Runge–Kutta de quarta ordem (RK4) avalia a velocidade
-$f(X) = AX$ em quatro pontos: no início do passo, duas vezes no meio e no
+$f(\vec\chi) = A\vec\chi$ em quatro pontos: no início do passo, duas vezes no meio e no
 fim, cada avaliação usando a anterior para estimar o ponto,
 $$
-k_1 = f(X_n),
+k_1 = f(\vec\chi_n),
 \qquad
-k_2 = f\!\left(X_n + \tfrac{\Delta t}{2}k_1\right),
+k_2 = f\!\left(\vec\chi_n + \tfrac{\Delta t}{2}k_1\right),
 \qquad
-k_3 = f\!\left(X_n + \tfrac{\Delta t}{2}k_2\right),
+k_3 = f\!\left(\vec\chi_n + \tfrac{\Delta t}{2}k_2\right),
 \qquad
-k_4 = f\!\left(X_n + \Delta t\,k_3\right),
+k_4 = f\!\left(\vec\chi_n + \Delta t\,k_3\right),
 $$
 e avança com a média ponderada
 $$
-X_{n+1} = X_n + \frac{\Delta t}{6}\left(k_1 + 2k_2 + 2k_3 + k_4\right).
+\vec\chi_{n+1} = \vec\chi_n + \frac{\Delta t}{6}\left(k_1 + 2k_2 + 2k_3 + k_4\right).
 $$ {#eq-rk4}
 Os pesos $1, 2, 2, 1$ são os da regra de Simpson para a integral
-$\int_{t_n}^{t_{n+1}} f\,\mathrm{d}t$. Para o sistema linear $f(X) = AX$
+$\int_{t_n}^{t_{n+1}} f\,\mathrm{d}t$. Para o sistema linear $f(\vec\chi) = A\vec\chi$
 as quatro avaliações são
 $$
-k_1 = AX_n,
+k_1 = A\vec\chi_n,
 \qquad
-k_2 = \left(A + \tfrac{\Delta t}{2}A^2\right)X_n,
+k_2 = \left(A + \tfrac{\Delta t}{2}A^2\right)\vec\chi_n,
 \qquad
-k_3 = \left(A + \tfrac{\Delta t}{2}A^2 + \tfrac{\Delta t^2}{4}A^3\right)X_n,
+k_3 = \left(A + \tfrac{\Delta t}{2}A^2 + \tfrac{\Delta t^2}{4}A^3\right)\vec\chi_n,
 $$
 $$
-k_4 = \left(A + \Delta t\,A^2 + \tfrac{\Delta t^2}{2}A^3 + \tfrac{\Delta t^3}{4}A^4\right)X_n,
+k_4 = \left(A + \Delta t\,A^2 + \tfrac{\Delta t^2}{2}A^3 + \tfrac{\Delta t^3}{4}A^4\right)\vec\chi_n,
 $$
 e a média ponderada @eq-rk4 dá
 $$
-X_{n+1} = \left(I + \Delta t\,A + \frac{\Delta t^2A^2}{2} + \frac{\Delta t^3A^3}{6} + \frac{\Delta t^4A^4}{24}\right)X_n,
+\vec\chi_{n+1} = \left(I + \Delta t\,A + \frac{\Delta t^2A^2}{2} + \frac{\Delta t^3A^3}{6} + \frac{\Delta t^4A^4}{24}\right)\vec\chi_n,
 $$ {#eq-rk4-linear}
 os cinco primeiros termos da série @eq-ho-exp-serie de $e^{\Delta t\,A}$.
 (Conferindo o coeficiente de $\Delta t^3A^3$: $k_3$ e $k_4$ contribuem com
@@ -687,21 +946,21 @@ ordem determina o tamanho do erro de fase e da oscilação da energia.
 ### Implementação e comparação {#sec-ho-implementacao}
 
 Os métodos não simpléticos são escritos para um sistema genérico
-$\dot X = f(X)$; os simpléticos, para a forma $\dot x = p/m$, $\dot p = F(x)$.
+$\dot{\vec\chi} = f(\vec\chi)$; os simpléticos, para a forma $\dot x = p/m$, $\dot p = F(x)$.
 As mesmas funções serão usadas para a cadeia, onde $x$, $p$ e $F$ são
 vetores.
 
 ```{python}
-def passo_euler(f, X, dt):
-    return X + dt * f(X)
+def passo_euler(f, chi, dt):
+    return chi + dt * f(chi)
 
 
-def passo_rk4(f, X, dt):
-    k1 = f(X)
-    k2 = f(X + 0.5 * dt * k1)
-    k3 = f(X + 0.5 * dt * k2)
-    k4 = f(X + dt * k3)
-    return X + dt * (k1 + 2 * k2 + 2 * k3 + k4) / 6
+def passo_rk4(f, chi, dt):
+    k1 = f(chi)
+    k2 = f(chi + 0.5 * dt * k1)
+    k3 = f(chi + 0.5 * dt * k2)
+    k4 = f(chi + dt * k3)
+    return chi + dt * (k1 + 2 * k2 + 2 * k3 + k4) / 6
 
 
 def passo_euler_simpletico(F, x, p, dt, m):
@@ -722,8 +981,8 @@ inicial $x(0) = 1$, $p(0) = 0$, e passo $\Delta t = 0{,}05$
 ($\varepsilon = 0{,}05$) durante 20 períodos.
 
 ```{python}
-def f_ho(X):
-    return A @ X
+def f_ho(chi):
+    return A @ chi
 
 
 def F_ho(x):
@@ -745,34 +1004,34 @@ os oito passos exatos (rotações de $0{,}8$ rad):
 #| code-fold: true
 eps_g = 0.8
 n_g = 8
-X0_g = np.array([1.0, 0.0])
+chi0_g = np.array([1.0, 0.0])
 passos_g = {}
-X = np.empty((n_g + 1, 2))
-X[0] = X0_g
+chi = np.empty((n_g + 1, 2))
+chi[0] = chi0_g
 for n in range(n_g):
-    X[n + 1] = passo_euler(f_ho, X[n], eps_g)
-passos_g["Euler"] = X
-X = np.empty((n_g + 1, 2))
-X[0] = X0_g
+    chi[n + 1] = passo_euler(f_ho, chi[n], eps_g)
+passos_g["Euler"] = chi
+chi = np.empty((n_g + 1, 2))
+chi[0] = chi0_g
 for n in range(n_g):
-    X[n + 1] = passo_euler_simpletico(F_ho, X[n, 0], X[n, 1], eps_g, m)
-passos_g["Euler simplético"] = X
-X = np.empty((n_g + 1, 2))
-X[0] = X0_g
+    chi[n + 1] = passo_euler_simpletico(F_ho, chi[n, 0], chi[n, 1], eps_g, m)
+passos_g["Euler simplético"] = chi
+chi = np.empty((n_g + 1, 2))
+chi[0] = chi0_g
 for n in range(n_g):
-    X[n + 1] = passo_verlet(F_ho, X[n, 0], X[n, 1], eps_g, m)
-passos_g["Verlet"] = X
-X = np.empty((n_g + 1, 2))
-X[0] = X0_g
+    chi[n + 1] = passo_verlet(F_ho, chi[n, 0], chi[n, 1], eps_g, m)
+passos_g["Verlet"] = chi
+chi = np.empty((n_g + 1, 2))
+chi[0] = chi0_g
 for n in range(n_g):
-    X[n + 1] = passo_rk4(f_ho, X[n], eps_g)
-passos_g["RK4"] = X
+    chi[n + 1] = passo_rk4(f_ho, chi[n], eps_g)
+passos_g["RK4"] = chi
 
 ang = -eps_g * np.arange(n_g + 1)
 exatos = np.column_stack([np.cos(ang), np.sin(ang)])
 circ = np.linspace(0, 2 * np.pi, 400)
 fig, axs = plt.subplots(1, 4, figsize=(16, 4.3))
-for ax, (nome, X) in zip(axs, passos_g.items()):
+for ax, (nome, chi) in zip(axs, passos_g.items()):
     ax.plot(np.cos(circ), np.sin(circ), color="gray", lw=1)
     ax.plot(exatos[:, 0], exatos[:, 1], "o", mfc="none", color="gray", ms=7)
     if nome == "Euler simplético":
@@ -784,8 +1043,8 @@ for ax, (nome, X) in zip(axs, passos_g.items()):
         ax.plot(pts[0], pts[1], "--", color="C1", lw=1)
     if nome == "Verlet":
         ax.plot(np.cos(circ), np.sqrt(1 - eps_g**2 / 4) * np.sin(circ), "--", color="C1", lw=1)
-    ax.plot(X[:, 0], X[:, 1], "o-", color="C3", ms=6, lw=1)
-    ax.plot(X[0, 0], X[0, 1], "o", color="C3", ms=10)
+    ax.plot(chi[:, 0], chi[:, 1], "o-", color="C3", ms=6, lw=1)
+    ax.plot(chi[0, 0], chi[0, 1], "o", color="C3", ms=10)
     lim = 3.0 if nome == "Euler" else 1.4
     ax.set_xlim(-lim, lim)
     ax.set_ylim(-lim, lim)
@@ -797,8 +1056,8 @@ plt.show()
 ```
 
 ```{python}
-for nome, X in passos_g.items():
-    H = energia_ho(X[:, 0], X[:, 1])
+for nome, chi in passos_g.items():
+    H = energia_ho(chi[:, 0], chi[:, 1])
     print(f"{nome:17s}: H_8/H_0 = {H[-1] / H[0]:.3f}, min H/H_0 = {H.min() / H[0]:.3f}, max H/H_0 = {H.max() / H[0]:.3f}")
 print(f"previsões: Euler (1+eps^2)^8 = {(1 + eps_g**2) ** n_g:.1f}, RK4 (1 - eps^6/72 + eps^8/576)^8 = {(1 - eps_g**6 / 72 + eps_g**8 / 576) ** n_g:.3f}")
 ```
@@ -807,32 +1066,32 @@ print(f"previsões: Euler (1+eps^2)^8 = {(1 + eps_g**2) ** n_g:.1f}, RK4 (1 - ep
 dt = 0.05
 n_passos = int(20 * 2 * np.pi / dt)
 t = dt * np.arange(n_passos + 1)
-X0 = np.array([1.0, 0.0])
+chi0 = np.array([1.0, 0.0])
 
 
-def integra_ho(nome, X0, dt, n_passos):
-    X = np.empty((n_passos + 1, 2))
-    X[0] = X0
+def integra_ho(nome, chi0, dt, n_passos):
+    chi = np.empty((n_passos + 1, 2))
+    chi[0] = chi0
     for n in range(n_passos):
         if nome == "Euler":
-            X[n + 1] = passo_euler(f_ho, X[n], dt)
+            chi[n + 1] = passo_euler(f_ho, chi[n], dt)
         elif nome == "RK4":
-            X[n + 1] = passo_rk4(f_ho, X[n], dt)
+            chi[n + 1] = passo_rk4(f_ho, chi[n], dt)
         elif nome == "Euler simplético":
-            X[n + 1] = passo_euler_simpletico(F_ho, X[n, 0], X[n, 1], dt, m)
+            chi[n + 1] = passo_euler_simpletico(F_ho, chi[n, 0], chi[n, 1], dt, m)
         elif nome == "Verlet":
-            X[n + 1] = passo_verlet(F_ho, X[n, 0], X[n, 1], dt, m)
-    return X
+            chi[n + 1] = passo_verlet(F_ho, chi[n, 0], chi[n, 1], dt, m)
+    return chi
 
 
 metodos = ["Euler", "RK4", "Euler simplético", "Verlet"]
-trajetorias = {nome: integra_ho(nome, X0, dt, n_passos) for nome in metodos}
+trajetorias = {nome: integra_ho(nome, chi0, dt, n_passos) for nome in metodos}
 
-E0 = energia_ho(*X0)
+E0 = energia_ho(*chi0)
 eps = omega * dt
 print(f"{n_passos} passos, eps = {eps}")
-for nome, X in trajetorias.items():
-    erro = np.abs(energia_ho(X[:, 0], X[:, 1]) - E0) / E0
+for nome, chi in trajetorias.items():
+    erro = np.abs(energia_ho(chi[:, 0], chi[:, 1]) - E0) / E0
     print(f"{nome:17s}: erro relativo final {erro[-1]:.2e}, máximo {erro.max():.2e}")
 print(f"previsões: Euler (1+eps^2)^n - 1 = {(1 + eps**2) ** n_passos - 1:.2e}, "
       f"RK4 n eps^6/72 = {n_passos * eps**6 / 72:.2e}, "
@@ -844,8 +1103,8 @@ print(f"previsões: Euler (1+eps^2)^n - 1 = {(1 + eps**2) ** n_passos - 1:.2e}, 
 #| fig-cap: "Erro relativo na energia do oscilador harmônico após 2513 passos com $\\varepsilon = 0{,}05$. Euler explícito: erro final $5{,}3\\times 10^{2}$, igual a $(1+\\varepsilon^2)^n - 1$. RK4: $5{,}5\\times 10^{-7}$, igual a $n\\varepsilon^6/72$. Euler simplético e Verlet: erro oscilante, com máximos $2{,}56\\times 10^{-2}$ ($\\approx\\varepsilon/2$) e $6{,}25\\times 10^{-4}$ ($=\\varepsilon^2/4$), que não crescem com o tempo."
 #| code-fold: true
 fig, ax = plt.subplots()
-for nome, X in trajetorias.items():
-    erro = np.abs(energia_ho(X[:, 0], X[:, 1]) - E0) / E0
+for nome, chi in trajetorias.items():
+    erro = np.abs(energia_ho(chi[:, 0], chi[:, 1]) - E0) / E0
     ax.semilogy(t[1:] / (2 * np.pi), erro[1:], label=nome, lw=0.8)
 ax.set_xlabel("tempo (períodos)")
 ax.set_ylabel(r"$|H - H_0| / H_0$")
@@ -860,8 +1119,8 @@ plt.show()
 #| code-fold: true
 fig, axs = plt.subplots(1, 2, figsize=(9, 4.5))
 for ax, nome in zip(axs, ["Euler", "Verlet"]):
-    X = trajetorias[nome]
-    ax.plot(X[:, 0], X[:, 1], lw=0.6)
+    chi = trajetorias[nome]
+    ax.plot(chi[:, 0], chi[:, 1], lw=0.6)
     ax.set_title(nome)
     ax.set_xlabel("$x$")
     ax.set_ylabel("$p$")
@@ -871,19 +1130,20 @@ plt.show()
 ```
 
 Por fim, o produto simplético @eq-ho-produto-simpletico de duas
-trajetórias numéricas, com condições iniciais $X_0 = (1, 0)$ e
-$Y_0 = (0, 1)$. Um passo multiplica $\Omega(X, Y)$ por $\det M$: os
+trajetórias numéricas, com condições iniciais $\vec\chi_1 = (1, 0)^{\mathsf T}$ e
+$\vec\chi_2 = (0, 1)^{\mathsf T}$. Pela @eq-ho-det, um passo multiplica
+$\Omega(\vec\chi_1, \vec\chi_2)$ por $\det M$: os
 métodos simpléticos o conservam exatamente, o Euler explícito o
 multiplica por $(1 + \varepsilon^2)^n$ e o RK4 por
 $|R(-i\varepsilon)|^{2n}$.
 
 ```{python}
 Omega = np.array([[0.0, 1.0], [-1.0, 0.0]])
-Y0 = np.array([0.0, 1.0])
+chi0_2 = np.array([0.0, 1.0])
 for nome in metodos:
-    X, Y = trajetorias[nome], integra_ho(nome, Y0, dt, n_passos)
-    prod = np.einsum("ni,ij,nj->n", X, Omega, Y)
-    print(f"{nome:17s}: Omega(X_n, Y_n) / Omega(X_0, Y_0) = {prod[-1] / prod[0]:.10f}, "
+    chi1, chi2 = trajetorias[nome], integra_ho(nome, chi0_2, dt, n_passos)
+    prod = np.einsum("ni,ij,nj->n", chi1, Omega, chi2)
+    print(f"{nome:17s}: Omega(chi1_n, chi2_n) / Omega(chi1_0, chi2_0) = {prod[-1] / prod[0]:.10f}, "
           f"desvio máximo {np.abs(prod / prod[0] - 1).max():.2e}")
 print(f"previsões: Euler (1+eps^2)^n = {(1 + eps**2) ** n_passos:.4f}, "
       f"RK4 (1 - eps^6/72 + eps^8/576)^n = {(1 - eps**6 / 72 + eps**8 / 576) ** n_passos:.10f}")
@@ -902,11 +1162,15 @@ print(f"previsões: Euler (1+eps^2)^n = {(1 + eps**2) ** n_passos:.4f}, "
    ficam no círculo unitário se, e somente se, $\omega\Delta t < 2$.
 4. Calcule $|R(-i\varepsilon)|^2$ para $R(w) = 1 + w + w^2/2 + w^3/6 + w^4/24$
    e obtenha $1 - \varepsilon^6/72 + \varepsilon^8/576$.
-5. O método de Euler implícito é $X_{n+1} = X_n + \Delta t\, AX_{n+1}$.
+5. Mostre que toda matriz real $2\times 2$ com $\det M = 1$ e
+   $M_{12} \neq 0$ satisfaz @eq-ho-sp2-cisalhamentos. Escreva a matriz de
+   rotação $M_{\rm ex}(\varepsilon)$ como produto de três cisalhamentos e
+   compare com $M_{\rm V}$ de @eq-verlet-matriz.
+6. O método de Euler implícito é $\vec\chi_{n+1} = \vec\chi_n + \Delta t\, A\vec\chi_{n+1}$.
    Escreva sua matriz $M(\varepsilon)$ nas variáveis adimensionais e mostre
    que $H_{n+1} = H_n/(1 + \varepsilon^2)$. Como é a trajetória no espaço
    de fase?
-6. Modifique o código para $\Delta t = 0{,}5$ e $\Delta t = 2{,}1$ e
+7. Modifique o código para $\Delta t = 0{,}5$ e $\Delta t = 2{,}1$ e
    compare os quatro métodos. Explique o resultado do Verlet e do Euler
    simplético com @eq-verlet-estabilidade.
 
@@ -923,11 +1187,12 @@ que acopla as partículas, é o assunto da @sec-circulantes.
 
 Considere $N \ge 3$ partículas de massa $m$, dispostas ao longo de uma
 linha horizontal com espaçamento $\Delta x$ e numeradas por
-$j = 0, 1, \dots, N-1$. Cada partícula se move apenas na vertical, e sua
-altura em relação à posição de equilíbrio é $h^j(t)$. As $N$ alturas
-formam o vetor
+$j = 0, 1, \dots, N-1$. Veremos na @sec-cadeia-forcas que, partindo do
+repouso nas suas posições horizontais de equilíbrio, as partículas se
+movem apenas na vertical. A altura da partícula $j$ em relação à posição
+de equilíbrio é $h^j(t)$, e as $N$ alturas formam o vetor coluna
 $$
-h \equiv \begin{pmatrix} h^0 & h^1 & \cdots & h^{N-1} \end{pmatrix}^{\mathsf T} \in \mathbb R^N .
+\vec h \equiv \begin{pmatrix} h^0 & h^1 & \cdots & h^{N-1} \end{pmatrix}^{\mathsf T} \in \mathbb R^N .
 $$
 Há dois tipos de mola, ambos de comprimento natural nulo:
 
@@ -1008,18 +1273,84 @@ plt.show()
 
 Uma mola de constante $K$ e comprimento natural nulo exerce sobre cada
 extremidade uma força igual a $K$ vezes o vetor que vai dessa extremidade
-até a outra. Para a partícula $j$, o vetor até a partícula $j+1$ é
-$(\Delta x,\ h^{j+1} - h^j)$ e o vetor até a partícula $j-1$ é
-$(-\Delta x,\ h^{j-1} - h^j)$. As duas molas exercem juntas
+até a outra. Suponha que as partículas estejam nas posições horizontais de
+equilíbrio, separadas por $\Delta x$. Para a partícula $j$, o vetor até a
+partícula $j+1$ é $(\Delta x,\ h^{j+1} - h^j)$ e o vetor até a partícula
+$j-1$ é $(-\Delta x,\ h^{j-1} - h^j)$ (@fig-cadeia-forcas). As duas molas
+exercem juntas
 $$
 K\begin{pmatrix} \Delta x \\ h^{j+1} - h^j \end{pmatrix}
 + K\begin{pmatrix} -\Delta x \\ h^{j-1} - h^j \end{pmatrix}
-= \begin{pmatrix} 0 \\ K\left(h^{j+1} - 2h^j + h^{j-1}\right) \end{pmatrix}.
+= \begin{pmatrix} 0 \\ K\left(h^{j+1} - h^j\right) + K\left(h^{j-1} - h^j\right) \end{pmatrix}.
 $$
-As componentes horizontais se cancelam e a componente vertical é linear
-nas alturas sem nenhuma aproximação de pequenas amplitudes. A mola
-vertical de constante $K_0$ exerce $-K_0 h^j$. A força vertical total
-sobre a partícula $j$ é
+As componentes horizontais, $K\Delta x$ e $-K\Delta x$, se cancelam
+quaisquer que sejam as alturas. A mola de constante $K_0$ liga a partícula
+ao ponto de altura zero logo abaixo dela e exerce a força vertical
+$-K_0 h^j$, sem componente horizontal. Se as partículas partem do repouso
+nas posições horizontais de equilíbrio, a força horizontal sobre cada uma é
+nula, a velocidade horizontal continua nula, e as posições horizontais não
+mudam: as partículas se movem apenas na vertical, como afirmado na
+@sec-cadeia-modelo. A componente vertical é linear nas alturas sem nenhuma
+aproximação de pequenas amplitudes.
+
+```{python}
+#| label: fig-cadeia-forcas
+#| fig-cap: "Forças sobre a partícula $j$ para $K = 1$, $K_0 = 0{,}5$, $\\Delta x = 1$ e alturas $h^{j-1} = 0{,}3$, $h^j = 0{,}8$, $h^{j+1} = 0{,}5$. As molas de constante $K$ exercem $K(\\Delta x,\\ h^{j+1} - h^j) = (1;\\ -0{,}3)$ e $K(-\\Delta x,\\ h^{j-1} - h^j) = (-1;\\ -0{,}5)$ (azul); as componentes horizontais (pontilhadas) se cancelam e a soma é $(0;\\ -0{,}8) = (0;\\ K(h^{j+1} - 2h^j + h^{j-1}))$ (vermelho). A mola de constante $K_0$ exerce $(0;\\ -K_0h^j) = (0;\\ -0{,}4)$ (verde)."
+#| code-fold: true
+K_fc, K0_fc, dx_fc = 1.0, 0.5, 1.0
+h_fc = np.array([0.3, 0.8, 0.5])
+x_fc = dx_fc * np.array([-1.0, 0.0, 1.0])
+pj = np.array([x_fc[1], h_fc[1]])
+f_dir = K_fc * np.array([x_fc[2] - x_fc[1], h_fc[2] - h_fc[1]])
+f_esq = K_fc * np.array([x_fc[0] - x_fc[1], h_fc[0] - h_fc[1]])
+f_mola = f_dir + f_esq
+f_K0 = np.array([0.0, -K0_fc * h_fc[1]])
+
+fig, ax = plt.subplots(figsize=(8, 3.3))
+ax.axhline(0.0, color="gray", ls=":", lw=1)
+ax.plot(x_fc, h_fc, color="C0", lw=1, alpha=0.5)
+ax.plot([pj[0], pj[0]], [0.0, pj[1]], color="C2", lw=1, alpha=0.5)
+ax.plot(x_fc, h_fc, "o", color="k", ms=12, zorder=3)
+
+
+def seta(origem, vetor, cor, estilo="-", lw=2.2):
+    ax.annotate("", xy=origem + vetor, xytext=origem,
+                arrowprops=dict(arrowstyle="-|>", color=cor, lw=lw, ls=estilo))
+
+
+for f_v in (f_dir, f_esq):
+    seta(pj, f_v, "C0")
+    seta(pj, np.array([f_v[0], 0.0]), "C0", estilo=":", lw=1.5)
+seta(pj, f_mola, "C3")
+seta(pj + np.array([0.08, 0.0]), f_K0, "C2")
+ax.text(*(pj + f_dir + np.array([0.05, 0.05])), r"$K(\Delta x,\ h^{j+1} - h^j)$", color="C0", fontsize=12)
+ax.text(*(pj + f_esq + np.array([-0.05, -0.12])), r"$K(-\Delta x,\ h^{j-1} - h^j)$", color="C0", fontsize=12, ha="right")
+ax.text(pj[0] + 0.08, pj[1] + 0.85 * f_mola[1], r"$K(h^{j+1} - 2h^j + h^{j-1})$", color="C3", fontsize=12, ha="left")
+ax.text(pj[0] + 0.16, pj[1] + f_K0[1] + 0.02, r"$-K_0 h^j$", color="C2", fontsize=12)
+for x, nome in zip(x_fc, ["$j-1$", "$j$", "$j+1$"]):
+    ax.text(x, -0.25, nome, ha="center", fontsize=12)
+ax.set_xlim(-2.0, 2.0)
+ax.set_ylim(-0.35, 1.0)
+ax.set_aspect("equal")
+ax.axis("off")
+fig.tight_layout()
+plt.show()
+```
+
+A força da vizinha da direita, $K(h^{j+1} - h^j)$, e a da vizinha da
+esquerda, $K(h^{j-1} - h^j)$, somam
+$$
+K\left(h^{j+1} - h^j\right) + K\left(h^{j-1} - h^j\right)
+= K\Delta x\left(\frac{h^{j+1} - h^j}{\Delta x} - \frac{h^j - h^{j-1}}{\Delta x}\right)
+= K\left(h^{j+1} - 2h^j + h^{j-1}\right).
+$$ {#eq-cadeia-segunda-diferenca}
+O parêntese do meio é a inclinação da cadeia à direita da partícula $j$
+menos a inclinação à esquerda. Dividido por $\Delta x$, é a aproximação
+usual da segunda derivada: a força das molas de constante $K$ é
+proporcional à curvatura da cadeia. Ela aponta para cima quando $h^j$ está
+abaixo da média das alturas vizinhas, $(h^{j+1} + h^{j-1})/2$, e para
+baixo quando está acima. Somando a mola de constante $K_0$, a força
+vertical total sobre a partícula $j$ é
 $$
 F_j = K\left(h^{j+1} - 2h^j + h^{j-1}\right) - K_0\, h^j,
 $$ {#eq-cadeia-forca}
@@ -1032,16 +1363,13 @@ Dois casos particulares mostram o papel de cada mola.
 
 * Para $K = 0$, cada partícula obedece a $m\ddot h^j = -K_0 h^j$: são $N$
   osciladores independentes, cada um igual ao da @sec-ho com $\kappa = K_0$
-  e frequência
-  $$
-  \omega_0 \equiv \sqrt{K_0/m}.
-  $$
+  e frequência $\sqrt{K_0/m}$.
 * Para $K \neq 0$, a equação de $h^j$ contém $h^{j+1}$ e $h^{j-1}$: os
   osciladores estão **acoplados**, e não é possível resolver a equação de
   uma partícula sem as outras.
 
-A combinação $h^{j+1} - 2h^j + h^{j-1}$ é a segunda diferença das alturas.
-No limite contínuo da Aula 2 ela dará $\Delta x^2\,\partial^2\phi/\partial x^2$.
+No limite contínuo da Aula 2, a segunda diferença
+$h^{j+1} - 2h^j + h^{j-1}$ dará $\Delta x^2\,\partial^2\phi/\partial x^2$.
 
 ::: {.callout-note collapse="true"}
 ## Molas com comprimento natural $\ell_0 \neq 0$
@@ -1059,7 +1387,8 @@ K\left(1 - \frac{\ell_0}{\Delta x}\right)\left(h^{j+1} - h^j\right) = \frac{\tau
 $$
 em que $\tau$ é a tensão da mola na configuração de equilíbrio. As
 componentes horizontais, $K(d - \ell_0)\,\Delta x/d$, se cancelam entre os
-dois vizinhos na mesma ordem. Obtemos @eq-cadeia-forca com $K$
+dois vizinhos na mesma ordem, e as posições horizontais ficam fixas apenas
+nessa aproximação. Obtemos @eq-cadeia-forca com $K$
 substituído por $\tau/\Delta x$, agora válida apenas para pequenas
 inclinações $|h^{j+1} - h^j| \ll \Delta x$: é o modelo de uma corda
 tensionada. Com $\ell_0 = 0$ a mesma equação vale para qualquer
@@ -1072,7 +1401,7 @@ Para escrever @eq-cadeia-newton em forma matricial, definimos o
 **operador de translação** $T$, a matriz $N \times N$ que desloca as
 componentes de um vetor em uma posição:
 $$
-(Th)^j \equiv h^{j+1},
+(T\vec h)^j \equiv h^{j+1},
 \qquad\text{ou seja,}\qquad
 T^j{}_k = \delta^{j+1}{}_{k},
 $$ {#eq-cadeia-translacao}
@@ -1082,22 +1411,30 @@ T = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0
 \qquad
 T\begin{pmatrix} h^0 \\ h^1 \\ h^2 \\ h^3 \end{pmatrix} = \begin{pmatrix} h^1 \\ h^2 \\ h^3 \\ h^0 \end{pmatrix}.
 $$
-O $1$ no canto inferior esquerdo é a condição periódica: $(Th)^3 = h^4 = h^0$.
+O $1$ no canto inferior esquerdo é a condição periódica: $(T\vec h)^3 = h^4 = h^0$.
 Cada linha e cada coluna de $T$ tem exatamente um elemento igual a $1$ e
 os outros nulos: $T$ é uma matriz de permutação. Daí seguem três
 propriedades.
 
-1. $T^{-1} = T^{\mathsf T}$, e $(T^{-1}h)^j = h^{j-1}$: a inversa desloca no
-   sentido contrário.
+1. $T^{-1} = T^{\mathsf T}$, e $(T^{-1}\vec h)^j = h^{j-1}$: a inversa
+   desloca no sentido contrário.
 2. $T^N = I$: $N$ deslocamentos de uma posição voltam ao vetor original.
-3. $T$ preserva o produto escalar: $(Th)^{\mathsf T}(Tg) = h^{\mathsf T}g$
-   para quaisquer $h, g \in \mathbb R^N$.
+3. $T$ preserva o produto escalar: $(T\vec h)^{\mathsf T}(T\vec g) = \vec h^{\mathsf T}\vec g$
+   para quaisquer $\vec h, \vec g \in \mathbb R^N$.
 
-Com $T$, a segunda diferença é
-$h^{j+1} - 2h^j + h^{j-1} = (Th)^j - 2h^j + (T^{-1}h)^j = -(Dh)^j$, em que
+Com $T$, as forças sobre todas as partículas se escrevem de uma vez. A
+força da vizinha da direita sobre a partícula $j$ é
+$K(h^{j+1} - h^j) = K(T\vec h - \vec h)^j$, e a da vizinha da esquerda é
+$K(h^{j-1} - h^j) = K(T^{-1}\vec h - \vec h)^j$. Com o vetor das forças
+$\vec F \equiv (F_0, \dots, F_{N-1})^{\mathsf T}$, @eq-cadeia-forca é
 $$
+\vec F = K\left(T\vec h - \vec h\right) + K\left(T^{-1}\vec h - \vec h\right) - K_0\,\vec h
+= -\left(KD + K_0 I\right)\vec h,
+\qquad
 D \equiv 2I - T - T^{-1}.
 $$ {#eq-cadeia-D}
+A soma das duas primeiras parcelas é a segunda diferença
+@eq-cadeia-segunda-diferenca, $(T\vec h)^j - 2h^j + (T^{-1}\vec h)^j = -(D\vec h)^j$.
 Para $N = 5$,
 $$
 D = \begin{pmatrix}
@@ -1112,7 +1449,7 @@ A matriz $-D$ é o Laplaciano discreto com condições periódicas. Como
 $(T^{-1})^{\mathsf T} = T$, a matriz $D$ é simétrica. As $N$ equações
 @eq-cadeia-newton se reduzem a uma equação matricial:
 $$
-m\ddot h = -\left(KD + K_0 I\right) h.
+m\ddot{\vec h} = \vec F = -\left(KD + K_0 I\right) \vec h.
 $$ {#eq-cadeia-newton-matricial}
 
 ```{python}
@@ -1140,7 +1477,7 @@ plt.show()
 
 No `numpy`, a translação de um vetor é a função `np.roll`:
 `np.roll(h, -1)[j]` é `h[j + 1]`, com o índice lido módulo $N$. Então
-`np.roll(h, -1)` é $Th$ e `np.roll(h, 1)` é $T^{-1}h$, e a força
+`np.roll(h, -1)` é $T\vec h$ e `np.roll(h, 1)` é $T^{-1}\vec h$, e a força
 @eq-cadeia-forca pode ser calculada sem montar nenhuma matriz. Conferimos
 com a matriz $T$ montada explicitamente:
 
@@ -1162,7 +1499,7 @@ quadrado do seu comprimento. Para a mola entre $j$ e $j+1$ ela vale
 $(K/2)\left[\Delta x^2 + (h^{j+1} - h^j)^2\right]$; o termo $\Delta x^2$ é
 constante e não contribui para as forças. A energia potencial da cadeia é
 $$
-V(h) \equiv \frac{K}{2}\sum_{j=0}^{N-1}\left(h^{j+1} - h^j\right)^2 + \frac{K_0}{2}\sum_{j=0}^{N-1}\left(h^j\right)^2 .
+V(\vec h) \equiv \frac{K}{2}\sum_{j=0}^{N-1}\left(h^{j+1} - h^j\right)^2 + \frac{K_0}{2}\sum_{j=0}^{N-1}\left(h^j\right)^2 .
 $$ {#eq-cadeia-potencial}
 Para escrevê-la com $D$, expandimos o quadrado:
 $$
@@ -1176,12 +1513,12 @@ $\sum_j h^jh^{j+1} + \sum_j h^jh^{j-1}$,
 $$
 \sum_{j}\left(h^{j+1} - h^j\right)^2
 = \sum_j h^j\left(2h^j - h^{j+1} - h^{j-1}\right)
-= \sum_j h^j (Dh)^j
-= h^{\mathsf T} D\, h,
+= \sum_j h^j (D\vec h)^j
+= \vec h^{\mathsf T} D\, \vec h,
 $$
 e portanto
 $$
-V(h) = \frac12\, h^{\mathsf T}\left(KD + K_0 I\right) h .
+V(\vec h) = \frac12\, \vec h^{\mathsf T}\left(KD + K_0 I\right) \vec h .
 $$
 A força é menos o gradiente de $V$. A altura $h^j$ aparece nos termos
 $j-1$ e $j$ da primeira soma de @eq-cadeia-potencial e no termo $j$ da
@@ -1190,33 +1527,51 @@ $$
 \frac{\partial V}{\partial h^j} = K\left(h^j - h^{j-1}\right) - K\left(h^{j+1} - h^j\right) + K_0 h^j = -F_j ,
 $$
 com $F_j$ dado por @eq-cadeia-forca. Com os momentos $p_j \equiv m\dot h^j$,
-a Hamiltoniana é
+reunidos no vetor $\vec p \equiv (p_0, \dots, p_{N-1})^{\mathsf T}$, a
+Hamiltoniana é
 $$
-H(h, p) \equiv \sum_{j=0}^{N-1}\frac{p_j^2}{2m} + \frac12\, h^{\mathsf T}\left(KD + K_0 I\right) h ,
+H(\vec h, \vec p) \equiv \sum_{j=0}^{N-1}\frac{p_j^2}{2m} + \frac12\, \vec h^{\mathsf T}\left(KD + K_0 I\right) \vec h ,
 $$ {#eq-cadeia-hamiltoniana}
 e as equações de Hamilton, $\dot h^j = \partial H/\partial p_j = p_j/m$ e
 $\dot p_j = -\partial H/\partial h^j = F_j$, reproduzem @eq-cadeia-newton.
 
-No espaço de fase, de dimensão $2N$, o vetor
-$X \equiv (h^0, \dots, h^{N-1}, p_0, \dots, p_{N-1})^{\mathsf T}$ obedece a
+**Forma matricial.** Como na @sec-ho-matricial, reunimos as $N$ alturas e
+os $N$ momentos em um vetor do espaço de fase, agora de dimensão $2N$, e
+as $2N$ derivadas parciais de $H$ no gradiente:
 $$
-\dot X = \Omega\,\mathsf H\, X \equiv AX,
+\vec\chi \equiv \begin{pmatrix} h^0 & \cdots & h^{N-1} & p_0 & \cdots & p_{N-1} \end{pmatrix}^{\mathsf T}
+= \begin{pmatrix} \vec h \\ \vec p \end{pmatrix},
 \qquad
+\vec\partial H \equiv \begin{pmatrix} \dfrac{\partial H}{\partial h^0} & \cdots & \dfrac{\partial H}{\partial h^{N-1}} & \dfrac{\partial H}{\partial p_0} & \cdots & \dfrac{\partial H}{\partial p_{N-1}} \end{pmatrix}^{\mathsf T}
+= \begin{pmatrix} \left(KD + K_0 I\right)\vec h \\ \vec p/m \end{pmatrix}.
+$$
+As equações de Hamilton são de novo $\dot{\vec\chi} = \Omega\,\vec\partial H$:
+a matriz simplética troca o bloco das derivadas em relação às alturas com o
+bloco das derivadas em relação aos momentos, com um sinal,
+$$
 \Omega = \begin{pmatrix} 0 & I \\ -I & 0 \end{pmatrix},
+\qquad\text{por exemplo, para } N = 2,\qquad
+\Omega = \begin{pmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ -1 & 0 & 0 & 0 \\ 0 & -1 & 0 & 0 \end{pmatrix},
+$$
+com blocos $N \times N$. A Hamiltoniana é
+$H = \frac12\vec\chi^{\mathsf T}\mathsf H\,\vec\chi$, $\vec\partial H = \mathsf H\vec\chi$, e
+$$
+\dot{\vec\chi} = \Omega\,\mathsf H\, \vec\chi \equiv A\vec\chi,
 \qquad
 \mathsf H = \begin{pmatrix} KD + K_0 I & 0 \\ 0 & I/m \end{pmatrix},
 \qquad
-A = \begin{pmatrix} 0 & I/m \\ -\left(KD + K_0 I\right) & 0 \end{pmatrix},
+A = \begin{pmatrix} 0 & I/m \\ -\left(KD + K_0 I\right) & 0 \end{pmatrix}.
 $$ {#eq-cadeia-matricial}
-com blocos $N \times N$. É a forma @eq-ho-matricial do oscilador isolado,
-com o número $m\omega^2$ substituído pela matriz $KD + K_0 I$. A
-demonstração de que o produto simplético @eq-ho-produto-simpletico é
-conservado usou apenas $A = \Omega\mathsf H$ com $\mathsf H$ simétrica, e
-vale aqui sem mudanças. A diferença está no quadrado de $A$:
+É a forma @eq-ho-matricial do oscilador isolado, com o número $\kappa$
+substituído pela matriz $KD + K_0 I$. A demonstração de que o produto
+simplético $\Omega(\vec\chi_1, \vec\chi_2) = \vec\chi_1^{\mathsf T}\Omega\,\vec\chi_2$
+é conservado usou apenas $A = \Omega\mathsf H$ com $\mathsf H$ simétrica
+(@eq-ho-AOmega), e vale aqui sem mudanças. A diferença está no quadrado de
+$A$:
 $$
 A^2 = -\begin{pmatrix} \left(KD + K_0 I\right)/m & 0 \\ 0 & \left(KD + K_0 I\right)/m \end{pmatrix}.
 $$
-Para o oscilador isolado $A^2 = -\omega^2 I$ era um múltiplo da
+Para o oscilador isolado $A^2 = -(\kappa/m) I$ era um múltiplo da
 identidade, e a série de $e^{tA}$ se somava em senos e cossenos. Aqui
 $A^2$ envolve a matriz $KD + K_0 I$, que acopla as partículas. Na
 @sec-circulantes encontraremos uma base em que essa matriz é diagonal; nessa base a
@@ -1227,67 +1582,82 @@ na @sec-ho-soma-serie.
 
 Considere primeiro $K_0 = 0$. A energia potencial @eq-cadeia-potencial
 depende então apenas das diferenças $h^{j+1} - h^j$, e $H$ não muda quando
-todas as alturas são deslocadas pela mesma quantidade:
+todas as alturas são deslocadas pela mesma quantidade $\beta$,
+$h^j \to h^j + \beta$ para todo $j$. Para escrever esse deslocamento com
+vetores, definimos o vetor de $N$ componentes iguais a $1$,
 $$
-h^j \to h^j + \beta \quad \text{para todo } j,
-\qquad\text{isto é,}\qquad
-h \to h + \beta\,\mathbf 1,
-\qquad
-\mathbf 1 \equiv \begin{pmatrix} 1 & 1 & \cdots & 1 \end{pmatrix}^{\mathsf T},
+\vec 1 \equiv \begin{pmatrix} 1 & 1 & \cdots & 1 \end{pmatrix}^{\mathsf T} \in \mathbb R^N,
+$$
+que representa a configuração em que todas as partículas estão na altura
+$1$. O deslocamento é
+$$
+\vec h \to \vec h + \beta\,\vec 1,
 $$
 com $\beta$ real. Nenhuma altura é preferida pela dinâmica: só as
-diferenças de altura entram nas equações. Em termos de $D$, cada linha de
-$D$ soma $2 - 1 - 1 = 0$, logo
+diferenças de altura entram nas equações. O produto escalar com $\vec 1$
+soma as componentes de um vetor, $\vec 1^{\mathsf T}\vec h = \sum_j h^j$. Em
+termos de $D$, cada linha de $D$ soma $2 - 1 - 1 = 0$, logo
 $$
-D\,\mathbf 1 = 0 :
+D\,\vec 1 = 0 :
 $$
-$\mathbf 1$ é autovetor de $D$ com autovalor zero. Como
-$h^{\mathsf T}Dh = \sum_j (h^{j+1} - h^j)^2 \ge 0$, com igualdade somente
-quando todas as alturas são iguais, $D$ é positiva semidefinida e os
-múltiplos de $\mathbf 1$ são os únicos vetores com $Dh = 0$.
+$\vec 1$ é autovetor de $D$ com autovalor zero. Como
+$\vec h^{\mathsf T}D\vec h = \sum_j (h^{j+1} - h^j)^2 \ge 0$, com igualdade
+somente quando todas as alturas são iguais, $D$ é positiva semidefinida e
+os múltiplos de $\vec 1$ são os únicos vetores com $D\vec h = 0$.
 
 A essa simetria corresponde uma quantidade conservada. O momento total
 $$
-P \equiv \sum_{j=0}^{N-1} p_j
+P \equiv \sum_{j=0}^{N-1} p_j = \vec 1^{\mathsf T}\vec p
 $$
 varia com a soma das forças:
 $$
 \dot P = \sum_j F_j
 = K\sum_j\left(h^{j+1} - 2h^j + h^{j-1}\right) - K_0\sum_j h^j
-= -K_0 N\,\bar h,
-\qquad
-\bar h \equiv \frac1N\sum_{j=0}^{N-1} h^j .
+= -K_0\sum_j h^j .
 $$ {#eq-cadeia-P}
 A primeira soma é nula porque cada $h^j$ aparece nela três vezes, com
 coeficientes $1$, $-2$ e $1$: as molas de constante $K$ exercem apenas
-forças internas, que se cancelam aos pares. Como as massas são iguais,
-$\bar h$ é a altura do centro de massa, e $\dot{\bar h} = P/(Nm)$.
-Combinando com @eq-cadeia-P,
-$$
-\ddot{\bar h} = -\frac{K_0}{m}\,\bar h = -\omega_0^2\,\bar h .
-$$ {#eq-cadeia-hbar}
-A altura média obedece à equação de um único oscilador de frequência
-$\omega_0$, qualquer que seja o movimento das outras combinações das
-alturas. Os dois casos são:
+forças internas, que se cancelam aos pares. Em forma vetorial,
+$\vec 1^{\mathsf T}D = (D\vec 1)^{\mathsf T} = 0$, pois $D$ é simétrica.
 
-* **$K_0 = 0$.** $\dot P = 0$, e
+**A altura média e o momento por partícula.** Dividindo por $N$, definimos
+$$
+\bar h \equiv \frac1N\sum_{j=0}^{N-1} h^j = \frac{\vec 1^{\mathsf T}\vec h}{N},
+\qquad
+\bar p \equiv \frac1N\sum_{j=0}^{N-1} p_j = \frac{P}{N}.
+$$
+Como as massas são iguais, $\bar h$ é a altura do centro de massa. A
+média das equações de Hamilton $\dot h^j = p_j/m$ e de @eq-cadeia-P dá
+$$
+\dot{\bar h} = \frac{\bar p}{m},
+\qquad
+\dot{\bar p} = -K_0\,\bar h .
+$$ {#eq-cadeia-hbar}
+Têm a forma das equações de Hamilton @eq-ho-hamilton de um único
+oscilador de massa $m$ e constante de mola $\kappa = K_0$, para o par
+$(\bar h, \bar p)$. Elas não contêm nenhuma outra combinação das alturas
+ou dos momentos: o par $(\bar h, \bar p)$ evolui desacoplado do resto da
+cadeia, qualquer que seja o movimento das partículas. Os dois casos são:
+
+* **$K_0 = 0$.** $\dot{\bar p} = 0$, o momento total é conservado, e
   $$
-  \bar h(t) = \bar h(0) + \frac{P}{Nm}\,t .
+  \bar h(t) = \bar h(0) + \frac{\bar p}{m}\,t .
   $$
   O centro de massa se move como uma partícula livre: é um modo de
   frequência zero. Qualquer valor de $\bar h$ é uma configuração de
   equilíbrio, e um momento total $P \neq 0$ desloca a cadeia inteira sem
   limite.
-* **$K_0 > 0$.** A mola de constante $K_0$ torna $h = 0$ a altura de
-  equilíbrio, $P$ deixa de ser conservado, e
+* **$K_0 > 0$.** A mola de constante $K_0$ torna $\vec h = 0$ a
+  configuração de equilíbrio, $P$ deixa de ser conservado, e pela
+  @eq-ho-solucao com $\kappa = K_0$,
   $$
-  \bar h(t) = \bar h(0)\cos\omega_0 t + \frac{P(0)}{Nm\,\omega_0}\sin\omega_0 t .
+  \bar h(t) = \bar h(0)\cos\left(\sqrt{K_0/m}\;t\right) + \frac{\bar p(0)}{\sqrt{mK_0}}\sin\left(\sqrt{K_0/m}\;t\right) .
   $$
 
 No limite contínuo da Aula 2, a constante $K_0$ dará o termo de massa da
 equação de Klein–Gordon, e a cadeia com $K_0 = 0$ dará um campo sem
 massa. O título desta seção resume o caso $K_0 = 0$: o campo não tem um
-valor preferido, e a origem $h = 0$ não é distinguida pela dinâmica.
+valor preferido, e a origem $\vec h = 0$ não é distinguida pela dinâmica.
 
 A relação entre a simetria e a quantidade conservada é o teorema de
 Noether. Com o parêntese de Poisson
@@ -1295,10 +1665,11 @@ $$
 \{f, g\} \equiv \sum_{j=0}^{N-1}\left(\frac{\partial f}{\partial h^j}\frac{\partial g}{\partial p_j} - \frac{\partial f}{\partial p_j}\frac{\partial g}{\partial h^j}\right),
 $$
 as equações de Hamilton são $\dot f = \{f, H\}$ para qualquer função
-$f(h, p)$, e $\{h^j, P\} = 1$ para todo $j$: o fluxo gerado por $P$ desloca
-todas as alturas pela mesma quantidade. Então $\dot P = \{P, H\}$ é a
-variação de $H$ sob esse deslocamento, com o sinal trocado, e é nula
-exatamente quando $H$ é invariante por $h \to h + \beta\,\mathbf 1$.
+$f(\vec h, \vec p)$, e $\{h^j, P\} = 1$ para todo $j$: o fluxo gerado por
+$P$ desloca todas as alturas pela mesma quantidade. Então
+$\dot P = \{P, H\}$ é a variação de $H$ sob esse deslocamento, com o sinal
+trocado, e é nula exatamente quando $H$ é invariante por
+$\vec h \to \vec h + \beta\,\vec 1$.
 
 ## Simulação {#sec-cadeia-simulacao}
 
@@ -1334,9 +1705,9 @@ def simula_cadeia(h0, p0, m, K, K0, dt, n_passos, a_cada=1):
 
 Usamos $N = 15$, $m = K = 1$ e a condição inicial: a partícula $0$
 deslocada para $h^0 = 1$, as partículas $1$ e $2$ com velocidade $0{,}5$ e
-as demais em repouso na posição de equilíbrio. O momento total é $P = 1$ e
+as demais em repouso na posição de equilíbrio. O momento total é $P = 1$, isto é, $\bar p = 1/15$, e
 a altura média inicial é $\bar h(0) = 1/15$. Comparamos $K_0 = 0$ com
-$K_0 = 0{,}2$ ($\omega_0 = 0{,}447$). As frequências da cadeia não passam de
+$K_0 = 0{,}2$ ($\sqrt{K_0/m} = 0{,}447$). As frequências da cadeia não passam de
 $\sqrt{(4K + K_0)/m} = 2{,}05$ (@sec-circ-dispersao); com $\Delta t = 0{,}05$
 o produto $\omega\Delta t$ fica abaixo de $0{,}11$, longe do limite de
 estabilidade @eq-verlet-estabilidade do Verlet.
@@ -1366,15 +1737,15 @@ for K0 in [0.0, 0.2]:
           f"hbar(60) = {hs[-1].mean():.4f}")
 ```
 
-Com $K_0 = 0$ o momento total e a reta $\bar h(0) + Pt/(Nm)$ são
+Com $K_0 = 0$ o momento total e a reta $\bar h(0) + \bar p\,t/m$ são
 reproduzidos até o erro de arredondamento: a cada meio passo do Verlet a
 soma das forças é exatamente zero (@sec-cadeia-exercicios, exercício 4).
 Com $K_0 = 0{,}2$ o momento total varia, e a altura média segue
-@eq-cadeia-hbar com o erro de fase do Verlet para $\omega_0\Delta t = 0{,}022$.
+@eq-cadeia-hbar com o erro de fase do Verlet para $\sqrt{K_0/m}\,\Delta t = 0{,}022$.
 
 ```{python}
 #| label: fig-modo-zero
-#| fig-cap: "Altura média $\\bar h(t)$ da cadeia ($N = 15$, $m = K = 1$, $P(0) = 1$, $\\bar h(0) = 1/15$). Com $K_0 = 0$, $\\bar h$ cresce linearmente até $4{,}07$ em $t = 60$ e coincide com a reta $\\bar h(0) + Pt/(Nm)$ (tracejada), com diferença máxima $1{,}3\\times 10^{-14}$. Com $K_0 = 0{,}2$, $\\bar h$ oscila com frequência $\\omega_0 = 0{,}447$ e coincide com $\\bar h(0)\\cos\\omega_0 t + P(0)\\sin(\\omega_0 t)/(Nm\\omega_0)$ (tracejada), com diferença máxima $8{,}1\\times 10^{-5}$."
+#| fig-cap: "Altura média $\\bar h(t)$ da cadeia ($N = 15$, $m = K = 1$, $P(0) = 1$, $\\bar h(0) = 1/15$). Com $K_0 = 0$, $\\bar h$ cresce linearmente até $4{,}07$ em $t = 60$ e coincide com a reta $\\bar h(0) + \\bar p\\, t/m$ (tracejada), com diferença máxima $1{,}3\\times 10^{-14}$. Com $K_0 = 0{,}2$, $\\bar h$ oscila com frequência $\\sqrt{K_0/m} = 0{,}447$ e coincide com $\\bar h(0)\\cos(\\sqrt{K_0/m}\\,t) + \\bar p(0)\\sin(\\sqrt{K_0/m}\\,t)/\\sqrt{mK_0}$ (tracejada), com diferença máxima $8{,}1\\times 10^{-5}$."
 #| code-fold: true
 fig, ax = plt.subplots(figsize=(9, 4))
 for K0, cor in [(0.0, "C0"), (0.2, "C1")]:
@@ -1456,25 +1827,30 @@ HTML(anim_cad.to_jshtml())
 ## Exercícios {#sec-cadeia-exercicios}
 
 1. **(Essencial)** Para $N = 3$, escreva $T$ e $D$ explicitamente,
-   verifique que $\sum_j (h^{j+1} - h^j)^2 = h^{\mathsf T}Dh$ expandindo os
+   verifique que $\sum_j (h^{j+1} - h^j)^2 = \vec h^{\mathsf T}D\vec h$ expandindo os
    dois lados, e obtenha @eq-cadeia-forca de $F_j = -\partial V/\partial h^j$.
 2. **(Essencial)** Mostre que $T^{\mathsf T} = T^{-1}$, que $T^N = I$ e que
-   $D\,\mathbf 1 = 0$. Mostre que $h^{\mathsf T}Dh = 0$ somente se
-   $h = \beta\,\mathbf 1$.
+   $D\,\vec 1 = 0$. Mostre que $\vec h^{\mathsf T}D\vec h = 0$ somente se
+   $\vec h = \beta\,\vec 1$.
 3. Resolva @eq-cadeia-hbar com as condições iniciais $\bar h(0)$ e
-   $\dot{\bar h}(0) = P(0)/(Nm)$ e confira as duas expressões de
+   $\dot{\bar h}(0) = \bar p(0)/m$ e confira as duas expressões de
    $\bar h(t)$ da @sec-cadeia-modo-zero, incluindo o limite $K_0 \to 0$.
 4. Mostre que, para $K_0 = 0$, cada meio passo do Verlet @eq-verlet
    conserva $P$ exatamente e que, depois de $n$ passos,
-   $\bar h_n = \bar h_0 + t_n P/(Nm)$ exatamente.
+   $\bar h_n = \bar h_0 + t_n\bar p/m$ exatamente.
 5. Para $N$ par, mostre que o vetor alternado, de componentes $(-1)^j$,
-   satisfaz $D h = 4h$. Mostre que ele é uma solução de
+   satisfaz $D\vec h = 4\vec h$. Mostre que ele é uma solução de
    @eq-cadeia-newton-matricial com frequência $\sqrt{(4K + K_0)/m}$, em que
    partículas vizinhas oscilam com fases opostas. Integre essa condição
    inicial com o Verlet para $\Delta t$ um pouco abaixo e um pouco acima de
    $2\sqrt{m/(4K + K_0)}$ e compare com @eq-verlet-estabilidade.
 6. Mostre que $\{h^j, P\} = 1$ e $\{p_j, P\} = 0$, e que
    $\{P, H\} = -K_0 N\bar h$, em acordo com @eq-cadeia-P.
+7. Mostre que $\{\bar h, \bar p\} = 1/N$ e $\{\bar h, P\} = 1$, e obtenha
+   @eq-cadeia-hbar de $\dot{\bar h} = \{\bar h, H\}$ e
+   $\dot{\bar p} = \{\bar p, H\}$. O par canônico é $(\bar h, P)$: mostre
+   que ele obedece às equações de um oscilador de massa $Nm$ e constante
+   de mola $NK_0$, com a mesma frequência $\sqrt{K_0/m}$.
 
 # Matrizes circulantes e a transformada de Fourier discreta {#sec-circulantes}
 
@@ -1504,7 +1880,7 @@ $$
 C^j{}_k = b_{k-j},
 $$
 com o índice de $b$ lido módulo $N$. A potência $T^r$ desloca as
-componentes de um vetor em $r$ posições, $(T^rh)^j = h^{j+r}$, ou seja,
+componentes de um vetor em $r$ posições, $(T^r\vec h)^j = h^{j+r}$, ou seja,
 $(T^r)^j{}_k = \delta^{j+r}{}_k$. Então
 $\left(\sum_r b_r T^r\right)^j{}_k = \sum_r b_r\,\delta^{j+r}{}_k = b_{k-j}$, e
 toda circulante é um polinômio em $T$:
@@ -1534,20 +1910,38 @@ circulante.
 
 ## Autovetores de $T$: a base de Fourier {#sec-circ-fourier}
 
-Um autovetor de $T$ com autovalor $\lambda$ satisfaz
-$(Tv)^j = v^{j+1} = \lambda v^j$ para todo $j$, logo $v^j = \lambda^j v^0$.
-A periodicidade $v^N = v^0$ exige $\lambda^N = 1$: $\lambda$ é uma das $N$
-raízes $N$-ésimas da unidade, $e^{2\pi i a/N}$ com $a = 0, 1, \dots, N-1$.
-Escolhendo $v^0 = 1/\sqrt N$, os autovetores são
+Para vetores complexos usamos o produto escalar
+$\vec u^\dagger\vec w \equiv \sum_j (u^j)^* w^j$, em que $\dagger$ indica
+o transposto conjugado. Seja $\vec v \neq 0$ um autovetor de $T$ com
+autovalor $\lambda$, $T\vec v = \lambda\vec v$. Aplicando $T$ mais $N - 1$
+vezes, $T^N\vec v = \lambda^N\vec v$. Como $T^N = I$, temos
+$\vec v = \lambda^N\vec v$, e portanto
+$$
+\lambda^N = 1 :
+$$
+$\lambda$ é uma das $N$ raízes $N$-ésimas da unidade,
+$\lambda = e^{2\pi i a/N}$ com $a = 0, 1, \dots, N-1$. Para encontrar o
+autovetor, escrevemos $T\vec v = \lambda\vec v$ em componentes:
+$v^{j+1} = \lambda v^j$, logo
+$$
+v^j = \lambda^j\, v^0,
+\qquad j = 0, 1, \dots, N-1,
+$$
+e a condição periódica $v^N = \lambda^N v^0 = v^0$ é satisfeita. O
+autovetor fica determinado pela sua primeira componente $v^0$, um número
+complexo arbitrário: cada autovalor tem um único autovetor, a menos de um
+fator. A normalização
+$\vec v^\dagger\vec v = \sum_j |\lambda|^{2j}|v^0|^2 = N|v^0|^2 = 1$ fixa
+o módulo, $|v^0| = 1/\sqrt N$. A fase de $v^0$ continua arbitrária, e
+escolhemos $v^0$ real e positivo. Com essa escolha os autovetores são
 $$
 v_a^{\,j} \equiv \frac{e^{2\pi i a j/N}}{\sqrt N},
 \qquad
-T v_a = e^{2\pi i a/N}\, v_a .
+T \vec v_a = e^{2\pi i a/N}\, \vec v_a .
 $$ {#eq-fourier-vetores}
-Para vetores complexos usamos o produto escalar
-$u^\dagger w \equiv \sum_j (u^j)^* w^j$. Os vetores $v_a$ são ortonormais:
+Os vetores $\vec v_a$ são ortonormais:
 $$
-v_a^\dagger v_b = \frac1N\sum_{j=0}^{N-1} e^{2\pi i (b-a) j/N} = \delta_{ab} .
+\vec v_a^{\,\dagger} \vec v_b = \frac1N\sum_{j=0}^{N-1} e^{2\pi i (b-a) j/N} = \delta_{ab} .
 $$
 Para $a = b$ cada termo vale $1$ e a soma vale $N$. Para $a \neq b$, com
 $0 \le a, b \le N - 1$, o número $z \equiv e^{2\pi i(b-a)/N}$ é diferente de
@@ -1556,11 +1950,11 @@ $\sum_{j=0}^{N-1} z^j = (1 - z^N)/(1 - z) = 0$, pois $z^N = 1$. São $N$
 vetores ortonormais em $\mathbb C^N$: formam uma base, a **base de
 Fourier**.
 
-O índice $a$ é definido módulo $N$: $v_{a+N} = v_a$, pois
+O índice $a$ é definido módulo $N$: $\vec v_{a+N} = \vec v_a$, pois
 $e^{2\pi i (a+N)j/N} = e^{2\pi i aj/N}$ para $j$ inteiro. Além disso,
-$v_{-a} = v_a^*$. Em vez de $a = 0, \dots, N-1$ usamos o intervalo
+$\vec v_{-a} = \vec v_a^{\,*}$. Em vez de $a = 0, \dots, N-1$ usamos o intervalo
 simétrico, $-(N-1)/2 \le a \le (N-1)/2$ para $N$ ímpar. Nos pontos da
-rede, $v_a$ e $v_{a+N}$ são o mesmo vetor, mas as funções
+rede, $\vec v_a$ e $\vec v_{a+N}$ são o mesmo vetor, mas as funções
 $e^{2\pi i a x/N}$ e $e^{2\pi i (a+N) x/N}$ da variável contínua $x$ são
 diferentes (@fig-circ-fourier, direita). O intervalo simétrico escolhe,
 entre todos os índices que dão o mesmo vetor, o de menor $|a|$, isto é, a
@@ -1569,7 +1963,7 @@ terá limite contínuo na Aula 2.
 
 ```{python}
 #| label: fig-circ-fourier
-#| fig-cap: "Esquerda: os $N = 15$ autovalores $e^{2\\pi i a/N}$ de $T$ no círculo unitário, rotulados por $a$ no intervalo simétrico. Centro: parte real de $\\sqrt N\\, v_a^{\\,j} = e^{2\\pi i a j/N}$ para $a = 1$ e $a = 2$ (pontos) e as funções $\\cos(2\\pi a x/N)$ (linhas). Direita: $\\cos(2\\pi a x/N)$ para $a = 7$ e $a = 7 - 15 = -8$ passam pelos mesmos pontos da rede: nos pontos $j$ inteiros, $v_7 = v_{-8}$."
+#| fig-cap: "Esquerda: os $N = 15$ autovalores $e^{2\\pi i a/N}$ de $T$ no círculo unitário, rotulados por $a$ no intervalo simétrico. Centro: parte real de $\\sqrt N\\, v_a^{\\,j} = e^{2\\pi i a j/N}$ para $a = 1$ e $a = 2$ (pontos) e as funções $\\cos(2\\pi a x/N)$ (linhas). Direita: $\\cos(2\\pi a x/N)$ para $a = 7$ e $a = 7 - 15 = -8$ passam pelos mesmos pontos da rede: nos pontos $j$ inteiros, $\\vec v_7 = \\vec v_{-8}$."
 #| code-fold: true
 N_f = 15
 a_sim = np.arange(-(N_f - 1) // 2, (N_f - 1) // 2 + 1)
@@ -1607,41 +2001,41 @@ fig.tight_layout()
 plt.show()
 ```
 
-Todo vetor $h \in \mathbb C^N$ se escreve na base de Fourier. Aplicando
-$v_b^\dagger$ a $h = \sum_a \tilde h^a v_a$ e usando a ortonormalidade,
-$v_b^\dagger h = \sum_a \tilde h^a\, v_b^\dagger v_a = \tilde h^b$. Então
+Todo vetor $\vec h \in \mathbb C^N$ se escreve na base de Fourier. Aplicando
+$\vec v_b^{\,\dagger}$ a $\vec h = \sum_a \tilde h^a \vec v_a$ e usando a ortonormalidade,
+$\vec v_b^{\,\dagger} \vec h = \sum_a \tilde h^a\, \vec v_b^{\,\dagger} \vec v_a = \tilde h^b$. Então
 $$
-h = \sum_a \tilde h^a\, v_a,
+\vec h = \sum_a \tilde h^a\, \vec v_a,
 \qquad
-\tilde h^a \equiv v_a^\dagger h = \frac{1}{\sqrt N}\sum_{j=0}^{N-1} e^{-2\pi i aj/N}\, h^j,
+\tilde h^a \equiv \vec v_a^{\,\dagger} \vec h = \frac{1}{\sqrt N}\sum_{j=0}^{N-1} e^{-2\pi i aj/N}\, h^j,
 \qquad
 h^j = \frac{1}{\sqrt N}\sum_a e^{2\pi i aj/N}\,\tilde h^a .
 $$ {#eq-dft}
-A passagem de $h$ para $\tilde h$ é a **transformada de Fourier discreta**
+A passagem das componentes $h^j$ para os coeficientes $\tilde h^a$ é a **transformada de Fourier discreta**
 (DFT), e a última igualdade é a sua inversa. No `numpy`,
 `np.fft.fft(h, norm="ortho")` devolve $\tilde h^a$ para
 $a = 0, \dots, N-1$ (os elementos com $a > N/2$ correspondem a $a - N$ no
 intervalo simétrico), e `np.fft.ifft(ht, norm="ortho")` faz a inversa. O
 algoritmo FFT calcula a DFT com $O(N\log N)$ operações, em vez das $O(N^2)$
-do produto de uma matriz $N\times N$ por um vetor. Para $h$ real,
-$(\tilde h^a)^* = v_a^{\mathsf T}h = v_{-a}^\dagger h$, isto é,
+do produto de uma matriz $N\times N$ por um vetor. Para $\vec h$ real,
+$(\tilde h^a)^* = \vec v_a^{\,\mathsf T}\vec h = \vec v_{-a}^{\,\dagger} \vec h$, isto é,
 $$
 \tilde h^{-a} = \left(\tilde h^a\right)^* .
 $$ {#eq-dft-real}
 
 ## Toda circulante é diagonal na base de Fourier {#sec-circ-diag}
 
-Aplicando @eq-circ-polinomio a $v_a$ e usando $T^r v_a = e^{2\pi i ar/N}v_a$,
+Aplicando @eq-circ-polinomio a $\vec v_a$ e usando $T^r \vec v_a = e^{2\pi i ar/N}\vec v_a$,
 $$
-C\, v_a = \sum_{r=0}^{N-1} b_r\, T^r v_a = \lambda_a(C)\, v_a,
+C\, \vec v_a = \sum_{r=0}^{N-1} b_r\, T^r \vec v_a = \lambda_a(C)\, \vec v_a,
 \qquad
 \lambda_a(C) = \sum_{r=0}^{N-1} b_r\, e^{2\pi i a r/N} .
 $$ {#eq-circ-autovalores}
-Os autovetores de uma circulante são os $v_a$, os mesmos para toda
+Os autovetores de uma circulante são os $\vec v_a$, os mesmos para toda
 circulante, e os autovalores são a transformada de Fourier da primeira
 linha (com o sinal $+$ no expoente: no `numpy`, $\lambda_a(C)$ é
 `N * np.fft.ifft(b)[a]`). Em forma matricial, a matriz $U$ cujas colunas
-são os $v_a$, $U^j{}_a = v_a^{\,j}$, é unitária, $U^\dagger U = I$, e
+são os $\vec v_a$, $U^j{}_a = v_a^{\,j}$, é unitária, $U^\dagger U = I$, e
 $$
 U^\dagger C\, U = \operatorname{diag}\big(\lambda_0(C), \lambda_1(C), \dots, \lambda_{N-1}(C)\big).
 $$
@@ -1670,37 +2064,39 @@ $$
 $$ {#eq-autovalores-D}
 Os autovalores são reais e não negativos, $\lambda_a(D) = \lambda_{-a}(D)$,
 e $\lambda_a(D) = 0$ somente para $a = 0$, cujo autovetor
-$v_0 = \mathbf 1/\sqrt N$ é o modo zero da @sec-cadeia-modo-zero.
+$\vec v_0 = \vec 1/\sqrt N$ é o modo zero da @sec-cadeia-modo-zero.
 
 ## A relação de dispersão {#sec-circ-dispersao}
 
 A matriz $KD + K_0 I$ tem os autovalores $K\lambda_a(D) + K_0$. Para
-$h(t) = f(t)\,v_a$, a equação @eq-cadeia-newton-matricial se reduz a
-$m\ddot f = -\left(K\lambda_a(D) + K_0\right) f$: a configuração $v_a$
+$\vec h(t) = f(t)\,\vec v_a$, a equação @eq-cadeia-newton-matricial se reduz a
+$m\ddot f = -\left(K\lambda_a(D) + K_0\right) f$: a configuração $\vec v_a$
 oscila sem mudar de forma, com frequência
 $$
-\omega_a \equiv \sqrt{\frac{K_0 + K\lambda_a(D)}{m}} = \sqrt{\omega_0^2 + \frac{4K}{m}\sin^2\frac{\pi a}{N}} .
+\omega_a \equiv \sqrt{\frac{K_0 + K\lambda_a(D)}{m}} = \sqrt{\frac{K_0 + 4K\sin^2(\pi a/N)}{m}} .
 $$ {#eq-dispersao}
 A relação entre a frequência e o índice $a$ é a **relação de dispersão**
 da cadeia. Na Aula 2 o índice $a$ dará o número de onda, e
 @eq-dispersao dará a relação $\omega(k)$. Para $a = 0$ a fórmula dá
-$\omega_0 = \sqrt{K_0/m}$, de acordo com a definição da
-@sec-cadeia-forcas. Propriedades (@fig-dispersao):
+$\sqrt{K_0/m}$, a frequência de uma partícula isolada
+(@sec-cadeia-forcas) e da altura média (@sec-cadeia-modo-zero).
+Propriedades (@fig-dispersao):
 
 * $\omega_a = \omega_{-a}$.
-* O mínimo é $\omega_0$, em $a = 0$. Para $K_0 = 0$ o mínimo é zero, e é o
-  modo zero; com $K_0 > 0$ nenhum modo tem frequência menor que $\omega_0$.
+* O mínimo é $\sqrt{K_0/m}$, em $a = 0$. Para $K_0 = 0$ o mínimo é zero, e
+  é o modo zero; com $K_0 > 0$ nenhum modo tem frequência menor que
+  $\sqrt{K_0/m}$.
 * O máximo $\omega_{\max}$ está no $|a|$ mais próximo de $N/2$ e satisfaz
-  $\omega_{\max} \le \sqrt{\omega_0^2 + 4K/m}$, com igualdade para $N$ par
+  $\omega_{\max} \le \sqrt{(K_0 + 4K)/m}$, com igualdade para $N$ par
   em $a = N/2$ (o vetor alternado de @sec-cadeia-exercicios, exercício 5).
 * Para $|a| \ll N$, $\sin x \approx x$ e
-  $\omega_a^2 \approx \omega_0^2 + (K/m)(2\pi a/N)^2$. Para $K_0 = 0$,
+  $\omega_a^2 \approx \left[K_0 + K(2\pi a/N)^2\right]/m$. Para $K_0 = 0$,
   $\omega_a \approx \sqrt{K/m}\,2\pi|a|/N$ cresce linearmente com $|a|$; na
   Aula 2 a inclinação dessa reta dará a velocidade das ondas.
 
 ```{python}
 #| label: fig-dispersao
-#| fig-cap: "Relação de dispersão da cadeia para $N = 15$, $m = K = 1$, com $K_0 = 0$ e $K_0 = 0{,}2$. As linhas são $\\omega_a$ com $a$ contínuo, os pontos cheios são os $15$ valores inteiros de $a$, e os círculos vazios são as raízes dos autovalores de $(KD + K_0 I)/m$ calculados numericamente, que coincidem com os pontos cheios com diferença máxima $2{,}3\\times 10^{-15}$. Os máximos são $\\omega_{\\max} = 1{,}989$ e $2{,}039$, abaixo de $\\sqrt{\\omega_0^2 + 4K/m} = 2$ e $2{,}049$ porque $N$ é ímpar."
+#| fig-cap: "Relação de dispersão da cadeia para $N = 15$, $m = K = 1$, com $K_0 = 0$ e $K_0 = 0{,}2$. As linhas são $\\omega_a$ com $a$ contínuo, os pontos cheios são os $15$ valores inteiros de $a$, e os círculos vazios são as raízes dos autovalores de $(KD + K_0 I)/m$ calculados numericamente, que coincidem com os pontos cheios com diferença máxima $2{,}3\\times 10^{-15}$. Os máximos são $\\omega_{\\max} = 1{,}989$ e $2{,}039$, abaixo de $\\sqrt{(K_0 + 4K)/m} = 2$ e $2{,}049$ porque $N$ é ímpar."
 #| code-fold: true
 N, m, K = 15, 1.0, 1.0
 T = np.roll(np.eye(N), 1, axis=1)
@@ -1733,11 +2129,11 @@ for K0 in [0.0, 0.2]:
 ## Modos normais {#sec-circ-modos}
 
 Escrevemos as alturas e os momentos na base de Fourier,
-$h(t) = \sum_a \tilde h^a(t)\,v_a$ e $p(t) = \sum_a \tilde p^a(t)\,v_a$,
-com $\tilde p^a \equiv v_a^\dagger p$. A matriz $KD + K_0 I$ é real e
+$\vec h(t) = \sum_a \tilde h^a(t)\,\vec v_a$ e $\vec p(t) = \sum_a \tilde p^a(t)\,\vec v_a$,
+com $\tilde p^a \equiv \vec v_a^{\,\dagger} \vec p$. A matriz $KD + K_0 I$ é real e
 simétrica, logo
-$v_a^\dagger\left(KD + K_0 I\right) = \left[\left(KD + K_0 I\right)v_a\right]^\dagger = m\omega_a^2\, v_a^\dagger$.
-Aplicando $v_a^\dagger$ a @eq-cadeia-newton-matricial,
+$\vec v_a^{\,\dagger}\left(KD + K_0 I\right) = \left[\left(KD + K_0 I\right)\vec v_a\right]^\dagger = m\omega_a^2\, \vec v_a^{\,\dagger}$.
+Aplicando $\vec v_a^{\,\dagger}$ a @eq-cadeia-newton-matricial,
 $$
 m\,\ddot{\tilde h}^a = -m\,\omega_a^2\,\tilde h^a,
 \qquad a = 0, 1, \dots, N - 1 .
@@ -1753,51 +2149,51 @@ $$
 $$ {#eq-modos-solucao}
 Para $\omega_a = 0$ ($a = 0$ e $K_0 = 0$) o limite $\omega_a \to 0$ dá
 $\tilde h^0(t) = \tilde h^0(0) + \tilde p^0(0)\,t/m$. Como
-$\tilde h^0 = \sqrt N\,\bar h$ e $\tilde p^0 = P/\sqrt N$, essa é a reta
-$\bar h(t) = \bar h(0) + Pt/(Nm)$ da @sec-cadeia-modo-zero: o modo zero é
+$\tilde h^0 = \sqrt N\,\bar h$ e $\tilde p^0 = \sqrt N\,\bar p$, essa é a reta
+$\bar h(t) = \bar h(0) + \bar p\,t/m$ da @sec-cadeia-modo-zero: o modo zero é
 o modo normal $a = 0$.
 
 Como $U$ é unitária, a soma dos quadrados é a mesma nas duas bases,
 $\sum_j p_j^2 = \sum_a |\tilde p^a|^2$ e
-$h^{\mathsf T}(KD + K_0 I)h = \sum_{a,b}(\tilde h^a)^*\tilde h^b\, v_a^\dagger (KD + K_0 I) v_b = \sum_a m\omega_a^2 |\tilde h^a|^2$,
+$\vec h^{\mathsf T}(KD + K_0 I)\vec h = \sum_{a,b}(\tilde h^a)^*\tilde h^b\, \vec v_a^{\,\dagger} (KD + K_0 I) \vec v_b = \sum_a m\omega_a^2 |\tilde h^a|^2$,
 e a Hamiltoniana @eq-cadeia-hamiltoniana é a soma das energias dos modos:
 $$
 H = \sum_a \left(\frac{|\tilde p^a|^2}{2m} + \frac{m\,\omega_a^2\,|\tilde h^a|^2}{2}\right) .
 $$ {#eq-cadeia-H-modos}
-Os $N$ números complexos $\tilde h^a$ não são independentes: para $h$
+Os $N$ números complexos $\tilde h^a$ não são independentes: para $\vec h$
 real, @eq-dft-real liga $\tilde h^{-a}$ a $\tilde h^a$. Para $N$ ímpar,
 $\tilde h^0$ é real e os pares $(a, -a)$ com $a = 1, \dots, (N-1)/2$ dão
 $(N-1)/2$ números complexos: ao todo, $N$ números reais, um por partícula.
 
 ## A base real de Hartley {#sec-circ-hartley}
 
-Como $\omega_a = \omega_{-a}$, qualquer combinação de $v_a$ e $v_{-a}$ é
+Como $\omega_a = \omega_{-a}$, qualquer combinação de $\vec v_a$ e $\vec v_{-a}$ é
 autovetor de $KD + K_0 I$ com o mesmo autovalor $m\omega_a^2$. Os vetores
 reais
 $$
-\chi_a^{\,j} \equiv \frac{1}{\sqrt N}\left(\cos\frac{2\pi a j}{N} + \sin\frac{2\pi a j}{N}\right),
+\zeta_a^{\,j} \equiv \frac{1}{\sqrt N}\left(\cos\frac{2\pi a j}{N} + \sin\frac{2\pi a j}{N}\right),
 \qquad\text{isto é,}\qquad
-\chi_a = \frac{(1 - i)\,v_a + (1 + i)\,v_{-a}}{2},
+\vec\zeta_a = \frac{(1 - i)\,\vec v_a + (1 + i)\,\vec v_{-a}}{2},
 $$ {#eq-hartley}
 formam a **base de Hartley**. A segunda forma segue de
 $\tfrac12\left[(1-i)e^{i\phi} + (1+i)e^{-i\phi}\right] = \cos\phi + \sin\phi$.
-Com ela e a ortonormalidade dos $v_a$, para $a \neq -a$,
+Com ela e a ortonormalidade dos $\vec v_a$, para $a \neq -a$,
 $$
-\chi_a^{\mathsf T}\chi_b = \chi_a^\dagger\chi_b
+\vec\zeta_a^{\,\mathsf T}\vec\zeta_b = \vec\zeta_a^{\,\dagger}\vec\zeta_b
 = \frac14\left[(1+i)(1-i)\,\delta_{ab} + (1+i)^2\,\delta_{a,-b} + (1-i)^2\,\delta_{-a,b} + (1-i)(1+i)\,\delta_{ab}\right]
 = \delta_{ab},
 $$
 pois $(1 \pm i)^2 = \pm 2i$ e os dois termos com $\delta_{a,-b}$ se
-cancelam. Para $a = -a$ (só $a = 0$, para $N$ ímpar), $\chi_0 = v_0$. A
+cancelam. Para $a = -a$ (só $a = 0$, para $N$ ímpar), $\vec\zeta_0 = \vec v_0$. A
 base de Hartley é real, ortonormal, e satisfaz
-$(KD + K_0 I)\chi_a = m\omega_a^2\chi_a$. As coordenadas
-$q^a \equiv \chi_a^{\mathsf T}h$ obedecem a $m\ddot q^a = -m\omega_a^2 q^a$:
+$(KD + K_0 I)\vec\zeta_a = m\omega_a^2\vec\zeta_a$. As coordenadas
+$q^a \equiv \vec\zeta_a^{\,\mathsf T}\vec h$ obedecem a $m\ddot q^a = -m\omega_a^2 q^a$:
 osciladores reais, sem nenhum número complexo.
 
 As duas bases descrevem o mesmo movimento de maneiras diferentes. Cada
-$\chi_a\cos\omega_a t$ é uma **onda estacionária**: a forma $\chi_a$ fica
+$\vec\zeta_a\cos\omega_a t$ é uma **onda estacionária**: a forma $\vec\zeta_a$ fica
 fixa e só a amplitude oscila (@fig-circ-modos). Cada
-$v_a e^{-i\omega_a t}$, de componentes
+$\vec v_a e^{-i\omega_a t}$, de componentes
 $e^{i(2\pi aj/N - \omega_a t)}/\sqrt N$, é uma **onda viajante**: a fase é
 constante ao longo de $j = N\omega_a t/(2\pi a) + \text{constante}$, que
 avança no sentido de $j$ crescente para $a > 0$ e decrescente para
@@ -1808,7 +2204,7 @@ complexa.
 
 ```{python}
 #| label: fig-circ-modos
-#| fig-cap: "Os modos normais reais $\\chi_a$ da cadeia com $N = 15$, $m = K = 1$, $K_0 = 0{,}2$, para $a = 0, 1, 2, 7$. Em cada painel, $\\chi_a^{\\,j}\\cos\\omega_a t$ em oito instantes de $0$ a $\\pi/\\omega_a$ (linhas, do vermelho ao azul): a forma fica fixa e só a amplitude oscila. O modo $a = 0$ é o deslocamento uniforme, com $\\omega_0 = 0{,}447$; o modo $a = 7$ tem a maior frequência, $\\omega_7 = 2{,}039$."
+#| fig-cap: "Os modos normais reais $\\vec\\zeta_a$ da cadeia com $N = 15$, $m = K = 1$, $K_0 = 0{,}2$, para $a = 0, 1, 2, 7$. Em cada painel, $\\zeta_a^{\\,j}\\cos\\omega_a t$ em oito instantes de $0$ a $\\pi/\\omega_a$ (linhas, do vermelho ao azul): a forma fica fixa e só a amplitude oscila. O modo $a = 0$ é o deslocamento uniforme, com frequência $\\sqrt{K_0/m} = 0{,}447$; o modo $a = 7$ tem a maior frequência, $\\omega_7 = 2{,}039$."
 #| code-fold: true
 N, m, K, K0 = 15, 1.0, 1.0, 0.2
 j = np.arange(N)
@@ -1822,7 +2218,7 @@ for ax, aa in zip(axs, [0, 1, 2, 7]):
     ax.set_title(rf"$a = {aa}$, $\omega_a = {w_a:.3f}$")
     ax.set_xlabel("$j$")
     ax.axhline(0, color="k", lw=0.5)
-axs[0].set_ylabel(r"$\chi_a^{\,j}\cos\omega_a t$")
+axs[0].set_ylabel(r"$\zeta_a^{\,j}\cos\omega_a t$")
 fig.tight_layout()
 plt.show()
 ```
@@ -1832,7 +2228,7 @@ relógio: cada um com a sua frequência $\omega_a$, sempre com a mesma forma.
 
 ```{python}
 #| label: fig-anim-modos
-#| fig-cap: "Animação dos quatro modos normais reais da @fig-circ-modos ($N = 15$, $m = K = 1$, $K_0 = 0{,}2$), todos com o mesmo relógio: em cada painel, $\\chi_a^{\\,j}\\cos\\omega_a t$ (pontos) e a forma $\\pm\\chi_a^{\\,j}$ (cinza), durante $0 \\le t \\le 2\\pi/\\omega_0 = 14{,}05$, um período do modo $a = 0$. Nesse intervalo o modo $a = 1$ completa $1{,}37$ oscilações, o modo $a = 2$ completa $2{,}08$ e o modo $a = 7$ completa $4{,}56$."
+#| fig-cap: "Animação dos quatro modos normais reais da @fig-circ-modos ($N = 15$, $m = K = 1$, $K_0 = 0{,}2$), todos com o mesmo relógio: em cada painel, $\\zeta_a^{\\,j}\\cos\\omega_a t$ (pontos) e a forma $\\pm\\zeta_a^{\\,j}$ (cinza), durante $0 \\le t \\le 2\\pi\\sqrt{m/K_0} = 14{,}05$, um período do modo $a = 0$. Nesse intervalo o modo $a = 1$ completa $1{,}37$ oscilações, o modo $a = 2$ completa $2{,}08$ e o modo $a = 7$ completa $4{,}56$."
 #| code-fold: true
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
@@ -1840,28 +2236,28 @@ from IPython.display import HTML
 N_md, m_md, K_md, K0_md = 15, 1.0, 1.0, 0.2
 j_md = np.arange(N_md)
 modos_md = [0, 1, 2, 7]
-chi_md = {a: (np.cos(2 * np.pi * a * j_md / N_md) + np.sin(2 * np.pi * a * j_md / N_md)) / np.sqrt(N_md) for a in modos_md}
+zeta_md = {a: (np.cos(2 * np.pi * a * j_md / N_md) + np.sin(2 * np.pi * a * j_md / N_md)) / np.sqrt(N_md) for a in modos_md}
 w_md = {a: np.sqrt(K0_md / m_md + 4 * K_md / m_md * np.sin(np.pi * a / N_md) ** 2) for a in modos_md}
 t_md = np.linspace(0, 2 * np.pi / w_md[0], 61)
 fig_md, axs_md = plt.subplots(1, 4, figsize=(15, 2.9), dpi=120, sharey=True)
 linhas_md = []
 for ax, a in zip(axs_md, modos_md):
-    ax.plot(j_md, chi_md[a], color="0.75", lw=1)
-    ax.plot(j_md, -chi_md[a], color="0.75", lw=1)
+    ax.plot(j_md, zeta_md[a], color="0.75", lw=1)
+    ax.plot(j_md, -zeta_md[a], color="0.75", lw=1)
     ax.axhline(0, color="k", lw=0.5)
     (linha,) = ax.plot([], [], "o-", color="C3", ms=4, lw=1.2)
     ax.set_title(rf"$a = {a}$, $\omega_a = {w_md[a]:.3f}$")
     ax.set_xlabel("$j$")
     ax.set_ylim(-0.42, 0.42)
     linhas_md.append((linha, a))
-axs_md[0].set_ylabel(r"$\chi_a^{\,j}\cos\omega_a t$")
+axs_md[0].set_ylabel(r"$\zeta_a^{\,j}\cos\omega_a t$")
 texto_md = axs_md[0].text(0.03, 0.88, "", transform=axs_md[0].transAxes)
 fig_md.tight_layout()
 
 
 def quadro_md(i):
     for linha, a in linhas_md:
-        linha.set_data(j_md, chi_md[a] * np.cos(w_md[a] * t_md[i]))
+        linha.set_data(j_md, zeta_md[a] * np.cos(w_md[a] * t_md[i]))
     texto_md.set_text(f"$t = {t_md[i]:.1f}$")
     return [l for l, _ in linhas_md] + [texto_md]
 
@@ -1952,8 +2348,8 @@ plt.show()
 
 ## Estabilidade do Verlet na cadeia {#sec-circ-estabilidade}
 
-Um passo do Verlet @eq-verlet é linear em $(h, p)$, com a força
-$F = -(KD + K_0 I)h$. Na base de Fourier a matriz $KD + K_0 I$ é diagonal,
+Um passo do Verlet @eq-verlet é linear em $(\vec h, \vec p)$, com a força
+$\vec F = -(KD + K_0 I)\vec h$. Na base de Fourier a matriz $KD + K_0 I$ é diagonal,
 e o passo atua em cada par $(\tilde h^a, \tilde p^a)$ separadamente, como o
 Verlet de um oscilador de frequência $\omega_a$, com passo adimensional
 $\omega_a\Delta t$. Pela condição @eq-verlet-estabilidade, a solução
@@ -1961,7 +2357,7 @@ numérica fica limitada somente se $\omega_a\Delta t < 2$ para todo $a$:
 $$
 \Delta t < \frac{2}{\omega_{\max}},
 \qquad
-\omega_{\max} = \max_a \omega_a \le \sqrt{\omega_0^2 + \frac{4K}{m}} .
+\omega_{\max} = \max_a \omega_a \le \sqrt{\frac{K_0 + 4K}{m}} .
 $$ {#eq-cfl}
 Para $N = 15$ e $K_0 = 0{,}2$, $\omega_{\max} = \omega_7 = 2{,}039$ e o
 limite é $\Delta t < 0{,}981$. Integramos a cadeia com $\Delta t$ $2\%$
@@ -2015,15 +2411,15 @@ $\Delta x$ menor exigirá um $\Delta t$ menor.
 1. **(Essencial)** Mostre que $(T^r)^j{}_k = \delta^{j+r}{}_k$ e que
    $\left(\sum_r b_r T^r\right)^j{}_k = b_{k-j}$. Escreva a circulante
    geral para $N = 4$ e confira com a matriz da @sec-circ-def.
-2. **(Essencial)** Mostre que $v_a^\dagger v_b = \delta_{ab}$, que
-   $v_{a+N} = v_a$ e que $v_{-a} = v_a^*$.
+2. **(Essencial)** Mostre que $\vec v_a^{\,\dagger} \vec v_b = \delta_{ab}$, que
+   $\vec v_{a+N} = \vec v_a$ e que $\vec v_{-a} = \vec v_a^{\,*}$.
 3. Mostre que os autovalores de uma circulante real com $b_r = b_{N-r}$
    para todo $r$ (uma circulante simétrica) são reais e satisfazem
    $\lambda_a = \lambda_{-a}$. Calcule $\lambda_a(D)$ e confira
    @eq-autovalores-D.
-4. **(Essencial)** Mostre que $\chi_a^{\mathsf T}\chi_b = \delta_{ab}$ e que
-   $(KD + K_0 I)\chi_a = m\omega_a^2\chi_a$. Para $N$ par, quais são os
-   índices com $a = -a$ (módulo $N$), e quanto vale $\chi_a$ para eles?
+4. **(Essencial)** Mostre que $\vec\zeta_a^{\,\mathsf T}\vec\zeta_b = \delta_{ab}$ e que
+   $(KD + K_0 I)\vec\zeta_a = m\omega_a^2\vec\zeta_a$. Para $N$ par, quais são os
+   índices com $a = -a$ (módulo $N$), e quanto vale $\vec\zeta_a$ para eles?
 5. Mostre @eq-cadeia-H-modos a partir de @eq-cadeia-hamiltoniana e da
    unitariedade de $U$, e confira numericamente com as condições iniciais
    da @sec-cadeia-simulacao.

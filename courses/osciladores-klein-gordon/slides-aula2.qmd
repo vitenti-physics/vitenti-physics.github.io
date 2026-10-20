@@ -26,6 +26,8 @@ format:
       data-background-image: logos.png
       data-background-size: 45%
       data-background-position: left 3% bottom 4%
+execute:
+  cache: true
 ---
 
 ```{python}
@@ -90,7 +92,7 @@ K = \frac{\tau}{\Delta x},
 K_0 = \rho\,\mu^2\Delta x
 $$
 $$
-\omega_0 = \mu,
+\frac{K_0}{m} = \mu^2,
 \qquad
 \frac Km = \frac{c^2}{\Delta x^2},
 \qquad
@@ -218,7 +220,7 @@ $$
 |---|---|
 | tempo | $H$ |
 | translação $T$ | $P_{\rm rede}$ |
-| $h \to h + \beta\mathbf 1$ ($K_0 = 0$) | $P = \sum_j p_j$ |
+| $\vec h \to \vec h + \beta\vec 1$ ($K_0 = 0$) | $P = \sum_j p_j$ |
 :::
 ::: {.column width="45%"}
 **Limite contínuo**
@@ -293,7 +295,7 @@ Notas: [Relação de dispersão e velocidade de grupo](aula2.html#sec-cont-dispe
 $$
 v_a^{\,j} = \frac{e^{ik_ax_j}}{\sqrt N},
 \qquad
-v_a^\dagger v_b = \delta_{ab}
+\vec v_a^{\,\dagger}\vec v_b = \delta_{ab}
 $$
 $$
 \sum_a v_a^{\,j}\left(v_a^{\,k}\right)^* = \delta^{jk}
@@ -428,14 +430,14 @@ Notas: [Simulações](aula2.html#sec-cont-numerico)
 
 :::: {.columns}
 ::: {.column width="55%"}
-**Cadeia**, soluções complexas $h(t)$, $p = m\dot h$
+**Cadeia**, soluções complexas $\vec h(t)$, $\vec p = m\dot{\vec h}$
 $$
-\langle h_1, h_2\rangle \equiv i\sum_j\left[(h_1^j)^*p_{2,j} - (p_{1,j})^*h_2^j\right] = i\,X_1^\dagger\Omega X_2
+\langle \vec h_1, \vec h_2\rangle \equiv i\sum_j\left[(h_1^j)^*p_{2,j} - (p_{1,j})^*h_2^j\right] = i\,\vec\chi_1^{\,\dagger}\Omega\,\vec\chi_2
 $$
 
 - Conservado: $A^{\mathsf T}\Omega + \Omega A = 0$ (Aula 1).
-- $\langle h_1, h_2\rangle^* = \langle h_2, h_1\rangle$, $\langle h_1^*, h_2^*\rangle = -\langle h_2, h_1\rangle$.
-- Toda solução real tem $\langle h, h\rangle = 0$.
+- $\langle \vec h_1, \vec h_2\rangle^* = \langle \vec h_2, \vec h_1\rangle$, $\langle \vec h_1^{\,*}, \vec h_2^{\,*}\rangle = -\langle \vec h_2, \vec h_1\rangle$.
+- Toda solução real tem $\langle \vec h, \vec h\rangle = 0$.
 :::
 ::: {.column width="45%"}
 **Limite contínuo**
@@ -460,14 +462,14 @@ $$
 f_a^{\,j}(t) \equiv \frac{v_a^{\,j}\,e^{-i\omega_at}}{\sqrt{2m\omega_a}}
 $$
 $$
-\langle f_a, f_b\rangle = \delta_{ab},
+\langle \vec f_a, \vec f_b\rangle = \delta_{ab},
 \quad
-\langle f_a^*, f_b^*\rangle = -\delta_{ab},
+\langle \vec f_a^{\,*}, \vec f_b^{\,*}\rangle = -\delta_{ab},
 \quad
-\langle f_a, f_b^*\rangle = 0
+\langle \vec f_a, \vec f_b^{\,*}\rangle = 0
 $$
 $$
-h = \sum_a\left(\alpha_af_a + \alpha_a^*f_a^*\right),
+\vec h = \sum_a\left(\alpha_a\vec f_a + \alpha_a^*\vec f_a^{\,*}\right),
 \qquad
 \alpha_a = \frac{m\omega_a\tilde h^a + i\tilde p^a}{\sqrt{2m\omega_a}}
 $$
@@ -506,16 +508,16 @@ Notas: [Modos de frequência positiva](aula2.html#sec-part-modos)
 ::: {.column width="55%"}
 **Cadeia**
 $$
-\mathcal H_1 = \left\{\psi = \sum_a\psi^af_a\right\} \cong \mathbb C^N,
+\mathcal H_1 = \left\{\vec\psi = \sum_a\psi^a\vec f_a\right\} \cong \mathbb C^N,
 \qquad
-\langle\psi, \chi\rangle = \sum_a(\psi^a)^*\chi^a
+\langle\vec\psi_1, \vec\psi_2\rangle = \sum_a(\psi_1^a)^*\psi_2^a
 $$
 $$
-i\,\frac{\mathrm d\psi}{\mathrm dt} = \sqrt{\frac{KD + K_0I}{m}}\;\psi
+i\,\frac{\mathrm d\vec\psi}{\mathrm dt} = \sqrt{\frac{KD + K_0I}{m}}\;\vec\psi
 $$
 
 - Em $\mathcal H_1$ o produto é positivo: espaço de Hilbert de dimensão $N$.
-- $f_a$: energia $\hbar\omega_a$, momento da cadeia $\hbar\kappa_a$.
+- $\vec f_a$: energia $\hbar\omega_a$, momento da cadeia $\hbar\kappa_a$.
 :::
 ::: {.column width="45%"}
 **Limite contínuo**
@@ -545,7 +547,7 @@ $$
 \Psi^{ab} = \Psi^{ba}
 $$
 $$
-\Psi = \frac{\psi_{\rm E}\otimes\psi_{\rm D} + \psi_{\rm D}\otimes\psi_{\rm E}}{\sqrt2}
+\Psi = \frac{\vec\psi_{\rm E}\otimes\vec\psi_{\rm D} + \vec\psi_{\rm D}\otimes\vec\psi_{\rm E}}{\sqrt2}
 $$
 
 - Uma amplitude para cada par de partículas $(j_1, j_2)$ da cadeia.
@@ -620,14 +622,14 @@ Notas: [O espaço de Fock](aula2.html#sec-part-fock)
 ## Criação e aniquilação
 
 $$
-\left(a^\dagger(\chi)\Psi\right)^{a_1\cdots a_{n+1}} = \frac{1}{\sqrt{n+1}}\sum_i\chi^{a_i}\Psi^{a_1\cdots\widehat{a_i}\cdots a_{n+1}},
+\left(a^\dagger(\vec\psi_2)\Psi\right)^{a_1\cdots a_{n+1}} = \frac{1}{\sqrt{n+1}}\sum_i\psi_2^{a_i}\Psi^{a_1\cdots\widehat{a_i}\cdots a_{n+1}},
 \qquad
-\left(a(\psi)\Psi\right)^{a_2\cdots a_n} = \sqrt n\sum_{a_1}(\psi^{a_1})^*\Psi^{a_1\cdots a_n}
+\left(a(\vec\psi_1)\Psi\right)^{a_2\cdots a_n} = \sqrt n\sum_{a_1}(\psi_1^{a_1})^*\Psi^{a_1\cdots a_n}
 $$
 $$
-\left[a(\psi), a^\dagger(\chi)\right] = \langle\psi, \chi\rangle,
+\left[a(\vec\psi_1), a^\dagger(\vec\psi_2)\right] = \langle\vec\psi_1, \vec\psi_2\rangle,
 \qquad
-\left[a^\dagger(\psi), a^\dagger(\chi)\right] = 0,
+\left[a^\dagger(\vec\psi_1), a^\dagger(\vec\psi_2)\right] = 0,
 \qquad
 \left[a_a, a_b^\dagger\right] = \delta_{ab}
 $$

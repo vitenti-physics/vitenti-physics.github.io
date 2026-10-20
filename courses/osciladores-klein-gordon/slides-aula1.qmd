@@ -26,6 +26,8 @@ format:
       data-background-image: logos.png
       data-background-size: 45%
       data-background-position: left 3% bottom 4%
+execute:
+  cache: true
 ---
 
 ## Roteiro do minicurso
@@ -57,14 +59,14 @@ m\ddot x = -\kappa x,
 \qquad
 \omega \equiv \sqrt{\kappa/m},
 \qquad
-H(x, p) \equiv \frac{p^2}{2m} + \frac{m\omega^2 x^2}{2},
+H(x, p) \equiv \frac{p^2}{2m} + \frac{\kappa x^2}{2},
 \qquad
-\dot x = \frac{\partial H}{\partial p},
-\quad
-\dot p = -\frac{\partial H}{\partial x}
+\dot x = \frac{\partial H}{\partial p} = \frac{p}{m},
+\qquad
+\dot p = -\frac{\partial H}{\partial x} = -\kappa x
 $$
 
-::: {.anim-75}
+::: {.anim-65}
 
 ```{python}
 #| echo: false
@@ -124,42 +126,87 @@ HTML(anim.to_jshtml())
 :::
 
 ::: {.aside}
-Notas: [Equações de Hamilton](aula1.html#sec-ho-hamilton)
+$\dot x \equiv \mathrm dx/\mathrm dt$. Notas: [Equações de Hamilton](aula1.html#sec-ho-hamilton)
 :::
 
-## Forma matricial
+## O gradiente e a matriz $\Omega$
 
+:::: {.columns}
+::: {.column width="62%"}
 $$
-X \equiv \begin{pmatrix} x \\ p \end{pmatrix},
+\vec\chi \equiv \begin{pmatrix} x \\ p \end{pmatrix},
 \qquad
-H = \frac{1}{2} X^{\mathsf T}\, \mathsf H\, X,
-\qquad
-\mathsf H \equiv \begin{pmatrix} m\omega^2 & 0 \\ 0 & 1/m \end{pmatrix}
+\vec\partial H \equiv \begin{pmatrix} \partial H/\partial x \\ \partial H/\partial p \end{pmatrix}
+= \begin{pmatrix} \kappa x \\ p/m \end{pmatrix}
 $$
 $$
-\dot X = \Omega\, \mathsf H\, X \equiv A X,
+\dot{\vec\chi} = \begin{pmatrix} \partial H/\partial p \\ -\partial H/\partial x \end{pmatrix}
+= \Omega\,\vec\partial H,
 \qquad
 \Omega \equiv \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}
 $$
 
-- $\Omega$ (matriz simplética) contém os sinais das equações de Hamilton e é
-  a mesma para todo sistema; o sistema entra apenas por $\mathsf H$.
-- $N$ graus de liberdade: mesma forma, com blocos $N\times N$. É assim que
-  escreveremos a cadeia.
+- Hamilton troca as componentes do gradiente: $\Omega$ gira de $90^\circ$, a velocidade é tangente a $H = \text{constante}$.
+- $\dfrac{\mathrm dH}{\mathrm dt} = \left(\vec\partial H\right)^{\mathsf T}\dot{\vec\chi} = \left(\vec\partial H\right)^{\mathsf T}\Omega\,\vec\partial H = 0$.
+:::
+::: {.column width="38%" .fig-menor}
+{{< embed aula1.qmd#fig-ho-gradiente >}}
+:::
+::::
 
 ::: {.aside}
 Notas: [Forma matricial](aula1.html#sec-ho-matricial)
 :::
 
+## Forma matricial
+
+$$
+H = \frac{1}{2} \vec\chi^{\mathsf T}\, \mathsf H\, \vec\chi,
+\qquad
+\mathsf H \equiv \begin{pmatrix} \kappa & 0 \\ 0 & 1/m \end{pmatrix},
+\qquad
+\vec\partial H = \mathsf H\,\vec\chi
+$$
+$$
+\dot{\vec\chi} = \Omega\, \mathsf H\, \vec\chi \equiv A \vec\chi,
+\qquad
+A = \begin{pmatrix} 0 & 1/m \\ -\kappa & 0 \end{pmatrix}
+$$
+
+- $\Omega$ é a mesma para todo sistema; o sistema entra apenas por $\mathsf H$.
+- Sobre as soluções, $\mathrm d/\mathrm dt$ é representada por $A$:
+$$
+\ddot{\vec\chi} = A\dot{\vec\chi} = A^2\vec\chi,
+\qquad
+\frac{\mathrm d^n\vec\chi}{\mathrm dt^n} = A^n\vec\chi
+$$
+
+::: {.aside}
+Notas: [Forma matricial](aula1.html#sec-ho-matricial)
+:::
+
+## A exponencial de uma matriz
+
+Série de Taylor, trocando cada derivada por uma potência de $A$:
+$$
+\vec\chi(t) = \sum_{n=0}^\infty \frac{t^n}{n!}\,\frac{\mathrm d^n\vec\chi}{\mathrm dt^n}(0)
+= \left(I + tA + \frac{t^2A^2}{2} + \frac{t^3A^3}{6} + \dots\right)\vec\chi(0)
+\equiv e^{tA}\,\vec\chi(0)
+$$
+
+- Com um número $a$ no lugar de $A$: $\dot x = ax$, $x(t) = e^{at}x(0)$.
+- Derivando a série termo a termo, $\dfrac{\mathrm d}{\mathrm dt}e^{tA} = A\,e^{tA}$ e $e^{0A} = I$.
+
+::: {.aside}
+Notas: [Solução exata](aula1.html#sec-ho-exata)
+:::
+
 ## Potências de $A$
 
 $$
-A = \begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix}
-$$
-$$
-A^2 = \begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix}
-\begin{pmatrix} 0 & 1/m \\ -m\omega^2 & 0 \end{pmatrix}
-= \begin{pmatrix} -\omega^2 & 0 \\ 0 & -\omega^2 \end{pmatrix}
+A^2 = \begin{pmatrix} 0 & 1/m \\ -\kappa & 0 \end{pmatrix}
+\begin{pmatrix} 0 & 1/m \\ -\kappa & 0 \end{pmatrix}
+= \begin{pmatrix} -\kappa/m & 0 \\ 0 & -\kappa/m \end{pmatrix}
 = -\omega^2 I
 $$
 $$
@@ -177,25 +224,7 @@ A^{2n} = (-\omega^2)^n I,
 \qquad
 A^{2n+1} = (-\omega^2)^n A
 $$
-
-- Potências pares: múltiplos de $I$. Potências ímpares: múltiplos de $A$.
-
-::: {.aside}
-Notas: [Potências de $A$](aula1.html#sec-ho-potencias)
-:::
-
-## A exponencial de uma matriz
-
-Para um número: $\dot x = ax \Rightarrow x(t) = e^{at}x(0)$, com
-$e^{at} = 1 + at + (at)^2/2 + \dots$. Para a matriz, a mesma série:
-$$
-e^{tA} \equiv I + tA + \frac{t^2A^2}{2} + \frac{t^3A^3}{6} + \frac{t^4A^4}{24} + \dots,
-\qquad
-\frac{\mathrm d}{\mathrm dt}e^{tA} = A\,e^{tA}
-\quad\Rightarrow\quad
-X(t) = e^{tA}X(0)
-$$
-Com as potências de $A$, separando pares e ímpares:
+Separando pares e ímpares:
 $$
 e^{tA}
 = \underbrace{\left(1 - \frac{\omega^2t^2}{2} + \frac{\omega^4t^4}{24} - \dots\right)}_{\cos\omega t} I
@@ -203,7 +232,7 @@ e^{tA}
 $$
 
 ::: {.aside}
-Notas: [Soma da série](aula1.html#sec-ho-soma-serie)
+Notas: [Potências de $A$](aula1.html#sec-ho-potencias)
 :::
 
 ## Solução exata
@@ -221,14 +250,24 @@ x(t) = x(0)\cos\omega t + \frac{p(0)}{m\omega}\sin\omega t,
 p(t) = p(0)\cos\omega t - m\omega\, x(0)\sin\omega t
 $$
 
-1. **Energia conservada:** as trajetórias são as elipses $H = \text{constante}$.
-2. **Produto simplético conservado:** para duas soluções,
-   $\Omega(X, Y) \equiv X^{\mathsf T}\Omega\, Y = x_X p_Y - p_X x_Y$ é
-   constante, pois $A^{\mathsf T}\Omega + \Omega A = 0$. Equivale a
-   $\det e^{tA} = 1$: áreas preservadas.
+- As trajetórias são as elipses $H = \text{constante}$.
 
 ::: {.aside}
-Notas: [Solução exata](aula1.html#sec-ho-exata)
+Notas: [Soma da série](aula1.html#sec-ho-soma-serie)
+:::
+
+## O produto simplético é uma área
+
+$$
+\Omega(\vec\chi_1, \vec\chi_2) \equiv \vec\chi_1^{\mathsf T}\Omega\,\vec\chi_2 = x_1p_2 - p_1x_2 = \det\begin{pmatrix} x_1 & x_2 \\ p_1 & p_2 \end{pmatrix}
+$$
+
+{{< embed aula1.qmd#fig-ho-area >}}
+
+- $\frac{\mathrm d}{\mathrm dt}\Omega(\vec\chi_1, \vec\chi_2) = \vec\chi_1^{\mathsf T}\left(A^{\mathsf T}\Omega + \Omega A\right)\vec\chi_2 = 0$, pois $A^{\mathsf T}\Omega + \Omega A = 0$ para qualquer $\mathsf H$ simétrica (Liouville).
+
+::: {.aside}
+Notas: [O produto simplético](aula1.html#sec-ho-produto)
 :::
 
 ## Integração numérica: um passo exato é uma rotação
@@ -266,16 +305,44 @@ Notas: [Variáveis adimensionais](aula1.html#sec-ho-adimensionais)
 ## Os métodos como aproximações da rotação
 
 Cada método substitui $M_{\rm ex}(\varepsilon)$ por uma matriz
-$M(\varepsilon)$ polinomial em $\varepsilon$: $X_{n+1} = M(\varepsilon)X_n$.
+$M(\varepsilon)$ polinomial em $\varepsilon$: $\vec\chi_{n+1} = M(\varepsilon)\,\vec\chi_n$.
 
 1. **Ordem.** $M - M_{\rm ex} = O(\varepsilon^{k+1})$: erro acumulado
    $O(\Delta t^k)$ depois de $n = t/\Delta t$ passos.
-2. **Determinante.** $\det M$ multiplica as áreas a cada passo. Exato: $1$.
-3. **Autovalores.** $X_n = M^nX_0$ cresce como $|\lambda|^n$. Exato:
+2. **Produto simplético.** Queremos $M^{\mathsf T}\Omega M = \Omega$, como a evolução exata.
+3. **Autovalores.** $\vec\chi_n = M^n\vec\chi_0$ cresce como $|\lambda|^n$. Exato:
    $\lambda = e^{\pm i\varepsilon}$, $|\lambda| = 1$.
 
-Se $\det M = 1$ e $|\operatorname{tr} M| < 2$: $\lambda = e^{\pm i\theta}$,
-$2\cos\theta = \operatorname{tr} M$. A solução fica limitada; $\theta \neq \varepsilon$ é um erro de fase.
+Para qualquer matriz $2\times 2$:
+$$
+M^{\mathsf T}\Omega M = \det(M)\,\Omega,
+\qquad
+\Omega(M\vec\chi_1, M\vec\chi_2) = \det(M)\,\Omega(\vec\chi_1, \vec\chi_2)
+$$
+
+- $\det M$ mede a mudança das áreas; em duas dimensões, simplética $\Leftrightarrow$ $\det M = 1$.
+
+::: {.aside}
+Notas: [Os métodos como aproximações da rotação](aula1.html#sec-ho-aproximacoes)
+:::
+
+## Autovalores: traço e determinante
+
+$$
+\det(M - \lambda I) = \lambda^2 - (\operatorname{tr} M)\,\lambda + \det M,
+\qquad
+\lambda_1 + \lambda_2 = \operatorname{tr} M,
+\qquad
+\lambda_1\lambda_2 = \det M
+$$
+
+- $(\operatorname{tr} M)^2 < 4\det M$: par complexo conjugado, $|\lambda|^2 = \det M$.
+  Cresce se $\det M > 1$.
+- $\det M = 1$, $|\operatorname{tr} M| < 2$: $\lambda = e^{\pm i\theta}$,
+  $2\cos\theta = \operatorname{tr} M$. Limitada; $\theta \neq \varepsilon$ é um erro de fase.
+- $\det M = 1$, $|\operatorname{tr} M| > 2$: autovalores reais, um deles com
+  $|\lambda| > 1$. Cresce exponencialmente.
+- Exato: $\operatorname{tr} M_{\rm ex} = 2\cos\varepsilon$, $\theta = \varepsilon$.
 
 ::: {.aside}
 Notas: [Os métodos como aproximações da rotação](aula1.html#sec-ho-aproximacoes)
@@ -283,19 +350,20 @@ Notas: [Os métodos como aproximações da rotação](aula1.html#sec-ho-aproxima
 
 ## Euler explícito
 
-Taylor truncado: $X(t_{n+1}) = X(t_n) + \Delta t\,AX(t_n) + O(\Delta t^2)$
+Taylor truncado: $\vec\chi(t_{n+1}) = \vec\chi(t_n) + \Delta t\,A\vec\chi(t_n) + O(\Delta t^2)$
 $$
-X_{n+1} = (I + \Delta t\, A)\, X_n,
+\vec\chi_{n+1} = (I + \Delta t\, A)\, \vec\chi_n,
 \qquad
 M_{\rm E}(\varepsilon) = I + \varepsilon\Omega = \begin{pmatrix} 1 & \varepsilon \\ -\varepsilon & 1 \end{pmatrix}
 = \sqrt{1+\varepsilon^2}\;M_{\rm ex}(\arctan\varepsilon)
 $$
 
-- Segue a tangente: rotação de $\arctan\varepsilon < \varepsilon$ e
-  dilatação por $\sqrt{1+\varepsilon^2}$.
-- Primeira ordem: $M_{\rm E} - M_{\rm ex} = (\varepsilon^2/2)\,I + O(\varepsilon^3)$.
-- $H_n = (1+\varepsilon^2)^n H_0$: espiral que se afasta da origem;
-  $\det M_{\rm E} = 1 + \varepsilon^2$.
+- $\operatorname{tr} M_{\rm E} = 2$, $\det M_{\rm E} = 1 + \varepsilon^2$:
+  $\lambda = 1 \pm i\varepsilon$, $|\lambda| = \sqrt{1+\varepsilon^2}$. Primeira ordem.
+- $H_n = (1+\varepsilon^2)^n H_0$: espiral que se afasta da origem.
+- Até o instante $t$: $n = \omega t/\varepsilon$ passos e
+  $H_n/H_0 \approx e^{\varepsilon\,\omega t}$. Passo menor: menos erro, mais passos.
+- 20 períodos com erro de $1\%$: $\varepsilon < 7{,}9\times 10^{-5}$, $1{,}6\times 10^6$ passos.
 
 ::: {.aside}
 Notas: [Euler explícito](aula1.html#sec-ho-euler)
@@ -327,6 +395,8 @@ M_{\rm SE}(\varepsilon) = S_\xi(\varepsilon)\, S_\eta(\varepsilon)
 \operatorname{tr} M_{\rm SE} = 2 - \varepsilon^2
 $$
 
+- $S_\xi$ e $S_\eta$ geram o grupo simplético $\mathrm{Sp}(2,\mathbb R) = \{M : M^{\mathsf T}\Omega M = \Omega\}$:
+  toda $M$ com $M_{12} \neq 0$ é $S_\eta(\cdot)\,S_\xi(M_{12})\,S_\eta(\cdot)$.
 - Primeira ordem, mas o erro deforma em vez de dilatar.
 - Conserva exatamente
   $\tilde H_{\rm SE} \equiv (\xi^2 + \eta^2 - \varepsilon\xi\eta)/2$:
@@ -363,21 +433,21 @@ Notas: [Verlet](aula1.html#sec-ho-verlet)
 
 Quatro velocidades, média com os pesos $1, 2, 2, 1$ de Simpson:
 $$
-k_1 = f(X_n),
+k_1 = f(\vec\chi_n),
 \qquad
-k_2 = f\!\left(X_n + \tfrac{\Delta t}{2}k_1\right),
+k_2 = f\!\left(\vec\chi_n + \tfrac{\Delta t}{2}k_1\right),
 \qquad
-k_3 = f\!\left(X_n + \tfrac{\Delta t}{2}k_2\right),
+k_3 = f\!\left(\vec\chi_n + \tfrac{\Delta t}{2}k_2\right),
 \qquad
-k_4 = f\!\left(X_n + \Delta t\,k_3\right)
+k_4 = f\!\left(\vec\chi_n + \Delta t\,k_3\right)
 $$
 $$
-X_{n+1} = X_n + \frac{\Delta t}{6}\left(k_1 + 2k_2 + 2k_3 + k_4\right),
+\vec\chi_{n+1} = \vec\chi_n + \frac{\Delta t}{6}\left(k_1 + 2k_2 + 2k_3 + k_4\right),
 \qquad
 M_{\rm RK4} = \left(1 - \frac{\varepsilon^2}{2} + \frac{\varepsilon^4}{24}\right) I + \left(\varepsilon - \frac{\varepsilon^3}{6}\right)\Omega
 $$
 
-- Para $f(X) = AX$ a média dá $I + \Delta t\,A + \dots + \Delta t^4A^4/24$,
+- Para $f(\vec\chi) = A\vec\chi$ a média dá $I + \Delta t\,A + \dots + \Delta t^4A^4/24$,
   os cinco primeiros termos da série de $e^{\Delta t\,A}$.
 - $M_{\rm RK4}$ é a rotação com $\cos\varepsilon$ e $\sin\varepsilon$
   truncados na ordem $\varepsilon^4$: quarta ordem.
@@ -418,12 +488,12 @@ Notas: [Implementação e comparação](aula1.html#sec-ho-implementacao)
 :::: {.columns}
 ::: {.column width="50%"}
 ```{.python}
-def passo_rk4(f, X, dt):
-    k1 = f(X)
-    k2 = f(X + 0.5 * dt * k1)
-    k3 = f(X + 0.5 * dt * k2)
-    k4 = f(X + dt * k3)
-    return X + dt * (k1 + 2 * k2 + 2 * k3 + k4) / 6
+def passo_rk4(f, chi, dt):
+    k1 = f(chi)
+    k2 = f(chi + 0.5 * dt * k1)
+    k3 = f(chi + 0.5 * dt * k2)
+    k4 = f(chi + dt * k3)
+    return chi + dt * (k1 + 2 * k2 + 2 * k3 + k4) / 6
 ```
 :::
 ::: {.column width="50%"}
@@ -463,19 +533,30 @@ Notas: [Implementação e comparação](aula1.html#sec-ho-implementacao)
 Notas: [O modelo](aula1.html#sec-cadeia-modelo)
 :::
 
-## Forças e equações de movimento
+## Forças: as componentes horizontais se cancelam
 
-Mola de comprimento natural nulo: força $= K \times$ (vetor até a outra extremidade).
+{{< embed aula1.qmd#fig-cadeia-forcas >}}
+
+- Molas de comprimento natural nulo: força $= K \times$ (vetor até a outra extremidade).
+- Horizontais: $K\Delta x - K\Delta x = 0$. Partindo do repouso, as posições horizontais não mudam.
+
+::: {.aside}
+Notas: [Forças e equações de movimento](aula1.html#sec-cadeia-forcas)
+:::
+
+## Equações de movimento
+
 $$
-K\begin{pmatrix} \Delta x \\ h^{j+1} - h^j \end{pmatrix}
-+ K\begin{pmatrix} -\Delta x \\ h^{j-1} - h^j \end{pmatrix}
-= \begin{pmatrix} 0 \\ K\left(h^{j+1} - 2h^j + h^{j-1}\right) \end{pmatrix}
+K\left(h^{j+1} - h^j\right) + K\left(h^{j-1} - h^j\right)
+= K\Delta x\left(\frac{h^{j+1} - h^j}{\Delta x} - \frac{h^j - h^{j-1}}{\Delta x}\right)
+= K\left(h^{j+1} - 2h^j + h^{j-1}\right)
 $$
 $$
-m\ddot h^j = K\left(h^{j+1} - 2h^j + h^{j-1}\right) - K_0\, h^j
+m\ddot h^j = F_j = K\left(h^{j+1} - 2h^j + h^{j-1}\right) - K_0\, h^j
 $$
 
-- $K = 0$: $N$ osciladores independentes de frequência $\omega_0 \equiv \sqrt{K_0/m}$.
+- Diferença de inclinações: a força é proporcional à curvatura (segunda derivada discreta).
+- $K = 0$: $N$ osciladores independentes de frequência $\sqrt{K_0/m}$.
 - $K \neq 0$: a equação de $h^j$ contém $h^{j \pm 1}$, os osciladores estão acoplados.
 - Exata para qualquer inclinação; com comprimento natural $\ell_0$, só na ordem linear.
 
@@ -486,7 +567,7 @@ Notas: [Forças e equações de movimento](aula1.html#sec-cadeia-forcas)
 ## O operador de translação
 
 $$
-(Th)^j \equiv h^{j+1},
+(T\vec h)^j \equiv h^{j+1},
 \qquad
 T = \begin{pmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 1 & 0 & 0 & 0 \end{pmatrix},
 \qquad
@@ -494,9 +575,9 @@ T\begin{pmatrix} h^0 \\ h^1 \\ h^2 \\ h^3 \end{pmatrix} = \begin{pmatrix} h^1 \\
 \qquad (N = 4)
 $$
 
-- Matriz de permutação: $T^{-1} = T^{\mathsf T}$, $(T^{-1}h)^j = h^{j-1}$, e $T^N = I$.
+- Matriz de permutação: $T^{-1} = T^{\mathsf T}$, $(T^{-1}\vec h)^j = h^{j-1}$, e $T^N = I$.
 - O $1$ no canto inferior esquerdo é a condição periódica.
-- No `numpy`: `np.roll(h, -1)` é $Th$ e `np.roll(h, 1)` é $T^{-1}h$.
+- No `numpy`: `np.roll(h, -1)` é $T\vec h$ e `np.roll(h, 1)` é $T^{-1}\vec h$.
 
 ::: {.aside}
 Notas: [O operador de translação](aula1.html#sec-cadeia-translacao)
@@ -505,11 +586,12 @@ Notas: [O operador de translação](aula1.html#sec-cadeia-translacao)
 ## A matriz $D$
 
 $$
-h^{j+1} - 2h^j + h^{j-1} = -(Dh)^j,
+\vec F = K\left(T\vec h - \vec h\right) + K\left(T^{-1}\vec h - \vec h\right) - K_0\,\vec h
+= -\left(KD + K_0 I\right)\vec h,
 \qquad
 D \equiv 2I - T - T^{-1},
 \qquad
-m\ddot h = -\left(KD + K_0 I\right) h
+m\ddot{\vec h} = \vec F
 $$
 
 {{< embed aula1.qmd#fig-cadeia-matrizes >}}
@@ -522,21 +604,23 @@ Notas: [O operador de translação](aula1.html#sec-cadeia-translacao)
 
 $$
 V = \frac{K}{2}\sum_j\left(h^{j+1} - h^j\right)^2 + \frac{K_0}{2}\sum_j \left(h^j\right)^2
-= \frac12\, h^{\mathsf T}\left(KD + K_0 I\right) h,
+= \frac12\, \vec h^{\mathsf T}\left(KD + K_0 I\right) \vec h,
 \qquad
 H = \sum_j \frac{p_j^2}{2m} + V
 $$
 $$
-\dot X = AX,
+\vec\chi \equiv \begin{pmatrix} \vec h \\ \vec p \end{pmatrix}
+= \begin{pmatrix} h^0 \\ \vdots \\ h^{N-1} \\ p_0 \\ \vdots \\ p_{N-1} \end{pmatrix},
+\qquad
+\vec\partial H = \begin{pmatrix} \left(KD + K_0 I\right)\vec h \\ \vec p/m \end{pmatrix},
+\qquad
+\Omega = \begin{pmatrix} 0 & I \\ -I & 0 \end{pmatrix},
 \qquad
 A = \Omega\,\mathsf H = \begin{pmatrix} 0 & I/m \\ -\left(KD + K_0 I\right) & 0 \end{pmatrix}
 $$
-$$
-A^2 = -\frac1m\begin{pmatrix} KD + K_0 I & 0 \\ 0 & KD + K_0 I \end{pmatrix}
-$$
 
-- O oscilador isolado com $m\omega^2 \to KD + K_0 I$, blocos $N \times N$.
-- $A^2$ não é múltiplo de $I$: é preciso diagonalizar $KD + K_0 I$ (próxima seção).
+- $\dot{\vec\chi} = \Omega\,\vec\partial H = A\vec\chi$: o oscilador isolado com $\kappa \to KD + K_0 I$, blocos $N \times N$.
+- $A^2 = -\frac1m\operatorname{diag}\left(KD + K_0 I,\ KD + K_0 I\right)$ não é múltiplo de $I$: é preciso diagonalizar $KD + K_0 I$.
 
 ::: {.aside}
 Notas: [Energia e Hamiltoniana](aula1.html#sec-cadeia-hamiltoniana)
@@ -544,21 +628,26 @@ Notas: [Energia e Hamiltoniana](aula1.html#sec-cadeia-hamiltoniana)
 
 ## O modo zero
 
-Com $K_0 = 0$, $H$ não muda com $h \to h + \beta\,\mathbf 1$: nenhuma altura é preferida.
 $$
-D\,\mathbf 1 = 0,
+\vec 1 \equiv \begin{pmatrix} 1 & 1 & \cdots & 1 \end{pmatrix}^{\mathsf T},
 \qquad
-P \equiv \sum_j p_j,
+K_0 = 0:\ H \text{ invariante por } \vec h \to \vec h + \beta\,\vec 1,
 \qquad
-\dot P = \sum_j F_j = -K_0 N\,\bar h,
+D\,\vec 1 = 0
+$$
+$$
+\bar h \equiv \frac1N\sum_j h^j = \frac{\vec 1^{\mathsf T}\vec h}{N},
 \qquad
-\bar h \equiv \frac1N\sum_j h^j,
+\bar p \equiv \frac1N\sum_j p_j = \frac PN,
 \qquad
-\ddot{\bar h} = -\omega_0^2\,\bar h
+\dot{\bar h} = \frac{\bar p}{m},
+\qquad
+\dot{\bar p} = -K_0\,\bar h
 $$
 
-- $K_0 = 0$: $P$ conservado, $\bar h(t) = \bar h(0) + Pt/(Nm)$. Partícula livre, frequência zero.
-- $K_0 > 0$: $h = 0$ é a altura de equilíbrio e $\bar h$ oscila com $\omega_0$.
+- O par $(\bar h, \bar p)$ é um oscilador com $\kappa = K_0$, desacoplado do resto da cadeia.
+- $K_0 = 0$: $\bar p$ conservado, $\bar h(t) = \bar h(0) + \bar p\,t/m$. Partícula livre, frequência zero.
+- $K_0 > 0$: $\vec h = 0$ é o equilíbrio e $\bar h$ oscila com $\sqrt{K_0/m}$.
 - Na Aula 2, $K_0$ dará o termo de massa: um campo sem massa não tem valor preferido.
 
 ::: {.aside}
@@ -581,7 +670,7 @@ def forca_cadeia(h, K, K0):
 ```
 
 - O mesmo `passo_verlet` do oscilador, com `h` e `p` vetores.
-- $N = 15$, $m = K = 1$; $h^0(0) = 1$, partículas $1$ e $2$ com velocidade $0{,}5$: $P = 1$.
+- $N = 15$, $m = K = 1$; $h^0(0) = 1$, partículas $1$ e $2$ com velocidade $0{,}5$: $P = 1$, $\bar p = 1/15$.
 - $K_0 = 0$ e $K_0 = 0{,}2$; $\Delta t = 0{,}05$, 1200 passos.
 
 ::: {.aside}
@@ -706,18 +795,35 @@ Notas: [Matrizes circulantes](aula1.html#sec-circ-def)
 ## Autovetores de $T$: a base de Fourier
 
 $$
+T\vec v = \lambda\vec v
+\;\Rightarrow\;
+\vec v = T^N\vec v = \lambda^N\vec v
+\;\Rightarrow\;
+\lambda^N = 1,
+\qquad
 v^{j+1} = \lambda v^j
 \;\Rightarrow\;
 v^j = \lambda^j v^0,
 \qquad
-\lambda^N = 1,
-\qquad
+|v^0| = \frac{1}{\sqrt N},
+\quad
+v^0 > 0
+$$
+$$
 v_a^{\,j} \equiv \frac{e^{2\pi i a j/N}}{\sqrt N},
 \qquad
-T v_a = e^{2\pi i a/N} v_a,
+T \vec v_a = e^{2\pi i a/N} \vec v_a,
 \qquad
-v_a^\dagger v_b = \delta_{ab}
+\vec v_a^{\,\dagger} \vec v_b = \delta_{ab}
 $$
+
+- A fase de $v^0$ é arbitrária; escolhemos $v^0$ real e positivo.
+
+::: {.aside}
+Notas: [A base de Fourier](aula1.html#sec-circ-fourier)
+:::
+
+## A base de Fourier
 
 {{< embed aula1.qmd#fig-circ-fourier >}}
 
@@ -728,16 +834,16 @@ Notas: [A base de Fourier](aula1.html#sec-circ-fourier)
 ## A transformada de Fourier discreta
 
 $$
-h = \sum_a \tilde h^a\, v_a,
+\vec h = \sum_a \tilde h^a\, \vec v_a,
 \qquad
-\tilde h^a \equiv v_a^\dagger h = \frac{1}{\sqrt N}\sum_{j=0}^{N-1} e^{-2\pi i aj/N}\, h^j,
+\tilde h^a \equiv \vec v_a^{\,\dagger} \vec h = \frac{1}{\sqrt N}\sum_{j=0}^{N-1} e^{-2\pi i aj/N}\, h^j,
 \qquad
 h^j = \frac{1}{\sqrt N}\sum_a e^{2\pi i aj/N}\,\tilde h^a
 $$
 
-- $a$ é definido módulo $N$: $v_{a+N} = v_a$. Usamos o intervalo simétrico,
+- $a$ é definido módulo $N$: $\vec v_{a+N} = \vec v_a$. Usamos o intervalo simétrico,
   o de menor $|a|$.
-- $h$ real: $\tilde h^{-a} = \left(\tilde h^a\right)^*$.
+- $\vec h$ real: $\tilde h^{-a} = \left(\tilde h^a\right)^*$.
 - `np.fft.fft(h, norm="ortho")` dá $\tilde h^a$ com $O(N\log N)$ operações.
 
 ::: {.aside}
@@ -747,7 +853,7 @@ Notas: [A base de Fourier](aula1.html#sec-circ-fourier)
 ## Toda circulante é diagonal na base de Fourier
 
 $$
-C\, v_a = \sum_r b_r\, T^r v_a = \lambda_a(C)\, v_a,
+C\, \vec v_a = \sum_r b_r\, T^r \vec v_a = \lambda_a(C)\, \vec v_a,
 \qquad
 \lambda_a(C) = \sum_{r=0}^{N-1} b_r\, e^{2\pi i a r/N},
 \qquad
@@ -759,7 +865,7 @@ $$
 
 - Os autovetores são os mesmos para toda circulante; os autovalores são a
   transformada de Fourier da primeira linha.
-- $\lambda_a(D) = 0$ somente para $a = 0$: $v_0 = \mathbf 1/\sqrt N$, o modo zero.
+- $\lambda_a(D) = 0$ somente para $a = 0$: $\vec v_0 = \vec 1/\sqrt N$, o modo zero.
 
 ::: {.aside}
 Notas: [Toda circulante é diagonal](aula1.html#sec-circ-diag)
@@ -768,7 +874,7 @@ Notas: [Toda circulante é diagonal](aula1.html#sec-circ-diag)
 ## A relação de dispersão
 
 $$
-\omega_a = \sqrt{\omega_0^2 + \frac{4K}{m}\sin^2\frac{\pi a}{N}}
+\omega_a = \sqrt{\frac{K_0 + 4K\sin^2(\pi a/N)}{m}}
 $$
 
 {{< embed aula1.qmd#fig-dispersao >}}
@@ -789,8 +895,8 @@ H = \sum_a \left(\frac{|\tilde p^a|^2}{2m} + \frac{m\,\omega_a^2\,|\tilde h^a|^2
 $$
 
 - $N$ osciladores acoplados $\to$ $N$ osciladores independentes, um por modo.
-- $a = 0$, $K_0 = 0$: $\tilde h^0 = \sqrt N\,\bar h$ e $\tilde p^0 = P/\sqrt N$
-  dão $\bar h(0) + Pt/(Nm)$, o modo zero.
+- $a = 0$, $K_0 = 0$: $\tilde h^0 = \sqrt N\,\bar h$ e $\tilde p^0 = \sqrt N\,\bar p$
+  dão $\bar h(0) + \bar p\,t/m$, o modo zero.
 - Para $h$ real, $N$ números reais: $\tilde h^0$ e os pares $(a, -a)$.
 
 ::: {.aside}
@@ -800,9 +906,9 @@ Notas: [Modos normais](aula1.html#sec-circ-modos)
 ## A base real de Hartley
 
 $$
-\chi_a^{\,j} \equiv \frac{1}{\sqrt N}\left(\cos\frac{2\pi a j}{N} + \sin\frac{2\pi a j}{N}\right) = \frac{(1 - i)\,v_a^{\,j} + (1 + i)\,v_{-a}^{\,j}}{2},
+\zeta_a^{\,j} \equiv \frac{1}{\sqrt N}\left(\cos\frac{2\pi a j}{N} + \sin\frac{2\pi a j}{N}\right) = \frac{(1 - i)\,v_a^{\,j} + (1 + i)\,v_{-a}^{\,j}}{2},
 \qquad
-\chi_a^{\mathsf T}\chi_b = \delta_{ab}
+\vec\zeta_a^{\,\mathsf T}\vec\zeta_b = \delta_{ab}
 $$
 
 ```{python}
@@ -817,7 +923,7 @@ HTML(_notas_md["anim_modos"].to_jshtml())
 
 Os quatro modos com o mesmo relógio: cada um oscila com a sua $\omega_a$, sempre com a mesma forma.
 
-- $\chi_a\cos\omega_a t$: onda estacionária. $v_a e^{-i\omega_a t}$: onda viajante,
+- $\vec\zeta_a\cos\omega_a t$: onda estacionária. $\vec v_a e^{-i\omega_a t}$: onda viajante,
   para $j$ crescente se $a > 0$.
 
 ::: {.aside}
@@ -854,7 +960,7 @@ Notas: [Solução exata pela FFT](aula1.html#sec-circ-fft)
 $$
 \Delta t < \frac{2}{\omega_{\max}},
 \qquad
-\omega_{\max} = \max_a\omega_a \le \sqrt{\omega_0^2 + \frac{4K}{m}}
+\omega_{\max} = \max_a\omega_a \le \sqrt{\frac{K_0 + 4K}{m}}
 $$
 
 {{< embed aula1.qmd#fig-cfl >}}

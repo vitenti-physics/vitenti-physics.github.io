@@ -17,6 +17,8 @@ format:
       echo: true
       output: true
 format-links: [ipynb]
+execute:
+  cache: true
 ---
 
 ::: {.callout-note}
@@ -72,14 +74,13 @@ a Hamiltoniana, com $\{h^j, p_k\} = \delta^j{}_k$
 $$
 H = \sum_{j=0}^{N-1}\left[\frac{p_j^2}{2m} + \frac{K}{2}\left(h^{j+1} - h^j\right)^2 + \frac{K_0}{2}\left(h^j\right)^2\right],
 $$ {#eq-cont-H-cadeia}
-os vetores de Fourier $v_a^{\,j} = e^{2\pi i aj/N}/\sqrt N$, as componentes
-$\tilde h^a = v_a^\dagger h$ e $\tilde p^a = v_a^\dagger p$, e a relação de
+os vetores de Fourier $\vec v_a$, de componentes
+$v_a^{\,j} = e^{2\pi i aj/N}/\sqrt N$, as componentes
+$\tilde h^a = \vec v_a^{\,\dagger} \vec h$ e $\tilde p^a = \vec v_a^{\,\dagger} \vec p$, e a relação de
 dispersão
 ([Aula 1, A relação de dispersão](aula1.qmd#sec-circ-dispersao))
 $$
-\omega_a = \sqrt{\omega_0^2 + \frac{4K}{m}\sin^2\frac{\pi a}{N}},
-\qquad
-\omega_0 \equiv \sqrt{K_0/m} .
+\omega_a = \sqrt{\frac{K_0 + 4K\sin^2(\pi a/N)}{m}} .
 $$ {#eq-cont-dispersao-aula1}
 
 ## Os parâmetros de uma corda {#sec-cont-campo}
@@ -116,7 +117,7 @@ K_0 = \rho\,\mu^2\,\Delta x,
 $$ {#eq-cont-escalas}
 com
 $$
-\omega_0^2 = \frac{K_0}{m} = \mu^2,
+\frac{K_0}{m} = \mu^2,
 \qquad
 \frac{K}{m} = \frac{\tau}{\rho\,\Delta x^2} \equiv \frac{c^2}{\Delta x^2},
 \qquad
@@ -125,8 +126,8 @@ $$ {#eq-cont-c}
 Os parâmetros $\rho$, $\tau$, $\mu$ e $c$ descrevem a corda e não dependem
 de $N$: duas cadeias com $N$ diferentes e os mesmos $\rho$, $\tau$, $\mu$
 e $L$ são a mesma corda dividida em pedaços de tamanhos diferentes
-(@fig-cont-amostras). A frequência $\omega_0 = \mu$ do modo uniforme não
-depende de $N$; a razão $K/m$ cresce como $1/\Delta x^2$. Dividindo
+(@fig-cont-amostras). A frequência $\sqrt{K_0/m} = \mu$ do modo uniforme
+não depende de $N$; a razão $K/m$ cresce como $1/\Delta x^2$. Dividindo
 @eq-cont-newton por $\Delta x$, a equação de movimento da cadeia fica
 $$
 \rho\,\ddot h^j = \tau\,\frac{h^{j+1} - 2h^j + h^{j-1}}{\Delta x^2} - \rho\,\mu^2\,h^j .
@@ -294,15 +295,15 @@ configuração deslocada de uma partícula. A grandeza conservada associada
 a essa simetria é o **momento da cadeia**
 $$
 P_{\rm rede} \equiv -\sum_{j=0}^{N-1} p_j\,\frac{h^{j+1} - h^{j-1}}{2\Delta x}
-= -\frac{p^{\mathsf T}\left(T - T^{-1}\right)h}{2\Delta x} .
+= -\frac{\vec p^{\mathsf T}\left(T - T^{-1}\right)\vec h}{2\Delta x} .
 $$ {#eq-cont-P-rede}
-Ela é conservada exatamente. Com $\dot h = p/m$ e
-$\dot p = -(KD + K_0 I)h$,
+Ela é conservada exatamente. Com $\dot{\vec h} = \vec p/m$ e
+$\dot{\vec p} = -(KD + K_0 I)\vec h$,
 $$
--2\Delta x\,\dot P_{\rm rede} = -h^{\mathsf T}\left(KD + K_0 I\right)\left(T - T^{-1}\right)h + \frac{1}{m}\,p^{\mathsf T}\left(T - T^{-1}\right)p .
+-2\Delta x\,\dot P_{\rm rede} = -\vec h^{\mathsf T}\left(KD + K_0 I\right)\left(T - T^{-1}\right)\vec h + \frac{1}{m}\,\vec p^{\mathsf T}\left(T - T^{-1}\right)\vec p .
 $$
 A matriz $T - T^{-1}$ é antissimétrica, pois $T^{-1} = T^{\mathsf T}$, e
-uma forma quadrática $p^{\mathsf T}Mp$ com $M$ antissimétrica é nula. A
+uma forma quadrática $\vec p^{\mathsf T}M\vec p$ com $M$ antissimétrica é nula. A
 matriz $(KD + K_0 I)(T - T^{-1})$ também é antissimétrica, porque
 $KD + K_0 I$ é simétrica e comuta com $T$ (é circulante,
 [Aula 1](aula1.qmd#sec-circ-def)). Os dois termos são nulos, e
@@ -322,7 +323,7 @@ simetria:
 |---|---|
 | translação no tempo | energia $H$ |
 | translação $T$ por uma partícula | momento da cadeia $P_{\rm rede}$ |
-| deslocamento $h \to h + \beta\,\mathbf 1$ (somente para $K_0 = 0$) | momento vertical $P = \sum_j p_j$ |
+| deslocamento $\vec h \to \vec h + \beta\,\vec 1$ (somente para $K_0 = 0$) | momento vertical $P = \sum_j p_j$ |
 
 O momento vertical $P$ é o da [Aula 1](aula1.qmd#sec-cadeia-modo-zero),
 das massas que se movem na vertical. O momento da cadeia descreve o
@@ -443,8 +444,8 @@ $2\pi aj/N = k_a x_j$:
 $$
 v_a^{\,j} = \frac{e^{i k_a x_j}}{\sqrt N} .
 $$
-A base é ortonormal, $v_a^\dagger v_b = \delta_{ab}$, e completa: a matriz
-$U$ com colunas $v_a$ é unitária, e $UU^\dagger = I$ é
+A base é ortonormal, $\vec v_a^{\,\dagger} \vec v_b = \delta_{ab}$, e completa: a matriz
+$U$ com colunas $\vec v_a$ é unitária, e $UU^\dagger = I$ é
 $$
 \sum_a v_a^{\,j}\,\left(v_a^{\,k}\right)^* = \delta^{jk} .
 $$ {#eq-cont-completeza}
@@ -473,7 +474,7 @@ a série de Fourier complexa de uma função de período $L$, e
 $\tilde\Pi^a$ da mesma forma. A soma vai sobre todos os inteiros porque o
 intervalo simétrico $-(N-1)/2 \le a \le (N-1)/2$ cresce nos dois sentidos.
 Com $0 \le a \le N - 1$ o limite estaria errado: $a = N - 1$ e $a = -1$ dão
-o mesmo vetor $v_a$, mas $u_{N-1}(x)$ oscila $N - 1$ vezes ao longo do anel
+o mesmo vetor $\vec v_a$, mas $u_{N-1}(x)$ oscila $N - 1$ vezes ao longo do anel
 e $u_{-1}(x)$ uma vez
 ([Aula 1, A base de Fourier](aula1.qmd#sec-circ-fourier)). A completeza
 @eq-cont-completeza, dividida por $\Delta x$, dá
@@ -826,7 +827,7 @@ c_a = e^{-(k_a - k_0)^2\sigma_{\rm p}^2/2}\, e^{-i k_a x_{\rm p}},
 \qquad
 h^j = \operatorname{Re}\psi^j .
 $$
-Cada termo é solução, logo $h$ é solução. Os coeficientes $c_a$ estão
+Cada termo é solução, logo $\vec h$ é solução. Os coeficientes $c_a$ estão
 concentrados em torno de $k_0$, com largura $1/\sigma_{\rm p}$, e a fase
 $e^{-ik_ax_{\rm p}}$ centra o pacote em $x_{\rm p}$ em $t = 0$. Usamos
 $\mu = 1$, $k_0 = 2$, $\sigma_{\rm p} = 2$ e $x_{\rm p} = 10$. O módulo
@@ -994,34 +995,34 @@ um desses espaços ao seguinte. A cadeia quântica construída com esses
 operadores é a cadeia de $N$ osciladores quânticos acoplados, com
 $[\hat h^j, \hat p_k] = i\hbar\,\delta^j{}_k$. Em toda a seção supomos
 $K_0 > 0$; o caso $K_0 = 0$ é discutido na @sec-part-modos. Como uma
-solução da cadeia fica determinada por $h(t)$, com $p = m\dot h$,
-descrevemos cada solução pelo vetor $h(t) \in \mathbb C^N$.
+solução da cadeia fica determinada por $\vec h(t)$, com $\vec p = m\dot{\vec h}$,
+descrevemos cada solução pelo vetor $\vec h(t) \in \mathbb C^N$.
 
 ## Soluções complexas e o produto simplético {#sec-part-produto}
 
-As equações da cadeia são lineares e têm coeficientes reais: se $h(t)$ é
+As equações da cadeia são lineares e têm coeficientes reais: se $\vec h(t)$ é
 uma solução complexa, sua parte real e sua parte imaginária também são
-soluções. Para duas soluções complexas $h_1$ e $h_2$, com
-$p_i = m\dot h_i$, definimos
+soluções. Para duas soluções complexas $\vec h_1$ e $\vec h_2$, com
+$\vec p_i = m\dot{\vec h}_i$, definimos
 $$
-\langle h_1, h_2\rangle \equiv i\sum_{j=0}^{N-1}\left[\left(h_1^j\right)^* p_{2,j} - \left(p_{1,j}\right)^* h_2^j\right] = i\,X_1^\dagger\,\Omega\,X_2,
+\langle \vec h_1, \vec h_2\rangle \equiv i\sum_{j=0}^{N-1}\left[\left(h_1^j\right)^* p_{2,j} - \left(p_{1,j}\right)^* h_2^j\right] = i\,\vec\chi_1^{\,\dagger}\,\Omega\,\vec\chi_2,
 $$ {#eq-part-produto}
-em que $X_i = (h_i, p_i)$ é o vetor do espaço de fase. É o produto
-simplético $\Omega(X_1, X_2)$ da
-[Aula 1](aula1.qmd#sec-ho-exata), com o primeiro vetor conjugado e
+em que $\vec\chi_i = (\vec h_i, \vec p_i)$ é o vetor do espaço de fase. É o produto
+simplético $\Omega(\vec\chi_1, \vec\chi_2)$ da
+[Aula 1](aula1.qmd#sec-ho-produto), com o primeiro vetor conjugado e
 multiplicado por $i$, na convenção do curso de
 [Física Matemática](../mathematical-physics/scalar-field.qmd). Ele é
-conservado pela mesma conta da Aula 1: com $\dot X = AX$ e $A$ real,
-$\frac{\mathrm{d}}{\mathrm{d}t}\left(X_1^\dagger\Omega X_2\right) = X_1^\dagger\left(A^{\mathsf T}\Omega + \Omega A\right)X_2 = 0$.
+conservado pela mesma conta da Aula 1: com $\dot{\vec\chi} = A\vec\chi$ e $A$ real,
+$\frac{\mathrm{d}}{\mathrm{d}t}\left(\vec\chi_1^{\,\dagger}\Omega\,\vec\chi_2\right) = \vec\chi_1^{\,\dagger}\left(A^{\mathsf T}\Omega + \Omega A\right)\vec\chi_2 = 0$.
 
 **Propriedades.** Diretamente de @eq-part-produto:
 
-1. $\langle h_1, h_2\rangle$ é linear em $h_2$ e antilinear em $h_1$.
-2. $\langle h_1, h_2\rangle^* = \langle h_2, h_1\rangle$.
-3. $\langle h_1^*, h_2^*\rangle = -\langle h_2, h_1\rangle$.
+1. $\langle \vec h_1, \vec h_2\rangle$ é linear em $\vec h_2$ e antilinear em $\vec h_1$.
+2. $\langle \vec h_1, \vec h_2\rangle^* = \langle \vec h_2, \vec h_1\rangle$.
+3. $\langle \vec h_1^{\,*}, \vec h_2^{\,*}\rangle = -\langle \vec h_2, \vec h_1\rangle$.
 
-Com $h_1 = h_2 = h$ real, a propriedade 3 dá
-$\langle h, h\rangle = -\langle h, h\rangle = 0$: toda solução real tem
+Com $\vec h_1 = \vec h_2 = \vec h$ real, a propriedade 3 dá
+$\langle \vec h, \vec h\rangle = -\langle \vec h, \vec h\rangle = 0$: toda solução real tem
 "norma" nula. O produto não é positivo definido no espaço de todas as
 soluções, e ainda não é o produto de um espaço de Hilbert.
 
@@ -1045,34 +1046,34 @@ f_a^{\,j}(t) \equiv \frac{v_a^{\,j}\,e^{-i\omega_a t}}{\sqrt{2m\,\omega_a}},
 \qquad a = 0, 1, \dots, N - 1 ,
 $$ {#eq-part-fa}
 cada uma o modo $a$ da Aula 1 com dependência temporal $e^{-i\omega_a t}$,
-$\omega_a > 0$. Com $p = m\dot f_a = -im\omega_a f_a$ e
+$\omega_a > 0$. Com $\vec p = m\dot{\vec f}_a = -im\omega_a \vec f_a$ e
 $\sum_j (v_a^{\,j})^* v_b^{\,j} = \delta_{ab}$,
 $$
-\langle f_a, f_b\rangle
+\langle \vec f_a, \vec f_b\rangle
 = i\,m\left(-i\omega_b - i\omega_a\right)\sum_j \left(f_a^{\,j}\right)^* f_b^{\,j}
 = m\left(\omega_a + \omega_b\right)\frac{e^{i(\omega_a - \omega_b)t}}{2m\sqrt{\omega_a\omega_b}}\,\delta_{ab}
 = \delta_{ab} .
 $$
-Da mesma forma, com $\dot f_b^* = i\omega_b f_b^*$ e
-$\sum_j (v_a^{\,j})^*(v_b^{\,j})^* = \delta_{a,-b}$, $\langle f_a, f_b^*\rangle$ é
+Da mesma forma, com $\dot{\vec f}_b^{\,*} = i\omega_b \vec f_b^{\,*}$ e
+$\sum_j (v_a^{\,j})^*(v_b^{\,j})^* = \delta_{a,-b}$, $\langle \vec f_a, \vec f_b^{\,*}\rangle$ é
 proporcional a $(\omega_b - \omega_a)\,\delta_{a,-b}$, que é nulo porque
 $\omega_{-a} = \omega_a$. Com a propriedade 3,
 $$
-\langle f_a, f_b\rangle = \delta_{ab},
+\langle \vec f_a, \vec f_b\rangle = \delta_{ab},
 \qquad
-\langle f_a^*, f_b^*\rangle = -\delta_{ab},
+\langle \vec f_a^{\,*}, \vec f_b^{\,*}\rangle = -\delta_{ab},
 \qquad
-\langle f_a, f_b^*\rangle = 0 .
+\langle \vec f_a, \vec f_b^{\,*}\rangle = 0 .
 $$ {#eq-part-ortonormal}
 
 Toda solução real se escreve como
 $$
-h = \sum_a\left(\alpha_a\, f_a + \alpha_a^*\, f_a^*\right),
+\vec h = \sum_a\left(\alpha_a\, \vec f_a + \alpha_a^*\, \vec f_a^{\,*}\right),
 \qquad
-\alpha_a = \langle f_a, h\rangle = \frac{m\,\omega_a\,\tilde h^a + i\,\tilde p^a}{\sqrt{2m\,\omega_a}},
+\alpha_a = \langle \vec f_a, \vec h\rangle = \frac{m\,\omega_a\,\tilde h^a + i\,\tilde p^a}{\sqrt{2m\,\omega_a}},
 $$ {#eq-part-alfa}
-como se vê aplicando $\langle f_b, \cdot\,\rangle$ à soma e usando
-@eq-part-ortonormal; a última forma é $\langle f_a, h\rangle$ calculado em
+como se vê aplicando $\langle \vec f_b, \cdot\,\rangle$ à soma e usando
+@eq-part-ortonormal; a última forma é $\langle \vec f_a, \vec h\rangle$ calculado em
 $t = 0$, com $\tilde h^a$ e $\tilde p^a$ em $t = 0$. Os $\alpha_a$ não
 dependem do tempo, porque o produto é conservado. São as **variáveis de
 criação e aniquilação clássicas** da cadeia. Três propriedades:
@@ -1082,7 +1083,7 @@ criação e aniquilação clássicas** da cadeia. Três propriedades:
   $H = \sum_a\left[|\tilde p^a|^2/(2m) + m\omega_a^2|\tilde h^a|^2/2\right]$.
   Em $\sum_a\omega_a|\alpha_a|^2$, os termos cruzados
   $i\omega_a\left[(\tilde h^a)^*\tilde p^a - \tilde h^a(\tilde p^a)^*\right]/2$
-  dos índices $a$ e $-a$ se cancelam, porque para $h$ real
+  dos índices $a$ e $-a$ se cancelam, porque para $\vec h$ real
   $\tilde h^{-a} = (\tilde h^a)^*$ e $\tilde p^{-a} = (\tilde p^a)^*$. Sobra
   $$
   H = \sum_a \omega_a\,|\alpha_a|^2 .
@@ -1108,17 +1109,17 @@ criação e aniquilação clássicas** da cadeia. Três propriedades:
   $$ {#eq-part-poisson-alfa}
 
 A soma de frequência positiva em @eq-part-alfa,
-$\psi_+ \equiv \sum_a\alpha_a f_a$, é uma solução complexa com
-$h = \psi_+ + \psi_+^* = 2\,\mathrm{Re}\,\psi_+$, que contém toda a
-informação de $h$.
+$\vec\psi_+ \equiv \sum_a\alpha_a \vec f_a$, é uma solução complexa com
+$\vec h = \vec\psi_+ + \vec\psi_+^{\,*} = 2\,\mathrm{Re}\,\vec\psi_+$, que contém toda a
+informação de $\vec h$.
 
-**O caso $K_0 = 0$.** O modo $a = 0$ tem então $\omega_0 = 0$, e
+**O caso $K_0 = 0$.** O modo $a = 0$ tem então frequência $\omega_a = 0$, e
 @eq-part-fa não está definida. É o modo zero da
 [Aula 1](aula1.qmd#sec-cadeia-modo-zero): a altura média se move como uma
 partícula livre, não como um oscilador, e não tem um $\alpha_0$. A mola de
 constante $K_0 > 0$ torna também esse modo um oscilador.
 
-**A escolha de frequência positiva.** A separação entre $f_a$ e $f_a^*$
+**A escolha de frequência positiva.** A separação entre $\vec f_a$ e $\vec f_a^{\,*}$
 usa a dependência temporal $e^{\mp i\omega_a t}$, que existe porque as
 equações não dependem do tempo. Outras separações do espaço das soluções
 em duas metades com as propriedades @eq-part-ortonormal são possíveis, e
@@ -1189,27 +1190,27 @@ modo $k = 0$ do campo não é um oscilador.
 
 As combinações lineares dos modos de frequência positiva,
 $$
-\mathcal H_1 \equiv \left\{\psi = \sum_{a}\psi^a\, f_a \;:\; \psi^a \in \mathbb C\right\},
+\mathcal H_1 \equiv \left\{\vec\psi = \sum_{a}\psi^a\, \vec f_a \;:\; \psi^a \in \mathbb C\right\},
 $$
 são soluções complexas da cadeia. Em $\mathcal H_1$, por
 @eq-part-ortonormal,
 $$
-\langle\psi, \chi\rangle = \sum_a (\psi^a)^*\chi^a,
+\langle\vec\psi_1, \vec\psi_2\rangle = \sum_a (\psi_1^a)^*\psi_2^a,
 \qquad
-\langle\psi, \psi\rangle = \sum_a |\psi^a|^2 > 0 \quad\text{para } \psi \neq 0 :
+\langle\vec\psi, \vec\psi\rangle = \sum_a |\psi^a|^2 > 0 \quad\text{para } \vec\psi \neq 0 :
 $$
 restrito a $\mathcal H_1$, o produto @eq-part-produto é positivo definido,
 e $\mathcal H_1$ é um espaço de Hilbert de dimensão $N$, com base
-ortonormal $\{f_a\}$. É o **espaço de estados de uma partícula**: um vetor
-$\psi \in \mathcal H_1$ com $\langle\psi, \psi\rangle = 1$ descreve uma
-partícula, $f_a$ é a partícula no modo $a$, de número de onda $k_a$, e
+ortonormal $\{\vec f_a\}$. É o **espaço de estados de uma partícula**: um vetor
+$\vec\psi \in \mathcal H_1$ com $\langle\vec\psi, \vec\psi\rangle = 1$ descreve uma
+partícula, $\vec f_a$ é a partícula no modo $a$, de número de onda $k_a$, e
 $|\psi^a|^2$ é a probabilidade de encontrá-la no modo $a$.
 
 A evolução temporal em $\mathcal H_1$ é a de uma equação de Schrödinger.
-Como $\dot f_a = -i\omega_a f_a$, e $\omega_a^2$ e $v_a$ são os autovalores
+Como $\dot{\vec f}_a = -i\omega_a \vec f_a$, e $\omega_a^2$ e $\vec v_a$ são os autovalores
 e autovetores de $(KD + K_0 I)/m$,
 $$
-i\,\frac{\mathrm{d}\psi}{\mathrm{d}t} = \sum_a \omega_a\,\psi^a f_a = \sqrt{\frac{KD + K_0 I}{m}}\;\psi ,
+i\,\frac{\mathrm{d}\vec\psi}{\mathrm{d}t} = \sum_a \omega_a\,\psi^a \vec f_a = \sqrt{\frac{KD + K_0 I}{m}}\;\vec\psi ,
 $$ {#eq-part-schrodinger}
 em que a raiz quadrada é a matriz positiva com os mesmos autovetores e
 autovalores $\omega_a$. Com a constante de Planck reduzida $\hbar$, a
@@ -1237,7 +1238,7 @@ partícula está.
 ::: {.callout-tip title="No limite contínuo: uma partícula relativística"}
 No limite, $\mathcal H_1$ passa a ter dimensão infinita, com base
 $\{f_a, a \in \mathbb Z\}$ e $\sum_a|\psi^a|^2 < \infty$. A raiz quadrada da
-matriz $(KD + K_0 I)/m$ multiplica cada $v_a$ por $\omega_a$, e no limite
+matriz $(KD + K_0 I)/m$ multiplica cada $\vec v_a$ por $\omega_a$, e no limite
 é o operador que multiplica cada $u_a$ por $\sqrt{\mu^2 + c^2k_a^2}$:
 $$
 i\,\frac{\partial\psi}{\partial t} = \sqrt{\mu^2 - c^2\,\frac{\partial^2}{\partial x^2}}\;\psi .
@@ -1253,7 +1254,7 @@ repouso $\hbar\mu$.
 Um estado de duas partículas é descrito por coeficientes $\Psi^{ab}$,
 um para cada par de modos:
 $$
-\Psi = \sum_{a, b}\Psi^{ab}\, f_a\otimes f_b,
+\Psi = \sum_{a, b}\Psi^{ab}\, \vec f_a\otimes \vec f_b,
 \qquad
 \Psi^{j_1j_2}(t) \equiv \sum_{a, b}\Psi^{ab}\, f_a^{\,j_1}(t)\, f_b^{\,j_2}(t),
 \qquad
@@ -1275,10 +1276,10 @@ razão de ser a parte simétrica, e não a antissimétrica, aparece na
 $\{\alpha_a^*, \alpha_b^*\} = 0$. (A parte antissimétrica descreve
 férmions, que não vêm de osciladores como estes.)
 
-Por exemplo, para dois pacotes ortonormais $\psi_{\rm E}$ e $\psi_{\rm D}$
+Por exemplo, para dois pacotes ortonormais $\vec\psi_{\rm E}$ e $\vec\psi_{\rm D}$
 de $\mathcal H_1$, o estado com uma partícula em cada um é
 $$
-\Psi = \frac{\psi_{\rm E}\otimes\psi_{\rm D} + \psi_{\rm D}\otimes\psi_{\rm E}}{\sqrt 2},
+\Psi = \frac{\vec\psi_{\rm E}\otimes\vec\psi_{\rm D} + \vec\psi_{\rm D}\otimes\vec\psi_{\rm E}}{\sqrt 2},
 \qquad
 \langle\Psi, \Psi\rangle = 1 .
 $$
@@ -1406,36 +1407,36 @@ passa a ter dimensão infinita.
 
 ## Operadores de criação e aniquilação {#sec-part-operadores}
 
-O operador de criação $a^\dagger(\chi)$, com $\chi \in \mathcal H_1$,
-acrescenta uma partícula no estado $\chi$, levando $\mathcal H_n$ em
-$\mathcal H_{n+1}$; o operador de aniquilação $a(\psi)$ retira uma
-partícula no estado $\psi$, levando $\mathcal H_n$ em $\mathcal H_{n-1}$:
+O operador de criação $a^\dagger(\vec\psi_2)$, com $\vec\psi_2 \in \mathcal H_1$,
+acrescenta uma partícula no estado $\vec\psi_2$, levando $\mathcal H_n$ em
+$\mathcal H_{n+1}$; o operador de aniquilação $a(\vec\psi_1)$ retira uma
+partícula no estado $\vec\psi_1$, levando $\mathcal H_n$ em $\mathcal H_{n-1}$:
 $$
-\left(a^\dagger(\chi)\,\Psi\right)^{a_1\cdots a_{n+1}} \equiv \frac{1}{\sqrt{n+1}}\sum_{i=1}^{n+1}\chi^{a_i}\,\Psi^{a_1\cdots\widehat{a_i}\cdots a_{n+1}},
+\left(a^\dagger(\vec\psi_2)\,\Psi\right)^{a_1\cdots a_{n+1}} \equiv \frac{1}{\sqrt{n+1}}\sum_{i=1}^{n+1}\psi_2^{a_i}\,\Psi^{a_1\cdots\widehat{a_i}\cdots a_{n+1}},
 \qquad
-\left(a(\psi)\,\Psi\right)^{a_2\cdots a_n} \equiv \sqrt n\sum_{a_1}(\psi^{a_1})^*\,\Psi^{a_1 a_2\cdots a_n},
+\left(a(\vec\psi_1)\,\Psi\right)^{a_2\cdots a_n} \equiv \sqrt n\sum_{a_1}(\psi_1^{a_1})^*\,\Psi^{a_1 a_2\cdots a_n},
 $$ {#eq-part-operadores}
-em que $\widehat{a_i}$ indica o índice omitido, e $a(\psi)|0\rangle = 0$.
-A primeira fórmula simetriza $\chi\otimes\Psi$; a segunda é o produto de
-$\psi$ com um dos índices de $\Psi$ (todos dão o mesmo resultado, por
+em que $\widehat{a_i}$ indica o índice omitido, e $a(\vec\psi_1)|0\rangle = 0$.
+A primeira fórmula simetriza $\vec\psi_2\otimes\Psi$; a segunda é o produto de
+$\vec\psi_1$ com um dos índices de $\Psi$ (todos dão o mesmo resultado, por
 simetria). Os fatores $\sqrt{n+1}$ e $\sqrt n$ fazem valer, em todo
 $\mathcal H_n$,
 $$
-\left[a(\psi), a^\dagger(\chi)\right] = \langle\psi, \chi\rangle,
+\left[a(\vec\psi_1), a^\dagger(\vec\psi_2)\right] = \langle\vec\psi_1, \vec\psi_2\rangle,
 \qquad
-\left[a^\dagger(\psi), a^\dagger(\chi)\right] = 0,
+\left[a^\dagger(\vec\psi_1), a^\dagger(\vec\psi_2)\right] = 0,
 \qquad
-\left[a(\psi), a(\chi)\right] = 0 .
+\left[a(\vec\psi_1), a(\vec\psi_2)\right] = 0 .
 $$ {#eq-part-comutadores}
 A segunda relação é a simetria dos estados: criar uma partícula em
-$\psi$ e outra em $\chi$, nas duas ordens, dá o mesmo estado. Com os
-modos, $a_a \equiv a(f_a)$ e $a_a^\dagger \equiv a^\dagger(f_a)$,
+$\vec\psi_1$ e outra em $\vec\psi_2$, nas duas ordens, dá o mesmo estado. Com os
+modos, $a_a \equiv a(\vec f_a)$ e $a_a^\dagger \equiv a^\dagger(\vec f_a)$,
 $$
 \left[a_a, a_b^\dagger\right] = \delta_{ab},
 \qquad
-a^\dagger(\chi) = \sum_a \chi^a\,a_a^\dagger,
+a^\dagger(\vec\psi_2) = \sum_a \psi_2^a\,a_a^\dagger,
 \qquad
-a(\psi) = \sum_a (\psi^a)^*\,a_a .
+a(\vec\psi_1) = \sum_a (\psi_1^a)^*\,a_a .
 $$
 O operador $\hat n_a \equiv a_a^\dagger a_a$ conta as partículas no modo $a$,
 os estados $\prod_a (a_a^\dagger)^{n_a}/\sqrt{n_a!}\,|0\rangle$ formam uma base
@@ -1672,10 +1673,10 @@ print(f"max |[h^j, p_k]/i - delta_jk| = {np.abs(comutador / 1j - I).max():.1e}")
 
 1. **(Essencial)** Demonstre as três propriedades do produto
    @eq-part-produto e conclua que toda solução real tem
-   $\langle h, h\rangle = 0$.
-2. **(Essencial)** Calcule $\langle f_a, f_b^*\rangle$ explicitamente e mostre
+   $\langle \vec h, \vec h\rangle = 0$.
+2. **(Essencial)** Calcule $\langle \vec f_a, \vec f_b^{\,*}\rangle$ explicitamente e mostre
    que é nulo. Obtenha a última forma de @eq-part-alfa de
-   $\alpha_a = \langle f_a, h\rangle$.
+   $\alpha_a = \langle \vec f_a, \vec h\rangle$.
 3. Mostre @eq-part-H-alfa e @eq-part-P-alfa completando a conta dos termos
    cruzados, e @eq-part-poisson-alfa a partir de $\{h^j, p_k\} = \delta^j{}_k$.
 4. Mostre @eq-part-schrodinger. Para $N = 3$, escreva a matriz
@@ -1692,7 +1693,7 @@ print(f"max |[h^j, p_k]/i - delta_jk| = {np.abs(comutador / 1j - I).max():.1e}")
 8. Mostre que $\hat H_{\rm cadeia} = \sum_a\hbar\,\omega_a(\hat n_a + \tfrac12)$
    substituindo @eq-part-campo-quantico na Hamiltoniana da cadeia.
 9. Repita a @fig-part-dois com o produto não simetrizado
-   $\psi_{\rm E}\otimes\psi_{\rm D}$, que descreve duas partículas
+   $\vec\psi_{\rm E}\otimes\vec\psi_{\rm D}$, que descreve duas partículas
    distinguíveis. O que muda?
 
 {{< include /_footer.qmd >}}

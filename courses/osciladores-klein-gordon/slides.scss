@@ -87,3 +87,13 @@ $link-color: #1111ff;
 .reveal .slide .anim-quadrada {
   text-align: center;
 }
+
+// Shorter animation, for slides with two lines of equations above it.
+.reveal .slide .anim-65 .animation img {
+  width: 62%;
+}
+
+// Square figures next to a column of equations: shorter, so figure and caption fit.
+.reveal .slide .fig-menor figure img {
+  max-height: 520px;
+}
