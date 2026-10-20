@@ -1,2 +1,1587 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"></html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Osciladores Acoplados e a Equação de Klein–Gordon – Physics Lecture Notes</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-71ba39e746fbb10c0cb3e6457a4048f5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-a9d942d4eca236eb2a7896619172d624.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-71ba39e746fbb10c0cb3e6457a4048f5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R4D0BX334F"></script>
+
+<script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-R4D0BX334F', { 'anonymize_ip': true});
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  ,
+"language":"pt"
+  });
+});
+</script> 
+  
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../style.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Physics Lecture Notes</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vitenti-physics/vitenti-physics.github.io"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo escuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Minicourses</li><li class="breadcrumb-item"><a href="../../courses/osciladores-klein-gordon/index.html">Coupled Oscillators and Klein–Gordon (portuguese)</a></li><li class="breadcrumb-item"><a href="../../courses/osciladores-klein-gordon/index.html">Overview</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Undergraduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Introduction to Physics (portuguese)</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/physics-math.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physics and Mathematics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/determinism-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Determinism and Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/intro-stat-mechanics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Statistical Mechanics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/heisenberg-uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Heisenberg Uncertainty Principle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/introduction-to-physics/selected-exercises.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Selected Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vector Calculus</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/vector-calculus/vector-spaces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vector Spaces Products and Maps</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Mathematical Physics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/delta-dirac-green.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dirac Delta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/green-functions-nd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Green Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-symplectic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators and Symplectic Structures</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-cont.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators: Complete Solutions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/propagators-fields.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Propagators in Field Theory</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/scalar-field.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalar Fields</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/mathematical-physics/scalar-propagators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Scalar Fields: Propagators and Vacuum</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Special Relativity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/galilean-relativity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Galilean Relativity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/special-relativity/spacetime-algebra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Spacetime Algebra</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Graduate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Electrodynamics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conventions and Notation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/geometry-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Geometry Review for Electrodynamics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/calculus-on-minkowski-spacetime.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calculus on Minkowski Spacetime</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/maxwell-equations-forms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maxwell Equations in Covariant Form</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/accel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accelerated Observers and Born Rigidity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/em-energy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Energy of the Electromagnetic Field</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/moving-charge-radiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Radiation from a Moving Charge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/electrodynamics/thomson-scattering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Thomson Scattering</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Minicourses</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Coupled Oscillators and Klein–Gordon (portuguese)</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/osciladores-klein-gordon/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/osciladores-klein-gordon/aula1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Aula 1: Osciladores e Matrizes Circulantes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/osciladores-klein-gordon/slides-aula1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slides: Aula 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/osciladores-klein-gordon/aula2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Aula 2: Limite Contínuo e Criação e Aniquilação</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/osciladores-klein-gordon/slides-aula2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slides: Aula 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#material" id="toc-material" class="nav-link active" data-scroll-target="#material">Material</a></li>
+  <li><a href="#sec-notacao" id="toc-sec-notacao" class="nav-link" data-scroll-target="#sec-notacao">Notação</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Minicourses</li><li class="breadcrumb-item"><a href="../../courses/osciladores-klein-gordon/index.html">Coupled Oscillators and Klein–Gordon (portuguese)</a></li><li class="breadcrumb-item"><a href="../../courses/osciladores-klein-gordon/index.html">Overview</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Osciladores Acoplados e a Equação de Klein–Gordon</h1>
+<p class="subtitle lead">Minicurso (2 aulas de 1h30)</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-body">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sandro Vitenti </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>O minicurso parte de um sistema discreto de osciladores harmônicos acoplados em uma dimensão e estuda a passagem da descrição discreta para a contínua. O percurso inclui matrizes circulantes e a transformada de Fourier discreta, o limite contínuo que leva à equação de Klein–Gordon e a construção, ainda na mecânica clássica, das variáveis de criação e aniquilação. Cada etapa é acompanhada de uma implementação em Python e da solução numérica das equações.</p>
+<p><strong>Público.</strong> Estudantes de graduação a partir da metade do curso e estudantes de pós-graduação. Pré-requisitos: mecânica clássica (equações de Hamilton), álgebra linear (autovalores e autovetores) e noções de Python.</p>
+<section id="material" class="level2">
+<h2 class="anchored" data-anchor-id="material">Material</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aula</th>
+<th>Notas</th>
+<th>Slides</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1. Do oscilador harmônico às matrizes circulantes</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html">Notas</a></td>
+<td><a href="../../courses/osciladores-klein-gordon/slides-aula1.html">Slides</a></td>
+</tr>
+<tr class="even">
+<td>2. O limite contínuo e as variáveis de criação e aniquilação</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html">Notas</a></td>
+<td><a href="../../courses/osciladores-klein-gordon/slides-aula2.html">Slides</a></td>
+</tr>
+</tbody>
+</table>
+<p>Os slides e as notas têm as mesmas seções: durante a aula os slides são projetados e as notas trazem todas as contas e o código completo. Cada página de notas pode ser baixada como notebook Jupyter ou como script Python, ou aberta diretamente no Google Colab.</p>
+</section>
+<section id="sec-notacao" class="level2">
+<h2 class="anchored" data-anchor-id="sec-notacao">Notação</h2>
+<p>Cada símbolo tem um único significado em todas as páginas do minicurso.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Símbolo</th>
+<th>Significado</th>
+<th>Definido em</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(m\)</span></td>
+<td>massa de uma partícula</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-hamilton">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\kappa\)</span></td>
+<td>constante da mola do oscilador isolado</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-hamilton">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\omega\)</span></td>
+<td>frequência angular, <span class="math inline">\(\omega \equiv \sqrt{\kappa/m}\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-hamilton">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x\)</span>, <span class="math inline">\(p\)</span></td>
+<td>posição e momento do oscilador isolado</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-hamilton">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(H\)</span></td>
+<td>Hamiltoniana</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-hamilton">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\dot x\)</span></td>
+<td>derivada em relação ao tempo, <span class="math inline">\(\dot x \equiv \mathrm dx/\mathrm dt\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-hamilton">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\vec\chi\)</span></td>
+<td>vetor do espaço de fase, <span class="math inline">\(\vec\chi \equiv (x, p)^{\mathsf T}\)</span> no oscilador, <span class="math inline">\((\vec h, \vec p)\)</span> na cadeia</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-matricial">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vec\partial H\)</span></td>
+<td>gradiente de <span class="math inline">\(H\)</span> no espaço de fase</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-matricial">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathsf H\)</span></td>
+<td>matriz da Hamiltoniana, <span class="math inline">\(H = \frac12 \vec\chi^{\mathsf T}\mathsf H \vec\chi\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-matricial">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Omega\)</span></td>
+<td>matriz simplética</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-matricial">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(A\)</span></td>
+<td>gerador da evolução, <span class="math inline">\(A \equiv \Omega\mathsf H\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-matricial">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Omega(\vec\chi_1, \vec\chi_2)\)</span></td>
+<td>produto simplético, <span class="math inline">\(\Omega(\vec\chi_1, \vec\chi_2) \equiv \vec\chi_1^{\mathsf T}\Omega\, \vec\chi_2\)</span>, a área orientada</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-produto">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Delta t\)</span>, <span class="math inline">\(t_n\)</span></td>
+<td>passo de tempo e instantes <span class="math inline">\(t_n \equiv n\Delta t\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-numerico">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\xi\)</span>, <span class="math inline">\(\eta\)</span></td>
+<td>variáveis adimensionais, <span class="math inline">\(\xi \equiv \sqrt m\,\omega x\)</span>, <span class="math inline">\(\eta \equiv p/\sqrt m\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-adimensionais">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\varepsilon\)</span></td>
+<td>passo adimensional, <span class="math inline">\(\varepsilon \equiv \omega\Delta t\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-adimensionais">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(z\)</span></td>
+<td>variável complexa, <span class="math inline">\(z \equiv \xi + i\eta\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-adimensionais">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(M_{\rm ex}(\varepsilon)\)</span></td>
+<td>matriz do passo exato no plano <span class="math inline">\((\xi, \eta)\)</span>, rotação de ângulo <span class="math inline">\(\varepsilon\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-adimensionais">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(M_{\rm E}\)</span>, <span class="math inline">\(M_{\rm SE}\)</span>, <span class="math inline">\(M_{\rm V}\)</span>, <span class="math inline">\(M_{\rm RK4}\)</span></td>
+<td>matrizes de um passo dos quatro métodos no plano <span class="math inline">\((\xi, \eta)\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-aproximacoes">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(M_{11}, \dots, M_{22}\)</span>; <span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_2\)</span></td>
+<td>elementos e autovalores de uma matriz <span class="math inline">\(2\times 2\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-aproximacoes">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(S_\xi(\varepsilon)\)</span>, <span class="math inline">\(S_\eta(\varepsilon)\)</span></td>
+<td>cisalhamentos que atualizam <span class="math inline">\(\xi\)</span> e <span class="math inline">\(\eta\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-euler-simpletico">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathrm{Sp}(2, \mathbb R)\)</span></td>
+<td>grupo simplético, matrizes com <span class="math inline">\(M^{\mathsf T}\Omega M = \Omega\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-euler-simpletico">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\tilde H_{\rm SE}\)</span>, <span class="math inline">\(\tilde H_{\rm V}\)</span>; <span class="math inline">\(Q_{\rm SE}\)</span>, <span class="math inline">\(Q_{\rm V}\)</span></td>
+<td>formas quadráticas conservadas pelo Euler simplético e pelo Verlet, e suas matrizes</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-euler-simpletico">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\theta_{\rm V}\)</span></td>
+<td>ângulo avançado por um passo de Verlet, <span class="math inline">\(\cos\theta_{\rm V} = 1 - \varepsilon^2/2\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-verlet">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(F\)</span></td>
+<td>força</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-verlet">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(k_1, \dots, k_4\)</span></td>
+<td>avaliações de <span class="math inline">\(A\vec\chi\)</span> em um passo do RK4</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-rk4">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R\)</span></td>
+<td>fator de amplificação do RK4</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-ho-rk4">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(N\)</span></td>
+<td>número de partículas da cadeia</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modelo">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Delta x\)</span></td>
+<td>espaçamento horizontal entre partículas vizinhas</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modelo">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(h^j\)</span>, <span class="math inline">\(\vec h\)</span></td>
+<td>altura da partícula <span class="math inline">\(j\)</span> e vetor das <span class="math inline">\(N\)</span> alturas</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modelo">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(K\)</span></td>
+<td>constante das molas entre partículas vizinhas</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modelo">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(K_0\)</span></td>
+<td>constante das molas que prendem cada partícula à posição de equilíbrio</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modelo">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(F_j\)</span>, <span class="math inline">\(\vec F\)</span></td>
+<td>força vertical sobre a partícula <span class="math inline">\(j\)</span> e vetor das <span class="math inline">\(N\)</span> forças</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-forcas">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\ell_0\)</span>, <span class="math inline">\(\tau\)</span></td>
+<td>comprimento natural de uma mola e tensão, <span class="math inline">\(\tau \equiv K(\Delta x - \ell_0)\)</span> (na Aula 2, a tensão da corda)</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-forcas">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(T\)</span></td>
+<td>operador de translação, <span class="math inline">\((T\vec h)^j \equiv h^{j+1}\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-translacao">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(D\)</span></td>
+<td><span class="math inline">\(D \equiv 2I - T - T^{-1}\)</span>; <span class="math inline">\(-D\)</span> é o Laplaciano discreto periódico</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-translacao">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(V\)</span></td>
+<td>energia potencial da cadeia</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-hamiltoniana">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(p_j\)</span>, <span class="math inline">\(\vec p\)</span></td>
+<td>momento da partícula <span class="math inline">\(j\)</span>, <span class="math inline">\(p_j \equiv m\dot h^j\)</span>, e vetor dos <span class="math inline">\(N\)</span> momentos</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-hamiltoniana">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vec 1\)</span></td>
+<td>vetor com todas as componentes iguais a <span class="math inline">\(1\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modo-zero">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\beta\)</span></td>
+<td>deslocamento comum de todas as alturas, <span class="math inline">\(\vec h \to \vec h + \beta\,\vec 1\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modo-zero">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(P\)</span></td>
+<td>momento total da cadeia, <span class="math inline">\(P \equiv \sum_j p_j\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modo-zero">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\bar h\)</span>, <span class="math inline">\(\bar p\)</span></td>
+<td>altura média (do centro de massa) e momento por partícula, <span class="math inline">\(\bar h \equiv \frac1N\sum_j h^j\)</span>, <span class="math inline">\(\bar p \equiv P/N\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modo-zero">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\{f, g\}\)</span></td>
+<td>parêntese de Poisson</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-cadeia-modo-zero">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(b_r\)</span></td>
+<td>elementos da primeira linha de uma matriz circulante, <span class="math inline">\(C^j{}_k = b_{k-j}\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-def">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(C\)</span></td>
+<td>matriz circulante, <span class="math inline">\(C = \sum_r b_r T^r\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-def">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\vec v_a\)</span></td>
+<td>vetores de Fourier, <span class="math inline">\(v_a^{\,j} \equiv e^{2\pi i aj/N}/\sqrt N\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-fourier">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vec u^\dagger\vec w\)</span></td>
+<td>produto escalar complexo, <span class="math inline">\(\vec u^\dagger\vec w \equiv \sum_j (u^j)^* w^j\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-fourier">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\tilde h^a\)</span>, <span class="math inline">\(\tilde p^a\)</span></td>
+<td>componentes de <span class="math inline">\(\vec h\)</span> e <span class="math inline">\(\vec p\)</span> na base de Fourier (DFT), <span class="math inline">\(\tilde h^a \equiv \vec v_a^{\,\dagger}\vec h\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-fourier">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\lambda_a(C)\)</span></td>
+<td>autovalor de <span class="math inline">\(C\)</span> associado a <span class="math inline">\(\vec v_a\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-diag">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(U\)</span></td>
+<td>matriz unitária com colunas <span class="math inline">\(\vec v_a\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-diag">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\omega_a\)</span></td>
+<td>frequência do modo <span class="math inline">\(a\)</span> (relação de dispersão); em <span class="math inline">\(a = 0\)</span>, <span class="math inline">\(\sqrt{K_0/m}\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-dispersao">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\omega_{\max}\)</span></td>
+<td>maior das frequências <span class="math inline">\(\omega_a\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-dispersao">Aula 1</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vec\zeta_a\)</span>, <span class="math inline">\(q^a\)</span></td>
+<td>vetores de Hartley e coordenadas <span class="math inline">\(q^a \equiv \vec\zeta_a^{\,\mathsf T}\vec h\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula1.html#sec-circ-hartley">Aula 1</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x_j\)</span>, <span class="math inline">\(L\)</span></td>
+<td>posição da partícula <span class="math inline">\(j\)</span>, <span class="math inline">\(x_j \equiv j\Delta x\)</span>, e comprimento do anel, <span class="math inline">\(L \equiv N\Delta x\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-campo">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\phi(t, x)\)</span></td>
+<td>campo, <span class="math inline">\(\phi(t, x_j) \equiv h^j(t)\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-campo">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\rho\)</span></td>
+<td>densidade linear de massa, <span class="math inline">\(m = \rho\Delta x\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-campo">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mu\)</span></td>
+<td>parâmetro de massa, <span class="math inline">\(K_0 = \rho\mu^2\Delta x\)</span>; <span class="math inline">\(\mu^2 = K_0/m\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-campo">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(c\)</span></td>
+<td>velocidade, <span class="math inline">\(c \equiv \sqrt{\tau/\rho}\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-campo">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\Pi(t, x)\)</span></td>
+<td>momento por unidade de comprimento, <span class="math inline">\(\Pi(t, x_j) \equiv p_j/\Delta x\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-hamiltoniana">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\delta(x - y)\)</span></td>
+<td>delta de Dirac</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-hamiltoniana">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(k_a\)</span></td>
+<td>número de onda, <span class="math inline">\(k_a \equiv 2\pi a/L\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-dispersao">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\omega_{\Delta x}(k)\)</span>, <span class="math inline">\(\omega(k)\)</span></td>
+<td>relação de dispersão da cadeia e do campo, <span class="math inline">\(\omega(k)^2 \equiv \mu^2 + c^2k^2\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-dispersao">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(u_a(x)\)</span></td>
+<td>funções de Fourier, <span class="math inline">\(u_a(x) \equiv e^{ik_ax}/\sqrt L\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-fourier">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\tilde\phi^a\)</span>, <span class="math inline">\(\tilde\Pi^a\)</span></td>
+<td>coeficientes de Fourier do campo, <span class="math inline">\(\tilde\phi^a \equiv \int_0^L u_a^*\phi\,\mathrm dx\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-fourier">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\psi^j\)</span>, <span class="math inline">\(c_a\)</span>, <span class="math inline">\(k_0\)</span>, <span class="math inline">\(\sigma_{\rm p}\)</span>, <span class="math inline">\(x_{\rm p}\)</span>, <span class="math inline">\(x_{\rm c}\)</span></td>
+<td>pacote de ondas complexo, seus coeficientes, número de onda central, largura, posição inicial e centro</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-numerico">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(e_j\)</span>, <span class="math inline">\(e_{j+1/2}\)</span>, <span class="math inline">\(S_{j+1/2}\)</span></td>
+<td>energia da partícula <span class="math inline">\(j\)</span>, energia da mola entre <span class="math inline">\(j\)</span> e <span class="math inline">\(j+1\)</span>, e fluxo de energia através dessa mola</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-fluxos">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(P_{\rm rede}\)</span></td>
+<td>momento da cadeia, associado à translação <span class="math inline">\(T\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-momento">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\kappa(k)\)</span>, <span class="math inline">\(\kappa_a\)</span></td>
+<td><span class="math inline">\(\kappa(k) \equiv \sin(k\Delta x)/\Delta x\)</span>, momento da cadeia por partícula do modo <span class="math inline">\(a\)</span> (dividido por <span class="math inline">\(\hbar\)</span>)</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-dispersao">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal E\)</span>, <span class="math inline">\(\mathcal S\)</span></td>
+<td>densidade e fluxo de energia do campo</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-fluxos">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathcal P\)</span>, <span class="math inline">\(\mathcal T\)</span></td>
+<td>densidade e fluxo de momento do campo</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-cont-momento">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\langle \vec h_1, \vec h_2\rangle\)</span>, <span class="math inline">\(\langle\phi_1, \phi_2\rangle\)</span></td>
+<td>produto simplético de soluções complexas da cadeia, e seu limite, o produto de Klein–Gordon</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-produto">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\vec f_a\)</span>, <span class="math inline">\(f_a(t, x)\)</span></td>
+<td>modos de frequência positiva da cadeia, de componentes <span class="math inline">\(f_a^{\,j} \equiv v_a^{\,j}e^{-i\omega_a t}/\sqrt{2m\omega_a}\)</span>, e do campo</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-modos">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\alpha_a\)</span></td>
+<td>variáveis de criação e aniquilação clássicas, <span class="math inline">\(\alpha_a \equiv \langle \vec f_a, \vec h\rangle\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-modos">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\vec\psi_+\)</span></td>
+<td>parte de frequência positiva de uma solução real</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-modos">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathcal H_n\)</span>, <span class="math inline">\(\mathcal F\)</span></td>
+<td>espaço de <span class="math inline">\(n\)</span> partículas e espaço de Fock</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-uma">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\psi^a\)</span>, <span class="math inline">\(\Psi^{a_1\cdots a_n}\)</span>, <span class="math inline">\(\Psi^{j_1j_2}\)</span></td>
+<td>componentes de estados de uma e de <span class="math inline">\(n\)</span> partículas, e amplitude de duas partículas nas posições</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-uma">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vec\psi\)</span>, <span class="math inline">\(\vec\psi_1\)</span>, <span class="math inline">\(\vec\psi_2\)</span></td>
+<td>estados de uma partícula, elementos de <span class="math inline">\(\mathcal H_1\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-uma">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\vec\psi_{\rm E}\)</span>, <span class="math inline">\(\vec\psi_{\rm D}\)</span></td>
+<td>pacotes vindos da esquerda e da direita</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-fock">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\lvert 0\rangle\)</span>, <span class="math inline">\(n_a\)</span></td>
+<td>vácuo e números de ocupação</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-fock">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(a(\vec\psi_1)\)</span>, <span class="math inline">\(a^\dagger(\vec\psi_2)\)</span>, <span class="math inline">\(a_a\)</span>, <span class="math inline">\(a_a^\dagger\)</span></td>
+<td>operadores de aniquilação e de criação</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-operadores">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\hat n_a\)</span>, <span class="math inline">\(\hat H\)</span>, <span class="math inline">\(\hat P_{\rm rede}\)</span>, <span class="math inline">\(\hat P_{\rm campo}\)</span></td>
+<td>operadores de número, de energia, de momento da cadeia e de momento do campo</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-operadores">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\hbar\)</span></td>
+<td>constante de Planck reduzida</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-uma">Aula 2</a></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\hat h^j\)</span>, <span class="math inline">\(\hat p_j\)</span>; <span class="math inline">\(\hat\phi\)</span>, <span class="math inline">\(\hat\Pi\)</span></td>
+<td>alturas e momentos da cadeia quântica; campo quântico e seu momento conjugado</td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-campo">Aula 2</a></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\hat H_{\rm cadeia}\)</span>, <span class="math inline">\(E_{\rm vácuo}\)</span></td>
+<td>Hamiltoniana da cadeia quântica e energia do vácuo, <span class="math inline">\(E_{\rm vácuo} \equiv \sum_a\hbar\omega_a/2\)</span></td>
+<td><a href="../../courses/osciladores-klein-gordon/aula2.html#sec-part-campo">Aula 2</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>Feel free to create issues, ask questions, or suggest improvements in the <a href="https://github.com/vitenti-physics/undergrad">GitHub repository</a>.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuso</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pt">CC BY-NC-SA 4.0</a></div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/vitenti-physics\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

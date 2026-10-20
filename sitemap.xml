@@ -2,118 +2,138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vitenti-physics.github.io/index.html</loc>
-    <lastmod>2026-10-20T15:25:40.881Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.106Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/electrodynamics/index.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.098Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/electrodynamics/calculus-on-minkowski-spacetime.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.098Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/electrodynamics/em-energy.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.098Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/electrodynamics/maxwell-equations-forms.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.098Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/index.html</loc>
-    <lastmod>2026-10-20T15:25:40.872Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.099Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/intro-stat-mechanics.html</loc>
-    <lastmod>2026-10-20T15:25:40.872Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.099Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/heisenberg-uncertainty.html</loc>
-    <lastmod>2026-10-20T15:25:40.872Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.099Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/special-relativity/galilean-relativity.html</loc>
-    <lastmod>2026-10-20T15:25:40.880Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.106Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/special-relativity/index.html</loc>
-    <lastmod>2026-10-20T15:25:40.881Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.106Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/mathematical-physics/index.html</loc>
-    <lastmod>2026-10-20T15:25:40.873Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.100Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/mathematical-physics/propagators-symplectic.html</loc>
-    <lastmod>2026-10-20T15:25:40.873Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.100Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/mathematical-physics/propagators-cont.html</loc>
-    <lastmod>2026-10-20T15:25:40.873Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.100Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/mathematical-physics/delta-dirac-green.html</loc>
-    <lastmod>2026-10-20T15:25:40.872Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.099Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/osciladores-klein-gordon/slides-aula2.html</loc>
+    <lastmod>2026-10-20T15:42:46.105Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/osciladores-klein-gordon/slides-aula1.html</loc>
+    <lastmod>2026-10-20T15:42:46.105Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/vector-calculus/index.html</loc>
-    <lastmod>2026-10-20T15:25:40.881Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.106Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/vector-calculus/vector-spaces.html</loc>
-    <lastmod>2026-10-20T15:25:40.881Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/osciladores-klein-gordon/aula1.html</loc>
+    <lastmod>2026-10-20T15:42:46.101Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/osciladores-klein-gordon/aula2.html</loc>
+    <lastmod>2026-10-20T15:42:46.101Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vitenti-physics.github.io/courses/osciladores-klein-gordon/index.html</loc>
+    <lastmod>2026-10-20T15:42:46.101Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/mathematical-physics/scalar-propagators.html</loc>
-    <lastmod>2026-10-20T15:25:40.873Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.100Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/mathematical-physics/scalar-field.html</loc>
-    <lastmod>2026-10-20T15:25:40.873Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.100Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/mathematical-physics/propagators-fields.html</loc>
-    <lastmod>2026-10-20T15:25:40.873Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.100Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/mathematical-physics/green-functions-nd.html</loc>
-    <lastmod>2026-10-20T15:25:40.873Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.100Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/special-relativity/spacetime-algebra.html</loc>
-    <lastmod>2026-10-20T15:25:40.881Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.106Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/selected-exercises.html</loc>
-    <lastmod>2026-10-20T15:25:40.872Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.099Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/physics-math.html</loc>
-    <lastmod>2026-10-20T15:25:40.872Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.099Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/introduction-to-physics/determinism-statistics.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.099Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/electrodynamics/accel.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.098Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/electrodynamics/moving-charge-radiation.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.098Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/electrodynamics/geometry-review.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.098Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/electrodynamics/thomson-scattering.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.098Z</lastmod>
   </url>
   <url>
     <loc>https://vitenti-physics.github.io/courses/electrodynamics/conventions.html</loc>
-    <lastmod>2026-10-20T15:25:40.871Z</lastmod>
+    <lastmod>2026-10-20T15:42:46.098Z</lastmod>
   </url>
 </urlset>
