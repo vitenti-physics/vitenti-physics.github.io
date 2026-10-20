@@ -289,12 +289,33 @@ $$
 \qquad
 S_{j+1/2} \equiv -\frac{K}{2}\left(h^{j+1} - h^j\right)\left(\dot h^j + \dot h^{j+1}\right) .
 $$ {#eq-cont-fluxo-cadeia}
-O fluxo $S_{j+1/2}$ está na mola entre $j$ e $j + 1$, daí o índice
-semi-inteiro. Ele é a média entre a potência que a mola recebe de $j$,
+$S_{j+1/2}$ é o **fluxo de energia** da cadeia: a energia que atravessa a
+mola entre $j$ e $j + 1$ por unidade de tempo, no sentido de $j$
+crescente. Ele está na mola, daí o índice semi-inteiro. Numa dimensão um
+fluxo não é dividido por nenhuma área, e o fluxo de energia tem unidade de
+potência. Ele é a média entre a potência que a mola recebe de $j$,
 $-K(h^{j+1} - h^j)\dot h^j$, e a que ela entrega a $j + 1$,
-$-K(h^{j+1} - h^j)\dot h^{j+1}$: a potência que atravessa a mola no
-sentido de $j$ crescente. A energia de cada partícula só muda pela
+$-K(h^{j+1} - h^j)\dot h^{j+1}$. A energia de cada partícula só muda pela
 energia que entra ou sai pelas suas duas molas.
+
+**Por que $S_{j+1/2}$ é um fluxo.** Somando @eq-cont-fluxo-cadeia sobre um
+trecho qualquer da cadeia, das partículas $a$ a $b$, os termos internos se
+cancelam aos pares:
+$$
+\frac{\mathrm d}{\mathrm dt}\sum_{j=a}^{b} e_j
+= -\sum_{j=a}^{b}\left(S_{j+1/2} - S_{j-1/2}\right)
+= S_{a-1/2} - S_{b+1/2} .
+$$
+A energia do trecho muda apenas pelo que passa pelas duas molas das
+extremidades: entra $S_{a-1/2}$ pela esquerda e sai $S_{b+1/2}$ pela
+direita. O que acontece dentro do trecho não aparece. É isso que faz de
+$S_{j+1/2}$ um fluxo: um número associado a cada fronteira entre duas
+partes da cadeia, tal que a energia de cada parte só muda pelo que
+atravessa as suas fronteiras. Para o anel inteiro não há fronteira, e
+$\dot H = 0$. Fisicamente, $S_{j+1/2}$ é a potência que a parte da cadeia
+à esquerda da mola realiza sobre a parte à direita: a força da mola sobre
+a partícula $j + 1$, $-K(h^{j+1} - h^j)$, vezes a velocidade média das
+duas extremidades da mola.
 
 **As mesmas grandezas em termos de $\Delta x$.** Com @eq-cont-escalas,
 $m = \rho\Delta x$, $K = \tau/\Delta x$ e $K_0 = \rho\mu^2\Delta x$, as
@@ -322,27 +343,82 @@ diferença entre o fluxo à direita e o fluxo à esquerda, dividida pela
 distância $\Delta x$ entre os pontos $x_{j+1/2}$ e $x_{j-1/2}$ onde esses
 fluxos estão.
 
-**A energia avança no máximo uma partícula a cada $\Delta x/c$.** O fluxo
-$S_{j+1/2}$ está numa mola, e deve ser comparado com a energia associada
-a essa mola. Atribuímos à mola entre $j$ e $j+1$ a sua própria energia
-$E_{j+1/2}$ e metade da energia de cada um dos dois osciladores que ela
-liga:
+**A energia não anda mais depressa que $c$.** O fluxo $S_{j+1/2}$ está
+numa mola, e deve ser comparado com a energia associada a essa mola.
+Atribuímos à mola entre $j$ e $j+1$ a sua própria energia $E_{j+1/2}$ e
+metade da energia de cada um dos dois osciladores que ela liga:
 $$
 e_{j+1/2} \equiv E_{j+1/2} + \frac{E_j + E_{j+1}}{2}
 = \frac{K}{2}\left(h^{j+1} - h^j\right)^2 + \frac{p_j^2 + p_{j+1}^2}{4m} + \frac{K_0}{4}\left[\left(h^j\right)^2 + \left(h^{j+1}\right)^2\right],
 \qquad
 \sum_j e_{j+1/2} = H .
 $$
-Com $u \equiv \sqrt K\,(h^{j+1} - h^j)$ e
-$w \equiv \sqrt m\,(\dot h^j + \dot h^{j+1})/2$, o fluxo é
-$S_{j+1/2} = -\sqrt{K/m}\;u\,w$. Como $|uw| \le (u^2 + w^2)/2$ e
-$(\dot h^j + \dot h^{j+1})^2/4 \le (\dot h^{j\,2} + \dot h^{j+1\,2})/2$,
+Com a velocidade do ponto médio da mola,
 $$
-|S_{j+1/2}| \le \sqrt{\frac Km}\left[\frac K2\left(h^{j+1} - h^j\right)^2 + \frac{p_j^2 + p_{j+1}^2}{4m}\right] \le \frac{c}{\Delta x}\,e_{j+1/2} .
-$$ {#eq-cont-limite-fluxo}
-A razão $S_{j+1/2}\Delta x/e_{j+1/2}$ é uma velocidade, a da energia
-naquela mola, e nunca é maior que $c$: em cada intervalo $\Delta x/c$, a
-energia de uma mola pode no máximo passar para a mola seguinte.
+\dot h^{j+1/2} \equiv \frac{\dot h^j + \dot h^{j+1}}{2},
+\qquad\text{o fluxo é}\qquad
+S_{j+1/2} = -K\left(h^{j+1} - h^j\right)\dot h^{j+1/2} .
+$$
+A desigualdade sai em quatro passos, cada um a partir de um quadrado que
+não é negativo.
+
+1. **O produto é limitado pela soma das energias.** O quadrado da
+   diferença entre $\sqrt K\,|h^{j+1} - h^j|$ e $\sqrt m\,|\dot h^{j+1/2}|$
+   não é negativo; expandindo o quadrado,
+   $$
+   \sqrt{Km}\;\left|h^{j+1} - h^j\right|\left|\dot h^{j+1/2}\right|
+   \le \frac K2\left(h^{j+1} - h^j\right)^2 + \frac m2\left(\dot h^{j+1/2}\right)^2 .
+   $$
+   Multiplicando por $\sqrt{K/m}$, o lado esquerdo é $|S_{j+1/2}|$:
+   $$
+   |S_{j+1/2}| \le \sqrt{\frac Km}\left[E_{j+1/2} + \frac m2\left(\dot h^{j+1/2}\right)^2\right].
+   $$
+   O fluxo é limitado pela energia da mola mais a energia cinética do seu
+   ponto médio.
+2. **A energia cinética do ponto médio não passa da média das duas.** De
+   $\left(\dot h^j - \dot h^{j+1}\right)^2 \ge 0$ segue
+   $\left(\dot h^{j+1/2}\right)^2 \le \left[(\dot h^j)^2 + (\dot h^{j+1})^2\right]/2$,
+   e portanto
+   $$
+   \frac m2\left(\dot h^{j+1/2}\right)^2 \le \frac{p_j^2 + p_{j+1}^2}{4m} .
+   $$
+3. **Os termos com $K_0$ só aumentam o lado direito.** Somando
+   $\frac{K_0}{4}\left[(h^j)^2 + (h^{j+1})^2\right] \ge 0$, o colchete vira
+   $e_{j+1/2}$:
+   $$
+   |S_{j+1/2}| \le \sqrt{\frac Km}\;e_{j+1/2} .
+   $$
+4. **O coeficiente é $c/\Delta x$.** Por @eq-cont-c, $K/m = c^2/\Delta x^2$:
+   $$
+   |S_{j+1/2}| \le \frac{c}{\Delta x}\,e_{j+1/2} .
+   $$ {#eq-cont-limite-fluxo}
+
+**A leitura como velocidade.** A energia por unidade de comprimento na
+mola é $e_{j+1/2}/\Delta x$. Um fluxo é uma densidade vezes a velocidade
+com que ela se move, como a corrente elétrica é a densidade de carga vezes
+a velocidade das cargas. A velocidade da energia na mola é, então,
+$$
+\frac{S_{j+1/2}}{e_{j+1/2}/\Delta x},
+\qquad
+\left|\frac{S_{j+1/2}}{e_{j+1/2}/\Delta x}\right| \le c .
+$$
+O limite $c = \sqrt{\tau/\rho}$ não depende de $N$: vale para toda cadeia
+que representa a mesma corda, e por isso sobrevive ao limite contínuo.
+Como o fluxo em cada mola é no máximo $c$ vezes a densidade de energia
+ali, a energia de uma perturbação inicialmente localizada não se espalha
+mais depressa que $c$ (@sec-cont-numerico).
+
+**Quando o limite é atingido.** As três desigualdades viram igualdades
+quando: (passo 1) a energia da mola é igual à energia cinética do ponto
+médio, $\sqrt K\,|h^{j+1} - h^j| = \sqrt m\,|\dot h^{j+1/2}|$; (passo 2) as
+duas extremidades têm a mesma velocidade, $\dot h^j = \dot h^{j+1}$; e
+(passo 3) $K_0 = 0$ ou $h^j = h^{j+1} = 0$. Uma onda sem massa que
+avança sem se deformar, $h^j(t) = g(x_j - ct)$ com $g$ variando pouco
+numa distância $\Delta x$, satisfaz as três aproximadamente: nela
+$\dot h = -c\,\partial h/\partial x$, a energia cinética é igual à
+potencial, e $S_{j+1/2}\Delta x/e_{j+1/2} \approx c$. Com $\mu > 0$, parte
+da energia está nas molas $K_0$, que não transportam nada, e a energia
+anda mais devagar que $c$.
 
 ::: {.callout-tip title="No limite contínuo: densidade e fluxo de energia"}
 Com $p_j = \Delta x\,\Pi(t, x_j)$, $h^j = \phi(t, x_j)$ e

@@ -180,6 +180,7 @@ H = \sum_j\left(E_j + E_{j+1/2}\right)
 $$
 
 - Índice inteiro: na partícula. Índice semi-inteiro: na mola.
+- Num trecho $a \le j \le b$: $\frac{\mathrm d}{\mathrm dt}\sum_{j=a}^b e_j = S_{a-1/2} - S_{b+1/2}$. Só as fronteiras contam: $S$ é um fluxo.
 :::
 ::: {.column width="50%"}
 **Como variam**
@@ -195,6 +196,7 @@ e_j \equiv E_j + \frac{E_{j-1/2} + E_{j+1/2}}{2},
 \qquad
 \dot e_j = -\left(S_{j+1/2} - S_{j-1/2}\right)
 $$
+**Fluxo de energia** através da mola (energia por unidade de tempo):
 $$
 S_{j+1/2} \equiv -\frac K2\left(h^{j+1} - h^j\right)\left(\dot h^j + \dot h^{j+1}\right)
 $$
@@ -245,7 +247,30 @@ $$
 :::
 ::::
 
-- A energia de uma mola passa no máximo para a seguinte a cada $\Delta x/c$.
+::: {.aside}
+Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)
+:::
+
+## A energia não anda mais depressa que $c$
+
+$$
+\dot h^{j+1/2} \equiv \frac{\dot h^j + \dot h^{j+1}}{2},
+\qquad
+S_{j+1/2} = -K\left(h^{j+1} - h^j\right)\dot h^{j+1/2},
+\qquad
+e_{j+1/2} \equiv E_{j+1/2} + \frac{E_j + E_{j+1}}{2}
+$$
+
+1. $\left(\sqrt K\,|h^{j+1} - h^j| - \sqrt m\,|\dot h^{j+1/2}|\right)^2 \ge 0$:
+   $\quad|S_{j+1/2}| \le \sqrt{\dfrac Km}\left[E_{j+1/2} + \dfrac m2\left(\dot h^{j+1/2}\right)^2\right]$
+2. $\left(\dot h^j - \dot h^{j+1}\right)^2 \ge 0$:
+   $\quad\dfrac m2\left(\dot h^{j+1/2}\right)^2 \le \dfrac{p_j^2 + p_{j+1}^2}{4m}$
+3. Termos $K_0 \ge 0$: $\quad|S_{j+1/2}| \le \sqrt{K/m}\;e_{j+1/2}$
+4. $\sqrt{K/m} = c/\Delta x$: $\quad|S_{j+1/2}| \le \dfrac{c}{\Delta x}\,e_{j+1/2}
+   \;\Longleftrightarrow\; \left|\dfrac{S_{j+1/2}}{e_{j+1/2}/\Delta x}\right| \le c$
+
+- Fluxo = densidade $\times$ velocidade: a energia na mola anda no máximo com velocidade $c$, independente de $N$.
+- Igualdade: onda sem massa $g(x - ct)$, energia cinética igual à potencial. Com $\mu > 0$, mais devagar.
 
 ::: {.aside}
 Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)

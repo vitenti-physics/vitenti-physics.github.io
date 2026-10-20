@@ -103,7 +103,7 @@ Cada símbolo tem um único significado em todas as páginas do minicurso.
 | $u_a(x)$ | funções de Fourier, $u_a(x) \equiv e^{ik_ax}/\sqrt L$ | [Aula 2](aula2.qmd#sec-cont-fourier) |
 | $\tilde\phi^a$, $\tilde\Pi^a$ | coeficientes de Fourier do campo, $\tilde\phi^a \equiv \int_0^L u_a^*\phi\,\mathrm dx$ | [Aula 2](aula2.qmd#sec-cont-fourier) |
 | $\psi^j$, $c_a$, $k_0$, $\sigma_{\rm p}$, $x_{\rm p}$, $x_{\rm c}$ | pacote de ondas complexo, seus coeficientes, número de onda central, largura, posição inicial e centro | [Aula 2](aula2.qmd#sec-cont-numerico) |
-| $e_j$, $e_{j+1/2}$, $S_{j+1/2}$ | energia da partícula $j$, energia da mola entre $j$ e $j+1$, e potência que atravessa essa mola | [Aula 2](aula2.qmd#sec-cont-fluxos) |
+| $e_j$, $e_{j+1/2}$, $S_{j+1/2}$ | energia da partícula $j$, energia da mola entre $j$ e $j+1$, e fluxo de energia através dessa mola | [Aula 2](aula2.qmd#sec-cont-fluxos) |
 | $P_{\rm rede}$ | momento da cadeia, associado à translação $T$ | [Aula 2](aula2.qmd#sec-cont-momento) |
 | $\kappa(k)$, $\kappa_a$ | $\kappa(k) \equiv \sin(k\Delta x)/\Delta x$, momento da cadeia por partícula do modo $a$ (dividido por $\hbar$) | [Aula 2](aula2.qmd#sec-cont-dispersao) |
 | $\mathcal E$, $\mathcal S$ | densidade e fluxo de energia do campo | [Aula 2](aula2.qmd#sec-cont-fluxos) |
