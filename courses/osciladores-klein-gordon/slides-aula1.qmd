@@ -2,7 +2,6 @@
 title: "Aula 1: Do Oscilador Harmônico às Matrizes Circulantes"
 subtitle: "Minicurso: Osciladores Acoplados e a Equação de Klein–Gordon"
 author: "Sandro Vitenti, Universidade Estadual de Londrina"
-draft: true
 lang: pt
 format:
   revealjs:

@@ -1,7 +1,6 @@
 ---
 title: "Aula 1: Do Oscilador Harmônico às Matrizes Circulantes"
 subtitle: "Minicurso: Osciladores Acoplados e a Equação de Klein–Gordon"
-draft: true
 lang: pt
 format:
   html:

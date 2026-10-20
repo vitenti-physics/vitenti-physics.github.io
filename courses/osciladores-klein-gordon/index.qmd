@@ -1,7 +1,6 @@
 ---
 title: "Osciladores Acoplados e a Equação de Klein–Gordon"
 subtitle: "Minicurso (2 aulas de 1h30)"
-draft: true
 lang: pt
 format:
   html:

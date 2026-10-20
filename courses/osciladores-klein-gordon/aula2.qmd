@@ -1,7 +1,6 @@
 ---
 title: "Aula 2: O Limite Contínuo e as Variáveis de Criação e Aniquilação"
 subtitle: "Minicurso: Osciladores Acoplados e a Equação de Klein–Gordon"
-draft: true
 lang: pt
 format:
   html:

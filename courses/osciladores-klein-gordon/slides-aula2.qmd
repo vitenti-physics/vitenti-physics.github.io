@@ -2,7 +2,6 @@
 title: "Aula 2: O Limite Contínuo e as Variáveis de Criação e Aniquilação"
 subtitle: "Minicurso: Osciladores Acoplados e a Equação de Klein–Gordon"
 author: "Sandro Vitenti, Universidade Estadual de Londrina"
-draft: true
 lang: pt
 format:
   revealjs:
