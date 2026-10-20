@@ -251,26 +251,98 @@ $$
 Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)
 :::
 
-## A energia não anda mais depressa que $c$
+## Com que velocidade anda a energia?
 
+Um fluxo é uma densidade vezes uma velocidade (corrente elétrica = densidade de carga $\times$ velocidade).
+Na mola entre $j$ e $j + 1$:
 $$
-\dot h^{j+1/2} \equiv \frac{\dot h^j + \dot h^{j+1}}{2},
-\qquad
+\underbrace{S_{j+1/2}}_{\text{fluxo}} = \underbrace{\frac{e_{j+1/2}}{\Delta x}}_{\text{energia por comprimento}} \times\ \text{velocidade da energia}
+$$
+$$
+e_{j+1/2} \equiv E_{j+1/2} + \frac{E_j + E_{j+1}}{2}
+= \underbrace{\frac K2\left(h^{j+1} - h^j\right)^2}_{\text{mola } K}
++ \underbrace{\frac{p_j^2 + p_{j+1}^2}{4m}}_{\text{metade das cinéticas}}
++ \underbrace{\frac{K_0}{4}\left[\left(h^j\right)^2 + \left(h^{j+1}\right)^2\right]}_{\text{metade das molas } K_0}
+$$
+$$
 S_{j+1/2} = -K\left(h^{j+1} - h^j\right)\dot h^{j+1/2},
 \qquad
-e_{j+1/2} \equiv E_{j+1/2} + \frac{E_j + E_{j+1}}{2}
+\dot h^{j+1/2} \equiv \frac{\dot h^j + \dot h^{j+1}}{2}\ \ \text{(velocidade do ponto médio da mola)}
 $$
 
-1. $\left(\sqrt K\,|h^{j+1} - h^j| - \sqrt m\,|\dot h^{j+1/2}|\right)^2 \ge 0$:
-   $\quad|S_{j+1/2}| \le \sqrt{\dfrac Km}\left[E_{j+1/2} + \dfrac m2\left(\dot h^{j+1/2}\right)^2\right]$
-2. $\left(\dot h^j - \dot h^{j+1}\right)^2 \ge 0$:
-   $\quad\dfrac m2\left(\dot h^{j+1/2}\right)^2 \le \dfrac{p_j^2 + p_{j+1}^2}{4m}$
-3. Termos $K_0 \ge 0$: $\quad|S_{j+1/2}| \le \sqrt{K/m}\;e_{j+1/2}$
-4. $\sqrt{K/m} = c/\Delta x$: $\quad|S_{j+1/2}| \le \dfrac{c}{\Delta x}\,e_{j+1/2}
-   \;\Longleftrightarrow\; \left|\dfrac{S_{j+1/2}}{e_{j+1/2}/\Delta x}\right| \le c$
+- **Objetivo:** mostrar que $|S_{j+1/2}| \le \dfrac{c}{\Delta x}\,e_{j+1/2}$, isto é, velocidade da energia $\le c$.
 
-- Fluxo = densidade $\times$ velocidade: a energia na mola anda no máximo com velocidade $c$, independente de $N$.
-- Igualdade: onda sem massa $g(x - ct)$, energia cinética igual à potencial. Com $\mu > 0$, mais devagar.
+::: {.aside}
+Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)
+:::
+
+## Passo 1: o fluxo é limitado por energias
+
+O fluxo é um produto (força $\times$ velocidade). Um quadrado nunca é negativo:
+$$
+\left(\sqrt K\,\left|h^{j+1} - h^j\right| - \sqrt m\,\left|\dot h^{j+1/2}\right|\right)^2 \ge 0
+$$
+$$
+K\left(h^{j+1} - h^j\right)^2 - 2\sqrt{Km}\,\left|h^{j+1} - h^j\right|\left|\dot h^{j+1/2}\right| + m\left(\dot h^{j+1/2}\right)^2 \ge 0
+$$
+$$
+\sqrt{Km}\,\left|h^{j+1} - h^j\right|\left|\dot h^{j+1/2}\right| \le \frac K2\left(h^{j+1} - h^j\right)^2 + \frac m2\left(\dot h^{j+1/2}\right)^2
+$$
+Multiplicando por $\sqrt{K/m}$, o lado esquerdo é $K|h^{j+1} - h^j||\dot h^{j+1/2}| = |S_{j+1/2}|$:
+$$
+|S_{j+1/2}| \le \sqrt{\frac Km}\Big[\underbrace{E_{j+1/2}}_{\text{energia da mola}} + \underbrace{\frac m2\left(\dot h^{j+1/2}\right)^2}_{\text{cinética do ponto médio}}\Big]
+$$
+
+
+::: {.aside}
+Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)
+:::
+
+## Passo 2: o ponto médio não tem mais energia cinética que as pontas
+
+Outro quadrado:
+$$
+\left(\dot h^j - \dot h^{j+1}\right)^2 \ge 0
+\quad\Longrightarrow\quad
+2\,\dot h^j\dot h^{j+1} \le \left(\dot h^j\right)^2 + \left(\dot h^{j+1}\right)^2
+$$
+Usando isso no quadrado da média:
+$$
+\left(\dot h^{j+1/2}\right)^2
+= \frac{\left(\dot h^j\right)^2 + 2\,\dot h^j\dot h^{j+1} + \left(\dot h^{j+1}\right)^2}{4}
+\le \frac{\left(\dot h^j\right)^2 + \left(\dot h^{j+1}\right)^2}{2}
+$$
+Multiplicando por $m/2$ e usando $p_j = m\dot h^j$:
+$$
+\frac m2\left(\dot h^{j+1/2}\right)^2 \le \frac{p_j^2 + p_{j+1}^2}{4m}
+$$
+
+- A energia cinética da velocidade média não passa da média das energias cinéticas.
+- Igualdade somente se as duas pontas da mola têm a mesma velocidade.
+
+::: {.aside}
+Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)
+:::
+
+## Passos 3 e 4: a energia não anda mais depressa que $c$
+
+Juntando os passos 1 e 2, e somando os termos de $K_0$, que não são negativos:
+$$
+|S_{j+1/2}|
+\overset{1}{\le} \sqrt{\frac Km}\left[E_{j+1/2} + \frac m2\left(\dot h^{j+1/2}\right)^2\right]
+\overset{2}{\le} \sqrt{\frac Km}\left[E_{j+1/2} + \frac{p_j^2 + p_{j+1}^2}{4m}\right]
+\overset{3}{\le} \sqrt{\frac Km}\;e_{j+1/2}
+$$
+Passo 4: $K/m = \tau/(\rho\,\Delta x^2) = c^2/\Delta x^2$, logo
+$$
+|S_{j+1/2}| \le \frac{c}{\Delta x}\,e_{j+1/2}
+\qquad\Longleftrightarrow\qquad
+\left|\,\frac{S_{j+1/2}}{e_{j+1/2}/\Delta x}\,\right| \le c
+$$
+
+- A energia em cada mola anda no máximo com velocidade $c = \sqrt{\tau/\rho}$, que não depende de $N$.
+- Igualdade nos três passos: energia da mola = cinética, pontas com a mesma velocidade, $K_0 = 0$: a onda sem massa $g(x - ct)$.
+- Com $\mu > 0$, parte da energia fica nas molas $K_0$, que não a transportam: mais devagar que $c$.
 
 ::: {.aside}
 Notas: [O fluxo de energia](aula2.html#sec-cont-fluxos)
