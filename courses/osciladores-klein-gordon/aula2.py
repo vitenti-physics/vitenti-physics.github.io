@@ -1,0 +1,1781 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# # Aula 2: O Limite Contínuo e as Variáveis de Criação e Aniquilação
+# 
+# Minicurso: Osciladores Acoplados e a Equação de Klein–Gordon
+# 
+# Sandro Vitenti
+# 
+# > **Como usar estas notas**
+# >
+# > Estas notas acompanham os [slides da Aula 2](slides-aula2.qmd) e
+# > seguem a mesma ordem de seções. Elas continuam as [notas da Aula
+# > 1](aula1.qmd), e a notação de todo o minicurso está fixada na [página
+# > do minicurso](index.qmd#sec-notacao). O objeto de estudo continua
+# > sendo a cadeia de $N$ partículas; cada resultado é obtido para a
+# > cadeia, e os quadros **No limite contínuo** mostram, em paralelo, a
+# > forma que ele toma quando o espaçamento entre as partículas vai a
+# > zero. O código Python desta página roda de forma independente: baixe o
+# > notebook (link **Jupyter**) ou abra-o no navegador pelo link **Abrir
+# > no Colab**. As dependências são `numpy`, `scipy` e `matplotlib`.
+
+# In[1]:
+
+
+import itertools
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+from scipy.linalg import sqrtm
+
+plt.rcParams["figure.figsize"] = (8, 4.5)
+plt.rcParams["figure.dpi"] = 150
+
+
+# # A cadeia e o seu limite contínuo
+# 
+# Na Aula 1 a cadeia periódica de $N$ partículas foi resolvida exatamente
+# na base de Fourier. Nesta aula continuamos com a mesma cadeia. Nesta
+# seção escrevemos seus parâmetros como os de uma corda, estudamos como a
+# energia e o momento passam de uma partícula para outra, e revemos a
+# relação de dispersão e a base de Fourier; na the section construímos, a
+# partir das soluções da cadeia, os estados de partículas. Em paralelo,
+# mostramos o que cada resultado se torna no limite em que o espaçamento
+# $\Delta x$ vai a zero com o comprimento do anel fixo: as alturas passam
+# a formar uma função da posição, o **campo**, que obedece à equação de
+# Klein–Gordon.
+# 
+# Os resultados da Aula 1 usados aqui são a equação de movimento ([Aula 1,
+# Forças e equações de movimento](aula1.qmd#sec-cadeia-forcas))
+# <span id="eq-cont-newton">$$
+# m\ddot h^j = K\left(h^{j+1} - 2h^j + h^{j-1}\right) - K_0\, h^j,
+# \qquad j = 0, 1, \dots, N - 1,
+# \qquad h^{j+N} \equiv h^j,
+#  \qquad(1)$$</span> a Hamiltoniana, com $\{h^j, p_k\} = \delta^j{}_k$
+# ([Aula 1, Energia e Hamiltoniana](aula1.qmd#sec-cadeia-hamiltoniana))
+# <span id="eq-cont-H-cadeia">$$
+# H = \sum_{j=0}^{N-1}\left[\frac{p_j^2}{2m} + \frac{K}{2}\left(h^{j+1} - h^j\right)^2 + \frac{K_0}{2}\left(h^j\right)^2\right],
+#  \qquad(2)$$</span> os vetores de Fourier $\vec v_a$, de componentes
+# $v_a^{\,j} = e^{2\pi i aj/N}/\sqrt N$, as componentes
+# $\tilde h^a = \vec v_a^{\,\dagger} \vec h$ e
+# $\tilde p^a = \vec v_a^{\,\dagger} \vec p$, e a relação de dispersão
+# ([Aula 1, A relação de dispersão](aula1.qmd#sec-circ-dispersao))
+# <span id="eq-cont-dispersao-aula1">$$
+# \omega_a = \sqrt{\frac{K_0 + 4K\sin^2(\pi a/N)}{m}} .
+#  \qquad(3)$$</span>
+# 
+# ## Os parâmetros de uma corda
+# 
+# A partícula $j$ está na posição horizontal $$
+# x_j \equiv j\,\Delta x,
+# \qquad
+# L \equiv N\,\Delta x,
+# $$ em que $L$ é o comprimento do anel. Para comparar cadeias com números
+# de partículas diferentes sobre o mesmo anel, pensamos na cadeia como uma
+# corda de densidade linear de massa $\rho$, sob tensão $\tau$, dividida
+# em $N$ pedaços iguais.
+# 
+# - Cada pedaço tem massa $m = \rho\,\Delta x$.
+# - A tensão exerce sobre um pedaço a força vertical $\tau$ vezes a
+#   inclinação, $\tau\,(h^{j+1} - h^j)/\Delta x$, para inclinações
+#   pequenas. Comparando com a força $K(h^{j+1} - h^j)$ da mola,
+#   $K = \tau/\Delta x$: é a mesma tensão $\tau$ da nota sobre molas com
+#   comprimento natural na [Aula 1](aula1.qmd#sec-cadeia-forcas).
+# - As molas de constante $K_0$ representam uma força restauradora por
+#   unidade de comprimento, proporcional à altura; escrevemos essa
+#   proporcionalidade como $\rho\mu^2$, e cada pedaço recebe
+#   $K_0 = \rho\mu^2\,\Delta x$.
+# 
+# Então <span id="eq-cont-escalas">$$
+# m = \rho\,\Delta x,
+# \qquad
+# K = \frac{\tau}{\Delta x},
+# \qquad
+# K_0 = \rho\,\mu^2\,\Delta x,
+#  \qquad(4)$$</span> com <span id="eq-cont-c">$$
+# \frac{K_0}{m} = \mu^2,
+# \qquad
+# \frac{K}{m} = \frac{\tau}{\rho\,\Delta x^2} \equiv \frac{c^2}{\Delta x^2},
+# \qquad
+# c \equiv \sqrt{\tau/\rho} .
+#  \qquad(5)$$</span> Os parâmetros $\rho$, $\tau$, $\mu$ e $c$ descrevem
+# a corda e não dependem de $N$: duas cadeias com $N$ diferentes e os
+# mesmos $\rho$, $\tau$, $\mu$ e $L$ são a mesma corda dividida em pedaços
+# de tamanhos diferentes (the figure). A frequência $\sqrt{K_0/m} = \mu$
+# do modo uniforme não depende de $N$; a razão $K/m$ cresce como
+# $1/\Delta x^2$. Dividindo the equation por $\Delta x$, a equação de
+# movimento da cadeia fica <span id="eq-cont-cadeia-escalada">$$
+# \rho\,\ddot h^j = \tau\,\frac{h^{j+1} - 2h^j + h^{j-1}}{\Delta x^2} - \rho\,\mu^2\,h^j .
+#  \qquad(6)$$</span>
+
+# In[2]:
+
+
+L_fig = 40.0
+x_fino = np.linspace(0, L_fig, 800)
+perfil = lambda x: np.exp(-((x - 20) ** 2) / (2 * 5**2)) * np.cos(2 * np.pi * 3 * x / L_fig)
+fig, axs = plt.subplots(1, 3, figsize=(13, 2.0), sharey=True)
+for ax, N_fig in zip(axs, [10, 20, 80]):
+    xj = np.arange(N_fig) * L_fig / N_fig
+    ax.plot(x_fino, perfil(x_fino), color="gray", lw=1)
+    ax.plot(xj, perfil(xj), "-", color="C0", lw=1)
+    ax.plot(xj, perfil(xj), "o", color="C3", ms=max(2, 30 / np.sqrt(N_fig)))
+    ax.set_title(rf"$N = {N_fig}$, $\Delta x = {L_fig / N_fig:g}$")
+    ax.set_xlabel("$x$")
+axs[0].set_ylabel(r"$h^j$")
+fig.tight_layout()
+plt.show()
+
+
+# > **No limite contínuo: a equação de Klein–Gordon**
+# >
+# > Descrevemos as alturas por uma função $\phi(t, x)$, com
+# > $\phi(t, x_j) \equiv h^j(t)$ e $\phi(t, x + L) = \phi(t, x)$. Com a
+# > série de Taylor em $x$, em que $\phi'$, $\phi''$, $\dots$ são
+# > derivadas parciais em relação a $x$ no ponto $(t, x_j)$, $$
+# > \phi(t, x_j \pm \Delta x) = \phi \pm \Delta x\,\phi' + \frac{\Delta x^2}{2}\,\phi'' \pm \frac{\Delta x^3}{6}\,\phi''' + \frac{\Delta x^4}{24}\,\phi'''' \pm \dots
+# > $$ Somando as duas séries, os termos de ordem ímpar se cancelam e os
+# > de ordem par dobram: <span id="eq-cont-taylor">$$
+# > h^{j+1} - 2h^j + h^{j-1} = \Delta x^2\,\phi'' + \frac{\Delta x^4}{12}\,\phi'''' + O(\Delta x^6) .
+# >  \qquad(7)$$</span> Substituindo em the equation e dividindo por
+# > $\rho$, $$
+# > \frac{\partial^2\phi}{\partial t^2} = c^2\phi'' + \frac{c^2\Delta x^2}{12}\,\phi'''' - \mu^2\phi + O(\Delta x^4),
+# > $$ e no limite $\Delta x \to 0$ <span id="eq-kg">$$
+# > \frac{\partial^2\phi}{\partial t^2} - c^2\,\frac{\partial^2\phi}{\partial x^2} + \mu^2\,\phi = 0 ,
+# >  \qquad(8)$$</span> a **equação de Klein–Gordon** em uma dimensão
+# > espacial. O termo $\mu^2\phi$, que vem das molas de constante $K_0$, é
+# > o **termo de massa**; para $\mu = 0$, the equation é a equação de
+# > onda. O termo $c^2\Delta x^2\phi''''/12$ é a primeira diferença entre
+# > a cadeia e o campo.
+# 
+# ## A Hamiltoniana
+# 
+# Com the equation, a Hamiltoniana the equation é
+# <span id="eq-cont-H-escalada">$$
+# H = \sum_{j=0}^{N-1}\left[\frac{p_j^2}{2\rho\,\Delta x} + \frac{\tau}{2\Delta x}\left(h^{j+1} - h^j\right)^2 + \frac{\rho\,\mu^2\Delta x}{2}\left(h^j\right)^2\right],
+# \qquad
+# \{h^j, p_k\} = \delta^j{}_k .
+#  \qquad(9)$$</span> Cada termo é $\Delta x$ vezes uma quantidade que não
+# depende de $N$, se o momento é medido por unidade de comprimento,
+# $p_j/\Delta x$, e a diferença de alturas por unidade de comprimento,
+# $(h^{j+1} - h^j)/\Delta x$.
+# 
+# > **No limite contínuo: Hamiltoniana e parênteses de Poisson do campo**
+# >
+# > O momento por unidade de comprimento, $$
+# > \Pi(t, x_j) \equiv \frac{p_j(t)}{\Delta x},
+# > $$ tem limite. (Usamos $\Pi$, e não $\pi$, porque o número $\pi$
+# > aparece nos números de onda $2\pi a/L$ desta página.) Cada termo de 1
+# > é $\Delta x$ vezes uma função de $x_j$, e a soma é uma soma de
+# > Riemann: <span id="eq-cont-hamiltoniana">$$
+# > H = \int_0^L \left[\frac{\Pi^2}{2\rho} + \frac{\tau}{2}\left(\frac{\partial\phi}{\partial x}\right)^2 + \frac{\rho\,\mu^2}{2}\,\phi^2\right]\mathrm{d}x .
+# >  \qquad(10)$$</span> As equações de Hamilton $\dot h^j = p_j/m$ e
+# > $\dot p_j = F_j$, divididas por $\Delta x$, dão
+# > $\partial_t\phi = \Pi/\rho$ e
+# > $\partial_t\Pi = \tau\phi'' - \rho\mu^2\phi$, e eliminando $\Pi$
+# > obtemos the equation. O parêntese $\{h^j, p_k\} = \delta^j{}_k$ é
+# > $\{\phi(t, x_j), \Pi(t, x_k)\} = \delta^j{}_k/\Delta x$: nulo para
+# > $j \neq k$, $1/\Delta x$ para $j = k$, e com soma de Riemann
+# > $\sum_k \Delta x\,\delta^j{}_k/\Delta x = 1$. No limite, é a [delta de
+# > Dirac](../mathematical-physics/delta-dirac-green.qmd):
+# > <span id="eq-cont-poisson">$$
+# > \left\{\phi(t, x),\, \Pi(t, y)\right\} = \delta(x - y) .
+# >  \qquad(11)$$</span>
+# 
+# ## O fluxo de energia
+# 
+# A energia total $H$ é conservada, mas ela não fica parada: passa de uma
+# partícula para a vizinha através das molas. Para acompanhar esse
+# movimento, dividimos $H$ em partes localizadas na cadeia.
+# 
+# **A energia de cada oscilador.** A partícula $j$ com a sua mola de
+# constante $K_0$ forma um oscilador, o da Aula 1 com $\kappa = K_0$. A
+# sua energia, cinética mais a da mola $K_0$, é $$
+# E_j \equiv \frac{p_j^2}{2m} + \frac{K_0}{2}\left(h^j\right)^2 .
+# $$ Se $K = 0$, cada $E_j$ é conservada separadamente.
+# 
+# **A energia de cada mola.** A mola de constante $K$ entre as partículas
+# $j$ e $j + 1$ guarda a energia $$
+# E_{j+1/2} \equiv \frac{K}{2}\left(h^{j+1} - h^j\right)^2,
+# $$ sem o termo constante $K\Delta x^2/2$ da Aula 1. O índice $j + 1/2$
+# indica onde essa energia está: a mola liga $x_j$ a $x_{j+1}$, e o seu
+# ponto médio é $$
+# x_{j+1/2} \equiv \left(j + \tfrac12\right)\Delta x .
+# $$ Na notação, índices inteiros $j$ marcam grandezas que estão nas
+# partículas, e índices semi-inteiros $j + 1/2$ marcam grandezas que estão
+# nas molas entre elas. A Hamiltoniana the equation é a soma das duas: $$
+# H = \sum_{j=0}^{N-1}\left(E_j + E_{j+1/2}\right).
+# $$
+# 
+# **Como $E_j$ e $E_{j+1/2}$ variam.** Com $\dot h^j = p_j/m$ e the
+# equation, $$
+# \dot E_j = \frac{p_j\,\dot p_j}{m} + K_0\,h^j\,\dot h^j
+# = \dot h^j\left(\dot p_j + K_0 h^j\right)
+# = K\left(h^{j+1} - h^j\right)\dot h^j - K\left(h^j - h^{j-1}\right)\dot h^j .
+# $$ Os termos com $K_0$ se cancelaram: a mola $K_0$ só troca energia com
+# a sua própria partícula. Os dois termos que sobram são a potência (força
+# vezes velocidade) que a mola da direita e a mola da esquerda fazem sobre
+# a partícula $j$. Para a mola, $$
+# \dot E_{j+1/2} = K\left(h^{j+1} - h^j\right)\left(\dot h^{j+1} - \dot h^j\right)
+# = -K\left(h^{j+1} - h^j\right)\dot h^j + K\left(h^{j+1} - h^j\right)\dot h^{j+1} :
+# $$ a mola perde a potência que entrega à partícula $j$ e ganha a que
+# recebe da partícula $j + 1$, com os sinais trocados, pois a força que
+# ela exerce sobre $j + 1$ é $-K(h^{j+1} - h^j)$. A energia que sai de uma
+# partícula entra numa mola, e vice-versa.
+# 
+# **A energia de uma partícula e o fluxo.** Para obter uma energia por
+# partícula, atribuímos a cada partícula o seu oscilador e metade de cada
+# uma das duas molas ligadas a ela: $$
+# e_j \equiv E_j + \frac{E_{j-1/2} + E_{j+1/2}}{2}
+# = \frac{p_j^2}{2m} + \frac{K_0}{2}\left(h^j\right)^2 + \frac{K}{4}\left[\left(h^{j+1} - h^j\right)^2 + \left(h^j - h^{j-1}\right)^2\right],
+# \qquad
+# \sum_j e_j = H .
+# $$ Somando as três derivadas acima, $$
+# \dot e_j = \dot E_j + \frac{\dot E_{j-1/2} + \dot E_{j+1/2}}{2}
+# = K\left(h^{j+1} - h^j\right)\frac{\dot h^j + \dot h^{j+1}}{2} - K\left(h^j - h^{j-1}\right)\frac{\dot h^{j-1} + \dot h^j}{2},
+# $$ isto é, <span id="eq-cont-fluxo-cadeia">$$
+# \dot e_j = -\left(S_{j+1/2} - S_{j-1/2}\right),
+# \qquad
+# S_{j+1/2} \equiv -\frac{K}{2}\left(h^{j+1} - h^j\right)\left(\dot h^j + \dot h^{j+1}\right) .
+#  \qquad(12)$$</span> $S_{j+1/2}$ é o **fluxo de energia** da cadeia: a
+# energia que atravessa a mola entre $j$ e $j + 1$ por unidade de tempo,
+# no sentido de $j$ crescente. Ele está na mola, daí o índice
+# semi-inteiro. Numa dimensão um fluxo não é dividido por nenhuma área, e
+# o fluxo de energia tem unidade de potência. Ele é a média entre a
+# potência que a mola recebe de $j$, $-K(h^{j+1} - h^j)\dot h^j$, e a que
+# ela entrega a $j + 1$, $-K(h^{j+1} - h^j)\dot h^{j+1}$. A energia de
+# cada partícula só muda pela energia que entra ou sai pelas suas duas
+# molas.
+# 
+# **Por que $S_{j+1/2}$ é um fluxo.** Somando the equation sobre um trecho
+# qualquer da cadeia, das partículas $a$ a $b$, os termos internos se
+# cancelam aos pares: $$
+# \frac{\mathrm d}{\mathrm dt}\sum_{j=a}^{b} e_j
+# = -\sum_{j=a}^{b}\left(S_{j+1/2} - S_{j-1/2}\right)
+# = S_{a-1/2} - S_{b+1/2} .
+# $$ A energia do trecho muda apenas pelo que passa pelas duas molas das
+# extremidades: entra $S_{a-1/2}$ pela esquerda e sai $S_{b+1/2}$ pela
+# direita. O que acontece dentro do trecho não aparece. É isso que faz de
+# $S_{j+1/2}$ um fluxo: um número associado a cada fronteira entre duas
+# partes da cadeia, tal que a energia de cada parte só muda pelo que
+# atravessa as suas fronteiras. Para o anel inteiro não há fronteira, e
+# $\dot H = 0$. Fisicamente, $S_{j+1/2}$ é a potência que a parte da
+# cadeia à esquerda da mola realiza sobre a parte à direita: a força da
+# mola sobre a partícula $j + 1$, $-K(h^{j+1} - h^j)$, vezes a velocidade
+# média das duas extremidades da mola.
+# 
+# **As mesmas grandezas em termos de $\Delta x$.** Com the equation,
+# $m = \rho\Delta x$, $K = \tau/\Delta x$ e $K_0 = \rho\mu^2\Delta x$, as
+# energias são $$
+# E_j = \Delta x\left[\frac{1}{2\rho}\left(\frac{p_j}{\Delta x}\right)^2 + \frac{\rho\,\mu^2}{2}\left(h^j\right)^2\right],
+# \qquad
+# E_{j+1/2} = \Delta x\;\frac{\tau}{2}\left(\frac{h^{j+1} - h^j}{\Delta x}\right)^2,
+# $$ e o fluxo é $$
+# S_{j+1/2} = -\tau\;\frac{h^{j+1} - h^j}{\Delta x}\;\frac{\dot h^j + \dot h^{j+1}}{2} .
+# $$ Cada energia é $\Delta x$ vezes uma combinação do momento por unidade
+# de comprimento $p_j/\Delta x$, da altura $h^j$ e da inclinação
+# $(h^{j+1} - h^j)/\Delta x$, nenhuma das quais depende de $N$. O fluxo
+# não tem o fator $\Delta x$: é uma potência, e não uma energia guardada
+# num trecho de comprimento $\Delta x$. Dividindo the equation por
+# $\Delta x$, <span id="eq-cont-fluxo-dx">$$
+# \frac{\mathrm d}{\mathrm dt}\left(\frac{e_j}{\Delta x}\right) = -\,\frac{S_{j+1/2} - S_{j-1/2}}{\Delta x} :
+#  \qquad(13)$$</span> a variação da energia por unidade de comprimento em
+# $x_j$ é menos a diferença entre o fluxo à direita e o fluxo à esquerda,
+# dividida pela distância $\Delta x$ entre os pontos $x_{j+1/2}$ e
+# $x_{j-1/2}$ onde esses fluxos estão.
+# 
+# **A energia não anda mais depressa que $c$.** O fluxo $S_{j+1/2}$ está
+# numa mola, e deve ser comparado com a energia associada a essa mola.
+# Atribuímos à mola entre $j$ e $j+1$ a sua própria energia $E_{j+1/2}$ e
+# metade da energia de cada um dos dois osciladores que ela liga: $$
+# e_{j+1/2} \equiv E_{j+1/2} + \frac{E_j + E_{j+1}}{2}
+# = \frac{K}{2}\left(h^{j+1} - h^j\right)^2 + \frac{p_j^2 + p_{j+1}^2}{4m} + \frac{K_0}{4}\left[\left(h^j\right)^2 + \left(h^{j+1}\right)^2\right],
+# \qquad
+# \sum_j e_{j+1/2} = H .
+# $$ Com a velocidade do ponto médio da mola, $$
+# \dot h^{j+1/2} \equiv \frac{\dot h^j + \dot h^{j+1}}{2},
+# \qquad\text{o fluxo é}\qquad
+# S_{j+1/2} = -K\left(h^{j+1} - h^j\right)\dot h^{j+1/2} .
+# $$ A desigualdade sai em quatro passos, cada um a partir de um quadrado
+# que não é negativo.
+# 
+# 1.  **O produto é limitado pela soma das energias.** O quadrado da
+#     diferença entre $\sqrt K\,|h^{j+1} - h^j|$ e
+#     $\sqrt m\,|\dot h^{j+1/2}|$ não é negativo; expandindo o quadrado,
+#     $$
+#     \sqrt{Km}\;\left|h^{j+1} - h^j\right|\left|\dot h^{j+1/2}\right|
+#     \le \frac K2\left(h^{j+1} - h^j\right)^2 + \frac m2\left(\dot h^{j+1/2}\right)^2 .
+#     $$ Multiplicando por $\sqrt{K/m}$, o lado esquerdo é $|S_{j+1/2}|$:
+#     $$
+#     |S_{j+1/2}| \le \sqrt{\frac Km}\left[E_{j+1/2} + \frac m2\left(\dot h^{j+1/2}\right)^2\right].
+#     $$ O fluxo é limitado pela energia da mola mais a energia cinética
+#     do seu ponto médio.
+# 2.  **A energia cinética do ponto médio não passa da média das duas.**
+#     De $\left(\dot h^j - \dot h^{j+1}\right)^2 \ge 0$ segue
+#     $\left(\dot h^{j+1/2}\right)^2 \le \left[(\dot h^j)^2 + (\dot h^{j+1})^2\right]/2$,
+#     e portanto $$
+#     \frac m2\left(\dot h^{j+1/2}\right)^2 \le \frac{p_j^2 + p_{j+1}^2}{4m} .
+#     $$
+# 3.  **Os termos com $K_0$ só aumentam o lado direito.** Somando
+#     $\frac{K_0}{4}\left[(h^j)^2 + (h^{j+1})^2\right] \ge 0$, o colchete
+#     vira $e_{j+1/2}$: $$
+#     |S_{j+1/2}| \le \sqrt{\frac Km}\;e_{j+1/2} .
+#     $$
+# 4.  **O coeficiente é $c/\Delta x$.** Por the equation,
+#     $K/m = c^2/\Delta x^2$: <span id="eq-cont-limite-fluxo">$$
+#     |S_{j+1/2}| \le \frac{c}{\Delta x}\,e_{j+1/2} .
+#      \qquad(14)$$</span>
+# 
+# **A leitura como velocidade.** A energia por unidade de comprimento na
+# mola é $e_{j+1/2}/\Delta x$. Um fluxo é uma densidade vezes a velocidade
+# com que ela se move, como a corrente elétrica é a densidade de carga
+# vezes a velocidade das cargas. A velocidade da energia na mola é, então,
+# $$
+# \frac{S_{j+1/2}}{e_{j+1/2}/\Delta x},
+# \qquad
+# \left|\frac{S_{j+1/2}}{e_{j+1/2}/\Delta x}\right| \le c .
+# $$ O limite $c = \sqrt{\tau/\rho}$ não depende de $N$: vale para toda
+# cadeia que representa a mesma corda, e por isso sobrevive ao limite
+# contínuo. Como o fluxo em cada mola é no máximo $c$ vezes a densidade de
+# energia ali, a energia de uma perturbação inicialmente localizada não se
+# espalha mais depressa que $c$ (the section).
+# 
+# **Quando o limite é atingido.** As três desigualdades viram igualdades
+# quando: (passo 1) a energia da mola é igual à energia cinética do ponto
+# médio, $\sqrt K\,|h^{j+1} - h^j| = \sqrt m\,|\dot h^{j+1/2}|$; (passo 2)
+# as duas extremidades têm a mesma velocidade, $\dot h^j = \dot h^{j+1}$;
+# e (passo 3) $K_0 = 0$ ou $h^j = h^{j+1} = 0$. Uma onda sem massa que
+# avança sem se deformar, $h^j(t) = g(x_j - ct)$ com $g$ variando pouco
+# numa distância $\Delta x$, satisfaz as três aproximadamente: nela
+# $\dot h = -c\,\partial h/\partial x$, a energia cinética é igual à
+# potencial, e $S_{j+1/2}\Delta x/e_{j+1/2} \approx c$. Com $\mu > 0$,
+# parte da energia está nas molas $K_0$, que não transportam nada, e a
+# energia anda mais devagar que $c$.
+# 
+# > **No limite contínuo: densidade e fluxo de energia**
+# >
+# > Com $p_j = \Delta x\,\Pi(t, x_j)$, $h^j = \phi(t, x_j)$ e
+# > $(h^{j+1} - h^j)/\Delta x \to \partial\phi/\partial x$, as expressões
+# > em termos de $\Delta x$ dão
+# > $E_j/\Delta x \to \Pi^2/(2\rho) + \rho\mu^2\phi^2/2$ e
+# > $E_{j+1/2}/\Delta x \to (\tau/2)(\partial\phi/\partial x)^2$. As
+# > energias $e_j/\Delta x$ e $e_{j+1/2}/\Delta x$ tendem à mesma
+# > densidade de energia $\mathcal E$, e $S_{j+1/2}$ tende ao fluxo
+# > $\mathcal S$, com $$
+# > \mathcal E \equiv \frac{\Pi^2}{2\rho} + \frac{\tau}{2}\left(\frac{\partial\phi}{\partial x}\right)^2 + \frac{\rho\,\mu^2}{2}\,\phi^2,
+# > \qquad
+# > \mathcal S \equiv -\tau\,\frac{\partial\phi}{\partial x}\,\frac{\partial\phi}{\partial t} = -c^2\,\Pi\,\frac{\partial\phi}{\partial x} .
+# > $$ Em the equation, a diferença $S_{j+1/2} - S_{j-1/2}$ dividida por
+# > $\Delta x$ dá a derivada em $x$:
+# > <span id="eq-cont-continuidade-energia">$$
+# > \frac{\partial\mathcal E}{\partial t} + \frac{\partial\mathcal S}{\partial x} = 0 ,
+# >  \qquad(15)$$</span> e the equation dá
+# > $|\mathcal S| \le c\,\mathcal E$. Diretamente,
+# > $c\left(\Pi^2/(2\rho) + \tau\phi'^2/2\right) - |\mathcal S| = \tfrac{c}{2}\left(|\Pi|/\sqrt\rho - \sqrt\tau\,|\phi'|\right)^2 \ge 0$.
+# > Para $\mu = 0$ e uma onda que se move no sentido de $x$ crescente,
+# > $\phi = g(x - ct)$, vale $\mathcal S = c\,\mathcal E$ em todo ponto.
+# 
+# ## O momento ao longo da cadeia
+# 
+# A cadeia é invariante pela translação $T$, que leva cada configuração à
+# configuração deslocada de uma partícula. A grandeza conservada associada
+# a essa simetria é o **momento da cadeia** <span id="eq-cont-P-rede">$$
+# P_{\rm rede} \equiv -\sum_{j=0}^{N-1} p_j\,\frac{h^{j+1} - h^{j-1}}{2\Delta x}
+# = -\frac{\vec p^{\mathsf T}\left(T - T^{-1}\right)\vec h}{2\Delta x} .
+#  \qquad(16)$$</span> Ela é conservada exatamente. Com
+# $\dot{\vec h} = \vec p/m$ e $\dot{\vec p} = -(KD + K_0 I)\vec h$, $$
+# -2\Delta x\,\dot P_{\rm rede} = -\vec h^{\mathsf T}\left(KD + K_0 I\right)\left(T - T^{-1}\right)\vec h + \frac{1}{m}\,\vec p^{\mathsf T}\left(T - T^{-1}\right)\vec p .
+# $$ A matriz $T - T^{-1}$ é antissimétrica, pois
+# $T^{-1} = T^{\mathsf T}$, e uma forma quadrática
+# $\vec p^{\mathsf T}M\vec p$ com $M$ antissimétrica é nula. A matriz
+# $(KD + K_0 I)(T - T^{-1})$ também é antissimétrica, porque $KD + K_0 I$
+# é simétrica e comuta com $T$ (é circulante, [Aula
+# 1](aula1.qmd#sec-circ-def)). Os dois termos são nulos, e
+# $\dot P_{\rm rede} = 0$. O momento também é a soma dos fluxos de
+# energia: $$
+# \Delta x\sum_j S_{j+1/2} = -\frac{K\Delta x}{2m}\sum_j p_j\left(h^{j+1} - h^{j-1}\right) = c^2\,P_{\rm rede},
+# $$ em que a primeira igualdade vem de expandir
+# $(h^{j+1} - h^j)(p_j + p_{j+1})$ em the equation e trocar $j + 1$ por
+# $j$ nos termos com $p_{j+1}$, e a segunda usa $K/m = c^2/\Delta x^2$.
+# 
+# Há três grandezas conservadas na cadeia, cada uma associada a uma
+# simetria:
+# 
+# | Simetria | Grandeza conservada |
+# |------------------------------------|------------------------------------|
+# | translação no tempo | energia $H$ |
+# | translação $T$ por uma partícula | momento da cadeia $P_{\rm rede}$ |
+# | deslocamento $\vec h \to \vec h + \beta\,\vec 1$ (somente para $K_0 = 0$) | momento vertical $P = \sum_j p_j$ |
+# 
+# O momento vertical $P$ é o da [Aula 1](aula1.qmd#sec-cadeia-modo-zero),
+# das massas que se movem na vertical. O momento da cadeia descreve o
+# transporte ao longo do anel e é conservado para qualquer $K_0$.
+# 
+# > **No limite contínuo: o momento do campo**
+# >
+# > Com $p_j = \Delta x\,\Pi(x_j)$,
+# > $P_{\rm rede} = \sum_j \Delta x\left[-\Pi(x_j)\,\left(\phi(x_{j+1}) - \phi(x_{j-1})\right)/(2\Delta x)\right] \to \int_0^L\mathcal P\,\mathrm{d}x$,
+# > com densidade e fluxo <span id="eq-cont-continuidade-momento">$$
+# > \mathcal P \equiv -\Pi\,\frac{\partial\phi}{\partial x},
+# > \qquad
+# > \mathcal T \equiv \frac{\Pi^2}{2\rho} + \frac{\tau}{2}\left(\frac{\partial\phi}{\partial x}\right)^2 - \frac{\rho\,\mu^2}{2}\,\phi^2,
+# > \qquad
+# > \frac{\partial\mathcal P}{\partial t} + \frac{\partial\mathcal T}{\partial x} = 0 .
+# >  \qquad(17)$$</span> A lei de conservação segue de
+# > $\partial_t\mathcal P = -\tau\phi''\phi' + \rho\mu^2\phi\phi' - \Pi\Pi'/\rho = -\partial_x\mathcal T$.
+# > O sinal de $\mathcal P$ dá momento positivo a uma onda que se move no
+# > sentido de $x$ crescente: para $\phi = g(x - ct)$, $\Pi = -\rho c\,g'$
+# > e $\mathcal P = \rho c\,g'^2$. A relação
+# > $\Delta x\sum_j S_{j+1/2} = c^2 P_{\rm rede}$ vale ponto a ponto no
+# > campo: $\mathcal S = c^2\mathcal P$. A translação $T$ por uma
+# > partícula passa a ser a translação por qualquer distância.
+# 
+# ## Relação de dispersão e velocidade de grupo
+# 
+# O índice de Fourier $a$ corresponde ao **número de onda** $$
+# k_a \equiv \frac{2\pi a}{L},
+# \qquad\text{com}\qquad
+# \frac{\pi a}{N} = \frac{k_a\,\Delta x}{2},
+# $$ e the equation, com the equation, é
+# <span id="eq-cont-dispersao-rede">$$
+# \omega_a = \omega_{\Delta x}(k_a),
+# \qquad
+# \omega_{\Delta x}(k) \equiv \sqrt{\mu^2 + \frac{4c^2}{\Delta x^2}\sin^2\frac{k\,\Delta x}{2}} .
+#  \qquad(18)$$</span> Os números de onda vão até cerca de $\pi/\Delta x$
+# (o maior $|a|$ do intervalo simétrico é próximo de $N/2$): a cadeia
+# descreve comprimentos de onda de no mínimo $2\Delta x$.
+# 
+# **Velocidade de grupo.** Um pacote de ondas com números de onda próximos
+# de $k$ se move com a velocidade de grupo $$
+# \frac{\mathrm{d}\omega_{\Delta x}}{\mathrm{d}k} = \frac{c^2\,\kappa(k)}{\omega_{\Delta x}(k)},
+# \qquad
+# \kappa(k) \equiv \frac{\sin(k\,\Delta x)}{\Delta x},
+# $$ (the figure), e $$
+# c^2\cos^2\frac{k\Delta x}{2} - \left(\frac{\mathrm{d}\omega_{\Delta x}}{\mathrm{d}k}\right)^2
+# = \frac{c^2\mu^2}{\omega_{\Delta x}^2}\cos^2\frac{k\Delta x}{2} \ge 0,
+# $$ logo
+# $|\mathrm{d}\omega_{\Delta x}/\mathrm{d}k| \le c\cos(k\Delta x/2) \le c$:
+# nenhum modo da cadeia tem velocidade de grupo maior que $c$. O número
+# $\kappa_a \equiv \kappa(k_a)$ reaparece na the section, como o momento
+# da cadeia de cada modo.
+# 
+# > **No limite contínuo: a relação de dispersão de Klein–Gordon**
+# >
+# > Para $k$ fixo e $\Delta x \to 0$, com $\sin y = y - y^3/6 + O(y^5)$,
+# > <span id="eq-cont-dispersao">$$
+# > \omega_{\Delta x}(k)^2 = \mu^2 + c^2k^2 - \frac{c^2k^4\Delta x^2}{12} + O(\Delta x^4)
+# > \quad\longrightarrow\quad
+# > \omega(k)^2 \equiv \mu^2 + c^2k^2 ,
+# >  \qquad(19)$$</span> que é o que se obtém substituindo
+# > $\phi = e^{i(kx - \omega t)}$ em the equation. O termo
+# > $-c^2k^4\Delta x^2/12$ é o $c^2\Delta x^2\phi''''/12$ da equação
+# > aplicado à onda plana, e $\kappa(k) \to k$. A velocidade de grupo é
+# > $\mathrm{d}\omega/\mathrm{d}k = c^2k/\omega(k) < c$ para $\mu > 0$, e
+# > $c$ para $\mu = 0$. A velocidade de fase
+# > $\omega/k = \sqrt{\mu^2 + c^2k^2}/k$, a das cristas, é maior que $c$
+# > para $\mu > 0$, mas as cristas não transportam o pacote (the figure).
+
+# In[3]:
+
+
+c, mu = 1.0, 1.0
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 3.6))
+k_cont = np.linspace(0, 12.6, 600)
+ax1.plot(k_cont, np.sqrt(mu**2 + c**2 * k_cont**2), color="k", lw=1.5, label="contínuo")
+ax2.plot(k_cont, c**2 * k_cont / np.sqrt(mu**2 + c**2 * k_cont**2), color="k", lw=1.5, label="contínuo")
+for dx_d, cor in [(1.0, "C0"), (0.5, "C1"), (0.25, "C2")]:
+    kk = np.linspace(0, np.pi / dx_d, 600)
+    w_r = np.sqrt(mu**2 + 4 * c**2 / dx_d**2 * np.sin(kk * dx_d / 2) ** 2)
+    ax1.plot(kk, w_r, color=cor, label=rf"$\Delta x = {dx_d:g}$")
+    ax2.plot(kk, c**2 * np.sin(kk * dx_d) / (dx_d * w_r), color=cor, label=rf"$\Delta x = {dx_d:g}$")
+ax2.axhline(c, ls="--", color="gray", lw=1)
+ax1.set_xlabel("$k$")
+ax1.set_ylabel(r"$\omega$")
+ax1.set_xlim(0, 12.6)
+ax1.set_ylim(0, 9)
+ax2.set_xlabel("$k$")
+ax2.set_ylabel(r"$\mathrm{d}\omega/\mathrm{d}k$")
+ax2.set_xlim(0, 12.6)
+ax1.legend(fontsize=9)
+ax1.grid(True, alpha=0.3)
+ax2.grid(True, alpha=0.3)
+fig.tight_layout()
+plt.show()
+
+
+# In[4]:
+
+
+c, mu, k = 1.0, 1.0, 2.0
+for dx_d in [1.0, 0.5, 0.25, 0.125]:
+    w_r = np.sqrt(mu**2 + 4 * c**2 / dx_d**2 * np.sin(k * dx_d / 2) ** 2)
+    print(f"dx = {dx_d:5.3f}: omega_dx(2)/omega(2) - 1 = {w_r / np.sqrt(mu**2 + c**2 * k**2) - 1:.3e}")
+
+
+# ## A base de Fourier
+# 
+# Com $x_j = j\Delta x$, o expoente dos vetores de Fourier é
+# $2\pi aj/N = k_a x_j$: $$
+# v_a^{\,j} = \frac{e^{i k_a x_j}}{\sqrt N} .
+# $$ A base é ortonormal, $\vec v_a^{\,\dagger} \vec v_b = \delta_{ab}$, e
+# completa: a matriz $U$ com colunas $\vec v_a$ é unitária, e
+# $UU^\dagger = I$ é <span id="eq-cont-completeza">$$
+# \sum_a v_a^{\,j}\,\left(v_a^{\,k}\right)^* = \delta^{jk} .
+#  \qquad(20)$$</span> Cada modo da cadeia é um oscilador de frequência
+# $\omega_a$ ([Aula 1, Modos normais](aula1.qmd#sec-circ-modos)):
+# $\tilde h^a(t) = \tilde h^a(0)\cos\omega_a t + \tilde p^a(0)\sin(\omega_a t)/(m\omega_a)$.
+# 
+# > **No limite contínuo: a série de Fourier**
+# >
+# > Com $N = L/\Delta x$, <span id="eq-cont-ua">$$
+# > v_a^{\,j} = \sqrt{\Delta x}\; u_a(x_j),
+# > \qquad
+# > u_a(x) \equiv \frac{e^{i k_a x}}{\sqrt L} .
+# >  \qquad(21)$$</span> A ortonormalidade é uma soma de Riemann,
+# > $\delta_{ab} = \sum_j \Delta x\,u_a^*(x_j)\,u_b(x_j) \to \int_0^L u_a^*u_b\,\mathrm{d}x$,
+# > e as componentes de Fourier são
+# > $\tilde h^a = \tilde\phi^a/\sqrt{\Delta x}$ e
+# > $\tilde p^a = \sqrt{\Delta x}\,\tilde\Pi^a$, com
+# > <span id="eq-cont-fourier">$$
+# > \tilde\phi^a \equiv \sum_j \Delta x\,u_a^*(x_j)\,\phi(x_j) \to \int_0^L u_a^*\,\phi\,\mathrm{d}x,
+# > \qquad
+# > \phi(x) = \sum_{a \in \mathbb Z}\tilde\phi^a\, u_a(x) ,
+# >  \qquad(22)$$</span> a série de Fourier complexa de uma função de
+# > período $L$, e $\tilde\Pi^a$ da mesma forma. A soma vai sobre todos os
+# > inteiros porque o intervalo simétrico $-(N-1)/2 \le a \le (N-1)/2$
+# > cresce nos dois sentidos. Com $0 \le a \le N - 1$ o limite estaria
+# > errado: $a = N - 1$ e $a = -1$ dão o mesmo vetor $\vec v_a$, mas
+# > $u_{N-1}(x)$ oscila $N - 1$ vezes ao longo do anel e $u_{-1}(x)$ uma
+# > vez ([Aula 1, A base de Fourier](aula1.qmd#sec-circ-fourier)). A
+# > completeza the equation, dividida por $\Delta x$, dá
+# > $\sum_a u_a(x_j)\,u_a^*(x_k) = \delta^{jk}/\Delta x$, e no limite
+# > $\sum_{a \in \mathbb Z} u_a(x)\,u_a^*(y) = \delta(x - y)$. Cada modo
+# > do campo é um oscilador de frequência $\omega(k_a)$.
+# 
+# ## Simulações
+# 
+# A solução exata da cadeia da Aula 1 é usada aqui com a frequência de
+# cada modo dada por $\omega_{\Delta x}(k_a)$. Trocando essa frequência
+# por $\omega(k_a)$, a mesma função dá a solução de Klein–Gordon na mesma
+# rede, e podemos comparar as duas. Usamos $c = \rho = 1$ e um anel de
+# comprimento $L = 40$.
+
+# In[5]:
+
+
+c, rho, L = 1.0, 1.0, 40.0
+
+
+def numeros_de_onda(N, L):
+    """k_a = 2 pi a / L, na ordem de np.fft (a = 0, 1, ..., seguidos dos negativos)."""
+    return 2 * np.pi * np.fft.fftfreq(N, d=L / N)
+
+
+def omega_cadeia(k, dx, mu):
+    return np.sqrt(mu**2 + 4 * c**2 / dx**2 * np.sin(k * dx / 2) ** 2)
+
+
+def omega_continuo(k, mu):
+    return np.sqrt(mu**2 + c**2 * k**2)
+
+
+def evolui(h0, p0, t, w, m):
+    """Alturas e momentos nos instantes t, evoluindo cada modo com a frequência w."""
+    ft0, pt0 = np.fft.fft(h0), np.fft.fft(p0)
+    t = np.asarray(t)[:, None]
+    ft = ft0 * np.cos(w * t) + pt0 / m * t * np.sinc(w * t / np.pi)
+    pt = pt0 * np.cos(w * t) - m * w * ft0 * np.sin(w * t)
+    return np.fft.ifft(ft, axis=1).real, np.fft.ifft(pt, axis=1).real
+
+
+def energia_e_fluxo(h, p, dx, mu):
+    """Energias das molas e_{j+1/2} e fluxos S_{j+1/2} da cadeia (escalas da corda)."""
+    m, K, K0 = rho * dx, rho * c**2 / dx, rho * mu**2 * dx
+    h1, p1 = np.roll(h, -1, axis=-1), np.roll(p, -1, axis=-1)
+    e_mola = K / 2 * (h1 - h) ** 2 + (p**2 + p1**2) / (4 * m) + K0 * (h**2 + h1**2) / 4
+    S = -K / 2 * (h1 - h) * (p + p1) / m
+    return e_mola, S
+
+
+# A condição inicial é uma gaussiana em repouso,
+# $h^j(0) = e^{-(x_j - x_0)^2/(2\sigma^2)}$ e $p_j(0) = 0$, com
+# $x_0 = L/2$ e $\sigma = 0{,}5$, na cadeia com $N = 512$
+# ($\Delta x = 0{,}078$, cerca de $6$ partículas por largura $\sigma$).
+# 
+# **O cone de luz.** A the figure mostra a cadeia para $\mu = 0$ e
+# $\mu = 1$, junto com as retas $x = x_0 \pm ct$. Como nenhum modo tem
+# velocidade de grupo maior que $c$, a perturbação não sai da região
+# $|x - x_0| \le ct$, o **cone de luz** do ponto inicial, a menos da cauda
+# da gaussiana.
+
+# In[6]:
+
+
+x0, sigma = L / 2, 0.5
+gaussiana = lambda x: np.exp(-((x - x0) ** 2) / (2 * sigma**2))
+N = 512
+dx = L / N
+x = np.arange(N) * dx
+t_cone = np.linspace(0, 15, 301)
+fig, axs = plt.subplots(1, 2, figsize=(12, 3.8), sharey=True)
+for ax, mu in zip(axs, [0.0, 1.0]):
+    hs, ps = evolui(gaussiana(x), 0 * x, t_cone, omega_cadeia(numeros_de_onda(N, L), dx, mu), rho * dx)
+    im = ax.imshow(hs, aspect="auto", origin="lower", cmap="RdBu_r", vmin=-0.6, vmax=0.6,
+                   extent=[0, L, t_cone[0], t_cone[-1]])
+    ax.plot(x0 + c * t_cone, t_cone, "--", color="k", lw=1)
+    ax.plot(x0 - c * t_cone, t_cone, "--", color="k", lw=1)
+    ax.set_xlim(0, L)
+    ax.set_title(rf"$\mu = {mu:g}$")
+    ax.set_xlabel("$x_j$")
+axs[0].set_ylabel("$t$")
+fig.colorbar(im, ax=axs, label=r"$h^j$")
+plt.show()
+
+
+# In[7]:
+
+
+N_ref = 4096
+x_ref = np.arange(N_ref) * L / N_ref
+k_ref = numeros_de_onda(N_ref, L)
+for mu in [0.0, 1.0]:
+    hs, ps = evolui(gaussiana(x), 0 * x, t_cone, omega_cadeia(numeros_de_onda(N, L), dx, mu), rho * dx)
+    fora = np.abs(x[None, :] - x0) > c * t_cone[:, None] + 5 * sigma
+    hs_c, ps_c = evolui(gaussiana(x_ref), 0 * x_ref, t_cone, omega_continuo(k_ref, mu), rho * L / N_ref)
+    fora_c = np.abs(x_ref[None, :] - x0) > c * t_cone[:, None] + 5 * sigma
+    print(f"mu = {mu}: max |h| fora de |x - x0| <= ct + 5 sigma: cadeia {np.abs(hs[fora]).max():.1e}, "
+          f"contínuo {np.abs(hs_c[fora_c]).max():.1e}; h(15, x0) = {hs[-1, N // 2]:.3f}")
+
+
+# A animação mostra a mesma evolução no tempo, com as bordas do cone de
+# luz marcadas.
+
+# In[8]:
+
+
+t_anim = np.linspace(0, 15, 76)
+x_cone = x.copy()  # cópia própria: as funções de quadro não dependem de variáveis redefinidas depois
+hs_anim = {mu_c: evolui(gaussiana(x), 0 * x, t_anim, omega_cadeia(numeros_de_onda(N, L), dx, mu_c), rho * dx)[0]
+           for mu_c in [0.0, 1.0]}
+fig_cone, axs_cone = plt.subplots(1, 2, figsize=(12, 3.0), dpi=120, sharey=True)
+artistas_cone = []
+for ax, mu_c in zip(axs_cone, [0.0, 1.0]):
+    (linha,) = ax.plot([], [], color="C3", lw=1.2)
+    borda_d = ax.axvline(x0, color="k", ls="--", lw=0.8)
+    borda_e = ax.axvline(x0, color="k", ls="--", lw=0.8)
+    ax.set_xlim(0, L)
+    ax.set_ylim(-0.6, 1.05)
+    ax.set_title(rf"$\mu = {mu_c:g}$")
+    ax.set_xlabel("$x_j$")
+    ax.grid(True, alpha=0.3)
+    artistas_cone.append((linha, borda_d, borda_e, hs_anim[mu_c]))
+axs_cone[0].set_ylabel("$h^j$")
+texto_cone = axs_cone[0].text(0.03, 0.9, "", transform=axs_cone[0].transAxes)
+fig_cone.tight_layout()
+
+
+def quadro_cone(i):
+    saida = []
+    for linha, borda_d, borda_e, hs_c in artistas_cone:
+        linha.set_data(x_cone, hs_c[i])
+        borda_d.set_xdata([x0 + c * t_anim[i]] * 2)
+        borda_e.set_xdata([x0 - c * t_anim[i]] * 2)
+        saida += [linha, borda_d, borda_e]
+    texto_cone.set_text(f"$t = {t_anim[i]:.1f}$")
+    return saida + [texto_cone]
+
+
+anim_cone = FuncAnimation(fig_cone, quadro_cone, frames=len(t_anim), interval=80, blit=True)
+plt.close(fig_cone)
+HTML(anim_cone.to_jshtml())
+
+
+# Na cadeia a região fora do cone não fica exatamente como no contínuo: os
+# modos de $k$ grande, cuja frequência a cadeia altera mais, deixam uma
+# pequena cauda fora do cone. Em $t = 15$, com $\mu = 0$, a diferença
+# entre a cadeia e o contínuo cai de $2{,}8\times 10^{-4}$ para
+# $1{,}8\times 10^{-7}$ quando a distância ao cone, $|x - x_0| - ct$,
+# passa de $2$ para $4$.
+# 
+# > **No limite contínuo: a cadeia converge para Klein–Gordon**
+# >
+# > Comparamos a cadeia com $N = 128$, $256$, $512$ e $1024$ partículas
+# > com a solução de Klein–Gordon calculada na rede fina $N = 4096$, em
+# > $t = 15$. Para $\mu = 0$, a solução de Klein–Gordon é a de d’Alembert,
+# > $\phi(t, x) = \tfrac12\left[\phi(0, x - ct) + \phi(0, x + ct)\right]$.
+# >
+# > A diferença cai por um fator que tende a $4$ quando $\Delta x$ é
+# > dividido por $2$: a cadeia converge para a solução de Klein–Gordon com
+# > erro de ordem $\Delta x^2$, como previsto pelo termo
+# > $c^2\Delta x^2\phi''''/12$. Para $N = 128$ ($\sigma/\Delta x = 1{,}6$)
+# > a gaussiana mal é resolvida e a razão ainda está longe de $4$.
+# 
+# A comparação da cadeia com a solução de Klein–Gordon, descrita no quadro
+# acima:
+
+# In[9]:
+
+
+ts = np.array([0.0, 5.0, 10.0, 15.0])
+referencia = {mu: evolui(gaussiana(x_ref), 0 * x_ref, ts, omega_continuo(k_ref, mu), rho * L / N_ref)[0]
+              for mu in [0.0, 1.0]}
+dalembert = 0.5 * (gaussiana(x_ref[None, :] - c * ts[:, None]) + gaussiana(x_ref[None, :] + c * ts[:, None]))
+print(f"mu = 0: max |Klein-Gordon (N = 4096) - d'Alembert| = {np.abs(referencia[0.0] - dalembert).max():.1e}")
+for mu in [0.0, 1.0]:
+    erros = []
+    for N_c in [128, 256, 512, 1024]:
+        x_c = np.arange(N_c) * L / N_c
+        sol = evolui(gaussiana(x_c), 0 * x_c, ts, omega_cadeia(numeros_de_onda(N_c, L), L / N_c, mu), rho * L / N_c)[0]
+        erros.append(np.abs(sol[-1] - referencia[mu][-1, :: N_ref // N_c]).max())
+    razoes = ", ".join(f"{erros[i] / erros[i + 1]:.2f}" for i in range(3))
+    print(f"mu = {mu}: max |cadeia - Klein-Gordon| em t = 15 para N = 128, 256, 512, 1024: "
+          + ", ".join(f"{e:.2e}" for e in erros) + f" (razões {razoes})")
+
+
+# A animação abaixo mostra a convergência com uma gaussiana mais larga,
+# $\sigma = 2$, e cadeias com poucas partículas, em que a diferença é
+# visível.
+
+# In[10]:
+
+
+mu_cv, sigma_cv = 1.0, 2.0
+g_cv = lambda x_: np.exp(-((x_ - x0) ** 2) / (2 * sigma_cv**2))
+t_cv = np.linspace(0, 15, 76)
+ref_cv = evolui(g_cv(x_ref), 0 * x_ref, t_cv, omega_continuo(k_ref, mu_cv), rho * L / N_ref)[0]
+cadeias_cv = {}
+for N_cv in [16, 32, 128]:
+    x_cv = np.arange(N_cv) * L / N_cv
+    h_cv = evolui(g_cv(x_cv), 0 * x_cv, t_cv, omega_cadeia(numeros_de_onda(N_cv, L), L / N_cv, mu_cv), rho * L / N_cv)[0]
+    cadeias_cv[N_cv] = (x_cv, h_cv)
+fig_cv, axs_cv = plt.subplots(1, 3, figsize=(12, 3.0), dpi=120, sharey=True)
+artistas_cv = []
+for ax, (N_cv, (x_cv, h_cv)) in zip(axs_cv, cadeias_cv.items()):
+    (l_ref,) = ax.plot([], [], color="gray", lw=2)
+    (l_cad,) = ax.plot([], [], "o-", color="C3", ms=3, lw=1)
+    ax.set_xlim(0, L)
+    ax.set_ylim(-1.0, 1.1)
+    ax.set_title(rf"$N = {N_cv}$, $\Delta x = {L / N_cv:g}$")
+    ax.set_xlabel("$x_j$")
+    ax.grid(True, alpha=0.3)
+    artistas_cv.append((l_ref, l_cad, x_cv, h_cv))
+axs_cv[0].set_ylabel("$h^j$")
+texto_cv = axs_cv[0].text(0.03, 0.9, "", transform=axs_cv[0].transAxes)
+fig_cv.tight_layout()
+
+
+def quadro_cv(i):
+    saida = []
+    for l_ref, l_cad, x_cv, h_cv in artistas_cv:
+        l_ref.set_data(x_ref, ref_cv[i])
+        l_cad.set_data(x_cv, h_cv[i])
+        saida += [l_ref, l_cad]
+    texto_cv.set_text(f"$t = {t_cv[i]:.1f}$")
+    return saida + [texto_cv]
+
+
+anim_conv = FuncAnimation(fig_cv, quadro_cv, frames=len(t_cv), interval=80, blit=True)
+plt.close(fig_cv)
+HTML(anim_conv.to_jshtml())
+
+
+# In[11]:
+
+
+for N_cv, (x_cv, h_cv) in cadeias_cv.items():
+    print(f"N = {N_cv:4d}: max |cadeia - Klein-Gordon| para 0 <= t <= 15: {np.abs(h_cv - ref_cv[:, :: N_ref // N_cv]).max():.3f}")
+
+
+# **O fluxo de energia.** Conferimos the equation: a energia das
+# partículas com $|x_j - x_0| < 5$ varia exatamente pela energia que
+# atravessa as molas nas duas pontas do intervalo, integrada no tempo
+# (regra do trapézio com $4801$ instantes).
+
+# In[12]:
+
+
+t_f = np.linspace(0, 12, 4801)
+jA, jB = np.searchsorted(x, x0 - 5), np.searchsorted(x, x0 + 5)
+for mu in [0.0, 1.0]:
+    hs, ps = evolui(gaussiana(x), 0 * x, t_f, omega_cadeia(numeros_de_onda(N, L), dx, mu), rho * dx)
+    m_c, K_c, K0_c = rho * dx, rho * c**2 / dx, rho * mu**2 * dx
+    e_part = (ps**2 / (2 * m_c) + K0_c * hs**2 / 2
+              + K_c / 4 * ((np.roll(hs, -1, axis=1) - hs) ** 2 + (hs - np.roll(hs, 1, axis=1)) ** 2))
+    e_mola, S = energia_e_fluxo(hs, ps, dx, mu)
+    E_int = e_part[:, jA:jB].sum(axis=1)
+    saida = S[:, jB - 1] - S[:, jA - 1]  # S_{jB - 1/2} - S_{jA - 1/2}
+    saida_acum = np.concatenate([[0], np.cumsum((saida[1:] + saida[:-1]) / 2 * np.diff(t_f))])
+    print(f"mu = {mu}: energia em |x - x0| < 5: {E_int[0]:.4f} em t = 0, {E_int[-1]:.4f} em t = 12; "
+          f"max |E(t) - E(0) + energia que saiu| = {np.abs(E_int - E_int[0] + saida_acum).max():.1e}")
+
+
+# A the figure mostra a energia por unidade de comprimento de cada mola,
+# $e_{j+1/2}/\Delta x$, e a velocidade da energia em cada mola,
+# $S_{j+1/2}\Delta x/e_{j+1/2}$, para $\mu = 1$.
+
+# In[13]:
+
+
+mu = 1.0
+t_e = np.linspace(0, 15, 301)
+hs, ps = evolui(gaussiana(x), 0 * x, t_e, omega_cadeia(numeros_de_onda(N, L), dx, mu), rho * dx)
+e_mola, S = energia_e_fluxo(hs, ps, dx, mu)
+dens = e_mola / dx
+mascara = dens > 1e-3 * dens.max()
+v_mola = np.where(mascara, S * dx / np.where(mascara, e_mola, 1.0), np.nan)
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 3.6), sharey=True)
+extent = [dx / 2, L + dx / 2, t_e[0], t_e[-1]]
+im1 = ax1.imshow(np.log10(dens + 1e-12), aspect="auto", origin="lower", cmap="viridis", vmin=-4, vmax=0, extent=extent)
+im2 = ax2.imshow(v_mola, aspect="auto", origin="lower", cmap="RdBu_r", vmin=-1, vmax=1, extent=extent)
+for ax in (ax1, ax2):
+    ax.plot(x0 + c * t_e, t_e, "--", color="k", lw=0.8)
+    ax.plot(x0 - c * t_e, t_e, "--", color="k", lw=0.8)
+    ax.set_xlim(0, L)
+    ax.set_xlabel(r"$x_{j+1/2}$")
+ax1.set_ylabel("$t$")
+fig.colorbar(im1, ax=ax1, label=r"$\log_{10}(e_{j+1/2}/\Delta x)$")
+fig.colorbar(im2, ax=ax2, label=r"$S_{j+1/2}\Delta x/e_{j+1/2}$")
+fig.tight_layout()
+plt.show()
+
+
+# In[14]:
+
+
+print(f"max |S| dx / (c e_mola) onde e_mola/dx > 1e-3 do máximo: {np.abs(S[mascara] * dx / (c * e_mola[mascara])).max():.4f}")
+x_mola = x + dx / 2
+j_max = np.argmax(dens[-1] * (x_mola > x0))
+dentro = np.abs(x_mola - x0) < c * t_e[-1] / 2
+print(f"t = 15: máximo da energia em x - x0 = {x_mola[j_max] - x0:.2f}, velocidade {S[-1, j_max] * dx / e_mola[-1, j_max]:.3f}; "
+      f"fração da energia em |x - x0| < ct/2: {e_mola[-1, dentro].sum() / e_mola[-1].sum():.3f}")
+
+
+# Na animação, a energia por unidade de comprimento de cada mola,
+# $e_{j+1/2}/\Delta x$, aparece junto com o fluxo dividido por $c$; por
+# the equation, $S_{j+1/2}/c$ fica sempre entre $-e_{j+1/2}/\Delta x$ e
+# $e_{j+1/2}/\Delta x$.
+
+# In[15]:
+
+
+t_ea = np.linspace(0, 15, 76)
+hs_ea, ps_ea = evolui(gaussiana(x), 0 * x, t_ea, omega_cadeia(numeros_de_onda(N, L), dx, 1.0), rho * dx)
+e_ea, S_ea = energia_e_fluxo(hs_ea, ps_ea, dx, 1.0)
+dens_ea = e_ea / dx
+x_mola_ea = x + dx / 2
+fig_ea, ax_ea = plt.subplots(figsize=(12, 3.2), dpi=120)
+(l_mais,) = ax_ea.plot([], [], color="C2", lw=1.2, label=r"$\pm e_{j+1/2}/\Delta x$")
+(l_menos,) = ax_ea.plot([], [], color="C2", lw=1.2)
+(l_fluxo,) = ax_ea.plot([], [], color="C0", lw=1.5, label=r"$S_{j+1/2}/c$")
+borda_d_ea = ax_ea.axvline(x0, color="k", ls="--", lw=0.8)
+borda_e_ea = ax_ea.axvline(x0, color="k", ls="--", lw=0.8)
+ax_ea.set_xlim(0, L)
+ax_ea.set_xlabel(r"$x_{j+1/2}$")
+ax_ea.legend(loc="upper right")
+ax_ea.grid(True, alpha=0.3)
+texto_ea = ax_ea.text(0.02, 0.9, "", transform=ax_ea.transAxes)
+fig_ea.tight_layout()
+
+
+def quadro_ea(i):
+    l_mais.set_data(x_mola_ea, dens_ea[i])
+    l_menos.set_data(x_mola_ea, -dens_ea[i])
+    l_fluxo.set_data(x_mola_ea, S_ea[i] / c)
+    borda_d_ea.set_xdata([x0 + c * t_ea[i]] * 2)
+    borda_e_ea.set_xdata([x0 - c * t_ea[i]] * 2)
+    escala = 1.15 * dens_ea[i].max()
+    ax_ea.set_ylim(-escala, escala)
+    texto_ea.set_text(f"$t = {t_ea[i]:.1f}$")
+    return l_mais, l_menos, l_fluxo, borda_d_ea, borda_e_ea, texto_ea
+
+
+anim_energia = FuncAnimation(fig_ea, quadro_ea, frames=len(t_ea), interval=80, blit=False)
+plt.close(fig_ea)
+HTML(anim_energia.to_jshtml())
+
+
+# **Um pacote que se move.** Para obter um pacote que se move num único
+# sentido, montamos a solução diretamente a partir dos modos, com o fator
+# temporal $e^{-i\omega_a t}$ e apenas números de onda positivos, como as
+# ondas viajantes da [Aula 1](aula1.qmd#sec-circ-hartley): $$
+# \psi^j(t) = \sum_{k_a > 0} c_a\, v_a^{\,j}\, e^{-i\omega_a t},
+# \qquad
+# c_a = e^{-(k_a - k_0)^2\sigma_{\rm p}^2/2}\, e^{-i k_a x_{\rm p}},
+# \qquad
+# h^j = \operatorname{Re}\psi^j .
+# $$ Cada termo é solução, logo $\vec h$ é solução. Os coeficientes $c_a$
+# estão concentrados em torno de $k_0$, com largura $1/\sigma_{\rm p}$, e
+# a fase $e^{-ik_ax_{\rm p}}$ centra o pacote em $x_{\rm p}$ em $t = 0$.
+# Usamos $\mu = 1$, $k_0 = 2$, $\sigma_{\rm p} = 2$ e $x_{\rm p} = 10$. O
+# módulo $|\psi^j|$ é a envoltória do pacote, e seu centro
+# $x_{\rm c}(t) \equiv \sum_j x_j|\psi^j|^2 \big/ \sum_j |\psi^j|^2$ se
+# move com a média de $\mathrm{d}\omega_{\Delta x}/\mathrm{d}k$ ponderada
+# por $|c_a|^2$.
+
+# In[16]:
+
+
+mu, k0, sigma_p, x_p = 1.0, 2.0, 2.0, 10.0
+k = numeros_de_onda(N, L)
+w_pac = omega_cadeia(k, dx, mu)
+c_a = np.where(k > 0, np.exp(-((k - k0) ** 2) * sigma_p**2 / 2) * np.exp(-1j * k * x_p), 0)
+t_pac = np.linspace(0, 20, 201)
+fase = np.exp(-1j * w_pac[None, :] * t_pac[:, None])
+psi = np.fft.ifft(c_a[None, :] * fase, axis=1)
+norma_pac = np.abs(psi[0]).max()
+psi /= norma_pac
+dens_psi = np.abs(psi) ** 2
+x_c = (dens_psi * x).sum(axis=1) / dens_psi.sum(axis=1)
+v_centro = np.polyfit(t_pac, x_c, 1)[0]
+v_grupo = c**2 * np.sin(k * dx) / (dx * w_pac)
+media_vg = (np.abs(c_a) ** 2 * v_grupo).sum() / (np.abs(c_a) ** 2).sum()
+print(f"velocidade do centro (ajuste linear): {v_centro:.4f}")
+print(f"média de domega/dk ponderada por |c_a|^2: {media_vg:.4f}")
+print(f"domega/dk em k0: {c**2 * np.sin(k0 * dx) / (dx * omega_cadeia(k0, dx, mu)):.4f}; "
+      f"velocidade de fase omega/k em k0: {omega_cadeia(k0, dx, mu) / k0:.4f}")
+
+
+# In[17]:
+
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 3.1), gridspec_kw={"width_ratios": [1.2, 1]})
+ax1.imshow(psi.real, aspect="auto", origin="lower", cmap="RdBu_r", vmin=-1, vmax=1,
+           extent=[0, L, t_pac[0], t_pac[-1]])
+ax1.plot(x_p + c * t_pac, t_pac, "--", color="k", lw=1)
+ax1.plot(x_p - c * t_pac, t_pac, "--", color="k", lw=1)
+ax1.plot(x_c, t_pac, color="k", lw=1.5)
+ax1.set_xlim(0, L)
+ax1.set_xlabel("$x_j$")
+ax1.set_ylabel("$t$")
+ax1.set_title(r"$h^j = \mathrm{Re}\,\psi^j$ e centro $x_{\rm c}(t)$")
+for tt, cor in [(0, "C0"), (10, "C1"), (20, "C2")]:
+    i = np.argmin(np.abs(t_pac - tt))
+    ax2.plot(x, np.abs(psi[i]), color=cor, label=f"$t = {tt}$")
+    ax2.plot(x, psi[i].real, color=cor, lw=0.5, alpha=0.6)
+    ax2.axvline(x_c[i], color=cor, ls=":", lw=1)
+ax2.set_xlabel("$x_j$")
+ax2.set_ylabel(r"$|\psi^j|$ e $\mathrm{Re}\,\psi^j$")
+ax2.legend(fontsize=9)
+ax2.grid(True, alpha=0.3)
+fig.tight_layout()
+plt.show()
+
+
+# Na animação, a envoltória $|\psi^j|$ e as cristas de $h^j$ andam com
+# velocidades diferentes: as cristas passam por dentro da envoltória, do
+# fundo para a frente.
+
+# In[18]:
+
+
+quadros_pac = range(0, len(t_pac), 2)
+x_pa, psi_pa, x_c_pa = x.copy(), psi.copy(), x_c.copy()  # cópias próprias para as funções de quadro
+j_crista = np.argmax(psi_pa[0].real)
+x_crista0 = x_pa[j_crista]
+v_fase = omega_cadeia(k0, dx, mu) / k0
+fig_pa, ax_pa = plt.subplots(figsize=(12, 3.2), dpi=120)
+(l_h,) = ax_pa.plot([], [], color="C3", lw=1.2, label=r"$h^j = \mathrm{Re}\,\psi^j$")
+(l_env1,) = ax_pa.plot([], [], color="gray", lw=1.5, label=r"$\pm|\psi^j|$")
+(l_env2,) = ax_pa.plot([], [], color="gray", lw=1.5)
+centro_pa = ax_pa.axvline(x_p, color="k", lw=1.5)
+crista_pa = ax_pa.axvline(x_crista0, color="k", ls=":", lw=1.5)
+cone_d_pa = ax_pa.axvline(x_p, color="k", ls="--", lw=0.8)
+cone_e_pa = ax_pa.axvline(x_p, color="k", ls="--", lw=0.8)
+ax_pa.set_xlim(0, L)
+ax_pa.set_ylim(-1.1, 1.1)
+ax_pa.set_xlabel("$x_j$")
+ax_pa.legend(loc="upper right")
+ax_pa.grid(True, alpha=0.3)
+texto_pa = ax_pa.text(0.02, 0.9, "", transform=ax_pa.transAxes)
+fig_pa.tight_layout()
+
+
+def quadro_pa(i):
+    tt = t_pac[i]
+    l_h.set_data(x_pa, psi_pa[i].real)
+    l_env1.set_data(x_pa, np.abs(psi_pa[i]))
+    l_env2.set_data(x_pa, -np.abs(psi_pa[i]))
+    centro_pa.set_xdata([x_c_pa[i]] * 2)
+    crista_pa.set_xdata([x_crista0 + v_fase * tt] * 2)
+    cone_d_pa.set_xdata([x_p + c * tt] * 2)
+    cone_e_pa.set_xdata([x_p - c * tt] * 2)
+    texto_pa.set_text(f"$t = {tt:.1f}$")
+    return l_h, l_env1, l_env2, centro_pa, crista_pa, cone_d_pa, cone_e_pa, texto_pa
+
+
+anim_pacote = FuncAnimation(fig_pa, quadro_pa, frames=quadros_pac, interval=80, blit=True)
+plt.close(fig_pa)
+HTML(anim_pacote.to_jshtml())
+
+
+# A energia do pacote também se move com velocidade menor que $c$. Como
+# $\Delta x\sum_j S_{j+1/2} = c^2 P_{\rm rede}$, a velocidade da energia
+# do pacote inteiro, $\Delta x\sum_j S_{j+1/2}/H$, é $c^2P_{\rm rede}/H$:
+
+# In[19]:
+
+
+m = rho * dx
+h_p = psi.real
+p_p = m * np.fft.ifft(c_a[None, :] * (-1j * w_pac[None, :]) * fase, axis=1).real / norma_pac
+H_p = (p_p**2).sum(axis=1) / (2 * m) + (rho * c**2 / (2 * dx) * (np.roll(h_p, -1, axis=1) - h_p) ** 2).sum(axis=1) \
+    + (rho * mu**2 * dx / 2 * h_p**2).sum(axis=1)
+P_rede = -(p_p * (np.roll(h_p, -1, axis=1) - np.roll(h_p, 1, axis=1))).sum(axis=1) / (2 * dx)
+pesos_E = w_pac**2 * np.abs(c_a) ** 2
+print(f"c^2 P_rede / H: {c**2 * P_rede[0] / H_p[0]:.4f} em t = 0, {c**2 * P_rede[-1] / H_p[-1]:.4f} em t = 20; "
+      f"variação relativa de P_rede: {np.abs(P_rede / P_rede[0] - 1).max():.1e}")
+print(f"média de domega/dk ponderada pela energia de cada modo: {(pesos_E * v_grupo).sum() / pesos_E.sum():.4f}")
+
+
+# A velocidade da energia, $0{,}8932$, é a média de
+# $\mathrm{d}\omega_{\Delta x}/\mathrm{d}k$ ponderada pela energia de cada
+# modo, e é constante no tempo. Ela difere da velocidade do centro de
+# $|\psi^j|^2$, $0{,}8841$, porque as duas são médias com pesos
+# diferentes: a energia de um modo é proporcional a $\omega_a^2|c_a|^2$, e
+# $|\psi^j|^2$ pondera os modos por $|c_a|^2$.
+# 
+# ## Exercícios
+# 
+# 1.  **(Essencial)** Escreva the equation e the equation com as escalas
+#     the equation e obtenha the equation e
+#     1.  No limite contínuo, obtenha the equation, incluindo o
+#         coeficiente $1/12$, e the equation.
+# 2.  **(Essencial)** Obtenha the equation completando a conta de
+#     $\dot e_j$, e mostre que $\sum_j e_{j+1/2} = H$.
+# 3.  Mostre the equation. Para que configurações das partículas $j$ e
+#     $j + 1$ vale a igualdade?
+# 4.  Mostre que $\dot P_{\rm rede} = 0$ e que
+#     $\Delta x\sum_j S_{j+1/2} = c^2P_{\rm rede}$. No limite contínuo,
+#     obtenha the equation e the equation a partir das equações de
+#     Hamilton do campo.
+# 5.  Mostre que
+#     $|\mathrm{d}\omega_{\Delta x}/\mathrm{d}k| \le c\cos(k\Delta x/2)$.
+#     No contínuo com $\mu > 0$, mostre que
+#     $\mathrm{d}\omega/\mathrm{d}k < c$ e $\omega/k > c$, e que o produto
+#     das duas vale $c^2$.
+# 6.  Mostre que $\tilde h^a = \tilde\phi^a/\sqrt{\Delta x}$ e
+#     $\tilde p^a = \sqrt{\Delta x}\,\tilde\Pi^a$, com as somas de Riemann
+#     no lugar das integrais.
+# 7.  Para $\mu = 0$ e $h^j = g(x_j - ct)$ com $g$ variando pouco em
+#     $\Delta x$, mostre que $S_{j+1/2}\Delta x \approx c\,e_{j+1/2}$. No
+#     contínuo, mostre que $\mathcal S = c\,\mathcal E$ e
+#     $\mathcal P = \mathcal E/c$ para $\phi = g(x - ct)$.
+# 8.  Repita a comparação entre a cadeia e o campo com $\sigma = 0{,}25$.
+#     A partir de que $N$ a razão entre erros sucessivos fica próxima de
+#     $4$? Relacione com o número de partículas por largura
+#     $\sigma/\Delta x$.
+# 
+# # Partículas a partir das soluções da cadeia
+# 
+# Na Aula 1 cada modo de Fourier da cadeia apareceu como um oscilador
+# harmônico. Nesta seção construímos, a partir do espaço das soluções da
+# cadeia, os estados de partículas. As soluções de frequência positiva
+# formam o espaço de Hilbert de **uma partícula**; os produtos
+# simetrizados desses espaços formam os espaços de duas, três, …
+# **partículas indistinguíveis**; e os **operadores de criação e
+# aniquilação** levam de um desses espaços ao seguinte. A cadeia quântica
+# construída com esses operadores é a cadeia de $N$ osciladores quânticos
+# acoplados, com $[\hat h^j, \hat p_k] = i\hbar\,\delta^j{}_k$. Em toda a
+# seção supomos $K_0 > 0$; o caso $K_0 = 0$ é discutido na the section.
+# Como uma solução da cadeia fica determinada por $\vec h(t)$, com
+# $\vec p = m\dot{\vec h}$, descrevemos cada solução pelo vetor
+# $\vec h(t) \in \mathbb C^N$.
+# 
+# ## Soluções complexas e o produto simplético
+# 
+# As equações da cadeia são lineares e têm coeficientes reais: se
+# $\vec h(t)$ é uma solução complexa, sua parte real e sua parte
+# imaginária também são soluções. Para duas soluções complexas $\vec h_1$
+# e $\vec h_2$, com $\vec p_i = m\dot{\vec h}_i$, definimos
+# <span id="eq-part-produto">$$
+# \langle \vec h_1, \vec h_2\rangle \equiv i\sum_{j=0}^{N-1}\left[\left(h_1^j\right)^* p_{2,j} - \left(p_{1,j}\right)^* h_2^j\right] = i\,\vec\chi_1^{\,\dagger}\,\Omega\,\vec\chi_2,
+#  \qquad(23)$$</span> em que $\vec\chi_i = (\vec h_i, \vec p_i)$ é o
+# vetor do espaço de fase. É o produto simplético
+# $\Omega(\vec\chi_1, \vec\chi_2)$ da [Aula 1](aula1.qmd#sec-ho-produto),
+# com o primeiro vetor conjugado e multiplicado por $i$, na convenção do
+# curso de [Física Matemática](../mathematical-physics/scalar-field.qmd).
+# Ele é conservado pela mesma conta da Aula 1: com
+# $\dot{\vec\chi} = A\vec\chi$ e $A$ real,
+# $\frac{\mathrm{d}}{\mathrm{d}t}\left(\vec\chi_1^{\,\dagger}\Omega\,\vec\chi_2\right) = \vec\chi_1^{\,\dagger}\left(A^{\mathsf T}\Omega + \Omega A\right)\vec\chi_2 = 0$.
+# 
+# **Propriedades.** Diretamente de the equation:
+# 
+# 1.  $\langle \vec h_1, \vec h_2\rangle$ é linear em $\vec h_2$ e
+#     antilinear em $\vec h_1$.
+# 2.  $\langle \vec h_1, \vec h_2\rangle^* = \langle \vec h_2, \vec h_1\rangle$.
+# 3.  $\langle \vec h_1^{\,*}, \vec h_2^{\,*}\rangle = -\langle \vec h_2, \vec h_1\rangle$.
+# 
+# Com $\vec h_1 = \vec h_2 = \vec h$ real, a propriedade 3 dá
+# $\langle \vec h, \vec h\rangle = -\langle \vec h, \vec h\rangle = 0$:
+# toda solução real tem “norma” nula. O produto não é positivo definido no
+# espaço de todas as soluções, e ainda não é o produto de um espaço de
+# Hilbert.
+# 
+# > **No limite contínuo: o produto de Klein–Gordon**
+# >
+# > Com $h^j = \phi(x_j)$ e $p_j = \Delta x\,\Pi(x_j)$, the equation é uma
+# > soma de Riemann, e no limite $$
+# > \langle\phi_1, \phi_2\rangle = i\int_0^L\left(\phi_1^*\,\Pi_2 - \Pi_1^*\,\phi_2\right)\mathrm{d}x
+# > = i\rho\int_0^L\left(\phi_1^*\,\partial_t\phi_2 - \partial_t\phi_1^*\,\phi_2\right)\mathrm{d}x ,
+# > $$ o **produto de Klein–Gordon**. Sua conservação, com
+# > $\partial_t^2\phi_i = c^2\phi_i'' - \mu^2\phi_i$, é
+# > $\frac{\mathrm{d}}{\mathrm{d}t}\langle\phi_1, \phi_2\rangle = i\rho c^2\int_0^L\partial_x\left(\phi_1^*\phi_2' - \phi_1'^*\phi_2\right)\mathrm{d}x = 0$.
+# 
+# ## Modos de frequência positiva
+# 
+# Os **modos de frequência positiva** da cadeia são as soluções
+# <span id="eq-part-fa">$$
+# f_a^{\,j}(t) \equiv \frac{v_a^{\,j}\,e^{-i\omega_a t}}{\sqrt{2m\,\omega_a}},
+# \qquad a = 0, 1, \dots, N - 1 ,
+#  \qquad(24)$$</span> cada uma o modo $a$ da Aula 1 com dependência
+# temporal $e^{-i\omega_a t}$, $\omega_a > 0$. Com
+# $\vec p = m\dot{\vec f}_a = -im\omega_a \vec f_a$ e
+# $\sum_j (v_a^{\,j})^* v_b^{\,j} = \delta_{ab}$, $$
+# \langle \vec f_a, \vec f_b\rangle
+# = i\,m\left(-i\omega_b - i\omega_a\right)\sum_j \left(f_a^{\,j}\right)^* f_b^{\,j}
+# = m\left(\omega_a + \omega_b\right)\frac{e^{i(\omega_a - \omega_b)t}}{2m\sqrt{\omega_a\omega_b}}\,\delta_{ab}
+# = \delta_{ab} .
+# $$ Da mesma forma, com $\dot{\vec f}_b^{\,*} = i\omega_b \vec f_b^{\,*}$
+# e $\sum_j (v_a^{\,j})^*(v_b^{\,j})^* = \delta_{a,-b}$,
+# $\langle \vec f_a, \vec f_b^{\,*}\rangle$ é proporcional a
+# $(\omega_b - \omega_a)\,\delta_{a,-b}$, que é nulo porque
+# $\omega_{-a} = \omega_a$. Com a propriedade 3,
+# <span id="eq-part-ortonormal">$$
+# \langle \vec f_a, \vec f_b\rangle = \delta_{ab},
+# \qquad
+# \langle \vec f_a^{\,*}, \vec f_b^{\,*}\rangle = -\delta_{ab},
+# \qquad
+# \langle \vec f_a, \vec f_b^{\,*}\rangle = 0 .
+#  \qquad(25)$$</span>
+# 
+# Toda solução real se escreve como <span id="eq-part-alfa">$$
+# \vec h = \sum_a\left(\alpha_a\, \vec f_a + \alpha_a^*\, \vec f_a^{\,*}\right),
+# \qquad
+# \alpha_a = \langle \vec f_a, \vec h\rangle = \frac{m\,\omega_a\,\tilde h^a + i\,\tilde p^a}{\sqrt{2m\,\omega_a}},
+#  \qquad(26)$$</span> como se vê aplicando
+# $\langle \vec f_b, \cdot\,\rangle$ à soma e usando the equation; a
+# última forma é $\langle \vec f_a, \vec h\rangle$ calculado em $t = 0$,
+# com $\tilde h^a$ e $\tilde p^a$ em $t = 0$. Os $\alpha_a$ não dependem
+# do tempo, porque o produto é conservado. São as **variáveis de criação e
+# aniquilação clássicas** da cadeia. Três propriedades:
+# 
+# - **Energia.** Pela Hamiltoniana dos modos da [Aula
+#   1](aula1.qmd#sec-circ-modos),
+#   $H = \sum_a\left[|\tilde p^a|^2/(2m) + m\omega_a^2|\tilde h^a|^2/2\right]$.
+#   Em $\sum_a\omega_a|\alpha_a|^2$, os termos cruzados
+#   $i\omega_a\left[(\tilde h^a)^*\tilde p^a - \tilde h^a(\tilde p^a)^*\right]/2$
+#   dos índices $a$ e $-a$ se cancelam, porque para $\vec h$ real
+#   $\tilde h^{-a} = (\tilde h^a)^*$ e $\tilde p^{-a} = (\tilde p^a)^*$.
+#   Sobra <span id="eq-part-H-alfa">$$
+#   H = \sum_a \omega_a\,|\alpha_a|^2 .
+#    \qquad(27)$$</span>
+# - **Momento da cadeia.** As componentes de Fourier de
+#   $(h^{j+1} - h^{j-1})/(2\Delta x)$ são $i\kappa_a\tilde h^a$, com
+#   $\kappa_a = \sin(k_a\Delta x)/\Delta x$, pois
+#   $(e^{ik_a\Delta x} - e^{-ik_a\Delta x})/(2\Delta x) = i\kappa_a$.
+#   Então $P_{\rm rede} = -i\sum_a\kappa_a(\tilde p^a)^*\tilde h^a$, e em
+#   $\sum_a\kappa_a|\alpha_a|^2$ agora os termos com $|\tilde h^a|^2$ e
+#   $|\tilde p^a|^2$ se cancelam, porque $\kappa_{-a} = -\kappa_a$:
+#   <span id="eq-part-P-alfa">$$
+#   P_{\rm rede} = \sum_a \kappa_a\,|\alpha_a|^2 .
+#    \qquad(28)$$</span>
+# - **Parênteses de Poisson.** De $\{h^j, p_k\} = \delta^j{}_k$,
+#   $\{\tilde h^a, (\tilde p^b)^*\} = \sum_j (v_a^{\,j})^*v_b^{\,j} = \delta_{ab}$
+#   e
+#   $\{\tilde h^a, \tilde p^b\} = \sum_j (v_a^{\,j})^*(v_b^{\,j})^* = \delta_{a,-b}$.
+#   Substituindo em the equation, <span id="eq-part-poisson-alfa">$$
+#   \{\alpha_a, \alpha_b^*\} = -i\,\delta_{ab},
+#   \qquad
+#   \{\alpha_a, \alpha_b\} = 0 .
+#    \qquad(29)$$</span>
+# 
+# A soma de frequência positiva em the equation,
+# $\vec\psi_+ \equiv \sum_a\alpha_a \vec f_a$, é uma solução complexa com
+# $\vec h = \vec\psi_+ + \vec\psi_+^{\,*} = 2\,\mathrm{Re}\,\vec\psi_+$,
+# que contém toda a informação de $\vec h$.
+# 
+# **O caso $K_0 = 0$.** O modo $a = 0$ tem então frequência
+# $\omega_a = 0$, e the equation não está definida. É o modo zero da [Aula
+# 1](aula1.qmd#sec-cadeia-modo-zero): a altura média se move como uma
+# partícula livre, não como um oscilador, e não tem um $\alpha_0$. A mola
+# de constante $K_0 > 0$ torna também esse modo um oscilador.
+# 
+# **A escolha de frequência positiva.** A separação entre $\vec f_a$ e
+# $\vec f_a^{\,*}$ usa a dependência temporal $e^{\mp i\omega_a t}$, que
+# existe porque as equações não dependem do tempo. Outras separações do
+# espaço das soluções em duas metades com as propriedades the equation são
+# possíveis, e levam a outros estados de vácuo; essa questão é discutida
+# no curso de [Física
+# Matemática](../mathematical-physics/scalar-propagators.qmd).
+# 
+# Conferimos the equation, the equation, the equation e the equation na
+# cadeia com $N = 64$, $L = 40$ e $\mu = 1$:
+
+# In[20]:
+
+
+N, mu = 64, 1.0
+dx = L / N
+m = rho * dx
+x = np.arange(N) * dx
+k = numeros_de_onda(N, L)
+w = omega_cadeia(k, dx, mu)
+kappa = np.sin(k * dx) / dx
+V = np.exp(1j * np.outer(x, k)) / np.sqrt(N)  # coluna a = v_a
+
+
+def modos(t):
+    """f_a^j(t), uma coluna por modo, e p = m df/dt."""
+    f = V * np.exp(-1j * w * t) / np.sqrt(2 * m * w)
+    return f, -1j * m * w * f
+
+
+def produto(h1, p1, h2, p2):
+    """<h1, h2> = i sum_j (h1^* p2 - p1^* h2), entre todas as colunas."""
+    return 1j * (h1.conj().T @ p2 - p1.conj().T @ h2)
+
+
+f, p_f = modos(3.7)
+I = np.eye(N)
+print(f"max |<f_a, f_b> - delta|   = {np.abs(produto(f, p_f, f, p_f) - I).max():.1e}")
+print(f"max |<f*_a, f*_b> + delta| = {np.abs(produto(f.conj(), p_f.conj(), f.conj(), p_f.conj()) + I).max():.1e}")
+print(f"max |<f_a, f*_b>|          = {np.abs(produto(f, p_f, f.conj(), p_f.conj())).max():.1e}")
+
+rng = np.random.default_rng(3)
+h0, p0 = rng.normal(size=N), rng.normal(size=N)
+f, p_f = modos(0.0)
+alfa = produto(f, p_f, h0[:, None], p0[:, None])[:, 0]
+ht, pt = V.conj().T @ h0, V.conj().T @ p0
+H_dir = p0 @ p0 / (2 * m) + 0.5 * h0 @ ((rho * c**2 / dx) * (2 * h0 - np.roll(h0, -1) - np.roll(h0, 1)) + rho * mu**2 * dx * h0)
+P_dir = -(p0 * (np.roll(h0, -1) - np.roll(h0, 1))).sum() / (2 * dx)
+print(f"max |<f_a, h> - (m w h~ + i p~)/sqrt(2 m w)| = {np.abs(alfa - (m * w * ht + 1j * pt) / np.sqrt(2 * m * w)).max():.1e}")
+print(f"max |h - sum(alfa f + alfa* f*)| = {np.abs((f @ alfa + f.conj() @ alfa.conj()).real - h0).max():.1e}")
+print(f"H = {H_dir:.10f};  sum omega |alfa|^2 = {np.sum(w * np.abs(alfa) ** 2):.10f}")
+print(f"P_rede = {P_dir:.10f};  sum kappa |alfa|^2 = {np.sum(kappa * np.abs(alfa) ** 2):.10f}")
+
+
+# > **No limite contínuo: os modos do campo**
+# >
+# > Com the equation e $m = \rho\,\Delta x$,
+# > $v_a^{\,j}/\sqrt{2m\omega_a} = u_a(x_j)/\sqrt{2\rho\,\omega_a}$: os
+# > modos da cadeia são, nos pontos $x_j$, as funções $$
+# > f_a(t, x) \equiv \frac{u_a(x)\,e^{-i\omega(k_a)t}}{\sqrt{2\rho\,\omega(k_a)}},
+# > $$ com $\omega_a$ substituída por $\omega(k_a)$ no limite. Da mesma
+# > forma,
+# > $\alpha_a = (\rho\,\omega(k_a)\,\tilde\phi^a + i\,\tilde\Pi^a)/\sqrt{2\rho\,\omega(k_a)}$,
+# > $H = \sum_{a \in \mathbb Z}\omega(k_a)|\alpha_a|^2$,
+# > $\int_0^L\mathcal P\,\mathrm{d}x = \sum_{a \in \mathbb Z}k_a|\alpha_a|^2$
+# > (pois $\kappa_a \to k_a$), e
+# > $\{\alpha_a, \alpha_b^*\} = -i\delta_{ab}$ segue de the equation. O
+# > papel de $K_0 > 0$ é o de $\mu > 0$: com $\mu = 0$ o modo $k = 0$ do
+# > campo não é um oscilador.
+# 
+# ## O espaço de uma partícula
+# 
+# As combinações lineares dos modos de frequência positiva, $$
+# \mathcal H_1 \equiv \left\{\vec\psi = \sum_{a}\psi^a\, \vec f_a \;:\; \psi^a \in \mathbb C\right\},
+# $$ são soluções complexas da cadeia. Em $\mathcal H_1$, por the
+# equation, $$
+# \langle\vec\psi_1, \vec\psi_2\rangle = \sum_a (\psi_1^a)^*\psi_2^a,
+# \qquad
+# \langle\vec\psi, \vec\psi\rangle = \sum_a |\psi^a|^2 > 0 \quad\text{para } \vec\psi \neq 0 :
+# $$ restrito a $\mathcal H_1$, o produto the equation é positivo
+# definido, e $\mathcal H_1$ é um espaço de Hilbert de dimensão $N$, com
+# base ortonormal $\{\vec f_a\}$. É o **espaço de estados de uma
+# partícula**: um vetor $\vec\psi \in \mathcal H_1$ com
+# $\langle\vec\psi, \vec\psi\rangle = 1$ descreve uma partícula,
+# $\vec f_a$ é a partícula no modo $a$, de número de onda $k_a$, e
+# $|\psi^a|^2$ é a probabilidade de encontrá-la no modo $a$.
+# 
+# A evolução temporal em $\mathcal H_1$ é a de uma equação de Schrödinger.
+# Como $\dot{\vec f}_a = -i\omega_a \vec f_a$, e $\omega_a^2$ e $\vec v_a$
+# são os autovalores e autovetores de $(KD + K_0 I)/m$,
+# <span id="eq-part-schrodinger">$$
+# i\,\frac{\mathrm{d}\vec\psi}{\mathrm{d}t} = \sum_a \omega_a\,\psi^a \vec f_a = \sqrt{\frac{KD + K_0 I}{m}}\;\vec\psi ,
+#  \qquad(30)$$</span> em que a raiz quadrada é a matriz positiva com os
+# mesmos autovetores e autovalores $\omega_a$. Com a constante de Planck
+# reduzida $\hbar$, a energia de uma partícula no modo $a$ é
+# $\hbar\omega_a$, e seu momento da cadeia, por the equation, é
+# $\hbar\kappa_a$. O pacote $\psi^j$ da the section é um vetor de
+# $\mathcal H_1$.
+
+# In[21]:
+
+
+raiz = sqrtm((rho * c**2 / dx * (2 * I - np.roll(I, 1, axis=1) - np.roll(I, -1, axis=1)) + rho * mu**2 * dx * I) / m)
+coef = rng.normal(size=N) + 1j * rng.normal(size=N)
+psi_t = lambda t: modos(t)[0] @ coef
+dt = 1e-6
+derivada = (psi_t(1.0 + dt) - psi_t(1.0 - dt)) / (2 * dt)
+print(f"max |i dpsi/dt - sqrt((KD + K0 I)/m) psi| = {np.abs(1j * derivada - raiz @ psi_t(1.0)).max():.1e} "
+      f"(com max |psi| = {np.abs(psi_t(1.0)).max():.2f}; o erro é o da derivada numérica)")
+
+
+# A norma de $\mathcal H_1$ não é $\sum_j|\psi^j|^2$: como
+# $|f_a^{\,j}|^2 = |v_a^{\,j}|^2/(2m\omega_a)$, essa soma pondera cada
+# modo por $1/(2m\omega_a)$. Por isso $|\psi^j|^2$ não é a probabilidade
+# de encontrar a partícula na posição $x_j$; para um pacote com números de
+# onda próximos de $k_0$ ela é aproximadamente proporcional a uma, e
+# mostra onde a partícula está.
+# 
+# > **No limite contínuo: uma partícula relativística**
+# >
+# > No limite, $\mathcal H_1$ passa a ter dimensão infinita, com base
+# > $\{f_a, a \in \mathbb Z\}$ e $\sum_a|\psi^a|^2 < \infty$. A raiz
+# > quadrada da matriz $(KD + K_0 I)/m$ multiplica cada $\vec v_a$ por
+# > $\omega_a$, e no limite é o operador que multiplica cada $u_a$ por
+# > $\sqrt{\mu^2 + c^2k_a^2}$: $$
+# > i\,\frac{\partial\psi}{\partial t} = \sqrt{\mu^2 - c^2\,\frac{\partial^2}{\partial x^2}}\;\psi .
+# > $$ Uma partícula no modo $a$ tem energia $\hbar\omega(k_a)$ e momento
+# > $\hbar k_a$, com $(\hbar\omega)^2 = (\hbar\mu)^2 + c^2(\hbar k)^2$: a
+# > relação entre energia e momento de uma partícula relativística de
+# > energia de repouso $\hbar\mu$.
+# 
+# ## Duas ou mais partículas: o espaço de Fock
+# 
+# Um estado de duas partículas é descrito por coeficientes $\Psi^{ab}$, um
+# para cada par de modos: $$
+# \Psi = \sum_{a, b}\Psi^{ab}\, \vec f_a\otimes \vec f_b,
+# \qquad
+# \Psi^{j_1j_2}(t) \equiv \sum_{a, b}\Psi^{ab}\, f_a^{\,j_1}(t)\, f_b^{\,j_2}(t),
+# \qquad
+# \langle\Psi, \Psi'\rangle \equiv \sum_{a, b}(\Psi^{ab})^*\,\Psi'^{ab} .
+# $$ Nas posições, um estado de duas partículas atribui uma amplitude
+# $\Psi^{j_1j_2}$ a cada par de partículas $(j_1, j_2)$ da cadeia, e cada
+# índice evolui como um estado de $\mathcal H_1$. As partículas são
+# **indistinguíveis**: trocar os rótulos $1$ e $2$ dá o mesmo estado, $$
+# \Psi^{ab} = \Psi^{ba},
+# \qquad\text{ou seja,}\qquad
+# \Psi^{j_1j_2}(t) = \Psi^{j_2j_1}(t) .
+# $$ O espaço de duas partículas $\mathcal H_2$ é o dos $\Psi$ simétricos:
+# a parte simétrica do produto tensorial
+# $\mathcal H_1\otimes\mathcal H_1$. A razão de ser a parte simétrica, e
+# não a antissimétrica, aparece na the section: os operadores de criação
+# comutam entre si, porque $\{\alpha_a^*, \alpha_b^*\} = 0$. (A parte
+# antissimétrica descreve férmions, que não vêm de osciladores como
+# estes.)
+# 
+# Por exemplo, para dois pacotes ortonormais $\vec\psi_{\rm E}$ e
+# $\vec\psi_{\rm D}$ de $\mathcal H_1$, o estado com uma partícula em cada
+# um é $$
+# \Psi = \frac{\vec\psi_{\rm E}\otimes\vec\psi_{\rm D} + \vec\psi_{\rm D}\otimes\vec\psi_{\rm E}}{\sqrt 2},
+# \qquad
+# \langle\Psi, \Psi\rangle = 1 .
+# $$ A the figure mostra esse estado para dois pacotes como o da the
+# section, um vindo da esquerda e outro da direita. Quando os pacotes se
+# cruzam, as duas parcelas de $\Psi$ se sobrepõem; com envoltórias quase
+# iguais perto do centro e fatores $e^{\pm ik_0x_j}$,
+# $\Psi^{j_1j_2} \propto e^{ik_0(x_{j_1} - x_{j_2})} + e^{-ik_0(x_{j_1} - x_{j_2})} = 2\cos\left(k_0(x_{j_1} - x_{j_2})\right)$,
+# e $|\Psi^{j_1j_2}|^2$ tem franjas ao longo das retas
+# $x_{j_1} - x_{j_2} = \text{constante}$: a interferência entre as duas
+# ordens possíveis das mesmas duas partículas.
+
+# In[22]:
+
+
+N2 = 256
+dx2 = L / N2
+m2 = rho * dx2
+x2 = np.arange(N2) * dx2
+k2 = numeros_de_onda(N2, L)
+w2 = omega_cadeia(k2, dx2, mu)
+V2 = np.exp(1j * np.outer(x2, k2)) / np.sqrt(N2)
+
+
+def pacote_H1(k0, x_ini, sigma_p=2.0):
+    """Componentes psi^a de um pacote normalizado em H_1."""
+    coef = np.where(np.sign(k2) == np.sign(k0),
+                    np.exp(-((k2 - k0) ** 2) * sigma_p**2 / 2) * np.exp(-1j * k2 * x_ini), 0)
+    return coef / np.sqrt(np.sum(np.abs(coef) ** 2))
+
+
+def estado_H1(coef, t):
+    """psi^j(t) = sum_a psi^a f_a^j(t)."""
+    return (V2 * coef * np.exp(-1j * w2 * t) / np.sqrt(2 * m2 * w2)).sum(axis=1)
+
+
+psi_E, psi_D = pacote_H1(2.0, 10.0), pacote_H1(-2.0, 30.0)
+v_med = (np.abs(psi_E) ** 2 * c**2 * np.sin(k2 * dx2) / (dx2 * w2)).sum()
+t_cruz = 10 / v_med
+fig, axs = plt.subplots(1, 3, figsize=(13, 3.9), sharey=True)
+for ax, tt in zip(axs, [0.0, t_cruz, 2 * t_cruz]):
+    pE, pD = estado_H1(psi_E, tt), estado_H1(psi_D, tt)
+    Psi = (np.outer(pE, pD) + np.outer(pD, pE)) / np.sqrt(2)
+    ax.imshow(np.abs(Psi.T) ** 2, origin="lower", cmap="magma", extent=[0, L, 0, L])
+    ax.plot([0, L], [0, L], "--", color="w", lw=0.8)
+    ax.set_title(f"$t = {tt:.1f}$")
+    ax.set_xlabel("$x_{j_1}$")
+axs[0].set_ylabel("$x_{j_2}$")
+fig.tight_layout()
+plt.show()
+
+
+# In[23]:
+
+
+print(f"<psi_E, psi_D> = {np.vdot(psi_E, psi_D):.1e}; t de cruzamento = {t_cruz:.2f}")
+for tt in [0.0, t_cruz, 2 * t_cruz]:
+    pE, pD = estado_H1(psi_E, tt), estado_H1(psi_D, tt)
+    Psi = (np.outer(pE, pD) + np.outer(pD, pE)) / np.sqrt(2)
+    i, j = np.unravel_index(np.argmax(np.abs(Psi) ** 2), Psi.shape)
+    print(f"t = {tt:5.2f}: max |Psi^(j1 j2) - Psi^(j2 j1)| = {np.abs(Psi - Psi.T).max():.1e}, "
+          f"máximo de |Psi|^2 em (x_j1, x_j2) = ({x2[i]:.1f}, {x2[j]:.1f})")
+
+
+# A animação mostra o estado de duas partículas durante todo o cruzamento.
+
+# In[24]:
+
+
+t_dois = np.linspace(0, 2 * t_cruz, 61)
+dens_dois = []
+for tt in t_dois:
+    pE, pD = estado_H1(psi_E, tt), estado_H1(psi_D, tt)
+    Psi_t = (np.outer(pE, pD) + np.outer(pD, pE)) / np.sqrt(2)
+    dens_dois.append(np.abs(Psi_t.T) ** 2)
+dens_dois = np.array(dens_dois)
+fig_d, ax_d = plt.subplots(figsize=(5.2, 4.6), dpi=120)
+from matplotlib.colors import PowerNorm
+im_d = ax_d.imshow(dens_dois[0], origin="lower", cmap="magma", extent=[0, L, 0, L],
+                   norm=PowerNorm(gamma=0.5, vmin=0, vmax=dens_dois.max()))
+ax_d.plot([0, L], [0, L], "--", color="w", lw=0.8)
+ax_d.set_xlabel("$x_{j_1}$")
+ax_d.set_ylabel("$x_{j_2}$")
+titulo_d = ax_d.set_title("")
+fig_d.tight_layout()
+
+
+def quadro_d(i):
+    im_d.set_data(dens_dois[i])
+    titulo_d.set_text(f"$t = {t_dois[i]:.1f}$")
+    return im_d, titulo_d
+
+
+anim_dois = FuncAnimation(fig_d, quadro_d, frames=len(t_dois), interval=100, blit=False)
+plt.close(fig_d)
+HTML(anim_dois.to_jshtml())
+
+
+# Da mesma forma, um estado de $n$ partículas tem coeficientes
+# $\Psi^{a_1 a_2\cdots a_n}$ simétricos pela troca de quaisquer dois
+# índices, e esses estados formam o espaço $\mathcal H_n$. O espaço
+# $\mathcal H_0$ tem um único estado normalizado, o **vácuo** $|0\rangle$,
+# sem partículas. O **espaço de Fock** reúne todos os números de
+# partículas: $$
+# \mathcal F \equiv \mathcal H_0 \oplus \mathcal H_1 \oplus \mathcal H_2 \oplus \cdots
+# $$ Um estado de $\mathcal H_n$ simétrico fica determinado por quantas
+# partículas há em cada modo: os **números de ocupação** $n_a \ge 0$, com
+# $\sum_a n_a = n$. Na cadeia, com $N$ modos, $\mathcal H_n$ tem dimensão
+# finita $\binom{n + N - 1}{n}$; para $N = 15$, as dimensões de
+# $\mathcal H_0, \dots, \mathcal H_4$ são $1$, $15$, $120$, $680$ e
+# $3060$. Para um único modo, cada $\mathcal H_n$ tem dimensão $1$, e o
+# espaço de Fock é a sequência de estados
+# $|0\rangle, |1\rangle, |2\rangle, \dots$, os níveis de um oscilador
+# harmônico quântico: o número de partículas no modo $a$ é o nível de
+# excitação do oscilador desse modo.
+# 
+# > **No limite contínuo: funções de duas posições**
+# >
+# > No limite, $\Psi^{j_1j_2}$ passa a ser uma função de duas posições,
+# > $\Psi(t; x_1, x_2) = \sum_{a, b}\Psi^{ab}\,f_a(t, x_1)\,f_b(t, x_2)$,
+# > simétrica pela troca $x_1 \leftrightarrow x_2$, e cada $\mathcal H_n$
+# > com $n \ge 1$ passa a ter dimensão infinita.
+# 
+# ## Operadores de criação e aniquilação
+# 
+# O operador de criação $a^\dagger(\vec\psi_2)$, com
+# $\vec\psi_2 \in \mathcal H_1$, acrescenta uma partícula no estado
+# $\vec\psi_2$, levando $\mathcal H_n$ em $\mathcal H_{n+1}$; o operador
+# de aniquilação $a(\vec\psi_1)$ retira uma partícula no estado
+# $\vec\psi_1$, levando $\mathcal H_n$ em $\mathcal H_{n-1}$:
+# <span id="eq-part-operadores">$$
+# \left(a^\dagger(\vec\psi_2)\,\Psi\right)^{a_1\cdots a_{n+1}} \equiv \frac{1}{\sqrt{n+1}}\sum_{i=1}^{n+1}\psi_2^{a_i}\,\Psi^{a_1\cdots\widehat{a_i}\cdots a_{n+1}},
+# \qquad
+# \left(a(\vec\psi_1)\,\Psi\right)^{a_2\cdots a_n} \equiv \sqrt n\sum_{a_1}(\psi_1^{a_1})^*\,\Psi^{a_1 a_2\cdots a_n},
+#  \qquad(31)$$</span> em que $\widehat{a_i}$ indica o índice omitido, e
+# $a(\vec\psi_1)|0\rangle = 0$. A primeira fórmula simetriza
+# $\vec\psi_2\otimes\Psi$; a segunda é o produto de $\vec\psi_1$ com um
+# dos índices de $\Psi$ (todos dão o mesmo resultado, por simetria). Os
+# fatores $\sqrt{n+1}$ e $\sqrt n$ fazem valer, em todo $\mathcal H_n$,
+# <span id="eq-part-comutadores">$$
+# \left[a(\vec\psi_1), a^\dagger(\vec\psi_2)\right] = \langle\vec\psi_1, \vec\psi_2\rangle,
+# \qquad
+# \left[a^\dagger(\vec\psi_1), a^\dagger(\vec\psi_2)\right] = 0,
+# \qquad
+# \left[a(\vec\psi_1), a(\vec\psi_2)\right] = 0 .
+#  \qquad(32)$$</span> A segunda relação é a simetria dos estados: criar
+# uma partícula em $\vec\psi_1$ e outra em $\vec\psi_2$, nas duas ordens,
+# dá o mesmo estado. Com os modos, $a_a \equiv a(\vec f_a)$ e
+# $a_a^\dagger \equiv a^\dagger(\vec f_a)$, $$
+# \left[a_a, a_b^\dagger\right] = \delta_{ab},
+# \qquad
+# a^\dagger(\vec\psi_2) = \sum_a \psi_2^a\,a_a^\dagger,
+# \qquad
+# a(\vec\psi_1) = \sum_a (\psi_1^a)^*\,a_a .
+# $$ O operador $\hat n_a \equiv a_a^\dagger a_a$ conta as partículas no
+# modo $a$, os estados
+# $\prod_a (a_a^\dagger)^{n_a}/\sqrt{n_a!}\,|0\rangle$ formam uma base
+# ortonormal de $\mathcal F$, e para um único modo
+# $a^\dagger|n\rangle = \sqrt{n+1}\,|n+1\rangle$ e
+# $a|n\rangle = \sqrt n\,|n-1\rangle$. A energia e o momento da cadeia de
+# um estado com números de ocupação $n_a$ são as somas das energias e dos
+# momentos das partículas: <span id="eq-part-H-quantico">$$
+# \hat H = \sum_a \hbar\,\omega_a\,\hat n_a,
+# \qquad
+# \hat P_{\rm rede} = \sum_a \hbar\,\kappa_a\,\hat n_a
+#  \qquad(33)$$</span> (the figure).
+# 
+# A implementação abaixo representa um estado de $\mathcal H_n$ pelo
+# tensor simétrico $\Psi^{a_1\cdots a_n}$ e confere the equation com $3$
+# modos e vetores aleatórios.
+
+# In[25]:
+
+
+def simetriza(T):
+    n = T.ndim
+    if n <= 1:
+        return T
+    return sum(np.transpose(T, p) for p in itertools.permutations(range(n))) / math.factorial(n)
+
+
+def cria(chi, T):
+    """a^dagger(chi): tensor simétrico de ordem n -> ordem n + 1."""
+    n = T.ndim
+    return math.sqrt(n + 1) * simetriza(np.multiply.outer(chi, T))
+
+
+def aniquila(psi, T):
+    """a(psi): tensor simétrico de ordem n -> ordem n - 1 (zero no vácuo)."""
+    n = T.ndim
+    if n == 0:
+        return np.zeros(())
+    return math.sqrt(n) * np.tensordot(psi.conj(), T, axes=(0, 0))
+
+
+d = 3
+rng = np.random.default_rng(0)
+psi = rng.normal(size=d) + 1j * rng.normal(size=d)
+chi = rng.normal(size=d) + 1j * rng.normal(size=d)
+for n in range(4):
+    T = np.array(1.0 + 0.5j) if n == 0 else simetriza(rng.normal(size=(d,) * n) + 1j * rng.normal(size=(d,) * n))
+    comut = aniquila(psi, cria(chi, T)) - (cria(chi, aniquila(psi, T)) if n > 0 else 0)
+    print(f"n = {n}: max |[a(psi), a+(chi)] T - <psi,chi> T| = {np.abs(comut - np.vdot(psi, chi) * T).max():.1e}, "
+          f"max |[a+(psi), a+(chi)] T| = {np.abs(cria(psi, cria(chi, T)) - cria(chi, cria(psi, T))).max():.1e}")
+estado = np.array(1.0)
+for _ in range(3):
+    estado = cria(np.eye(d)[0], estado)
+print(f"(a_0^dagger)^3 |0>: norma ao quadrado = {np.vdot(estado, estado).real:.6f} (3! = 6)")
+
+
+# In[26]:
+
+
+N_e = 512
+dx_e = L / N_e
+a_ind = np.arange(-10, 11)
+k_ind = 2 * np.pi * a_ind / L
+w_ind = omega_cadeia(k_ind, dx_e, mu)
+kappa_ind = np.sin(k_ind * dx_e) / dx_e
+fig, ax = plt.subplots(figsize=(9, 3.6))
+for i in range(len(a_ind)):
+    for j in range(i, len(a_ind)):
+        ax.plot(kappa_ind[i] + kappa_ind[j], w_ind[i] + w_ind[j], ".", color="C1", ms=3)
+k_fino = np.linspace(-3.2, 3.2, 300)
+ax.plot(k_fino, omega_continuo(k_fino, mu), color="C0", lw=1)
+ax.plot(kappa_ind, w_ind, "o", color="C0", ms=4)
+ax.axhline(2 * mu, color="gray", ls=":", lw=1)
+ax.set_xlabel(r"momento da cadeia / $\hbar$")
+ax.set_ylabel(r"energia / $\hbar$")
+ax.grid(True, alpha=0.3)
+plt.show()
+
+
+# > **No limite contínuo: energia e momento das partículas**
+# >
+# > No limite, $\kappa_a \to k_a$ e
+# > $\hat P_{\rm rede} \to \hat P_{\rm campo} = \sum_{a \in \mathbb Z}\hbar\,k_a\,\hat n_a$,
+# > o operador do momento do campo $\int\mathcal P\,\mathrm{d}x$, e
+# > $\hat H = \sum_a\hbar\,\omega(k_a)\,\hat n_a$.
+# 
+# ## A cadeia quântica
+# 
+# Compare the equation com the equation: $$
+# \{\alpha_a, \alpha_b^*\} = -i\,\delta_{ab},
+# \qquad
+# \left[a_a, a_b^\dagger\right] = \delta_{ab} .
+# $$ A regra de quantização de Dirac substitui cada parêntese de Poisson
+# $\{F, G\}$ pelo comutador $[\hat F, \hat G]/(i\hbar)$. Com
+# $\alpha_a \to \sqrt\hbar\,a_a$ e
+# $\alpha_a^* \to \sqrt\hbar\,a_a^\dagger$, o comutador é
+# $\hbar\,\delta_{ab} = i\hbar\left(-i\,\delta_{ab}\right)$: os operadores
+# de criação e aniquilação do espaço de Fock são a quantização das
+# variáveis clássicas $\alpha_a$. Fazendo a mesma substituição em the
+# equation obtemos as alturas e os momentos como operadores,
+# <span id="eq-part-campo-quantico">$$
+# \hat h^j(t) = \sqrt\hbar\sum_a\left(a_a\, f_a^{\,j}(t) + a_a^\dagger\, \left(f_a^{\,j}(t)\right)^*\right),
+# \qquad
+# \hat p_j = m\,\frac{\mathrm{d}\hat h^j}{\mathrm{d}t} .
+#  \qquad(34)$$</span> Seu comutador, com the equation e
+# $m\dot f_a^{\,j} = -im\omega_a f_a^{\,j}$, é $$
+# \left[\hat h^j, \hat p_k\right]
+# = \hbar\sum_a\left(f_a^{\,j}\left(im\omega_a\right)\left(f_a^{\,k}\right)^* + \left(f_a^{\,j}\right)^*\left(im\omega_a\right) f_a^{\,k}\right)
+# = \frac{i\hbar}{2}\sum_a\left(v_a^{\,j}\left(v_a^{\,k}\right)^* + \left(v_a^{\,j}\right)^* v_a^{\,k}\right),
+# $$ e, pela completeza the equation, cada uma das duas somas é
+# $\delta^{jk}$: <span id="eq-part-comutador-campo">$$
+# \left[\hat h^j, \hat p_k\right] = i\hbar\,\delta^j{}_k .
+#  \qquad(35)$$</span> Esses são os comutadores de $N$ osciladores
+# quânticos. O espaço de Fock construído a partir das soluções clássicas é
+# o espaço de estados da cadeia de $N$ osciladores quânticos acoplados, e
+# uma partícula é um quantum de um modo normal.
+# 
+# Na cadeia podemos conferir tudo com matrizes. Representamos o espaço de
+# Fock de $N = 3$ modos pela base de números de ocupação, com no máximo
+# $6$ partículas por modo, e construímos $\hat h^j$ e $\hat p_j$ por the
+# equation. Nos estados com poucas partículas, onde o corte em $6$ não
+# interfere, conferimos the equation e escrevemos a Hamiltoniana da cadeia
+# na forma original
+# $\hat H_{\rm cadeia} = \sum_j\hat p_j^2/(2m) + \tfrac12\sum_{j,k}\hat h^j(KD + K_0 I)_{jk}\hat h^k$:
+
+# In[27]:
+
+
+hbar = 1.0
+N_q, mu_q = 3, 1.0
+dx_q = L / N_q
+m_q = rho * dx_q
+k_q = numeros_de_onda(N_q, L)
+w_q = omega_cadeia(k_q, dx_q, mu_q)
+V_q = np.exp(1j * np.outer(np.arange(N_q) * dx_q, k_q)) / np.sqrt(N_q)
+M_q = rho * c**2 / dx_q * (2 * np.eye(N_q) - np.roll(np.eye(N_q), 1, axis=1) - np.roll(np.eye(N_q), -1, axis=1)) \
+    + rho * mu_q**2 * dx_q * np.eye(N_q)
+n_corte = 7
+a_1 = np.diag(np.sqrt(np.arange(1, n_corte)), 1)  # a|n> = sqrt(n)|n-1>, n < 7
+
+
+def no_modo(op1, a):
+    """Operador op1 agindo no modo a, identidade nos outros."""
+    fatores = [np.eye(n_corte)] * N_q
+    fatores[a] = op1
+    out = fatores[0]
+    for F in fatores[1:]:
+        out = np.kron(out, F)
+    return out
+
+
+A = [no_modo(a_1, a) for a in range(N_q)]
+f0 = V_q / np.sqrt(2 * m_q * w_q)  # f_a^j(0)
+h_op = [np.sqrt(hbar) * sum(A[a] * f0[j, a] + A[a].conj().T * np.conj(f0[j, a]) for a in range(N_q)) for j in range(N_q)]
+p_op = [np.sqrt(hbar) * sum(A[a] * (-1j * m_q * w_q[a] * f0[j, a]) + A[a].conj().T * np.conj(-1j * m_q * w_q[a] * f0[j, a])
+                            for a in range(N_q)) for j in range(N_q)]
+ocup = np.array(np.meshgrid(*[np.arange(n_corte)] * N_q, indexing="ij")).reshape(N_q, -1).T
+baixos = np.where(ocup.sum(axis=1) <= n_corte - 3)[0]
+erro_comut = max(np.abs((h_op[j] @ p_op[k] - p_op[k] @ h_op[j])[np.ix_(baixos, baixos)]
+                        - 1j * hbar * (j == k) * np.eye(len(baixos))).max() for j in range(N_q) for k in range(N_q))
+H_cadeia = sum(P @ P for P in p_op) / (2 * m_q) + 0.5 * sum(M_q[j, k] * h_op[j] @ h_op[k] for j in range(N_q) for k in range(N_q))
+H_modos = sum(hbar * w_q[a] * (A[a].conj().T @ A[a] + 0.5 * np.eye(n_corte**N_q)) for a in range(N_q))
+print(f"max |[h_j, p_k] - i hbar delta_jk| = {erro_comut:.1e}")
+print(f"max |H_cadeia - sum_a hbar omega_a (n_a + 1/2)| = {np.abs((H_cadeia - H_modos)[np.ix_(baixos, baixos)]).max():.1e}")
+print(f"energia do vácuo sum_a hbar omega_a / 2 = {hbar * w_q.sum() / 2:.4f}")
+
+
+# A Hamiltoniana da cadeia quântica é
+# $\hat H_{\rm cadeia} = \sum_a\hbar\,\omega_a\left(\hat n_a + \tfrac12\right)$:
+# além das energias das partículas, the equation, ela contém a energia do
+# vácuo $E_{\rm vácuo} \equiv \sum_a\hbar\,\omega_a/2$, que vem da ordem
+# dos operadores (classicamente,
+# $\alpha_a^*\alpha_a = \alpha_a\alpha_a^*$; quanticamente,
+# $a_aa_a^\dagger = a_a^\dagger a_a + 1$). Na cadeia ela é finita, e somar
+# uma constante à energia não muda a dinâmica; the equation é
+# $\hat H_{\rm cadeia} - E_{\rm vácuo}$. Ela cresce com o número de
+# partículas da cadeia no mesmo anel:
+
+# In[28]:
+
+
+for N_v in [16, 64, 256, 1024]:
+    w_v = omega_cadeia(numeros_de_onda(N_v, L), L / N_v, 1.0)
+    print(f"N = {N_v:5d}: E_vácuo = sum hbar omega_a / 2 = {hbar * w_v.sum() / 2:.4e}")
+
+
+# > **No limite contínuo: o campo quântico**
+# >
+# > No limite, the equation é o campo quântico $$
+# > \hat\phi(t, x) = \sqrt\hbar\sum_{a\in\mathbb Z}\left(a_a\, f_a(t, x) + a_a^\dagger\, f_a^*(t, x)\right),
+# > \qquad
+# > \hat\Pi = \rho\,\partial_t\hat\phi ,
+# > $$ e the equation, com $\hat p_k = \Delta x\,\hat\Pi(x_k)$ e
+# > $\delta^j{}_k/\Delta x \to \delta(x - y)$, é $$
+# > \left[\hat\phi(t, x), \hat\Pi(t, y)\right] = i\hbar\,\delta(x - y),
+# > $$ a quantização de the equation. A energia do vácuo cresce sem
+# > limite: com $L$ fixo, as razões entre valores sucessivos da tabela
+# > acima, em que $N$ é multiplicado por $4$, são $8{,}2$, $14{,}1$ e
+# > $15{,}8$, e se aproximam de $16$, pois há $N$ modos e as frequências
+# > chegam a $2c/\Delta x$. Por isso, no campo, a energia é medida a
+# > partir do vácuo, $\hat H = \sum_a\hbar\,\omega(k_a)\,\hat n_a$.
+# 
+# O caminho completo desta seção parte de estruturas clássicas da cadeia:
+# o produto simplético, conservado pela evolução, e a escolha dos modos de
+# frequência positiva. Elas determinam o espaço de uma partícula; os
+# produtos simetrizados dão os espaços de muitas partículas; e os
+# operadores que passam de um espaço ao outro reproduzem, como
+# comutadores, os parênteses de Poisson da cadeia. O resultado é a cadeia
+# de $N$ osciladores quânticos, e o limite contínuo dessa construção é o
+# campo quântico de Klein–Gordon.
+# 
+# Conferimos também the equation e the equation com $N = 64$, $\hbar = 1$.
+# Os $\alpha_a$ são funções lineares de $h^j$ e $p_j$, com
+# $\{h^j, p_k\} = \delta^j{}_k$:
+
+# In[29]:
+
+
+f, p_f = modos(0.0)
+coef_h = -1j * p_f.conj().T  # alfa_a = sum_j coef_h[a, j] h^j + coef_p[a, j] p_j
+coef_p = 1j * f.conj().T
+pb_conj = coef_h @ coef_p.conj().T - coef_p @ coef_h.conj().T
+pb = coef_h @ coef_p.T - coef_p @ coef_h.T
+print(f"max |{{alfa_a, alfa_b^*}} + i delta| = {np.abs(pb_conj + 1j * I).max():.1e}, "
+      f"max |{{alfa_a, alfa_b}}| = {np.abs(pb).max():.1e}")
+f, p_f = modos(1.3)
+comutador = f @ p_f.conj().T - f.conj() @ p_f.T  # sum_a f_a^j (p_a^k)^* - (f_a^j)^* p_a^k
+print(f"max |[h^j, p_k]/i - delta_jk| = {np.abs(comutador / 1j - I).max():.1e}")
+
+
+# ## Exercícios
+# 
+# 1.  **(Essencial)** Demonstre as três propriedades do produto the
+#     equation e conclua que toda solução real tem
+#     $\langle \vec h, \vec h\rangle = 0$.
+# 2.  **(Essencial)** Calcule $\langle \vec f_a, \vec f_b^{\,*}\rangle$
+#     explicitamente e mostre que é nulo. Obtenha a última forma de the
+#     equation de $\alpha_a = \langle \vec f_a, \vec h\rangle$.
+# 3.  Mostre the equation e the equation completando a conta dos termos
+#     cruzados, e the equation a partir de $\{h^j, p_k\} = \delta^j{}_k$.
+# 4.  Mostre the equation. Para $N = 3$, escreva a matriz
+#     $\sqrt{(KD + K_0 I)/m}$ explicitamente.
+# 5.  Com $N = 2$ modos, liste uma base de $\mathcal H_2$ e de
+#     $\mathcal H_3$ e confira a dimensão $\binom{n + N - 1}{n}$. Escreva
+#     os vetores da base como
+#     $\prod_a (a_a^\dagger)^{n_a}/\sqrt{n_a!}\,|0\rangle$.
+# 6.  **(Essencial)** Mostre the equation a partir de the equation em um
+#     estado de $\mathcal H_1$ e em um estado de $\mathcal H_2$.
+# 7.  Para um único modo, mostre que
+#     $a^\dagger|n\rangle = \sqrt{n+1}\,|n+1\rangle$,
+#     $a|n\rangle = \sqrt n\,|n-1\rangle$ e
+#     $a^\dagger a|n\rangle = n|n\rangle$, e compare com os níveis de
+#     energia de um oscilador harmônico quântico.
+# 8.  Mostre que
+#     $\hat H_{\rm cadeia} = \sum_a\hbar\,\omega_a(\hat n_a + \tfrac12)$
+#     substituindo the equation na Hamiltoniana da cadeia.
+# 9.  Repita a the figure com o produto não simetrizado
+#     $\vec\psi_{\rm E}\otimes\vec\psi_{\rm D}$, que descreve duas
+#     partículas distinguíveis. O que muda?
+# 
+# ------------------------------------------------------------------------
+# 
+# Feel free to create issues, ask questions, or suggest improvements in
+# the [GitHub repository](https://github.com/vitenti-physics/undergrad).

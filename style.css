@@ -1,1 +1,12 @@
 /* styles.css */
+/* matplotlib jshtml animations: never wider than the text column
+   (matplotlib styles .animation as inline-block, sized to the image) */
+.animation {
+  display: block;
+  max-width: 100%;
+}
+
+.animation img {
+  max-width: 100%;
+  height: auto;
+}
